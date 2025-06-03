@@ -1,1 +1,1 @@
-docker run --rm -p 9050:80 docusaurus:latest
+docker run --rm -p 9050:9050 docusaurus:latest

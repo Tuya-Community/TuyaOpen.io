@@ -137,7 +137,7 @@ const config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs',
+              to: '/docs/about-tuyaopen',
             },
           ],
         },

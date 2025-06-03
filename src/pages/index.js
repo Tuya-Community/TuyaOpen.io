@@ -97,10 +97,7 @@ function Home() {
                   <Translate id="home.desc">{description}</Translate>
                 </p>
                 <div className="tw-flex tw-gap-3">
-                  <Link
-                    to="/docs/production-installation-using-helm"
-                    className="tw-btn !tw-btn-primary hover:-tw-translate-y-[3px]"
-                  >
+                  <Link to="/docs/about-tuyaopen" className="tw-btn !tw-btn-primary hover:-tw-translate-y-[3px]">
                     <Translate id="home.getstarted">Get Started →</Translate>
                   </Link>
                   <Link
