@@ -1,8 +1,33 @@
+
 #!/bin/bash
-docker rm -f nginx &&
-docker run --name nginx \
-    -v /data/zh:/usr/share/nginx/html/zh \
-    -v /data/en:/usr/share/nginx/html/en \
-    -v /data/server-configs-nginx:/etc/nginx \
-    --net=host \
-    -d nginx
+#!/bin/bash
+
+# Parse command line arguments
+while getopts "trs" opt; do
+  case $opt in
+    t)
+      # Test nginx configuration
+      docker exec nginx nginx -t
+      ;;
+    r)
+      # Reload nginx configuration
+      docker exec nginx nginx -s reload
+      ;;
+    s)
+      # Stop and remove nginx container
+      docker rm -f nginx
+      # Start nginx container
+      docker run --name nginx \
+          -v /data/zh:/usr/share/nginx/html/zh \
+          -v /data/en:/usr/share/nginx/html/en \
+          -v /data/server-configs-nginx:/etc/nginx \
+          --net=host \
+          -d nginx
+      ;;
+    
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
