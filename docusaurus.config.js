@@ -52,14 +52,14 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/tuya/TuyaOpen/edit/master/',
+          editUrl: 'https://github.com/Tuya-Community/TuyaOpen.io/edit/master/',
           editLocalizedFiles: true,
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/tuya/TuyaOpen/edit/master/',
+          editUrl: 'https://github.com/Tuya-Community/TuyaOpen.io/edit/master/',
           editLocalizedFiles: true,
         },
         theme: {

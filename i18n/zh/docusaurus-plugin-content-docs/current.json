@@ -23,9 +23,9 @@
         "message": "应用示例",
         "description": "The label for category Application Demo in sidebar docs"
     },
-    "sidebar.docs.category.TLK APIs": {
-        "message": "TLK APIs",
-        "description": "The label for category TLK APIs in sidebar docs"
+    "sidebar.docs.category.TKL APIs": {
+        "message": "TKL APIs",
+        "description": "The label for category TKL APIs in sidebar docs"
     },
     "sidebar.docs.category.OS APIs": {
         "message": "OS API",

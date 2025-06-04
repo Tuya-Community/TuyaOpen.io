@@ -50,7 +50,7 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'TLK APIs',
+      label: 'TKL APIs',
       collapsed: true,
       items: [
         {
