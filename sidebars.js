@@ -27,6 +27,7 @@ module.exports = {
             'quick_start/flashing-with-command-line-interface',
           ],
         },
+        'quick_start/terminologies',
       ],
     },
     // ------------------------------------------------------------------
