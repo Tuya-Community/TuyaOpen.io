@@ -50,5 +50,13 @@
     "sidebar.docs.category.Docs Templates": {
         "message": "文档模板",
         "description": "The label for category Docs Templates in sidebar docs"
+    },
+    "sidebar.docs.category.Hardware Guides": {
+        "message": "硬件文档",
+        "description": "The label for category Hardware Guides in sidebar docs"
+    },
+    "sidebar.docs.category.T5-AI Board DevKit": {
+        "message": "T5-AI Board DevKit",
+        "description": "The label for category T5-AI Board DevKit in sidebar docs"
     }
 }

@@ -33,6 +33,20 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
+      label: 'Hardware Guides',
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'T5-AI Board DevKit',
+          collapsed: false,
+          items: ['hardware-specific/t5-ai-board/overview-t5-ai-board'],
+        },
+      ],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
       label: 'New Hardware Support',
       collapsed: true,
       items: ['new_hardware/adding-new-chip-platform-support', 'new_hardware/adding-new-board-support'],
