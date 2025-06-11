@@ -55,7 +55,7 @@ T5AI-Board 通过其扩展接头提供全面的引脚选项。以下是可用引
 ![T5-AI Board Pinout](https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg)
 
 ### 下载高清引脚图：
-[![](https://img.shields.io/badge/V1002-下载%20PDF%20引脚图-orange?style=for-the-badge)](./static/T5-AI%20Board-Pinout-v102.pdf)
+[![](https://img.shields.io/badge/V1002-下载%20PDF%20引脚图-orange?style=for-the-badge)](/docs/hardware/T5-AI%20Board-Pinout-v102.pdf)
 
 ---
 ## LCD 屏幕 + 摄像头模块

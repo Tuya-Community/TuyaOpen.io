@@ -55,7 +55,7 @@ The T5AI-Board provides comprehensive pinout options through its expansion heade
 ![T5-AI Board Pinout](https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg)
 
 ### Downlaod High-Res Pinout Illustration:
-[![](https://img.shields.io/badge/V1002-Download%20PDF%20Illustration-orange?style=for-the-badge)](./static/T5-AI%20Board-Pinout-v102.pdf)
+[![](https://img.shields.io/badge/V1002-Download%20PDF%20Illustration-orange?style=for-the-badge)](/docs/hardware/T5-AI%20Board-Pinout-v102.pdf)
 
 ---
 ## LCD Screen + Camera Module
