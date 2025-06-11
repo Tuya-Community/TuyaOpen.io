@@ -14,7 +14,7 @@ title: T5AI-Board 开发套件概述
 ---
 ## 开发套件亮点
 - 涂鸦 T5 MCU 模块（Wi-Fi 2.4G + BLE 5.4）
-- 8 MB 闪存
+- 8 MB Flash
 - 16 MB RAM
 - 串行固件下载和调试日志
 - 2 通道麦克风
