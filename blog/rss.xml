@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>TuyaOpen Blog</title>
-        <link>https://tuyaopen.io/blog/</link>
+        <link>https://tuyaopen.io/blog</link>
         <description>TuyaOpen Blog</description>
         <lastBuildDate>Sun, 18 May 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,11 +10,11 @@
         <language>en</language>
         <item>
             <title><![CDATA[TuyaOpen 測試文章 2]]></title>
-            <link>https://tuyaopen.io/blog/TuyaOpen-test2/</link>
-            <guid>https://tuyaopen.io/blog/TuyaOpen-test2/</guid>
+            <link>https://tuyaopen.io/blog/TuyaOpen-test2</link>
+            <guid>https://tuyaopen.io/blog/TuyaOpen-test2</guid>
             <pubDate>Sun, 18 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Lorem Ipsum]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="lorem-ipsum">Lorem Ipsum<a href="https://tuyaopen.io/blog/TuyaOpen-test2/#lorem-ipsum" class="hash-link" aria-label="Direct link to Lorem Ipsum" title="Direct link to Lorem Ipsum">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="lorem-ipsum">Lorem Ipsum<a href="https://tuyaopen.io/blog/TuyaOpen-test2#lorem-ipsum" class="hash-link" aria-label="Direct link to Lorem Ipsum" title="Direct link to Lorem Ipsum">​</a></h2>
 <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..." Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ornare neque vel lacinia. Aliquam eleifend dolor finibus feugiat malesuada. Maecenas pharetra nunc metus, non feugiat purus dignissim sed. Aenean ut quam leo. Sed rutrum mi sapien, vitae vehicula turpis hendrerit a. Mauris semper elit ut diam mollis, ut dapibus eros laoreet. Etiam suscipit nibh eget lacinia imperdiet. Pellentesque porta efficitur bibendum. Aliquam egestas in nunc eget mollis. In eu ipsum eu ante efficitur auctor a nec metus. Suspendisse eget pharetra lacus. Donec pretium tempus felis eu ornare. Cras vel sem nec tellus fringilla efficitur. Cras a iaculis odio. Nulla pharetra est sit amet felis viverra convallis nec et massa.</p>
 <p>Mauris ut nibh odio. Vivamus convallis tortor eu odio laoreet bibendum. Ut luctus augue et leo vestibulum, sit amet pharetra dui ultrices. Nulla scelerisque neque et lacus egestas ultricies. Morbi facilisis, dolor non lacinia placerat, massa metus elementum felis, et interdum est lorem eu sem. Phasellus id metus ut sem suscipit varius quis et quam. Pellentesque sit amet lacus leo. Nam vulputate scelerisque quam, id egestas metus finibus malesuada. Pellentesque vehicula vehicula odio, vitae scelerisque erat gravida id. Sed sit amet nunc vehicula, pharetra lorem nec, scelerisque mauris. Aliquam erat volutpat. Proin porta odio laoreet enim tempus lacinia. Nullam gravida a mauris ut vehicula. Fusce in ante ante.</p>
 <p>Sed in porta velit, sit amet tempus ipsum. Morbi dignissim sagittis cursus. Curabitur non erat rhoncus, interdum velit mattis, commodo massa. Nulla egestas dignissim pellentesque. Sed quis scelerisque arcu. Morbi non bibendum felis, et interdum nisi. In hac habitasse platea dictumst. Nunc vitae elementum tellus, at dignissim risus. Aliquam semper eget leo eget faucibus. Donec pharetra cursus erat nec facilisis. Curabitur purus orci, lacinia nec nibh ac, ultrices scelerisque nisi. Nulla augue ipsum, molestie in lectus in, bibendum hendrerit nibh. Sed nec rutrum ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. In a magna non justo bibendum mollis efficitur at dui.</p>
@@ -24,8 +24,8 @@
         </item>
         <item>
             <title><![CDATA[TuyaOpen 測試文章 1]]></title>
-            <link>https://tuyaopen.io/blog/TuyaOpen-test1/</link>
-            <guid>https://tuyaopen.io/blog/TuyaOpen-test1/</guid>
+            <link>https://tuyaopen.io/blog/TuyaOpen-test1</link>
+            <guid>https://tuyaopen.io/blog/TuyaOpen-test1</guid>
             <pubDate>Sat, 17 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "无人爱苦，亦无人寻之欲之，乃因其苦..." 什么是Lorem Ipsum? Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。]]></description>
             <content:encoded><![CDATA[<p>Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "无人爱苦，亦无人寻之欲之，乃因其苦..." 什么是Lorem Ipsum? Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。</p>
@@ -39,11 +39,11 @@
         </item>
         <item>
             <title><![CDATA[TuyaOpen 測試文章]]></title>
-            <link>https://tuyaopen.io/blog/TuyaOpen-test/</link>
-            <guid>https://tuyaopen.io/blog/TuyaOpen-test/</guid>
+            <link>https://tuyaopen.io/blog/TuyaOpen-test</link>
+            <guid>https://tuyaopen.io/blog/TuyaOpen-test</guid>
             <pubDate>Fri, 16 May 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Lorem Ipsum]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="lorem-ipsum">Lorem Ipsum<a href="https://tuyaopen.io/blog/TuyaOpen-test/#lorem-ipsum" class="hash-link" aria-label="Direct link to Lorem Ipsum" title="Direct link to Lorem Ipsum">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="lorem-ipsum">Lorem Ipsum<a href="https://tuyaopen.io/blog/TuyaOpen-test#lorem-ipsum" class="hash-link" aria-label="Direct link to Lorem Ipsum" title="Direct link to Lorem Ipsum">​</a></h2>
 <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..." Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ornare neque vel lacinia. Aliquam eleifend dolor finibus feugiat malesuada. Maecenas pharetra nunc metus, non feugiat purus dignissim sed. Aenean ut quam leo. Sed rutrum mi sapien, vitae vehicula turpis hendrerit a. Mauris semper elit ut diam mollis, ut dapibus eros laoreet. Etiam suscipit nibh eget lacinia imperdiet. Pellentesque porta efficitur bibendum. Aliquam egestas in nunc eget mollis. In eu ipsum eu ante efficitur auctor a nec metus. Suspendisse eget pharetra lacus. Donec pretium tempus felis eu ornare. Cras vel sem nec tellus fringilla efficitur. Cras a iaculis odio. Nulla pharetra est sit amet felis viverra convallis nec et massa.</p>
 <p>Mauris ut nibh odio. Vivamus convallis tortor eu odio laoreet bibendum. Ut luctus augue et leo vestibulum, sit amet pharetra dui ultrices. Nulla scelerisque neque et lacus egestas ultricies. Morbi facilisis, dolor non lacinia placerat, massa metus elementum felis, et interdum est lorem eu sem. Phasellus id metus ut sem suscipit varius quis et quam. Pellentesque sit amet lacus leo. Nam vulputate scelerisque quam, id egestas metus finibus malesuada. Pellentesque vehicula vehicula odio, vitae scelerisque erat gravida id. Sed sit amet nunc vehicula, pharetra lorem nec, scelerisque mauris. Aliquam erat volutpat. Proin porta odio laoreet enim tempus lacinia. Nullam gravida a mauris ut vehicula. Fusce in ante ante.</p>
 <p>Sed in porta velit, sit amet tempus ipsum. Morbi dignissim sagittis cursus. Curabitur non erat rhoncus, interdum velit mattis, commodo massa. Nulla egestas dignissim pellentesque. Sed quis scelerisque arcu. Morbi non bibendum felis, et interdum nisi. In hac habitasse platea dictumst. Nunc vitae elementum tellus, at dignissim risus. Aliquam semper eget leo eget faucibus. Donec pharetra cursus erat nec facilisis. Curabitur purus orci, lacinia nec nibh ac, ultrices scelerisque nisi. Nulla augue ipsum, molestie in lectus in, bibendum hendrerit nibh. Sed nec rutrum ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. In a magna non justo bibendum mollis efficitur at dui.</p>
