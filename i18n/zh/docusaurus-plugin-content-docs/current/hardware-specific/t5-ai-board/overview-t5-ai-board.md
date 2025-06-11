@@ -55,7 +55,7 @@ T5AI-Board 通过其扩展接头提供全面的引脚选项。以下是可用引
 ![T5-AI Board Pinout](https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg)
 
 ### 下载高清引脚图：
-[![](https://img.shields.io/badge/V1002-下载%20PDF%20引脚图-orange?style=for-the-badge)](/docs/hardware/T5-AI%20Board-Pinout-v102.pdf)
+[![](https://img.shields.io/badge/V1002-下载%20PDF%20引脚图-orange?style=for-the-badge)](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
 
 ---
 ## LCD 屏幕 + 摄像头模块
@@ -84,7 +84,7 @@ T5AI-Board 支持可选的 LCD 屏幕和摄像头模块，可以堆叠在主板�
 
 ## 下载资源
 - [T5AI-Board 原理图](https://images.tuyacn.com/content-platform/hestia/174243908480e34e64d08.pdf) - T5AI-Board 完整电路图
-- [T5AI-Board 引脚图](/docs/hardware/T5-AI%20Board-Pinout-v102.pdf) - 详细的引脚映射和接口布局
+- [T5AI-Board 引脚图](/docs/hardware/T5-AI-Board-Pinout-v102.pdf) - 详细的引脚映射和接口布局
 - [LCD 和摄像头模块原理图](https://images.tuyacn.com/content-platform/hestia/17387200670bcae1561bf.pdf) - 显示和摄像头模块板的电路图
 #### T5 MCU 数据手册
 - [T5-E1-IPEX 模块数据手册](https://developer.tuya.com/en/docs/iot/T5-E1-IPEX-Module-Datasheet?id=Kdskxvxe835tq#title-12-Pin%20definition) - T5-E1-IPEX 模块的技术规格和引脚定义

@@ -16,7 +16,7 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-
+  staticDirectories: ['static'],
   // https://github.com/tuya/TuyaOpen
 
   // GitHub pages deployment config.
@@ -25,7 +25,7 @@ const config = {
   projectName: 'TuyaOpen', // Usually your repo name.
 
   onBrokenLinks: 'warn',
-  trailingSlash: true,
+  trailingSlash: false,
 
   i18n: {
     defaultLocale: 'en',
