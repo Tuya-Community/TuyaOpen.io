@@ -83,6 +83,7 @@ The following diagram shows the pin assignments used by the LCD screen and camer
 
 
 ## Download Resources
+#### T5AI Board DevKit
 - [T5AI-Board Schematic](https://images.tuyacn.com/content-platform/hestia/174243908480e34e64d08.pdf) - Complete circuit diagram of the T5AI-Board
 - [T5AI-Board Pinout Illustration](/docs/hardware/T5-AI-Board-Pinout-v102.pdf) - Detailed pin mapping and interface layout
 - [LCD and Camera Module Schematic](https://images.tuyacn.com/content-platform/hestia/17387200670bcae1561bf.pdf) - Circuit diagram for the display and camera module board

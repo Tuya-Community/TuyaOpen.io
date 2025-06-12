@@ -50,9 +50,24 @@ OPERATE_RET tkl_gpio_init(TUYA_GPIO_NUM_E pin_id, const TUYA_GPIO_BASE_CFG_T *cf
     } TUYA_GPIO_BASE_CFG_T;
     ```
 
-    `mode` is defined as: | Name | Definition | Remarks | | :----------------- | :--------------------------------- | :------ | | TUYA_GPIO_PULLUP | Pull-up Input | | | TUYA_GPIO_PULLDOWN | Pull-down Input | | | TUYA_GPIO_HIGH_IMPEDANCE | High-impedance Input | | | TUYA_GPIO_FLOATING | Floating Input | | | TUYA_GPIO_PUSH_PULL | Push-pull Output | | | TUYA_GPIO_OPENDRAIN | Open-drain Output | | | TUYA_GPIO_OPENDRAIN_PULLUP | Open-drain with Pull-up Output | |
+    `mode` is defined as:
 
-    `direct` is defined as: | Name | Definition | Remarks | | :----------------- | :-------------------------- | :------ | | TUYA_GPIO_INPUT | Input Mode | | | TUYA_GPIO_OUTPUT | Output Mode | |
+    | Name                        | Definition             | Remarks |
+    | :------------------------- | :--------------------- | :------ |
+    | TUYA_GPIO_PULLUP          | Pull-up Input         |         |
+    | TUYA_GPIO_PULLDOWN        | Pull-down Input       |         |
+    | TUYA_GPIO_HIGH_IMPEDANCE  | High-impedance Input  |         |
+    | TUYA_GPIO_FLOATING        | Floating Input        |         |
+    | TUYA_GPIO_PUSH_PULL       | Push-pull Output      |         |
+    | TUYA_GPIO_OPENDRAIN       | Open-drain Output     |         |
+    | TUYA_GPIO_OPENDRAIN_PULLUP| Open-drain with Pull-up Output | |
+
+    `direct` is defined as:
+
+    | Name                | Definition     | Remarks |
+    | :----------------- | :------------- | :------ |
+    | TUYA_GPIO_INPUT   | Input Mode     |         |
+    | TUYA_GPIO_OUTPUT  | Output Mode    |         |
 
     `level` is defined as:
 

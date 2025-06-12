@@ -50,9 +50,24 @@ OPERATE_RET tkl_gpio_init(TUYA_GPIO_NUM_E pin_id, const TUYA_GPIO_BASE_CFG_T *cf
     } TUYA_GPIO_BASE_CFG_T;
     ```
 
-    `mode` 定义如下：| 名字 | 定义 | 备注 | | :----------------- | :---------------------------- | :--- | | TUYA_GPIO_PULLUP | 上拉输入 | | | TUYA_GPIO_PULLDOWN | 下拉输入 | | | TUYA_GPIO_HIGH_IMPEDANCE | 高阻输入 | | | TUYA_GPIO_FLOATING | 浮空输入 | | | TUYA_GPIO_PUSH_PULL | 推完输出 | | | TUYA_GPIO_OPENDRAIN | 开漏输出 | | | TUYA_GPIO_OPENDRAIN_PULLUP | 开漏带上拉输出 | |
+    `mode` 定义如下：
 
-    `direct` 定义如下：| 名字 | 定义 | 备注 | | :----------------- | :-------------------- | :--- | | TUYA_GPIO_INPUT | 输入模式 | | | TUYA_GPIO_OUTPUT | 输出模式 | |
+    | 名字                        | 定义             | 备注 |
+    | :------------------------- | :--------------- | :--- |
+    | TUYA_GPIO_PULLUP          | 上拉输入         |      |
+    | TUYA_GPIO_PULLDOWN        | 下拉输入         |      |
+    | TUYA_GPIO_HIGH_IMPEDANCE  | 高阻输入         |      |
+    | TUYA_GPIO_FLOATING        | 浮空输入         |      |
+    | TUYA_GPIO_PUSH_PULL       | 推完输出         |      |
+    | TUYA_GPIO_OPENDRAIN       | 开漏输出         |      |
+    | TUYA_GPIO_OPENDRAIN_PULLUP| 开漏带上拉输出   |      |
+
+    `direct` 定义如下：
+
+    | 名字                | 定义     | 备注 |
+    | :----------------- | :------- | :--- |
+    | TUYA_GPIO_INPUT   | 输入模式 |      |
+    | TUYA_GPIO_OUTPUT  | 输出模式 |      |
 
     `level` 定义如下：
 

@@ -83,6 +83,7 @@ T5AI-Board 支持可选的 LCD 屏幕和摄像头模块，可以堆叠在主板�
 
 
 ## 下载资源
+#### T5AI-Board 开发板
 - [T5AI-Board 原理图](https://images.tuyacn.com/content-platform/hestia/174243908480e34e64d08.pdf) - T5AI-Board 完整电路图
 - [T5AI-Board 引脚图](/docs/hardware/T5-AI-Board-Pinout-v102.pdf) - 详细的引脚映射和接口布局
 - [LCD 和摄像头模块原理图](https://images.tuyacn.com/content-platform/hestia/17387200670bcae1561bf.pdf) - 显示和摄像头模块板的电路图
