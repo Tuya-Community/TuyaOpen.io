@@ -12,11 +12,7 @@ module.exports = {
           type: 'category',
           label: 'Environment Setup',
           collapsed: false,
-          items: [
-            'quick_start/windows-enviroment-setup',
-            'quick_start/linux-enviroment-setup',
-            'quick_start/mac-enviroment-setup',
-          ],
+          items: ['quick_start/enviroment-setup'],
         },
         {
           type: 'category',

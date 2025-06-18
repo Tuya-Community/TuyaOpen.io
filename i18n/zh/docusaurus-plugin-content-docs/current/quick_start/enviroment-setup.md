@@ -1,94 +1,104 @@
 ---
-title: MacOS 开发指南
+title: 开发环境搭建及验证
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# TuyaOpen开发入门
+# 开发环境搭建及验证
 
 ## 环境准备
 
-- **Ubuntu and Debian**
+<Tabs>
+  <TabItem value="Linux" label="Ubuntu and Debian" default>
+    :::info
+    推荐使用 Ubuntu24、22、20、18 的 LTS 版本。
+    :::
 
-:::info
-推荐使用 Ubuntu24、22、20、18 的 LTS 版本。
-:::
+    安装必要的工具
 
-安装必要的工具
+    ```bash
+    sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
+    ```
+  </TabItem>
+  <TabItem value="Mac" label="Mac" default>
+    :::info
+    推荐使用 Homebrew 包管理器进行安装
+    :::
 
-```bash
-sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
-```
+    一般Mac终端使用的工具版本较低，推荐安装 Homebrew 并升级 bash 
 
-- **Windows**
+    <details>
+    <summary>安装 Homebrew ,升级 bash</summary>
+    ```bash
+    # 安装 Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-:::info
-请使用Windows10/11系统。
-:::
+    # 安装最新版bash
+    brew install bash
 
-:::warning
-不兼容 Windows 中的类Linux终端环境（如GitBash、Msys2等），请使用 CMD 或 PowerShell
-:::
+    # 将新安装的bash添加到可用shell列表
+    echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
 
-下载并安装以下工具：
-    > Python：3.8.0 或更高版本 [https://www.python.org/downloads/windows/]
-    >
-    > Git：2.0.0 或更高版本 [https://git-scm.com/downloads/win]
-    >
-    > Make：3.0 或更高版本 [https://gnuwin32.sourceforge.net/packages/make.htm]
+    # 更改当前用户的shell为新bash
+    chsh -s /usr/local/bin/bash
+    ```
+    </details>
 
-- **Mac**
+    安装必要的工具
 
-:::info
-推荐使用 Homebrew 包管理器进行安装
-:::
+    ```bash
+    # 安装python3
+    brew install python3
 
-一般Mac终端使用的工具版本较低，推荐安装 Homebrew 并升级 bash 
+    # 安装git
+    brew install git
 
-<details>
-<summary>安装 Homebrew ,升级 bash</summary>
-```bash
-# 安装 Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # 安装make
+    brew install make
+    ```
+  </TabItem>
+  <TabItem value="Windows" label="Windows">
+    :::info
+    请使用Windows10/11系统。
+    :::
 
-# 安装最新版bash
-brew install bash
+    :::warning
+    不兼容 Windows 中的仿Linux终端环境（如GitBash、Msys2等），请使用 CMD 或 PowerShell
+    :::
 
-# 将新安装的bash添加到可用shell列表
-echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-
-# 更改当前用户的shell为新bash
-chsh -s /usr/local/bin/bash
-```
-</details>
-
-安装必要的工具
-
-```bash
-# 安装python3
-brew install python3
-
-# 安装git
-brew install git
-
-# 安装make
-brew install make
-```
+    下载并安装以下工具：
+        > Python：3.8.0 或更高版本 [https://www.python.org/downloads/windows/]
+        >
+        > Git：2.0.0 或更高版本 [https://git-scm.com/downloads/win]
+        >
+        > Make：3.0 或更高版本 [https://gnuwin32.sourceforge.net/packages/make.htm]
+  </TabItem>
+</Tabs>
 
 ## 下载&激活 TuyaOpen
 
 下载`TuyaOpen`仓库
 
 ```bash
+# 使用 github
 git clone https://github.com/tuya/TuyaOpen.git
+
+# 或者使用 gitee
+git clone https://gitee.com/tuya-open/TuyaOpen.git
+
 cd TuyaOpen
 ```
 
 激活`tos.py`
 
 <Tabs>
-  <TabItem value="Linux" label="Linux / Mac" default>
+  <TabItem value="Linux" label="Linux" default>
+    ```bash
+    . ./export.sh
+    ```
+  </TabItem>
+  <TabItem value="Mac" label="Mac" default>
     ```bash
     . ./export.sh
     ```
@@ -131,7 +141,12 @@ git submodule update --init
 使用如下命令退出激活`tos.py`
 
 <Tabs>
-  <TabItem value="Linux" label="Linux / Mac" default>
+  <TabItem value="Linux" label="Linux" default>
+    ```bash
+    deactivate
+    ```
+  </TabItem>
+  <TabItem value="Mac" label="Mac" default>
     ```bash
     deactivate
     ```
@@ -326,15 +341,19 @@ Select serial port: 1
 
 1. 修改头文件
 
-在项目路径中找到`tuya_config.h`文件
+    在项目路径中找到`tuya_config.h`文件
 
-所选的项目不同，文件所在目录可能有差异，`src` 或 `include`
+    所选的项目不同，文件所在目录可能有差异，`src` 或 `include`
 
-修改文件中授权信息的配置，如
+    修改文件中授权信息的配置，如
 
-```c++
-#define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"                    // Please change the correct uuid
-#define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"        // Please change the correct authkey
-```
+    ```c++
+    #define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"                    // Please change the correct uuid
+    #define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"        // Please change the correct authkey
+    ```
 
-重新编译、烧录，启动设备
+    重新编译、烧录，启动设备
+
+## 设备配网
+
+TODO: [设备配网指导](https://tuyaopen.ai)
