@@ -8,12 +8,7 @@ module.exports = {
       label: 'Getting Started',
       collapsed: false,
       items: [
-        {
-          type: 'category',
-          label: 'Environment Setup',
-          collapsed: false,
-          items: ['quick_start/enviroment-setup'],
-        },
+        'quick_start/enviroment-setup',
         {
           type: 'category',
           label: 'Other Tools',

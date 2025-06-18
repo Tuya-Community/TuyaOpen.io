@@ -7,10 +7,18 @@ import TabItem from '@theme/TabItem';
 
 # Development Environment Setup and Verification
 
+## Overview
+
+First, complete the necessary tool preparation on different systems (Linux, Windows, Mac)
+
+Then use the `tos.py` tool to configure, compile, flash, and perform other operations on the project
+
+Finally, authorize the device and use the Tuya APP for network configuration
+
 ## Environment Preparation
 
 <Tabs>
-  <TabItem value="Linux" label="Ubuntu and Debian" default>
+  <TabItem value="Linux" label="🐧 Ubuntu and Debian" default>
     :::info
     Recommended to use Ubuntu 24, 22, 20, 18 LTS versions.
     :::
@@ -21,7 +29,7 @@ import TabItem from '@theme/TabItem';
     sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
     ```
   </TabItem>
-  <TabItem value="Mac" label="Mac" default>
+  <TabItem value="Mac" label="⌘ Mac" default>
     :::info
     Recommended to use Homebrew package manager for installation
     :::
@@ -58,7 +66,7 @@ import TabItem from '@theme/TabItem';
     brew install make
     ```
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem value="Windows" label="🖥️ Windows">
     :::info
     Please use Windows 10/11 system.
     :::
@@ -93,17 +101,17 @@ cd TuyaOpen
 Activate `tos.py`
 
 <Tabs>
-  <TabItem value="Linux" label="Linux" default>
+  <TabItem value="Linux" label="🐧 Linux" default>
     ```bash
     . ./export.sh
     ```
   </TabItem>
-  <TabItem value="Mac" label="Mac" default>
+  <TabItem value="Mac" label="⌘ Mac" default>
     ```bash
     . ./export.sh
     ```
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem value="Windows" label="🖥️ Windows">
     ```bash
     .\export.bat
     ```
@@ -141,22 +149,26 @@ git submodule update --init
 Use the following command to deactivate `tos.py`
 
 <Tabs>
-  <TabItem value="Linux" label="Linux" default>
+  <TabItem value="Linux" label="🐧 Linux" default>
     ```bash
     deactivate
     ```
   </TabItem>
-  <TabItem value="Mac" label="Mac" default>
+  <TabItem value="Mac" label="⌘ Mac" default>
     ```bash
     deactivate
     ```
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem value="Windows" label="🖥️ Windows">
     ```bash
     exit
     ```
   </TabItem>
 </Tabs>
+
+For more detailed information about `tos.py`, you can use the command `tos.py --help` to view
+
+Or check [tos.py Tool Usage](https://tuyaopen.ai)
 
 ## Project Operations
 
@@ -172,7 +184,7 @@ Enter the project directory
 cd apps/tuya_cloud/switch_demo
 ```
 
-### Project Configuration
+### Configure Project
 
 Use command `tos.py config choice` to configure the project
 
@@ -200,7 +212,7 @@ Choice config file:
 
 Here we use Tuya T5 series development board as an example, select `T5AI.config`
 
-### Build & Clean Artifacts
+### Build Artifacts
 
 Build the project using command `tos.py build`
 
@@ -215,7 +227,9 @@ Build the project using command `tos.py build`
 
 ```
 
-Clean the project using command `tos.py clen` or `tos.py clean -f` (deep clean)
+### Clean Artifacts
+
+Clean compilation cache using command `tos.py clen` or `tos.py clean -f` (deep clean)
 
 ```bash
 ❯ tos.py clean -f
@@ -300,7 +314,11 @@ Exit log viewing by pressing `Ctrl+c`, then press Enter
 [INFO]: Monitor exit.
 ```
 
-### Two Authorization Methods
+### Authorization
+
+For information about authorization codes, please check [Authorization Code Description](https://tuyaopen.ai)
+
+Two authorization methods are provided
 
 1. Authorization Command
 
@@ -356,4 +374,10 @@ Exit log viewing by pressing `Ctrl+c`, then press Enter
 
 ## Device Network Configuration
 
-TODO: [Device Network Configuration Guide](https://tuyaopen.ai)
+[Device Network Configuration Guide](https://tuyaopen.ai)
+
+## Common Issues
+
+- Flashing always fails on Mac system
+
+    Refer to [MAC CH34X Installation](https://tuyaopen.ai)

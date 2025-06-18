@@ -1,16 +1,24 @@
 ---
-title: 开发环境搭建及验证
+title: 环境搭建
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 开发环境搭建及验证
+# 环境搭建
+
+## 概述
+
+首先，完成在不同系统（Linux、Windows、Mac）中的必要工具准备
+
+然后使用`tos.py`工具对项目进行配置、编译、烧录等操作
+
+最后对设备授权并使用涂鸦APP进行配网
 
 ## 环境准备
 
 <Tabs>
-  <TabItem value="Linux" label="Ubuntu and Debian" default>
+  <TabItem value="Linux" label="🐧 Ubuntu and Debian" default>
     :::info
     推荐使用 Ubuntu24、22、20、18 的 LTS 版本。
     :::
@@ -21,7 +29,7 @@ import TabItem from '@theme/TabItem';
     sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
     ```
   </TabItem>
-  <TabItem value="Mac" label="Mac" default>
+  <TabItem value="Mac" label="⌘ Mac" default>
     :::info
     推荐使用 Homebrew 包管理器进行安装
     :::
@@ -58,7 +66,7 @@ import TabItem from '@theme/TabItem';
     brew install make
     ```
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem value="Windows" label="🖥️ Windows">
     :::info
     请使用Windows10/11系统。
     :::
@@ -93,17 +101,17 @@ cd TuyaOpen
 激活`tos.py`
 
 <Tabs>
-  <TabItem value="Linux" label="Linux" default>
+  <TabItem value="Linux" label="🐧 Linux" default>
     ```bash
     . ./export.sh
     ```
   </TabItem>
-  <TabItem value="Mac" label="Mac" default>
+  <TabItem value="Mac" label="⌘ Mac" default>
     ```bash
     . ./export.sh
     ```
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem value="Windows" label="🖥️ Windows">
     ```bash
     .\export.bat
     ```
@@ -141,22 +149,26 @@ git submodule update --init
 使用如下命令退出激活`tos.py`
 
 <Tabs>
-  <TabItem value="Linux" label="Linux" default>
+  <TabItem value="Linux" label="🐧 Linux" default>
     ```bash
     deactivate
     ```
   </TabItem>
-  <TabItem value="Mac" label="Mac" default>
+  <TabItem value="Mac" label="⌘ Mac" default>
     ```bash
     deactivate
     ```
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem value="Windows" label="🖥️ Windows">
     ```bash
     exit
     ```
   </TabItem>
 </Tabs>
+
+关于`tos.py`更详细的说明方法，可使用命令`tos.py --help`进行查看
+
+或查看[tos.py工具使用](https://tuyaopen.ai)
 
 ## 项目操作
 
@@ -172,7 +184,7 @@ TuyaOpen 中，可编译项目可在`apps`、`example`中进行选择
 cd apps/tuya_cloud/switch_demo
 ```
 
-### 项目配置
+### 配置项目
 
 使用命令`tos.py config choice`，对项目进行配置
 
@@ -200,7 +212,7 @@ Choice config file:
 
 这里以涂鸦T5系列开发板为例，选择`T5AI.config`
 
-### 编译&清理 产物
+### 编译产物
 
 编译项目，使用命令`tos.py build`
 
@@ -215,7 +227,9 @@ Choice config file:
 
 ```
 
-清理项目，使用命令`tos.py clen` 或 `tos.py clean -f`（深度清理）
+### 清理产物
+
+清理编译缓存，使用命令`tos.py clen` 或 `tos.py clean -f`（深度清理）
 
 ```bash
 ❯ tos.py clean -f
@@ -300,7 +314,11 @@ Select serial port: 1
 [INFO]: Monitor exit.
 ```
 
-### 两种授权方式
+### 授权
+
+关于授权码的概念请查看[授权码说明](https://tuyaopen.ai)
+
+提供两种授权方式
 
 1. 授权命令
 
@@ -356,4 +374,10 @@ Select serial port: 1
 
 ## 设备配网
 
-TODO: [设备配网指导](https://tuyaopen.ai)
+[设备配网指导](https://tuyaopen.ai)
+
+## 常见问题
+
+- 使用Mac系统进行烧录总是失败
+
+    参考[MAC安装CH34X](https://tuyaopen.ai)
