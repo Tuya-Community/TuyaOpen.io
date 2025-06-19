@@ -2,8 +2,7 @@
 title: 环境搭建
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 # 环境搭建
 
@@ -17,8 +16,15 @@ import TabItem from '@theme/TabItem';
 
 ## 环境准备
 
-<Tabs>
-  <TabItem value="Linux" label="🐧 Ubuntu and Debian" default>
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: '🐧 Ubuntu and Debian', value: 'Linux' },
+    { label: '⌘ Mac', value: 'Mac' },
+    { label: '🖥️ Windows', value: 'Windows' },
+  ]}
+>
+  <SyncedTabItem value="Linux">
     :::info
     推荐使用 Ubuntu24、22、20、18 的 LTS 版本。
     :::
@@ -28,8 +34,8 @@ import TabItem from '@theme/TabItem';
     ```bash
     sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
     ```
-  </TabItem>
-  <TabItem value="Mac" label="⌘ Mac" default>
+  </SyncedTabItem>
+  <SyncedTabItem value="Mac">
     :::info
     推荐使用 Homebrew 包管理器进行安装
     :::
@@ -38,6 +44,7 @@ import TabItem from '@theme/TabItem';
 
     <details>
     <summary>安装 Homebrew ,升级 bash</summary>
+
     ```bash
     # 安装 Homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -65,8 +72,8 @@ import TabItem from '@theme/TabItem';
     # 安装make
     brew install make
     ```
-  </TabItem>
-  <TabItem value="Windows" label="🖥️ Windows">
+  </SyncedTabItem>
+  <SyncedTabItem value="Windows">
     :::info
     请使用Windows10/11系统。
     :::
@@ -81,8 +88,8 @@ import TabItem from '@theme/TabItem';
         > Git：2.0.0 或更高版本 [https://git-scm.com/downloads/win]
         >
         > Make：3.0 或更高版本 [https://gnuwin32.sourceforge.net/packages/make.htm]
-  </TabItem>
-</Tabs>
+  </SyncedTabItem>
+</SyncedTabs>
 
 ## 下载&激活 TuyaOpen
 
@@ -100,23 +107,30 @@ cd TuyaOpen
 
 激活`tos.py`
 
-<Tabs>
-  <TabItem value="Linux" label="🐧 Linux" default>
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: '🐧 Linux', value: 'Linux' },
+    { label: '⌘ Mac', value: 'Mac' },
+    { label: '🖥️ Windows', value: 'Windows' },
+  ]}
+>
+  <SyncedTabItem value="Linux">
     ```bash
     . ./export.sh
     ```
-  </TabItem>
-  <TabItem value="Mac" label="⌘ Mac" default>
+  </SyncedTabItem>
+  <SyncedTabItem value="Mac">
     ```bash
     . ./export.sh
     ```
-  </TabItem>
-  <TabItem value="Windows" label="🖥️ Windows">
+  </SyncedTabItem>
+  <SyncedTabItem value="Windows">
     ```bash
     .\export.bat
     ```
-  </TabItem>
-</Tabs>
+  </SyncedTabItem>
+</SyncedTabs>
 
 验证，使用命令`tos.py version` 以及 `tos.py check`，出现如下信息
 
@@ -148,23 +162,30 @@ git submodule update --init
 
 使用如下命令退出激活`tos.py`
 
-<Tabs>
-  <TabItem value="Linux" label="🐧 Linux" default>
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: '🐧 Linux', value: 'Linux' },
+    { label: '⌘ Mac', value: 'Mac' },
+    { label: '🖥️ Windows', value: 'Windows' },
+  ]}
+>
+  <SyncedTabItem value="Linux">
     ```bash
     deactivate
     ```
-  </TabItem>
-  <TabItem value="Mac" label="⌘ Mac" default>
+  </SyncedTabItem>
+  <SyncedTabItem value="Mac">
     ```bash
     deactivate
     ```
-  </TabItem>
-  <TabItem value="Windows" label="🖥️ Windows">
+  </SyncedTabItem>
+  <SyncedTabItem value="Windows">
     ```bash
     exit
     ```
-  </TabItem>
-</Tabs>
+  </SyncedTabItem>
+</SyncedTabs>
 
 关于`tos.py`更详细的说明方法，可使用命令`tos.py --help`进行查看
 

@@ -2,8 +2,7 @@
 title: Development Environment Setup and Verification
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 # Development Environment Setup and Verification
 
@@ -17,8 +16,16 @@ Finally, authorize the device and use the Tuya APP for network configuration
 
 ## Environment Preparation
 
-<Tabs>
-  <TabItem value="Linux" label="🐧 Ubuntu and Debian" default>
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: '🐧 Ubuntu and Debian', value: 'Linux' },
+    { label: '⌘ Mac', value: 'Mac' },
+    { label: '🖥️ Windows', value: 'Windows' },
+  ]}
+>
+
+  <SyncedTabItem value="Linux">
     :::info
     Recommended to use Ubuntu 24, 22, 20, 18 LTS versions.
     :::
@@ -28,8 +35,8 @@ Finally, authorize the device and use the Tuya APP for network configuration
     ```bash
     sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
     ```
-  </TabItem>
-  <TabItem value="Mac" label="⌘ Mac" default>
+  </SyncedTabItem>
+  <SyncedTabItem value="Mac">
     :::info
     Recommended to use Homebrew package manager for installation
     :::
@@ -65,8 +72,8 @@ Finally, authorize the device and use the Tuya APP for network configuration
     # Install make
     brew install make
     ```
-  </TabItem>
-  <TabItem value="Windows" label="🖥️ Windows">
+  </SyncedTabItem>
+  <SyncedTabItem value="Windows">
     :::info
     Please use Windows 10/11 system.
     :::
@@ -81,8 +88,8 @@ Finally, authorize the device and use the Tuya APP for network configuration
         > Git: 2.0.0 or higher version [https://git-scm.com/downloads/win]
         >
         > Make: 3.0 or higher version [https://gnuwin32.sourceforge.net/packages/make.htm]
-  </TabItem>
-</Tabs>
+  </SyncedTabItem>
+</SyncedTabs>
 
 ## Download & Activate TuyaOpen
 
@@ -100,23 +107,30 @@ cd TuyaOpen
 
 Activate `tos.py`
 
-<Tabs>
-  <TabItem value="Linux" label="🐧 Linux" default>
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: '🐧 Linux', value: 'Linux' },
+    { label: '⌘ Mac', value: 'Mac' },
+    { label: '🖥️ Windows', value: 'Windows' },
+  ]}
+>
+  <SyncedTabItem value="Linux">
     ```bash
     . ./export.sh
     ```
-  </TabItem>
-  <TabItem value="Mac" label="⌘ Mac" default>
+  </SyncedTabItem>
+  <SyncedTabItem value="Mac">
     ```bash
     . ./export.sh
     ```
-  </TabItem>
-  <TabItem value="Windows" label="🖥️ Windows">
+  </SyncedTabItem>
+  <SyncedTabItem value="Windows">
     ```bash
     .\export.bat
     ```
-  </TabItem>
-</Tabs>
+  </SyncedTabItem>
+</SyncedTabs>
 
 Verify by using commands `tos.py version` and `tos.py check`, you should see the following information
 
@@ -148,23 +162,30 @@ git submodule update --init
 
 Use the following command to deactivate `tos.py`
 
-<Tabs>
-  <TabItem value="Linux" label="🐧 Linux" default>
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: '🐧 Linux', value: 'Linux' },
+    { label: '⌘ Mac', value: 'Mac' },
+    { label: '🖥️ Windows', value: 'Windows' },
+  ]}
+>
+  <SyncedTabItem value="Linux">
     ```bash
     deactivate
     ```
-  </TabItem>
-  <TabItem value="Mac" label="⌘ Mac" default>
+  </SyncedTabItem>
+  <SyncedTabItem value="Mac">
     ```bash
     deactivate
     ```
-  </TabItem>
-  <TabItem value="Windows" label="🖥️ Windows">
+  </SyncedTabItem>
+  <SyncedTabItem value="Windows">
     ```bash
     exit
     ```
-  </TabItem>
-</Tabs>
+  </SyncedTabItem>
+</SyncedTabs>
 
 For more detailed information about `tos.py`, you can use the command `tos.py --help` to view
 
