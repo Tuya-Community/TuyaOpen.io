@@ -50,7 +50,7 @@ After the firmware is successfully flashed, the following log output will appear
 ```
 
 :::tip
-The default baud rate for authorization is usually 921600. If you feel the flashing speed is too slow, you can increase the baud rate appropriately, but increasing the baud rate may cause the firmware flashing to fail.
+The default baud rate for flashing is 921600. If you find the flashing speed too slow, you can increase the baud rate appropriately. However, increasing the baud rate may cause the firmware flashing to fail.
 :::
 
 ## Device Authorization Information Writing
