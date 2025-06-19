@@ -374,7 +374,7 @@ Two authorization methods are provided
 
 ## Device Network Configuration
 
-[Device Network Configuration Guide](https://tuyaopen.ai)
+[Device Network Configuration Guide](./device-network-configuration.md)
 
 ## Common Issues
 

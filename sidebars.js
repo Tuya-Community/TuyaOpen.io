@@ -14,6 +14,7 @@ module.exports = {
           label: 'Other Tools',
           collapsed: true,
           items: [
+            'quick_start/tos-guide',
             'quick_start/flashing-with-windows-graphical-interface',
             'quick_start/flashing-with-command-line-interface',
           ],
