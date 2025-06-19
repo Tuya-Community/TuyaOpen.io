@@ -6,6 +6,10 @@ module.exports = {
     {
       type: 'category',
       label: 'Getting Started',
+      link: {
+        type: 'doc',
+        id: 'quick_start/index',
+      },
       collapsed: false,
       items: [
         'quick_start/enviroment-setup',
@@ -13,11 +17,9 @@ module.exports = {
           type: 'category',
           label: 'Other Tools',
           collapsed: true,
-          items: [
-            'quick_start/flashing-with-windows-graphical-interface',
-            'quick_start/flashing-with-command-line-interface',
-          ],
+          items: ['quick_start/tools-tyutool'],
         },
+        'quick_start/device-network-configuration',
         'quick_start/terminologies',
       ],
     },
@@ -25,6 +27,10 @@ module.exports = {
     {
       type: 'category',
       label: 'Hardware Guides',
+      link: {
+        type: 'doc',
+        id: 'hardware-specific/index',
+      },
       collapsed: false,
       items: [
         {

@@ -10,15 +10,21 @@ Supporting mainstream open-source ecosystems, it allows seamless porting across 
 
 ## Supported Platform List
 
-| Platform              | Support status |
-| --------------------- | -------------- |
-| Ubuntu                | Supported      |
-| T2                    | Supported      |
-| T3                    | Supported      |
-| T5AI                  | Supported      |
-| ESP32/ESP32C3/ESP32S3 | Supported      |
-| LN882H                | Supported      |
-| BK7231N               | Supported      |
+| Platform | Windows | Linux | macOS |
+| :------: | :-----: | :---: | :---: |
+| BK7231N  |    ⌛️    |   ✅   |   ⌛️   |
+|  ESP32   |    ✅    |   ✅   |   ⌛️   |
+| ESP32-C3 |    ✅    |   ✅   |   ⌛️   |
+| ESP32-S3 |    ✅    |   ✅   |   ⌛️   |
+|  LN882H  |    ⌛️    |   ✅   |   ⌛️   |
+|    T2    |    ⌛️    |   ✅   |   ⌛️   |
+|    T3    |    ⌛️    |   ✅   |   ⌛️   |
+|   T5AI   |    ✅    |   ✅   |   ⌛️   |
+|  Ubuntu  |    ➖    |   ✅   |   ➖   |
+
+✅: Supported
+
+⌛️: Not yet supported
 
 ## Contribute Code
 
