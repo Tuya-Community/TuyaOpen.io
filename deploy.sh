@@ -27,12 +27,28 @@ if [ ! -d ".git" ] || [ ! -f "dockerfile" ]; then
   exit 1
 fi
 
+# Check current branch
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$CURRENT_BRANCH" != "$GIT_BRANCH" ]; then
+    echo -e "${RED}Error: Must be on the '${GIT_BRANCH}' branch to deploy. You are currently on '${CURRENT_BRANCH}'.${NC}"
+    exit 1
+fi
+
 echo -e "${YELLOW}Pulling latest changes from ${GIT_BRANCH}...${NC}"
-git checkout $GIT_BRANCH && git pull origin $GIT_BRANCH
+OLD_HEAD=$(git rev-parse HEAD)
+git pull origin $GIT_BRANCH
 if [ $? -ne 0 ]; then
   echo -e "${RED}Git pull failed!${NC}"
   exit 1
 fi
+NEW_HEAD=$(git rev-parse HEAD)
+
+if [ "$OLD_HEAD" == "$NEW_HEAD" ]; then
+    echo -e "${GREEN}✅ Already up-to-date. No deployment needed.${NC}"
+    exit 0
+fi
+
+echo -e "${GREEN}Changes detected. Proceeding with deployment...${NC}"
 
 if [ "$FULL_REBUILD" = true ]; then
   echo -e "${YELLOW}Building Docker image...${NC}"
