@@ -4,52 +4,211 @@
         <title>TuyaOpen Blog</title>
         <link>https://tuyaopen.io/blog</link>
         <description>TuyaOpen Blog</description>
-        <lastBuildDate>Sun, 18 May 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 27 Jun 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[TuyaOpen 測試文章 2]]></title>
-            <link>https://tuyaopen.io/blog/TuyaOpen-test2</link>
-            <guid>https://tuyaopen.io/blog/TuyaOpen-test2</guid>
-            <pubDate>Sun, 18 May 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem Ipsum]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="lorem-ipsum">Lorem Ipsum<a href="https://tuyaopen.io/blog/TuyaOpen-test2#lorem-ipsum" class="hash-link" aria-label="Direct link to Lorem Ipsum" title="Direct link to Lorem Ipsum">​</a></h2>
-<p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..." Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ornare neque vel lacinia. Aliquam eleifend dolor finibus feugiat malesuada. Maecenas pharetra nunc metus, non feugiat purus dignissim sed. Aenean ut quam leo. Sed rutrum mi sapien, vitae vehicula turpis hendrerit a. Mauris semper elit ut diam mollis, ut dapibus eros laoreet. Etiam suscipit nibh eget lacinia imperdiet. Pellentesque porta efficitur bibendum. Aliquam egestas in nunc eget mollis. In eu ipsum eu ante efficitur auctor a nec metus. Suspendisse eget pharetra lacus. Donec pretium tempus felis eu ornare. Cras vel sem nec tellus fringilla efficitur. Cras a iaculis odio. Nulla pharetra est sit amet felis viverra convallis nec et massa.</p>
-<p>Mauris ut nibh odio. Vivamus convallis tortor eu odio laoreet bibendum. Ut luctus augue et leo vestibulum, sit amet pharetra dui ultrices. Nulla scelerisque neque et lacus egestas ultricies. Morbi facilisis, dolor non lacinia placerat, massa metus elementum felis, et interdum est lorem eu sem. Phasellus id metus ut sem suscipit varius quis et quam. Pellentesque sit amet lacus leo. Nam vulputate scelerisque quam, id egestas metus finibus malesuada. Pellentesque vehicula vehicula odio, vitae scelerisque erat gravida id. Sed sit amet nunc vehicula, pharetra lorem nec, scelerisque mauris. Aliquam erat volutpat. Proin porta odio laoreet enim tempus lacinia. Nullam gravida a mauris ut vehicula. Fusce in ante ante.</p>
-<p>Sed in porta velit, sit amet tempus ipsum. Morbi dignissim sagittis cursus. Curabitur non erat rhoncus, interdum velit mattis, commodo massa. Nulla egestas dignissim pellentesque. Sed quis scelerisque arcu. Morbi non bibendum felis, et interdum nisi. In hac habitasse platea dictumst. Nunc vitae elementum tellus, at dignissim risus. Aliquam semper eget leo eget faucibus. Donec pharetra cursus erat nec facilisis. Curabitur purus orci, lacinia nec nibh ac, ultrices scelerisque nisi. Nulla augue ipsum, molestie in lectus in, bibendum hendrerit nibh. Sed nec rutrum ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. In a magna non justo bibendum mollis efficitur at dui.</p>
-<p>Aenean euismod dolor fermentum libero tincidunt egestas. Etiam interdum a metus et tincidunt. Quisque pulvinar, turpis suscipit dignissim pharetra, odio ipsum consectetur quam, nec tempor sapien nunc nec metus. Sed ultricies, lorem id eleifend tristique, justo mi laoreet lorem, faucibus condimentum lacus risus sed lorem. Mauris scelerisque augue sed tincidunt suscipit. Nam auctor, enim scelerisque rhoncus accumsan, magna dolor suscipit ipsum, ut luctus lorem diam a turpis. Praesent in tortor vulputate, condimentum erat vitae, pretium arcu. Donec interdum risus ex, ac scelerisque ligula tempor eget. Nullam suscipit viverra nibh, eu volutpat sem auctor ut. Duis gravida congue ante eu sollicitudin. Sed porttitor imperdiet purus, vel commodo lacus aliquet vitae. Nam feugiat commodo arcu rutrum suscipit. Proin varius id nulla sit amet ullamcorper.</p>
-<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pretium lacus dolor, nec pulvinar orci tempus vel. Etiam id dapibus felis, in accumsan felis. Vestibulum interdum neque non felis mollis, non porttitor nulla mattis. Aliquam nisi tortor, interdum non elementum quis, ultricies a quam. Donec eget turpis ipsum. Vestibulum vel tellus a velit venenatis suscipit quis cursus sem. Sed dapibus dignissim ornare. Ut eget sollicitudin nisi. Mauris enim enim, laoreet vitae lectus eget, pretium iaculis metus.</p>]]></content:encoded>
-            <category>TuyaOpen</category>
-        </item>
-        <item>
-            <title><![CDATA[TuyaOpen 測試文章 1]]></title>
-            <link>https://tuyaopen.io/blog/TuyaOpen-test1</link>
-            <guid>https://tuyaopen.io/blog/TuyaOpen-test1</guid>
-            <pubDate>Sat, 17 May 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "无人爱苦，亦无人寻之欲之，乃因其苦..." 什么是Lorem Ipsum? Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。]]></description>
-            <content:encoded><![CDATA[<p>Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "无人爱苦，亦无人寻之欲之，乃因其苦..." 什么是Lorem Ipsum? Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。</p>
-<p>我们为何用它？无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。</p>
-<div class="language-Cpp language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Your First C++ Program</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">include</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property string" style="color:#e3116c">&lt;iostream&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">main</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    std</span><span class="token double-colon punctuation" style="color:#393A34">::</span><span class="token plain">cout </span><span class="token operator" style="color:#393A34">&lt;&lt;</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"Hello World!"</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>它起源于哪里？恰恰与流行观念相反，Lorem Ipsum并不是简简单单的随机文本。它追溯于一篇公元前45年的经典拉丁著作，从而使它有着两千多年的岁数。弗吉尼亚州Hampden-Sydney大学拉丁系教授Richard McClintock曾在Lorem Ipsum段落中注意到一个涵义十分隐晦的拉丁词语，“consectetur”，通过这个单词详细查阅跟其有关的经典文学著作原文，McClintock教授发掘了这个不容置疑的出处。Lorem Ipsum始于西塞罗(Cicero)在公元前45年作的“de Finibus Bonorum et Malorum”（善恶之尽）里1.10.32 和1.10.33章节。这本书是一本关于道德理论的论述，曾在文艺复兴时期非常流行。Lorem Ipsum的第一行”Lorem ipsum dolor sit amet..”节选于1.10.32章节。</p>
-<p>以下展示了自1500世纪以来使用的标准Lorem Ipsum段落，西塞罗笔下“de Finibus Bonorum et Malorum”章节1.10.32 ， 1.10.33的原著作，以及其1914年译自H. Rackham的英文版本。</p>
-<p>我能从哪里获取？如今互联网提供各种各样版本的Lorem Ipsum段落，但是大多数都多多少少出于刻意幽默或者其他随机插入的荒谬单词而被篡改过了。如果你想取用一段Lorem Ipsum，请确保段落中不含有令人尴尬的不恰当内容。所有网上的Lorem Ipsum生成器都倾向于在必要时重复预先准备的部分，然而这个生成器则是互联网上首个确切的生成器。它使用由超过200个拉丁单词所构造的词典，结合了几个模范句子结构，来生成看起来恰当的Lorem Ipsum。因此，生成出的结果无一例外免于重复，刻意的幽默，以及非典型的词汇等等。</p>]]></content:encoded>
+            <title><![CDATA[52小时-创业森林 黑客松大赛]]></title>
+            <link>https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen</link>
+            <guid>https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen</guid>
+            <pubDate>Fri, 27 Jun 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[event]]></description>
+            <content:encoded><![CDATA[<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png" alt="event" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">event</figcaption></figure><p></p>
+<blockquote>
+<p><strong>此文档为大赛专用文档，为参赛者提供 总览指引。</strong></p>
+</blockquote>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="比赛信息">比赛信息：<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E6%AF%94%E8%B5%9B%E4%BF%A1%E6%81%AF" class="hash-link" aria-label="Direct link to 比赛信息：" title="Direct link to 比赛信息：">​</a></h3>
+<p>大赛时间：6/27~6/29 【52小时】</p>
+<h1>重要资源：</h1>
+<ul>
+<li>涂鸦大赛PPT ---&gt; <a href="https://tuyaopen-pu9rufi.gamma.site/" target="_blank" rel="noopener noreferrer">PPT 介绍</a></li>
+<li>TuyaOpen 代码仓库 ---&gt; <a href="https://github.com/tuya/TuyaOpen" target="_blank" rel="noopener noreferrer">Github</a></li>
+<li>TuyaOpen 文档官网 ---&gt; <a href="https://tuyaopen.ai/" target="_blank" rel="noopener noreferrer">tuyaopen.ai</a></li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-vs-tuyaos">TuyaOpen vs TuyaOS<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#tuyaopen-vs-tuyaos" class="hash-link" aria-label="Direct link to TuyaOpen vs TuyaOS" title="Direct link to TuyaOpen vs TuyaOS">​</a></h2>
+<p>TuyaOpen 是从行业领先的 TuyaOS 架构开源的。经过全球 130 万开发者的验证，它提供了一个定义良好的 API，用于开发支持不同 MCU 的 C/C++ 应用程序。抽象了外设连接、云连接和安全性的复杂性。此框架通过简单的编码体验加速您的开发过程，使您能够更快、更轻松地构建 AI+IoT 产品。</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>怎么选？</div><div class="admonitionContent_BuS1"><p>大赛同学按照需求选用即可。目前如果有“视频AI”和"商业化"需求选TuyaOS，不然强烈建议TuyaOpen。TuyaOpen生态更加开放。</p></div></div>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-vs-tuyaos-差异">TuyaOpen vs TuyaOS 差异<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#tuyaopen-vs-tuyaos-%E5%B7%AE%E5%BC%82" class="hash-link" aria-label="Direct link to TuyaOpen vs TuyaOS 差异" title="Direct link to TuyaOpen vs TuyaOS 差异">​</a></h3>
+<table><thead><tr><th>功能</th><th>TuyaOpen</th><th>TuyaOS</th></tr></thead><tbody><tr><td>目标用户</td><td>开源开发者</td><td>商业合作开发者</td></tr><tr><td>源代码获取</td><td>完全开源，源码可访问</td><td>商用代码部分开源，支持二次开发</td></tr><tr><td>代码下载</td><td>GitHub、Gitee 免费开源下载</td><td>VSCode 插件 WindIDE + 邮箱授权获取代码</td></tr><tr><td>开发环境</td><td>Linux、Windows、Mac</td><td>仅支持 Linux，其他平台需用虚拟机</td></tr><tr><td>Tuya Wukong 云端AI组件</td><td>✅</td><td>✅ 最新最快</td></tr><tr><td>Tuya Wukong 语音 AI ASR 能力</td><td>✅</td><td>✅</td></tr><tr><td>Tuya Wukong 视频 AI 能力</td><td>❌ 暂不支持</td><td>✅</td></tr><tr><td>Tuya 雲大模型定制化能力 （LLM/Prompt/Workflow/RAG）</td><td>✅</td><td>✅</td></tr><tr><td>源码定制能力</td><td>高度源码定制</td><td>API 级定制，链接库，商业功能组件更丰富</td></tr><tr><td>芯片支持</td><td>Tuya T 系列 / ESP 系列（详见支持列表）</td><td>Tuya T 系列</td></tr><tr><td>开发语言</td><td>C/C++</td><td>C/C++</td></tr><tr><td>文档支持</td><td><a href="https://tuyaopen.ai/" target="_blank" rel="noopener noreferrer">TuyaOpen 官网</a></td><td><a href="https://developer.tuya.com/cn/docs/iot-device-dev" target="_blank" rel="noopener noreferrer">Tuya 开发者官网</a></td></tr><tr><td>贡献源码或二次开源</td><td>✅</td><td>遵循 Copyright License</td></tr><tr><td>硬件生态</td><td>持续增加芯片、开发板和外设驱动</td><td>采用推荐选型方案</td></tr></tbody></table>
+<h1>嵌入式软件开发</h1>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-专区">TuyaOpen 专区<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#tuyaopen-%E4%B8%93%E5%8C%BA" class="hash-link" aria-label="Direct link to TuyaOpen 专区" title="Direct link to TuyaOpen 专区">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="文档">文档<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E6%96%87%E6%A1%A3" class="hash-link" aria-label="Direct link to 文档" title="Direct link to 文档">​</a></h3>
+<ul>
+<li>TuyaOpen 总文档：<a href="https://tuyaopen.io/docs/about-tuyaopen">docs</a></li>
+<li>AI API 代码模块: <a href="https://github.com/tuya/TuyaOpen/tree/master/src/tuya_ai_basic" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/tree/master/src/tuya_ai_basic</a></li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="示例�总览">示例总览<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E7%A4%BA%E4%BE%8B%E6%80%BB%E8%A7%88" class="hash-link" aria-label="Direct link to 示例总览" title="Direct link to 示例总览">​</a></h3>
+<p>善用示例代码 减少开发成本避免重复造轮子。</p>
+<ul>
+<li>
+<p>your chat bot: <a href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/your_chat_bot" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/your_chat_bot</a></p>
+<ul>
+<li>T5/ESP32 跨平台支持示例</li>
+<li>语音ASR + Tuya 云端大模型</li>
+<li>连接 AI Prompt/Agent 能力</li>
+<li>情绪感知交互能力</li>
+<li>模块组件： <code>屏幕</code>+<code>Mic</code>+<code>Speaker</code>+<code>WIFI</code>+<code>按键</code></li>
+</ul>
+</li>
+<li>
+<p>your chat bot: <a href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/your_chat_bot" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/your_chat_bot</a></p>
+<ul>
+<li>T5/ESP32 跨平台支持示例</li>
+<li>语音ASR + Tuya 云端大模型</li>
+<li>连接 AI Prompt/Agent 能力</li>
+<li>情绪感知交互能力</li>
+<li>做种唤醒模式</li>
+<li>App 控制机器人交互</li>
+<li>情感识别 -&gt; 动作的能力</li>
+<li>模块组件： <code>屏幕</code>+<code>Mic</code>+<code>Speaker</code>+<code>WIFI</code>+<code>按键</code> + <code>舵机</code></li>
+</ul>
+</li>
+<li>
+<p>Switch Demo <a href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_cloud/switch_demo" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_cloud/switch_demo</a></p>
+<ul>
+<li>基础原生示例演示设备作为 IoT LED 灯可连接至涂鸦云，被Tuya云服务/APP控制</li>
+<li>DP 消息事件处理</li>
+<li>基础配网，硬件鉴权过程</li>
+</ul>
+</li>
+<li>
+<p>基础组件Demo <a href="https://github.com/tuya/TuyaOpen/tree/master/examples" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/tree/master/examples</a></p>
+<ul>
+<li>蓝牙/WIFI</li>
+<li>SPI I2C ADC 基础接口协议 Demo</li>
+<li>协议Demo</li>
+<li>屏幕渲染框架LVGL 示例
+等等....</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaos-专区">TuyaOS 专区<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#tuyaos-%E4%B8%93%E5%8C%BA" class="hash-link" aria-label="Direct link to TuyaOS 专区" title="Direct link to TuyaOS 专区">​</a></h2>
+<ul>
+<li>
+<p>WindIDE：Tuya Wind IDE 是面向基于 TuyaOS EasyGo 的开发者提供的一站式集成开发环境。</p>
+<ul>
+<li><a href="https://developer.tuya.com/cn/docs/iot-device-dev/tuyaos-wind-ide" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot-device-dev/tuyaos-wind-ide</a></li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="ai-基建-tuya-wukong-ai-嵌入式设备端">AI 基建 Tuya Wukong AI 嵌入式设备端<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#ai-%E5%9F%BA%E5%BB%BA-tuya-wukong-ai-%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%BE%E5%A4%87%E7%AB%AF" class="hash-link" aria-label="Direct link to AI 基建 Tuya Wukong AI 嵌入式设备端" title="Direct link to AI 基建 Tuya Wukong AI 嵌入式设备端">​</a></h2>
+<ul>
+<li>Tuya Wukong AI <a href="https://developer.tuya.com/cn/docs/iot-device-dev/ai-hardware?id=Kectwmx9isrgl" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot-device-dev/ai-hardware?id=Kectwmx9isrgl</a></li>
+<li>能力地图： <a href="https://developer.tuya.com/cn/docs/iot-device-dev/wukong-abi-map?id=Keedxu1netj62" target="_blank" rel="noopener noreferrer">link</a></li>
+<li>多模态交互： <a href="https://developer.tuya.com/cn/docs/iot-device-dev/tuyaos-wukong-capability-multi-media" target="_blank" rel="noopener noreferrer">link</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuya云平台-零代码云端ai开发">Tuya云平台 零代码云端AI开发<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#tuya%E4%BA%91%E5%B9%B3%E5%8F%B0-%E9%9B%B6%E4%BB%A3%E7%A0%81%E4%BA%91%E7%AB%AFai%E5%BC%80%E5%8F%91" class="hash-link" aria-label="Direct link to Tuya云平台 零代码云端AI开发" title="Direct link to Tuya云平台 零代码云端AI开发">​</a></h2>
+<ul>
+<li>注册 Tuya Developer 云服务<!-- -->
+<ul>
+<li><a href="https://auth.tuya.com/register" target="_blank" rel="noopener noreferrer">https://auth.tuya.com/register</a></li>
+</ul>
+</li>
+<li>文档：智能体开发平台<!-- -->
+<ul>
+<li><a href="https://developer.tuya.com/cn/docs/iot/ai-agent-management?id=Kdxr4v7uv4fud" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot/ai-agent-management?id=Kdxr4v7uv4fud</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>硬件开发板</h1>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板">开发板<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="Direct link to 开发板" title="Direct link to 开发板">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦-t5ai-board-开发板">涂鸦 T5AI Board 开发板<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="Direct link to 涂鸦 T5AI Board 开发板" title="Direct link to 涂鸦 T5AI Board 开发板">​</a></h3>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg" alt="T5-AI Board Pinout" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">T5-AI Board Pinout</figcaption></figure><p></p>
+<ul>
+<li>资料文档入口：<a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
+<li>I/O Pin脚高清下载：<a href="https://tuyaopen.io/assets/files/T5-AI-Board-Pinout-v102-a97dc489a34f7b0001bb86d9f1ebaad5.pdf" target="_blank">Pinout</a></li>
+<li>如何快速编译项目+烧写？：<a href="https://tuyaopen.io/docs/quick_start/enviroment-setup">教程</a></li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦t5-mini开发板-第三方社区开发板">涂鸦T5 mini开发板 （第三方社区开发板）<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E6%B6%82%E9%B8%A6t5-mini%E5%BC%80%E5%8F%91%E6%9D%BF-%E7%AC%AC%E4%B8%89%E6%96%B9%E7%A4%BE%E5%8C%BA%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="Direct link to 涂鸦T5 mini开发板 （第三方社区开发板）" title="Direct link to 涂鸦T5 mini开发板 （第三方社区开发板）">​</a></h3>
+<ul>
+<li>优势是更小尺寸，适合空间要求较高方案。（社区开发板-文档不全）</li>
+<li>使用上可以参考 <a href="https://tuyaopen.io/blog#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF">T5AI Board</a> 功能相近。</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="地瓜机器人rdk-x5">地瓜机器人RDK X5<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E5%9C%B0%E7%93%9C%E6%9C%BA%E5%99%A8%E4%BA%BArdk-x5" class="hash-link" aria-label="Direct link to 地瓜机器人RDK X5" title="Direct link to 地瓜机器人RDK X5">​</a></h3>
+<ul>
+<li>如何RDK和TuyaOpen整合? 🚧：【施工中】</li>
+<li>资料文档入口：<a href="https://developer.d-robotics.cc/information" target="_blank" rel="noopener noreferrer">RDK X5 文档入口</a></li>
+</ul>
+<hr>
+<h1>现场资源</h1>
+<p>避免资源滥用，优先支持有明确idea团队领取/使用。也非常建议团队带自己熟悉的工具。
+开发板必须选用大赛指定，但是外设和产品形态也非常鼓励自备携带参赛。</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板-1">开发板<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF-1" class="hash-link" aria-label="Direct link to 开发板" title="Direct link to 开发板">​</a></h3>
+<ul>
+<li><a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">涂鸦T5 AI开发板</a>	x15</li>
+<li>涂鸦T5 mini开发板	x10</li>
+<li>地瓜机器人RDK X5	x20</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="外设配件">外设配件<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E5%A4%96%E8%AE%BE%E9%85%8D%E4%BB%B6" class="hash-link" aria-label="Direct link to 外设配件" title="Direct link to 外设配件">​</a></h3>
+<ul>
+<li>喇叭（3020 4欧3瓦）	x20</li>
+<li>显示屏（1.54寸ST7789 ）	x10</li>
+<li>电池包（2000mAh）	x10</li>
+<li>舵机（MG90S）	x40</li>
+<li>传感器套件（手势、触摸、光敏、空气、温湿度、超声波等10多种）x4套</li>
+<li>杜邦线/数据线	若干</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="工具">工具<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#%E5%B7%A5%E5%85%B7" class="hash-link" aria-label="Direct link to 工具" title="Direct link to 工具">​</a></h3>
+<ul>
+<li>正点原子HP15智能加热台	2台</li>
+<li>正点原子DM40数字万用表	2台</li>
+<li>正点原子T80/T80P智能电烙铁	2台</li>
+<li>正点原子逻辑分析仪	2台</li>
+<li>可调直流电源（Max 60V/5A）	1台</li>
+<li>热风枪	1台</li>
+<li>热胶枪	1台</li>
+<li>螺丝刀	1套</li>
+<li>3D打印机（拓竹 P1S+AMS）5台</li>
+</ul>
+<hr>
+<h1>技术支持 🛠️📋</h1>
+<ul>
+<li>活动现场有涂鸦的技术老师，和地瓜机器人的老师们。会在活动现场提供适当的技术支持。</li>
+</ul>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>如果有是较为复杂的问题,或是活动现场没有得到支持，可以梳理好问题后在 Github 上面提 Issue 📝，我们会尽快安排人员支持。</p></div></div>
+<p>Issue Link：<a href="https://github.com/tuya/TuyaOpen/issues" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/issues</a></p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="issue-问题格式">Issue 问题格式<a href="https://tuyaopen.io/blog/52hrs-hackathon-with-tuyaopen#issue-%E9%97%AE%E9%A2%98%E6%A0%BC%E5%BC%8F" class="hash-link" aria-label="Direct link to Issue 问题格式" title="Direct link to Issue 问题格式">​</a></h3>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">### 带上`【52活动】` 帮助工作人员识别活动问题</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Issue 标题: 【52活动】 </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">bug/question/hardware</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">: </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">明确清晰的问题描述</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Issue 内容：</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 开发环境：Mac/Win/Linux 💻</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 芯片平台：T5/RDK </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 问题描述：清晰简洁的表达问题</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 问题现象：有什么规律可循，尝试过那些方法修复过了？</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 期望现象：预期的解决结果</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- Log 日志：附上 Log 有助工作人员帮你分析问题 </span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<hr>
+<h1>常见问题</h1>
+<ol>
+<li>ESP32 怎么开发？<!-- -->
+<ul>
+<li>tos.py 工具能完成编译和烧写环节。代码项目选对板级config配置为 ESPxxx.config, tos.py <code>build</code> 和 <code>flash</code> 均跨平台支持。</li>
+</ul>
+</li>
+<li>TuyaOS 和 TuyaOpen 有什么区别？<!-- -->
+<ul>
+<li>此文档上方有描述，按照自己需求选择，目前如果有“视频AI”，或是"商业化"需求选TuyaOS，不然强烈建议TuyaOpen。TuyaOpen生态更加开放。</li>
+</ul>
+</li>
+<li>PID 是什么？<!-- -->
+<ul>
+<li>硬件关联云服务的 Product-ID。与云服务绑定的号码。</li>
+</ul>
+</li>
+<li>授权码是什么？<!-- -->
+<ul>
+<li>硬件访问云服务的安全鉴权码确保硬件安全。UUID/Key 为一组的码。注意是！TuyaOS 和 TuyaOpen 的授权码不能混用。哪怕能力和服务功能相似，授权互不兼容。</li>
+</ul>
+</li>
+<li>我可以在 Windows 下开发码？<!-- -->
+<ul>
+<li>可以的</li>
+</ul>
+</li>
+<li>我可以在 MacOS 下开发码？<!-- -->
+<ul>
+<li>内测功能，可以在Mac x86/ARM 环境下开发但是可能有未发现问题。优先建议Linun 和 Windows.</li>
+</ul>
+</li>
+</ol>]]></content:encoded>
             <author>huate.lai@tuya.com (Edward Lai)</author>
             <category>TuyaOpen</category>
-        </item>
-        <item>
-            <title><![CDATA[TuyaOpen 測試文章]]></title>
-            <link>https://tuyaopen.io/blog/TuyaOpen-test</link>
-            <guid>https://tuyaopen.io/blog/TuyaOpen-test</guid>
-            <pubDate>Fri, 16 May 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem Ipsum]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="lorem-ipsum">Lorem Ipsum<a href="https://tuyaopen.io/blog/TuyaOpen-test#lorem-ipsum" class="hash-link" aria-label="Direct link to Lorem Ipsum" title="Direct link to Lorem Ipsum">​</a></h2>
-<p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..." Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ornare neque vel lacinia. Aliquam eleifend dolor finibus feugiat malesuada. Maecenas pharetra nunc metus, non feugiat purus dignissim sed. Aenean ut quam leo. Sed rutrum mi sapien, vitae vehicula turpis hendrerit a. Mauris semper elit ut diam mollis, ut dapibus eros laoreet. Etiam suscipit nibh eget lacinia imperdiet. Pellentesque porta efficitur bibendum. Aliquam egestas in nunc eget mollis. In eu ipsum eu ante efficitur auctor a nec metus. Suspendisse eget pharetra lacus. Donec pretium tempus felis eu ornare. Cras vel sem nec tellus fringilla efficitur. Cras a iaculis odio. Nulla pharetra est sit amet felis viverra convallis nec et massa.</p>
-<p>Mauris ut nibh odio. Vivamus convallis tortor eu odio laoreet bibendum. Ut luctus augue et leo vestibulum, sit amet pharetra dui ultrices. Nulla scelerisque neque et lacus egestas ultricies. Morbi facilisis, dolor non lacinia placerat, massa metus elementum felis, et interdum est lorem eu sem. Phasellus id metus ut sem suscipit varius quis et quam. Pellentesque sit amet lacus leo. Nam vulputate scelerisque quam, id egestas metus finibus malesuada. Pellentesque vehicula vehicula odio, vitae scelerisque erat gravida id. Sed sit amet nunc vehicula, pharetra lorem nec, scelerisque mauris. Aliquam erat volutpat. Proin porta odio laoreet enim tempus lacinia. Nullam gravida a mauris ut vehicula. Fusce in ante ante.</p>
-<p>Sed in porta velit, sit amet tempus ipsum. Morbi dignissim sagittis cursus. Curabitur non erat rhoncus, interdum velit mattis, commodo massa. Nulla egestas dignissim pellentesque. Sed quis scelerisque arcu. Morbi non bibendum felis, et interdum nisi. In hac habitasse platea dictumst. Nunc vitae elementum tellus, at dignissim risus. Aliquam semper eget leo eget faucibus. Donec pharetra cursus erat nec facilisis. Curabitur purus orci, lacinia nec nibh ac, ultrices scelerisque nisi. Nulla augue ipsum, molestie in lectus in, bibendum hendrerit nibh. Sed nec rutrum ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. In a magna non justo bibendum mollis efficitur at dui.</p>
-<p>Aenean euismod dolor fermentum libero tincidunt egestas. Etiam interdum a metus et tincidunt. Quisque pulvinar, turpis suscipit dignissim pharetra, odio ipsum consectetur quam, nec tempor sapien nunc nec metus. Sed ultricies, lorem id eleifend tristique, justo mi laoreet lorem, faucibus condimentum lacus risus sed lorem. Mauris scelerisque augue sed tincidunt suscipit. Nam auctor, enim scelerisque rhoncus accumsan, magna dolor suscipit ipsum, ut luctus lorem diam a turpis. Praesent in tortor vulputate, condimentum erat vitae, pretium arcu. Donec interdum risus ex, ac scelerisque ligula tempor eget. Nullam suscipit viverra nibh, eu volutpat sem auctor ut. Duis gravida congue ante eu sollicitudin. Sed porttitor imperdiet purus, vel commodo lacus aliquet vitae. Nam feugiat commodo arcu rutrum suscipit. Proin varius id nulla sit amet ullamcorper.</p>
-<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pretium lacus dolor, nec pulvinar orci tempus vel. Etiam id dapibus felis, in accumsan felis. Vestibulum interdum neque non felis mollis, non porttitor nulla mattis. Aliquam nisi tortor, interdum non elementum quis, ultricies a quam. Donec eget turpis ipsum. Vestibulum vel tellus a velit venenatis suscipit quis cursus sem. Sed dapibus dignissim ornare. Ut eget sollicitudin nisi. Mauris enim enim, laoreet vitae lectus eget, pretium iaculis metus.</p>]]></content:encoded>
-            <category>TuyaOpen</category>
+            <category>Hackathon</category>
+            <category>Contest</category>
         </item>
     </channel>
 </rss>
