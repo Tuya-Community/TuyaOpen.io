@@ -63,7 +63,7 @@ usr: "今天天气"（某种外部条件下 如按键被按着）
 ai : "xxxx"
 ```
 
-![](/img/applications/ai_components/manual_once_talk.svg)
+![](/img/applications/ai_components/zh/manual_once_talk.svg)
 
 ### VAD 触发自由对话
 
@@ -76,7 +76,7 @@ usr: "今天天气"
 ai : "xxxx"
 ```
 
-![](/img/applications/ai_components/vad_free_talk.svg)
+![](/img/applications/ai_components/zh/vad_free_talk.svg)
 
 ### ASR 唤醒单轮对话
 
@@ -93,7 +93,7 @@ usr: "今天天气"
 ai : "xxxx"
 ```
 
-![](/img/applications/ai_components/asr_once_talk.svg)
+![](/img/applications/ai_components/zh/asr_once_talk.svg)
 
 ### ASR 唤醒自由对话
 
@@ -108,7 +108,7 @@ usr: "今天天气"
 ai : "xxxx"
 ```
 
-![](/img/applications/ai_components/asr_free_talk.svg)
+![](/img/applications/ai_components/zh/asr_free_talk.svg)
 
 ## 开发流程
 

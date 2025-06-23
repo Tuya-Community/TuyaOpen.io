@@ -164,19 +164,19 @@ title: 聊天机器人应用
 
 - **长按对话模式**
 
-  ![](/img/applications/your_chat_bot/long_talk.svg)
+  ![](/img/applications/your_chat_bot/zh/long_talk.svg)
 
 - **按键对话模式**
 
-  ![](/img/applications/your_chat_bot/button_talk.svg)	
+  ![](/img/applications/your_chat_bot/zh/button_talk.svg)	
 
 - **唤醒对话模式**
 
-  ![](/img/applications/your_chat_bot/wakeup_talk.svg)
+  ![](/img/applications/your_chat_bot/zh/wakeup_talk.svg)
 
 - **随意对话模式**
 
-  ![](/img/applications/your_chat_bot/free_talk.svg)
+  ![](/img/applications/your_chat_bot/zh/free_talk.svg)
 
 ## 编译工程
 

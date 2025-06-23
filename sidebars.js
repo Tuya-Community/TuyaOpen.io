@@ -45,13 +45,6 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'New Hardware Support',
-      collapsed: true,
-      items: ['new_hardware/adding-new-chip-platform-support', 'new_hardware/adding-new-board-support'],
-    },
-    // ------------------------------------------------------------------
-    {
-      type: 'category',
       label: 'Application Demo',
       collapsed: true,
       items: [
@@ -66,6 +59,13 @@ module.exports = {
         'applications/demo-tuya-iot-light',
         'applications/demo-generic-examples',
       ],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
+      label: 'New Hardware Support',
+      collapsed: true,
+      items: ['new_hardware/adding-new-chip-platform-support', 'new_hardware/adding-new-board-support'],
     },
     // ------------------------------------------------------------------
     {
