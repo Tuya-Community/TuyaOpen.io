@@ -1,0 +1,40 @@
+@startuml
+participant input 
+database recording
+loop
+input --> recording: 一直录音，保存采集到的音频数据，\n大约10ms写入一次
+input -> input: 将采集的音频数据进行 vad 检测
+end
+== 未检测到人声 ==
+loop
+cloud_asr --> recording: 只保存最近的600ms的音频数据，\n用于给云端 vad 的数据
+end
+== 检测到人声 ==
+input -> input: 将采集的音频数据进行 本地 asr 检测唤醒词
+alt 检测到唤醒词
+input -> input:进入检测有效音频状态
+input -> main: 通知检测到唤醒词
+main -> player:播放提示音
+end
+== 检测唤醒词后 30S内均没有检测到人声 ==
+input-> input:回到检测唤醒词状态
+== 检测唤醒词后 再次检测到人声 ==
+input -> main:检测到有效音频数据
+main -> cloud_asr:开始进入上报任务
+cloud_asr -> ai_agent: 开启上报
+cloud_asr --> recording: 读取音频数据
+cloud_asr -> ai_agent:上报音频数据流
+== 检测到人声结束 ==
+input -> main:有效音频数据采集结束
+main -> cloud_asr:结束上报任务
+main -> input:回到检测唤醒词状态
+cloud_asr--> recording: 读完缓存中的音频数据
+cloud_asr -> ai_agent:上报音频数据流
+cloud_asr -> ai_agent:结束音频流上报
+cloud_asr -> cloud_asr: 等待云端 ASR
+ai_agent -> main: 返回 ASR 后的文本
+main -> cloud_asr:已收到 ASR 结果，上报状态可变成空闲态
+== 云端下发 AI 回复信息 ==
+ai_agent -> main:通知文本信息以及音频信息
+main -> player:播放云端下发的音频数据
+@enduml
