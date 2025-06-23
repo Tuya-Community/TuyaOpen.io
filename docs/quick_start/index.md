@@ -34,6 +34,27 @@ You can use the tyutool_gui tool for firmware flashing. For detailed instruction
 
 ## Device Authorization
 
+### License Key
+
+A **License Key** is a security certificate issued by Tuya for devices, serving as the legal credential for smart devices to operate on the Tuya IoT OS. Each device has a unique license key, meaning one key represents one device access permit and can only be used for a single device to connect to and access the cloud.
+
+TuyaOpen Framework includes:
+- **C Version TuyaOpen**: [https://github.com/tuya/TuyaOpen](https://github.com/tuya/TuyaOpen)
+- **Arduino Version TuyaOpen**: [https://github.com/tuya/arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
+- **LuaNode Version TuyaOpen**: [https://github.com/tuya/luanode-TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
+
+All versions require a **dedicated TuyaOpen License Key**. Other license keys will not work for connecting to the Tuya Cloud.
+
+### Obtaining a License Key
+
+1. **Option 1**: Purchase a pre-programmed TuyaOpen License Key module from [https://platform.tuya.com/purchase/index?type=6](https://platform.tuya.com/purchase/index?type=6). The license key is pre-burned into the module during manufacturing and cannot be lost. TuyaOpen reads the key at startup via the `tuya_iot_license_read()` interface. Ensure your device has a **TuyaOpen License Key** pre-installed.
+
+2. **Option 2**: If your module does not have a pre-burned TuyaOpen License Key, purchase one from [https://platform.tuya.com/purchase/index?type=6](https://platform.tuya.com/purchase/index?type=6).
+
+3. **Option 3**: Alternatively, purchase a **TuyaOpen License Key** from Taobao: [https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP](https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP).
+
+### Writing the License Key
+
 When you need to use the functions of the Tuya IoT platform, you must first authorize the device. You can use the tyutool_gui tool for [device authorization](./tools-tyutool.md#device-authorization-information-writing).
 
 ## Device Network Configuration

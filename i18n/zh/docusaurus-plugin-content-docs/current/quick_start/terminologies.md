@@ -36,7 +36,7 @@ TuyaOS 是一种基于 RTOS、Linux、Non-OS 等内核设计的应用于 IoT 领
 | 开发环境              | Linux、Windows、Mac                               | 仅支持 Linux，其他平台需用虚拟机                             |
 | Tuya 云端AI组件       | ✅                                                | ✅ 最新最快                                                  |
 | Tuya 语音 AI ASR 能力 | ✅                                         | ✅                                                          |
-| Tuya 视频 AI 能力     | ❌ 开发中                                 | ✅                                                          |
+| Tuya 视频 AI 能力     | ➖ 开发中                                 | ✅                                                          |
 | Tuya 云大模型定制化能力 （LLM/Prompt/Workflow/RAG）   | ✅                                  | ✅                                                          |
 | 源码定制能力          | 高度源码定制                                      | API 级定制，链接库，商业功能组件更丰富                       |
 | 芯片支持              | Tuya T 系列 / ESP 系列（详见支持列表）             | Tuya T 系列                                                 |

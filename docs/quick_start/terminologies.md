@@ -15,6 +15,40 @@ If you find that some terms are missing from the documentation or need to add ne
 Thank you for your contribution!
 :::
 
+
+## TuyaOpen vs TuyaOS
+### TuyaOpen
+TuyaOpen is an open-source, open development framework for the AIoT industry, built upon the mature commercial-grade IoT system TuyaOS. It inherits core features such as cross-platform compatibility, cross-system support, modularity, and security compliance, validated by billions of devices and millions of users worldwide.
+
+TuyaOpen integrates edge-side AI inference engines, supports the Tuya Cloud Agent Hub, and enables multi-modal AI capabilities through edge-cloud fusion. Developers can seamlessly access compliant domestic large models (e.g., DeepSeek, Qwen, Doubao) or flexibly integrate global-leading AI services (e.g., ChatGPT, Claude, Gemini). Through a diverse tool ecosystem, developers can implement various AI functionalities such as text/voice conversations, image generation, and video generation.
+
+Additionally, TuyaOpen supports mainstream open-source hardware and software ecosystems in the industry, allowing developers to easily port and deploy projects to any chip or development board. This accelerates innovation through AI technology and shortens product development cycles.
+
+### TuyaOS
+TuyaOS is a distributed, cross-platform operating system designed for IoT applications, supporting full connectivity and scenarios across RTOS, Linux, and Non-OS kernels. Based on the TuyaOS Kernel and its rich development components, it liberates developers from fragmented experiences across different chip platforms, systems, communication protocols, and application software, enabling them to focus solely on business innovation and development. With "write once, deploy everywhere," TuyaOS ensures global availability and compliance.
+
+Its architecture adopts a layered, plug-and-play component design, allowing customization based on chip resources and application scenarios to generate tailored development frameworks. Through Tuya's proprietary device model and self-developed soft bus, products developed with TuyaOS can interconnect regardless of communication protocols.
+
+### Key Differences
+
+| Feature                  | TuyaOpen                                         | TuyaOS                                                      |
+|-------------------------|--------------------------------------------------|-------------------------------------------------------------|
+| Target Users            | Open-source developers                           | Commercial partners                                         |
+| Source Code Access       | Fully open-source                                | Partially open-source, supports secondary development       |
+| Code Download           | Free on GitHub/Gitee                             | Requires WindIDE (VSCode plugin) + email authorization      |
+| Development Environment  | Linux, Windows, Mac                              | Linux-only (other platforms require a VM)                   |
+| Tuya Cloud AI Components| ✅                                               | ✅ (Latest & fastest)                                        |
+| Tuya Voice AI (ASR)     | ✅                                               | ✅                                                           |
+| Tuya Video AI           | ➖ (Under development)                   | ✅                                                           |
+| Tuya Cloud LLM Customization (LLM/Prompt/Workflow/RAG) | ✅                                | ✅                                                           |
+| Source Code Customization| Highly customizable                              | API-level customization, richer commercial components       |
+| Chip Support            | Tuya T-series / ESP-series (see compatibility list) | Tuya T-series                                        |
+| Development Language     | C/C++                                           | C/C++                                                        |
+| Documentation           | [TuyaOpen Official Site](https://TuyaOpen.ai)   | [Tuya Developer Portal](https://developer.tuya.com/cn/docs/iot-device-dev) |
+| Open Contribution       | ✅                                               | Copyright License required                                   |
+| Hardware Ecosystem       | Continuously expanding drivers for chips/devices | Uses recommended solutions                                  |
+
+
 ## Hardware Development
 
 | Term | Description |
@@ -93,6 +127,7 @@ Thank you for your contribution!
 | Term | Description |
 |------|-------------|
 | PID | Stands for the product ID. Each product created on the platform is assigned a unique PID. |
-| UUID | A universally unique identifier (UUID) is the unique ID assigned to a product developed on the platform. |
+| UUID | Stands for Universally Unique Identifier. In Tuya's smart product development, UUID serves as the unique identification ID for devices. AuthKey is the authentication key required for device registration in the cloud, forming a one-to-one matching relationship with UUID. The UUID length is 20 characters, while AuthKey is 32 characters. The UUID remains unchanged regardless of repeated activation or network configuration operations. PID, UUID, and AuthKey are often referred to as the "device triplet". |
+| DeviceID | The ID assigned by the cloud each time a device is activated and configured for network connection. It links to actual user device data associated with accounts and apps after network configuration. The DeviceID may change in specific scenarios (e.g., when a user enters the device properties page in the app, clicks "Unbind and Clear Data" in the top-right corner) and requires reconfiguration/reactivation. |
 | API | Application programming interfaces (APIs) are predefined functions that enable application programs and developers to access the library based on software or hardware. |
 | Cloud API | Cloud APIs enable you to use a cloud application programming interface that has a service delivered by cloud service providers. |
