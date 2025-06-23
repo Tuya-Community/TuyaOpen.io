@@ -55,9 +55,16 @@ module.exports = {
       label: 'Application Demo',
       collapsed: true,
       items: [
-        'applications/application-development-guide',
-        'applications/demo-generic-examples',
+        {
+          type: 'category',
+          label: 'AI App Components',
+          collapsed: false,
+          items: ['applications/ai-components/ai-audio'],
+        },
+        // 'applications/application-development-guide',
+        'applications/demo-your-chat-bot',
         'applications/demo-tuya-iot-light',
+        'applications/demo-generic-examples',
       ],
     },
     // ------------------------------------------------------------------

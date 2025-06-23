@@ -23,6 +23,10 @@
         "message": "应用示例",
         "description": "The label for category Application Demo in sidebar docs"
     },
+    "sidebar.docs.category.AI App Components": {
+        "message": "AI 应用组件",
+        "description": "The label for category AI Components in sidebar docs"
+    },
     "sidebar.docs.category.TKL APIs": {
         "message": "TKL APIs",
         "description": "The label for category TKL APIs in sidebar docs"

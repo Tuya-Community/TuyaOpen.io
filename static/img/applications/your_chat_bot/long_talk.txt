@@ -1,0 +1,24 @@
+@startuml
+actor user
+box "chat bot"
+participant button
+participant ai_audio
+participant display
+end box
+user -> button: 按下按键
+button -> button:检测到按键被按下
+button -> ai_audio:触发单次对话
+ai_audio->display:显示 “ 聆听中 ”
+user -> ai_audio: 语音输入
+ai_audio -> cloud: 将语音数据上报到云端
+user -> button:松开按键
+button -> button:检测到按键被释放
+button->ai_audio: 结束语音输入
+ai_audio  -> cloud: 结束上报，并告知云端数据上报已完成
+cloud -> ai_audio: 将语音转成文本下发
+cloud -> cloud:根据语音内容通过大模型生成回答
+ai_audio -> display: 将文本信息显示至屏幕
+cloud -> ai_audio: 将 AI 生成的内容（文字，语音，表情等）下发给设备
+ai_audio->ai_audio:播放语音
+ai_audio->display: 显示 AI 文本，表情等信息
+@enduml

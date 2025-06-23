@@ -1,0 +1,23 @@
+@startuml
+actor user
+box "chat bot"
+participant button
+participant ai_audio
+participant display
+end box
+user -> button: 按一下按键
+button -> button:检测到短按
+button -> ai_audio:进入检测人声状态
+ai_audio->display:显示 “ 聆听中 ”
+user -> ai_audio:语音输入
+ai_audio -> ai_audio: 检测有人声
+ai_audio -> cloud: 将语音数据上报到云端
+user -> ai_audio:结束语音输入
+ai_audio  -> cloud: 结束上报，并告知云端数据上报已完成
+cloud -> ai_audio: 将语音转成文本下发
+cloud -> cloud:根据语音内容通过大模型生成回答
+ai_audio -> display: 将文本信息显示至屏幕
+cloud -> ai_audio: 将 AI 生成的内容（文字，语音，表情等）下发给设备
+ai_audio->ai_audio:播放语音
+ai_audio->display: 显示 AI 文本，表情等信息
+@enduml
