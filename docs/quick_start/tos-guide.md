@@ -119,7 +119,7 @@ In the project directory, execute the command `tos.py config choice`
 
 It will display all the solidified configurations supported by the current project, which can be used directly
 
-The selected configuration will be synchronized to the [app_default.config](https://tuyaopen.ai) file in the project path
+The selected configuration will be synchronized to the [app_default.config](./project-walkthrough.md#app_defaultconfig) file in the project path
 
 ```bash
 ❯ tos.py config choice
@@ -160,7 +160,7 @@ The `menu` command will open a visual configuration interface
 
 ![menu](https://images.tuyacn.com/fe-static/docs/img/0ad1b8c6-303d-411c-bfe7-c25e17968c05.png)
 
-Users can modify configuration options according to project requirements, and after saving, it will synchronously modify the [app_default.config](https://tuyaopen.ai) file
+Users can modify configuration options according to project requirements, and after saving, it will synchronously modify the [app_default.config](./project-walkthrough.md#app_defaultconfig) file
 
 :::note
 This operation may change the toolchain being used, so the `menu` operation will first perform a deep clean
@@ -176,7 +176,7 @@ Or use the `choice` command to reselect configurations
 
 `save` will save the configuration currently used by the project as a solidified configuration for future use
 
-The specific operation is to rename the [app_default.config](https://tuyaopen.ai) file and save it to the `config` directory
+The specific operation is to rename the [app_default.config](./project-walkthrough.md#app_defaultconfig) file and save it to the `config` directory
 
 ```bash
 ❯ tos.py config save

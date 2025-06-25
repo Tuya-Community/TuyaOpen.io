@@ -87,3 +87,13 @@ After successful authorization, the following log output will appear:
 ```
 Authorization write succeeds.
 ```
+
+## Frequently Asked Questions
+
+### Always fails during `write` in the burning process
+
+You can try installing the driver.
+
+**Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
+
+**Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html

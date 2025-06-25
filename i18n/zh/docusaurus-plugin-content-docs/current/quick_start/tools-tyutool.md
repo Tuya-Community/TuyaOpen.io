@@ -87,3 +87,13 @@ TuyaOpen `UUID` 和 `AuthKey` 可以在 [Tuya IoT 平台](https://platform.tuya.
 ```
 Authorization write succeeds.
 ```
+
+## 常见问题
+
+### 烧录过程中总是在`write`时失败
+
+可以从尝试安装驱动
+
+**Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
+
+**Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html

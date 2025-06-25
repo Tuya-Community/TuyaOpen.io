@@ -127,7 +127,9 @@ cd TuyaOpen
   </SyncedTabItem>
   <SyncedTabItem value="Windows">
     ```bash
-    .\export.bat
+    .\export.ps1  # powershell
+
+    .\export.bat  # cmd
     ```
   </SyncedTabItem>
 </SyncedTabs>
@@ -189,7 +191,7 @@ git submodule update --init
 
 关于`tos.py`更详细的说明方法，可使用命令`tos.py --help`进行查看
 
-或查看[tos.py工具使用](https://tuyaopen.ai)
+或查看[tos.py工具使用](./tos-guide.md)
 
 ## 项目操作
 
@@ -337,7 +339,7 @@ Select serial port: 1
 
 ### 授权
 
-关于授权码的概念请查看[授权码说明](https://tuyaopen.ai)
+关于授权码的概念请查看[授权码说明](./index.md#授权码)
 
 提供两种授权方式
 
@@ -399,6 +401,6 @@ Select serial port: 1
 
 ## 常见问题
 
-- 使用Mac系统进行烧录总是失败
+- 烧录失败
 
-    参考[MAC安装CH34X](https://tuyaopen.ai)
+    参考[安装对应驱动](./tools-tyutool.md#烧录过程中总是在write时失败)

@@ -127,7 +127,9 @@ Activate `tos.py`
   </SyncedTabItem>
   <SyncedTabItem value="Windows">
     ```bash
-    .\export.bat
+    .\export.ps1  # powershell
+
+    .\export.bat  # cmd
     ```
   </SyncedTabItem>
 </SyncedTabs>
@@ -189,7 +191,7 @@ Use the following command to deactivate `tos.py`
 
 For more detailed information about `tos.py`, you can use the command `tos.py --help` to view
 
-Or check [tos.py Tool Usage](https://tuyaopen.ai)
+Or check [tos.py Tool Usage](./tos-guide.md)
 
 ## Project Operations
 
@@ -337,7 +339,7 @@ Exit log viewing by pressing `Ctrl+c`, then press Enter
 
 ### Authorization
 
-For information about authorization codes, please check [Authorization Code Description](https://tuyaopen.ai)
+For information about authorization codes, please check [Authorization Code Description](./index.md#license-key)
 
 Two authorization methods are provided
 
@@ -399,6 +401,6 @@ Two authorization methods are provided
 
 ## Common Issues
 
-- Flashing always fails on Mac system
+- Flashing fails
 
-    Refer to [MAC CH34X Installation](https://tuyaopen.ai)
+    Refer to [Install the corresponding driver.](./tools-tyutool.md#always-fails-during-write-in-the-burning-process)
