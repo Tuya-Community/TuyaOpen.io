@@ -129,8 +129,23 @@
 </ul>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="地瓜机器人rdk-x5">地瓜机器人RDK X5<a href="https://tuyaopen.io/blog/52h-with-tuyaopen#%E5%9C%B0%E7%93%9C%E6%9C%BA%E5%99%A8%E4%BA%BArdk-x5" class="hash-link" aria-label="Direct link to 地瓜机器人RDK X5" title="Direct link to 地瓜机器人RDK X5">​</a></h3>
 <ul>
-<li>如何RDK和TuyaOpen整合? 🚧：【施工中】</li>
 <li>资料文档入口：<a href="https://developer.d-robotics.cc/information" target="_blank" rel="noopener noreferrer">RDK X5 文档入口</a></li>
+</ul>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="rdk如何和tuyaopen整合">RDK如何和TuyaOpen整合?<a href="https://tuyaopen.io/blog/52h-with-tuyaopen#rdk%E5%A6%82%E4%BD%95%E5%92%8Ctuyaopen%E6%95%B4%E5%90%88" class="hash-link" aria-label="Direct link to RDK如何和TuyaOpen整合?" title="Direct link to RDK如何和TuyaOpen整合?">​</a></h4>
+<blockquote>
+<p>如果单独 T5 的算力不够吗？让RDK X5来支持你的边缘计算需求！使用RDK+Tuyaopen方案来实现本地实时模型推理和云大模型的混合架构。</p>
+</blockquote>
+<ul>
+<li>Tuya App 远程控制 RDK X5 能力。<!-- -->
+<ul>
+<li>RDK + TuyaOpen框架方案 Demo 教程：<a href="https://tuyaopen.io/assets/files/rdk-originbot-with-tuya-dp-control-demo-a77bbe284bd38ff257e85c223c7391a7.pdf" target="_blank">PDF</a></li>
+</ul>
+</li>
+<li>RDK X5 与 Tuya T5 芯片混合框架<!-- -->
+<ul>
+<li>边缘计算+云计算的结合 <a href="https://diguazhandian-rdkx5-tuya-t4otm0d.gamma.site/" target="_blank" rel="noopener noreferrer">Guide</a></li>
+</ul>
+</li>
 </ul>
 <hr>
 <h1>涂鸦硬件资源</h1>
@@ -197,12 +212,19 @@
 </li>
 <li>我可以在 Windows 下开发码？<!-- -->
 <ul>
-<li>可以的</li>
+<li>可以的, 现在Master 主分支可以体验</li>
 </ul>
 </li>
 <li>我可以在 MacOS 下开发码？<!-- -->
 <ul>
+<li>可以的, 现在Master 主分支可以体验</li>
 <li>内测功能，可以在Mac x86/ARM 环境下开发但是可能有未发现问题。优先建议Linun 和 Windows.</li>
+</ul>
+</li>
+<li>MacOS M-系列 编译 T5 项目时遇到 <code>lwip</code> 编译错误。<!-- -->
+<ul>
+<li>Mac gcc版本差异，在T5芯片使用时，需要做如下修改</li>
+<li><a href="https://github.com/tuya/TuyaOpen/issues/204" target="_blank" rel="noopener noreferrer">已解决 Issue</a></li>
 </ul>
 </li>
 </ol>]]></content>
