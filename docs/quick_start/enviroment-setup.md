@@ -250,7 +250,7 @@ Build the project using command `tos.py build`
 
 ### Clean Artifacts
 
-Clean compilation cache using command `tos.py clen` or `tos.py clean -f` (deep clean)
+Clean compilation cache using command `tos.py clean` or `tos.py clean -f` (deep clean)
 
 ```bash
 ❯ tos.py clean -f

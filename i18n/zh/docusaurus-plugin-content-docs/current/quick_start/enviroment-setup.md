@@ -250,7 +250,7 @@ Choice config file:
 
 ### 清理产物
 
-清理编译缓存，使用命令`tos.py clen` 或 `tos.py clean -f`（深度清理）
+清理编译缓存，使用命令`tos.py clean` 或 `tos.py clean -f`（深度清理）
 
 ```bash
 ❯ tos.py clean -f

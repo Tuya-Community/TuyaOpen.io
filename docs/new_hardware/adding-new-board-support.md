@@ -94,21 +94,21 @@ cd apps/tuya.ai/your_chat_bot
 Configure and build:
 
 ```bash
-tos menuconfig  # Select TUYA_BOARD_EVB
-tos build
+tos.py config menu  # Select TUYA_BOARD_EVB
+tos.py build
 ```
 
 After verification, save configuration:
 
 ```bash
-tos savedef
+tos.py config save
 cp app_default.config ./config/TUYA_T5AI_EVB.config
 ```
 
 Future developers can select this configuration via:
 
 ```bash
-tos config_choice
+tos.py config choice
 ```
 
 ## Contribution

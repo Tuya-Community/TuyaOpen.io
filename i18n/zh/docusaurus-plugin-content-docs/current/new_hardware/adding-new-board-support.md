@@ -110,19 +110,19 @@ cd apps/tuya.ai/your_chat_bot
 进行配置，板子选择 TUYA_BOARD_EVB
 
 ```bash
-tos menuconfig
+tos.py config menu
 ```
 
 编译工程生成目标 bin 文件
 
 ```bash
-tos build
+tos.py build
 ```
 
 验证功能通过后，将此时的配置保存成默认配置
 
 ```bash
-tos savedef
+tos.py config save
 ```
 
 将默认配置保存到应用的 config 文件夹下
@@ -134,7 +134,7 @@ cp app_default.config ./config/TUYA_T5AI_EVB.config
 下次开发者如果想要在 TUYA_T5AI_EVB 上运行该应用，可以直接选择这个板子的配置。
 
 ```bash
-tos config_choice
+tos.py config choice
 ```
 
 ## 贡献代码

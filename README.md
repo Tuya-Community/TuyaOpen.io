@@ -14,17 +14,19 @@
 
 ## Table of Contents
 
-- [How to develop](#how-to-develop)
-- [Build](#build)
-- [Deploy to Production](#deploy-to-production)
+- [File Paths](#file-paths)
+  - [Documentation Path](#documentation-path)
+  - [How to develop](#how-to-develop)
+    - [Building and Serving Website Locally](#building-and-serving-website-locally)
+  - [Build](#build)
+  - [Deploy to Production](#deploy-to-production)
 - [Release a new version](#release-a-new-version)
-  - [Release a major or minor version](#release-a-major-or-minor-version)
-    - [Update i18n](#update-i18n)
-  - [Release a patch version](#release-a-patch-version)
-- [How to add a new language translation](#how-to-add-a-new-language-translation)
-- [How to contribute](#how-to-contribute)
-- [License](#license)
-
+    - [Release a major or minor version](#release-a-major-or-minor-version)
+      - [Update i18n](#update-i18n)
+    - [Release a patch version](#release-a-patch-version)
+  - [How to add a new language translation](#how-to-add-a-new-language-translation)
+  - [How to contribute](#how-to-contribute)
+  - [License](#license)
 
 # File Paths
 ## Documentation Path
@@ -61,7 +63,7 @@ This command starts a local development server and opens up a browser window. Mo
 By default, the `start` command will only preview documents in English. If you want to preview documents in other languages, such as Chinese, then add `--locale` after the command:
 
 ```sh
-npm start --locale zh
+npm start -- --locale zh
 ```
 
 ## Build

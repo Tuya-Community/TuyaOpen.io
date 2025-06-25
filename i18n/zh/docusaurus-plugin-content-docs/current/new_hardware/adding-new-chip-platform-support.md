@@ -18,19 +18,19 @@ title: 适配新的芯片 Platform
 
 ```bash
 $ cd TuyaOpen
-$ export PATH=$PATH:$PWD
+$ . ./export.sh     #ubuntu
 ```
 
 或将 TuyaOpen 路径添加到系统环境变量中。
 
-TuyaOpen 通过 tos 命令进行编译、调试等操作，tos 命令会根据环境变量中设置的路径查找 TuyaOpen 仓库，并执行对应操作。
+TuyaOpen 通过 `tos.py` 命令进行编译、调试等操作，`tos.py` 命令会根据环境变量中设置的路径查找 TuyaOpen 仓库，并执行对应操作。
 
-tos 命令的详细使用方法，请参考 [tos 命令](./../quick_start/linux-enviroment-setup.md)。
+`tos.py` 命令的详细使用方法，请参考 [tos.py 命令](../quick_start/tos-guide.md)。
 
-2. 通过以下命令，生成一个新的 `platform` 子目录：
+1. 通过以下命令，生成一个新的 `platform` 子目录：
 
 ```bash
-$ tos new_platform <new-platform-name>
+$ tos.py new_platform <new-platform-name>
 ```
 
 命令在创建新 `platform` 时，会自动弹出一个 `menuconfig` 对话框
@@ -138,7 +138,7 @@ generate code finished!
 
 ### Kconfig
 
-Kconfig 文件中定义了新 platform 支持的功能，请根据当前新增 platform 名称，修改首次生成的 Kconfig 文件中 `menu` 中的 `<your-board-name>` 名称。同事也可以根据实际硬件情况新增/删除相关配置。
+Kconfig 文件中定义了新 platform 支持的功能，请根据当前新增 platform 名称，修改首次生成的 Kconfig 文件中 `menu` 中的 `<your-board-name>` 名称。同时也可以根据实际硬件情况新增/删除相关配置。
 
 ```bash
 menu "configure board <your-board-name>"
@@ -224,7 +224,7 @@ platform = <new-platform-name>
 
 ```bash
 $ cd examples/get-started/sample_project
-$ tos build
+$ tos.py build
 ```
 
 正常情况下，完成编译适配后，可直接编译通过。未编译成功请根据错误提示进行适配修改。
@@ -235,7 +235,7 @@ default.config 是生成移植模版的时候，根据选择生成的默认配�
 
 default.config 和 Kconfig 一起配合组成 TuyaOpen 菜单化配置功能，并自动生成 `using.config` 、`using.cmake`、 `tuya_kconfig.h` 文件，在 TuyaOpen 编译和源代码中被使用。
 
-如需修改默认配置，请在对应项目目录下执行 `make menuconfig` 修改功能配置，并将相关修改手工合并至 default.config。
+如需修改默认配置，请在对应项目目录下执行 `make config menu` 修改功能配置，并将相关修改手工合并至 default.config。
 
 ## 完成接口适配
 

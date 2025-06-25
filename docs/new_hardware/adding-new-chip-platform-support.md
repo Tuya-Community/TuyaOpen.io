@@ -18,16 +18,16 @@ If you wish to port `TuyaOpen` to your own chip, platform adaptation is required
 
 ```bash
 $ cd TuyaOpen
-$ export PATH=$PATH:$PWD
+$ . ./export.sh     #ubuntu
 ```
 
 Or add the TuyaOpen path to your system environment variables.
 
-TuyaOpen uses the tos command for compilation and debugging operations. The tos command locates the TuyaOpen repository through the path set in environment variables.
+TuyaOpen uses the `tos.py` command for compilation and debugging operations. The `tos.py` command locates the TuyaOpen repository through the path set in environment variables.
 
-For detailed usage of the tos command, refer to [tos Guide](./../quick_start/linux-enviroment-setup.md).
+For detailed usage of the `tos.py` command, refer to [tos.py Guide](../quick_start/tos-guide.md).
 
-2. Generate a new platform subdirectory:
+1. Generate a new platform subdirectory:
 
 ```bash
 $ tos new_platform <new-platform-name>
@@ -202,7 +202,7 @@ Then compile:
 
 ```bash
 $ cd examples/get-started/sample_project
-$ tos build
+$ tos.py build
 ```
 
 ## Interface Implementation
