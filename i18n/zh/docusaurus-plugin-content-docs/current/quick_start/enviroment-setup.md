@@ -26,7 +26,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 >
   <SyncedTabItem value="Linux">
     :::info
-    推荐使用 Ubuntu24、22、20、18 的 LTS 版本。
+    推荐使用 Ubuntu24 /22 /20 的 LTS 版本。
     :::
 
     安装必要的工具
@@ -40,7 +40,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
     推荐使用 Homebrew 包管理器进行安装
     :::
 
-    一般Mac终端使用的工具版本较低，推荐安装 Homebrew 并升级 bash 
+    一般Mac终端使用的工具版本较低，推荐安装 Homebrew 并升级 bash
 
     <details>
     <summary>安装 Homebrew ,升级 bash</summary>

@@ -27,7 +27,7 @@ Finally, authorize the device and use the Tuya APP for network configuration
 
   <SyncedTabItem value="Linux">
     :::info
-    Recommended to use Ubuntu 24, 22, 20, 18 LTS versions.
+    Recommended to use Ubuntu 24, 22, 20 LTS versions.
     :::
 
     Install necessary tools
