@@ -99,6 +99,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuya云平台-零代码云端ai开发">Tuya云平台 零代码云端AI开发<a href="https://tuyaopen.io/blog/52h-with-tuyaopen#tuya%E4%BA%91%E5%B9%B3%E5%8F%B0-%E9%9B%B6%E4%BB%A3%E7%A0%81%E4%BA%91%E7%AB%AFai%E5%BC%80%E5%8F%91" class="hash-link" aria-label="Direct link to Tuya云平台 零代码云端AI开发" title="Direct link to Tuya云平台 零代码云端AI开发">​</a></h2>
 <ul>
 <li>注册 Tuya Developer 云服务<!-- -->
@@ -108,7 +109,12 @@
 </li>
 <li>文档：智能体开发平台<!-- -->
 <ul>
-<li><a href="https://developer.tuya.com/cn/docs/iot/ai-agent-management?id=Kdxr4v7uv4fud" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot/ai-agent-management?id=Kdxr4v7uv4fud</a></li>
+<li><a href="https://developer.tuya.com/cn/docs/iot/ai-agent-management" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot/ai-agent-management</a></li>
+</ul>
+</li>
+<li>文档：让AI直接调函数-DP自控<!-- -->
+<ul>
+<li><a href="https://developer.tuya.com/cn/docs/iot/Self-control?id=Kep3yhifdrvah" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot/Self-control?id=Kep3yhifdrvah</a></li>
 </ul>
 </li>
 </ul>
