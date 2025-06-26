@@ -27,6 +27,10 @@
         "message": "AI 应用组件",
         "description": "The label for category AI Components in sidebar docs"
     },
+    "sidebar.docs.category.Peripherals": {
+        "message": "外设驱动",
+        "description": "The label for category Peripherals in sidebar docs"
+    },
     "sidebar.docs.category.TKL APIs": {
         "message": "TKL APIs",
         "description": "The label for category TKL APIs in sidebar docs"

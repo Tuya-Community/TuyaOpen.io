@@ -63,6 +63,13 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
+      label: 'Peripherals',
+      collapsed: true,
+      items: ['peripheral/support_peripheral_list'],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
       label: 'New Hardware Support',
       collapsed: true,
       items: ['new_hardware/adding-new-chip-platform-support', 'new_hardware/adding-new-board-support'],
