@@ -1,5 +1,5 @@
 ---
-title: Development Environment Setup and Verification
+title: Environment Setup
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

@@ -17,7 +17,7 @@ module.exports = {
           type: 'category',
           label: 'Other Tools',
           collapsed: true,
-          items: ['quick_start/tos-guide', 'quick_start/tools-tyutool'],
+          items: ['quick_start/tos-guide', 'quick_start/tools-tyutool', 'quick_start/new-platform'],
         },
         'quick_start/device-network-configuration',
         'quick_start/terminologies',

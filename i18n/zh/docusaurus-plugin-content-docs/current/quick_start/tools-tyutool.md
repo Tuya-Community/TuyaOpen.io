@@ -2,6 +2,9 @@
 title: tyutool 工具介绍
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## 概述
 
 tyutool 是为 TuyaOpen 项目提供的一个烧录授权工具。tyutool 工具分为 GUI 和 CLI 两种版本，GUI 版本提供了图形化界面，CLI 版本提供了命令行界面。
@@ -97,3 +100,21 @@ Authorization write succeeds.
 **Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
 
 **Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
+
+在`Mac`中安装驱动后，需要在**安全设置**中`允许驱动加载`
+
+<Tabs>
+  <TabItem value="13" label="MacOS 13" default>
+
+在**MacOS 13**中在`隐私与安全性`中操作
+
+![MacOS 13](../../../../../docs/images/tyutool/macos13.png)
+
+  </TabItem>
+  <TabItem value="15" label="MacOS 15">
+
+在**MacOS 15**中`设置`中搜索`login`，操作
+
+![MacOS 15](../../../../../docs/images/tyutool/macos15.png)
+  </TabItem>
+</Tabs>

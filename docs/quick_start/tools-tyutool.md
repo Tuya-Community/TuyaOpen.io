@@ -2,6 +2,9 @@
 title: Introduction to tyutool Tool
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Overview
 
 tyutool is a flashing and authorization tool provided for the TuyaOpen project. The tyutool tool comes in two versions: GUI and CLI. The GUI version provides a graphical interface, while the CLI version provides a command-line interface.
@@ -94,6 +97,24 @@ Authorization write succeeds.
 
 You can try installing the driver.
 
-**Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
+**Windows**: https://www.wch.cn/downloads/ch343ser_exe.html
 
-**Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
+**Mac**: https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
+
+After installing the driver on Mac, you need to allow the driver to load in **Security Settings**.
+
+<Tabs>
+  <TabItem value="13" label="MacOS 13" default>
+
+On **MacOS 13**, operate in "Privacy & Security".
+
+![MacOS 13](../images/tyutool/macos13.png)
+
+  </TabItem>
+  <TabItem value="15" label="MacOS 15">
+
+On **MacOS 15**, search for "login" in "Settings" to proceed.
+
+![MacOS 15](../images/tyutool/macos15.png)
+  </TabItem>
+</Tabs>

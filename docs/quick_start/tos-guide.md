@@ -113,7 +113,7 @@ Commands:
   save    Save minimal config.
 ```
 
-### choice
+### config choice
 
 In the project directory, execute the command `tos.py config choice`
 
@@ -154,7 +154,7 @@ When the `config` directory exists, it will not display configuration files in `
 
 If you only want to display configurations in `boards`, you can add the command flag `config -d`
 
-### menu
+### config menu
 
 The `menu` command will open a visual configuration interface
 
@@ -172,7 +172,7 @@ Modifying configurations may cause project functionality to change or even compi
 Or use the `choice` command to reselect configurations
 :::
 
-### save
+### config save
 
 `save` will save the configuration currently used by the project as a solidified configuration for future use
 
@@ -290,4 +290,30 @@ If you use `git pull` or `git checkout` to update the `TuyaOpen` main repository
 
 Toolchain dependency relationships are recorded in the file `TuyaOpen/platform/platform_config.yaml`
 
+## new
+
+### new project
+
+This command is used to quickly create a new user application project
+
+Execution process:
+
+   1. Ask for project name: Prompts you to enter the name of the new project (e.g., `my_app`)
+
+   1. Select framework: You can choose a project template through the --framework parameter. From the code, it currently supports base (basic template) and arduino two types. The default is base
+
+   1. Copy template:
+       * It will find the corresponding framework template from the `tools/app_template/` directory
+       * Then copy the entire template directory completely to the current directory and rename it to the project name you entered
+
+### new platform
+
+For the specific usage of this command, please refer to **[new platform](./new-platform.md)**
+
 ## Common Issues
+
+### When executing the `config menu` command in Windows, the arrow keys may fail
+
+This is caused by compatibility issues with the terminal emulator. You can try to select the available terminal in `cmd` and `powershell`
+
+Or use the keys **h[⬅️] j[⬇️] k[⬆️] l[➡️]** to operate

@@ -113,7 +113,7 @@ Commands:
   save    Save minimal config.
 ```
 
-### choice
+### config choice
 
 在项目目录中，执行命令`tos.py config choice`
 
@@ -154,7 +154,7 @@ Choice config file:
 
 若只想显示`boards`中的配置，可加命令字`config -d`
 
-### menu
+### config menu
 
 `menu`命令会打开可视化配置界面
 
@@ -172,7 +172,7 @@ Choice config file:
 或者使用`choice`命令重新选择配置
 :::
 
-### save
+### config save
 
 `save`会将当前项目所使用的配置保存为固化配置，方便以后使用
 
@@ -290,4 +290,31 @@ Options:
 
 工具链依赖关系记录在文件`TuyaOpen/platform/platform_config.yaml`中
 
+## new
+
+### new project
+
+这个命令用于快速创建一个新的用户应用程序项目
+
+执行过程：
+
+   1. 询问项目名称：提示你输入新项目的名称（例如`my_app`）
+
+   1. 选择框架：你可以通过 --framework 参数选择一个项目模板。从代码看，目前支持 base（基础模板）和 arduino
+      两种。默认是 base
+
+   1. 复制模板：
+       * 它会从`tools/app_template/` 目录中找到对应的框架模板
+       * 然后将整个模板目录完整地复制到当前目录下，并重命名为你输入的项目名
+
+### new platform
+
+该命令的具体使用方法请参考 **[new platform](./new-platform.md)**
+
 ## 常见问题
+
+### 在`Windows`中执行`config menu`命令，方向键有可能失效
+
+这是由于终端模拟器兼容性问题导致的，可以尝试在`cmd`和`powershell`中选择可用的终端
+
+或者使用按键**h[⬅️] j[⬇️] k[⬆️] l[➡️]**来操作
