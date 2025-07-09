@@ -156,8 +156,7 @@ uint8_t tkl_adc_width_get(TUYA_ADC_NUM_E port_num);
 - 参数：
   - `port_num`：ADC 端口号
 - 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+  - ADC 分辨率（位宽）
 
 ### tkl_adc_ref_voltage_get
 
@@ -170,8 +169,7 @@ uint32_t tkl_adc_ref_voltage_get(TUYA_ADC_NUM_E port_num);
 - 参数：
   - `port_num`：ADC 端口号
 - 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+  - ADC 参考电压（单位：mv）
 
 ### tkl_adc_temperature_get
 

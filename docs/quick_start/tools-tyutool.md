@@ -95,13 +95,15 @@ Authorization write succeeds.
 
 ### Always fails during `write` in the burning process
 
-You can try installing the driver.
+For the CH34x series, you can try installing or updating the driver.
 
 **Windows**: https://www.wch.cn/downloads/ch343ser_exe.html
 
 **Mac**: https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
 
 After installing the driver on Mac, you need to allow the driver to load in **Security Settings**.
+
+If the driver is installed successfully, the CH34x device will be recognized with a name starting with `cu.wchusb`. Otherwise, the driver installation was not successful.
 
 <Tabs>
   <TabItem value="13" label="MacOS 13" default>

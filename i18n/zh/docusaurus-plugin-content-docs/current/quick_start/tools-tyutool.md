@@ -95,13 +95,15 @@ Authorization write succeeds.
 
 ### 烧录过程中总是在`write`时失败
 
-可以从尝试安装驱动
+对于 CH34x 系列可以尝试安装或更新驱动
 
 **Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
 
 **Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
 
 在`Mac`中安装驱动后，需要在**安全设置**中`允许驱动加载`
+
+若驱动安装成功，CH34x 被识别到的名称会以 `cu.wchusb` 开头，否则驱动未安装成功
 
 <Tabs>
   <TabItem value="13" label="MacOS 13" default>

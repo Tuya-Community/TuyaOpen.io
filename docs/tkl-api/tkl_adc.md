@@ -156,8 +156,7 @@ uint8_t tkl_adc_width_get(TUYA_ADC_NUM_E port_num);
 - Parameters:
   - `port_num`: ADC port number
 - Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OS_ADAPTER_ADC` section in the file `tuya_error_code.h`
+  - ADC Resolution (bit width)
 
 ### tkl_adc_ref_voltage_get
 
@@ -170,8 +169,7 @@ uint32_t tkl_adc_ref_voltage_get(TUYA_ADC_NUM_E port_num);
 - Parameters:
   - `port_num`: ADC port number
 - Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OS_ADAPTER_ADC` section in the file `tuya_error_code.h`
+  - ADC Reference Voltage (unit: mv)
 
 ### tkl_adc_temperature_get
 
