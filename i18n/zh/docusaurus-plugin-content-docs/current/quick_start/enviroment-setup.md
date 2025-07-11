@@ -127,7 +127,7 @@ cd TuyaOpen
   </SyncedTabItem>
   <SyncedTabItem value="Windows">
     ```bash
-    .\export.ps1  # powershell
+    .\export.ps1  # powershell 需要先执行 `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine`
 
     .\export.bat  # cmd
     ```
@@ -401,6 +401,16 @@ Select serial port: 1
 
 ## 常见问题
 
-- 烧录失败
+1. 烧录失败
 
     参考[安装对应驱动](./tools-tyutool.md#烧录过程中总是在write时失败)
+
+2. `tos.py`激活失败
+
+    若激活失败，可能是因为没有安装`python3-venv`，请安装后重试
+
+    ```bash
+    sudo apt-get install python3-venv
+    ```
+
+    删除`./.venv`目录，重新激活

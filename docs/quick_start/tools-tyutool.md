@@ -15,12 +15,10 @@ The authorization function of tyutool is only applicable to the TuyaOpen project
 
 the tyutool tool supports Windows, Linux, and macOS. Developers can choose the appropriate version according to their operating system.
 
-| Operating System | GUI Version | CLI Version |
+| Platform | Source(Recommend) | Release |
 | :------: | :------: | :--: |
-| Windows | [tyutool_gui_win](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/win_tyutool_gui.zip) | [tyutool_cli_win](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/win_tyutool_cli.tar.gz) |
-| Linux | [tyutool_gui_linux](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/tyutool_gui.tar.gz) | [tyutool_cli_linux](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/tyutool_cli.tar.gz) |
-| MAC-x86 | [tyutool_gui_mac_x86](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_x86_tyutool_gui.tar.gz) | [tyutool_cli_mac_x86](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_x86_tyutool_cli.tar.gz) |
-| MAC-ARM64 | [tyutool_gui_mac_arm64](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_arm64_tyutool_gui.tar.gz) | [tyutool_cli_mac_arm64](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_arm64_tyutool_cli.tar.gz) |
+| Github | [github-source](https://github.com/tuya/tyutool) | [github-release](https://github.com/tuya/tyutool/releases) |
+| Gitee | [gitee-source](https://gitee.com/tuya-open/tyutool) | [gitee-release](https://gitee.com/tuya-open/tyutool/releases) |
 
 :::note
 The `tos.py flash` command ultimately calls the tyutool_cli tool. The tyutool_gui tool is a graphical interface built on top of tyutool_cli.
