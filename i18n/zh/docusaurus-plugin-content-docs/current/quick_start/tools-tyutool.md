@@ -15,12 +15,10 @@ tyutool 的授权功能仅适用于 TuyaOpen 项目，不支持 TuyaOS 项目。
 
 tyutool 工具支持 Windows、Linux 和 macOS 三大操作系统，开发者可以根据自己的操作系统选择对应的版本。
 
-| 操作系统 | GUI 版本 | CLI 版本 |
+| 平台 | 源码使用(推荐) | 产物使用 |
 | :------: | :------: | :--: |
-| Windows | [tyutool_gui_win](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/win_tyutool_gui.zip) | [tyutool_cli_win](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/win_tyutool_cli.tar.gz) |
-| Linux | [tyutool_gui_linux](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/tyutool_gui.tar.gz) | [tyutool_cli_linux](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/tyutool_cli.tar.gz) |
-| MAC-x86 | [tyutool_gui_mac_x86](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_x86_tyutool_gui.tar.gz) | [tyutool_cli_mac_x86](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_x86_tyutool_cli.tar.gz) |
-| MAC-ARM64 | [tyutool_gui_mac_arm64](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_arm64_tyutool_gui.tar.gz) | [tyutool_cli_mac_arm64](https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_arm64_tyutool_cli.tar.gz) |
+| Github | [github-source](https://github.com/tuya/tyutool) | [github-release](https://github.com/tuya/tyutool/releases) |
+| Gitee | [gitee-source](https://gitee.com/tuya-open/tyutool) | [gitee-release](https://gitee.com/tuya-open/tyutool/releases) |
 
 :::note
 `tos.py flash` 命令最终调用的也是 tyutool_cli 工具，tyutool_gui 工具是基于 tyutool_cli 添加了图形化界面。

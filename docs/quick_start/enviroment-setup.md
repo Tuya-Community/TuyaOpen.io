@@ -127,7 +127,7 @@ Activate `tos.py`
   </SyncedTabItem>
   <SyncedTabItem value="Windows">
     ```bash
-    .\export.ps1  # powershell
+    .\export.ps1  # powershell need to use command first `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine`
 
     .\export.bat  # cmd
     ```
@@ -401,6 +401,16 @@ Two authorization methods are provided
 
 ## Common Issues
 
-- Flashing fails
+1. Flashing fails
 
     Refer to [Install the corresponding driver.](./tools-tyutool.md#always-fails-during-write-in-the-burning-process)
+
+2. `tos.py` activation fails
+
+    If activation fails, it may be because `python3-venv` is not installed. Please install it and try again
+
+    ```bash
+    sudo apt-get install python3-venv
+    ```
+
+    Delete the `./.venv` directory and reactivate
