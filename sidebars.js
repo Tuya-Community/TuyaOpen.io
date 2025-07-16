@@ -17,7 +17,7 @@ module.exports = {
           type: 'category',
           label: 'Other Tools',
           collapsed: true,
-          items: ['quick_start/tos-guide', 'quick_start/tools-tyutool', 'quick_start/new-platform'],
+          items: ['quick_start/tos-guide', 'quick_start/tools-tyutool'],
         },
         'quick_start/device-network-configuration',
         'quick_start/terminologies',
@@ -72,7 +72,11 @@ module.exports = {
       type: 'category',
       label: 'New Hardware Support',
       collapsed: true,
-      items: ['new_hardware/adding-new-chip-platform-support', 'new_hardware/adding-new-board-support'],
+      items: [
+        'new_hardware/adding-new-chip-platform-support',
+        'new_hardware/adding-new-board-support',
+        'new_hardware/new-platform',
+      ],
     },
     // ------------------------------------------------------------------
     {
