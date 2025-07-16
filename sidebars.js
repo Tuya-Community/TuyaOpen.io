@@ -58,6 +58,7 @@ module.exports = {
         'applications/demo-your-chat-bot',
         'applications/demo-tuya-iot-light',
         'applications/demo-generic-examples',
+        'applications/demo-camera-p2p',
       ],
     },
     // ------------------------------------------------------------------
