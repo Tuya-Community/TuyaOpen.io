@@ -56,6 +56,7 @@ module.exports = {
         },
         // 'applications/application-development-guide',
         'applications/demo-your-chat-bot',
+        'applications/demo-duo-eyes-mood',
         'applications/demo-tuya-iot-light',
         'applications/demo-generic-examples',
       ],
@@ -65,7 +66,7 @@ module.exports = {
       type: 'category',
       label: 'Peripherals',
       collapsed: true,
-      items: ['peripheral/support_peripheral_list'],
+      items: ['peripheral/support_peripheral_list', 'peripheral/display'],
     },
     // ------------------------------------------------------------------
     {

@@ -198,3 +198,23 @@ This project depends on the [ai_audio](/docs/applications/ai-components/ai-audio
 
    ```
    tos.py
+
+## Adapting New Boards
+### Peripheral Requirements List
+For the list of peripherals supported by tuyaopen, please refer to [Peripheral Driver List](../peripheral/support_peripheral_list.md). Any new board must have the **required** peripheral drivers listed below.
+
+| Peripheral      | Peripheral Component | Description                                                                 | Required |
+| --------------- | ------------------- | --------------------------------------------------------------------------- | -------- |
+| Audio Driver    | audio_codecs         | Can collect audio data in PCM format. Can play voice in MP3 format, 16bit, 16KHz, mono. | Yes      |
+| Display Driver  | display              | LCD screen / OLED screen                                                    | Yes      |
+| LED Driver      | led                  | Indicates whether the device is listening, etc.                             | No       |
+| Button Driver   | button               | Interrupts conversation, starts conversation in button talk mode.            | No       |
+
+### Board Adaptation
+:::tip
+The unified entry for board peripheral driver registration is `board_register_hardware`, and the implementation of this interface is placed in the board-level folder.
+
+If developers want to modify the hardware configuration of the driver (such as changing pins, chip types, etc.), please make changes in the target board's folder (boards/target environment/target board, such as `boards/T5AI/TUYA_T5AI_BOARD`).
+::::
+
+Please refer to [Adding New Board Support](../new_hardware/adding-new-board-support.md) for the steps to add and adapt new boards.

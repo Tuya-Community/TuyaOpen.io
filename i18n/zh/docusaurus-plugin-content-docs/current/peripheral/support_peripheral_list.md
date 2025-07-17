@@ -7,7 +7,7 @@ title: 外设驱动列表
 | 按键   | /          | GPIO               |
 | 指示灯 | /          | GPIO               |
 | 音频   | /          | AUDIO              |
-| 显示   | ILI9488    | RGB                |
+| [显示](./display.md)   | ILI9488    | RGB                |
 |        | ILI9341    | SPI                |
 |        | GC9A01     | SPI                |
 |        | ST7305     | SPI                |
