@@ -317,3 +317,28 @@ For the specific usage of this command, please refer to **[new platform](../new_
 This is caused by compatibility issues with the terminal emulator. You can try to select the available terminal in `cmd` and `powershell`
 
 Or use the keys **h[⬅️] j[⬇️] k[⬆️] l[➡️]** to operate
+
+### check errors
+
+1. Dependent tools are not installed or version is too low
+
+    - Please install or upgrade the corresponding tools
+
+2. submodules download fails
+
+    - Please try executing `git submodule update --init` in the `TuyaOpen` root directory
+
+### could not lock config file
+
+If the following error occurs
+
+```bash
+[WARNING]: Set repo mirro error: Cmd('git') failed due to: exit code(255)                                                                         
+  cmdline: git config --global --unset url.https://gitee.com/tuya-open/FlashDB.insteadOf                                                          
+  stderr: 'error: could not lock config file /home/huatuo/.gitconfig: File exists'                                                                
+[WARNING]: Set repo mirro error: Cmd('git') failed due to: exit code(255)                                                                         
+  cmdline: git config --global --unset url.https://gitee.com/tuya-open/littlefs.insteadOf                                                         
+  stderr: 'error: could not lock config file /home/huatuo/.gitconfig: File exists'
+```
+
+You can manually delete the file `~/.gitconfig.lock`

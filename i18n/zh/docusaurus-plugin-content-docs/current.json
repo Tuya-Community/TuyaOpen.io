@@ -15,8 +15,8 @@
         "message": "其他工具",
         "description": "The label for category Other Tools in sidebar docs"
     },
-    "sidebar.docs.category.New Hardware Support": {
-        "message": "添加新硬件",
+    "sidebar.docs.category.New Project": {
+        "message": "添加新项目",
         "description": "The label for category Other Tools in sidebar docs"
     },
     "sidebar.docs.category.Application Demo": {

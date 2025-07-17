@@ -104,6 +104,8 @@ This process is the most important part, requiring the writing of corresponding 
 
 During the template creation process, some necessary interface function templates have been generated. Implement the specific logic of these functions in the corresponding `.c` files.
 
+Since `TuyaOpen` uses exactly the same underlying interface as `TuyaOS`, you can follow the [TuyaOS Porting Guide](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_linux?id=Kcrwrf72ciez5#title-1-Adapt-RTC) and [RTOS Porting Guide](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-1-Adapt-entry-point) for adaptation.
+
 ![tuyaos adapter src](../images/new-platform/new-platform-src.png)
 
 ### Build and Link

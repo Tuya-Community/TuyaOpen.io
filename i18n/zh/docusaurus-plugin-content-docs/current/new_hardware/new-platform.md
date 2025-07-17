@@ -105,6 +105,8 @@ title: 创建platform
 
 在创建模板的过程中，已经将一些必要的接口函数模板生成，在对应的`.c`文件中，实现这些函数的具体逻辑
 
+因为`TuyaOpen` 使用的和 `TuyaOS` 完全一致的底层接口，可以按照 [TuyaOS移植指南](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_linux?id=Kcrwrf72ciez5#title-1-适配-RTC) 和 [RTOS移植指南](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-1-适配程序入口) 进行适配。
+
 ![tuyaos adapter src](../../../../../docs/images/new-platform/new-platform-src.png)
 
 ### 编译和链接

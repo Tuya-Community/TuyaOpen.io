@@ -70,13 +70,9 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'New Hardware Support',
+      label: 'New Project',
       collapsed: true,
-      items: [
-        'new_hardware/adding-new-chip-platform-support',
-        'new_hardware/adding-new-board-support',
-        'new_hardware/new-platform',
-      ],
+      items: ['new_hardware/new-platform', 'new_hardware/new-board'],
     },
     // ------------------------------------------------------------------
     {

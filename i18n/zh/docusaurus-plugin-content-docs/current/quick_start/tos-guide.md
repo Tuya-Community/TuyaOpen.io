@@ -301,3 +301,28 @@ Options:
 这是终端模拟器兼容性问题所导致，您可以尝试以下操作：
 - 在 `cmd` 和 `powershell` 中选择可用的终端。
 - 使用按键 **h（⬅️）、j（⬇️）、k（⬆️）、l（➡️）** 进行方向控制操作。
+
+### check 报错
+
+1. 依赖工具未安装或版本过低
+
+    - 请安装或升级对应的工具
+
+2. submodules 下载失败
+
+    - 请尝试在 `TuyaOpen` 根目录执行 `git submodule update --init`
+
+###  could not lock config file
+
+若出现如下报错
+
+```bash
+[WARNING]: Set repo mirro error: Cmd('git') failed due to: exit code(255)                                                                         
+  cmdline: git config --global --unset url.https://gitee.com/tuya-open/FlashDB.insteadOf                                                          
+  stderr: 'error: could not lock config file /home/huatuo/.gitconfig: File exists'                                                                
+[WARNING]: Set repo mirro error: Cmd('git') failed due to: exit code(255)                                                                         
+  cmdline: git config --global --unset url.https://gitee.com/tuya-open/littlefs.insteadOf                                                         
+  stderr: 'error: could not lock config file /home/huatuo/.gitconfig: File exists'
+```
+
+可手动删除文件 `~/.gitconfig.lock`
