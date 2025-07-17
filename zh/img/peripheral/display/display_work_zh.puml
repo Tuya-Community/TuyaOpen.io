@@ -1,0 +1,90 @@
+@startuml 
+
+participant Application as App #Lavender
+participant "Display Abstract Layer" as TAL #LightCyan
+participant "Display Device Driver" as TDD #Aquamarine
+participant "Board" as Bd #LavenderBlush
+
+== 注册显示屏设备 ==
+Bd -> TDD : 调用目标驱动注册接口
+activate TDD
+note right Bd
+    传入设备名
+    传入设备硬件配置参数
+end note
+TDD -> TAL : 实例化并注册显示屏设备驱动
+activate TAL
+note right TDD
+    注册设备名
+    注册初始化序列
+    注册显示屏类型，驱动接口等
+end note
+note over TAL
+    创建设备节点
+    将设备节点挂载到管理列表
+end note
+TAL --> TDD : 返回注册结果
+deactivate TAL
+TDD --> Bd : 返回注册结果
+deactivate TDD
+== 获取设备控制句柄 ==
+App -> TAL : 查找设备
+activate TAL
+note over TAL
+    根据设备名称在列表中查找句柄
+end note
+TAL --> App : 返回设备控制句柄
+deactivate TAL
+== 打开设备 ==
+App -> TAL : 打开设备
+activate TAL
+TAL -> TDD : 调用打开设备驱动
+activate TDD
+note right TDD
+    初始化驱动总线
+    初始化屏幕参数等
+end note
+TDD --> TAL : 返回驱动打开结果
+deactivate TDD
+TAL --> App : 返回设备打开结果
+deactivate TAL
+== 创建 Frame Buffer ==
+App -> TAL : 创建 Frame Buffer
+activate TAL
+note right TAL
+    分配内存
+    初始化 Frame Buffer 参数
+end note
+TAL --> App : 返回 Frame Buffer 创建结果和地址
+deactivate TAL
+
+== 刷新显示 ==
+App -> TAL: 调用屏显接口
+activate TAL
+note right App
+    传入 Frame Buffer 地址
+end note
+TAL -> TDD : 调用驱动刷新显示接口
+activate TDD
+note right TDD
+    将Frame Buffer 中的内容显示到屏幕
+end note
+TDD --> TAL : 返回刷新结果
+deactivate TDD
+TAL --> App : 返回刷新结果
+deactivate TAL
+
+== 关闭设备 ==
+App -> TAL : 关闭设备
+activate TAL
+TAL -> TDD : 调用关闭设备驱动
+activate TDD
+note right TDD
+    去初始化驱动总线
+    去初始化屏幕参数等
+end note
+TDD --> TAL : 返回驱动关闭结果
+deactivate TDD
+TAL --> App : 返回设备关闭结果
+deactivate TAL
+@enduml

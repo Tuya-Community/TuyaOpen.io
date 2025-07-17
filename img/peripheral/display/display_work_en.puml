@@ -1,0 +1,90 @@
+@startuml 
+
+participant Application as App #Lavender
+participant "Display Abstract Layer" as TAL #LightCyan
+participant "Display Device Driver" as TDD #Aquamarine
+participant "Board" as Bd #LavenderBlush
+
+== Register Display Device ==
+Bd -> TDD : Call target driver registration interface
+activate TDD
+note right Bd
+    Pass device name
+    Pass device hardware configuration parameters
+end note
+TDD -> TAL : Instantiate and register display device driver
+activate TAL
+note right TDD
+    Register device name
+    Register initialization sequence
+    Register display type, driver interface, etc.
+end note
+note over TAL
+    Create device node
+    Mount device node to management list
+end note
+TAL --> TDD : Return registration result
+deactivate TAL
+TDD --> Bd : Return registration result
+deactivate TDD
+== Get Device Control Handle ==
+App -> TAL : Find device
+activate TAL
+note over TAL
+    Find handle in list by device name
+end note
+TAL --> App : Return device control handle
+deactivate TAL
+== Open Device ==
+App -> TAL : Open device
+activate TAL
+TAL -> TDD : Call open device driver
+activate TDD
+note right TDD
+    Initialize driver bus
+    Initialize screen parameters, etc.
+end note
+TDD --> TAL : Return driver open result
+deactivate TDD
+TAL --> App : Return device open result
+deactivate TAL
+== Create Frame Buffer ==
+App -> TAL : Create Frame Buffer
+activate TAL
+note right TAL
+    Allocate memory
+    Initialize Frame Buffer parameters
+end note
+TAL --> App : Return Frame Buffer creation result and address
+deactivate TAL
+
+== Refresh Display ==
+App -> TAL: Call display interface
+activate TAL
+note right App
+    Pass Frame Buffer address
+end note
+TAL -> TDD : Call driver refresh display interface
+activate TDD
+note right TDD
+    Display Frame Buffer content to screen
+end note
+TDD --> TAL : Return refresh result
+deactivate TDD
+TAL --> App : Return refresh result
+deactivate TAL
+
+== Close Device ==
+App -> TAL : Close device
+activate TAL
+TAL -> TDD : Call close device driver
+activate TDD
+note right TDD
+    Deinitialize driver bus
+    Deinitialize screen parameters, etc.
+end note
+TDD --> TAL : Return driver close result
+deactivate TDD
+TAL --> App : Return device close result
+deactivate
+@enduml
