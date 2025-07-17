@@ -125,7 +125,7 @@ title: 双眼屏情绪机器人应用
 
 ## 工作流程
 
-该工程依赖应用组件 [ai_audio](./ai-components/ai-audio-asr-impl) , 该组件主要实现了采集音频，播放音频，创建云端 AI 会话等功能。
+该工程依赖应用组件 [ai_audio](/docs/applications/ai-components/ai-audio-asr-impl) , 该组件主要实现了采集音频，播放音频，创建云端 AI 会话等功能。
 
 - **长按对话模式**
 

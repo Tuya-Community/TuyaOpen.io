@@ -7,7 +7,7 @@ title: Peripheral Driver List
 | Button    | /               | GPIO                 |
 | Indicator | /               | GPIO                 |
 | Audio     | /               | AUDIO                |
-| [Display](./display.md)   | ILI9488         | RGB                  |
+| [Display](../peripheral/display.md)   | ILI9488         | RGB                  |
 |           | ILI9341         | SPI                  |
 |           | GC9A01          | SPI                  |
 |           | ST7305          | SPI                  |
