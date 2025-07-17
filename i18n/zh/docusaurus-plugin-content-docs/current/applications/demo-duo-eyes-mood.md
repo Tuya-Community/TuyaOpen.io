@@ -125,7 +125,7 @@ title: 双眼屏情绪机器人应用
 
 ## 工作流程
 
-该工程依赖应用组件 [ai_audio](/docs/applications/ai-components/ai-audio-asr-impl) , 该组件主要实现了采集音频，播放音频，创建云端 AI 会话等功能。
+该工程依赖应用组件 [ai_audio](/docs/applications/ai-components/ai-audio-asr-impl.md) , 该组件主要实现了采集音频，播放音频，创建云端 AI 会话等功能。
 
 - **长按对话模式**
 
@@ -167,7 +167,7 @@ title: 双眼屏情绪机器人应用
 
 ## 适配新板子
 ### 外设要求列表
-tuyaopen 支持的外设列表可参考 [外设驱动列表](../peripheral/support_peripheral_list.mdsupport_peripheral_list.md)。想要新增的板子必须要有列表中 **必要** 的外设驱动。
+tuyaopen 支持的外设列表可参考 [外设驱动列表](../peripheral/support_peripheral_list.md)。想要新增的板子必须要有列表中 **必要** 的外设驱动。
 
   | 外设 | 外设组件 | 说明 | 是否必要 |
   | ---- | ------- | ---- | ------- |
