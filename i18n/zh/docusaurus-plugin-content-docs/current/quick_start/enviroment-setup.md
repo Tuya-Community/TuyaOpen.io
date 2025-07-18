@@ -8,11 +8,14 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 ## 概述
 
-首先，完成在不同系统（Linux、Windows、macOS）中的必要工具准备。
+完成在不同系统（Linux、Windows、macOS）中的必要工具准备。
 
-然后，使用 `tos.py` 工具对项目进行配置、编译、烧录等操作。
+## 硬件准备
 
-最后，对设备授权并使用 **涂鸦** App 进行配网。
+开始前，请准备以下资源：
+ - **TuyaOpen** [支持的开发板或模组](../hardware-specific/index.md#硬件平台)
+ - USB 数据线
+ - 电脑（支持 Windows/Linux/macOS 系统）
 
 ## 环境准备
 
@@ -189,208 +192,11 @@ git submodule update --init
   </SyncedTabItem>
 </SyncedTabs>
 
-关于 `tos.py` 更详细的说明方法，可使用命令 `tos.py --help` 进行查看，或参考 [tos.py工具使用](./tos-guide.md)。
-
-## 项目操作
-
-### 选择项目
-
-TuyaOpen 中，可编译项目可在 `apps`、`example` 中进行选择。
-
-这里以`switch_demo`为例。首先，进入项目目录。
-
-```bash
-cd apps/tuya_cloud/switch_demo
-```
-
-### 配置项目
-
-使用命令 `tos.py config choice`，对项目进行配置。
-
-该命令会提供已经验证过的配置选项，用户可根据自己的硬件设备进行选择。
-
-```bash
-❯ tos.py config choice
-[INFO]: Running tos.py ...
-[INFO]: Fullclean success.
---------------------
-1. LN882H.config
-2. EWT103-W15.config
-3. Ubuntu.config
-4. ESP32-C3.config
-5. ESP32-S3.config
-6. ESP32.config
-7. T3.config
-8. T5AI.config
-9. T2.config
-10. BK7231X.config
---------------------
-Input "q" to exit.
-Choice config file:
-```
-
-这里以涂鸦 T5 系列开发板为例，需要选择 `T5AI.config`。
-
-### 编译产物
-
-编译项目，使用命令 `tos.py build`。
-
-```bash
-❯ tos.py build
-...
-[INFO]: ******************************
-[INFO]: /xxx/TuyaOpen/apps/tuya_cloud/switch_demo/.build/bin/switch_demo_QIO_1.0.0.bin
-[INFO]: ******************************
-[INFO]: ******* Build Success ********
-[INFO]: ******************************
-
-```
-
-### 清理产物
-
-清理编译缓存，使用命令 `tos.py clean` 或 `tos.py clean -f`（深度清理）。
-
-```bash
-❯ tos.py clean -f
-[INFO]: Running tos.py ...
-[INFO]: Fullclean success.
-```
-
-## 烧录、日志和授权
-
-### 烧录
-
-将设备与 PC 连接，若使用虚拟机，请将串口映射到虚拟机中。
-
-:::tip
-对于 Linux/Mac 用户，需要开启串口使用权限，执行命令 `sudo usermod -aG dialout $USER`，并重启系统。
-:::
-
-烧录固件，使用命令 `tos.py flash`，并选择烧录口。若有多个串口可以依次尝试。
-
-```bash
-❯ tos.py flash
-[INFO]: Run Tuya Uart Tool.
-[INFO]: Use default baudrate: [921600]
-[INFO]: Use default start address: [0x00]
---------------------
-1. /dev/ttyACM1
-2. /dev/ttyACM0
---------------------
-Select serial port: 2
-[INFO]: Waiting Reset ...
-[INFO]: unprotect flash OK.
-[INFO]: sync baudrate 921600 success
-Erasing: ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 5 bytes/s   0:00:07 / 0:00:00
-[INFO]: Erase flash success
-Writing: ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 100% 12 bytes/s ⠸ 0:00:38 / 0:00:01
-[INFO]: Write flash success
-[INFO]: CRC check success
-[INFO]: Reboot done
-[INFO]: Flash write success.
-```
-
-<details>
-<summary>若出现`Port [xxx] may be busy`提示：</summary>
-
-可等待 1 分钟左右，再次尝试。对于不同的虚拟机和串口芯片，映射过程所需时间不同。
-</details>
-
-
-### 日志
-
-查看日志，使用命令 `tos.py monitor`，并选择日志口。
-
-若想查看完整日志，可在命令后，手动复位设备。
-
-```bash
-❯ tos.py monitor
-[INFO]: Run Tuya Uart Tool.
---------------------
-1. /dev/ttyACM1
-2. /dev/ttyACM0
---------------------
-Select serial port: 1
-[INFO]: Open Monitor. (Quit: Ctrl+c)
-[01-01 00:03:25 ty D][tuya_health.c:75] feed watchdog
-[01-01 00:03:35 ty D][tuya_health.c:75] feed watchdog
-[01-01 00:03:45 ty D][tuya_health.c:75] feed watchdog
-[01-01 00:03:55 ty D][tuya_health.c:75] feed watchdog
-```
-
-退出日志查看，按键 `Ctrl+c` 并回车。
-
-```bash
-^C[INFO]: Press "Entry" ...
-
-[INFO]: Monitor exit.
-```
-
-### 授权
-
-关于授权码的概念，请查看 [授权码说明](./index.md#授权码)。
-
-您可以使用以下两种授权方式：
-
-- 授权命令
-
-    使用命令 `tos.py monitor -b 115200`。
-
-    :::tip
-    这里选择烧录时使用的串口号。
-    :::
-
-    输入交互命令，使用 `auth`，回车，得到如下信息：
-
-    ```bash
-    [INFO]: Run Tuya Uart Tool.
-    --------------------
-    1. /dev/ttyACM1
-    2. /dev/ttyACM0
-    --------------------
-    Select serial port: 2
-    [INFO]: Open Monitor. (Quit: Ctrl+c)
-    auth
-    auth
-    Use like: auth uuidxxxxxxxxxxxxxxxx keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    tuya>
-    ```
-
-    根据提示使用 `auth`，写入 `uuid `和 `authkey`。
-
-    ```bash
-    tuya>
-    auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
-    auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
-    Authorization write succeeds.
-    ```
-
-    若设备不支持授权命令，请使用下文的方式，通过修改头文件来配置授权信息。
-
-- 修改头文件
-
-    在项目路径中找到 `tuya_config.h` 文件。所选的项目不同，文件所在目录可能有差异（`src` 或 `include`）。
-
-    修改文件中授权信息的配置，如下：
-
-    ```c++
-    #define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"                    // Please change the correct uuid
-    #define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"        // Please change the correct authkey
-    ```
-
-    重新编译、烧录，然后启动设备。
-
-## 设备配网
-
-请参考 [设备配网指导](./device-network-configuration.md)。
+关于 `tos.py` 更详细的说明方法，可使用命令 `tos.py --help` 进行查看，或参考 [tos.py工具使用](../advanced_use/tos-guide.md)。
 
 ## 常见问题
 
-1. 烧录失败
-
-    参考[安装对应驱动](./tools-tyutool.md#烧录过程中总是在write时失败)
-
-2. `tos.py`激活失败
+1. `tos.py`激活失败
 
     若激活失败，可能是因为没有安装`python3-venv`，请安装后重试
 
