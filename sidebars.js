@@ -72,7 +72,7 @@ module.exports = {
       type: 'category',
       label: 'New Project',
       collapsed: true,
-      items: ['new_hardware/new-platform', 'new_hardware/new-board'],
+      items: ['new_hardware/new-platform', 'new_hardware/new-board', 'new_hardware/new-project'],
     },
     // ------------------------------------------------------------------
     {
