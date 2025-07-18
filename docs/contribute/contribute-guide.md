@@ -18,7 +18,7 @@ Welcome to contribute to [TuyaOpen](https://github.com/tuya/TuyaOpen) through Gi
 3. Provide documentation/examples for new features
 4. Confirm documentation meets [Writing Standards](./contribute-guide.md)
 5. Group related changes in separate Pull Requests
-6. Board adaptations must comply with [Chip Adaptation Guidelines](../new_hardware/adding-new-chip-platform-support.md)
+6. Board adaptations must comply with [Chip Adaptation Guidelines](../new_hardware/new-platform.md)
 
 ## Submitting Pull Requests
 

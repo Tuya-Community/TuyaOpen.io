@@ -6,22 +6,31 @@ module.exports = {
     {
       type: 'category',
       label: 'Getting Started',
-      link: {
-        type: 'doc',
-        id: 'quick_start/index',
-      },
-      collapsed: false,
+      collapsed: true,
       items: [
+        'quick_start/unboxing',
         'quick_start/enviroment-setup',
+        'quick_start/project-compilation',
+        'quick_start/firmware-burning',
+        'quick_start/equipment-authorization',
+        'quick_start/device-network-configuration',
+      ],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
+      label: 'Advanced Use',
+      collapsed: true,
+      items: [
+        'advanced_use/terminologies',
+        'advanced_use/project-walkthrough',
+        'advanced_use/compilation-guide',
         {
           type: 'category',
           label: 'Other Tools',
           collapsed: true,
-          items: ['quick_start/tos-guide', 'quick_start/tools-tyutool', 'quick_start/new-platform'],
+          items: ['advanced_use/tos-guide', 'advanced_use/tools-tyutool'],
         },
-        'quick_start/device-network-configuration',
-        'quick_start/terminologies',
-        'quick_start/project-walkthrough',
       ],
     },
     // ------------------------------------------------------------------
@@ -71,9 +80,9 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'New Hardware Support',
+      label: 'New Project',
       collapsed: true,
-      items: ['new_hardware/adding-new-chip-platform-support', 'new_hardware/adding-new-board-support'],
+      items: ['new_hardware/new-platform', 'new_hardware/new-board', 'new_hardware/new-project'],
     },
     // ------------------------------------------------------------------
     {

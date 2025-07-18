@@ -109,7 +109,7 @@ Commands:
 
 在项目目录中，执行命令 `tos.py config choice`。
 
-会展示当前项目所支持的所有固化配置，可直接使用，被选择的配置会同步到项目路径下的 [app_default.config](./project-walkthrough.md#app_defaultconfig) 文件。
+会展示当前项目所支持的所有固化配置，可直接使用，被选择的配置会同步到项目路径下的 [app_default.config](./project-walkthrough#app_defaultconfig) 文件。
 
 ```bash
 ❯ tos.py config choice
@@ -150,7 +150,7 @@ Choice config file:
 
 ![menu](https://images.tuyacn.com/fe-static/docs/img/0ad1b8c6-303d-411c-bfe7-c25e17968c05.png)
 
-使用者可以根据项目需求修改配置选项，保存后会同步修改 [app_default.config](./project-walkthrough.md#app_defaultconfig) 文件。
+使用者可以根据项目需求修改配置选项，保存后会同步修改 [app_default.config](./project-walkthrough#app_defaultconfig) 文件。
 
 :::note
 该操作可能会改变所使用的工具链，所以`menu`操作，会先执行一次深度清理。
@@ -164,7 +164,7 @@ Choice config file:
 
 `save` 会将当前项目所使用的配置保存为固化配置，方便以后使用。
 
-具体操作为将 [app_default.config](./project-walkthrough.md#app_defaultconfig) 文件重新命名后保存到 `config` 目录中。
+具体操作为将 [app_default.config](./project-walkthrough#app_defaultconfig) 文件重新命名后保存到 `config` 目录中。
 
 ```bash
 ❯ tos.py config save
@@ -256,7 +256,7 @@ Options:
   -h, --help          Show this message and exit.
 ```
 
-同时，也可以使用 `monitor` 功能写入授权码，参考：[授权](./enviroment-setup.md#授权)。
+同时，也可以使用 `monitor` 功能写入授权码，参考：[授权](./enviroment-setup#授权)。
 
 如需退出日志查看，按键 `Ctrl + C`，并回车。
 
@@ -292,7 +292,7 @@ Options:
 
 ### new platform
 
-该命令的具体使用方法，请参考 **[new platform](./new-platform.md)**。
+该命令的具体使用方法，请参考 **[new platform](../new_hardware/new-platform)**。
 
 ## 常见问题
 
@@ -301,3 +301,28 @@ Options:
 这是终端模拟器兼容性问题所导致，您可以尝试以下操作：
 - 在 `cmd` 和 `powershell` 中选择可用的终端。
 - 使用按键 **h（⬅️）、j（⬇️）、k（⬆️）、l（➡️）** 进行方向控制操作。
+
+### check 报错
+
+1. 依赖工具未安装或版本过低
+
+    - 请安装或升级对应的工具
+
+2. submodules 下载失败
+
+    - 请尝试在 `TuyaOpen` 根目录执行 `git submodule update --init`
+
+###  could not lock config file
+
+若出现如下报错
+
+```bash
+[WARNING]: Set repo mirro error: Cmd('git') failed due to: exit code(255)                                                                         
+  cmdline: git config --global --unset url.https://gitee.com/tuya-open/FlashDB.insteadOf                                                          
+  stderr: 'error: could not lock config file /home/huatuo/.gitconfig: File exists'                                                                
+[WARNING]: Set repo mirro error: Cmd('git') failed due to: exit code(255)                                                                         
+  cmdline: git config --global --unset url.https://gitee.com/tuya-open/littlefs.insteadOf                                                         
+  stderr: 'error: could not lock config file /home/huatuo/.gitconfig: File exists'
+```
+
+可手动删除文件 `~/.gitconfig.lock`

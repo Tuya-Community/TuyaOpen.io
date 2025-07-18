@@ -8,11 +8,13 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 ## Overview
 
-First, complete the necessary tool preparation on different systems (Linux, Windows, Mac)
+Complete the necessary tool preparation on different systems (Linux, Windows, Mac)
 
-Then use the `tos.py` tool to configure, compile, flash, and perform other operations on the project
+## Hardware Preparation
 
-Finally, authorize the device and use the Tuya APP for network configuration
+ - **TuyaOpen** [Supported development boards or modules](../hardware-specific/index.md#hardware-platforms)
+ - USB data cable
+ - Computer (Windows / Linux / macOS)
 
 ## Environment Preparation
 
@@ -191,221 +193,12 @@ Use the following command to deactivate `tos.py`
 
 For more detailed information about `tos.py`, you can use the command `tos.py --help` to view
 
-Or check [tos.py Tool Usage](./tos-guide.md)
+Or check [tos.py Tool Usage](../advanced_use/tos-guide.md)
 
-## Project Operations
-
-### Select Project
-
-In TuyaOpen, compilable projects can be selected from `apps` and `example` directories
-
-Here we use `switch_demo` as an example
-
-Enter the project directory
-
-```bash
-cd apps/tuya_cloud/switch_demo
-```
-
-### Configure Project
-
-Use command `tos.py config choice` to configure the project
-
-This command will provide verified configuration options, users can select based on their hardware devices
-
-```bash
-❯ tos.py config choice
-[INFO]: Running tos.py ...
-[INFO]: Fullclean success.
---------------------
-1. LN882H.config
-2. EWT103-W15.config
-3. Ubuntu.config
-4. ESP32-C3.config
-5. ESP32-S3.config
-6. ESP32.config
-7. T3.config
-8. T5AI.config
-9. T2.config
-10. BK7231X.config
---------------------
-Input "q" to exit.
-Choice config file:
-```
-
-Here we use Tuya T5 series development board as an example, select `T5AI.config`
-
-### Build Artifacts
-
-Build the project using command `tos.py build`
-
-```bash
-❯ tos.py build
-...
-[INFO]: ******************************
-[INFO]: /xxx/TuyaOpen/apps/tuya_cloud/switch_demo/.build/bin/switch_demo_QIO_1.0.0.bin
-[INFO]: ******************************
-[INFO]: ******* Build Success ********
-[INFO]: ******************************
-
-```
-
-### Clean Artifacts
-
-Clean compilation cache using command `tos.py clean` or `tos.py clean -f` (deep clean)
-
-```bash
-❯ tos.py clean -f
-[INFO]: Running tos.py ...
-[INFO]: Fullclean success.
-```
-
-## Flashing, Logging and Authorization
-
-### Flashing
-
-Connect the device to PC, if using virtual machine, please map the serial port to the virtual machine
-
-:::tip
-For Linux / Mac users, you need to enable serial port usage permissions, execute command
-
-`sudo usermod -aG dialout $USER`
-
-and restart the system
-:::
-
-Flash the firmware using command `tos.py flash`, and select the flashing port
-
-If there are multiple serial ports, you can try them one by one
-
-```bash
-❯ tos.py flash
-[INFO]: Run Tuya Uart Tool.
-[INFO]: Use default baudrate: [921600]
-[INFO]: Use default start address: [0x00]
---------------------
-1. /dev/ttyACM1
-2. /dev/ttyACM0
---------------------
-Select serial port: 2
-[INFO]: Waiting Reset ...
-[INFO]: unprotect flash OK.
-[INFO]: sync baudrate 921600 success
-Erasing: ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 5 bytes/s   0:00:07 / 0:00:00
-[INFO]: Erase flash success
-Writing: ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 100% 12 bytes/s ⠸ 0:00:38 / 0:00:01
-[INFO]: Write flash success
-[INFO]: CRC check success
-[INFO]: Reboot done
-[INFO]: Flash write success.
-```
-
-<details>
-<summary>If you see `Port [xxx] may be busy` prompt</summary>
-
-You can wait for about 1 minute and try again
-
-For different virtual machines and serial port chips, the mapping process takes different time
-</details>
-
-### Logging
-
-View logs using command `tos.py monitor`, and select the log port
-
-If you want to view complete logs, you can manually reset the device after the command
-
-```bash
-❯ tos.py monitor
-[INFO]: Run Tuya Uart Tool.
---------------------
-1. /dev/ttyACM1
-2. /dev/ttyACM0
---------------------
-Select serial port: 1
-[INFO]: Open Monitor. (Quit: Ctrl+c)
-[01-01 00:03:25 ty D][tuya_health.c:75] feed watchdog
-[01-01 00:03:35 ty D][tuya_health.c:75] feed watchdog
-[01-01 00:03:45 ty D][tuya_health.c:75] feed watchdog
-[01-01 00:03:55 ty D][tuya_health.c:75] feed watchdog
-```
-
-Exit log viewing by pressing `Ctrl+c`, then press Enter
-
-```bash
-^C[INFO]: Press "Entry" ...
-
-[INFO]: Monitor exit.
-```
-
-### Authorization
-
-For information about authorization codes, please check [Authorization Code Description](./index.md#license-key)
-
-Two authorization methods are provided
-
-1. Authorization Command
-
-    Use command `tos.py monitor -b 115200`
-
-    :::tip
-    Here select the serial port used during flashing
-    :::
-
-    Input interactive command, `auth`, press Enter
-
-    You will get the following information
-
-    ```bash
-    [INFO]: Run Tuya Uart Tool.
-    --------------------
-    1. /dev/ttyACM1
-    2. /dev/ttyACM0
-    --------------------
-    Select serial port: 2
-    [INFO]: Open Monitor. (Quit: Ctrl+c)
-    auth
-    auth
-    Use like: auth uuidxxxxxxxxxxxxxxxx keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    tuya>
-    ```
-
-    According to the prompt, use `auth` to write `uuid` and `authkey`
-
-    ```bash
-    tuya>
-    auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
-    auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
-    Authorization write succeeds.
-    ```
-
-    If the device doesn't support authorization command, use method 2 to configure authorization information
-
-2. Modify Header File
-
-    Find the `tuya_config.h` file in the project path
-
-    The file location may vary depending on the selected project, in `src` or `include` directory
-
-    Modify the authorization information configuration in the file, such as
-
-    ```c++
-    #define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"                    // Please change the correct uuid
-    #define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"        // Please change the correct authkey
-    ```
-
-    Recompile, flash, and start the device
-
-## Device Network Configuration
-
-[Device Network Configuration Guide](./device-network-configuration.md)
 
 ## Common Issues
 
-1. Flashing fails
-
-    Refer to [Install the corresponding driver.](./tools-tyutool.md#always-fails-during-write-in-the-burning-process)
-
-2. `tos.py` activation fails
+1. `tos.py` activation fails
 
     If activation fails, it may be because `python3-venv` is not installed. Please install it and try again
 

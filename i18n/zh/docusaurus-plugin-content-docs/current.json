@@ -7,6 +7,10 @@
         "message": "快速开始",
         "description": "The label for category Quick Start in sidebar docs"
     },
+    "sidebar.docs.category.Advanced Use": {
+        "message": "进阶使用",
+        "description": "The label for category Advanced Use in sidebar docs"
+    },
     "sidebar.docs.category.Environment Setup": {
         "message": "环境设置",
         "description": "The label for category Environment Setup in sidebar docs"
@@ -15,8 +19,8 @@
         "message": "其他工具",
         "description": "The label for category Other Tools in sidebar docs"
     },
-    "sidebar.docs.category.New Hardware Support": {
-        "message": "添加新硬件",
+    "sidebar.docs.category.New Project": {
+        "message": "添加新项目",
         "description": "The label for category Other Tools in sidebar docs"
     },
     "sidebar.docs.category.Application Demo": {

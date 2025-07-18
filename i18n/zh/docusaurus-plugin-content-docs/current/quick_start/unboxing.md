@@ -1,5 +1,5 @@
 ---
-title: 开始上手
+title: 快速上手
 ---
 
 import ChipRow from '@site/src/components/ChipRow';
@@ -15,13 +15,9 @@ import ChipRow from '@site/src/components/ChipRow';
  - USB 数据线
  - 电脑（支持 Windows/Linux/macOS 系统）
 
-## 开发环境搭建
+## 下载固件
 
-目前 TuyaOpen 支持在 Windows、Linux 和 macOS 三大操作系统上进行开发和编译工作，具体芯片的支持情况，请参考 **[支持 Platform 列表](../about-tuyaopen.md#支持-platform-列表)** 。开发者可以根据自己手上的硬件选择对应的操作系统进行 **[环境搭建](./enviroment-setup.md)** 和开发。
-
-:::tip
 如果您想要快速体验 TuyaOpen 或验证手上硬件，可以先跳过开发环境搭建，从 TuyaOpen 的 **[发布页面](https://github.com/tuya/TuyaOpen/releases)** 下载固件进行烧录和测试。
-:::
 
 :::info
 目前 TuyaOpen 上提供 `switch_demo` 和 `your_chat_bot` 两种固件。`switch_demo` 是 IoT 设备固件，支持所有芯片；`your_chat_bot` 是 AI 设备固件，目前仅支持 T5AI 和 ESP32-S3。
@@ -31,7 +27,7 @@ import ChipRow from '@site/src/components/ChipRow';
 
 ## 固件烧录
 
-您可以通过 `tyutool_gui` 工具进行固件烧录。具体使用说明请参考 [tyutool_gui 使用说明](./tools-tyutool.md)。
+您可以通过 `tyutool_gui` 工具进行固件烧录。具体使用说明请参考 [tyutool_gui 使用说明](../advanced_use/tools-tyutool.md)。
 
 ## 设备授权
 
@@ -56,7 +52,7 @@ Tuyaopen Framework 包括：
 
 ### 写入授权码
 
-如果需要使用 [涂鸦开发者平台](https://platform.tuya.com/) 的功能，需要先对设备进行授权。可以通过 `tyutool_gui` 工具进行 [设备授权](./tools-tyutool.md#设备授权信息写入)。
+如果需要使用 [涂鸦开发者平台](https://platform.tuya.com/) 的功能，需要先对设备进行授权。可以通过 `tyutool_gui` 工具进行 [设备授权](./equipment-authorization.md)。
 
 ## 设备配网
 

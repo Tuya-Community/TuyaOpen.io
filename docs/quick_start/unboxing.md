@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Unboxing Use
 ---
 
 import ChipRow from '@site/src/components/ChipRow';
@@ -14,13 +14,9 @@ This document is intended to help developers quickly get started with the [TuyaO
  - USB data cable
  - Computer (Windows / Linux / macOS)
 
-## Setting Up the Development Environment
+## Download the Firmware
 
-Currently, TuyaOpen supports development and compilation on Windows, Linux, and macOS. For specific chip support, please refer to the **[Supported Platform List](../about-tuyaopen.md#supported-platform-list)**. Developers can choose the appropriate operating system for **[environment setup](./enviroment-setup.md)** and development according to their hardware.
-
-:::tip
 If you want to quickly experience TuyaOpen or verify your hardware, you can skip the environment setup and download the firmware for flashing and testing from the **[TuyaOpen Releases page](https://github.com/tuya/TuyaOpen/releases)**.
-:::
 
 :::info
 Currently, TuyaOpen provides two types of firmware: switch_demo and your_chat_bot. switch_demo is IoT device firmware and supports all chips; your_chat_bot is AI device firmware and currently only supports T5AI and ESP32-S3.
@@ -30,7 +26,7 @@ After successfully compiling TuyaOpen to generate the firmware or downloading th
 
 ## Firmware Flashing
 
-You can use the tyutool_gui tool for firmware flashing. For detailed instructions, please refer to [tyutool_gui User Guide](./tools-tyutool.md).
+You can use the tyutool_gui tool for firmware flashing. For detailed instructions, please refer to [tyutool_gui User Guide](../advanced_use/tools-tyutool.md).
 
 ## Device Authorization
 
@@ -55,7 +51,7 @@ All versions require a **dedicated TuyaOpen License Key**. Other license keys wi
 
 ### Writing the License Key
 
-When you need to use the functions of the Tuya IoT platform, you must first authorize the device. You can use the tyutool_gui tool for [device authorization](./tools-tyutool.md#device-authorization-information-writing).
+When you need to use the functions of the Tuya IoT platform, you must first authorize the device. You can use the tyutool_gui tool for [device authorization](./equipment-authorization.md).
 
 ## Device Network Configuration
 
