@@ -108,13 +108,13 @@ Authorization write succeeds.
 
 在**MacOS 13**中在`隐私与安全性`中操作
 
-![MacOS 13](../../../../../docs/images/tyutool/macos13.png)
+![MacOS 13](/img/tyutool/macos13.png)
 
   </TabItem>
   <TabItem value="15" label="MacOS 15">
 
 在**MacOS 15**中`设置`中搜索`login`，操作
 
-![MacOS 15](../../../../../docs/images/tyutool/macos15.png)
+![MacOS 15](/img/tyutool/macos15.png)
   </TabItem>
 </Tabs>

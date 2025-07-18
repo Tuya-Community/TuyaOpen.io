@@ -17,7 +17,7 @@ title: 创建platform
 
 1. 输入命令`tos.py new platform`：会提示你输入新平台的名称（例如 `my_new_chip`）
 
-    ![input new platform](../../../../../docs/images/new-platform/new-platform-input.png)
+    ![input new platform](/img/new-platform/new-platform-input.png)
 
 1. 生成Kconfig配置：
 
@@ -25,27 +25,27 @@ title: 创建platform
 
     * 弹出一个 `menuconfig` 交互界面，让你选择这个新平台需要支持哪些基础功能（如WIFI, BLE, GPIO, I2C等）。你的选择会保存在一个 `default.config` 文件中。
 
-    ![menuconfig](../../../../../docs/images/new-platform/new-platform-menu.png)
+    ![menuconfig](/img/new-platform/new-platform-menu.png)
 
 1. 创建平台目录：在 platform/ 目录下创建一个以你输入名称命名的文件夹（`platform/my_new_chip`）
 
-    ![new platform floder](../../../../../docs/images/new-platform/new-platform-filelist.png)
+    ![new platform floder](/img/new-platform/new-platform-filelist.png)
 
 1. 复制适配层模板：根据你在上一步的选择，从 `tools/porting/adapter` 目录中复制对应的硬件抽象层（TKL - Tuya Kernel Layer）接口模板到 `platform/my_new_chip/tuyaos/` 目录下。
 
     * 例如，如果你勾选了WIFI功能，它就会把WIFI相关的 tkl_init_wifi.c 和 tkl_init_wifi.h 等文件的模板复制过去。
 
-    ![new tuyaos](../../../../../docs/images/new-platform/new-platform-generate.png)
+    ![new tuyaos](/img/new-platform/new-platform-generate.png)
 
 1. 创建板级配置：在 `boards/` 目录下也创建一个同名文件夹（`boards/my_new_chip`），并生成相应的 `Kconfig` 文件，用于将这个新平台作为可选项添加到编译系统中。
 
-    ![new board floder](../../../../../docs/images/new-platform/new-platform-filelist2.png)
+    ![new board floder](/img/new-platform/new-platform-filelist2.png)
 
 1. 编译验证，使用命令`tos.py new project`，创建一个新项目，选择`my_new_chip`平台，使用命令`tos.py build`编译验证。
 
-    ![new project](../../../../../docs/images/new-platform/new-platform-build.png)
+    ![new project](/img/new-platform/new-platform-build.png)
 
-    ![build project](../../../../../docs/images/new-platform/new-platform-build2.png)
+    ![build project](/img/new-platform/new-platform-build2.png)
 
 ## 后续操作
 
@@ -75,7 +75,7 @@ title: 创建platform
 
 若有其他需要在编译前完成的操作，也可以在此脚本中实现
 
-![platform prepare](../../../../../docs/images/new-platform/new-platform-prepare.png)
+![platform prepare](/img/new-platform/new-platform-prepare.png)
 
 ### 配置编译工具
 
@@ -83,7 +83,7 @@ title: 创建platform
 
 这个文件需要指定编译工具`gcc`、`g++`、`ar`等的实际路径，以及编译选项
 
-![toolchain_file](../../../../../docs/images/new-platform/new-platform-toolchain.png)
+![toolchain_file](/img/new-platform/new-platform-toolchain.png)
 
 ### 配置特殊头文件路径（非必要）
 
@@ -95,7 +95,7 @@ title: 创建platform
 
 变量 **`PLATFORM_PUBINC`**，用于指定应用层使用的头文件路径，可通过修改此变量来增加头文件路径
 
-![platform config](../../../../../docs/images/new-platform/new-platform-config.png)
+![platform config](/img/new-platform/new-platform-config.png)
 
 ### 补充代码
 
@@ -107,7 +107,7 @@ title: 创建platform
 
 因为`TuyaOpen` 使用的和 `TuyaOS` 完全一致的底层接口，可以按照 [TuyaOS移植指南](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_linux?id=Kcrwrf72ciez5#title-1-适配-RTC) 和 [RTOS移植指南](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-1-适配程序入口) 进行适配。
 
-![tuyaos adapter src](../../../../../docs/images/new-platform/new-platform-src.png)
+![tuyaos adapter src](/img/new-platform/new-platform-src.png)
 
 ### 编译和链接
 

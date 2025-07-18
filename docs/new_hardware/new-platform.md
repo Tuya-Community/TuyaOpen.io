@@ -16,7 +16,7 @@ Summary: The new platform command greatly simplifies the workload of porting Tuy
 
 1. Enter the command `tos.py new platform`: You will be prompted to enter the name of the new platform (e.g., `my_new_chip`).
 
-    ![input new platform](../images/new-platform/new-platform-input.png)
+    ![input new platform](/img/new-platform/new-platform-input.png)
 
 1. Generate Kconfig configuration:
 
@@ -24,27 +24,27 @@ Summary: The new platform command greatly simplifies the workload of porting Tuy
 
     * A `menuconfig` interactive interface will pop up, allowing you to select which basic features (such as WIFI, BLE, GPIO, I2C, etc.) this new platform needs to support. Your selections will be saved in a `default.config` file.
 
-    ![menuconfig](../images/new-platform/new-platform-menu.png)
+    ![menuconfig](/img/new-platform/new-platform-menu.png)
 
 1. Create the platform directory: A folder named after your input (e.g., `platform/my_new_chip`) will be created under the `platform/` directory.
 
-    ![new platform folder](../images/new-platform/new-platform-filelist.png)
+    ![new platform folder](/img/new-platform/new-platform-filelist.png)
 
 1. Copy adapter layer templates: According to your previous selections, the corresponding hardware abstraction layer (TKL - Tuya Kernel Layer) interface templates will be copied from the `tools/porting/adapter` directory to `platform/my_new_chip/tuyaos/`.
 
     * For example, if you checked the WIFI feature, the WIFI-related template files such as tkl_init_wifi.c and tkl_init_wifi.h will be copied over.
 
-    ![new tuyaos](../images/new-platform/new-platform-generate.png)
+    ![new tuyaos](/img/new-platform/new-platform-generate.png)
 
 1. Create board-level configuration: A folder with the same name (e.g., `boards/my_new_chip`) will also be created under the `boards/` directory, and a corresponding `Kconfig` file will be generated to add this new platform as an option in the build system.
 
-    ![new board folder](../images/new-platform/new-platform-filelist2.png)
+    ![new board folder](/img/new-platform/new-platform-filelist2.png)
 
 1. Build verification: Use the command `tos.py new project` to create a new project, select the `my_new_chip` platform, and use the command `tos.py build` to build and verify.
 
-    ![new project](../images/new-platform/new-platform-build.png)
+    ![new project](/img/new-platform/new-platform-build.png)
 
-    ![build project](../images/new-platform/new-platform-build2.png)
+    ![build project](/img/new-platform/new-platform-build2.png)
 
 ## Next Steps
 
@@ -74,7 +74,7 @@ The download logic can be developed independently or refer to the implementation
 
 If there are other operations that need to be completed before compilation, they can also be implemented in this script.
 
-![platform prepare](../images/new-platform/new-platform-prepare.png)
+![platform prepare](/img/new-platform/new-platform-prepare.png)
 
 ### Configure Build Tools
 
@@ -82,7 +82,7 @@ Modify the `platform/my_new_chip/toolchain_file.cmake` file to configure the act
 
 This file needs to specify the actual paths of build tools such as `gcc`, `g++`, `ar`, etc., as well as build options.
 
-![toolchain_file](../images/new-platform/new-platform-toolchain.png)
+![toolchain_file](/img/new-platform/new-platform-toolchain.png)
 
 ### Configure Special Header File Paths (Optional)
 
@@ -94,7 +94,7 @@ However, if your platform needs to expose other header files to the application 
 
 The variable **`PLATFORM_PUBINC`** is used to specify the header file paths used by the application layer. You can modify this variable to add header file paths.
 
-![platform config](../images/new-platform/new-platform-config.png)
+![platform config](/img/new-platform/new-platform-config.png)
 
 ### Fill in the Code
 
@@ -106,7 +106,7 @@ During the template creation process, some necessary interface function template
 
 Since `TuyaOpen` uses exactly the same underlying interface as `TuyaOS`, you can follow the [TuyaOS Porting Guide](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_linux?id=Kcrwrf72ciez5#title-1-Adapt-RTC) and [RTOS Porting Guide](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-1-Adapt-entry-point) for adaptation.
 
-![tuyaos adapter src](../images/new-platform/new-platform-src.png)
+![tuyaos adapter src](/img/new-platform/new-platform-src.png)
 
 ### Build and Link
 

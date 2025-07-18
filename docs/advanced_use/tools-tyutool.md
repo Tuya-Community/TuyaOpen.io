@@ -108,13 +108,13 @@ If the driver is installed successfully, the CH34x device will be recognized wit
 
 On **MacOS 13**, operate in "Privacy & Security".
 
-![MacOS 13](../images/tyutool/macos13.png)
+![MacOS 13](/img/tyutool/macos13.png)
 
   </TabItem>
   <TabItem value="15" label="MacOS 15">
 
 On **MacOS 15**, search for "login" in "Settings" to proceed.
 
-![MacOS 15](../images/tyutool/macos15.png)
+![MacOS 15](/img/tyutool/macos15.png)
   </TabItem>
 </Tabs>
