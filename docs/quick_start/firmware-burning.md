@@ -82,4 +82,4 @@ Exit log viewing by pressing `Ctrl+c`, then press Enter
 
 1. Flashing fails
 
-    Refer to [Install the corresponding driver.](./tools-tyutool.md#always-fails-during-write-in-the-burning-process)
+    Refer to [Install the corresponding driver.](../advanced_use/tools-tyutool.md#always-fails-during-write-in-the-burning-process)
