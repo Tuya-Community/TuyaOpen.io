@@ -43,6 +43,8 @@ auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
 Authorization write succeeds.
 ```
 
+After the operation is successful, the device needs to be restarted, and the authorization information takes effect after the restart.
+
 If the device doesn't support authorization command, use method 2 to configure authorization information
 
 ## Modify Header File

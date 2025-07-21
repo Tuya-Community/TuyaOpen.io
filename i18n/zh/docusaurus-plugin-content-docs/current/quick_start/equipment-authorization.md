@@ -41,6 +41,8 @@ auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
 Authorization write succeeds.
 ```
 
+操作成功后，需要重启设备，重启后授权信息生效。
+
 若设备不支持授权命令，请使用下文的方式，通过修改头文件来配置授权信息。
 
 ## 修改头文件
