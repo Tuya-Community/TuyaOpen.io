@@ -44,7 +44,7 @@ tos.py build
 
 1. **生成using.config文件**
 
-    根据 `CatalogKconfig` 提供的配置选项以及 [app_default.config](./project-walkthrough#app_defaultconfig) 文件提供的配置结果
+    根据 `CatalogKconfig` 提供的配置选项以及 `app_default.config` 文件提供的配置结果
 
     生成 `.build/cache/using.config` 文件
 

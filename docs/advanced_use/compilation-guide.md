@@ -43,7 +43,7 @@ When the user executes the `tos.py config choice` command:
 
 3. **Generate using.config File**
 
-    Based on the configuration options provided by `CatalogKconfig` and the configuration results provided by the [app_default.config](./project-walkthrough#app_defaultconfig) file.
+    Based on the configuration options provided by `CatalogKconfig` and the configuration results provided by the `app_default.config` file.
 
     Generate the `.build/cache/using.config` file.
 
