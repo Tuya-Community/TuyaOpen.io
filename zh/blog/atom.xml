@@ -8,38 +8,32 @@
     <subtitle>TuyaOpen Blog</subtitle>
     <icon>https://tuyaopen.io/zh/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[52H 创业森林活动]]></title>
-        <id>https://tuyaopen.io/zh/blog/52h-with-tuyaopen</id>
-        <link href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen"/>
+        <title type="html"><![CDATA[72H Adventure X 活动]]></title>
+        <id>https://tuyaopen.io/zh/blog/72h-with-tuyaopen</id>
+        <link href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen"/>
         <updated>2025-06-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[event]]></summary>
-        <content type="html"><![CDATA[<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png" alt="event" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">event</figcaption></figure><p></p>
-<blockquote>
+        <summary type="html"><![CDATA[本指南为大赛专用文档，旨在为参赛者提供全面的活动指引。]]></summary>
+        <content type="html"><![CDATA[<blockquote>
 <p><strong>本指南为大赛专用文档，旨在为参赛者提供全面的活动指引。</strong></p>
 </blockquote>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="比赛信息">比赛信息<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E6%AF%94%E8%B5%9B%E4%BF%A1%E6%81%AF" class="hash-link" aria-label="比赛信息的直接链接" title="比赛信息的直接链接">​</a></h3>
-<ul>
-<li>活动时间：6/27 ~ 6/29（共 52 小时）</li>
-</ul>
 <h1>重要资源</h1>
 <ul>
-<li>涂鸦大赛 PPT：<a href="https://tuyaopen-pu9rufi.gamma.site/" target="_blank" rel="noopener noreferrer">PPT 介绍</a></li>
 <li>TuyaOpen 代码仓库：<a href="https://github.com/tuya/TuyaOpen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
 <li>TuyaOpen 文档官网：<a href="https://tuyaopen.ai/" target="_blank" rel="noopener noreferrer">文档</a></li>
 </ul>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-与-tuyaos">TuyaOpen 与 TuyaOS<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#tuyaopen-%E4%B8%8E-tuyaos" class="hash-link" aria-label="TuyaOpen 与 TuyaOS的直接链接" title="TuyaOpen 与 TuyaOS的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-与-tuyaos">TuyaOpen 与 TuyaOS<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#tuyaopen-%E4%B8%8E-tuyaos" class="hash-link" aria-label="TuyaOpen 与 TuyaOS的直接链接" title="TuyaOpen 与 TuyaOS的直接链接">​</a></h2>
 <p>TuyaOpen 基于行业领先的 TuyaOS 架构开源，已获得全球 130 万开发者实践验证。TuyaOpen 提供了定义清晰的 API，便于开发支持多种 MCU 的 C/C++ 应用程序，深度简化了外设连接、云连接和安全性等复杂的开发流程。该框架能够大幅提升开发效率，助力您快速构建 AI + IoT 智能产品。</p>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>如何选择？</div><div class="admonitionContent_BuS1"><p>参赛者可根据需求选择。如果您有 <strong>视频 AI 能力集成</strong> 或 <strong>商业化场景</strong> 的需求，建议优先选用 TuyaOS；如为其他场景或需求，则推荐生态更加开放的 TuyaOpen。</p></div></div>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="主要差异对比">主要差异对比<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94" class="hash-link" aria-label="主要差异对比的直接链接" title="主要差异对比的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="主要差异对比">主要差异对比<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E4%B8%BB%E8%A6%81%E5%B7%AE%E5%BC%82%E5%AF%B9%E6%AF%94" class="hash-link" aria-label="主要差异对比的直接链接" title="主要差异对比的直接链接">​</a></h3>
 <table><thead><tr><th>功能</th><th>TuyaOpen</th><th>TuyaOS</th></tr></thead><tbody><tr><td>目标用户</td><td>开源开发者</td><td>商业合作开发者</td></tr><tr><td>源代码获取</td><td>完全开源，源码可访问</td><td>商用代码部分开源，支持二次开发</td></tr><tr><td>代码下载</td><td>GitHub、Gitee 免费开源下载</td><td>VSCode 插件 WindIDE + 邮箱授权获取代码</td></tr><tr><td>开发环境</td><td>Linux、Windows、Mac</td><td>仅支持 Linux，其他平台需用虚拟机</td></tr><tr><td>Tuya 云端AI组件</td><td>✅</td><td>✅ 最新最快</td></tr><tr><td>Tuya 语音 AI ASR 能力</td><td>✅</td><td>✅</td></tr><tr><td>Tuya 视频 AI 能力</td><td>❌ 暂不支持</td><td>✅</td></tr><tr><td>Tuya 云大模型定制化能力 （LLM/Prompt/Workflow/RAG）</td><td>✅</td><td>✅</td></tr><tr><td>源码定制能力</td><td>高度源码定制</td><td>API 级定制，链接库，商业功能组件更丰富</td></tr><tr><td>芯片支持</td><td>Tuya T 系列 / ESP 系列（详见支持列表）</td><td>Tuya T 系列</td></tr><tr><td>开发语言</td><td>C/C++</td><td>C/C++</td></tr><tr><td>文档支持</td><td><a href="https://tuyaopen.ai/" target="_blank" rel="noopener noreferrer">TuyaOpen 官网</a></td><td><a href="https://developer.tuya.com/cn/docs/iot-device-dev" target="_blank" rel="noopener noreferrer">Tuya 开发者官网</a></td></tr><tr><td>贡献源码或二次开源</td><td>✅</td><td>遵循 Copyright License</td></tr><tr><td>硬件生态</td><td>持续增加芯片、开发板和外设驱动</td><td>采用推荐选型方案</td></tr></tbody></table>
 <h1>嵌入式软件开发</h1>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-专区">TuyaOpen 专区<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#tuyaopen-%E4%B8%93%E5%8C%BA" class="hash-link" aria-label="TuyaOpen 专区的直接链接" title="TuyaOpen 专区的直接链接">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="文档">文档<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E6%96%87%E6%A1%A3" class="hash-link" aria-label="文档的直接链接" title="文档的直接链接">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaopen-专区">TuyaOpen 专区<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#tuyaopen-%E4%B8%93%E5%8C%BA" class="hash-link" aria-label="TuyaOpen 专区的直接链接" title="TuyaOpen 专区的直接链接">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="文档">文档<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E6%96%87%E6%A1%A3" class="hash-link" aria-label="文档的直接链接" title="文档的直接链接">​</a></h3>
 <ul>
 <li>TuyaOpen 文档：<a href="https://tuyaopen.io/zh/docs/about-tuyaopen">文档</a></li>
 <li>AI API 代码模块：<a href="https://github.com/tuya/TuyaOpen/tree/master/src/tuya_ai_basic" target="_blank" rel="noopener noreferrer">代码模块</a></li>
 </ul>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="示例总览">示例总览<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E7%A4%BA%E4%BE%8B%E6%80%BB%E8%A7%88" class="hash-link" aria-label="示例总览的直接链接" title="示例总览的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="示例总览">示例总览<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E7%A4%BA%E4%BE%8B%E6%80%BB%E8%A7%88" class="hash-link" aria-label="示例总览的直接链接" title="示例总览的直接链接">​</a></h3>
 <p>善用示例代码，可以减少开发成本，避免 “重复造轮子”。</p>
 <ul>
 <li>
@@ -84,16 +78,16 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaos-专区">TuyaOS 专区<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#tuyaos-%E4%B8%93%E5%8C%BA" class="hash-link" aria-label="TuyaOS 专区的直接链接" title="TuyaOS 专区的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuyaos-专区">TuyaOS 专区<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#tuyaos-%E4%B8%93%E5%8C%BA" class="hash-link" aria-label="TuyaOS 专区的直接链接" title="TuyaOS 专区的直接链接">​</a></h2>
 <p>Tuya Wind IDE 是面向基于 TuyaOS EasyGo 的开发者提供的一站式集成开发环境，您可以 <a href="https://developer.tuya.com/cn/docs/iot-device-dev/tuyaos-wind-ide" target="_blank" rel="noopener noreferrer">点击前往</a>。</p>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="ai-基建-tuya-wukong-ai-嵌入式设备端">AI 基建 Tuya Wukong AI 嵌入式设备端<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#ai-%E5%9F%BA%E5%BB%BA-tuya-wukong-ai-%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%BE%E5%A4%87%E7%AB%AF" class="hash-link" aria-label="AI 基建 Tuya Wukong AI 嵌入式设备端的直接链接" title="AI 基建 Tuya Wukong AI 嵌入式设备端的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="ai-基建-tuya-wukong-ai-嵌入式设备端">AI 基建 Tuya Wukong AI 嵌入式设备端<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#ai-%E5%9F%BA%E5%BB%BA-tuya-wukong-ai-%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%BE%E5%A4%87%E7%AB%AF" class="hash-link" aria-label="AI 基建 Tuya Wukong AI 嵌入式设备端的直接链接" title="AI 基建 Tuya Wukong AI 嵌入式设备端的直��接链接">​</a></h3>
 <ul>
 <li>Tuya Wukong AI：<a href="https://developer.tuya.com/cn/docs/iot-device-dev/ai-hardware?id=Kectwmx9isrgl" target="_blank" rel="noopener noreferrer">点击前往</a></li>
 <li>能力地图：<a href="https://developer.tuya.com/cn/docs/iot-device-dev/wukong-abi-map?id=Keedxu1netj62" target="_blank" rel="noopener noreferrer">点击前往</a></li>
 <li>多模态交互：<a href="https://developer.tuya.com/cn/docs/iot-device-dev/tuyaos-wukong-capability-multi-media" target="_blank" rel="noopener noreferrer">点击前往</a></li>
 </ul>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuya-云平台零代码云端-ai-开发">Tuya 云平台，零代码云端 AI 开发<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#tuya-%E4%BA%91%E5%B9%B3%E5%8F%B0%E9%9B%B6%E4%BB%A3%E7%A0%81%E4%BA%91%E7%AB%AF-ai-%E5%BC%80%E5%8F%91" class="hash-link" aria-label="Tuya 云平台，零代码云端 AI 开发的直接链接" title="Tuya 云平台，零代码云端 AI 开发的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tuya-云平台零代码云端-ai-开发">Tuya 云平台，零代码云端 AI 开发<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#tuya-%E4%BA%91%E5%B9%B3%E5%8F%B0%E9%9B%B6%E4%BB%A3%E7%A0%81%E4%BA%91%E7%AB%AF-ai-%E5%BC%80%E5%8F%91" class="hash-link" aria-label="Tuya 云平台，零代码云端 AI 开发的直接链接" title="Tuya 云平台，零代码云端 AI 开发的直接链接">​</a></h2>
 <ul>
 <li>注册 Tuya Developer 云服务，<a href="https://auth.tuya.com/register" target="_blank" rel="noopener noreferrer">点击前往</a></li>
 <li>参考文档：<!-- -->
@@ -105,51 +99,27 @@
 </ul>
 <hr>
 <h1>硬件开发板</h1>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板">开发板<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="开发板的直接链接" title="开发板的直接链接">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦-t5ai-board-开发板">涂鸦 T5AI Board 开发板<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="涂鸦 T5AI Board 开发板的直接链接" title="涂鸦 T5AI Board 开发板的直接链接">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板">开发板<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="开发板的直接链接" title="开发板的直接链接">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦-t5ai-board-开发板">涂鸦 T5AI Board 开发板<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="涂鸦 T5AI Board 开发板的直接链接" title="涂鸦 T5AI Board 开发板的直接链接">​</a></h3>
 <p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg" alt="T5-AI Board Pinout" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">T5-AI Board Pinout</figcaption></figure><p></p>
 <ul>
 <li>资料文档入口：<a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
 <li>I/O Pin 脚高清下载：<a href="https://tuyaopen.io/zh/assets/files/T5-AI-Board-Pinout-v102-a97dc489a34f7b0001bb86d9f1ebaad5.pdf" target="_blank">Pinout</a></li>
 <li>如何快速编译项目 + 烧写？：<a href="https://tuyaopen.io/zh/docs/quick_start/enviroment-setup">教程</a></li>
 </ul>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦-t5-mini-开发板第三方社区开发板">涂鸦 T5 mini 开发板（第三方社区开发板）<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E6%B6%82%E9%B8%A6-t5-mini-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%AC%AC%E4%B8%89%E6%96%B9%E7%A4%BE%E5%8C%BA%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="涂鸦 T5 mini 开发板（第三方社区开发板）的直接链接" title="涂鸦 T5 mini 开发板（第三方社区开发板）的直接链接">​</a></h3>
-<ul>
-<li>优势是更小尺寸，适合空间要求较高方案。</li>
-<li>使用方法，您可以参考 <a href="https://tuyaopen.io/zh/blog#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF">T5AI Board</a>，功能较为接近。</li>
-</ul>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="地瓜机器人-rdk-x5">地瓜机器人 RDK X5<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E5%9C%B0%E7%93%9C%E6%9C%BA%E5%99%A8%E4%BA%BA-rdk-x5" class="hash-link" aria-label="地瓜机器人 RDK X5的直接链接" title="地瓜机器人 RDK X5的直接链接">​</a></h3>
-<p>参考文档：<a href="https://developer.d-robotics.cc/information" target="_blank" rel="noopener noreferrer">RDK X5 文档</a></p>
-<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="rdk-如何与-tuyaopen-整合">RDK 如何与 TuyaOpen 整合?<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#rdk-%E5%A6%82%E4%BD%95%E4%B8%8E-tuyaopen-%E6%95%B4%E5%90%88" class="hash-link" aria-label="RDK 如何与 TuyaOpen 整合?的直接链接" title="RDK 如何与 TuyaOpen 整合?的直接链接">​</a></h4>
-<blockquote>
-<p>担心单独 T5 的算力不够吗？让 RDK X5 来支持你的边缘计算需求！使用 RDK + TuyaOpen 方案来实现本地实时模型推理和云大模型的混合架构。</p>
-</blockquote>
-<ul>
-<li>Tuya App 远程控制 RDK X5 能力。<!-- -->
-<ul>
-<li>RDK + TuyaOpen 框架方案 Demo：<a href="https://tuyaopen.io/zh/assets/files/rdk-originbot-with-tuya-dp-control-demo-a77bbe284bd38ff257e85c223c7391a7.pdf" target="_blank">教程</a></li>
-</ul>
-</li>
-<li>RDK X5 与 Tuya T5 芯片混合框架<!-- -->
-<ul>
-<li>边缘计算 + 云计算的结合：<a href="https://diguazhandian-rdkx5-tuya-t4otm0d.gamma.site/" target="_blank" rel="noopener noreferrer">教程</a></li>
-</ul>
-</li>
-</ul>
 <hr>
 <h1>涂鸦硬件资源</h1>
 <ul>
 <li>为避免资源滥用，优先支持有明确 Idea 的团队领取/使用，也建议您的团队携带自己熟悉的工具。</li>
-<li>开发板必须选用大赛指定 T5 或 RDX + T5，其他外设器件/硬件和产品形态，则鼓励您自备携带参赛。</li>
+<li>开发板必须选用大赛指定 T5，其他外设器件/硬件和产品形态，则鼓励您自备携带参赛。</li>
 </ul>
 <p>关于现场可用硬件资源的数量，请参考下文：</p>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板-1">开发板<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF-1" class="hash-link" aria-label="开发板的直接链接" title="开发板的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板-1">开发板<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF-1" class="hash-link" aria-label="开发板的直接链接" title="开发板的直接链接">​</a></h3>
 <ul>
 <li><a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">涂鸦 T5-AI 开发板</a>：15</li>
 <li>涂鸦 T5 mini 开发板：10</li>
-<li>地瓜机器人 RDK X5：20</li>
 </ul>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="外设配件">外设配件<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E5%A4%96%E8%AE%BE%E9%85%8D%E4%BB%B6" class="hash-link" aria-label="外设配件的直接链接" title="外设配件的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="外设配件">外设配件<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E5%A4%96%E8%AE%BE%E9%85%8D%E4%BB%B6" class="hash-link" aria-label="外设配件的直接链接" title="外设配件的直接链接">​</a></h3>
 <ul>
 <li>喇叭（3020，4 欧，3 瓦）：20</li>
 <li>显示屏（1.54寸，ST7789 ）：10</li>
@@ -158,7 +128,7 @@
 <li>传感器套件（手势、触摸、光敏、空气、温湿度、超声波等 10 余种）：4</li>
 <li>杜邦线/数据线：若干</li>
 </ul>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="工具">工具<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#%E5%B7%A5%E5%85%B7" class="hash-link" aria-label="工具的直接链接" title="工具的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="工具">工具<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#%E5%B7%A5%E5%85%B7" class="hash-link" aria-label="工具的直接链接" title="工具的直接链接">​</a></h3>
 <ul>
 <li>正点原子 HP15 智能加热台：2 台</li>
 <li>正点原子 DM40 数字万用表：2 台</li>
@@ -171,12 +141,13 @@
 <li>3D 打印机（拓竹 P1S+AMS）：5 台</li>
 </ul>
 <hr>
+<!-- -->
 <h1>涂鸦技术支持 🛠️📋</h1>
 <p>活动现场有涂鸦的技术老师和地瓜机器人的老师们，会在活动现场提供适当的技术支持。</p>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_BuS1"><p>如果有较为复杂的问题，或是活动当天在现场没有得到及时的支持，可以梳理好问题后在 Github 上面提 Issue 📝，涂鸦会尽快安排人员支持。</p></div></div>
 <p>Issue Link：<a href="https://github.com/tuya/TuyaOpen/issues" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen/issues</a></p>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="issue-问题格式">Issue 问题格式<a href="https://tuyaopen.io/zh/blog/52h-with-tuyaopen#issue-%E9%97%AE%E9%A2%98%E6%A0%BC%E5%BC%8F" class="hash-link" aria-label="Issue 问题格式的直接链接" title="Issue 问题格式的直接链接">​</a></h3>
-<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">### 带上`【52活动】` 帮助工作人员识别活动问题</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Issue 标题: 【52活动】 </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">bug/question/hardware</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">: </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">明确清晰的问题描述</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Issue 内容：</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 开发环境：Mac/Win/Linux 💻</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 芯片平台：T5/RDK </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 问题描述：清晰简洁的表达问题</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 问题现象：有什么规律可循，尝试过那些方法修复过了？</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 期望现象：预期的解决结果</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- Log 日志：附上 Log 有助工作人员帮你分析问题 </span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="issue-问题格式">Issue 问题格式<a href="https://tuyaopen.io/zh/blog/72h-with-tuyaopen#issue-%E9%97%AE%E9%A2%98%E6%A0%BC%E5%BC%8F" class="hash-link" aria-label="Issue 问题格式的直接链接" title="Issue 问题格式的直接链接">​</a></h3>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">### 带上`【52活动】` 帮助工作人员识别活动问题</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Issue 标题: 【AdventureX活动】 </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">bug/question/hardware</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">: </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">明确清晰的问题描述</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Issue 内容：</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 开发环境：Mac/Win/Linux 💻</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 芯片平台：T5/RDK </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 问题描述：清晰简洁的表达问题</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 问题现象：有什么规律可循，尝试过那些方法修复过了？</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- 期望现象：预期的解决结果</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">- Log 日志：附上 Log 有助工作人员帮你分析问题 </span><br></span></code></pre></div></div>
 <hr>
 <h1>常见问题</h1>
 <ol>

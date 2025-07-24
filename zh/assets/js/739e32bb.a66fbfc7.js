@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([[9828],{5652:e=>{e.exports=JSON.parse('{"tags":[{"label":"TuyaOpen","permalink":"/zh/blog/tags/tuya-open","count":1},{"label":"Contest","permalink":"/zh/blog/tags/contest","count":1}]}')}}]);

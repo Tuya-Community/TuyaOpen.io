@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"52H \u521b\u4e1a\u68ee\u6797\u6d3b\u52a8","permalink":"/blog/52h-with-tuyaopen","unlisted":false,"date":"2025-06-27T00:00:00.000Z"}]}')}}]);
