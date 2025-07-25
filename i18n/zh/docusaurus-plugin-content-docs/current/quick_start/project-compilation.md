@@ -8,7 +8,7 @@ title: 项目编译
 
 TuyaOpen 中，可编译项目可在 `apps`、`example` 中进行选择。
 
-这里以`switch_demo`为例。首先，进入项目目录。
+这里以 `switch_demo` 为例。首先，进入项目目录。
 
 ```bash
 cd apps/tuya_cloud/switch_demo
@@ -16,9 +16,9 @@ cd apps/tuya_cloud/switch_demo
 
 ## 配置项目
 
-使用命令 `tos.py config choice`，对项目进行配置。
+使用命令 `tos.py config choice` 对项目进行配置。
 
-该命令会提供已经验证过的配置选项，用户可根据自己的硬件设备进行选择。
+该命令会提供已经验证过的配置选项，您可根据自己的硬件设备进行选择。
 
 ```bash
 ❯ tos.py config choice
