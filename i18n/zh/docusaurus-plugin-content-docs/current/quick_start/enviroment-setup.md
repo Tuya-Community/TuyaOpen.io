@@ -13,7 +13,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 ## 硬件准备
 
 开始前，请准备以下资源：
- - **TuyaOpen** [支持的开发板或模组](../hardware-specific/index.md#硬件平台)
+ - TuyaOpen [支持的开发板或模组](../hardware-specific/index.md#硬件平台)
  - USB 数据线
  - 电脑（支持 Windows/Linux/macOS 系统）
 
@@ -46,7 +46,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
     一般 Mac 终端使用的工具版本较低，推荐安装 Homebrew 并升级 bash。
 
     <details>
-    <summary>安装 Homebrew，升级 bash。</summary>
+    <summary>安装 Homebrew，升级 bash：</summary>
 
     ```bash
     # 安装 Homebrew
@@ -63,7 +63,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
     ```
     </details>
 
-    安装必要的工具
+    安装必要的工具：
 
     ```bash
     # 安装 python3
@@ -86,11 +86,9 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
     :::
 
     下载并安装以下工具：
-        > Python v3.8.0 或更高版本：[下载地址](https://www.python.org/downloads/windows/)
-        >
-        > Git v2.0.0 或更高版本：[下载地址](https://git-scm.com/downloads/win)
-        >
-        > Make v3.0 或更高版本：[下载地址](https://gnuwin32.sourceforge.net/packages/make.htm)
+     - Python v3.8.0 或更高版本：[下载地址](https://www.python.org/downloads/windows/)
+     - Git v2.0.0 或更高版本：[下载地址](https://git-scm.com/downloads/win)
+     - Make v3.0 或更高版本：[下载地址](https://gnuwin32.sourceforge.net/packages/make.htm)
   </SyncedTabItem>
 </SyncedTabs>
 
@@ -192,16 +190,16 @@ git submodule update --init
   </SyncedTabItem>
 </SyncedTabs>
 
-关于 `tos.py` 更详细的说明方法，可使用命令 `tos.py --help` 进行查看，或参考 [tos.py工具使用](../advanced_use/tos-guide.md)。
+关于 `tos.py` 更详细的说明方法，可使用命令 `tos.py --help` 进行查看，或参考 [tos.py 工具使用](../advanced_use/tos-guide.md)。
 
 ## 常见问题
 
-1. `tos.py`激活失败
+### `tos.py` 激活失败
 
-    若激活失败，可能是因为没有安装`python3-venv`，请安装后重试
+- 如果激活失败，可能是因为没有安装 `python3-venv`，请安装后重新激活。
 
-    ```bash
-    sudo apt-get install python3-venv
-    ```
+  ```bash
+  sudo apt-get install python3-venv
+  ```
 
-    删除`./.venv`目录，重新激活
+- `tos.py` 激活时会自动创建 `./.venv` 目录。如果激活失败，需要删除 `./.venv` 目录，并重新激活。
