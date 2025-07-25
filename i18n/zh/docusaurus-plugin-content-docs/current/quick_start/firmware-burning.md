@@ -9,10 +9,10 @@ title: 固件烧录
 将设备与 PC 连接，若使用虚拟机，请将串口映射到虚拟机中。
 
 :::tip
-对于 Linux/Mac 用户，需要开启串口使用权限，执行命令 `sudo usermod -aG dialout $USER`，并重启系统。
+对于 Linux/Mac 用户，需要执行命令 `sudo usermod -aG dialout $USER` 开启串口使用权限，并重启系统。
 :::
 
-烧录固件，使用命令 `tos.py flash`，并选择烧录口。若有多个串口可以依次尝试。
+使用命令 `tos.py flash` 烧录固件，并选择烧录口。若有多个串口可以依次尝试。
 
 ```bash
 ❯ tos.py flash
@@ -37,17 +37,17 @@ Writing: ━━━━━━━━━━━━━━━━━━━━━━━�
 ```
 
 <details>
-<summary>若出现`Port [xxx] may be busy`提示：</summary>
+<summary>若出现 `Port [xxx] may be busy` 提示：</summary>
 
-可等待 1 分钟左右，再次尝试。对于不同的虚拟机和串口芯片，映射过程所需时间不同。
+可等待 1 分钟左右后再次尝试。对于不同的虚拟机和串口芯片，映射过程所需时间不同。
 </details>
 
 
 ## 日志
 
-查看日志，使用命令 `tos.py monitor`，并选择日志口。
+使用命令 `tos.py monitor` 查看日志，并选择日志口。
 
-若想查看完整日志，可在命令后，手动复位设备。
+如需查看完整日志，可在命令后，手动复位设备。
 
 ```bash
 ❯ tos.py monitor
@@ -64,7 +64,7 @@ Select serial port: 1
 [01-01 00:03:55 ty D][tuya_health.c:75] feed watchdog
 ```
 
-退出日志查看，按键 `Ctrl+c` 并回车。
+如需退出日志查看，按键 `Ctrl + C` 并回车。
 
 ```bash
 ^C[INFO]: Press "Entry" ...
@@ -73,6 +73,6 @@ Select serial port: 1
 ```
 ## 常见问题
 
-1. 烧录失败
+### 烧录失败
 
-    参考[安装对应驱动](../advanced_use/tools-tyutool.md#烧录过程中总是在write时失败)
+请参考 [安装对应驱动](../advanced_use/tools-tyutool.md#烧录过程中总是在write时失败)。 
