@@ -75,7 +75,7 @@ module.exports = {
       type: 'category',
       label: 'Peripherals',
       collapsed: true,
-      items: ['peripheral/support_peripheral_list', 'peripheral/display'],
+      items: ['peripheral/support_peripheral_list', 'peripheral/display', 'peripheral/audio', 'peripheral/button'],
     },
     // ------------------------------------------------------------------
     {
