@@ -243,7 +243,7 @@ function Home() {
                   </Translate>
                 </p>
                 <Link
-                  to="https://developer.tuya.com/cn/docs/iot/T5-E1-IPEX-hardware-design-guide?id=Ke6hd8h0ai4ag"
+                  to="/docs/hardware-specific/t5-ai-board/overview-t5-ai-board"
                   className="tw-btn !tw-btn-primary tw-gap-2 hover:-tw-translate-y-[3px]"
                 >
                   <Translate id="home.learnmore">Learn More →</Translate>
@@ -326,7 +326,7 @@ function Home() {
                 </Translate>
               </p>
             </div>
-            <div className="tw-grid lg:tw-grid-cols-2 tw-gap-8 tw-mb-12 lg:tw-w-[80%] lg:tw-mx-auto">
+            <div className="tw-grid lg:tw-grid-cols-3 tw-gap-8 tw-mb-12 lg:tw-w-[80%] lg:tw-mx-auto">
               <Card>
                 <IconGithub className="tw-w-12 tw-h-12 dark:tw-fill-white" />
                 <p>
@@ -362,6 +362,29 @@ function Home() {
                     GitHub Discussions
                   </Link>
                 </div>
+              </Card>
+              <Card>
+                {/* Discord SVG icon */}
+                <svg
+                  className="tw-w-12 tw-h-12 dark:tw-fill-white"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.2a.074.074 0 0 0-.079.037c-.34.607-.719 1.395-.984 2.01a18.524 18.524 0 0 0-5.59 0 12.51 12.51 0 0 0-.995-2.01.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.369a.069.069 0 0 0-.032.027C.533 9.09-.32 13.579.099 18.021a.082.082 0 0 0 .031.056c2.128 1.565 4.195 2.51 6.229 3.13a.077.077 0 0 0 .084-.027c.48-.66.91-1.356 1.273-2.084a.076.076 0 0 0-.041-.104c-.676-.256-1.32-.568-1.938-.936a.077.077 0 0 1-.008-.127c.13-.098.26-.2.384-.304a.074.074 0 0 1 .077-.01c4.06 1.855 8.447 1.855 12.47 0a.075.075 0 0 1 .078.009c.124.104.254.206.385.304a.077.077 0 0 1-.007.127 12.298 12.298 0 0 1-1.939.936.076.076 0 0 0-.04.105c.36.728.792 1.424 1.272 2.084a.076.076 0 0 0 .084.028c2.04-.62 4.106-1.565 6.23-3.13a.077.077 0 0 0 .03-.055c.5-5.177-.838-9.637-3.548-13.625a.061.061 0 0 0-.03-.028ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.175 1.094 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.175 1.094 2.157 2.418 0 1.334-.947 2.419-2.157 2.419Z" />
+                </svg>
+                <p>
+                  <Translate id="home.buildcommunity.discord">
+                    Join our Discord community to chat, ask questions, and connect with other TuyaOpen users.
+                  </Translate>
+                </p>
+                <Link
+                  to="https://discord.gg/cbGrBjx7"
+                  className="tw-btn tw-bg-[#5865F2] tw-text-white hover:!tw-bg-[#4752c4] tw-normal-case dark:tw-glass dark:hover:!tw-bg-transparent"
+                >
+                  Join Discord Server
+                </Link>
               </Card>
             </div>
             <p className="tw-font-medium tw-text-center">

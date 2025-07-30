@@ -130,7 +130,16 @@ const config = {
           to: 'blog',
           label: 'Blog',
         },
-
+        {
+          label: 'Tools',
+          position: 'left',
+          items: [
+            {
+              label: 'Web Serial/Flashing Tools',
+              to: '/tools',
+            },
+          ],
+        },
         // ======Hardware List ========
         // {
         //   to: '/hardware_pages',
@@ -138,15 +147,9 @@ const config = {
         //   position: 'left',
         // },
 
-        // TODO: huate: add the link to the community group
         // {
-        //   href: 'https://github.com/tuya/TuyaOpen/discussions/',
-        //   label: 'Community Group',
-        // },
-
-        // {
-        //   type: 'docsVersionDropdown',
-        //   dropdownItemsAfter: [
+        // type: 'docsVersionDropdown',
+        // dropdownItemsAfter: [
         //     {
         //       type: 'html',
         //       value: '<hr style="margin: .5em 0;" />',
@@ -175,37 +178,62 @@ const config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/about-tuyaopen',
+              to: '/docs/quick_start/unboxing',
+            },
+            {
+              label: 'Pricing',
+              to: '/pricing',
+            },
+            {
+              label: 'Hardware List',
+              to: '/docs/hardware-specific',
+            },
+            {
+              label: 'Tuya T5AI Dev Kit',
+              to: '/docs/hardware-specific/t5-ai-board/overview-t5-ai-board',
             },
           ],
         },
-        // {
-        //   title: 'Community',
-        //   items: [
-        //     {
-        //       label: 'Stack Overflow',
-        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     },
-        //     {
-        //       label: 'Discord',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //     {
-        //       label: 'X',
-        //       href: 'https://x.com/docusaurus',
-        //     },
-        //   ],
-        // },
+        {
+          title: 'Tools',
+          items: [
+            {
+              label: 'Web Serial Tool',
+              to: '/tools',
+            },
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/cbGrBjx7',
+            },
+            {
+              label: 'X',
+              href: 'https://x.com/tuyasmart',
+            },
+            {
+              label: 'Youtube',
+              href: 'https://www.youtube.com/@tuya2023',
+            },
+            {
+              label: 'Linkedin',
+              href: 'https://www.linkedin.com/company/tuya-smart',
+            },
+          ],
+        },
         {
           title: 'More',
           items: [
-            // {
-            //   label: 'Blog',
-            //   to: '/blog',
-            // },
             {
               label: 'GitHub',
               href: 'https://github.com/tuya/TuyaOpen',
+            },
+            {
+              label: 'Gitee(Mirror)',
+              href: 'https://gitee.com/tuya-open/TuyaOpen',
             },
           ],
         },
