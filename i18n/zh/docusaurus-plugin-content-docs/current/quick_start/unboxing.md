@@ -11,7 +11,7 @@ import ChipRow from '@site/src/components/ChipRow';
 ## 准备工作
 
 开始前，请准备以下资源：
- - **TuyaOpen** [支持的开发板或模组](../hardware-specific/index.md#硬件平台)
+ - TuyaOpen [支持的开发板或模组](../hardware-specific/index.md#硬件平台)
  - USB 数据线
  - 电脑（支持 Windows/Linux/macOS 系统）
 
@@ -20,7 +20,9 @@ import ChipRow from '@site/src/components/ChipRow';
 如果您想要快速体验 TuyaOpen 或验证手上硬件，可以先跳过开发环境搭建，从 TuyaOpen 的 **[发布页面](https://github.com/tuya/TuyaOpen/releases)** 下载固件进行烧录和测试。
 
 :::info
-目前 TuyaOpen 上提供 `switch_demo` 和 `your_chat_bot` 两种固件。`switch_demo` 是 IoT 设备固件，支持所有芯片；`your_chat_bot` 是 AI 设备固件，目前仅支持 T5AI 和 ESP32-S3。
+目前 TuyaOpen 上提供 `switch_demo` 和 `your_chat_bot` 两种固件：
+- `switch_demo` 是 IoT 设备固件，支持所有芯片。
+- `your_chat_bot` 是 AI 设备固件，目前仅支持 T5AI 和 ESP32-S3。
 :::
 
 当通过编译 TuyaOpen 成功生成固件或从 TuyaOpen 发布页面下载得到固件后，则可以开始进行固件烧录。
@@ -44,11 +46,11 @@ Tuyaopen Framework 包括：
 
 ### 获取授权码
 
-- 方式一：通过 [生产研发采购](https://platform.tuya.com/purchase/index?type=6) 购买已烧录 TuyaOpen 授权码模块。该授权码已经在出厂时烧录在对应模组中，且不会丢失。TuyaOpen 在启动时通过 `tuya_iot_license_read()` 接口读取授权码。请确认当前设备是否为烧录了 **TuyaOpen 授权码**。
+- 方式一：通过 [生产研发采购](https://platform.tuya.com/purchase/index?type=6) 购买已烧录 TuyaOpen 授权码模块。该授权码已经在出厂时烧录在对应模组中，且不会丢失。TuyaOpen 在启动时会通过 `tuya_iot_license_read()` 接口读取授权码。请确认当前已购模组是否烧录了 TuyaOpen 授权码。
 
-- 方式二：如当前模组未烧录 TuyaOpen 授权码，可通过 [生产研发采购](https://platform.tuya.com/purchase/index?type=6) 页面购买 **TuyaOpen 授权码**。
+- 方式二：如当前模组未烧录 TuyaOpen 授权码，可通过 [生产研发采购](https://platform.tuya.com/purchase/index?type=6) 页面购买 TuyaOpen 授权码。
 
-- 方式三： 如当前模组未烧录 TuyaOpen 授权码，可通过 [购买页面](https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP) 购买 **TuyaOpen 授权码**。
+- 方式三：如当前模组未烧录 TuyaOpen 授权码，可通过 [购买页面](https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP) 购买 TuyaOpen 授权码。
 
 ### 写入授权码
 
