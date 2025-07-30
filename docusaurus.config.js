@@ -136,7 +136,9 @@ const config = {
           items: [
             {
               label: 'Web Serial/Flashing Tools',
-              to: '/tools',
+              href: 'https://tuyaopen.ai/tools',
+              target: '_blank',
+              rel: 'noopener noreferrer',
             },
           ],
         },

@@ -6,7 +6,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Getting Started',
-      collapsed: true,
+      collapsed: false,
       items: [
         'quick_start/unboxing',
         'quick_start/enviroment-setup',
