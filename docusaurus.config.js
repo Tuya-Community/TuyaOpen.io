@@ -135,6 +135,11 @@ const config = {
           position: 'left',
           items: [
             {
+              label: 'Universal Serial Port Tools',
+              to: '/tools/tyutool',
+            },
+
+            {
               label: 'Web Serial/Flashing Tools',
               href: 'https://tuyaopen.ai/tools',
               target: '_blank',

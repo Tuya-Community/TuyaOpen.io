@@ -195,13 +195,21 @@ export default function Mesh() {
           return
         }
 
+        // Check if DOM elements are ready
+        if (!svgEl.current || !dotsGroup.current) {
+          return
+        }
+
         if (!scaling) {
           curve2 = curve2Range[Math.floor(Math.random() * curve2Range.length)]
           injectedDot = injectedDots[Math.floor(Math.random() * injectedDots.length)]
 
           scaling = true
 
-          const rect = document.querySelector(`.dot-${injectedDot}`).getBoundingClientRect()
+          const dotElement = document.querySelector(`.dot-${injectedDot}`)
+          if (!dotElement) return
+          
+          const rect = dotElement.getBoundingClientRect()
           const top = rect.top + 100
           const left = rect.left - 250
           gsap.fromTo(
@@ -257,6 +265,8 @@ export default function Mesh() {
             onComplete: () => (scaling = false),
           })
           const dotG = document.querySelector(`.dot-${injectedDot}`)
+          if (!dotG) return
+          
           for (let i = 0; i < 12; i++) {
             const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
 
@@ -293,9 +303,13 @@ export default function Mesh() {
       }
 
       svgEl.current.addEventListener('click', injectChaos)
+      
+      // Delay the initial chaos injection to ensure DOM is ready
       setTimeout(() => {
-        injectChaos()
-      }, 1500)
+        if (svgEl.current && dotsGroup.current) {
+          injectChaos()
+        }
+      }, 2000)
     }, svgEl)
 
     window.gsapCtx = ctx
