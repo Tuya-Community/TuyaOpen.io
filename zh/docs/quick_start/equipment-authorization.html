@@ -20,7 +20,7 @@
 
 
 <meta name="algolia-site-verification" content="6232065417750C16"><link rel="stylesheet" href="/zh/assets/css/styles.547162a3.css">
-<script src="/zh/assets/js/runtime~main.58938d3a.js" defer="defer"></script>
+<script src="/zh/assets/js/runtime~main.1fe1a903.js" defer="defer"></script>
 <script src="/zh/assets/js/main.d396c04a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -37,33 +37,35 @@
 </ul>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="授权命令">授权命令<a href="#授权命令" class="hash-link" aria-label="授权命令的直接链接" title="授权命令的直接链接">​</a></h2>
 <ol>
-<li>使用命令 <code>tos.py monitor -b 115200</code>。</li>
-</ol>
+<li>
+<p>使用命令 <code>tos.py monitor -b 115200</code>。</p>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_BuS1"><p>这里选择烧录时使用的串口号。</p></div></div>
-<ol start="2">
-<li>  输入交互命令，使用 <code>auth</code> 并回车，可以得到如下信息：</li>
-</ol>
+</li>
+<li>
+<p>输入交 互命令，使用 <code>auth</code> 并回车，可以得到如下信息：</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">INFO</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain">: Run Tuya Uart Tool.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">--------------------</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token number" style="color:#36acaa">1</span><span class="token plain">. /dev/ttyACM1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token number" style="color:#36acaa">2</span><span class="token plain">. /dev/ttyACM0</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">--------------------</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Select serial port: </span><span class="token number" style="color:#36acaa">2</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">INFO</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain">: Open Monitor. </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">Quit: Ctrl+c</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">auth</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">auth</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Use like: auth uuidxxxxxxxxxxxxxxxx keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">tuya</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
-<ol start="3">
-<li>根据提示使用 <code>auth</code>，写入 <code>uuid </code>和 <code>authkey</code>。</li>
-</ol>
+</li>
+<li>
+<p>根据提示使用 <code>auth</code>，写入 <code>uuid</code> 和 <code>authkey</code>。</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">tuya</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Authorization </span><span class="token function" style="color:#d73a49">write</span><span class="token plain"> succeeds.</span><br></span></code></pre></div></div>
-<ol start="4">
-<li>操作成功后，需要重启设备，重启后授权信息生效。</li>
-</ol>
+</li>
+<li>
+<p>操作成功后，需要重启设备，重启后授权信息生效。</p>
 <p>若设备不支持授权命令，请参考下文通过修改头文件的方式来配置授权信息。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="修改头文件">修改头文件<a href="#修改头文件" class="hash-link" aria-label="修 改头文件的直接链接" title="修改头文件的直接链接">​</a></h2>
+</li>
+</ol>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="修改头文件">修改头文件<a href="#修改头文件" class="hash-link" aria-label="修改头文件的直接链接" title="修改头文件的直接链接">​</a></h2>
 <ol>
 <li>
 <p>首先，在项目路径中找到 <code>tuya_config.h</code> 文件。所选的项目不同，文件所在目录可能有差异（<code>src</code> 或 <code>include</code>）。</p>
 </li>
 <li>
 <p>修改文件中授权信息的配置，如下：</p>
-</li>
-</ol>
 <div class="language-c++ codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-c++ codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">#define TUYA_OPENSDK_UUID      &quot;uuidxxxxxxxxxxxxxxxx&quot;                    // Please change the correct uuid</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">#define TUYA_OPENSDK_AUTHKEY   &quot;keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;        // Please change the correct authkey</span><br></span></code></pre></div></div>
-<ol start="3">
-<li>重新编译、烧录，然后启动设备。</li>
+</li>
+<li>
+<p>重新编译、烧录，然后启动设备。</p>
+</li>
 </ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/Tuya-Community/TuyaOpen.io/edit/master/i18n/zh/docusaurus-plugin-content-docs/current/quick_start/equipment-authorization.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/zh/docs/quick_start/firmware-burning"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">固件烧录</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/zh/docs/quick_start/device-network-configuration"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">设备配网</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#概述" class="table-of-contents__link toc-highlight">概述</a></li><li><a href="#授权命令" class="table-of-contents__link toc-highlight">授权命令</a></li><li><a href="#修改头文件" class="table-of-contents__link toc-highlight">修改头文件</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">文档</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/zh/docs/quick_start/unboxing">教程</a></li><li class="footer__item"><a class="footer__link-item" href="/zh/pricing">服务</a></li><li class="footer__item"><a class="footer__link-item" href="/zh/docs/hardware-specific">硬件支持清单</a></li><li class="footer__item"><a class="footer__link-item" href="/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">Tuya T5AI 开发套件</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">工具</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/zh/tools">Web Serial 工具</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">社区</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/cbGrBjx7" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://x.com/tuyasmart" target="_blank" rel="noopener noreferrer" class="footer__link-item">X<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.youtube.com/@tuya2023" target="_blank" rel="noopener noreferrer" class="footer__link-item">Youtube<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/tuya-smart" target="_blank" rel="noopener noreferrer" class="footer__link-item">Linkedin<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">更多</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/tuya/TuyaOpen" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://gitee.com/tuya-open/TuyaOpen" target="_blank" rel="noopener noreferrer" class="footer__link-item">Gitee(Mirror)<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">致谢</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://storyset.com/technology" target="_blank" rel="noopener noreferrer" class="footer__link-item">Thanks for the technology illustrations by Storyset<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
         <p style="font-weight: 500;">版权所有 © TuyaOpen Authors 2025 | Documentation Distributed under Apache License Version 2.0</p>
 </div></div></div></footer></div>
