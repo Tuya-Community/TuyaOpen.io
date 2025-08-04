@@ -8,6 +8,18 @@ This open-source framework for AIoT development, built on the proven TuyaOS IoT 
 
 Supporting mainstream open-source ecosystems, it allows seamless porting across chipsets/development boards, accelerating prototyping to production-ready deployment within 72 hours via Tuya's certified hardware partners.
 
+## Related Links of TuyaOpen
+
+- C for TuyaOpen: [https://github.com/tuya/TuyaOpen](https://github.com/tuya/TuyaOpen)
+- Arduino for TuyaOpen: [https://github.com/tuya/arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
+- Luanode for TuyaOpen: [https://github.com/tuya/luanode-TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
+
+### gitee Mirrors
+
+- C for TuyaOpen: [https://gitee.com/tuya-open/TuyaOpen](https://gitee.com/tuya-open/TuyaOpen)
+- Arduino for TuyaOpen: [https://gitee.com/tuya-open/arduino-TuyaOpen](https://gitee.com/tuya-open/arduino-TuyaOpen)
+- Luanode for TuyaOpen: [https://gitee.com/tuya-open/luanode-TuyaOpen](https://gitee.com/tuya-open/luanode-TuyaOpen)
+
 ## Supported Platform List
 
 | Platform | Windows | Linux | macOS |
@@ -30,14 +42,25 @@ Supporting mainstream open-source ecosystems, it allows seamless porting across 
 
 If you are interested in the TuyaOpen and wish to contribute to its development and become a code contributor, please first read the [Contribution Guide](./contribute/contribute-guide.md).
 
-## Related Links of TuyaOpen
+## Updates and Releases
 
-- C for TuyaOpen: [https://github.com/tuya/TuyaOpen](https://github.com/tuya/TuyaOpen)
-- Arduino for TuyaOpen: [https://github.com/tuya/arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
-- Luanode for TuyaOpen: [https://github.com/tuya/luanode-TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
+TuyaOpen is currently in rapid development phase, and we follow the following release strategy:
 
-### gitee Mirrors
+### Version Branch Description
 
-- C for TuyaOpen: [https://gitee.com/tuya-open/TuyaOpen](https://gitee.com/tuya-open/TuyaOpen)
-- Arduino for TuyaOpen: [https://gitee.com/tuya-open/arduino-TuyaOpen](https://gitee.com/tuya-open/arduino-TuyaOpen)
-- Luanode for TuyaOpen: [https://gitee.com/tuya-open/luanode-TuyaOpen](https://gitee.com/tuya-open/luanode-TuyaOpen)
+- **release**: Stable version, recommended for production environments
+- **master**: Beta version, suitable for early adopters
+- **dev**: Development version, contains latest features but may have instability
+
+### Release Cycle
+
+- **Stable Version**: Release a stable version every 1-2 months
+- **Beta Version**: Every Wednesday, after thorough testing, merge dev branch to master branch
+
+### Version Selection Recommendations
+
+- **Production Environment**: Recommend using release version for stability
+- **Development Testing**: Can use master version to experience latest features
+- **Feature Preview**: Can choose dev version, but be aware of potential instability
+
+Please follow our [TuyaOpen Related Links](#related-links-of-tuyaopen) for the latest release information!

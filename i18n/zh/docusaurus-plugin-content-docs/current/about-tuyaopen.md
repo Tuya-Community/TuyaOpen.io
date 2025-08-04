@@ -12,6 +12,18 @@ TuyaOpen 集成了端侧 AI 推理引擎，支持涂鸦云智能体中枢，支�
 
 此外，TuyaOpen 支持行业内主流的开源软硬件生态，开发者可以轻松地将项目移植和部署到任意芯片或开发板上。这不仅能让开发者快速体验 AI 技术带来的创新成果，更能有效缩短产品开发周期。
 
+## TuyaOpen 相关链接
+
+- C 版 TuyaOpen：[https://github.com/tuya/TuyaOpen](https://github.com/tuya/TuyaOpen)
+- Arduino 版 TuyaOpen：[https://github.com/tuya/arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
+- Luanode 版 TuyaOpen：[https://github.com/tuya/luanode-TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
+
+### gitee 镜像
+
+- C 版 TuyaOpen：[https://gitee.com/tuya-open/TuyaOpen](https://gitee.com/tuya-open/TuyaOpen)
+- Arduino 版 TuyaOpen：[https://gitee.com/tuya-open/arduino-TuyaOpen](https://gitee.com/tuya-open/arduino-TuyaOpen)
+- Luanode 版 TuyaOpen：[https://gitee.com/tuya-open/luanode-TuyaOpen](https://gitee.com/tuya-open/luanode-TuyaOpen)
+
 ## 支持 Platform
 
 | Platform | Windows | Linux | macOS |
@@ -34,14 +46,25 @@ TuyaOpen 集成了端侧 AI 推理引擎，支持涂鸦云智能体中枢，支�
 
 如果您对 TuyaOpen 感兴趣，并希望参与 TuyaOpen 的开发并成为代码贡献者，请先参阅 [贡献指南](./contribute/contribute-guide.md)。
 
-## TuyaOpen 相关链接
+## 更新与发布
 
-- C 版 TuyaOpen：[https://github.com/tuya/TuyaOpen](https://github.com/tuya/TuyaOpen)
-- Arduino 版 TuyaOpen：[https://github.com/tuya/arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
-- Luanode 版 TuyaOpen：[https://github.com/tuya/luanode-TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
+TuyaOpen 目前处于快速开发阶段，我们遵循以下发布策略：
 
-### gitee 镜像
+### 版本分支说明
 
-- C 版 TuyaOpen：[https://gitee.com/tuya-open/TuyaOpen](https://gitee.com/tuya-open/TuyaOpen)
-- Arduino 版 TuyaOpen：[https://gitee.com/tuya-open/arduino-TuyaOpen](https://gitee.com/tuya-open/arduino-TuyaOpen)
-- Luanode 版 TuyaOpen：[https://gitee.com/tuya-open/luanode-TuyaOpen](https://gitee.com/tuya-open/luanode-TuyaOpen)
+- **release**：稳定版本，推荐生产环境使用
+- **master**：测试版本，适合尝鲜用户
+- **dev**：开发版本，包含最新功能但可能存在不稳定因素
+
+### 发布周期
+
+- **稳定版本**：每 1-2 个月发布一个 release 版本
+- **测试版本**：每周三经过充分测试后，将 dev 分支合并到 master 分支
+
+### 版本选择建议
+
+- **生产环境**：建议使用 release 版本，确保稳定性
+- **开发测试**：可使用 master 版本体验最新功能
+- **功能尝鲜**：可选择 dev 版本，但需注意可能存在的不稳定性
+
+请关注我们的 [TuyaOpen 相关链接](#tuyaopen-相关链接) 获取最新发布信息！
