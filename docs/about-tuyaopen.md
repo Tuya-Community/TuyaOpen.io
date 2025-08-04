@@ -41,3 +41,27 @@ If you are interested in the TuyaOpen and wish to contribute to its development 
 - C for TuyaOpen: [https://gitee.com/tuya-open/TuyaOpen](https://gitee.com/tuya-open/TuyaOpen)
 - Arduino for TuyaOpen: [https://gitee.com/tuya-open/arduino-TuyaOpen](https://gitee.com/tuya-open/arduino-TuyaOpen)
 - Luanode for TuyaOpen: [https://gitee.com/tuya-open/luanode-TuyaOpen](https://gitee.com/tuya-open/luanode-TuyaOpen)
+
+
+## Updates and Releases
+
+TuyaOpen is currently in rapid development phase, and we follow the following release strategy:
+
+### Version Branch Description
+
+- **release**: Stable version, recommended for production environments
+- **master**: Beta version, suitable for early adopters
+- **dev**: Development version, contains latest features but may have instability
+
+### Release Cycle
+
+- **Stable Version**: Release a stable version every 1-2 months
+- **Beta Version**: Every Wednesday, after thorough testing, merge dev branch to master branch
+
+### Version Selection Recommendations
+
+- **Production Environment**: Recommend using release version for stability
+- **Development Testing**: Can use master version to experience latest features
+- **Feature Preview**: Can choose dev version, but be aware of potential instability
+
+Please follow our [TuyaOpen Related Links](#related-links-of-tuyaopen) for the latest release information!
