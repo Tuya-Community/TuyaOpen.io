@@ -18,7 +18,7 @@
 3. 检查是否为贡献的代码提供文档或示例，要写出好的示例和文档才可以帮助其他开发者更好的使用
 4. 检查文档是否符合 [文档编写规范](./contribute-guide.md)
 5. 如需提交多个内容，检查是否将所有内容按照改动的类型（每个 Pull Request 对应一个主要改动）进行分组
-6. 如提交 board 下芯片适配相关内容，需符合 [TuyaOpen 芯片适配规范](../new_hardware/new-platform.md)
+6. 如提交 board 下芯片适配相关内容，需符合 [TuyaOpen 芯片适配规范](../new-hardware/new-platform.md)
 
 检查完成后，可进入 Push Requests 流程。
 

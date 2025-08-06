@@ -125,7 +125,7 @@ title: 双眼屏情绪机器人
 
 ## 工作流程
 
-该工程依赖应用组件 [ai_audio](../applications/ai-components/ai-audio-asr-impl.md) , 该组件主要实现了采集音频，播放音频，创建云端 AI 会话等功能。
+该工程依赖应用组件 [ai_audio](./ai-components/ai-audio-asr-impl.md) , 该组件主要实现了采集音频，播放音频，创建云端 AI 会话等功能。
 
 - **长按对话模式**
 
@@ -145,7 +145,7 @@ title: 双眼屏情绪机器人
 
 ## 编译工程
 
-1. 前置环境的安装与配置，请查看 [快速入门](../quick_start/index.md) 。
+1. 前置环境的安装与配置，请查看 [快速入门](../../quick-start/enviroment-setup.md) 。
 
 2. 从 TuyaOpen 的根目录切到应用目录
 
@@ -167,7 +167,7 @@ title: 双眼屏情绪机器人
 
 ## 适配新板子
 ### 外设要求列表
-tuyaopen 支持的外设列表可参考 [外设驱动列表](../peripheral/support_peripheral_list.md)。想要新增的板子必须要有列表中 **必要** 的外设驱动。
+tuyaopen 支持的外设列表可参考 [外设驱动列表](../../peripheral/support_peripheral_list.md)。想要新增的板子必须要有列表中 **必要** 的外设驱动。
 
   | 外设 | 外设组件 | 说明 | 是否必要 |
   | ---- | ------- | ---- | ------- |
@@ -183,4 +183,4 @@ tuyaopen 支持的外设列表可参考 [外设驱动列表](../peripheral/suppo
 如果开发者想要修改驱动的硬件配置（如修改引脚，芯片类型等），请在目标板子的文件夹（ boards /目标开发环境/目标板子，如 `boards/T5AI/TUYA_T5AI_BOARD` ）中进行修改。
 ::::
 
-请参考 [适配新的板级驱动 Board](../new_hardware/adding-new-board-support.md) 的步骤来新增和适配的板子。
+请参考 [适配新的板级驱动 Board](../../new-hardware/new-board.md) 的步骤来新增和适配的板子。

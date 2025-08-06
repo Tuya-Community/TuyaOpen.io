@@ -2,22 +2,33 @@
 title: switch_demo
 ---
 
-# Demo: Creating Tuya IoT Connected Device
+`switch_demo` is a Tuya IoT application and a minimal functionality application demo provided by the Tuya AI+IoT platform. It is a simple, cross-platform, cross-system switch example that supports multiple connections. Through the Tuya APP and Tuya Cloud services, you can perform remote control (when away), LAN control (same local network), and Bluetooth control (when no network is available) on this switch.
 
-The Tuya Cloud Application is an application provided by the Tuya AI+IoT platform, which allows developers to quickly implement features such as remote control and device management.
+The current `switch_demo` demonstrates the following functions:
+1. Supports Bluetooth network configuration
+2. Supports WiFi AP mode network configuration
+3. Receives MQTT control data from the cloud and automatically responds
+4. Receives LAN TCP control data from the APP and automatically responds
+5. OTA functionality
 
-`switch_demo` demonstrates a simple, cross-platform, cross-system switch example that supports multiple connections. Through the Tuya APP and Tuya Cloud Service, this switch can be remotely controlled(when away), local area network control (within the same LAN), and Bluetooth control (when no network is available) for this switch.
+Currently, `switch_demo` does not control real hardware, so it can run on all currently supported [platforms](../../about-tuyaopen.md#supported-platforms).
+
+Before using `switch_demo`, you need to understand the following terms:
+1. [TuyaOpen Dedicated Authorization Code](../../quick-start/index.md#tuyaopen-dedicated-authorization-code)
+2. [PID](../../quick-start/index.md#pid)
+3. [Network Configuration](../../quick-start/device-network-configuration.md)
+4. [DP](../../applications/index.md#dp)
+
+## Default APP Control Panel
 
 ![](https://images.tuyacn.com/fe-static/docs/img/0e155d73-1042-4d9f-8886-024d89ad16b2.png)
 
-## Directory
+## Directory Structure
 
-```
+```sh
 +- switch_demo
-    +- libqrencode
     +- src
         -- cli_cmd.c
-        -- qrencode_print.c
         -- tuya_main.c
         -- tuya_config.h
     -- CMakeLists.txt
@@ -25,18 +36,16 @@ The Tuya Cloud Application is an application provided by the Tuya AI+IoT platfor
     -- README.md
 ```
 
-- libqrencode: a open souce libirary for QRCode display
-- qrencode_print.c: print the QRCode in screen or serial tools
-- cli_cmd.c: cli cmmand which used to operater the swith_demo
-- tuya_main.c: the main function of the switch_demo
-- tuya_config.h: the tuya PID and license, to get the license, you need create a product on Tuya AI+IoT Platfrom following [TuyaOS quickstart](https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc)
+- cli_cmd.c: Some command line operations for switch_demo, used to view and operate switch_demo information and status
+- tuya_main.c: Main functionality of switch_demo
+- tuya_config.h: Tuya PID and authorization information, created and obtained on the Tuya IoT platform. You can refer to the documentation [TuyaOS quickstart](https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc)
 
 ## Supported Hardware
 
-The current project can run on all currently supported chips and development boards.
+The current project can run on all currently supported chips and development boards
 
 ## Compilation
 
-1. Run the `tos config_choice` command to select the current development board in use.
-2. If you need to modify the configuration, run the `tos menuconfig` command to make changes.
+1. Run the `tos config_choice` command to select the current development board or platform.
+2. If you need to modify the configuration, first run the `tos menuconfig` command to modify the configuration.
 3. Run the `tos build` command to compile the project.

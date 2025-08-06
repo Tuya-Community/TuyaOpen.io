@@ -1,24 +1,18 @@
 ---
-title: Firmware Burning
+title: 固件烧录
 ---
 
-# Flashing and Logging
+# 烧录和日志
 
-## Flashing
+## 烧录
 
-Connect the device to PC, if using virtual machine, please map the serial port to the virtual machine
+将设备与 PC 连接，若使用虚拟机，请将串口映射到虚拟机中。
 
 :::tip
-For Linux / Mac users, you need to enable serial port usage permissions, execute command
-
-`sudo usermod -aG dialout $USER`
-
-and restart the system
+对于 Linux/Mac 用户，需要执行命令 `sudo usermod -aG dialout $USER` 开启串口使用权限，并重启系统。
 :::
 
-Flash the firmware using command `tos.py flash`, and select the flashing port
-
-If there are multiple serial ports, you can try them one by one
+使用命令 `tos.py flash` 烧录固件，并选择烧录口。若有多个串口可以依次尝试。
 
 ```bash
 ❯ tos.py flash
@@ -43,18 +37,17 @@ Writing: ━━━━━━━━━━━━━━━━━━━━━━━�
 ```
 
 <details>
-<summary>If you see `Port [xxx] may be busy` prompt</summary>
+<summary>若出现 `Port [xxx] may be busy` 提示：</summary>
 
-You can wait for about 1 minute and try again
-
-For different virtual machines and serial port chips, the mapping process takes different time
+可等待 1 分钟左右后再次尝试。对于不同的虚拟机和串口芯片，映射过程所需时间不同。
 </details>
 
-## Logging
 
-View logs using command `tos.py monitor`, and select the log port
+## 日志
 
-If you want to view complete logs, you can manually reset the device after the command
+使用命令 `tos.py monitor` 查看日志，并选择日志口。
+
+如需查看完整日志，可在命令后，手动复位设备。
 
 ```bash
 ❯ tos.py monitor
@@ -71,15 +64,15 @@ Select serial port: 1
 [01-01 00:03:55 ty D][tuya_health.c:75] feed watchdog
 ```
 
-Exit log viewing by pressing `Ctrl+c`, then press Enter
+如需退出日志查看，按键 `Ctrl + C` 并回车。
 
 ```bash
 ^C[INFO]: Press "Entry" ...
 
 [INFO]: Monitor exit.
 ```
-## Common Issues
+## 常见问题
 
-1. Flashing fails
+### 烧录失败
 
-    Refer to [Install the corresponding driver.](../advanced_use/tools-tyutool.md#always-fails-during-write-in-the-burning-process)
+请参考 [安装对应驱动](../tos-tools/tools-tyutool.md#烧录过程中总是在write时失败)。 

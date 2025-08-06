@@ -125,7 +125,7 @@ The files in the `config` directory are configuration files for various boards. 
 
 ## Workflow
 
-This project depends on the [ai_audio](../applications/ai-components/ai-audio-asr-impl.md) application component, which mainly implements audio collection, playback, cloud AI session creation, and other functions.
+This project depends on the [ai_audio](./ai-components/ai-audio-asr-impl.md) application component, which mainly implements audio collection, playback, cloud AI session creation, and other functions.
 
 - **Long-press talk mode**
 
@@ -145,7 +145,7 @@ This project depends on the [ai_audio](../applications/ai-components/ai-audio-as
 
 ## Build Project
 
-1. For environment setup and configuration, please refer to [Quick Start](../quick_start/index.md).
+1. For environment setup and configuration, please refer to [Quick Start](../../quick-start/index.md).
 
 2. Change directory from the TuyaOpen root to the application directory
 
@@ -167,7 +167,7 @@ This project depends on the [ai_audio](../applications/ai-components/ai-audio-as
 
 ## Adapting New Boards
 ### Peripheral Requirements List
-For the list of peripherals supported by tuyaopen, please refer to [Peripheral Driver List](../peripheral/support_peripheral_list.md). Any new board must have the **required** peripheral drivers listed.
+For the list of peripherals supported by tuyaopen, please refer to [Peripheral Driver List](../../peripheral/support_peripheral_list.md). Any new board must have the **required** peripheral drivers listed.
 
   | Peripheral      | Peripheral Component | Description | Required |
   | --------------  | ------------------- | ----------- | -------- |
@@ -183,4 +183,4 @@ The unified entry for board peripheral driver registration is `board_register_ha
 If developers want to modify the hardware configuration of the driver (such as changing pins, chip types, etc.), please make changes in the target board's folder (boards/target environment/target board, such as `boards/T5AI/TUYA_T5AI_BOARD`).
 ::::
 
-Please refer to [Adding New Board Support](../new_hardware/adding-new-board-support.md) for the steps to add and adapt new boards.
+Please refer to [Adding New Board Support](../../new-hardware/new-board.md) for the steps to add and adapt new boards.

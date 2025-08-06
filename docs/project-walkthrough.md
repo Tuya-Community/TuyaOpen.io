@@ -1,8 +1,8 @@
 ---
-title: Directory Structure Description
+title: Directory Structure
 ---
 
-# `TuyaOpen` Directory Structure Description
+# TuyaOpen Directory Structure 
 
 ## Overview
 
@@ -139,7 +139,7 @@ The `boards` folder is mainly used to store configuration files and support code
 
 ## `tos.py` and `export.sh`
 
-`tos.py` is a core command-line tool used to simplify development workflows, manage project configurations, and execute compilation and deployment operations. For detailed usage instructions, refer to: [`tos.py` Usage](./tos-guide.md)
+`tos.py` is a core command-line tool used to simplify development workflows, manage project configurations, and execute compilation and deployment operations. For detailed usage instructions, refer to: [`tos.py` Usage](./tos-tools/tos-guide.md)
 
 `export.sh` and `export.bat` are used to activate the command-line functionality of `tos.py`
 
@@ -178,7 +178,7 @@ To get started with TuyaOpen, you can:
 
 ## Subsequent Operations
 
-- Read the [`tos.py` Usage Guide](./tos-guide.md) to learn more about project management commands
+- Read the [`tos.py` Usage Guide](./tos-tools/tos-guide.md) to learn more about project management commands
 - Explore the `examples` directory to understand basic functionality implementations
 - Check the `apps` directory for complex application examples
 - Review the `boards` directory to understand hardware platform configurations

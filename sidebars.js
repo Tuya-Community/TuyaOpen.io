@@ -2,37 +2,35 @@ module.exports = {
   docs: [
     // ------------------------------------------------------------------
     'about-tuyaopen',
+    'project-walkthrough',
     // ------------------------------------------------------------------
     {
       type: 'category',
       label: 'Getting Started',
       collapsed: false,
+      link: {
+        type: 'doc',
+        id: 'quick-start/index',
+      },
       items: [
-        'quick_start/unboxing',
-        'quick_start/enviroment-setup',
-        'quick_start/project-compilation',
-        'quick_start/firmware-burning',
-        'quick_start/equipment-authorization',
-        'quick_start/device-network-configuration',
+        'quick-start/unboxing',
+        'quick-start/enviroment-setup',
+        'quick-start/project-compilation',
+        'quick-start/firmware-burning',
+        'quick-start/equipment-authorization',
+        'quick-start/device-network-configuration',
+        'quick-start/device-debug',
       ],
     },
     // ------------------------------------------------------------------
-    {
-      type: 'category',
-      label: 'Advanced Use',
-      collapsed: true,
-      items: [
-        'advanced_use/terminologies',
-        'advanced_use/project-walkthrough',
-        'advanced_use/compilation-guide',
-        {
-          type: 'category',
-          label: 'Other Tools',
-          collapsed: true,
-          items: ['advanced_use/tos-guide', 'advanced_use/tools-tyutool'],
-        },
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Advanced Use',
+    //   collapsed: true,
+    //   items: [
+    //     'advanced-use/terminologies',
+    //   ],
+    // },
     // ------------------------------------------------------------------
     {
       type: 'category',
@@ -56,6 +54,10 @@ module.exports = {
       type: 'category',
       label: 'Applications',
       collapsed: true,
+      link: {
+        type: 'doc',
+        id: 'applications/index',
+      },
       items: [
         {
           type: 'category',
@@ -100,7 +102,7 @@ module.exports = {
       type: 'category',
       label: 'New Project',
       collapsed: true,
-      items: ['new_hardware/new-platform', 'new_hardware/new-board', 'new_hardware/new-project'],
+      items: ['new-hardware/new-platform', 'new-hardware/new-board', 'new-hardware/new-project'],
     },
     // ------------------------------------------------------------------
     {
@@ -156,7 +158,20 @@ module.exports = {
         },
       ],
     },
-
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
+      label: 'Tos Tools',
+      collapsed: true,
+      items: ['tos-tools/tos-guide', 'tos-tools/tools-tyutool'],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
+      label: 'Build System',
+      collapsed: true,
+      items: ['build-system/compilation-guide'],
+    },
     // ------------------------------------------------------------------
     'faqs/faqs',
     // ------------------------------------------------------------------

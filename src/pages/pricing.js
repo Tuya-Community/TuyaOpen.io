@@ -42,7 +42,7 @@ export default function Pricing() {
               '可自定义App云服务',
             ],
             buttonText: '购买',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick_start/unboxing#obtaining-a-license-key',
+            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
             featured: false,
           },
           {
@@ -57,7 +57,7 @@ export default function Pricing() {
               'TuyaOpen商业量产就绪',
             ],
             buttonText: '购买',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick_start/unboxing#obtaining-a-license-key',
+            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
             featured: true,
           },
           {
@@ -106,7 +106,7 @@ export default function Pricing() {
               'Customizable App cloud services',
             ],
             buttonText: 'Buy',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick_start/unboxing#obtaining-a-license-key',
+            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
             featured: false,
           },
           {
@@ -121,7 +121,7 @@ export default function Pricing() {
               'TuyaOpen commercial mass production ready',
             ],
             buttonText: 'Buy',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick_start/unboxing#obtaining-a-license-key',
+            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
             featured: true,
           },
           {

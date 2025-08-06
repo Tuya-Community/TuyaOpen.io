@@ -82,4 +82,4 @@ title: 设备配网
 
 如 `UUID` 和 `AuthKey` 都显示为 `xxxxxxxxxxxxxxxx`，则说明授权信息未正确写入。
 
-可以查看 [tyutool_gui 使用说明](./tools-tyutool.md#设备授权信息写入) 中的 **设备授权信息写入** 部分来写入授权信息。
+可以查看 [tyutool_gui 使用说明](../tos-tools/tools-tyutool.md#设备授权信息写入) 中的 **设备授权信息写入** 部分来写入授权信息。

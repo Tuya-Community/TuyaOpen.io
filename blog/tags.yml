@@ -2,3 +2,13 @@ release:
   label: Release
   permalink: /release
   description: TuyaOpen SDK Releases tag description
+
+TuyaOpen:
+  label: TuyaOpen
+  permalink: /tuyaopen
+  description: TuyaOpen related posts
+
+Contest:
+  label: Contest
+  permalink: /contest
+  description: Contest and competition related posts

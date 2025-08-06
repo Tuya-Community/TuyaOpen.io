@@ -185,7 +185,7 @@ const config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/quick_start/unboxing',
+              to: '/docs/quick-start/unboxing',
             },
             {
               label: 'Service',

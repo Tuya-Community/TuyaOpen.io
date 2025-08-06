@@ -2,7 +2,7 @@
 title: 目录结构
 ---
 
-# `TuyaOpen`目录结构说明
+# TuyaOpen 目录结构
 
 ## 概述
 
@@ -139,7 +139,7 @@ boards 文件夹主要用于存放与开发板相关的配置文件和支持代�
 
 ## `tos.py` 和 `export.sh`
 
-`tos.py`是一个核心命令行工具，用于简化开发流程、管理项目配置和执行编译部署等操作。详细使用说明可参考：[`tos.py`使用](./tos-guide.md)
+`tos.py`是一个核心命令行工具，用于简化开发流程、管理项目配置和执行编译部署等操作。详细使用说明可参考：[`tos.py`使用](./tos-tools/tos-guide.md)
 
 `export.sh`和`export.bat`用于激活`tos.py`的命令行功能
 

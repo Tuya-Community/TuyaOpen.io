@@ -264,7 +264,7 @@ if(EXISTS "${TOP_SOURCE_DIR}/platform/${TOS_PROJECT_PLATFORM}/build_example.py")
 
 由于 `TuyaOpen` 支持多平台编译，所有各平台的编译逻辑都可以通过 `platform/<platform_name>/build_example.py` 文件进行实现
 
-脚本的主要作用参考：[build_example.py](../new_hardware/new-platform.md#编译和链接)
+脚本的主要作用参考：[build_example.py](../new-hardware/new-platform.md#编译和链接)
 
 ### 4. 关键文件和目录结构
 

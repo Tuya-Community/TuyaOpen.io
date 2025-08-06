@@ -82,4 +82,4 @@ If the device fails to write the authorization information correctly, network co
 
 You can see that both UUID and AuthKey are `xxxxxxxxxxxxxxxx`, indicating that the authorization information was not written correctly.
 
-See the **Device Authorization Information Writing** section in the [tyutool_gui User Guide](../advanced_use/tools-tyutool.md#device-authorization-information-writing) for instructions on writing authorization information.
+See the **Device Authorization Information Writing** section in the [tyutool_gui User Guide](../tos-tools/tools-tyutool.md#device-authorization-information-writing) for instructions on writing authorization information.

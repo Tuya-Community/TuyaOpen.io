@@ -101,7 +101,7 @@ T5AI-Board 使用板载 CH343 USB 转串口芯片进行固件烧录和调试。�
 
 
 ## 相关技术文档/Demo
-- [T5AI-Board 入门指南 - (环境搭建+烧录 Demo）](/docs/quick_start/enviroment-setup)
+- [T5AI-Board 入门指南 - (环境搭建+烧录 Demo）](/docs/quick-start/enviroment-setup)
 - [T5AI-Board Demo 聊天机器人](/docs/applications/demo-your-chat-bot)
 - [T5AI-Board Demo IoT 智能插座/灯](/docs/applications/demo-tuya-iot-light)
 - [T5AI-Board Demo WIFI/BT和其他外设](/docs/applications/demo-generic-examples)

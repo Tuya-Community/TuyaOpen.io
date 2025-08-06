@@ -263,7 +263,7 @@ if(EXISTS "${TOP_SOURCE_DIR}/platform/${TOS_PROJECT_PLATFORM}/build_example.py")
 
 Since `TuyaOpen` supports multi-platform compilation, all platform-specific compilation logic can be implemented through the `platform/<platform_name>/build_example.py` file.
 
-For the main purpose of the script, refer to: [build_example.py](../new_hardware/new-platform.md#compilation-and-linking)
+For the main purpose of the script, refer to: [build_example.py](../new-hardware/new-platform.md#compilation-and-linking)
 
 ### 4. Key Files and Directory Structure
 

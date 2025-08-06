@@ -23,9 +23,9 @@
         "message": "添加新项目",
         "description": "The label for category Other Tools in sidebar docs"
     },
-    "sidebar.docs.category.Application Demo": {
+    "sidebar.docs.category.Applications": {
         "message": "应用示例",
-        "description": "The label for category Application Demo in sidebar docs"
+        "description": "The label for category Applications in sidebar docs"
     },
     "sidebar.docs.category.AI App Components": {
         "message": "AI 应用组件",
