@@ -2,11 +2,150 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tuyaopen.io/blog</id>
     <title>TuyaOpen Blog</title>
-    <updated>2025-06-27T00:00:00.000Z</updated>
+    <updated>2025-08-08T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tuyaopen.io/blog"/>
     <subtitle>TuyaOpen Blog</subtitle>
     <icon>https://tuyaopen.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[TuyaOpenAI开发者线上黑客]]></title>
+        <id>https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI开发者线上黑客</id>
+        <link href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI开发者线上黑客"/>
+        <updated>2025-08-08T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[100天AI觉醒计划，打造未来AI爆款硬件]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="100天ai觉醒计划打造未来ai爆款硬件">100天AI觉醒计划，打造未来AI爆款硬件<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#100%E5%A4%A9ai%E8%A7%89%E9%86%92%E8%AE%A1%E5%88%92%E6%89%93%E9%80%A0%E6%9C%AA%E6%9D%A5ai%E7%88%86%E6%AC%BE%E7%A1%AC%E4%BB%B6" class="hash-link" aria-label="Direct link to 100天AI觉醒计划，打造未来AI爆款硬件" title="Direct link to 100天AI觉醒计划，打造未来AI爆款硬件">​</a></h2>
+<p><strong>为热AI，敬创新，造未来</strong></p>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/783e0680-71dc-11f0-9f57-5d628208d2a7-1754385217256.jpg?tyName=WechatIMG259.jpg" alt="大赛报名咨询群" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">大赛报名咨询群</figcaption></figure><p></p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="一活动简介">一、活动简介<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%B8%80%E6%B4%BB%E5%8A%A8%E7%AE%80%E4%BB%8B" class="hash-link" aria-label="Direct link to 一、活动简介" title="Direct link to 一、活动简介">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦开发平台关于tuyaopen--tuyaopen简介">涂鸦开发平台（关于TuyaOpen | TuyaOpen）简介<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E6%B6%82%E9%B8%A6%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0%E5%85%B3%E4%BA%8Etuyaopen--tuyaopen%E7%AE%80%E4%BB%8B" class="hash-link" aria-label="Direct link to 涂鸦开发平台（关于TuyaOpen | TuyaOpen）简介" title="Direct link to 涂鸦开发平台（关于TuyaOpen | TuyaOpen）简介">​</a></h3>
+<p>TuyaOpen 是一个面向 AIoT 行业的开源、开放的开发框架，基于成熟的商业级 IoT 系统 TuyaOS 构建而成。它继承了跨平台、跨系统、组件化和安全合规等核心特性，已通过全球亿级设备和百万级用户的实践验证。</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="大赛简介">大赛简介<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E5%A4%A7%E8%B5%9B%E7%AE%80%E4%BB%8B" class="hash-link" aria-label="Direct link to 大赛简介" title="Direct link to 大赛简介">​</a></h3>
+<p>本次智能硬件大赛由涂鸦智能主办，邀请开发者们与涂鸦智能一起进行 AI 的硬件开发，100天打造未来AI爆款硬件！这里无学历滤镜，无背景要求，有创造力即是通行证！100天，和线上141.7w涂鸦全球生态开发者共燃热血 ，AI玩具、智能家居、智慧办公、AI应用等方向不限，欢迎你基于Tuya AIoT开发平台，进行AI智能硬件开发。</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="二报名时间">二、报名时间<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%BA%8C%E6%8A%A5%E5%90%8D%E6%97%B6%E9%97%B4" class="hash-link" aria-label="Direct link to 二、报名时间" title="Direct link to 二、报名时间">​</a></h2>
+<ul>
+<li>开放报名时间段：2025年8月8日~2025年9月10日</li>
+</ul>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/37198f30-6f89-11f0-9f57-5d628208d2a7-1754129557411.png?tyName=%E6%8A%A5%E5%90%8D%E5%92%A8%E8%AF%A2%E7%BE%A4.png" alt="大赛报名咨询群" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">大赛报名咨询群</figcaption></figure><p></p>
+<ul>
+<li>
+<p>初筛作品提交时间：2025年月9日30日</p>
+<p>上传作品到：github开发者作品仓库区&amp;红书/站等社交媒体</p>
+</li>
+<li>
+<p>线上评审（选20个作品）线上路演：</p>
+<p>线上路演，团队介绍/设计理念/用到技术/作品亮点/展示作品（10-15分钟/作品）</p>
+</li>
+<li>
+<p>作品最终评审：2025年10月8日-10月13日</p>
+<p>公布获奖作品：10月15日（暂定）</p>
+</li>
+<li>
+<p>作品颁奖：2025年10月21日（暂定）</p>
+</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="三活动内容">三、活动内容<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%B8%89%E6%B4%BB%E5%8A%A8%E5%86%85%E5%AE%B9" class="hash-link" aria-label="Direct link to 三、活动内容" title="Direct link to 三、活动内容">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="参赛赛道">参赛赛道：<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E5%8F%82%E8%B5%9B%E8%B5%9B%E9%81%93" class="hash-link" aria-label="Direct link to 参赛赛道：" title="Direct link to 参赛赛道：">​</a></h3>
+<p>可选择基于TuyaOpen 原生开源包、TuyaOpen版本开源包开发创意产品</p>
+<ul>
+<li><strong>AI 硬件赛道</strong>：可以是AI玩具｜机器人｜AI智能家居｜</li>
+<li><strong>AI行业解决方案赛道</strong>：如智慧办公，智慧工业等领域应用</li>
+<li><strong>AI+IP赛道</strong>：拟文物方向/宠物方向/二次元方向</li>
+<li><strong>入门级</strong>：Ai Agent赛道</li>
+<li><strong>AI云端/赛道</strong>：基于涂鸦AI AGENT 搭建的AI应用等</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="学习资料">学习资料：<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99" class="hash-link" aria-label="Direct link to 学习资料：" title="Direct link to 学习资料：">​</a></h3>
+<table><thead><tr><th>GitHub 资料站点</th><th><a href="https://github.com/tuya/TuyaOpen" target="_blank" rel="noopener noreferrer">https://github.com/tuya/TuyaOpen</a></th></tr></thead><tbody><tr><td>模组规格书资料</td><td><a href="https://tuyaopen.ai/zh/blog" target="_blank" rel="noopener noreferrer">https://tuyaopen.ai/zh/blog</a></td></tr><tr><td>TuyaOpen 与 TuyaOS资料合集</td><td><a href="https://tuyaopen.ai/zh/blog" target="_blank" rel="noopener noreferrer">https://tuyaopen.ai/zh/blog</a></td></tr><tr><td>智能体AI Agent 开发</td><td><a href="https://developer.tuya.com/cn/docs/iot/ai-agent-management?id=Kdxr4v7uv4fud" target="_blank" rel="noopener noreferrer">https://developer.tuya.com/cn/docs/iot/ai-agent-management?id=Kdxr4v7uv4fud</a></td></tr></tbody></table>
+<ul>
+<li><strong>视频类</strong>：开发者Demo视频关注“涂鸦开发者”视频号</li>
+<li><strong>直播类</strong>：活动期间安排直播8月开发者训练营，关注大赛群动态</li>
+</ul>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/b9d2fba0-6f89-11f0-9fb9-e1834df84344-1754129776730.jpeg?tyName=%E5%BC%80%E5%8F%91%E8%80%85%E5%85%AC%E4%BC%97%E5%8F%B7.jpeg" alt="涂鸦开发者视频号" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">涂鸦开发者视频号</figcaption></figure><p></p>
+<p>根据提供的学习材料，学习TuyaOpen 基于涂鸦T5模组，DIY自己的硬件</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="技术要求">技术要求：<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E6%8A%80%E6%9C%AF%E8%A6%81%E6%B1%82" class="hash-link" aria-label="Direct link to 技术要求：" title="Direct link to 技术要求：">​</a></h3>
+<p><strong>🌟需要基于涂鸦开发平台进行AI硬件开发</strong></p>
+<ul>
+<li><strong>TuyaOpen</strong>：TuyaOpen 基于行业领先的 TuyaOS 架构开源，已获得全球141.7万开发者实践验证。</li>
+<li><strong>TuyaOs</strong>：Tuya Wind IDE 是面向基于 TuyaOS EasyGo 的开发者提供的一站式集成开发环境</li>
+</ul>
+<p>参赛者可根据需求具体的开发平台。如果您有 视频 AI 能力集成 或 商业化场景 的需求，建议优先选用 TuyaOS；如为其他场景或需求，则推荐生态更加开放的 TuyaOpen。</p>
+<p><strong>🌟硬件要求</strong></p>
+<ul>
+<li><strong>开发板</strong>：建议使用T5系列开发板，其他TuyaOpen平台支持的生态，参见
+<a href="https://tuyaopen.ai/zh/docs/about-tuyaopen" target="_blank" rel="noopener noreferrer">https://tuyaopen.ai/zh/docs/about-tuyaopen</a></li>
+<li><strong>DIY开发板</strong>：需使用T5模组。</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="作品提交要求">作品提交要求<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%BD%9C%E5%93%81%E6%8F%90%E4%BA%A4%E8%A6%81%E6%B1%82" class="hash-link" aria-label="Direct link to 作品提交要求" title="Direct link to 作品提交要求">​</a></h3>
+<p><strong>🌟作品发布路径</strong></p>
+<p>作品上传 OSChina 开源社区以最好的形式呈现出来。源代码提交 Github或是Gitee，仓库涵盖软件，和硬件的相关资料。整体项目呈现也会作为评分项。</p>
+<p><strong>🌟说明文档要求</strong></p>
+<p>提交项目计划书 <a href="https://drive.weixin.qq.com/s?k=AGQAugfWAAkCkERkpHAFUAoAamAEg" target="_blank" rel="noopener noreferrer">https://drive.weixin.qq.com/s?k=AGQAugfWAAkCkERkpHAFUAoAamAEg</a> 或者PPT（下载模版）</p>
+<p><strong>🌟提交视频要求</strong></p>
+<ul>
+<li><strong>视频要求</strong>：视频要求至少1分钟，演示完整的产品功能和能力, 配合介绍作品亮点及使用场景</li>
+<li><strong>视频发布</strong>：视频发布在小红书/抖音/视频号/b站等任意社交媒体，@涂鸦开发者，带话题标签#TuyaOpen #TuyaAI #挑战100天开发AI硬件，有机会获得额人气加分</li>
+</ul>
+<p>以上作品发布后的地址链接&amp;文档，以邮件的形式发送到<a href="mailto:huate.lai@tuya.com" target="_blank" rel="noopener noreferrer">huate.lai@tuya.com</a>，邮件命名规则「队名+作品名+所属赛道」</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>作品内容须遵守国家有关法律法规，内容积极健康。</li>
+<li>组织涂鸦资深物联网工程师对所有作品进行公平公正的评审。</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="参赛资源获取">参赛资源获取<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E5%8F%82%E8%B5%9B%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96" class="hash-link" aria-label="Direct link to 参赛资源获取" title="Direct link to 参赛资源获取">​</a></h3>
+<ul>
+<li>
+<p><strong>自购开发板</strong>：报名选手进群5折购买T5AI开发板套件</p>
+</li>
+<li>
+<p><strong>赠送开发板(限量)</strong>：根据客户的创意筛选开发者送出T5开发板，审核通过后发放</p>
+</li>
+<li>
+<p>可以调用tuya 云服务的 免费使用包括语音合成，声音复刻，语音识别、语音合成等Ai能力</p>
+</li>
+<li>
+<p><strong>大赛报名成功后拉群&amp;资源申请</strong>
+资源申请链接：<a href="https://jsj.top/f/YVnx0T" target="_blank" rel="noopener noreferrer">涂鸦 T5AI 开发板申领报名表-表单-金数据</a></p>
+<ul>
+<li>有GitHub历史项目链接</li>
+<li>有相关硬件开发背景</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="四活动奖励资源池价值-10万">四、活动奖励（资源池价值 10万+）<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E5%9B%9B%E6%B4%BB%E5%8A%A8%E5%A5%96%E5%8A%B1%E8%B5%84%E6%BA%90%E6%B1%A0%E4%BB%B7%E5%80%BC-10%E4%B8%87" class="hash-link" aria-label="Direct link to 四、活动奖励（资源池价值 10万+）" title="Direct link to 四、活动奖励（资源池价值 10万+）">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="一等奖共1个作品可获得">🎁一等奖：共1个作品，可获得<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%B8%80%E7%AD%89%E5%A5%96%E5%85%B11%E4%B8%AA%E4%BD%9C%E5%93%81%E5%8F%AF%E8%8E%B7%E5%BE%97" class="hash-link" aria-label="Direct link to 🎁一等奖：共1个作品，可获得" title="Direct link to 🎁一等奖：共1个作品，可获得">​</a></h3>
+<ul>
+<li>价值5999的空间智能化套装</li>
+<li>4000元购物卡</li>
+</ul>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/b9d4f770-6f89-11f0-9fb9-e1834df84344-1754129776743.png?tyName=%E5%A5%96%E5%93%811.png" alt="一等奖奖品" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">一等奖奖品</figcaption></figure><p></p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="二等奖共3个作品每个作品可获得">🎁二等奖：共3个作品，每个作品可获得<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%BA%8C%E7%AD%89%E5%A5%96%E5%85%B13%E4%B8%AA%E4%BD%9C%E5%93%81%E6%AF%8F%E4%B8%AA%E4%BD%9C%E5%93%81%E5%8F%AF%E8%8E%B7%E5%BE%97" class="hash-link" aria-label="Direct link to 🎁二等奖：共3个作品，每个作品可获得" title="Direct link to 🎁二等奖：共3个作品，每个作品可获得">​</a></h3>
+<ul>
+<li>价值3999多功能 Ai中控</li>
+<li>2000元购物卡</li>
+</ul>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/b9d4a950-6f89-11f0-9fb9-e1834df84344-1754129776741.png?tyName=%E5%A5%96%E5%93%812.png" alt="二等奖奖品" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">二等奖奖品</figcaption></figure><p></p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="三等奖共-5个作品每个作品可获得">🎁三等奖：共 5个作品，每个作品可获得<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E4%B8%89%E7%AD%89%E5%A5%96%E5%85%B1-5%E4%B8%AA%E4%BD%9C%E5%93%81%E6%AF%8F%E4%B8%AA%E4%BD%9C%E5%93%81%E5%8F%AF%E8%8E%B7%E5%BE%97" class="hash-link" aria-label="Direct link to 🎁三等奖：共 5个作品，每个作品可获得" title="Direct link to 🎁三等奖：共 5个作品，每个作品可获得">​</a></h3>
+<ul>
+<li>价值299 Wi-Fi AI 玩偶</li>
+<li>1000元购物卡</li>
+</ul>
+<p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/b9d65700-6f89-11f0-9f57-5d628208d2a7-1754129776752.png?tyName=%E5%A5%96%E5%93%813.png" alt="三等奖奖品" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">三等奖奖品</figcaption></figure><p></p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="最佳传播奖共-10个作品每个作品可获得">🎁最佳传播奖：共 10个作品，每个作品可获得<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E6%9C%80%E4%BD%B3%E4%BC%A0%E6%92%AD%E5%A5%96%E5%85%B1-10%E4%B8%AA%E4%BD%9C%E5%93%81%E6%AF%8F%E4%B8%AA%E4%BD%9C%E5%93%81%E5%8F%AF%E8%8E%B7%E5%BE%97" class="hash-link" aria-label="Direct link to 🎁最佳传播奖：共 10个作品，每个作品可获得" title="Direct link to 🎁最佳传播奖：共 10个作品，每个作品可获得">​</a></h3>
+<ul>
+<li>涂鸦周边&amp;200元购物卡</li>
+</ul>
+<p>按照要求全链路完整作品&amp;分享小红书/抖音等平台的最高人气作品</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="最佳agent-创意奖ai-agent-赛道专项奖共5个作品每个作品可获得">🎁最佳Agent 创意奖（AI Agent 赛道专项奖）：共5个作品，每个作品可获得<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E6%9C%80%E4%BD%B3agent-%E5%88%9B%E6%84%8F%E5%A5%96ai-agent-%E8%B5%9B%E9%81%93%E4%B8%93%E9%A1%B9%E5%A5%96%E5%85%B15%E4%B8%AA%E4%BD%9C%E5%93%81%E6%AF%8F%E4%B8%AA%E4%BD%9C%E5%93%81%E5%8F%AF%E8%8E%B7%E5%BE%97" class="hash-link" aria-label="Direct link to 🎁最佳Agent 创意奖（AI Agent 赛道专项奖）：共5个作品，每个作品可获得" title="Direct link to 🎁最佳Agent 创意奖（AI Agent 赛道专项奖）：共5个作品，每个作品可获得">​</a></h3>
+<ul>
+<li>定制烧录创意Ai Agent的涂鸦开发板套件&amp;100元购物卡</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="获奖作品享受生态资源">🎁获奖作品享受生态资源<a href="https://tuyaopen.io/blog/2025/08/08/TuyaOpenAI%E5%BC%80%E5%8F%91%E8%80%85%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2#%E8%8E%B7%E5%A5%96%E4%BD%9C%E5%93%81%E4%BA%AB%E5%8F%97%E7%94%9F%E6%80%81%E8%B5%84%E6%BA%90" class="hash-link" aria-label="Direct link to 🎁获奖作品享受生态资源" title="Direct link to 🎁获奖作品享受生态资源">​</a></h3>
+<ul>
+<li>涂鸦智能技术团队一对一技术指导，推进商业化路径&amp;创投机构资源引荐。</li>
+<li>开发者作品推广资源包，涂鸦智能助你成为当红开发者up主！涂鸦智能全平台作品推广，享受专项流量扶持计划获得推广曝光,联合头部KOL推广开发者的产品力及IP。</li>
+<li>成为涂鸦开发者生态核心官方认证开发者，最新平台能力的优先体验权，共创Demo开发免费获取模组和开发板及技术支持</li>
+<li>产品出海支持&amp;商业合作推荐，获奖作品将在海外展会中展出，涂鸦智能将全渠道扶获奖产品出海，亚马逊 TK等销售全链路支持。</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[72H Adventure X 活动]]></title>
         <id>https://tuyaopen.io/blog/72h-with-tuyaopen</id>
