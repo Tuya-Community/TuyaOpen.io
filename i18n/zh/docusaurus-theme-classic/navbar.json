@@ -19,7 +19,7 @@
     "message": "博客",
     "description": "Navbar item with label Blog"
   },
-  "item.label.tools": {
+  "item.label.Tools": {
     "message": "工具",
     "description": "Navbar item with label Tools"
   },
@@ -30,5 +30,13 @@
   "item.label.Community Group": {
     "message": "社团",
     "description": "Navbar item with label Community Group"
+  },
+  "item.label.Universal Serial Port Tools": {
+    "message": "涂鸦通用串口工具",
+    "description": "Navbar item with label Universal Serial Port Tools"
+  },
+  "item.label.Web Serial/Flashing Tools": {
+    "message": "Web串口/烧录工具",
+    "description": "Navbar item with label Web Serial/Flashing Tools"
   }
 }

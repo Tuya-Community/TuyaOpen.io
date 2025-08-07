@@ -206,7 +206,9 @@ const config = {
           items: [
             {
               label: 'Web Serial Tool',
-              to: '/tools',
+              href: 'https://tuyaopen.ai/tools',
+              target: '_blank',
+              rel: 'noopener noreferrer',
             },
           ],
         },

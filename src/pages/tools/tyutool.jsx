@@ -32,7 +32,7 @@ const enContent = {
       'RTL8720CF', 
       'ESP32 / ESP32-C3 / ESP32-S3',
       'LN882H',
-      'T5AI/T3',
+      'T5AI/T3/T2',
       '...'
     ]
   },
@@ -108,7 +108,7 @@ const zhContent = {
       'RTL8720CF',
       'ESP32 / ESP32-C3 / ESP32-S3', 
       'LN882H',
-      'T5AI/T3',
+      'T5AI/T3/T2',
       '...'
     ]
   },
@@ -168,7 +168,7 @@ export default function TyutoolPage() {
       <main className={styles.container}>
         <div className={styles.header}>
           <div className={styles.breadcrumb}>
-            <Link to="/tools">Tools</Link> / tyutool
+            <Link to="/">Home</Link> / tyutool
           </div>
           <h1 className={styles.title}>{content.title}</h1>
           <p className={styles.subtitle}>{content.subtitle}</p>
