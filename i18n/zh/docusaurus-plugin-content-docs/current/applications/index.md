@@ -60,7 +60,7 @@ DPCode 为 DP 事件的唯一识别码。大多情况下，针对于不同通信
 ### 环境准备
 
 **接入涂鸦服务必需**：
-   - step1: [TuyaOpen 授权码](../quick-start/index.md#tuyaopen-授权码获取)
+   - step1: [TuyaOpen 授权码](../quick-start/index.md#tuyaopen授权码获取)
    - step2: 获取 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) 用于固件烧录，TuyaOpen 授权码写入、串口调试等
 
 ### 基础开发模式

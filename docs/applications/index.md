@@ -59,7 +59,7 @@ Before starting application development, please ensure the following preparation
 ### Environment Setup
 
 **Required for Tuya service access**:
-   - step1: [TuyaOpen Authorization Code](../quick-start/index.md#tuyaopen-授权码获取)
+   - step1: [TuyaOpen Authorization Code](../quick-start/index.md#tuyaopen-authorization-code-acquisition)
    - step2: Obtain [Tuya Universal Serial Tool](https://www.tuyaopen.ai/zh/tools/tyutool) for firmware burning, TuyaOpen authorization code writing, serial debugging, etc.
 
 ### Basic Development Mode

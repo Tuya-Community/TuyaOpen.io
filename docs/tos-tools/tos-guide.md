@@ -119,7 +119,7 @@ In the project directory, execute the command `tos.py config choice`
 
 It will display all the solidified configurations supported by the current project, which can be used directly
 
-The selected configuration will be synchronized to the [app_default.config](./project-walkthrough#app_defaultconfig) file in the project path
+The selected configuration will be synchronized to the [app_default.config](/docs/project-walkthrough#app_defaultconfig) file in the project path
 
 ```bash
 ❯ tos.py config choice
@@ -160,7 +160,7 @@ The `menu` command will open a visual configuration interface
 
 ![menu](https://images.tuyacn.com/fe-static/docs/img/0ad1b8c6-303d-411c-bfe7-c25e17968c05.png)
 
-Users can modify configuration options according to project requirements, and after saving, it will synchronously modify the [app_default.config](./project-walkthrough#app_defaultconfig) file
+Users can modify configuration options according to project requirements, and after saving, it will synchronously modify the [app_default.config](/docs/project-walkthrough#app_defaultconfig) file
 
 :::note
 This operation may change the toolchain being used, so the `menu` operation will first perform a deep clean
@@ -176,7 +176,7 @@ Or use the `choice` command to reselect configurations
 
 `save` will save the configuration currently used by the project as a solidified configuration for future use
 
-The specific operation is to rename the [app_default.config](./project-walkthrough#app_defaultconfig) file and save it to the `config` directory
+The specific operation is to rename the [app_default.config](/docs/project-walkthrough#app_defaultconfig) file and save it to the `config` directory
 
 ```bash
 ❯ tos.py config save
@@ -272,7 +272,7 @@ Options:
   -h, --help          Show this message and exit.
 ```
 
-At the same time, you can also use the `monitor` function to write authorization codes, refer to: [Authorization](./enviroment-setup#authorization)
+At the same time, you can also use the `monitor` function to write authorization codes, refer to: [Equipment Authorization](/docs/quick-start/equipment-authorization)
 
 Exit log viewing by pressing `Ctrl+c`, then press Enter
 
@@ -308,7 +308,7 @@ Execution process:
 
 ### new platform
 
-For the specific usage of this command, please refer to **[new platform](../new_hardware/new-platform)**
+For the specific usage of this command, please refer to **[new platform](/docs/new-hardware/new-platform)**
 
 ## Common Issues
 

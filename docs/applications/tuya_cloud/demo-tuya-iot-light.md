@@ -11,7 +11,7 @@ The current `switch_demo` demonstrates the following functions:
 4. Receives LAN TCP control data from the APP and automatically responds
 5. OTA functionality
 
-Currently, `switch_demo` does not control real hardware, so it can run on all currently supported [platforms](../../about-tuyaopen.md#supported-platforms).
+Currently, `switch_demo` does not control real hardware, so it can run on all currently supported [platforms](../../about-tuyaopen.md#supported-platform-list).
 
 Before using `switch_demo`, you need to understand the following terms:
 1. [TuyaOpen Dedicated Authorization Code](../../quick-start/index.md#tuyaopen-dedicated-authorization-code)

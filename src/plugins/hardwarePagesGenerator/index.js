@@ -41,8 +41,19 @@ module.exports = function hardwarePagesGenerator(context, options) {
           // Skip devices without metadata
           return
         }
+        // Add English route
         addRoute({
           path: `/hardware_pages/${device.id}`,
+          component: componentPath,
+          exact: true,
+          modules: {
+            device: devicesModulePath,
+            meta: require.resolve(metaFilePath),
+          },
+        })
+        // Add Chinese route
+        addRoute({
+          path: `/zh/hardware_pages/${device.id}`,
           component: componentPath,
           exact: true,
           modules: {

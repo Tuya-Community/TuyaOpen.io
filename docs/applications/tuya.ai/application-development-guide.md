@@ -6,7 +6,7 @@ title: Application Development Guide
 
 ## Create a product and obtain the product PID
 
-Refer to the documentation [https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc](https://developer.tuya.com/cn/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc) to create a product on [https://iot.tuya.com](https://iot.tuya.com) and obtain the PID of the created product. Replace the `TUYA_PRODUCT_KEY` macro in the [apps/tuya_cloud/switch_demo/src/tuya_config.h](./src/tuya_config.h) file with the PID.
+Refer to the documentation [https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc](https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc) to create a product on [https://iot.tuya.com](https://iot.tuya.com) and obtain the PID of the created product. Replace the `TUYA_PRODUCT_KEY` macro in the `apps/tuya_cloud/switch_demo/src/tuya_config.h` file with the PID.
 
 ## Confirm the TuyaOpen authorization code
 
@@ -27,7 +27,7 @@ The dedicated authorization code for TuyaOpen can be obtained through the follow
 
 - Method 1: Purchase a module with a TuyaOpen authorization code pre-burned. The authorization code is already burned in the corresponding module at the factory and will not be lost. TuyaOpen reads the authorization code through the tuya_iot_license_read() interface at startup. Please confirm whether the current device has a TuyaOpen authorization code pre-burned.
 
-- Method 2: If the current module is not pre-burned with a TuyaOpen authorization code, you can purchase an Open SDK Authorization Code through the https://platform.tuya.com/purchase/index?type=6 page and put 'TUYA_DEVICE_UUID' and 'TUYA_DEVICE_AUTHKEY' in the [apps/tuya_cloud/switch_demo/src/tuya_config.h](./src/tuya_config.h) file Replace the uuid and authkey obtained after successful purchase
+- Method 2: If the current module is not pre-burned with a TuyaOpen authorization code, you can purchase an Open SDK Authorization Code through the https://platform.tuya.com/purchase/index?type=6 page and put 'TUYA_DEVICE_UUID' and 'TUYA_DEVICE_AUTHKEY' in the `apps/tuya_cloud/switch_demo/src/tuya_config.h` file Replace the uuid and authkey obtained after successful purchase
 
 ![Authorization Code](/images/en/authorization_code.png)
 
@@ -50,7 +50,7 @@ If the `tuya_iot_license_read()` interface returns OPRT_OK, it indicates that th
 - Run the `tos build` command to compile the project.
 - Use the tos flash command to flash the project in one click.
 
-For more details about tos, please refer to [tos Guide](/tos_guide/index).
+For more details about tos, please refer to [tos Guide](/docs/tos-tools/tos-guide).
 
 ## Network Configuration and Device Activation
 

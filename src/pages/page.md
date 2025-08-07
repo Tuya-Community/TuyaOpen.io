@@ -1,8 +1,6 @@
 # TuyaOpen: Create Your Next AI+IoT Hardware
 
-[English](#english) | [中文](#chinese)
-
-<a name="english"></a>
+[English](#english-version) | [中文](#中文版本)
 
 ## English Version
 
@@ -45,8 +43,6 @@ Tuya T5 chip/module is a high-performance embedded Wi-Fi 6 + Bluetooth 5.4 dual-
 Join the community and communicate with maintainers and other users. Your suggestions can make TuyaOpen better.
 
 ---
-
-<a name="chinese"></a>
 
 ## 中文版本
 

@@ -4,7 +4,7 @@ title: Equipment Authorization
 
 # Authorization
 
-For information about authorization codes, please check [Authorization Code Description](./unboxing.md#license-key)
+For information about authorization codes, please check [Authorization Code Description](../quick-start/index.md#tuyaopen-dedicated-authorization-code)
 
 Two authorization methods are provided
 

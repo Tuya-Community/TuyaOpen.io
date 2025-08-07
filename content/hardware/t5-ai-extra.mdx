@@ -1,0 +1,77 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Features
+
+The **Tuya T5-AI Development Board** is a comprehensive voice and screen multi-interaction development platform based on the powerful T5-E1-IPEX module. This board provides everything needed to develop advanced IoT applications with AI capabilities.
+
+### Key Highlights
+
+- **Voice Interaction**: Equipped with dual microphones and built-in speaker for voice recognition and playback
+- **Visual Interface**: Supports LCD displays with touch functionality and camera integration
+- **High Performance**: ARMv8-M Star (M33F) core running at 480MHz with ample memory
+- **Rich Connectivity**: Wi-Fi 2.4G + Bluetooth LE 5.4 for comprehensive wireless communication
+- **Expandable**: TF card slot and comprehensive GPIO breakout for custom peripherals
+
+### Audio Capabilities
+
+The T5-AI board excels in audio processing with:
+- **Dual Microphone Array**: High-quality voice capture with noise reduction
+- **Digital Signal Processing**: 4-band digital equalizer for audio enhancement  
+- **Speaker Output**: Clear audio playback for voice responses and notifications
+- **Multiple Audio Formats**: Support for various audio codecs and sampling rates
+
+### Display and Camera Support
+
+<Tabs>
+  <TabItem value="display" label="Display Support" default>
+    - **3.5" TFT Display**: 320×480 RGB resolution with ILI9488 driver
+    - **Touch Interface**: GT1151QM touch panel controller
+    - **Multiple Interfaces**: RGB, 8080, SPI, and I2C display connections
+    - **Full Pin Breakout**: Design custom display solutions
+  </TabItem>
+  
+  <TabItem value="camera" label="Camera Integration">
+    - **2MP Image Sensor**: GC2145 camera with 1616 x 1232 resolution
+    - **DVP Interface**: Direct video port for real-time image capture
+    - **Computer Vision**: Suitable for AI vision applications
+    - **Low Power**: Efficient image processing capabilities
+  </TabItem>
+</Tabs>
+
+## Development Resources
+
+### Getting Started
+- [T5-AI Board Overview](/docs/hardware-specific/t5-ai-board/overview-t5-ai-board)
+- [Environment Setup Guide](/docs/quick-start/enviroment-setup)
+- [Firmware Flashing Instructions](/docs/quick-start/firmware-burning)
+
+### Sample Applications
+- [Voice Chatbot Demo](/docs/applications/tuya.ai/demo-your-chat-bot) - Build an AI-powered voice assistant
+- [IoT Device Control](/docs/applications/tuya_cloud/demo-tuya-iot-light) - Smart home device integration
+- [Peripheral Examples](/docs/examples/demo-generic-examples) - GPIO, sensors, and communication examples
+
+### Hardware Documentation
+- [Complete Pinout Diagram](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
+- [T5-AI Board Schematic](https://images.tuyacn.com/content-platform/hestia/174243908480e34e64d08.pdf)
+- [LCD and Camera Module Schematic](https://images.tuyacn.com/content-platform/hestia/17387200670bcae1561bf.pdf)
+
+## Technical Specifications
+
+The T5-AI board provides extensive peripheral support through its comprehensive interface set:
+
+### Communication Interfaces
+- **2x SPI**: High-speed serial peripheral interface
+- **2x QSPI**: Quad SPI for fast memory access
+- **3x UART**: Serial communication ports
+- **2x I2C**: Inter-integrated circuit for sensors and peripherals
+- **1x SDIO**: SD card interface for storage expansion
+- **1x CAN**: Controller Area Network for automotive applications
+
+### Control and Power
+- **12x PWM**: Pulse width modulation for motor control and LED dimming
+- **3x I2S**: Inter-IC Sound for digital audio
+- **56x GPIO**: General-purpose input/output pins
+- **USB Type-C**: Single cable for power and programming
+
+This extensive feature set makes the T5-AI board ideal for complex IoT applications requiring voice interaction, visual feedback, and comprehensive sensor integration.

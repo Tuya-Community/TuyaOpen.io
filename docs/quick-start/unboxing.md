@@ -13,7 +13,7 @@ If you need to develop and compile [TuyaOpen](https://github.com/tuya/TuyaOpen) 
 ## Preparation
 
 Before you start, please prepare the following resources:
- - [TuyaOpen supported development board or module](../hardware-specific/index.md#hardware-platform)
+ - [TuyaOpen supported development board or module](../hardware-specific/index.md#hardware-platforms)
  - USB data cable
  - Computer (supports Windows/Linux/macOS)
 

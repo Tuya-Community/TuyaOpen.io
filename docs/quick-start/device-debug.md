@@ -15,7 +15,7 @@ This document will guide you on how to use serial debugging tools to obtain devi
 Before starting debugging, please ensure you have the following necessary resources:
 
 ### Hardware Equipment
-- [TuyaOpen supported development boards or modules](../hardware-specific/index.md#hardware-platform)
+- [TuyaOpen supported development boards or modules](../hardware-specific/index.md#hardware-platforms)
 - USB data cable or USB-TTL converter
 
 ### Debugging Tools

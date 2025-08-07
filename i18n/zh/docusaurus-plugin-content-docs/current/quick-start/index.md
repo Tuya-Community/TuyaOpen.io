@@ -56,5 +56,5 @@ DeviceID 为设备每次激活配网的时候，云端分配给到的 id，关�
 
 在开始快速上手之前，请确保完成以下准备工作：
 
-- step1: 获取 [TuyaOpen 授权码](#tuyaopen-授权码获取)
+- step1: 获取 [TuyaOpen 授权码](#tuyaopen授权码获取)
 - step2: 获取 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) 用于接下来的固件烧录，TuyaOpen 授权码写入、串口调试等

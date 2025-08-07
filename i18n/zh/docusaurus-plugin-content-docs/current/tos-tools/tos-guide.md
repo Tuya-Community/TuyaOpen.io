@@ -109,7 +109,7 @@ Commands:
 
 在项目目录中，执行命令 `tos.py config choice`。
 
-会展示当前项目所支持的所有固化配置，可直接使用，被选择的配置会同步到项目路径下的 [app_default.config](./project-walkthrough#app_defaultconfig) 文件。
+会展示当前项目所支持的所有固化配置，可直接使用，被选择的配置会同步到项目路径下的 [app_default.config](/docs/project-walkthrough#app_defaultconfig) 文件。
 
 ```bash
 ❯ tos.py config choice
@@ -150,7 +150,7 @@ Choice config file:
 
 ![menu](https://images.tuyacn.com/fe-static/docs/img/0ad1b8c6-303d-411c-bfe7-c25e17968c05.png)
 
-使用者可以根据项目需求修改配置选项，保存后会同步修改 [app_default.config](./project-walkthrough#app_defaultconfig) 文件。
+使用者可以根据项目需求修改配置选项，保存后会同步修改 [app_default.config](/docs/project-walkthrough#app_defaultconfig) 文件。
 
 :::note
 该操作可能会改变所使用的工具链，所以`menu`操作，会先执行一次深度清理。
@@ -164,7 +164,7 @@ Choice config file:
 
 `save` 会将当前项目所使用的配置保存为固化配置，方便以后使用。
 
-具体操作为将 [app_default.config](./project-walkthrough#app_defaultconfig) 文件重新命名后保存到 `config` 目录中。
+具体操作为将 [app_default.config](/docs/project-walkthrough#app_defaultconfig) 文件重新命名后保存到 `config` 目录中。
 
 ```bash
 ❯ tos.py config save
@@ -256,7 +256,7 @@ Options:
   -h, --help          Show this message and exit.
 ```
 
-同时，也可以使用 `monitor` 功能写入授权码，参考：[授权](./enviroment-setup#授权)。
+同时，也可以使用 `monitor` 功能写入授权码，参考：[设备授权](/docs/quick-start/equipment-authorization)。
 
 如需退出日志查看，按键 `Ctrl + C`，并回车。
 
@@ -292,7 +292,7 @@ Options:
 
 ### new platform
 
-该命令的具体使用方法，请参考 **[new platform](../new_hardware/new-platform)**。
+该命令的具体使用方法，请参考 **[new platform](/docs/new-hardware/new-platform)**。
 
 ## 常见问题
 
