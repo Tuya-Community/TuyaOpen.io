@@ -1,26 +1,24 @@
 ---
-title: Project Compilation
+title: Build Project
 ---
 
-# Project Compilation
+# Build Project
 
-### Select Project
+## Select project
 
-In TuyaOpen, compilable projects can be selected from `apps` and `example` directories
+In TuyaOpen, you can choose compilable projects from the `apps` and `example` directories.
 
-Here we use `switch_demo` as an example
-
-Enter the project directory
+Take `switch_demo` as an example. Go to the project directory.
 
 ```bash
 cd apps/tuya_cloud/switch_demo
 ```
 
-## Configure Project
+## Configure project
 
-Use command `tos.py config choice` to configure the project
+Run the `tos.py config choice` command to configure the project.
 
-This command will provide verified configuration options, users can select based on their hardware devices
+This command provides verified configuration options, allowing you to select them based on your hardware device.
 
 ```bash
 ❯ tos.py config choice
@@ -42,11 +40,11 @@ Input "q" to exit.
 Choice config file:
 ```
 
-Here we use Tuya T5 series development board as an example, select `T5AI.config`
+Taking the Tuya T5 series development board as an example, you need to select `T5AI.config`.
 
-## Build Artifacts
+## Build output
 
-Build the project using command `tos.py build`
+Build the project using the command `tos.py build`.
 
 ```bash
 ❯ tos.py build
@@ -59,9 +57,9 @@ Build the project using command `tos.py build`
 
 ```
 
-## Clean Artifacts
+## Clear output
 
-Clean compilation cache using command `tos.py clean` or `tos.py clean -f` (deep clean)
+To clear the build cache, run the command `tos.py clean` (standard cleanup) or `tos.py clean -f` (force deep cleanup).
 
 ```bash
 ❯ tos.py clean -f
