@@ -71,6 +71,76 @@ a.tw-btn {
 @tailwind components;
 @tailwind utilities;
 
+/* Announcement bar styles */
+.announcement-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.announcement-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.announcement-close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.announcement-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.announcement-link {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 12px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.announcement-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+/* Ensure navbar doesn't overlap with announcement bar */
+.navbar {
+  position: sticky;
+  top: 0; /* Default position when no announcement bar */
+  z-index: 999;
+  transition: top 0.3s ease;
+}
+
+/* When announcement bar is present, adjust navbar position */
+body.announcement-visible .navbar {
+  top: 40px; /* Adjust based on announcement bar height */
+}
+
 .navbar .navbar__item {
   @apply tw-px-4;
 }

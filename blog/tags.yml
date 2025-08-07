@@ -5,10 +5,10 @@ release:
 
 TuyaOpen:
   label: TuyaOpen
-  permalink: /tuyaopen
-  description: TuyaOpen related posts
+  permalink: /TuyaOpen
+  description: TuyaOpen platform and development related content
 
 Contest:
   label: Contest
-  permalink: /contest
-  description: Contest and competition related posts
+  permalink: /Contest
+  description: Developer contests and hackathons

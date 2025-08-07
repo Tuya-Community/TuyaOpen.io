@@ -4,19 +4,20 @@ title: Environment Setup
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# Development Environment Setup and Verification
+# Environment Setup
 
 ## Overview
 
-Complete the necessary tool preparation on different systems (Linux, Windows, Mac)
+Prepare necessary tools on different systems, such as Linux, Windows, and macOS.
 
-## Hardware Preparation
+## Prepare hardware
 
- - **TuyaOpen** [Supported development boards or modules](../hardware-specific/index.md#hardware-platforms)
- - USB data cable
- - Computer (Windows / Linux / macOS)
+Before getting started, prepare the following resources:
+- [TuyaOpen-compatible development boards or modules](../hardware-specific/index.md#hardware-platforms)
+- USB data cable
+- Computer (Windows, Linux, or macOS supported)
 
-## Environment Preparation
+## Set up environment
 
 <SyncedTabs
   defaultValue="Linux"
@@ -26,13 +27,12 @@ Complete the necessary tool preparation on different systems (Linux, Windows, Ma
     { label: '🖥️ Windows', value: 'Windows' },
   ]}
 >
-
   <SyncedTabItem value="Linux">
     :::info
-    Recommended to use Ubuntu 24, 22, 20 LTS versions.
+    It is recommended to use the LTS versions of Ubuntu 24, 22, and 20.
     :::
 
-    Install necessary tools
+    Install the necessary tools:
 
     ```bash
     sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
@@ -40,35 +40,36 @@ Complete the necessary tool preparation on different systems (Linux, Windows, Ma
   </SyncedTabItem>
   <SyncedTabItem value="Mac">
     :::info
-    Recommended to use Homebrew package manager for installation
+    Homebrew package manager is recommended for installation.
     :::
 
-    Generally, Mac terminal uses older tool versions, recommended to install Homebrew and upgrade bash
+    The default tool versions on macOS are often outdated. It is recommended to install Homebrew and update bash.
 
     <details>
-    <summary>Install Homebrew and upgrade bash</summary>
+    <summary>Install Homebrew and update bash:</summary>
+
     ```bash
     # Install Homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Install latest bash
+    # Install the latest bash
     brew install bash
 
-    # Add newly installed bash to available shells list
+    # Add the newly installed bash to the list of available shells
     echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
 
-    # Change current user's shell to new bash
+    # Change the current user's shell to the new bash
     chsh -s /usr/local/bin/bash
     ```
     </details>
 
-    Install necessary tools
+    Install the necessary tools:
 
     ```bash
     # Install python3
     brew install python3
 
-    # Install git
+    # Install Git
     brew install git
 
     # Install make
@@ -77,37 +78,35 @@ Complete the necessary tool preparation on different systems (Linux, Windows, Ma
   </SyncedTabItem>
   <SyncedTabItem value="Windows">
     :::info
-    Please use Windows 10/11 system.
+    Use Windows 10 and 11 systems.
     :::
 
     :::warning
-    Not compatible with Linux-like terminal environments in Windows (such as GitBash, Msys2, etc.), please use CMD or PowerShell
+    It is incompatible with Linux-like terminal environments on Windows (such as Git Bash and MSYS2). Please use CMD or PowerShell.
     :::
 
     Download and install the following tools:
-        > Python: 3.8.0 or higher version [https://www.python.org/downloads/windows/]
-        >
-        > Git: 2.0.0 or higher version [https://git-scm.com/downloads/win]
-        >
-        > Make: 3.0 or higher version [https://gnuwin32.sourceforge.net/packages/make.htm]
+     - Python v3.8.0 or later: [Download](https://www.python.org/downloads/windows/)
+     - Git v2.0.0 or later: [Download](https://git-scm.com/downloads/win)
+     - Make v3.0 or later: [Download](https://gnuwin32.sourceforge.net/packages/make.htm)
   </SyncedTabItem>
 </SyncedTabs>
 
-## Download & Activate TuyaOpen
+## Download and activate TuyaOpen
 
-Download the `TuyaOpen` repository
+Download the TuyaOpen repository:``
 
 ```bash
-# Using github
+# Use GitHub
 git clone https://github.com/tuya/TuyaOpen.git
 
-# Or using gitee
+# Or use Gitee
 git clone https://gitee.com/tuya-open/TuyaOpen.git
 
 cd TuyaOpen
 ```
 
-Activate `tos.py`
+Activate `tos.py`:
 
 <SyncedTabs
   defaultValue="Linux"
@@ -129,14 +128,14 @@ Activate `tos.py`
   </SyncedTabItem>
   <SyncedTabItem value="Windows">
     ```bash
-    .\export.ps1  # powershell need to use command first `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine`
+    .\export.ps1  # # powershell needs to execute `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` first
 
     .\export.bat  # cmd
     ```
   </SyncedTabItem>
 </SyncedTabs>
 
-Verify by using commands `tos.py version` and `tos.py check`, you should see the following information
+Run the commands `tos.py version` and `tos.py check` to verify. You will see the following information:
 
 ```bash
 ❯ tos.py version
@@ -155,16 +154,16 @@ Verify by using commands `tos.py version` and `tos.py check`, you should see the
 ```
 
 <details>
-<summary>If check command fails</summary>
+<summary>If the check command fails:</summary>
 ```bash
-# Tool validation fails, please install or upgrade corresponding tools
+# Tool validation failed. Please install or upgrade the required tools.
 
-# Submodules download fails, manually execute git command
+# Submodules download failed. Manually execute the git command.
 git submodule update --init
 ```
 </details>
 
-Use the following command to deactivate `tos.py`
+Run the following command to deactivate `tos.py`:
 
 <SyncedTabs
   defaultValue="Linux"
@@ -191,19 +190,18 @@ Use the following command to deactivate `tos.py`
   </SyncedTabItem>
 </SyncedTabs>
 
-For more detailed information about `tos.py`, you can use the command `tos.py --help` to view
+You can run the command `tos.py --help` to view a more detailed description of `tos.py`, or refer to the [tos.py Guide](../tos-tools/tos-guide.md).
 
 Or check [tos.py Tool Usage](../tos-tools/tos-guide.md)
 
+## FAQs
 
-## Common Issues
+### Failed to activate `tos.py`
 
-1. `tos.py` activation fails
+- If activation failed, it may be because `python3-venv` is not installed. Install it and try again.
 
-    If activation fails, it may be because `python3-venv` is not installed. Please install it and try again
+  ```bash
+  sudo apt-get install python3-venv
+  ```
 
-    ```bash
-    sudo apt-get install python3-venv
-    ```
-
-    Delete the `./.venv` directory and reactivate
+- When `tos.py` is activated, the `./.venv` directory will be created automatically. If activation failed, you need to delete the `./.venv` directory and re-activate it.

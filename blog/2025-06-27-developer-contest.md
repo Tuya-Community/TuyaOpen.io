@@ -5,6 +5,9 @@ authors: [tuya, hsuanhanlai]
 image: /img/home/tuyaopen-logo-social-preview.png
 tags: [TuyaOpen, Contest]
 ---
+
+<!-- truncate -->
+
 # title: '52H 创业森林活动'
 <!-- ![event](https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png) -->
 

@@ -1,0 +1,10 @@
+{
+  "announcement.close": {
+    "message": "Close announcement",
+    "description": "Close announcement button aria-label"
+  },
+  "announcement.learnMore": {
+    "message": "Learn More →",
+    "description": "Learn more link text"
+  }
+} 

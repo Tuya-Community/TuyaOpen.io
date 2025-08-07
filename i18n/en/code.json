@@ -1,0 +1,10 @@
+{
+  "announcement.message": {
+    "message": "🏆 Join the TuyaOpen AI Hardware Contest! 100 days to build the future of AI devices",
+    "description": "Announcement bar message"
+  },
+  "announcement.learnMore": {
+    "message": "Learn More →",
+    "description": "Learn more link text"
+  }
+} 

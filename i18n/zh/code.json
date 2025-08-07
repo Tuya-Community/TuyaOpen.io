@@ -541,5 +541,17 @@
   },
   "home.buildcommunity.help": {
     "message": "遇到任何问题？请随时联系我们寻求帮助。"
-  }
+  },
+      "announcement.message": {
+      "message": "🏆 加入TuyaOpen AI硬件大赛！100天打造未来AI爆款硬件",
+      "description": "Announcement bar message"
+    },
+    "announcement.learnMore": {
+      "message": "了解更多 →",
+      "description": "Learn more link text"
+    },
+    "announcement.close": {
+      "message": "关闭公告",
+      "description": "Close announcement button aria-label"
+    }
 }
