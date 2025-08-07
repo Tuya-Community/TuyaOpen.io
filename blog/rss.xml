@@ -384,9 +384,9 @@
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="涂鸦-t5ai-board-开发板">涂鸦 T5AI Board 开发板<a href="https://tuyaopen.io/blog/72h-with-tuyaopen#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF" class="hash-link" aria-label="Direct link to 涂鸦 T5AI Board 开发板" title="Direct link to 涂鸦 T5AI Board 开发板">​</a></h3>
 <p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg" alt="T5-AI Board Pinout" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">T5-AI Board Pinout</figcaption></figure><p></p>
 <ul>
-<li>资料文档入口：<a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
+<li>资料文档入口：<a href="https://tuyaopen.io/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
 <li>I/O Pin 脚高清下载：<a href="https://tuyaopen.io/assets/files/T5-AI-Board-Pinout-v102-a97dc489a34f7b0001bb86d9f1ebaad5.pdf" target="_blank">Pinout</a></li>
-<li>如何快速编译项目 + 烧写？：<a href="https://tuyaopen.io/docs/quick_start/enviroment-setup">教程</a></li>
+<li>如何快速编译项目 + 烧写？：<a href="https://tuyaopen.io/docs/quick-start/enviroment-setup">教程</a></li>
 </ul>
 <hr>
 <h1>涂鸦硬件资源</h1>
@@ -397,7 +397,7 @@
 <p>关于现场可用硬件资源的数量，请参考下文：</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="开发板-1">开发板<a href="https://tuyaopen.io/blog/72h-with-tuyaopen#%E5%BC%80%E5%8F%91%E6%9D%BF-1" class="hash-link" aria-label="Direct link to 开发板" title="Direct link to 开发板">​</a></h3>
 <ul>
-<li><a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">涂鸦 T5-AI 开发板</a>：15</li>
+<li><a href="https://tuyaopen.io/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">涂鸦 T5-AI 开发板</a>：15</li>
 <li>涂鸦 T5 mini 开发板：10</li>
 </ul>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="外设配件">外设配件<a href="https://tuyaopen.io/blog/72h-with-tuyaopen#%E5%A4%96%E8%AE%BE%E9%85%8D%E4%BB%B6" class="hash-link" aria-label="Direct link to 外设配件" title="Direct link to 外设配件">​</a></h3>

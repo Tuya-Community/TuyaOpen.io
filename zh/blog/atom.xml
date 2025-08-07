@@ -389,7 +389,7 @@
 <ul>
 <li>资料文档入口：<a href="https://tuyaopen.io/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
 <li>I/O Pin 脚高清下载：<a href="https://tuyaopen.io/zh/assets/files/T5-AI-Board-Pinout-v102-a97dc489a34f7b0001bb86d9f1ebaad5.pdf" target="_blank">Pinout</a></li>
-<li>如何快速编译项目 + 烧写？：<a href="https://tuyaopen.io/zh/docs/quick_start/enviroment-setup">教程</a></li>
+<li>如何快速编译项目 + 烧写？：<a href="https://tuyaopen.io/zh/docs/quick-start/enviroment-setup">教程</a></li>
 </ul>
 <hr>
 <h1>涂鸦硬件资源</h1>
