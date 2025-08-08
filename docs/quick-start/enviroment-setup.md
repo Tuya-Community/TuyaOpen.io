@@ -13,7 +13,7 @@ Prepare necessary tools on different systems, such as Linux, Windows, and macOS.
 ## Prepare hardware
 
 Before getting started, prepare the following resources:
-- [TuyaOpen-compatible development boards or modules](../hardware-specific/index.md#hardware-platforms)
+- [TuyaOpen-compatible development boards or modules](../1111hardware-specific/index.md#hardware-platforms)
 - USB data cable
 - Computer (Windows, Linux, or macOS supported)
 
