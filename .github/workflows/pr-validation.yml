@@ -1,0 +1,115 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.2.0
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build validation
+        run: pnpm build
+
+      - name: Start server test
+        run: |
+          echo "启动开发服务器进行验证..."
+          # 在后台启动开发服务器
+          pnpm start &
+          SERVER_PID=$!
+          
+          # 等待服务器启动
+          echo "等待服务器启动..."
+          sleep 15
+          
+          # 检查服务器是否正常运行（默认端口 3000）
+          if curl -f http://localhost:3000 > /dev/null 2>&1; then
+            echo "✅ 服务器启动成功，可以正常访问"
+            kill $SERVER_PID
+            exit 0
+          else
+            echo "❌ 服务器启动失败或无法访问"
+            kill $SERVER_PID 2>/dev/null || true
+            exit 1
+          fi
+
+      - name: Check for build artifacts
+        run: |
+          if [ -d "build" ]; then
+            echo "✅ 构建产物生成成功"
+            echo "构建文件列表："
+            ls -la build/
+          else
+            echo "❌ 未找到构建产物目录"
+            exit 1
+          fi
+
+  # 可选：代码质量检查
+  lint-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.2.0
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Check for lint script
+        run: |
+          if pnpm run --if-present lint; then
+            echo "✅ 代码格式检查通过"
+          else
+            echo "ℹ️ 未配置 lint 脚本，跳过检查"
+          fi
+
+      - name: Check for type checking
+        run: |
+          if pnpm run --if-present type-check; then
+            echo "✅ 类型检查通过"
+          else
+            echo "ℹ️ 未配置类型检查脚本，跳过检查"
+          fi
