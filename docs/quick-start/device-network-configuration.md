@@ -1,36 +1,38 @@
 ---
-title: Device Network Configuration
+title: Device Pairing
 ---
 
 ## Overview
 
-Device network configuration refers to connecting and registering IoT devices to the cloud, enabling remote communication capabilities. After configuration, smart devices can be remotely controlled via mobile apps or other means.
+The device pairing process connects and registers IoT devices to the cloud, enabling remote communication capabilities. After paired, smart devices can be remotely controlled via mobile apps or other methods.
 
-The following describes how to use the **Smart Life** app for device network configuration.
+This topic describes how to pair devices using the **SmartLife** app.
 
 ## Preparation
 
-Before configuring the device network, please make sure you have completed the following preparations:
- - The **Smart Life** app has been installed on your phone. For installation instructions, see the **Download App** section below.
- - The device has been successfully flashed and authorized.
- - The device is in network configuration mode.
-    :::tip
-    For the switch_demo and your_chat_bot demos, you can enter network configuration mode by restarting the device 3 times within 5 seconds.
-    :::
+Before pairing, ensure the following:
+- The **SmartLife** app is installed on your phone. For more information, see **Download app**.
+- The device has been successfully flashed with firmware and authorized.
+- The device is in pairing mode.
 
-## Steps
+   :::tip
+   For the `switch_demo` and `your_chat_bot` demos, you can restart the device 3 times within 5 seconds to put the device in pairing mode.
+   :::
 
-### Download the App
+## Procedure
 
-Search for **Smart Life** in the Apple App Store or major Android app stores, or scan the QR code below to download the app.
+### Download app
+
+Search for **SmartLife** in Apple's App Store and other major app stores, or scan the following QR code to download the app.
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/48b9e225-aa49-4e95-9d61-511bb7df27c8.png" alt="smartlife_app" width="200" />
 
-After successful registration and login, you can proceed with device network configuration.
+After successful registration and login, you can proceed with device pairing.
 
-### Add Device
+### Add device
 
-Before adding a device via the app, make sure the device is in network configuration mode. You can check the device logs to see if it is in configuration mode (the following log is only applicable to TuyaOpen):
+Before adding a device via the app, make sure the device is in pairing mode. You can check the device logs to see if it is in pairing mode (the following log is only applicable to TuyaOpen):
+
 
 ```
 ...
@@ -40,33 +42,34 @@ Before adding a device via the app, make sure the device is in network configura
 ...
 ```
 
-On the device list page, click the central **Add Device** button or the + button in the upper right corner to enter the **Add Device** page.
+1. On the **All Devices** page, tap **Add Device** or the plus icon (**+**) in the top right corner to go to the **Add Device** page.
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/8e8b4e0a-d6e4-4941-a078-717c96baf262.png" alt="smartlife_app" width="800" />
+   <img src="https://images.tuyacn.com/fe-static/docs/img/8e8b4e0a-d6e4-4941-a078-717c96baf262.png" alt="smartlife_app" width="800" />
 
-Adding a device requires the app to have Wi-Fi and Bluetooth permissions. If Wi-Fi or Bluetooth permissions are not enabled, nearby devices cannot be discovered.
+2. To add devices, the app must be granted Wi-Fi and Bluetooth permissions. If Wi-Fi or Bluetooth permissions are not turned on, nearby devices cannot be discovered.
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/3b8fc40f-2662-435e-a955-301948cb797b.png" alt="smartlife_app" width="240" />
+   <img src="https://images.tuyacn.com/fe-static/docs/img/3b8fc40f-2662-435e-a955-301948cb797b.png" alt="smartlife_app" width="240" />
 
-Clicking "Turn on Wi-Fi" or "Turn on Bluetooth" will bring up a guide popup. Follow the steps to set up Wi-Fi and Bluetooth.
+   Tap **Turn on Wi-Fi** or **Turn on Bluetooth** to enable Wi-Fi or Bluetooth as instructed.
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/a6784328-c0d3-45ac-9730-8eabef788b1a.png" alt="smartlife_app" width="480" />
+   <img src="https://images.tuyacn.com/fe-static/docs/img/a6784328-c0d3-45ac-9730-8eabef788b1a.png" alt="smartlife_app" width="480" />
 
-After correctly setting up Wi-Fi and Bluetooth permissions, you can see nearby devices waiting for network configuration on the **Home** page or the **Add Device** page.
+3. After properly configuring Wi-Fi and Bluetooth permissions, you can see nearby devices in pairing mode on the **Home** or **Add Device** page. Tap **Go to add**, and then follow the prompts on the app to complete device pairing.
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/bc243e3a-32f1-418f-ab07-fd70e68af857.png" alt="smartlife_app" width="240" />
+   <img src="https://images.tuyacn.com/fe-static/docs/img/bc243e3a-32f1-418f-ab07-fd70e68af857.png" alt="smartlife_app" width="240" />
 
-Click the **Go To Add** button, then follow the app prompts to complete the device network configuration.
+
 
 :::warning
-Currently, the modules supported by TuyaOpen only support connection to 2.4GHz Wi-Fi bands. Connecting to a 5GHz router will cause network configuration to fail.
+Currently, TuyaOpen-supported modules can only connect to the 2.4 GHz band of routers. Attempting to pair with a 5 GHz band router will result in failure.
 :::
 
-## FAQ
+## FAQs
 
-### 1. Network configuration fails due to incorrect authorization information
+### Pairing failed due to incorrect authorization information
 
-If the device fails to write the authorization information correctly, network configuration will fail. The device will print the following log:
+When pairing failed because the device's authorization information was not written correctly, the device will output the following logs:
+
 
 ```
 [01-01 00:00:00 ty E][tal_kv.c:269] lfs open UUID_TUYAOPEN -2 err
@@ -80,6 +83,7 @@ If the device fails to write the authorization information correctly, network co
 [01-01 00:00:00 ty D][tuya_iot.c:558] authkey:keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-You can see that both UUID and AuthKey are `xxxxxxxxxxxxxxxx`, indicating that the authorization information was not written correctly.
 
-See the **Device Authorization Information Writing** section in the [tyutool_gui User Guide](../tos-tools/tools-tyutool.md#device-authorization-information-writing) for instructions on writing authorization information.
+If both `UUID` and `AuthKey` display as `xxxxxxxxxxxxxxxx`, it indicates the authorization information was not properly written.
+
+For more information, see the section **Write device authorization information** in the [tyutool_gui User Guide](../tos-tools/tools-tyutool.md#device-authorization-information-writing).
