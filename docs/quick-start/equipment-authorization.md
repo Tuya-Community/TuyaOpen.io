@@ -1,63 +1,65 @@
 ---
-title: Equipment Authorization
+title: Authorize Devices
 ---
 
-# Authorization
+# Authorize Devices
 
-For information about authorization codes, please check [Authorization Code Description](../quick-start/index.md#tuyaopen-dedicated-authorization-code)
+## Overview
 
-Two authorization methods are provided
+For information about licenses, see [License](../quick-start/index.md#tuyaopen-dedicated-authorization-code).
 
-## Authorization Command
+You can use either of the following authorization methods:
+- Run the authorization command
+- Modify header file
 
-Use command `tos.py monitor -b 115200`
+## Run the authorization command
 
-:::tip
-Here select the serial port used during flashing
-:::
+1. Run the command `tos.py monitor -b 115200`.
 
-Input interactive command, `auth`, press Enter
+   :::tip
+   Select the serial port number used for flashing.
+   :::
 
-You will get the following information
+2. Enter the interactive command, use `auth,` and then press Enter. You will get the following information:
 
-```bash
-[INFO]: Run Tuya Uart Tool.
---------------------
-1. /dev/ttyACM1
-2. /dev/ttyACM0
---------------------
-Select serial port: 2
-[INFO]: Open Monitor. (Quit: Ctrl+c)
-auth
-auth
-Use like: auth uuidxxxxxxxxxxxxxxxx keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-tuya>
-```
+   ```bash
+   [INFO]: Run Tuya Uart Tool.
+   --------------------
+   1. /dev/ttyACM1
+   2. /dev/ttyACM0
+   --------------------
+   Select serial port: 2
+   [INFO]: Open Monitor. (Quit: Ctrl+c)
+   auth
+   auth
+   Use like: auth uuidxxxxxxxxxxxxxxxx keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   tuya>
+   ```
 
-According to the prompt, use `auth` to write `uuid` and `authkey`
 
-```bash
-tuya>
-auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
-auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
-Authorization write succeeds.
-```
+3. Use `auth` as prompted to write `uuid` and `authkey`.
 
-After the operation is successful, the device needs to be restarted, and the authorization information takes effect after the restart.
+   ```bash
+   tuya>
+   auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
+   auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
+   Authorization write succeeds.
+   ```
 
-If the device doesn't support authorization command, use method 2 to configure authorization information
+4. After successful operation, reboot the device for the authorization information to take effect.
 
-## Modify Header File
+   If the device does not support authorization commands, refer to the section below to configure authorization information by modifying the header file.
 
-Find the `tuya_config.h` file in the project path
+## Modify header file
 
-The file location may vary depending on the selected project, in `src` or `include` directory
+1. Locate the `tuya_config.h` file in your project directory. The directory might vary by project (check either the `src` or `include` directory).
 
-Modify the authorization information configuration in the file, such as
+2. Modify the configuration of the authorization information in the file as follows:
 
-```c++
-#define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"                    // Please change the correct uuid
-#define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"        // Please change the correct authkey
-```
 
-Recompile, flash, and start the device
+   ```c++
+   #define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"  // Change to the correct uuid
+   #define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" // Change to the correct authkey
+   ```
+
+3. Rebuild the firmware, flash it to the device, and then power on the device.
