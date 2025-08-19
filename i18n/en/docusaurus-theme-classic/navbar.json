@@ -6,5 +6,9 @@
   "announcement.learnMore": {
     "message": "Learn More →",
     "description": "Learn more link text"
+  },
+  "item.label.Projects": {
+    "message": "Projects",
+    "description": "Navbar item with label Projects"
   }
 } 
