@@ -60,18 +60,6 @@ const tagsData = {
       bgColor: '#ede9fe',
       borderColor: '#7c3aed',
     },
-    'tuya-official': {
-      label: 'Tuya Official',
-      color: '#dc2626', // red-600
-      bgColor: '#fef2f2',
-      borderColor: '#dc2626',
-    },
-    community: {
-      label: 'Community',
-      color: '#059669', // emerald-600
-      bgColor: '#ecfdf5',
-      borderColor: '#059669',
-    },
   },
   zh: {
     iot: {
@@ -133,18 +121,6 @@ const tagsData = {
       color: '#7c3aed',
       bgColor: '#ede9fe',
       borderColor: '#7c3aed',
-    },
-    'tuya-official': {
-      label: '涂鸦官方',
-      color: '#dc2626',
-      bgColor: '#fef2f2',
-      borderColor: '#dc2626',
-    },
-    community: {
-      label: '社区',
-      color: '#059669',
-      bgColor: '#ecfdf5',
-      borderColor: '#059669',
     },
   },
 }

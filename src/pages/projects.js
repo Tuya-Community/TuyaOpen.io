@@ -7,7 +7,7 @@ import Layout from '@theme/Layout'
 import React from 'react'
 
 import projectsData from '../data/projects'
-import tagsData from '../data/tags'
+import tagsData from '../data/projects_tags'
 import styles from './projects.module.css'
 
 export default function Projects() {
@@ -40,121 +40,58 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* Official Projects */}
-          <h2 className={styles.sectionTitle}>{currentLocale === 'zh' ? '涂鸦官方项目' : 'Tuya Official Projects'}</h2>
-          <div className={styles.sectionDivider}></div>
+          {/* All Projects */}
           <div className="tw-mb-16">
             <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-8">
-              {projects
-                .filter((project) => project.tags && project.tags.includes('tuya-official'))
-                .map((project) => (
-                  <div
-                    key={project.id}
-                    className={styles.projectCard}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.classList.add(styles.cardHover)
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.classList.remove(styles.cardHover)
-                    }}
-                  >
-                    <Link to={project.markdownFile} className={styles.cardLink}>
-                      <div className={styles.cardImageContainer}>
-                        <img src={useBaseUrl(project.image)} alt={project.title} className={styles.cardImage} />
-                        <div className={styles.cardOverlay}>
-                          <div className={styles.overlayContent}>
-                            <span className={styles.viewProject}>
-                              {currentLocale === 'zh' ? '查看项目' : 'View Project'}
-                            </span>
-                          </div>
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className={styles.projectCard}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.classList.add(styles.cardHover)
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.classList.remove(styles.cardHover)
+                  }}
+                >
+                  <Link to={project.markdownFile} className={styles.cardLink}>
+                    <div className={styles.cardImageContainer}>
+                      <img src={useBaseUrl(project.image)} alt={project.title} className={styles.cardImage} />
+                      <div className={styles.cardOverlay}>
+                        <div className={styles.overlayContent}>
+                          <span className={styles.viewProject}>
+                            {currentLocale === 'zh' ? '查看项目' : 'View Project'}
+                          </span>
                         </div>
                       </div>
-                      <div className={styles.cardContent}>
-                        <h3 className={styles.cardTitle}>{project.title}</h3>
-                        <p className={styles.cardDescription}>{project.description}</p>
-                        <div className={styles.cardTags}>
-                          {project.tags &&
-                            project.tags.map((tagKey) => {
-                              const tag = tags[tagKey]
-                              if (!tag) return null
-                              return (
-                                <span
-                                  key={tagKey}
-                                  className={styles.tag}
-                                  style={{
-                                    backgroundColor: tag.bgColor,
-                                    color: tag.color,
-                                    borderColor: tag.borderColor,
-                                  }}
-                                >
-                                  {tag.label}
-                                </span>
-                              )
-                            })}
-                        </div>
+                    </div>
+                    <div className={styles.cardContent}>
+                      <h3 className={styles.cardTitle}>{project.title}</h3>
+                      <p className={styles.cardDescription}>{project.description}</p>
+                      <div className={styles.cardTags}>
+                        {project.tags &&
+                          project.tags.map((tagKey) => {
+                            const tag = tags[tagKey]
+                            if (!tag) return null
+                            return (
+                              <span
+                                key={tagKey}
+                                className={styles.tag}
+                                style={{
+                                  backgroundColor: tag.bgColor,
+                                  color: tag.color,
+                                  borderColor: tag.borderColor,
+                                }}
+                              >
+                                {tag.label}
+                              </span>
+                            )
+                          })}
                       </div>
-                    </Link>
-                  </div>
-                ))}
-            </div>
-          </div>
-
-          {/* Community Projects */}
-          <h2 className={styles.sectionTitle}>{currentLocale === 'zh' ? '社区项目' : 'Community Projects'}</h2>
-          <div className={styles.sectionDivider}></div>
-          <div className="tw-mb-16">
-            <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-8">
-              {projects
-                .filter((project) => project.tags && project.tags.includes('community'))
-                .map((project) => (
-                  <div
-                    key={project.id}
-                    className={styles.projectCard}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.classList.add(styles.cardHover)
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.classList.remove(styles.cardHover)
-                    }}
-                  >
-                    <Link to={project.markdownFile} className={styles.cardLink}>
-                      <div className={styles.cardImageContainer}>
-                        <img src={useBaseUrl(project.image)} alt={project.title} className={styles.cardImage} />
-                        <div className={styles.cardOverlay}>
-                          <div className={styles.overlayContent}>
-                            <span className={styles.viewProject}>
-                              {currentLocale === 'zh' ? '查看项目' : 'View Project'}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.cardContent}>
-                        <h3 className={styles.cardTitle}>{project.title}</h3>
-                        <p className={styles.cardDescription}>{project.description}</p>
-                        <div className={styles.cardTags}>
-                          {project.tags &&
-                            project.tags.map((tagKey) => {
-                              const tag = tags[tagKey]
-                              if (!tag) return null
-                              return (
-                                <span
-                                  key={tagKey}
-                                  className={styles.tag}
-                                  style={{
-                                    backgroundColor: tag.bgColor,
-                                    color: tag.color,
-                                    borderColor: tag.borderColor,
-                                  }}
-                                >
-                                  {tag.label}
-                                </span>
-                              )
-                            })}
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
 
