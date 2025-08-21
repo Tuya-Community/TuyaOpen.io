@@ -14,13 +14,13 @@ title: T5AI-Board 概述
 
 :::tip 想要开发新的外设？
 **Config 配置特点：**
-- **用户如需新增外设，可直接在应用层编写驱动。** BSP 驱动主要用于板卡内部固化的外围器件。
-- 不同应用的外设需求可能存在配置差异，需要根据具体需求调整 `config` 文件。
+- **开发者如需新增外设，可直接在应用层编写驱动。**BSP 驱动主要用于板卡内部固化的外围器件。
+- 不同应用的外设需求可能存在配置差异，需要根据具体需求调整 Config 文件。
 - 不同应用需求可能需要配置不同的第三方库参数。
 - **建议** 以初始配置文件作为 **板级基础模板**，在此基础上进行二次开发和功能扩展。
 :::
 
-#### 怎么使能 config? 请参阅：[TOS 工具指南 - 配置选择](/docs/tos-tools/tos-guide#config-choice)
+#### 怎么使能 Config? 请参阅：[TOS 工具指南 - 配置选择](/docs/tos-tools/tos-guide#config-choice)
 
 <table class="hw-config-flag-table">
   <tbody>
@@ -46,7 +46,7 @@ title: T5AI-Board 概述
 
 ---
 ## 开发套件亮点
-- 涂鸦 T5 MCU 模块（Wi-Fi 2.4G + BLE 5.4）
+- 涂鸦 T5 MCU 模块（Wi-Fi 2.4 GHz + 蓝牙 LE 5.4）
 - 8 MB Flash
 - 16 MB RAM
 - 串行固件下载和调试日志
@@ -76,7 +76,7 @@ title: T5AI-Board 概述
 | 显示 | RGB 和 8080 接口 |
 | 扩展 | TF 卡支持 |
 | GPIO | 56 个 GPIO |
-| 接口 | 2x SPI, 2x QSPI, 3x UART, 2x I2C, 1x SDIO, 1x CAN, 12x PWM, 3x I2S |
+| 接口 | 2x SPI、2x QSPI、3x UART、2x I2C、1x SDIO、1x CAN、12x PWM、3x I2S |
 | 标准 | 符合 IEEE 802.11b/g/n/ax |
 | 蓝牙 | 蓝牙 LE 5.4 |
 | USB type-C | 输入：5V@1A，固件下载和调试 |
@@ -102,7 +102,7 @@ T5AI-Board 支持可选的 LCD 屏幕和摄像头模块，可以堆叠在主板�
 
 #### 摄像头规格：
 - 图像传感器：`GC2145`
-- 分辨率：2MP（1616 x 1232 像素）
+- 分辨率：2 MP（1616 x 1232 像素）
 - I2C 通信地址：`0x78` 和 `0x79`
 - [查看摄像头数据手册](https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/968/GC2145-CSP-DataSheet-release-V1.0_5F00_20131201.pdf)
 
@@ -138,4 +138,4 @@ T5AI-Board 使用板载 CH343 USB 转串口芯片进行固件烧录和调试。�
 - [T5AI-Board 入门指南 - (环境搭建 + 烧录 Demo）](/docs/quick-start/enviroment-setup)
 - [T5AI-Board Demo 聊天机器人](/docs/applications/tuya.ai/demo-your-chat-bot)
 - [T5AI-Board Demo IoT 智能插座/灯](/docs/applications/tuya_cloud/demo-tuya-iot-light)
-- [T5AI-Board Demo WIFI/BT 和其他外设](/docs/examples/demo-generic-examples)
+- [T5AI-Board Demo Wi-Fi/BT 和其他外设](/docs/examples/demo-generic-examples)
