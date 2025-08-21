@@ -108,7 +108,12 @@ module.exports = {
       type: 'category',
       label: 'New Project',
       collapsed: true,
-      items: ['new-hardware/new-platform', 'new-hardware/new-board', 'new-hardware/new-project'],
+      items: [
+        'new-hardware/porting-platform',
+        'new-hardware/new-platform',
+        'new-hardware/new-board',
+        'new-hardware/new-project',
+      ],
     },
     // ------------------------------------------------------------------
     {
