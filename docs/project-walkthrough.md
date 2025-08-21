@@ -2,19 +2,20 @@
 title: Directory Structure
 ---
 
-# TuyaOpen Directory Structure 
+# Directory Structure
 
 ## Overview
 
-Introduction to the directory structure and purpose of `TuyaOpen`
+This topic describes the directory structure and purpose of TuyaOpen.
 
-Main directory display
+Main directory is as follows:
+
 
 ```
 .
 ├── apps
-│   ├── tuya.ai
-│   └── tuya_cloud
+│   ├── tuya.ai
+│   └── tuya_cloud
 ├── boards
 ├── CMakeLists.txt
 ├── Dockerfile
@@ -23,163 +24,144 @@ Main directory display
 ├── export.sh
 ├── LICENSE
 ├── platform
-│   └── platform_config.yaml
+│   └── platform_config.yaml
 ├── README.md
 ├── requirements.txt
 ├── src
 ├── tools
-│   ├── cli_command
-│   ├── cmake
-│   ├── kconfiglib
-│   └── tyutool
+│   ├── cli_command
+│   ├── cmake
+│   ├── kconfiglib
+│   └── tyutool
 └── tos.py
 ```
 
+
 ## `src`
 
-The main storage location for core source code, containing the framework's basic functionality implementation, core modules, and cross-platform common code
+The main storage location for core source code, including the implementation of the framework's fundamental functionalities, core modules, and cross-platform universal code.
 
-Main content includes:
+The following features are supported:
 
-    1. Basic Components and Services
+- Basic components and services
+   - **System kernel**: Includes fundamental operating system (OS) functionalities such as task scheduling, memory management, and thread synchronization (mutexes and semaphores).
+   - **Device management**: Implements core logic for device initialization, state management, and resource allocation, such as device registration and configuration loading.
+   - **Communication protocol stack**: Provides encapsulated upper-layer interfaces for Bluetooth, Wi-Fi, MQTT, and HTTP, thereby delivering unified network communication capabilities for applications.
 
-        System Kernel: Contains operating system basic functions such as task scheduling, memory management, thread synchronization (mutexes, semaphores), etc.
-
-        Device Management: Implements core logic for device initialization, status management, resource allocation, etc., such as device registration, configuration loading, etc.
-
-        Communication Protocol Stack: Encapsulates upper-layer interfaces for communication protocols like Bluetooth, Wi-Fi, MQTT, HTTP, etc., providing unified network communication capabilities for applications
-
-    1. Cross-Platform Abstraction Layer
-
-        Hardware-Independent Interfaces: Defines APIs decoupled from hardware, implementing specific functions by calling drivers in the `platform` directory.
-
-        Operating System Abstraction: Provides cross-operating system interfaces (such as thread creation, timer management), ensuring the framework can run on different OS (such as Linux, RTOS).
+- Cross-platform abstraction layer
+   - **Hardware-agnostic interface**: Defines hardware-decoupled APIs that implement specific functionalities by invoking drivers in the `platform` directory.
+   - **OS abstraction**: Provides cross-OS interfaces, such as thread creation and timer management, to ensure the framework can run on different systems, like Linux and RTOS.
 
 Main components include:
 
 ```
 src/
-├── base/          # Basic utility library (such as logging, memory operations, data structures)
-├── device/        # Device management core code
-├── network/       # Network communication modules (Wi-Fi, Bluetooth, MQTT, etc.)
-├── security/      # Security encryption modules (device authentication, data encryption)
-├── ai/            # AI functionality interfaces (voice recognition, image analysis)
-├── cloud/         # Cloud integration services (Tuya cloud API calls)
-└── utils/         # General utility functions
+├── base/           # Basic utilities (logging, memory operations, and data structures)
+├── device/         # Core device management code
+├── network/        # Network communications (Wi-Fi, Bluetooth, and MQTT)
+├── security/       # Security and encryption (device auth and data encryption)
+├── ai/             # AI interfaces (voice recognition and image analytics)
+├── cloud/          # Cloud integration services (Tuya cloud API calls)
+└── utils/          # Common utility functions
 ```
 
 ## `apps` and `examples`
 
-Both are storage paths for engineering projects, where
+Both are storage paths for projects, where:
 
-    1. `apps` contains complex application projects, divided into AI applications `tuya.ai` and IoT applications `tuya_cloud`;
+- The `apps` directory contains complex application projects, divided into AI applications `tuya.ai` and IoT applications `tuya_cloud`.
 
-    1. `examples` contains single-function demo routines, such as WiFi, Bluetooth, buttons, etc.;
+- The `examples` directory contains single-feature demo routines, such as WiFi, Bluetooth, and buttons.
 
 ## `app_default.config`
 
-The configuration file for `TuyaOpen`, used to configure project compilation parameters
+`TuyaOpen configuration file, used to configure project compilation parameters.`
 
-It should be noted that the `app_default.config` file only saves **minimum configuration items**
+:::warning
+The `app_default.config` file only stores **minimum configuration items**, meaning it retains only settings that differ from default values.
+:::
 
-This means only configuration content different from default values is preserved
+Main features:
 
-Main functions:
+- Configure compilation parameters:
 
-    1. Compilation Parameter Configuration
+   - Target platform definition: Records the target platform/development board (such as T5AI and ESP32) for the current project compilation, and determines the hardware driver and tool chain to load.
 
-        Target Platform Definition: Records the target platform/development board for current project compilation (such as T5AI, ESP32), determining the hardware drivers and compilation toolchain to load
+   - Compilation option control: Includes compiler flags (such as optimization level and macro definition), firmware version number, and storage partitioning.
 
-        Compilation Option Control: Contains compiler flags (such as optimization levels, macro definitions), firmware version numbers, storage partition configurations, etc.
+- Configure hardware resource allocation:
 
-    1. Hardware Resource Configuration
+   - Peripheral parameters: Defines hardware interface parameters, such as serial port baud rate, GPIO pin assignment, and SPI clock rate.
 
-        Peripheral Parameters: Defines hardware interface parameters (such as serial baud rate, GPIO pin allocation, SPI communication rate)
+   - Memory layout: Configure the firmware's address in the flash memory, RAM allocation, and other memory-related parameters.
 
-        Memory Layout: Configures firmware storage addresses in Flash, RAM allocation, and other memory-related parameters
+- Functional module toggles
 
-    1. Function Module Switches
+   - Enable/Disable components: Controls whether specific functional modules (such as Bluetooth, Wi-Fi, and AI services) are included in the project to avoid redundant code.
 
-        Component Enable/Disable: Controls whether specific function modules (such as Bluetooth, Wi-Fi, AI services) are included in the project, avoiding redundant code
-
-        Function Option Configuration: Such as whether to enable OTA upgrade functionality
+   - Configure options: Specifies whether to enable OTA update functionality.
 
 ## `platform` and `platform_config.yaml`
 
-The `platform` file stores toolchain repositories, each repository needs to implement:
+The `platform` file stores the toolchain repository. Each repository needs to implement:
 
-    1. Hardware Abstraction Layer (HAL):
-    
-        Targeted at different chip architectures (such as `ESP32`, `BK7231N`, `T5AI`, etc.), implementing underlying drivers that abstract hardware details (such as `GPIO`, `UART`, `SPI`, `Bluetooth/Wi-Fi` protocol stacks, etc.), allowing upper-layer applications to not worry about specific hardware differences.
-    
-    1. Unified API:
-    
-        By defining standardized interfaces (such as `hal_gpio_read()`, `hal_uart_send()`), upper-layer code (such as application logic in the `app` folder) can call different hardware functions in the same way.
+- Hardware abstraction layer (HAL)
 
-Due to the large space occupied by toolchain repositories, only when the project configuration requires it will the corresponding toolchain be downloaded
+   For diverse chip architectures (like ESP32, BK7231N, and T5AI), this abstracts underlying driver implementations (like GPIO, UART, SPI, Bluetooth, and Wi-Fi protocol stacks). Thus, applications do not need to worry about specific hardware differences.
 
-The `git`-related information needed to download toolchains is recorded in the `platform_config.yaml` file
+- Unified APIs
+
+   By defining standardized interfaces (like `hal_gpio_read()` and `hal_uart_send()`), upper-layer code (such as application logic in the `app` folder) can invoke hardware functionalities in the same way.
+
+:::info
+- Due to the large storage footprint of toolchain repositories, only project-configured toolchains are downloaded when needed.
+
+- The `git` related information required for toolchain downloads is recorded in the `platform_config.yaml` file.
+:::
 
 ## `boards`
 
-The `boards` folder is mainly used to store configuration files and support code related to development boards. Its core function is to adapt to different hardware platforms, ensuring the TuyaOpen framework can run normally on various development boards. Here are the specific functions and content descriptions of this folder:
+The `boards` folder primarily stores configuration files and support code related to development boards. Its core function is to adapt to different hardware platforms, ensuring the TuyaOpen framework runs properly across various development boards. The following describes specific functions and contents of this folder.
 
-    1. Configuration Files:
+- Configuration files
 
-        Using `Kconfig` files, configurable functions and some compilation parameters of chips or development boards are provided to developers for configuration. When using the command `tos config menu`, they will be automatically loaded and displayed
+   `Kconfig` files expose configurable chip or development board features and compilation parameters for developer customization. When the command `tos config menu` is run, these configurations are automatically loaded and displayed.
 
-    1. Target Selection:
+- Target selection
 
-        The `boards` folder contains configuration files for various development boards (such as T2.config, T3.config, etc.), defining hardware parameters of target development boards (such as serial baud rate, pin allocation, memory layout, etc.). These configurations will be selected by the `tos.py config choice` command during compilation
+   The `boards` folder contains configuration files for various development boards (such as `T2.config` and `T3.config`). They define hardware parameters for target boards (such as UART baud rate, pin assignments, and memory layout). During compilation, run the command `tos.py config choice` to select these configurations.
 
-    1. Hardware Adaptation:
+- Hardware adaptation
 
-        For different chips (such as T2, T3, T5AI, ESP32, etc.), `boards` may provide some underlying driver adaptation code or compilation scripts, ensuring the framework correctly interacts with hardware peripherals (such as UART, GPIO, SPI, etc.).
+   The `boards` directory provides chip-specific (such as T2, T3, T5AI, and ESP32) underlying driver adaptation code and compilation scripts, ensuring the framework properly interacts with hardware peripherals (such as UART, GPIO, and SPI).
 
 
 ## `tos.py` and `export.sh`
 
-`tos.py` is a core command-line tool used to simplify development workflows, manage project configurations, and execute compilation and deployment operations. For detailed usage instructions, refer to: [`tos.py` Usage](./tos-tools/tos-guide.md)
+- `tos.py` is a core command-line tool designed to streamline development workflows, manage project configurations, and execute compilation and deployment operations. For more information, see [tos.py Guide](./tos-tools/tos-guide.md).
 
-`export.sh` and `export.bat` are used to activate the command-line functionality of `tos.py`
+- `export.sh` and `export.bat` are used to activate the command-line functionality of `tos.py`.
 
 ## `tools`
 
-Stores tool scripts, auxiliary programs, and configuration files used during development, compilation, testing, and deployment processes
+Stores tool scripts, utilities, and configuration files used during development, compilation, testing, and deployment.
 
-    1. Compilation and Build Tools
+- Compilation and build tools
 
-        Project Build Scripts: Contains scripts for compiling firmware and generating binary files (such as Makefile, CMakeLists.txt, or custom Python scripts).
+   - Project build scripts: Contain scripts for compiling firmware and generating binary files. For example, Makefile, CMakeLists.txt, or custom Python scripts.
 
-        Firmware Packaging Tools: Package compiled code and configuration files into distributable firmware formats (such as .bin, .ota).
+   - Firmware packaging tools: Package compiled code and configuration files into distributable firmware formats such as `.bin` and `.ota`.
 
-    1. Development Auxiliary Tools
+- Development utilities
 
-        Programming Tools: Provides tools for programming firmware to hardware devices (`tyutool`)
+   - Flashing tool: Provide the `tyutool` utility for firmware flashing to hardware devices.
 
-        Configuration Generators: Help generate device configuration files
+   - Config generator: Help generate device configuration files.
 
-        Code Formatting Tools: Formatting scripts to ensure consistent code style
+   - Code formatter: Format scripts to ensure code style consistency.
 
-## Temporary Files and Directories
+## Temporary files and directories
 
-- `.venv`: Python virtual environment installation path
+- `.venv`: The installation path of the Python virtual environment.
 
-- `.build`: Compilation output directory, containing compiled firmware files
-
-## Usage Examples
-
-To get started with TuyaOpen, you can:
-
-1. Use `tos.py config choice` to select your target development board
-2. Use `tos.py config menu` to configure project parameters
-3. Use `tos.py build` to compile your project
-4. Use `tos.py flash` to program the firmware to your device
-
-## Subsequent Operations
-
-- Read the [`tos.py` Usage Guide](./tos-tools/tos-guide.md) to learn more about project management commands
-- Explore the `examples` directory to understand basic functionality implementations
-- Check the `apps` directory for complex application examples
-- Review the `boards` directory to understand hardware platform configurations
-- Refer to the `src` directory documentation for detailed API usage 
+- `.build`: The output directory, containing built firmware files.
