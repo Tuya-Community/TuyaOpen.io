@@ -8,7 +8,7 @@ This document helps you understand which materials to read, how to operate, and 
 
 
 
-For users new to TuyaOpen, it is recommended to first read the [Quick Start](https://tuyaopen.ai/zh/docs/quick-start) guide, follow the tutorial to set up and experience the switch_demo application (Ubuntu environment is recommended), and get familiar with Tuya IoT's network configuration and operation logic. You should also read the [tos.py User Guide](https://tuyaopen.ai/zh/docs/tos-tools/tos-guide) to understand how to use `tos.py` and the functions of each command.
+For users new to TuyaOpen, it is recommended to first read the [Quick Start](../quick-start/index.md) guide, follow the tutorial to set up and experience the switch_demo application (Ubuntu environment is recommended), and get familiar with Tuya IoT's network configuration and operation logic. You should also read the [tos.py User Guide](../tos-tools/tos-guide.md) to understand how to use `tos.py` and the functions of each command.
 
 
 
@@ -31,7 +31,7 @@ Before starting chip adaptation, it is recommended to briefly understand the Tuy
 
 
 
-For detailed build steps, refer to the [TuyaOpen Build Process Explained](https://tuyaopen.ai/zh/docs/build-system/compilation-guide).
+For detailed build steps, refer to the [TuyaOpen Build Process Explained](../build-system/compilation-guide.md).
 
 
 
@@ -49,7 +49,7 @@ Generally, adapting a new chip on TuyaOpen involves the following steps:
 
 
 
-For the detailed process of creating a new platform, [click here for more information](https://tuyaopen.ai/zh/docs/new-hardware/new-platform).
+For the detailed process of creating a new platform, [click here for more information](../new-hardware/new-platform.md).
 
 
 
@@ -73,7 +73,7 @@ Both TuyaOpen and TuyaOS require storage for device authorization information, a
 
 
 
-For tkl layer adaptation, developers can refer to the [supplementary code](https://tuyaopen.ai/zh/docs/new-hardware/new-platform#%E8%A1%A5%E5%85%85%E4%BB%A3%E7%A0%81) and [Porting TuyaOS to RTOS Platform](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l) documents for adaptation and improvement. Note that the original SDK may already integrate lwip and mbedtls; you can choose to use either the original or TuyaOpen's version as needed. To select, open the visual configuration interface by running `tos.py config menu` in the `apps/tuya_cloud/switch_demo` directory.
+For tkl layer adaptation, developers can refer to the [supplementary code](../new-hardware/new-platform.md#fill-in-the-code) and [Porting TuyaOS to RTOS Platform](https://developer.tuya.com/en/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l) documents for adaptation and improvement. Note that the original SDK may already integrate lwip and mbedtls; you can choose to use either the original or TuyaOpen's version as needed. To select, open the visual configuration interface by running `tos.py config menu` in the `apps/tuya_cloud/switch_demo` directory.
 
 
 
@@ -89,7 +89,7 @@ Whether to enable TuyaOpen lwip functionality can be set in `configure tuyaopen 
 
 
 
-Choose one of these two files to adapt according to your configuration. For details, refer to the [Network Interface Adaptation](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-16-%E9%80%82%E9%85%8D%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3) documentation.
+Choose one of these two files to adapt according to your configuration. For details, refer to the [Network Interface Adaptation](https://developer.tuya.com/en/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-16-Adapt%20the%20network%20interface) documentation.
 
 
 
@@ -125,11 +125,11 @@ Cellular network chip adaptation developers can base their work on TuyaOpen dev-
 
 
 
-For steps to create a board, refer to the [Create Board](https://tuyaopen.ai/zh/docs/new-hardware/new-board) section.
+For steps to create a board, refer to the [Create Board](../new-hardware/new-board.md) section.
 
 
 
-After the board is created and [configuration is adjusted](https://tuyaopen.ai/zh/docs/new-hardware/new-board#%E8%B0%83%E6%95%B4%E9%85%8D%E7%BD%AE) and [saved](https://tuyaopen.ai/zh/docs/new-hardware/new-board#%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE), you can select the corresponding development board in the `apps/tuya_cloud/switch_demo` directory using the `tos.py config choice` command, and then proceed to the next step to verify functionality.
+After the board is created and [configuration is adjusted](../new-hardware/new-board.md#adjust-configuration) and [saved](../new-hardware/new-board.md#save-configuration), you can select the corresponding development board in the `apps/tuya_cloud/switch_demo` directory using the `tos.py config choice` command, and then proceed to the next step to verify functionality.
 
 
 ## Function Verification
@@ -144,11 +144,11 @@ Before compiling the switch_demo code with `tos.py build`, please ensure the fol
 
 
 
-+ Update the authorization macros `TUYA_OPENSDK_UUID` and `TUYA_OPENSDK_AUTHKEY` in `apps/tuya_cloud/switch_demo/src/tuya_config.h`. For how to obtain authorization information, see: [TuyaOpen Authorization Code Acquisition](https://tuyaopen.ai/zh/docs/quick-start#tuyaopen%E6%8E%88%E6%9D%83%E7%A0%81%E8%8E%B7%E5%8F%96)
++ Update the authorization macros `TUYA_OPENSDK_UUID` and `TUYA_OPENSDK_AUTHKEY` in `apps/tuya_cloud/switch_demo/src/tuya_config.h`. For how to obtain authorization information, see: [TuyaOpen Authorization Code Acquisition](../quick-start/index.md#tuyaopen-authorization-code-acquisition)
 
 
 
-+ For cellular and wired network platform adaptation, you need to bind the device by scanning the QR code with the **Smart Life** or **Tuya** APP. [Click here to see how to download and use the APP](https://tuyaopen.ai/zh/docs/quick-start/device-network-configuration#%E4%B8%8B%E8%BD%BD-app). The QR code link can be printed using the following code:
++ For cellular and wired network platform adaptation, you need to bind the device by scanning the QR code with the **Smart Life** or **Tuya** APP. [Click here to see how to download and use the APP](../quick-start/device-network-configuration.md#download-app). The QR code link can be printed using the following code:
 
 
 

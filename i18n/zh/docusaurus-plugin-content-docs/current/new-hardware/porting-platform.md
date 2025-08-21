@@ -6,7 +6,7 @@ title: 适配新platform
 通过本文档，您可以了解在 TuyaOpen 上新增芯片时需要阅读哪些文档、如何操作以及如何验证适配是否成功。
 
 
-首次接触 TuyaOpen 的用户建议先阅读[快速上手](https://tuyaopen.ai/zh/docs/quick-start)，按照教程搭建并体验 switch_demo 应用（推荐使用 Ubuntu 环境），以便了解和熟悉 Tuya IoT 的配网及操作逻辑。同时，还需阅读 [tos.py 使用指南](https://tuyaopen.ai/zh/docs/tos-tools/tos-guide)，了解 `tos.py` 的使用方法及各命令的功能说明。
+首次接触 TuyaOpen 的用户建议先阅读[快速上手](../quick-start/index.md)，按照教程搭建并体验 switch_demo 应用（推荐使用 Ubuntu 环境），以便了解和熟悉 Tuya IoT 的配网及操作逻辑。同时，还需阅读 [tos.py 使用指南](../tos-tools/tos-guide.md)，了解 `tos.py` 的使用方法及各命令的功能说明。
 
 
 在进行芯片适配前，建议先简单了解 TuyaOpen 的编译流程：
@@ -24,7 +24,7 @@ title: 适配新platform
 | app_name_UG_1.0.0  |       升级固件        |
 
 
-详细编译流程可参考 [TuyaOpen 编译流程详解](https://tuyaopen.ai/zh/docs/build-system/compilation-guide) 文档。
+详细编译流程可参考 [TuyaOpen 编译流程详解](../build-system/compilation-guide.md) 文档。
 
 
 在 TuyaOpen 上适配新芯片一般需经过以下几个步骤：
@@ -38,7 +38,7 @@ title: 适配新platform
 ## 创建 platform
 
 
-创建新 platform 的具体流程可[点击查看详细介绍](https://tuyaopen.ai/zh/docs/new-hardware/new-platform)。
+创建新 platform 的具体流程可[点击查看详细介绍](../new-hardware/new-platform.md)。
 
 
 在 `menuconfig` 配置界面需重点关注以下两个配置项，其他配置项请根据具体硬件情况进行选择：
@@ -57,7 +57,7 @@ title: 适配新platform
 ## tkl 层适配
 
 
-关于 tkl 层适配，开发者可参考[补充代码](https://tuyaopen.ai/zh/docs/new-hardware/new-platform#%E8%A1%A5%E5%85%85%E4%BB%A3%E7%A0%81)及[移植 TuyaOS 到 RTOS 平台](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l)文档进行适配和完善。需要注意，原厂 SDK 可能已集成 lwip 和 mbedtls，可根据实际情况选择使用原厂或 TuyaOpen 的版本。选择方法：在应用工程 `apps/tuya_cloud/switch_demo` 目录下，调用 `tos.py config menu` 打开可视化配置界面。
+关于 tkl 层适配，开发者可参考[补充代码](../new-hardware/new-platform.md#%E8%A1%A5%E5%85%85%E4%BB%A3%E7%A0%81)及[移植 TuyaOS 到 RTOS 平台](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l)文档进行适配和完善。需要注意，原厂 SDK 可能已集成 lwip 和 mbedtls，可根据实际情况选择使用原厂或 TuyaOpen 的版本。选择方法：在应用工程 `apps/tuya_cloud/switch_demo` 目录下，调用 `tos.py config menu` 打开可视化配置界面。
 
 
 是否启用 TuyaOpen lwip 功能，可在 `configure tuyaopen → configure enable/disable liblwip` 进行设置。
@@ -97,10 +97,10 @@ title: 适配新platform
 ## 创建 board
 
 
-关于创建 board 的操作步骤，可参考 [创建board](https://tuyaopen.ai/zh/docs/new-hardware/new-board) 章节。
+关于创建 board 的操作步骤，可参考 [创建board](../new-hardware/new-board.md) 章节。
 
 
-board 创建完成后，经过 [调整配置](https://tuyaopen.ai/zh/docs/new-hardware/new-board#%E8%B0%83%E6%95%B4%E9%85%8D%E7%BD%AE) 和 [保存配置](https://tuyaopen.ai/zh/docs/new-hardware/new-board#%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE) 后，即可在 `apps/tuya_cloud/switch_demo` 目录下通过 `tos.py config choice` 命令选择对应开发板，随后进入下一步验证功能。
+board 创建完成后，经过 [调整配置](../new-hardware/new-board.md#%E8%B0%83%E6%95%B4%E9%85%8D%E7%BD%AE) 和 [保存配置](../new-hardware/new-board.md#%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE) 后，即可在 `apps/tuya_cloud/switch_demo` 目录下通过 `tos.py config choice` 命令选择对应开发板，随后进入下一步验证功能。
 
 ## 验证功能
 
@@ -111,10 +111,10 @@ board 创建完成后，经过 [调整配置](https://tuyaopen.ai/zh/docs/new-ha
 + `apps/tuya_cloud/switch_demo/src/tuya_main.c` 文件中的 `tuya_app_main()` 函数已在原厂 SDK 中被调用。
 
 
-+ 更新 `apps/tuya_cloud/switch_demo/src/tuya_config.h` 文件中的授权信息宏 `TUYA_OPENSDK_UUID` 和 `TUYA_OPENSDK_AUTHKEY`，授权信息获取方式见：[TuyaOpen授权码获取](https://tuyaopen.ai/zh/docs/quick-start#tuyaopen%E6%8E%88%E6%9D%83%E7%A0%81%E8%8E%B7%E5%8F%96)
++ 更新 `apps/tuya_cloud/switch_demo/src/tuya_config.h` 文件中的授权信息宏 `TUYA_OPENSDK_UUID` 和 `TUYA_OPENSDK_AUTHKEY`，授权信息获取方式见：[TuyaOpen授权码获取](../quick-start/index.md#tuyaopen%E6%8E%88%E6%9D%83%E7%A0%81%E8%8E%B7%E5%8F%96)
 
 
-+ 对于蜂窝网络和有线网络平台的适配，需要通过 **智能生活** 或 **涂鸦** APP 扫描二维码进行绑定，[点击查看如何下载和操作 APP](https://tuyaopen.ai/zh/docs/quick-start/device-network-configuration#%E4%B8%8B%E8%BD%BD-app)。二维码链接地址可通过以下代码打印输出：
++ 对于蜂窝网络和有线网络平台的适配，需要通过 **智能生活** 或 **涂鸦** APP 扫描二维码进行绑定，[点击查看如何下载和操作 APP](../quick-start/device-network-configuration.md#%E4%B8%8B%E8%BD%BD-app)。二维码链接地址可通过以下代码打印输出：
 
 
   `apps/tuya_cloud/switch_demo/src/tuya_main.c:107`
