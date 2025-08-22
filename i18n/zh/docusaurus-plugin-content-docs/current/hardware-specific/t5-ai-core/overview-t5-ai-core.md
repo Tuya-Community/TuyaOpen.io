@@ -2,7 +2,7 @@
 title: "T5AI-Core 概述"
 ---
 
-# **T5AI-CORE** 开发套件
+# **T5AI-Core** 开发套件
 
 ![T5-AI Core DevKit](https://images.tuyacn.com/fe-static/docs/img/02037ea4-3282-4c8c-b2ec-c9c1894e8064.png)
 
