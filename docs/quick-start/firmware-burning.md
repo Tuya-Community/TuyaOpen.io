@@ -83,3 +83,21 @@ To exit log viewing, press `Ctrl + C` and press the Enter key.
 ### Flashing failed
 
 For more information, see [Install drivers](../tos-tools/tools-tyutool.md#always-fails-during-write-in-the-burning-process).
+
+### T5 series virtual machine mapping has delay
+
+T5 series development boards may experience some delay when mapping serial ports in virtual machines.
+
+The phenomenon is that after mapping, using the command `ls /dev/tty*`, you can see the device, but when using it, there will be a `device busy` prompt.
+
+It can be used normally after about one minute.
+
+### Board connected to computer will have two serial port numbers
+
+T5 series development boards will have two serial port numbers, one for flashing and one for logging.
+
+In Windows, you can view the device name in the device manager list. The name with number A is the download port, and the name with number B is the log port.
+
+In Linux or Mac systems, generally the device with the smaller number is the flash port, and the larger one is the log port.
+
+If you can't be sure, you can test both serial ports when flashing firmware.
