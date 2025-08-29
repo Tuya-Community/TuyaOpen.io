@@ -2,28 +2,31 @@
 title: switch_demo
 ---
 
-`switch_demo` is a Tuya IoT application and a minimal functionality application demo provided by the Tuya AI+IoT platform. It is a simple, cross-platform, cross-system switch example that supports multiple connections. Through the Tuya APP and Tuya Cloud services, you can perform remote control (when away), LAN control (same local network), and Bluetooth control (when no network is available) on this switch.
+The `switch_demo` application is a minimal-functionality application demo provided by the Tuya AI + IoT platform. It is a simple, cross-platform, cross-OS switch example that supports multiple connections. Using the Tuya app and Tuya's cloud services, you can control the switch remotely (when away from home), over the LAN (on the same LAN), and via Bluetooth (when no network is available).
 
-The current `switch_demo` demonstrates the following functions:
-1. Supports Bluetooth network configuration
-2. Supports WiFi AP mode network configuration
-3. Receives MQTT control data from the cloud and automatically responds
-4. Receives LAN TCP control data from the APP and automatically responds
-5. OTA functionality
+`switch_demo` demonstrates the following features:
 
-Currently, `switch_demo` does not control real hardware, so it can run on all currently supported [platforms](../../about-tuyaopen.md#supported-platform-list).
+- Supports Bluetooth pairing.
+- Supports pairing in Wi-Fi access point (AP) mode.
+- Receives MQTT control data from the cloud and automatically replies.
+- Receives LAN TCP control data from the app and automatically replies.
+- Supports the over-the-air (OTA) update feature.
+
+Currently, `switch_demo` does not control physical hardware and can run on [all supported platforms](../../about-tuyaopen.md##supported-platforms).
 
 Before using `switch_demo`, you need to understand the following terms:
-1. [TuyaOpen Dedicated Authorization Code](../../quick-start/index.md#tuyaopen-dedicated-authorization-code)
-2. [PID](../../quick-start/index.md#pid)
-3. [Network Configuration](../../quick-start/device-network-configuration.md)
-4. [DP](../../applications/index.md#dp)
 
-## Default APP Control Panel
+- [TuyaOpen dedicated license](../../quick-start/index.md#tuyaopen-dedicated-license)
+- [Product ID (PID)](../../quick-start/index.md#pid)
+- [Pairing](../../quick-start/device-network-configuration.md)
+- [Data point (DP)](../../applications/index.md#dp)
 
-![](https://images.tuyacn.com/fe-static/docs/img/0e155d73-1042-4d9f-8886-024d89ad16b2.png)
+## Default app control panel
 
-## Directory Structure
+<img src="https://images.tuyacn.com/content-platform/hestia/1756433993abe6edacf18.png" width="200">
+
+
+## Directory
 
 ```sh
 +- switch_demo
@@ -36,16 +39,16 @@ Before using `switch_demo`, you need to understand the following terms:
     -- README.md
 ```
 
-- cli_cmd.c: Some command line operations for switch_demo, used to view and operate switch_demo information and status
-- tuya_main.c: Main functionality of switch_demo
-- tuya_config.h: Tuya PID and authorization information, created and obtained on the Tuya IoT platform. You can refer to the documentation [TuyaOS quickstart](https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc)
+- `cli_cmd.c`: Command-line operations for viewing and operating `switch_demo` information and status.
+- `tuya_main.c`: Core functionalities of `switch_demo`.
+- `tuya_config.h`: Tuya PID and authorization information, obtained from the Tuya Developer Platform. For more information, see [TuyaOS > Create Product](https://developer.tuya.com/en/docs/iot-device-dev/application-creation?id=Kbxw7ket3aujc).
 
-## Supported Hardware
+## Hardware support
 
-The current project can run on all currently supported chips and development boards
+This project can run on all currently supported chips and development boards.
 
-## Compilation
+## Build the project
 
-1. Run the `tos config_choice` command to select the current development board or platform.
-2. If you need to modify the configuration, first run the `tos menuconfig` command to modify the configuration.
-3. Run the `tos build` command to compile the project.
+1. Run the `tos config_choice` command to select the desired development board or platform.
+2. If you need to modify the configuration, run the `tos menuconfig` command first.
+3. Run `tos build` to build the project.
