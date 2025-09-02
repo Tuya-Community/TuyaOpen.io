@@ -47,8 +47,8 @@ title: 双眼屏情绪机器人
 ├── config                   # 硬件配置目录
 ├── include                  # 头文件存放目录
 ├── Kconfig                  # 项目配置文件
-├── README.md                # 中文说明文档
-├── README_zh.md             # 英文说明文档
+├── README.md                # 英文说明文档
+├── README_zh.md             # 中文说明文档
 └── src                      # 源码目录
 ```
 
