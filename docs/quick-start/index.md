@@ -59,3 +59,9 @@ Before getting started, make the following preparations:
 
 - Get [TuyaOpen licenses](#Get-TuyaOpen-license).
 - Get [Tuya's universal serial tool](https://www.tuyaopen.ai/tools/tyutool) for firmware flashing, TuyaOpen license writing, serial debugging, and subsequent operations.
+
+## Video guidance
+
+- Linux/Mac —— [Install a Linux virtual machine](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click), [Configure SSH](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click), [Develop Demo](https://www.bilibili.com/video/BV1RHaPziE91/?spm_id_from=333.1387.collection.video_card.click)
+- Windows —— [Set up environment](https://www.bilibili.com/video/BV1cXaPzjEaB/?spm_id_from=333.1387.collection.video_card.click), [Develop Demo](https://www.bilibili.com/video/BV1rDaPz2EXa/?spm_id_from=333.1387.collection.video_card.click), [Burning Log](https://www.bilibili.com/video/BV1rDaPz2Ero/?spm_id_from=333.1387.collection.video_card.click)
+- Device Networking —— [Finished Effect](https://www.bilibili.com/video/BV1vHaPziEH5/?spm_id_from=333.1387.collection.video_card.click)

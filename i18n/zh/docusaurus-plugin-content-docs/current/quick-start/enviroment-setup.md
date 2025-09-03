@@ -120,6 +120,10 @@ cd TuyaOpen
 
 激活 `tos.py`：
 
+:::warning
+每次重新打开终端后，需要重新激活 `tos.py`。
+:::
+
 <SyncedTabs
   defaultValue="Linux"
   values={[
