@@ -10,7 +10,7 @@ import ChipRow from '@site/src/components/ChipRow';
 
 ## 硬件平台
 
-TuyaOpen 项目目前支持的芯片都是 WiFi&BLE 双模芯片，包含以下几种芯片和开发板：
+TuyaOpen 项目目前支持的芯片都是 Wi-Fi & Bluetooth LE 双模芯片，包含以下几种芯片和开发板：
 
  - T 系列
 
