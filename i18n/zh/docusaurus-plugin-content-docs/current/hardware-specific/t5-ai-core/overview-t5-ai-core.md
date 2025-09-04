@@ -43,7 +43,7 @@ title: "T5AI-Core 概述"
 
 开发板配备 44 Pin 排针，便于开发者进行快速的 AIoT 项目开发与原型验证。板载锂电池电源管理电路，支持低功耗设计，适合移动和便携式智能设备的开发。
 
-本开发板为开发者提供了丰富的硬件接口和完善的语音功能，是 AIoT 语音交互应用开发的理想选择。
+本开发板提供了丰富的硬件接口和完善的语音功能，是 AIoT 语音交互应用开发的理想选择。
 
 <div align="center">
   <img src="https://images.tuyacn.com/fe-static/docs/img/dd9d442f-bd51-4ce0-bbb5-687058270bff.jpg" alt="" width="500" />
