@@ -13,9 +13,9 @@ title: 快速开始
 **授权码** 由 `UUID` 和 `Authkey` 组成。
 
 TuyaOpen 专用授权码适用于所有 TuyaOpen Framework 包括：
-- C 版 TuyaOpen：[https://github.com/tuya/TuyaOpen](https://github.com/tuya/TuyaOpen)
-- Arduino 版 TuyaOpen：[https://github.com/tuya/arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
-- Luanode 版 TuyaOpen：[https://github.com/tuya/luanode-TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
+- [C 版 TuyaOpen](https://github.com/tuya/TuyaOpen)
+- [Arduino 版 TuyaOpen](https://github.com/tuya/arduino-TuyaOpen)
+- [Luanode 版 TuyaOpen](https://github.com/tuya/luanode-TuyaOpen)
 
 :::danger
 TuyaOpen Framework 均采用 TuyaOpen 专用授权码，使用其他（包括 TuyaOS）授权码均无法在 TuyaOpen Framework 中用于连接涂鸦云。
