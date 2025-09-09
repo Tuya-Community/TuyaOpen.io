@@ -120,6 +120,10 @@ cd TuyaOpen
 
 Activate `tos.py`:
 
+:::warning
+Each time the terminal is reopened, 'tos.py' needs to be reactivated.
+:::
+
 <SyncedTabs
   defaultValue="Linux"
   values={[
