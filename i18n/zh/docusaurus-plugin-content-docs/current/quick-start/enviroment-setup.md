@@ -85,7 +85,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
     不兼容 Windows 中的仿 Linux 终端环境（如 GitBash、Msys2 等），请使用 CMD 或 PowerShell。
     :::
 
-    下载并安装以下工具：
+    下载、安装以下工具，并添加到环境变量中，重启电脑，保证在终端中可以正确使用对应的命令：
      - Python v3.8.0 或更高版本：[下载地址](https://www.python.org/downloads/windows/)
      - Git v2.0.0 或更高版本：[下载地址](https://git-scm.com/downloads/win)
      - Make v3.0 或更高版本：[下载地址](https://gnuwin32.sourceforge.net/packages/make.htm)
@@ -96,6 +96,17 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 下载 `TuyaOpen` 仓库：
 
+:::info
+可适当调整git配置以提高性能：
+```bash
+git config --global http.postBuffer 524288000
+```
+:::
+
+:::warning
+选择项目路径的时候，不使用中文，也不要包含空格等特殊字符，Windows环境不要选择C盘。
+:::
+
 ```bash
 # 使用 github
 git clone https://github.com/tuya/TuyaOpen.git
@@ -103,10 +114,15 @@ git clone https://github.com/tuya/TuyaOpen.git
 # 或者使用 gitee
 git clone https://gitee.com/tuya-open/TuyaOpen.git
 
+# 进入项目
 cd TuyaOpen
 ```
 
 激活 `tos.py`：
+
+:::warning
+每次重新打开终端后，需要重新激活 `tos.py`。
+:::
 
 <SyncedTabs
   defaultValue="Linux"

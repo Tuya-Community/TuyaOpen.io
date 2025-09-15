@@ -2,185 +2,187 @@
 title: Duo-Eyes Mood Robot
 ---
 
- [duo_eye_mood](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/duo_eye_mood) is an open-source large-model intelligent chat robot based on tuya.ai. It collects voice through a microphone, performs speech recognition, enables conversation, interaction, and banter, and can display the current emotional state through the dual-eye screens.
+[duo_eye_mood](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/duo_eye_mood) is an intelligent chatbot based on Tuya AI's open-source large language model. It captures voice input by using a microphone, processes it with speech recognition, and enables conversational interaction, responsive replies, and humorous banter. The chat content is displayed in real-time on the screen.
 
 ## Features
 
-- Supports Tuya voice AI agent and four chat modes:
+- Supports Tuya voice agent with four modes:
 
-  - **Long-press talk mode**: The user must keep pressing the button to input voice; releasing the button ends the voice input.
+   - **Hold-to-talk mode**: Users press and hold a button to start voice input, and release to end.
 
-  - **Button talk mode**: The device enters standby by default after powering on. The user short-presses the button to enter listening mode, then can input voice and interact with the AI agent.
+   - **Press-to-talk mode**: The device enters standby mode upon power-on. A short button press switches it to the listening state for voice input and interaction with the agent.
 
-  - **Wakeup talk mode**: The user must say the wake word before each conversation to wake up the device, then can have a single conversation, similar to a smart speaker.
+   - **Wake word mode**: Users wake the device with a wake word for a single interaction, similar to talking to a smart speaker.
 
-  - **Free talk mode**: After waking up the device with the wake word, the user can have continuous conversations. If there is no conversation after wakeup, the device will return to standby after 30 seconds and needs to be woken up again for the next conversation.
+   - **Free talk mode**: After waking the device with a wake word, users can engage in continuous conversation. If no speech is detected within 30 seconds, the device returns to standby and requires rewaking for the next interaction.
 
-- Supports interrupting the conversation locally by pressing the button.
+- Supports local interruption of ongoing chats via button operation.
 
-- Supports various status prompt sounds, such as network configuration, offline, wakeup, etc.
+- Provides various status prompt tones, such as pairing, going offline, and wake-up.
 
-- Supports displaying the current emotion of the chatbot through various GIFs on the eyes, such as angry, surprised, scared, confused, etc., making it more fun.
+- Shows various eye GIFs to reflect the current emotion of the chatbot, such as angry, surprised, scared, confused, and other expressive eye animations, enhancing interactivity and fun.
 
-  Supported emotions: Neutral / Surprise / Angry / Crying / Moved / Sad / Thinking / Happy / Reject / Disappointed.
+   Supported emotions: **Neutral**, **surprised**, **angry**, **crying**, **touched**, **sad**, **thinking**, **happy**, **rejecting**, and **disappointed**.
 
-- Supports adjusting device volume via App.
+- Allows device volume adjustment on the app.
 
-- Power cycling the device 3 times in a row will enter network configuration mode.
+- Enter pairing mode by power cycling the device three times consecutively.
 
-- Supports real-time switching of AI agent roles via App.
+- Supports real-time switching of AI agent roles on the app.
 
-## Hardware Support List
+## Hardware support
 
-| Board                                                        | Config File                    | PID              |
-| ------------------------------------------------------------ | ------------------------------ | ---------------- |
-| T5AI_BOARD dev board + Duo-Eyes accessory<br />(2 x 1.28" spi565 st7735S round screens) | TUYA_T5AI_BOARD_EYES.config    | 8ixyalzpn0jrun9y |
+| Board | Configuration file | PID |
+| ------------------------------------------------------------ | --------------------------- | ---------------- |
+| T5AI_BOARD development board + dual-screen accessory <br />(two 1.28-inch SPI565 ST7735S round displays) | TUYA_T5AI_BOARD_EYES.config | 8ixyalzpn0jrun9y |
 
-## File Structure
+## File structure
 
-### Root Directory Structure
+### Root directory
 
 ```shell
 .
-├── app_default.config       # Default application config file
-├── CMakeLists.txt           # CMake build script
-├── config                   # Hardware config directory
-├── include                  # Header files directory
-├── Kconfig                  # Project config file
-├── README.md                # English documentation
-├── README_zh.md             # Chinese documentation
-└── src                      # Source code directory
+├── app_default.config    # Default application configuration file
+├── CMakeLists.txt        # CMake build script
+├── config                # Hardware configuration
+├── include               # Header files
+├── Kconfig               # Project configuration file
+├── README.md             # Documentation in English
+├── README_zh.md          # Documentation in Chinese
+└── src                   # Source code
 ```
 
-### Hardware Config Directory
+### Hardware configuration
 
-The files in the `config` directory are configuration files for various boards. If you adapt a new board based on this application, you can add the config file here.
+The files in the `config` directory are configuration files adapted for various development boards. If you have completed adaptation for a new board based on this project, you can add the corresponding configuration file in this directory.
 
 ```shell
 ├── config       
-│   └── TUYA_T5AI_BOARD_EYES.config    # T5AI_BOARD dev board + Duo-Eyes accessory
+│   └── TUYA_T5AI_BOARD_EYES.config    # T5AI_BOARD development board + dual-screen accessory
 ```
 
-### Header Files Directory
+### Header files
 
 ```shell
 ├── include
-│   ├── app_chat_bot.h       # Chat bot feature header
-│   ├── app_display.h        # Display module header
-│   ├── reset_netcfg.h       # Power cycle reset feature header
-│   └── tuya_config.h        # Device license and info config
+│   ├── app_chat_bot.h       # Chatbot functionality
+│   ├── app_display.h        # Display module
+│   ├── reset_netcfg.h       # Power cycle reset functionality
+│   └── tuya_config.h        # Device license configuration and related information
 ```
 
-### Source Code Directory
+### Source file
 
 ```shell
 └── src
-    ├── app_chat_bot.c       # Chat bot feature implementation
-    ├── display              # Display module
-    ├── reset_netcfg.c       # Power cycle reset feature
-    └── tuya_main.c          # Application entry
+    ├── app_chat_bot.c      # Chatbot functionality implementation
+    ├── display             # Display module
+    ├── reset_netcfg.c      # Power cycle reset functionality
+    └── tuya_main.c         # Application entry
 ```
 
-#### Display Module
+#### Display module
 
 ```shell
-├── display                  # Display module
-│   ├── app_display.c        # Main display control file
-│   ├── CMakeLists.txt       # Display module CMake config
-│   ├── image                # Image resources directory
-│   ├── tuya_lvgl.c          # LVGL adaptation file
-│   ├── tuya_lvgl.h          # LVGL adaptation header
-│   └── ui                   # UI implementation
-│       ├── ui_display.h     # UI module common header
-│       └── ui_eyes.c        # Duo-Eyes emotion display UI
+├── display                 # Display module
+│   ├── app_display.c       # Main control file of the display module
+│   ├── CMakeLists.txt      # CMake configuration of the display module
+│   ├── image               # Image resources
+│   ├── tuya_lvgl.c         # LVGL adaptation file for the application
+│   ├── tuya_lvgl.h         # LVGL adaptation header file
+│   └── ui                  # UI implementation
+│       ├── ui_display.h    # Common header file of the UI module
+│   └── ui_eyes.c           # Dual-screen emotion display interface
 ```
 
-## Application Configuration
+## Application configuration
 
-- **Product PID**
+- **Product ID (PID)**
 
-  | Macro               | Type   | Description                                 |
-  | ------------------- | ------ | ------------------------------------------- |
-  | TUYA_PRODUCT_KEY    | String | Product ID, bound to Tuya AI agent          |
+   | Macro | Type | Description |
+   | ---------------- | ------ | -------------- |
+   | TUYA_PRODUCT_KEY | String | The product ID, which is bound to the Tuya AI agent. |
 
-- **Select Chat Mode**
+- **Select chat mode**
 
-  | Macro                                 | Type  | Description             |
-  | -------------------------------------- | ----- | ---------------------- |
-  | ENABLE_CHAT_MODE_KEY_PRESS_HOLD_SINGEL | Bool  | Long-press talk mode   |
-  | ENABLE_CHAT_MODE_KEY_TRIG_VAD_FREE     | Bool  | Button talk mode       |
-  | ENABLE_CHAT_MODE_ASR_WAKEUP_SINGEL     | Bool  | Wakeup talk mode       |
-  | ENABLE_CHAT_MODE_ASR_WAKEUP_FREE       | Bool  | Free talk mode         |
+   | Macro | Type | Description |
+   | -------------------------------------- | ---- | ------------ |
+   | ENABLE_CHAT_MODE_KEY_PRESS_HOLD_SINGEL | Boolean | Hold-to-talk mode |
+   | ENABLE_CHAT_MODE_KEY_TRIG_VAD_FREE | Boolean | Press-to-talk mode |
+   | ENABLE_CHAT_MODE_ASR_WAKEUP_SINGEL | Boolean | Wake word mode |
+   | ENABLE_CHAT_MODE_ASR_WAKEUP_FREE | Boolean | Free talk mode |
 
-- **Select Wake Word**
+- **Select wake word**
 
-  This config only appears when selecting ***Wakeup Talk*** or ***Free Talk*** mode.
+   This configuration is only available when the chat mode is set to **wake word mode** and **free talk mode**.
 
-  | Macro                                | Type  | Description                    |
-  | ------------------------------------- | ----- | ------------------------------ |
-  | ENABLE_WAKEUP_KEYWORD_NIHAO_TUYA      | Bool  | Wake word is "Nihao Tuya"      |
-  | ENABLE_WAKEUP_KEYWORD_NIHAO_XIAOZHI   | Bool  | Wake word is "Nihao Xiaozhi"   |
-  | ENABLE_WAKEUP_KEYWORD_XIAOZHI_TONGXUE | Bool  | Wake word is "Xiaozhi Tongxue" |
-  | ENABLE_WAKEUP_KEYWORD_XIAOZHI_GUANJIA | Bool  | Wake word is "Xiaozhi Guanjia" |
+   | Macro | Type | Description |
+   | ------------------------------------- | ---- | ------------------- |
+   | ENABLE_WAKEUP_KEYWORD_NIHAO_TUYA | Boolean | The wake word is "Hey Tuya". |
+   | ENABLE_WAKEUP_KEYWORD_NIHAO_XIAOZHI | Boolean | The wake word is "Hey Xiaozhi". |
+   | ENABLE_WAKEUP_KEYWORD_XIAOZHI_TONGXUE | Boolean | The wake word is "Xiaozhi Tongxue". |
+   | ENABLE_WAKEUP_KEYWORD_XIAOZHI_GUANJIA | Boolean | The wake word is "Xiaozhi Guanjia". |
 
-## Workflow
+## Process
 
-This project depends on the [ai_audio](./ai-components/ai-audio-asr-impl.md) application component, which mainly implements audio collection, playback, cloud AI session creation, and other functions.
+This project depends on the application component [ai_audio](./ai-components/ai-audio-asr-impl.md). This component implements various features, including audio capture, audio playback, and creating cloud-based AI sessions.
 
-- **Long-press talk mode**
+- **Hold-to-talk mode**
 
-  ![](/img/applications/your_chat_bot/zh/long_talk.svg)
+   ![](/img/applications/your_chat_bot/en/long_talk.svg)
 
-- **Button talk mode**
+- **Press-to-talk mode**
 
-  ![](/img/applications/your_chat_bot/zh/button_talk.svg)	
+   ![](/img/applications/your_chat_bot/en/button_talk.svg)
 
-- **Wakeup talk mode**
+- **Wake word mode**
 
-  ![](/img/applications/your_chat_bot/zh/wakeup_talk.svg)
+   ![](/img/applications/your_chat_bot/en/wakeup_talk.svg)
 
 - **Free talk mode**
 
-  ![](/img/applications/your_chat_bot/zh/free_talk.svg)
+   ![](/img/applications/your_chat_bot/en/free_talk.svg)
 
-## Build Project
+## Build project
 
-1. For environment setup and configuration, please refer to [Quick Start](../../quick-start/index.md).
+1. Install and configure the prerequisite environment. For more information, see [Set up Environment](../../quick-start/enviroment-setup.md).
 
-2. Change directory from the TuyaOpen root to the application directory
+2. Change from the TuyaOpen root directory to the application directory.
 
    ```shell
    cd apps/tuya.ai/duo_eye_mood
    ```
 
-3. Select the corresponding dev board config
+3. Select the specified development board configuration.
 
    ```shell
    tos.py config choice
    ```
 
-4. Build the project
+4. Build the project.
 
    ```
    tos.py build
    ```
 
-## Adapting New Boards
-### Peripheral Requirements List
-For the list of peripherals supported by tuyaopen, please refer to [Peripheral Driver List](../../peripheral/support_peripheral_list.md). Any new board must have the **required** peripheral drivers listed.
+## Adapt to new development boards
+### Peripheral requirements
 
-  | Peripheral      | Peripheral Component | Description | Required |
-  | --------------  | ------------------- | ----------- | -------- |
-  | Audio Driver    | audio_codecs         | Can collect audio data, format PCM.<br/>Can play voice, format MP3, 16bit, 16KHz, mono. | Yes      |
-  | Display Driver  | display              | Has two 1.28" round screens, two eyes.<br/>Both round screens are controlled by the same driver interface, i.e., the animation displayed on both screens is identical. | Yes      |
-  | LED Driver      | led                  | Indicates whether the device is listening, etc. | No       |
-  | Button Driver   | button               | Interrupts conversation, starts conversation in button talk mode. | No       |
+For a list of peripherals supported by TuyaOpen, refer to the [Peripheral driver list](../../peripheral/support_peripheral_list.md). New development boards must include all **required** peripheral drivers listed.
 
-### Board Adaptation
+| Peripheral | Peripheral component | Description | Required or not |
+| ---- | ------- | ---- | ------- |
+| Audio driver | audio_codecs | Capture PCM audio data and play MP3 audio (parameters: 16-bit depth, 16 KHz sample rate, mono). | Yes |
+| Display driver | Display | Features two 1.28-inch round screens, representing a pair of eyes. Both round screens are controlled by the same driver interface, meaning they display identical animations. | Yes |
+| Indicator driver | LED | Indicates whether the device is currently in the listening state. | No |
+| Button driver | Button | Interrupts the chat and starts a chat in press-to-talk mode. | No |
+
+### Adapt to development boards
+
+For more information on how to add and adapt to a new development board, refer to [Adapt to new board-level drivers (board)](../../new-hardware/new-board.md).
+
 :::tip
-The unified entry for board peripheral driver registration is `board_register_hardware`, and the implementation of this interface is placed in the board-level folder.
+You can register the peripheral driver hardware on the development board through `board_register_hardware`. The implementation of this interface is placed in the board-level folder.
 
-If developers want to modify the hardware configuration of the driver (such as changing pins, chip types, etc.), please make changes in the target board's folder (boards/target environment/target board, such as `boards/T5AI/TUYA_T5AI_BOARD`).
-::::
-
-Please refer to [Adding New Board Support](../../new-hardware/new-board.md) for the steps to add and adapt new boards.
+In the target development board's folder (`boards/target development environment/target development board`, for example, `boards/T5AI/TUYA_T5AI_BOARD`), you can modify the driver's hardware configuration (such as changing the pins or chip type).
+:::

@@ -85,7 +85,7 @@ Before getting started, prepare the following resources:
     It is incompatible with Linux-like terminal environments on Windows (such as Git Bash and MSYS2). Please use CMD or PowerShell.
     :::
 
-    Download and install the following tools:
+    Download and install the following tools, add them to environment variables, restart your computer, and ensure the corresponding commands work correctly in the terminal:
      - Python v3.8.0 or later: [Download](https://www.python.org/downloads/windows/)
      - Git v2.0.0 or later: [Download](https://git-scm.com/downloads/win)
      - Make v3.0 or later: [Download](https://gnuwin32.sourceforge.net/packages/make.htm)
@@ -96,6 +96,17 @@ Before getting started, prepare the following resources:
 
 Download the TuyaOpen repository:
 
+:::info
+You can adjust git configuration to improve performance:
+```bash
+git config --global http.postBuffer 524288000
+```
+:::
+
+:::warning
+When choosing a project path, do not use Chinese characters or special characters like spaces. On Windows, do not choose the C drive.
+:::
+
 ```bash
 # Use GitHub
 git clone https://github.com/tuya/TuyaOpen.git
@@ -103,10 +114,15 @@ git clone https://github.com/tuya/TuyaOpen.git
 # Or use Gitee
 git clone https://gitee.com/tuya-open/TuyaOpen.git
 
+# Enter the project
 cd TuyaOpen
 ```
 
 Activate `tos.py`:
+
+:::warning
+Each time the terminal is reopened, 'tos.py' needs to be reactivated.
+:::
 
 <SyncedTabs
   defaultValue="Linux"
