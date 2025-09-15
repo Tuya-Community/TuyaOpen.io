@@ -44,6 +44,12 @@ The IoT Switch project is a simple yet powerful demonstration of how to build a 
 5. Compile and flash the firmware to your device.
 6. Run and debug your IoT Switch.
 
+
+
+## Need Custom Features?
+The PID (Product ID) is a unique string used to identify and associate your product definition in the cloud. If you want to implement control for multiple sensors or multiple switches, you can create your own custom device ("product") on the Tuya Developer Platform [here](https://developer.tuya.com/en/docs/iot/create-product?id=K914jp1ijtsfe) and define your own control [DPs (Data Points)](https://developer.tuya.com/en/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr). This allows you to achieve more complex and diverse device functions through the cloud. Finally, on the device, update the PID of your defined product in the `tuya_config.h` header file and develop support for the new DP points as needed.
+
+
 ## Repository Link
 
 <p align="center">

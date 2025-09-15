@@ -44,6 +44,10 @@ date: 2024-06-11
 5. 编译并烧录固件到设备。
 6. 运行并调试你的物联网开关。
 
+## 需要定制化功能？
+PID（产品ID）是用于标识和关联云端产品定义的唯一字符串。如果你需要实现多路传感器或多路开关的控制，可以在涂鸦开发者平台创建属于你自己的定制设备["产品"](https://developer.tuya.com/en/docs/iot/create-product?id=K914jp1ijtsfe)，并自定义控制 [DP（数据点）](https://developer.tuya.com/en/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr)。这样，你就可以通过云端实现更复杂和多样化的设备功能。最后将你定义好的产品PID 更新到设备端`tuya_config.h`头文件，并且开发对接新增的DP点功能。
+
+
 ## 项目仓库链接
 
 <p align="center">
