@@ -136,6 +136,10 @@ const config = {
           label: 'Blog',
         },
         {
+          to: '/projects',
+          label: 'Projects',
+        },
+        {
           label: 'Tools',
           position: 'left',
           items: [

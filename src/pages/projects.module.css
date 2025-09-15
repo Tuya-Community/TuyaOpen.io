@@ -1,0 +1,267 @@
+.projectsPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+[data-theme='dark'] .projectsPage {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+}
+
+.projectCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .projectCard {
+  background: #2d3748;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .projectCard:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImageContainer {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cardHover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardHover .cardOverlay {
+  opacity: 1;
+}
+
+.overlayContent {
+  text-align: center;
+}
+
+.viewProject {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border: 2px solid white;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.viewProject:hover {
+  background: white;
+  color: #1a202c;
+}
+
+.cardContent {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #1a202c;
+  line-height: 1.3;
+}
+
+[data-theme='dark'] .cardTitle {
+  color: #f7fafc;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a5568;
+  margin: 0;
+  flex: 1;
+}
+
+[data-theme='dark'] .cardDescription {
+  color: #a0aec0;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .tag {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .tag:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.sectionDivider {
+  position: relative;
+  margin: 0 0;
+  text-align: center;
+  padding: 2rem 0;
+}
+.sectionDivider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0.2px;
+  background: linear-gradient(90deg, transparent, #a09b9b, transparent);
+  z-index: 1;
+}
+[data-theme='dark'] .sectionDivider::before {
+  background: linear-gradient(90deg, transparent, #6b7280, transparent);
+}
+
+.sectionTitle {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 0 2rem;
+  z-index: 2;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  background: transparent;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+[data-theme='dark'] .sectionTitle {
+  color: #f9fafb;
+  background: transparent;
+}
+
+[data-theme='dark'] .sectionTitle::after {
+  background: #60a5fa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projectCard {
+    margin-bottom: 24px;
+  }
+  
+  .cardContent {
+    padding: 20px;
+  }
+  
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+  
+  .cardDescription {
+    font-size: 0.95rem;
+  }
+  
+  .cardTags {
+    margin-top: 12px;
+    gap: 6px;
+  }
+  
+  .tag {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardContent {
+    padding: 16px;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+  
+  .cardDescription {
+    font-size: 0.9rem;
+  }
+  
+  .cardTags {
+    margin-top: 10px;
+    gap: 4px;
+  }
+  
+  .tag {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+}

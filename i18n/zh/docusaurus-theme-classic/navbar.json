@@ -19,6 +19,10 @@
     "message": "博客",
     "description": "Navbar item with label Blog"
   },
+  "item.label.Projects": {
+    "message": "项目",
+    "description": "Navbar item with label Projects"
+  },
   "item.label.Tools": {
     "message": "工具",
     "description": "Navbar item with label Tools"
