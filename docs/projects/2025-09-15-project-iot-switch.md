@@ -39,7 +39,7 @@ The IoT Switch project is a simple yet powerful demonstration of how to build a 
 
 1. Clone the TuyaOpen repository or download the source code.
 2. Set up your development environment following the [Quick Start Guide](/docs/quick-start/enviroment-setup).
-3. Obtain your Device Auth Key from the Tuya Developer Platform.
+3. Obtain your Device (UUID/Auth Key) Key Pair from the Tuya Developer Platform.
 4. Update the credential information in the `tuya_config.h` header file.
 5. Compile and flash the firmware to your device.
 6. Run and debug your IoT Switch.
