@@ -1,6 +1,6 @@
 ---
 title: "Simple Tuya IoT Switch"
-date: 2024-06-11
+date: 2024-9-15
 ---
 
 # Simple Tuya IoT Switch
