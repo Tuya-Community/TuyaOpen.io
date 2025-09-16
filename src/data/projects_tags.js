@@ -60,6 +60,78 @@ const tagsData = {
       bgColor: '#ede9fe',
       borderColor: '#7c3aed',
     },
+    contest: {
+      label: 'Contest',
+      color: '#7c3aed', // violet
+      bgColor: '#ede9fe',
+      borderColor: '#7c3aed',
+    },
+    'open-source': {
+      label: 'Open Source',
+      color: '#16a34a', // green
+      bgColor: '#dcfce7',
+      borderColor: '#16a34a',
+    },
+    'open-hardware': {
+      label: 'Open Hardware',
+      color: '#f97316', // orange
+      bgColor: '#ffedd5',
+      borderColor: '#f97316',
+    },
+    blockchain: {
+      label: 'Blockchain',
+      color: '#0ea5e9', // sky
+      bgColor: '#e0f2fe',
+      borderColor: '#0ea5e9',
+    },
+    nft: {
+      label: 'NFT',
+      color: '#a21caf', // fuchsia
+      bgColor: '#fae8ff',
+      borderColor: '#a21caf',
+    },
+    web3: {
+      label: 'Web3',
+      color: '#facc15', // yellow
+      bgColor: '#fef9c3',
+      borderColor: '#facc15',
+    },
+    robotics: {
+      label: 'Robotics',
+      color: '#2563eb', // indigo
+      bgColor: '#dbeafe',
+      borderColor: '#2563eb',
+    },
+    entertainment: {
+      label: 'Entertainment',
+      color: '#f43f5e', // rose
+      bgColor: '#ffe4e6',
+      borderColor: '#f43f5e',
+    },
+    'computer-vision': {
+      label: 'Computer Vision',
+      color: '#0d9488', // teal
+      bgColor: '#ccfbf1',
+      borderColor: '#0d9488',
+    },
+    social: {
+      label: 'Social',
+      color: '#f472b6', // pink
+      bgColor: '#fce7f3',
+      borderColor: '#f472b6',
+    },
+    bluetooth: {
+      label: 'Bluetooth',
+      color: '#3b82f6', // blue
+      bgColor: '#dbeafe',
+      borderColor: '#3b82f6',
+    },
+    wearable: {
+      label: 'Wearable',
+      color: '#14b8a6', // teal
+      bgColor: '#ccfbf1',
+      borderColor: '#14b8a6',
+    },
   },
   zh: {
     iot: {
@@ -121,6 +193,78 @@ const tagsData = {
       color: '#7c3aed',
       bgColor: '#ede9fe',
       borderColor: '#7c3aed',
+    },
+    contest: {
+      label: '竞赛',
+      color: '#7c3aed',
+      bgColor: '#ede9fe',
+      borderColor: '#7c3aed',
+    },
+    'open-source': {
+      label: '开源软件',
+      color: '#16a34a',
+      bgColor: '#dcfce7',
+      borderColor: '#16a34a',
+    },
+    'open-hardware': {
+      label: '开源硬件',
+      color: '#f97316',
+      bgColor: '#ffedd5',
+      borderColor: '#f97316',
+    },
+    blockchain: {
+      label: '区块链',
+      color: '#0ea5e9',
+      bgColor: '#e0f2fe',
+      borderColor: '#0ea5e9',
+    },
+    nft: {
+      label: 'NFT',
+      color: '#a21caf',
+      bgColor: '#fae8ff',
+      borderColor: '#a21caf',
+    },
+    web3: {
+      label: 'Web3',
+      color: '#facc15',
+      bgColor: '#fef9c3',
+      borderColor: '#facc15',
+    },
+    robotics: {
+      label: '机器人',
+      color: '#2563eb',
+      bgColor: '#dbeafe',
+      borderColor: '#2563eb',
+    },
+    entertainment: {
+      label: '娱乐',
+      color: '#f43f5e',
+      bgColor: '#ffe4e6',
+      borderColor: '#f43f5e',
+    },
+    'computer-vision': {
+      label: '计算机视觉',
+      color: '#0d9488',
+      bgColor: '#ccfbf1',
+      borderColor: '#0d9488',
+    },
+    social: {
+      label: '社交',
+      color: '#f472b6',
+      bgColor: '#fce7f3',
+      borderColor: '#f472b6',
+    },
+    bluetooth: {
+      label: '蓝牙',
+      color: '#3b82f6',
+      bgColor: '#dbeafe',
+      borderColor: '#3b82f6',
+    },
+    wearable: {
+      label: '可穿戴',
+      color: '#a3e635', // lime
+      bgColor: '#f7fee7',
+      borderColor: '#a3e635',
     },
   },
 }
