@@ -1,7 +1,9 @@
 ---
 title: "简单涂鸦物联网开关"
-date: 2024-06-11
+date: 2024-9-15
 ---
+
+<BackToProjects />
 
 # 简单涂鸦物联网开关
 
@@ -39,7 +41,7 @@ date: 2024-06-11
 
 1. 克隆 TuyaOpen 仓库或下载源代码。
 2. 按照[快速开始指南](/docs/quick-start/enviroment-setup)设置开发环境。
-3. 在涂鸦开发者平台获取设备 Auth Key。
+3. 在涂鸦开发者平台获取设备 (UUID/Auth Key)授权码。
 4. 在 `tuya_config.h` 头文件中更新认证信息。
 5. 编译并烧录固件到设备。
 6. 运行并调试你的物联网开关。
