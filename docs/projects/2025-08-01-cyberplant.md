@@ -3,6 +3,8 @@ title: "CyberPlant"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # CyberPlant
 
 ## Project Overview

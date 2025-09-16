@@ -3,6 +3,8 @@ title: "Soccer Star"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # Soccer Star
 
 ## Project Overview

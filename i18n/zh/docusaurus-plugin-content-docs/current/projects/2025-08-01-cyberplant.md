@@ -3,6 +3,8 @@ title: "CyberPlant 赛博植物"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # CyberPlant 赛博植物
 
 ## 项目概述

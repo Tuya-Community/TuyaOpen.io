@@ -1,0 +1,25 @@
+.backToProjects {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.backButton {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.backButton:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .backButton {
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .backButton:hover {
+  color: var(--ifm-color-primary-light);
+}

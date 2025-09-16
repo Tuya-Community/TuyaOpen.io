@@ -3,6 +3,8 @@ title: "Simple Tuya IoT Switch"
 date: 2024-9-15
 ---
 
+<BackToProjects />
+
 # Simple Tuya IoT Switch
 
 ## Project Overview

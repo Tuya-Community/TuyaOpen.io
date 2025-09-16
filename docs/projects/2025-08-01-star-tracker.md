@@ -3,6 +3,8 @@ title: "Star Tracker"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # Star Tracker
 
 ## Project Overview

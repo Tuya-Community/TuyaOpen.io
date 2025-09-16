@@ -3,6 +3,8 @@ title: "国足之星"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # 国足之星
 
 ## 项目概述

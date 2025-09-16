@@ -3,6 +3,8 @@ title: "Dynamic Light Effect DIDI Glasses"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # Dynamic Light Effect DIDI Glasses
 
 ## Project Overview

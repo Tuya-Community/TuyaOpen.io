@@ -3,6 +3,8 @@ title: "Smart Social Necklace"
 date: 2025-08-01
 ---
 
+<BackToProjects />
+
 # Smart Social Necklace
 
 ## Project Overview
