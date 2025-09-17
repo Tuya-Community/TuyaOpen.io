@@ -9,9 +9,9 @@ date: 2025-08-01
 
 ## 项目概述
 
-让心跳与节拍变成看得见的光 音乐节拍流动于镜框。本项目展示了TuyaOpen将抽象情感转化为有形视觉体验的能力，展示了该框架如何让开发者以最小的技术门槛创建创新的社交互动设备。
+让心跳与节拍变成看得见的光 音乐节拍流动于镜框。本项目展示了TuyaOpen通过云端AI处理将抽象情感转化为有形视觉体验的能力，展示了该框架如何让开发者以最小的技术门槛创建创新的社交互动设备。
 
-在现代社交场景中，非语言沟通已成为情感表达的重要方式。我们设计了一款适用于各类社交场合的炫酷光效眼镜，例如派对、聚会等，通过色彩与动态光效，增强人与人之间的情绪传递效率。TuyaOpen的Tuya T5AI Board开发平台为快速原型设计和部署此类创意AI驱动的可穿戴设备提供了完美的基础。
+在现代社交场景中，非语言沟通已成为情感表达的重要方式。我们设计了一款适用于各类社交场合的炫酷光效眼镜，例如派对、聚会等，通过色彩与动态光效，增强人与人之间的情绪传递效率。TuyaOpen的Tuya T5AI Board开发平台为快速原型设计和部署此类创意云端AI驱动的可穿戴设备提供了完美的基础。
 
 <p align="center">
   <img
@@ -36,12 +36,12 @@ date: 2025-08-01
 
 ## 技术栈
 
+- **TuyaOpen框架**: 完整的AIoT开发平台，具备云端多模态能力
 - **硬件**: 涂鸦T5AI Board开发板
-- **通信**: 局域网通信，串口通信
-- **软件**: 嵌入式软硬件开发
-- **AI**: LLM集成
+- **通信**: 局域网通信，串口通信，云端连接
+- **软件**: 嵌入式软硬件开发，云端AI集成
+- **AI处理**: 通过TuyaOpen的云端LLM集成
 - **设计**: PPT，渲染技术
-- **开发**: 代码编写，编译烧录
 
 ## 快速开始
 
@@ -52,3 +52,32 @@ date: 2025-08-01
 5. 配置不同社交场景的光效方案
 6. 测试情绪模拟功能
 7. 在社交环境中部署和测试
+
+## 项目仓库链接
+
+<p align="center">
+  <a
+    href="https://github.com/CareTheDeaf/DIDIEYEGLASSES"
+    target="_blank"
+    className="button button--primary"
+    style={{
+      fontSize: "1.15rem",
+      padding: "14px 2.5em",
+      borderRadius: "16px",
+      background: "linear-gradient(90deg, #4f8cff 0%, #38b2ac 100%)",
+      color: "#fff",
+      boxShadow: "0 4px 24px rgba(79,140,255,0.18), 0 1.5px 6px rgba(56,178,172,0.10)",
+      border: "none",
+      fontWeight: "bold",
+      letterSpacing: "0.04em",
+      transition: "transform 0.15s, box-shadow 0.15s",
+      display: "inline-block"
+    }}
+  >
+    前往项目仓库
+  </a>
+</p>
+
+## 版权与许可
+
+本项目作为[Adventure X 2025 杭州黑客松](https://adventure-x.org/zh)的一部分开发。项目及其所有组件归参与团队成员和比赛参与者所有。保留所有权利。

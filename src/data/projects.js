@@ -16,7 +16,7 @@ const projectsData = {
         'A new-style compass based on Tuya T5AI-CORE development board with T5-E1 chip module, capable of pointing to stars and implementing astronomical Agent dialogue.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/11fcf2a4-25b6-4a90-8f3a-bc6e5f0dde38.jpg',
       markdownFile: '/docs/projects/2025-08-01-star-tracker',
-      tags: ['iot', 'contest', 'ai'],
+      tags: ['iot', 'contest', 'ai', 'voice'],
     },
     {
       id: 'cyber-glass',
@@ -25,7 +25,7 @@ const projectsData = {
         'Create immersive entertainment with heartbeat and rhythm becoming visible light. Music beats flow through the frame.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/303c2850-621d-4c50-84c2-b964e8c83d0f.jpg',
       markdownFile: '/docs/projects/2025-08-01-cyber-glass',
-      tags: ['iot', 'contest', 'entertainment', 'wearable'],
+      tags: ['iot', 'contest', 'entertainment', 'wearable', 'voice'],
     },
     {
       id: 'nft-plent-collector',
@@ -43,7 +43,7 @@ const projectsData = {
         'An intelligent companion tomato timer robot designed for users who easily fall into deep focus, helping them rest scientifically through personalized intervention mechanisms.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/74f40f1e-8650-4e59-9593-837255081cc9.jpg',
       markdownFile: '/docs/projects/2025-08-01-auraflow',
-      tags: ['iot', 'ai', 'robotics'],
+      tags: ['iot', 'ai', 'robotics', 'voice'],
     },
     {
       id: 'rdk-x5',
@@ -52,7 +52,7 @@ const projectsData = {
         'Running TuyaOpen multi-modal agent with powerful local AI powerhouse RDK X5 SBC. Seamlessly integrate IoT and Cloud multi-modal capabilities with local NPU AI processing for edge computing applications.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/7a0fcb92-b721-4f38-8b32-3cb84aca785e.jpg',
       markdownFile: '/docs/projects/2025-08-01-rdk-x5',
-      tags: ['iot', 'ai', 'robotics', 'computer-vision'],
+      tags: ['iot', 'ai', 'robotics', 'computer-vision', 'voice'],
     },
     {
       id: 'rolling-ball',
@@ -64,8 +64,8 @@ const projectsData = {
       tags: ['iot', 'robotics', 'entertainment'],
     },
     {
-      id: 'ai-chatable-badge',
-      title: 'Smart Social Necklace',
+      id: 'ai-social-badge',
+      title: 'Smart Social Badge',
       description:
         'In offline social situations, when someone with common language appears near you, both necklaces flash the same light, helping us spend more time with people who share common interests.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/206894ec-546e-4a6d-a0ce-9b521d574ccb.jpg',
@@ -88,7 +88,7 @@ const projectsData = {
       description: '一款基于涂鸦T5AI-CORE 核心开发板 搭载T5-E1芯片模组，能够指向星星和实现天文Agent对话的新式指南针',
       image: 'https://images.tuyacn.com/fe-static/docs/img/11fcf2a4-25b6-4a90-8f3a-bc6e5f0dde38.jpg',
       markdownFile: '/docs/projects/2025-08-01-star-tracker',
-      tags: ['iot', 'contest', 'ai'],
+      tags: ['iot', 'contest', 'ai', 'voice'],
     },
     {
       id: 'cyber-glass',
@@ -112,7 +112,7 @@ const projectsData = {
       description: '一款智能陪伴式番茄钟机器人，专为易陷入深度专注的用户设计，通过个性化干预机制帮助其科学休息。',
       image: 'https://images.tuyacn.com/fe-static/docs/img/74f40f1e-8650-4e59-9593-837255081cc9.jpg',
       markdownFile: '/docs/projects/2025-08-01-auraflow',
-      tags: ['iot', 'ai', 'robotics'],
+      tags: ['iot', 'ai', 'robotics', 'voice'],
     },
     {
       id: 'rdk-x5',
@@ -121,7 +121,7 @@ const projectsData = {
         '在强大的本地AI算力平台RDK X5单板计算机上运行TuyaOpen多模态智能体。无缝集成物联网和云端多模态能力，结合本地NPU AI处理，实现边缘计算应用。',
       image: 'https://images.tuyacn.com/fe-static/docs/img/7a0fcb92-b721-4f38-8b32-3cb84aca785e.jpg',
       markdownFile: '/docs/projects/2025-08-01-rdk-x5',
-      tags: ['iot', 'ai', 'robotics', 'computer-vision'],
+      tags: ['iot', 'ai', 'robotics', 'computer-vision', 'voice'],
     },
     {
       id: 'rolling-ball',
@@ -132,7 +132,7 @@ const projectsData = {
       tags: ['iot', 'robotics', 'entertainment'],
     },
     {
-      id: 'ai-chatable-badge',
+      id: 'ai-social-badge',
       title: '友念智能社交项链',
       description:
         '在线下社交场合，让每个和你有共同语言的人出现在你身边时，双方项链都闪烁相同的光，把我们更多的时间花在有共同语言的人身上',

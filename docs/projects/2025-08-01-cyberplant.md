@@ -54,3 +54,7 @@ This project combines blockchain technology with plant collection, featuring ima
 5. Deploy smart contracts
 6. Run the application locally
 7. Test NFT minting and trading functionality
+
+## Copyright & License
+
+This project was developed as part of [Adventure X 2025 Hangzhou Hackathon](https://adventure-x.org/zh). The project and all its components are owned by the participating team members and contest participants. All rights reserved.

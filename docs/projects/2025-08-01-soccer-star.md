@@ -51,3 +51,7 @@ When it appears on the field, the era of Chinese soccer has arrived. It can run 
 5. Test independent operation
 6. Configure goal-seeking behavior
 7. Deploy and demonstrate on field
+
+## Copyright & License
+
+This project was developed as part of [Adventure X 2025 Hangzhou Hackathon](https://adventure-x.org/zh). The project and all its components are owned by the participating team members and contest participants. All rights reserved.
