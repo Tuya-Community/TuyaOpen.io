@@ -39,8 +39,8 @@ Our chip platform support is regularly updated and maintained:
 
 | Chip Platform         | Support Status | Activity (Update Frequency) | Notes |
 |----------------------|----------------|-----------------------------|-------|
-| **MCU T5AI**         | ✅ Active      | Highly active               |       |
-| **MCU T2/T3**        | ✅ Active      | Actively maintained         |       |
+| **MCU T5AI**         | ✅ Active      | Highly active               | Ideal module for AI multimodal(audio & vision) interaction |
+| **MCU T2/T3**        | ✅ Active      | Actively maintained         | AI text LLM + IoT use-cases, advantages in low-power scenarios |
 | **MCU BK7231N**      | ✅ Active      | Regular maintenance         |       |
 | **MCU LN882H**       | ✅ Active      | Regular maintenance         |       |
 | **MCU ESP32 Series** | ✅ Active      | Regular maintenance         |       |
