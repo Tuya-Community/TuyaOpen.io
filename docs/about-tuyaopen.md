@@ -4,13 +4,32 @@ title: About TuyaOpen
 
 ![TuyaOpen](https://images.tuyacn.com/fe-static/docs/img/c128362b-eb25-4512-b5f2-ad14aae2395c.jpg)
 
+
 ## Overview
 
-TuyaOpen stands out as an open-source framework for AIoT development, built on top of the proven commercial-grade TuyaOS IoT system. TuyaOpen delivers cross-platform architecture, component-based design, and enterprise-grade security compliance, all rigorously validated through global deployment across hundreds of millions of devices and millions of users.
+TuyaOpen is an open source AI+IoT development framework designed for rapid creation of intelligent, connected devices. It supports multiple chip platforms and RTOS-like operating systems, enabling seamless integration of multimodal AI capabilities—including audio, video, and sensor data processing.
 
-TuyaOpen integrates an on-device AI inference engine, supports the Tuya Cloud AI Agent Hub, and enables device-cloud integrated multimodal AI capabilities. You can seamlessly access compliant Chinese LLMs (such as DeepSeek, Qwen, and Doubao) or integrate global AI services (such as ChatGPT, Claude, and Gemini) through unified API toolkits for text/voice interactions and image/video generation.
+### 🚀 With TuyaOpen, you can:
+- Develop hardware products featuring speech technologies such as `ASR` (Automatic Speech Recognition), `KWS` (Keyword Spotting), `TTS` (Text-to-Speech), and `STT` (Speech-to-Text)
+- Integrate with leading LLMs and AI platforms, including `Deepseek`, `ChatGPT`, `Claude`, `Gemini`, and more.
+- Build smart devices with `advanced multimodal AI capabilities`, including voice, vision, and sensor-based features
+- Create custom products and seamlessly connect them to Tuya Cloud for `remote control`, `monitoring`, and `OTA updates`
+- Develop devices compatible with `Google Home` and `Amazon Alexa`
+- Design custom `Powered by Tuya` hardware
+- Target a wide range of hardware applications using `Bluetooth`, `Wi-Fi`, `Ethernet`, and more
+- Benefit from robust built-in `security`, `device authentication`, and `data encryption`
 
-Additionally, TuyaOpen supports popular open-source hardware/software ecosystems in the industry. You can effortlessly port projects to any chipset and deploy solutions on any development board. This accelerates AI innovation prototyping to production-ready deployment via Tuya's certified hardware partners.
+
+Whether you’re creating smart home products, industrial IoT solutions, or custom AI applications, TuyaOpen provides the tools and examples to get started quickly and scale your ideas across platforms.
+
+---
+
+### TuyaOpen SDK Framework
+![TuyaOpen SDK Framework](https://images.tuyacn.com/fe-static/docs/img/25713212-9840-4cf5-889c-6f55476a59f9.jpg)
+
+
+---
+
 
 ## Supported platforms
 
@@ -68,4 +87,4 @@ TuyaOpen is currently in rapid development phase, and we follow the following re
 - **Development Testing**: Can use master version to experience latest features
 - **Feature Preview**: Can choose dev version, but be aware of potential instability
 
-Please follow our [TuyaOpen Related Links](#related-links-of-tuyaopen) for the latest release information!
+Please follow our [TuyaOpen Release Roadmap](/docs/maintenance-and-releases) for the latest release information!

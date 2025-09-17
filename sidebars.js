@@ -2,8 +2,8 @@ module.exports = {
   docs: [
     // ------------------------------------------------------------------
     'about-tuyaopen',
-    'project-walkthrough',
     'maintenance-and-releases',
+    'project-walkthrough',
     // ------------------------------------------------------------------
     {
       type: 'category',

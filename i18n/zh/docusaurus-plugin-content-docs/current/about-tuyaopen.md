@@ -6,11 +6,26 @@ title: 关于 TuyaOpen
 
 ## 概述
 
-TuyaOpen 是一个面向 AIoT 行业的开源、开放的开发框架，基于成熟的商业级 IoT 系统 TuyaOS 构建而成。它继承了跨平台、跨系统、组件化和安全合规等核心特性，已通过全球亿级设备和百万级用户的实践验证。
+TuyaOpen 是一个开源的 AI+IoT 开发框架，旨在帮助开发者快速创建智能互联设备。它支持多种芯片平台和类 RTOS 操作系统，能够无缝集成多模态 AI 能力，包括音频、视频和传感器数据处理。
 
-TuyaOpen 集成了端侧 AI 推理引擎，支持涂鸦云智能体中枢，支持端云融合的多模态 AI 能力。开发者可以无缝调用国内合规的大模型（如 DeepSeek、通义千问、豆包）或灵活对接全球顶尖的 AI 服务（如 ChatGPT、Claude、Gemini）。通过多样化的工具生态，开发者能够实现文字和语音对话、图片生成、视频生成等多种 AI 功能。
+### 🚀 使用 TuyaOpen，你可以：
+- 开发具备语音技术的硬件产品，如 `ASR`（Automatic Speech Recognition）、`KWS`（Keyword Spotting）、`TTS`（Text-to-Speech）、`STT`（Speech-to-Text）
+- 集成主流 LLMs 及 AI 平台，包括 `Deepseek`、`ChatGPT`、`Claude`、`Gemini` 等
+- 构建具备 `多模态AI能力` 的智能设备，包括文本、语音、视觉和基于传感器的功能
+- 创建自定义产品，并无缝连接至涂鸦云，实现 `远程控制`、`监控` 和 `OTA 升级`
+- 开发兼容 `Google Home` 和 `Amazon Alexa` 的设备
+- 设计自定义的 `Powered by Tuya` 硬件
+- 支持广泛的硬件应用，包括 `蓝牙`、`Wi-Fi`、`以太网` 等多种连接方式
+- 受益于强大的内置 `安全性`、`设备认证` 和 `数据加密` 能力
 
-此外，TuyaOpen 支持行业内主流的开源软硬件生态，开发者可以轻松地将项目移植和部署到任意芯片或开发板上。这不仅能让开发者快速体验 AI 技术带来的创新成果，更能有效缩短产品开发周期。
+无论你是在开发智能家居产品、工业 IoT 解决方案，还是定制 AI 应用，TuyaOpen 都能为你提供快速入门和跨平台扩展的工具与示例。
+
+---
+
+### TuyaOpen SDK 框架
+![TuyaOpen SDK 框架](https://images.tuyacn.com/fe-static/docs/img/25713212-9840-4cf5-889c-6f55476a59f9.jpg)
+
+---
 
 ## 支持 Platform
 
@@ -67,4 +82,4 @@ TuyaOpen 目前处于快速开发阶段，我们遵循以下发布策略：
 - **开发测试**：可使用 master 版本体验最新功能
 - **功能尝鲜**：可选择 dev 版本，但需注意可能存在的不稳定性
 
-请关注我们的 [TuyaOpen 相关链接](#tuyaopen-相关链接) 获取最新发布信息！
+请关注我们的 [TuyaOpen 发布计划](/docs/maintenance-and-releases) 获取最新发布信息！
