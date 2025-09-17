@@ -46,35 +46,11 @@ $ examples
 
 针对不同型号的芯片，均配套提供了对应的示例工程。
 
-选择待编译项目的 Example，需要在 TuyaOpen 根目录下通过 `tos set_example` 命令设置示例工程，并根据您使用的平台完成选择，目录 `examples` 则会修改为对应平台的示例。
-
-```bash
-$ tos set_example
-Now used: None
-========================
-Platforms
-1. T2
-2. T3
-3. Ubuntu
-4. T5AI
-5. ESP32
-6. LN882H
-7. BK7231X
-------------------------
-Please select: 4
-------------------------
-Set [T5AI] example success.
-```
-
-:::warning
-- 通过 `tos set_example` 命令设置后的 `examples` 目录为软链接，指向 Platform 对应目录下的芯片。
-- 每个示例工程下对应有 `README.md` 文件，详细介绍了示例工程的配置、编译、运行等操作。
-:::
-
+选择待编译项目的 Example，通过命令 `cd ./example/xxx/xxx` 进入示例目录，再通过 `tos.py config choice` 命令设置编译平台。
 
 
 ## 编译示例
 
-1. 运行 `tos config_choice` 命令，选择当前运行的开发板或 Platform。
-2. 如需修改配置，请先运行 `tos menuconfig` 命令修改配置。
-3. 运行 `tos build` 命令，编译工程。
+1. 运行 `tos.py config choice` 命令，选择当前运行的开发板或 Platform。
+2. 如需修改配置，请先运行 `tos.py config menu` 命令修改配置。
+3. 运行 `tos.py build` 命令，编译工程。

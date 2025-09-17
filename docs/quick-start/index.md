@@ -62,6 +62,6 @@ Before getting started, make the following preparations:
 
 ## Video guidance
 
-- Linux/Mac —— [Install a Linux virtual machine](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click), [Configure SSH](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click), [Develop Demo](https://www.bilibili.com/video/BV1RHaPziE91/?spm_id_from=333.1387.collection.video_card.click)
+- Linux/Mac —— [Install a Linux virtual machine](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click), [Configure SSH](https://www.bilibili.com/video/BV1vHaPziEQz/?spm_id_from=333.788.videopod.sections), [Develop Demo](https://www.bilibili.com/video/BV1RHaPziE91/?spm_id_from=333.1387.collection.video_card.click)
 - Windows —— [Set up environment](https://www.bilibili.com/video/BV1cXaPzjEaB/?spm_id_from=333.1387.collection.video_card.click), [Develop Demo](https://www.bilibili.com/video/BV1rDaPz2EXa/?spm_id_from=333.1387.collection.video_card.click), [Burning Log](https://www.bilibili.com/video/BV1rDaPz2Ero/?spm_id_from=333.1387.collection.video_card.click)
 - Device Networking —— [Finished Effect](https://www.bilibili.com/video/BV1vHaPziEH5/?spm_id_from=333.1387.collection.video_card.click)

@@ -17,13 +17,13 @@ Additionally, TuyaOpen supports popular open-source hardware/software ecosystems
 | Platform | Windows | Linux | macOS |
 | :------: | :-----: | :---: | :---: |
 | BK7231N | ⌛️ | ✅ | ⌛️ |
-| ESP32 | ✅ | ✅ | ⌛️ |
-| ESP32-C3 | ✅ | ✅ | ⌛️ |
-| ESP32-S3 | ✅ | ✅ | ⌛️ |
+| ESP32 | ✅ | ✅ | ✅️ |
+| ESP32-C3 | ✅ | ✅ | ✅️ |
+| ESP32-S3 | ✅ | ✅ | ✅️ |
 | LN882H | ⌛️ | ✅ | ⌛️ |
 | T2 | ⌛️ | ✅ | ⌛️ |
 | T3 | ⌛️ | ✅ | ⌛️ |
-| T5AI | ✅ | ✅ | ⌛️ |
+| T5AI | ✅ | ✅ | ✅ |
 | Ubuntu | ➖ | ✅ | ➖ |
 
 - ✅: Already supported.
