@@ -67,7 +67,7 @@ Our chip platform support is regularly updated and maintained:
 ---
 
 ## TuyaOpen Release Notes
-
+#### **2025**
 <details>
 <summary><strong>v1.4.0 (June 27, 2025) - Latest Release</strong></summary>
 
@@ -208,6 +208,8 @@ Our chip platform support is regularly updated and maintained:
 - Added HTTPS client example for secure communication protocol support
 
 </details>
+
+#### **2024**
 
 <details>
 <summary><strong>v1.1.0 (October 22, 2024)</strong></summary>

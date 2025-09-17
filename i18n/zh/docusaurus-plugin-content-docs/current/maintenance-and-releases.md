@@ -70,6 +70,8 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 
 ## TuyaOpen 发布说明
 
+#### **2025**
+
 <details>
 <summary><strong>v1.4.0（2025年6月27日）- 最新发布版本</strong></summary>
 
@@ -210,6 +212,8 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 - 添加HTTPS客户端示例，支持安全通信协议
 
 </details>
+
+#### **2024**
 
 <details>
 <summary><strong>v1.1.0（2024年10月22日）</strong></summary>
