@@ -71,7 +71,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 ## TuyaOpen 发布说明
 
 <details>
-<summary><strong>v1.4.0（2024年6月27日）- 最新发布版本</strong></summary>
+<summary><strong>v1.4.0（2025年6月27日）- 最新发布版本</strong></summary>
 
 **构建系统与跨平台支持：**
 - 实现基于Python的构建系统架构，增强跨平台兼容性
@@ -102,7 +102,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 </details>
 
 <details>
-<summary><strong>v1.3.1（2024年6月9日）</strong></summary>
+<summary><strong>v1.3.1（2025年6月9日）</strong></summary>
 
 **AI应用与机器人技术：**
 - 集成Otto机器人AI应用，具备先进运动控制算法
@@ -129,7 +129,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 </details>
 
 <details>
-<summary><strong>v1.3.0（2024年5月16日）</strong></summary>
+<summary><strong>v1.3.0（2025年5月16日）</strong></summary>
 
 **AI平台与多模态功能：**
 - 集成Tuya.AI 2.0平台，增强语音和视频交互的多模态处理能力
@@ -155,7 +155,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 </details>
 
 <details>
-<summary><strong>v1.2.1（2024年5月6日）</strong></summary>
+<summary><strong>v1.2.1（2025年5月6日）</strong></summary>
 
 **平台集成：**
 - 实现全面的ESP32S3平台支持，优化性能表现
@@ -172,7 +172,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 </details>
 
 <details>
-<summary><strong>v1.2.0（2024年3月20日）</strong></summary>
+<summary><strong>v1.2.0（2025年3月20日）</strong></summary>
 
 **AI平台集成：**
 - 集成Tuya.AI支持，为your_chat_bot AI应用提供支持
@@ -189,7 +189,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 </details>
 
 <details>
-<summary><strong>v1.1.1（2024年2月28日）</strong></summary>
+<summary><strong>v1.1.1（2025年2月28日）</strong></summary>
 
 **音频与多媒体支持：**
 - 为T5AI_Board实现全面的音频采集和播放功能

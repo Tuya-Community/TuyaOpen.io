@@ -69,7 +69,7 @@ Our chip platform support is regularly updated and maintained:
 ## TuyaOpen Release Notes
 
 <details>
-<summary><strong>v1.4.0 (June 27, 2024) - Latest Release</strong></summary>
+<summary><strong>v1.4.0 (June 27, 2025) - Latest Release</strong></summary>
 
 **Build System & Cross-Platform Support:**
 - Implemented Python-based build system architecture for enhanced cross-platform compatibility
@@ -100,7 +100,7 @@ Our chip platform support is regularly updated and maintained:
 </details>
 
 <details>
-<summary><strong>v1.3.1 (June 9, 2024)</strong></summary>
+<summary><strong>v1.3.1 (June 9, 2025)</strong></summary>
 
 **AI Applications & Robotics:**
 - Integrated Otto robot AI application with advanced motion control algorithms
@@ -127,7 +127,7 @@ Our chip platform support is regularly updated and maintained:
 </details>
 
 <details>
-<summary><strong>v1.3.0 (May 16, 2024)</strong></summary>
+<summary><strong>v1.3.0 (May 16, 2025)</strong></summary>
 
 **AI Platform & Multimodal Features:**
 - Integrated Tuya.AI 2.0 platform, enhancing multimodal processing for voice and video interaction
@@ -153,7 +153,7 @@ Our chip platform support is regularly updated and maintained:
 </details>
 
 <details>
-<summary><strong>v1.2.1 (May 6, 2024)</strong></summary>
+<summary><strong>v1.2.1 (May 6, 2025)</strong></summary>
 
 **Platform Integration:**
 - Achieved comprehensive ESP32S3 platform support with optimized performance
@@ -170,7 +170,7 @@ Our chip platform support is regularly updated and maintained:
 </details>
 
 <details>
-<summary><strong>v1.2.0 (March 20, 2024)</strong></summary>
+<summary><strong>v1.2.0 (March 20, 2025)</strong></summary>
 
 **AI Platform Integration:**
 - Integrated Tuya.AI support for your_chat_bot AI application
@@ -187,7 +187,7 @@ Our chip platform support is regularly updated and maintained:
 </details>
 
 <details>
-<summary><strong>v1.1.1 (February 28, 2024)</strong></summary>
+<summary><strong>v1.1.1 (February 28, 2025)</strong></summary>
 
 **Audio & Multimedia Support:**
 - Implemented comprehensive audio capture and playback for T5AI_Board
