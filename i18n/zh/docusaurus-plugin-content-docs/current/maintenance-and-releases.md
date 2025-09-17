@@ -60,11 +60,13 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 - [ ] Tuya Pocket 开源项目，正式发布。体现所有T5的硬件能力
 - [ ] 丰富官方外设与驱动库
 - [ ] 树莓派，蓝牙 BlueZ 对接，实现蓝牙配网功能
-- [ ] SoC ALSA库开发 Hal 接入
+- [ ] SoC ALSA库开发 HAL 接入, 在SoC支持AI ASR（CPU KWS和VAD）
 - [ ] USB/AT 4G Cat.1 蜂窝模块支持
 - [ ] 第三方云接入，豆包/coze直连，和阿里百炼直连
 - [ ] 支持ASR LLM 调用网易云音乐
 
+
+---
 
 ## TuyaOpen 发布说明
 
@@ -254,6 +256,7 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 如需了解TuyaAI平台能力更新及Tuya Cloud Service的最新版本发布公告和更新详情。  
 ##### 请访问官方公告页面：---> [版本发布公告与更新说明](https://developer.tuya.com/cn/docs/iot/announcement-update?id=Ka5o4ytv9ihvq)
 
+---
 
 ## 支持与维护
 

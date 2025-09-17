@@ -59,10 +59,12 @@ Our chip platform support is regularly updated and maintained:
 - [ ] Tuya Pocket open source project, official release. Showcases all T5 hardware capabilities
 - [ ] Enrich official peripheral and driver library
 - [ ] Raspberry Pi, Bluetooth BlueZ integration for Bluetooth provisioning
-- [ ] SoC ALSA library HAL integration
+- [ ] SoC ALSA library HAL integration, supporting for AI and ASR capabilities (CPU KWS and VAD)
 - [ ] USB/AT 4G Cat.1 cellular module support
 - [ ] Third-party cloud integration: direct connection to Doubao/Coze, and Ali Bailian
 - [ ] Support ASR LLM to call NetEase Cloud Music
+
+---
 
 ## TuyaOpen Release Notes
 
@@ -251,6 +253,8 @@ Our chip platform support is regularly updated and maintained:
 
 For the latest updates on TuyaAI platform capabilities and Tuya Cloud Service release announcements and details,  
 ##### please visit the official announcement page: ---> [Release Announcements & Update Notes](https://developer.tuya.com/cn/docs/iot/announcement-update?id=Ka5o4ytv9ihvq)
+
+---
 
 ## Support & Maintenance
 
