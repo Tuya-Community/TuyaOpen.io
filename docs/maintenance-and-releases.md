@@ -18,9 +18,13 @@ TuyaOpen follows a structured maintenance plan to ensure reliability and continu
 - **Feature Updates**: New features are released every two weeks.
 - **Major Releases**: Major versions with significant new features are released quarterly.
 
-### Feature Requests?
+### New Feature Requests？
+Have suggestions for the project? You're welcome to join the discussion at [https://github.com/tuya/TuyaOpen/discussions](https://github.com/tuya/TuyaOpen/discussions).
+
 - **New Chip Hardware Support**: We continuously evaluate and introduce support for new chips based on community needs, product roadmap, and technical feasibility.
-- **New Peripheral & Driver Support**: The R&D team actively expands device and peripheral diversity, regularly introducing new drivers. Community partners are welcome to contribute device drivers or capability components to the ecosystem.
+- **New Peripheral & Driver Support**: Our R&D team actively expands the diversity of devices and peripherals, regularly introducing new drivers. Community partners are also encouraged to participate in the ecosystem by contributing device drivers or capability components.
+- **Third-Party Library (Libs) Support**: We encourage community contributions of third-party libraries that comply with open-source licenses such as Apache License. All third-party libraries must meet open-source compliance requirements. Apache License is preferred; other licenses must ensure compatibility and be clearly declared to promote a thriving ecosystem.
+
 
 ## Platform Support Plan
 
