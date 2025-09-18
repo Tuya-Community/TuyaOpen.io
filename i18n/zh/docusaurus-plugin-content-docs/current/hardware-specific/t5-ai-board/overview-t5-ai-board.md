@@ -121,6 +121,8 @@ T5AI-Board 支持可选的 LCD 屏幕和摄像头模块，可以堆叠在主板�
 - [T5AI-Board 原理图](https://images.tuyacn.com/content-platform/hestia/174243908480e34e64d08.pdf) ：T5AI-Board 完整电路图。
 - [T5AI-Board 引脚图](/docs/hardware/T5-AI-Board-Pinout-v102.pdf) ：详细的引脚映射和接口布局。
 - [LCD 和摄像头模块原理图](https://images.tuyacn.com/content-platform/hestia/17387200670bcae1561bf.pdf) ：显示和摄像头模块板的电路图。
+- [T5AI-Board 3D 结构文件(LCD+Base-Board)（STEP）](/docs/hardware/t5ai-board/T5-BOARD_V102-3D.zip)：提供 T5AI-Board 开发板的 3D 结构模型，便于结构设计与集成。
+
 #### T5 MCU 数据手册
 - [T5-E1-IPEX 模块数据手册](https://developer.tuya.com/en/docs/iot/T5-E1-IPEX-Module-Datasheet?id=Kdskxvxe835tq#title-12-Pin%20definition)：T5-E1-IPEX 模块的技术规格和引脚定义。
 - [T5 MCU 芯片技术数据手册](https://images.tuyaeu.com/content-platform/hestia/1731549161e5fd8879de6.pdf)：T5 系列的综合技术规格和参考文档。
