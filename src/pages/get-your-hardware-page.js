@@ -126,7 +126,7 @@ export default function Hardware() {
               'Supports multimodal AI (ASR/TTS/STT/LLM)',
               'Audio/Video capability development',
               'Optional 3.5" LCD screen',
-              'Rich hardware interfaces - all pins broken out',
+              'Rich hardware interfaces - full pin breakout',
             ],
             cnLinks: [
               {
