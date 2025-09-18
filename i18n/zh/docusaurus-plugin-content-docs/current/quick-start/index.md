@@ -61,6 +61,6 @@ DeviceID 为设备每次激活配网的时候，云端分配给到的 ID，关�
 
 ## 视频指导
 
-- Linux/Mac —— [安装Linux虚拟机](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click)、[配置ssh](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click)、[开发Demo](https://www.bilibili.com/video/BV1RHaPziE91/?spm_id_from=333.1387.collection.video_card.click)
+- Linux/Mac —— [安装Linux虚拟机](https://www.bilibili.com/video/BV1vHaPziErs/?spm_id_from=333.1387.collection.video_card.click)、[配置ssh](https://www.bilibili.com/video/BV1vHaPziEQz?spm_id_from=333.788.videopod.sections)、[开发Demo](https://www.bilibili.com/video/BV1RHaPziE91/?spm_id_from=333.1387.collection.video_card.click)
 - Windos —— [环境搭建](https://www.bilibili.com/video/BV1cXaPzjEaB/?spm_id_from=333.1387.collection.video_card.click)、[开发Demo](https://www.bilibili.com/video/BV1rDaPz2EXa/?spm_id_from=333.1387.collection.video_card.click)、[烧录日志](https://www.bilibili.com/video/BV1rDaPz2Ero/?spm_id_from=333.1387.collection.video_card.click)
 - 设备配网 —— [成品效果](https://www.bilibili.com/video/BV1vHaPziEH5/?spm_id_from=333.1387.collection.video_card.click)

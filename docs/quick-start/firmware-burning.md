@@ -101,3 +101,7 @@ In Windows, you can view the device name in the device manager list. The name wi
 In Linux or Mac systems, generally the device with the smaller number is the flash port, and the larger one is the log port.
 
 If you can't be sure, you can test both serial ports when flashing firmware.
+
+### GUI version flashing tool is detected as a virus in Windows
+
+You can place the `tyutool_gui` tool in a non-system drive (such as D drive), and add the directory to the exclusion list in `Windows Security - Virus & threat protection` settings.

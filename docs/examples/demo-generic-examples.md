@@ -44,34 +44,15 @@ $ examples
 
 ## Select the project to be compiled
 
-Each different chip has corresponding examples, and you can set the example project through the `tos set_example` command.
 
-To select the example to be compiled, use the `tos set_example` command to choose based on the platform. The `examples` directory will be modified to match the selected platform's example.
+Each chip model comes with corresponding example projects.
 
-```bash
-$ tos set_example
-Now used: None
-========================
-Platforms
-1. T2
-2. T3
-3. Ubuntu
-4. T5AI
-5. ESP32
-6. LN882H
-7. BK7231X
-------------------------
-Please select: 4
-------------------------
-Set [T5AI] example success.
-```
-
-Note: After setting with the `tos set_example` command, the `examples` directory is a symbolic link pointing to the chip in the corresponding directory under the platform.
+To select the example to be compiled, enter the example directory using the command `cd ./example/xxx/xxx`, then set the compilation platform with the command `tos.py config choice`.
 
 Each sample project includes a README.md file that provides detailed instructions on configuring, compiling, and running the project.
 
 ## Compile the example
 
-1. Run the `tos config_choice` command to select the current development board in use.
-2. If you need to modify the configuration, run the `tos menuconfig` command to make changes.
-3. Run the `tos build` command to compile the project.
+1. Run the `tos.py config choice` command to select the current development board or platform.
+2. If you need to modify the configuration, run the `tos.py config menu` command to make changes.
+3. Run the `tos.py build` command to compile the project.

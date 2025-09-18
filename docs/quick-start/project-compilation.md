@@ -66,3 +66,14 @@ To clear the build cache, run the command `tos.py clean` (standard cleanup) or `
 [INFO]: Running tos.py ...
 [INFO]: Fullclean success.
 ```
+
+## FAQ
+
+### Slow compilation on Windows
+
+Symptom: Each file may take up to 3 seconds to compile, and sometimes the process gets stuck on a file.
+
+Solution:
+
+1. Open Task Manager with `Ctrl + Shift + Esc`, check CPU processes, find and close the `MSPCManagerService` process.
+2. If the above does not work, move the entire `TuyaOpen` directory to a non-system drive (e.g., D drive), and add the directory to the exclusion list in `Windows Security - Virus & threat protection` settings.

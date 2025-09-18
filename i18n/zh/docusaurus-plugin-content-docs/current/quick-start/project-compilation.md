@@ -66,3 +66,15 @@ Choice config file:
 [INFO]: Running tos.py ...
 [INFO]: Fullclean success.
 ```
+
+##  常见问题
+
+### 在Windows环境中编译缓慢
+
+现象是每个文件的编译速度可能长达3s左右，有时甚至会卡在某个文件。
+
+解决办法：
+
+1. 可通过`Ctrl + Shift + Esc`打开任务管理器，查看CPU的进程，找到`MSPCManagerService`进程，并关闭；
+
+2. 如果上述方法仍不见效，可将整个`TuyaOpen`目录放在非系统盘（如D盘）下，并将目录添加到`Windows安中心-病毒和防护`设置中的`排除项`中。
