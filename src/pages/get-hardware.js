@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import React from 'react'
 
-import styles from './get-your-hardware-page.module.css'
+import styles from './get-hardware.module.css'
 
 export default function Hardware() {
   const { siteConfig, i18n } = useDocusaurusContext()

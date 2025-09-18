@@ -137,7 +137,7 @@ const config = {
             },
             {
               label: 'Get Hardware',
-              to: '/get-your-hardware-page',
+              to: '/get-hardware',
             },
             {
               label: 'Get Code',
