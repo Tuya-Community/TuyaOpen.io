@@ -128,8 +128,24 @@ const config = {
           label: 'Documentation',
         },
         {
-          to: '/pricing',
-          label: 'Service',
+          label: 'Get Yours',
+          position: 'left',
+          items: [
+            {
+              label: 'Get License Key',
+              to: '/pricing',
+            },
+            {
+              label: 'Get Hardware',
+              to: '/get-your-hardware-page',
+            },
+            {
+              label: 'Get Code',
+              href: 'https://github.com/tuya/TuyaOpen',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          ],
         },
         {
           to: 'blog',

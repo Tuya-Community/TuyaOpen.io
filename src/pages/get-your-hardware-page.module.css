@@ -1,0 +1,398 @@
+.main {
+  padding: 2rem 0;
+  min-height: calc(100vh - 200px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #2e7dff, #00d4aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hardwareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.hardwareCard {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hardwareCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+}
+
+.hardwareImage {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+}
+
+.hardwareImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.hardwareCard:hover .hardwareImage img {
+  transform: scale(1.05);
+}
+
+.hardwareContent {
+  padding: 1.5rem;
+}
+
+.hardwareName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.hardwareDescription {
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.features {
+  margin-bottom: 2rem;
+}
+
+.features h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featuresList li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.featuresList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00d4aa;
+  font-weight: bold;
+}
+
+.purchaseLinks {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  padding-top: 1.5rem;
+}
+
+.regionSection {
+  margin-bottom: 1.5rem;
+}
+
+.regionSection:last-child {
+  margin-bottom: 0;
+}
+
+.regionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.linkButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.purchaseButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.purchaseButton:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.taobao {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  color: white;
+  border-color: #ff6b35;
+}
+
+.taobao:hover {
+  background: linear-gradient(135deg, #e55a2b, #e0841a);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.jd {
+  background: linear-gradient(135deg, #e1251b, #ff4d4f);
+  color: white;
+  border-color: #e1251b;
+}
+
+.jd:hover {
+  background: linear-gradient(135deg, #c41e17, #ff7875);
+  color: white;
+  box-shadow: 0 4px 12px rgba(225, 37, 27, 0.3);
+}
+
+.aliexpress {
+  background: linear-gradient(135deg, #ff6900, #ff8c00);
+  color: white;
+  border-color: #ff6900;
+}
+
+.aliexpress:hover {
+  background: linear-gradient(135deg, #e55a00, #e67e00);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 105, 0, 0.3);
+}
+
+.amazon {
+  background: linear-gradient(135deg, #232f3e, #37475a);
+  color: white;
+  border-color: #232f3e;
+}
+
+.amazon:hover {
+  background: linear-gradient(135deg, #1a252f, #2c3742);
+  color: white;
+  box-shadow: 0 4px 12px rgba(35, 47, 62, 0.3);
+}
+
+.amazon:disabled,
+.amazon[disabled] {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  color: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.amazon:disabled:hover,
+.amazon[disabled]:hover {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  color: #d1d5db;
+  box-shadow: none;
+  transform: none;
+}
+
+.disabled {
+  background: linear-gradient(135deg, #6b7280, #9ca3af) !important;
+  color: #d1d5db !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+}
+
+.disabled:hover {
+  background: linear-gradient(135deg, #6b7280, #9ca3af) !important;
+  color: #d1d5db !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.moreHardwareSection {
+  text-align: center;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border-radius: 12px;
+  margin: 3rem 0 2rem 0;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.moreHardwareTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #2e7dff, #00d4aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.moreHardwareDescription {
+  font-size: 1.2rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.moreHardwareLink {
+  display: flex;
+  justify-content: center;
+}
+
+.moreHardwareButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--ifm-color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.moreHardwareButton:hover {
+  background: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(46, 125, 255, 0.3);
+}
+
+.supportSection {
+  text-align: center;
+  padding: 3rem 0;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.supportSection h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.supportSection p {
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.supportLinks {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.supportButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  background: var(--ifm-color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.supportButton:hover {
+  background: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 125, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hardwareGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .hardwareImage {
+    height: 250px;
+  }
+  
+  .linkButtons {
+    flex-direction: column;
+  }
+  
+  .purchaseButton {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .supportLinks {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .supportButton {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  .hardwareContent {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.75rem;
+  }
+}

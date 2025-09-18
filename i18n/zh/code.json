@@ -560,5 +560,21 @@
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
     "message": "Collapse the dropdown",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "navbar.service": {
+    "message": "获取您的",
+    "description": "The label for the Get Yours dropdown menu in the navbar"
+  },
+  "navbar.getLicenseKey": {
+    "message": "获取授权码",
+    "description": "The label for the Get License Key menu item"
+  },
+  "navbar.getHardware": {
+    "message": "获取硬件",
+    "description": "The label for the Get Hardware menu item"
+  },
+  "navbar.getCode": {
+    "message": "获取代码",
+    "description": "The label for the Get Code menu item"
   }
 }

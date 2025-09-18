@@ -11,9 +11,21 @@
     "message": "文档",
     "description": "Navbar item with label Documentation"
   },
-  "item.label.Service": {
-    "message": "服务",
-    "description": "Navbar item with label Service"
+  "item.label.Get Yours": {
+    "message": "获取",
+    "description": "Navbar item with label Get Yours"
+  },
+  "item.label.Get License Key": {
+    "message": "服务授权码",
+    "description": "Navbar item with label Get Yours"
+  },
+  "item.label.Get Hardware": {
+    "message": "获取硬件",
+    "description": "Navbar item with label Get Yours"
+  },
+  "item.label.Get Code": {
+    "message": "获取代码",
+    "description": "Navbar item with label Get Yours"
   },
   "item.label.Blog": {
     "message": "博客",
