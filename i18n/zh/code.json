@@ -547,7 +547,10 @@
     "description": "Close announcement button aria-label"
   },
   "home.buildcommunity.discord": {
-    "message": "Join our Discord community to chat, ask questions, and connect with other TuyaOpen users."
+    "message": "加入我们的 Discord 社区，与其他 TuyaOpen 用户聊天、提问和交流。"
+  },
+  "home.buildcommunity.discord.button": {
+    "message": "加入 Discord 服务器"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
     "message": "system mode",

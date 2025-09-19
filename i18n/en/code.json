@@ -6,5 +6,13 @@
   "announcement.learnMore": {
     "message": "Learn More →",
     "description": "Learn more link text"
+  },
+  "home.buildcommunity.discord": {
+    "message": "Join our Discord community to chat, ask questions, and connect with other TuyaOpen users.",
+    "description": "Discord community description"
+  },
+  "home.buildcommunity.discord.button": {
+    "message": "Join Discord Server",
+    "description": "Discord server join button text"
   }
 } 

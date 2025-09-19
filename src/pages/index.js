@@ -380,10 +380,10 @@ function Home() {
                   </Translate>
                 </p>
                 <Link
-                  to="https://discord.gg/cbGrBjx7"
+                  to="https://discord.com/invite/yPPShSTttG"
                   className="tw-btn tw-bg-[#5865F2] tw-text-white hover:!tw-bg-[#4752c4] tw-normal-case dark:tw-glass dark:hover:!tw-bg-transparent"
                 >
-                  Join Discord Server
+                  <Translate id="home.buildcommunity.discord.button">Join Discord Server</Translate>
                 </Link>
               </Card>
             </div>
