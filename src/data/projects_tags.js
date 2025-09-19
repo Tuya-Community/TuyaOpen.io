@@ -132,6 +132,12 @@ const tagsData = {
       bgColor: '#ccfbf1',
       borderColor: '#14b8a6',
     },
+    tutorial: {
+      label: 'Tutorial',
+      color: '#dc2626', // red
+      bgColor: '#fee2e2',
+      borderColor: '#dc2626',
+    },
   },
   zh: {
     iot: {
@@ -265,6 +271,12 @@ const tagsData = {
       color: '#a3e635', // lime
       bgColor: '#f7fee7',
       borderColor: '#a3e635',
+    },
+    tutorial: {
+      label: '教程',
+      color: '#dc2626', // red
+      bgColor: '#fee2e2',
+      borderColor: '#dc2626',
     },
   },
 }
