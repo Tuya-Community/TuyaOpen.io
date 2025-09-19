@@ -242,7 +242,7 @@ const config = {
           items: [
             {
               label: 'Discord',
-              href: 'https://discord.gg/cbGrBjx7',
+              href: 'https://discord.com/invite/yPPShSTttG',
             },
             {
               label: 'X',

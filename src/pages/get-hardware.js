@@ -346,9 +346,9 @@ export default function Hardware() {
               >
                 {i18n.currentLocale === 'zh' ? '获取代码' : 'Get Code'}
               </a>
-              {/* <a href="mailto:service@tuya.com" className={styles.supportButton}>
+              <a href="https://discord.com/invite/yPPShSTttG" className={styles.supportButton}>
                 {i18n.currentLocale === 'zh' ? '联系支持' : 'Contact Support'}
-              </a> */}
+              </a>
             </div>
           </div>
         </div>
