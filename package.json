@@ -30,7 +30,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "semver": "^7.6.3",
-    "typewriter-effect": "^2.21.0"
+    "typewriter-effect": "^2.21.0",
+    "unist-util-visit": "^5.0.0"
   },
   "browserslist": {
     "production": [
