@@ -47,7 +47,6 @@ const config = {
 
   markdown: {
     mermaid: true,
-    format: 'detect',
   },
   themes: ['@docusaurus/theme-mermaid'],
 
@@ -308,7 +307,6 @@ const config = {
     './docusaurus-tailwind-v3',
     ['@gracefullight/docusaurus-plugin-microsoft-clarity', { projectId: 'lggqck9srz' }],
     './src/plugins/hardwarePagesGenerator',
-    './src/plugins/mdxHtmlTagSupport',
     // [
     //   '@docusaurus/plugin-content-docs',
     //   {
