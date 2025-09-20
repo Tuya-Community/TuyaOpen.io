@@ -1,5 +1,5 @@
 ---
-title: "Custom Fonts in LVGL"
+title: "LVGL 字体变更"
 date: 2025-09-19
 ---
 
