@@ -2,11 +2,118 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tuyaopen.io/blog</id>
     <title>TuyaOpen Blog</title>
-    <updated>2025-08-08T00:00:00.000Z</updated>
+    <updated>2025-09-22T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tuyaopen.io/blog"/>
     <subtitle>TuyaOpen Blog</subtitle>
     <icon>https://tuyaopen.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[V1.5.0 版本发布]]></title>
+        <id>https://tuyaopen.io/blog/2025/09/22/v1.5.0-release</id>
+        <link href="https://tuyaopen.io/blog/2025/09/22/v1.5.0-release"/>
+        <updated>2025-09-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[🎉 v1.5.0 重磅发布（2025年9月22日）- 我们一直在努力！ 这次更新，我们真的拼了！]]></summary>
+        <content type="html"><![CDATA[<h2 id="-v150-重磅发布2025年9月22日--我们一直在努力-这次更新我们真的拼了">🎉 v1.5.0 重磅发布（2025年9月22日）- 我们一直在努力！ 这次更新，我们真的拼了！</h2>
+<p>经过团队数月的精心打磨，v1.5.0 终于和大家见面了！这次更新可以说是我们近期最全面的一次升级，从底层架构到用户体验，每一个细节都倾注了团队的心血。也谢谢活跃的社区和开发者，给我们提了很多很多很好的建议让TuyaOpen这个项目变得更好玩，更加丰富。团队也特别高兴的看到有社区开发者<a href="https://github.com/HangYongmao">HangYongmao</a>加入开源共建，做出了一些好玩的游戏Demo。</p>
+<h3 id="-t5ai-平台性能飞跃硬件生态大爆发">💪 T5AI 平台：性能飞跃，硬件生态大爆发</h3>
+<p><strong>本次主要更新：</strong></p>
+<ul>
+<li><strong>多核性能升级</strong>：Tuya T5 芯片现已全面支持 SMP（对称多处理）架构，充分释放多核计算能力，显著提升系统并发与性能表现，适用于高负载和多任务场景。</li>
+<li><strong>MCP（多模态控制平台）服务正式上线</strong>：TuyaOpen 设备接入 Tuya 云后，现可在云端发布并连接开发者自定义的 MCP 服务，支持官方预置与自定义扩展，极大丰富智能体与物联网设备的交互能力。</li>
+<li><strong>硬件生态持续扩展</strong>：新增多款官方及生态开发板支持，包括 <code>TUYA_T5AI_Pocket</code>、<code>TUYA_T5A_Core</code>、<code>WAVESHARE_T5AI_TOUCH_AMOLED_1_75</code> 等，覆盖更多应用场景，助力开发者灵活选型。</li>
+<li><strong>创新应用示例</strong>：发布全新 tuya_t5_pocket 游戏机应用，展示 T5AI 平台在多模态交互、图形显示和娱乐应用等方面的强大能力，进一步拓展嵌入式开发的创意空间。</li>
+<li><strong>外设与驱动扩展再升级</strong>：本次版本新增和优化了多种外设与驱动支持，包括 T5AI DVP 多种视频 sensor 驱动、ws2812 等幻彩灯珠、IR 红外遥控收发等，极大丰富了硬件扩展能力。开发者可轻松集成更多传感器、显示屏、灯光、红外等外设，满足多样化的智能硬件创新需求。</li>
+<li><strong>驱动生态持续壮大</strong>：官方和社区持续贡献新驱动，支持更多主流和创新硬件。无论是音视频采集、显示控制，还是智能家居、娱乐互动，都能找到丰富的驱动和应用示例，助力开发者快速实现产品创意落地。</li>
+</ul>
+<hr>
+<h1 id="涂鸦平台接入-mcp">涂鸦平台接入 MCP！</h1>
+<p>涂鸦智能体开发平台现已全面支持 MCP Server 接入能力。通过集成官方 MCP Server 或接入自定义开发的 MCP Server，可以显著扩展智能体与第三方服务及物联网设备的交互能力。这相当于为大型语言模型装上了感知和执行物理世界的 “眼睛、胳膊、腿”，使其不再局限于文本对话，而是通过 LLM 实现智能决策，与真实世界的设备和服务建立高效、安全的交互，真正构建起 AI 与物理系统之间的智能桥梁。
+Tuya的 MCP技术优势</p>
+<ul>
+<li>专为 IoT 设备生态设计：涂鸦生态设备即插即用，只需将 MCP Server 添加到智能体，设备端就可立即使用，无缝融入各类物联网场景。</li>
+<li>支持多样化 MCP 服务接入：除官方预置 MCP Server 外，还支持开发者自定义扩展 MCP 服务，兼具丰富的服务生态与个性化集成。</li>
+<li>开发集成更简单：只需在平台一次注册服务并集成轻量 SDK，即可快速实现 MCP Server 的多数据区接入与部署。</li>
+<li>全球化服务部署支持：覆盖全球五大区域的服务连接，支持就近低延迟接入，满足不同地区的业务部署与合规需求。</li>
+<li>安全可靠的长连接通信：基于 WebSocket 协议建立多区域的安全长连接，保障数据传输的机密性、完整性与可用性</li>
+</ul>
+<h3 id="️-mcp-sdk-快速集成入口">🛠️ MCP SDK 快速集成入口</h3>
+<p>开发者可通过官方开源 SDK 快速集成 MCP 能力，极大简化开发流程。</p>
+<ul>
+<li><strong>MCP SDK（开源）地址</strong>：<a href="https://github.com/tuya/tuya-mcp-sdk">https://github.com/tuya/tuya-mcp-sdk</a>
+该 SDK 提供了完整的接入<a href="https://developer.tuya.com/cn/docs/iot/mcp-manage?id=Ketxzvb2s9ziq">文档</a>、示例代码和持续维护，支持多平台和多语言扩展，助力开发者高效实现智能体与物理世界的无缝连接。</li>
+</ul>
+<h1 id="tuyaopen-smp-架构什么是-smp-架构-是如何性能提升">TuyaOpen SMP 架构！什么是 SMP 架构？ 是如何性能提升？</h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIGZ1BIgEvkdELaNGGX_P2SoDTFdHkpTPPiA&amp;s" alt="AMP vs SMP"></p>
+<p>AMP（非对称多处理，Asymmetric Multi-Processing）和 SMP（对称多处理，Symmetric Multi-Processing）是多核处理器常见的两种架构：</p>
+<ul>
+<li>
+<p><strong>AMP（非对称多处理）</strong>：每个核心可以运行不同的操作系统或任务，核心之间资源分配和调度相对独立，适合对实时性或安全性有特殊要求的场景。例如，一个核心跑 Linux，另一个核心跑 RTOS，互不干扰，但开发和资源管理复杂度较高。</p>
+</li>
+<li>
+<p><strong>SMP（对称多处理）</strong>：所有核心运行同一个操作系统，系统会自动将任务分配到各个核心，核心之间地位平等、资源共享。开发者无需关心具体任务在哪个核心执行，开发体验更简单，适合高并发和多任务场景。</p>
+</li>
+</ul>
+<p><strong>简而言之</strong>：AMP 更灵活但复杂，适合特殊需求；SMP 更易用，适合大多数通用多核应用。T5AI v1.5.0 采用 SMP 架构，让多核开发变得更简单高效！</p>
+<p><strong>TuyaOpen 的 SMP 架构对开发者意味着什么？需要改变你的开发方式吗？</strong></p>
+<blockquote>
+<p>总结：v1.5.0 让开发更高效、更强大，但你的开发习惯和代码结构基本不用大改，只需关注新特性和多核最佳实践，便能轻松享受升级红利！</p>
+</blockquote>
+<ul>
+<li><strong>开发体验更丝滑</strong>：SMP 多核支持和硬件生态扩展，让你可以轻松开发高并发、多任务的应用，无需为性能瓶颈担忧。原有的单核代码无需大幅修改，系统会自动调度多核资源，但如果你想进一步挖掘多核潜力，可以通过多线程/多任务编程（如 RTOS 任务、LVGL 多线程渲染等）获得更高性能。</li>
+<li><strong>API 兼容性保障</strong>：绝大多数 API 与旧版本兼容，已有项目可平滑升级。新硬件和新驱动的接入方式与以往一致。</li>
+<li><strong>更多创意空间</strong>：LVGL 双版本、丰富的外设和游戏应用，让你可以尝试更多创新玩法。你可以直接复用官方示例，也可以基于新驱动和新能力开发自己的应用。</li>
+<li><strong>无需大幅重构</strong>：如果你已有基于 T5AI 的项目，升级到 v1.5.0 后无需大规模重构代码。</li>
+<li><strong>建议</strong>：想要充分利用多核和新硬件能力，建议学习和使用 RTOS 任务、信号量、队列等多核并发编程方法，参考官方多核示例和文档。</li>
+</ul>
+<blockquote>
+<p><strong>有任何关于 SMP 架构的问题或疑惑？欢迎在 Github 提 Issue 交流：<a href="https://github.com/tuya/TuyaOpen/issues">https://github.com/tuya/TuyaOpen/issues</a></strong></p>
+</blockquote>
+<h1 id="-亮相多模态tuya开源口袋机预热中">🤩 亮相多模态Tuya开源口袋机（预热中）</h1>
+<p><img src="https://images.tuyacn.com/fe-static/docs/img/18ee541f-6e1c-49e5-af58-45797ac1eb82.png" alt="Tuya T5 Pocket">
+T5 Pocket 是一款专为 AI 语音与视觉大模型（LLM）能力设计的便携式掌机。释放了T5全面的能力/硬件接口，我们正在<strong>积极筹备软件+硬件开源和教程资料</strong>。保持关注！</p>
+<ul>
+<li>这边是持续更新的代码：<a href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket">https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket</a></li>
+</ul>
+<h1 id="-图形与显示双版本并行游戏体验升级">🎨 图形与显示：双版本并行，游戏体验升级</h1>
+<p><strong>我们的创新：</strong></p>
+<ul>
+<li><strong>LVGL 双版本支持</strong>：业界首创！同时支持 LVGL V8 和 V9，开发者可以根据项目需求灵活切换，再也不用为版本兼容性头疼</li>
+<li><strong>经典游戏集合</strong>：精心打造的 lvgl game 应用，内置 2048、华容道、消消乐等经典游戏，让你的设备瞬间变成游戏机！特别感谢 <a href="https://github.com/HangYongmao">HangYongmao</a> 在 lvgl game 应用开发中的重要贡献。</li>
+</ul>
+<h1 id="-视觉和天气服务">🤖 视觉，和天气服务</h1>
+<p><strong>智能化的突破：</strong></p>
+<ul>
+<li><strong>摄像头云接入</strong>：全新的 camera_demo 示例，让摄像头轻松接入涂鸦云，支持多种视频 sensor 驱动，AI 视觉能力大幅提升<!-- -->
+<ul>
+<li>Demo: <a href="https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/video">camera_demo 示例源码</a> —— 快速上手摄像头DVP出流+渲染</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>摄像头 AI 模态能力，API 对接我们正在开发中，保持关注。全新视频模态API即将上线！</strong></p>
+</blockquote>
+<ul>
+<li><strong>天气服务集成</strong>：weather_get_demo 示例让你轻松获取多种格式的天气信息，智能场景开发从此变得简单<!-- -->
+<ul>
+<li>Demo: <a href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_cloud/weather_get_demo">：weather_get_demo 示例源码</a> —— 快速上手获取天气信息</li>
+</ul>
+</li>
+</ul>
+<h1 id="-外设与驱动功能全面创意无限">🔧 外设与驱动：功能全面，创意无限</h1>
+<p><strong>硬件支持的全面升级：</strong></p>
+<ul>
+<li><strong>视频采集新高度</strong>：T5AI DVP 多种视频 sensor 驱动，视频采集与处理能力再上新台阶</li>
+<li><strong>红外遥控全覆盖</strong>：IR 红外遥控接收与发送示例，支持各种红外遥控场景，让你的设备更智能</li>
+<li><strong>灯光创意玩法</strong>：ws2812 等多款幻彩灯珠驱动，丰富的灯光控制让创意无限可能</li>
+</ul>
+<hr>
+<p><strong>🎯 这次更新，我们不仅带来了功能，更带来了可能性。每一个新特性都经过团队反复测试和优化，确保稳定可靠。感谢所有开发者的支持，让我们一起创造更美好的智能硬件未来！</strong></p>]]></content>
+        <author>
+            <name>Tuya</name>
+            <uri>https://github.com/tuya/tuya-open</uri>
+        </author>
+        <category label="TuyaOpen" term="TuyaOpen"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[100天AI觉醒计划 打造未来AI爆款硬件]]></title>
         <id>https://tuyaopen.io/blog/8-8-online-contest</id>
