@@ -75,7 +75,31 @@ TuyaOpen遵循结构化的维护计划，确保可靠性和持续改进：
 #### **2025**
 
 <details>
-<summary><strong>v1.4.0（2025年6月27日）- 最新发布版本</strong></summary>
+<summary><strong>v1.5.0（2025年9月22日）- 最新发布版本</strong></summary>
+
+**T5AI 平台与硬件支持：**
+- 优化 T5AI 平台，全面支持 SMP（对称多处理）架构，提升多核性能
+- 新增多款官方与生态开发板支持，包括 TUYA_T5AI_Pocket、TUYA_T5A_Core、WAVESHARE_T5AI_TOUCH_AMOLED_1_75 等，丰富硬件生态
+- 新增 tuya_t5_pocket 游戏机应用，展示 T5AI 硬件能力
+
+**图形与显示：**
+- 新增 LVGL V8 图形库支持，用户可在 LVGL V9 与 V8 版本间灵活切换，满足不同项目需求
+- 新增 lvgl game 应用，内置 2048、华容道、消消乐等多款经典游戏，提升交互体验
+
+**AI 与云端应用：**
+- 新增 camera_demo 示例，实现摄像头接入涂鸦云，支持多种视频 sensor 驱动及示例，扩展 AI 视觉能力
+- 新增 weather_get_demo 示例，可通过涂鸦云获取多种格式的天气信息，便于智能场景开发
+
+**外设与驱动扩展：**
+- 新增 T5AI DVP 多种视频 sensor 驱动及应用示例，提升视频采集与处理能力
+- 新增 IR 红外遥控接收与发送示例，支持多种红外遥控场景
+- 新增 ws2812 等多款幻彩灯珠驱动及应用示例，丰富灯光控制与创意玩法
+
+</details>
+
+
+<details>
+<summary><strong>v1.4.0（2025年6月27日）</strong></summary>
 
 **构建系统与跨平台支持：**
 - 实现基于Python的构建系统架构，增强跨平台兼容性

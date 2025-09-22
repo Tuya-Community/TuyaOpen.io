@@ -72,6 +72,30 @@ Our chip platform support is regularly updated and maintained:
 
 ## TuyaOpen Release Notes
 #### **2025**
+
+<details>
+<summary><strong>v1.5.0 (September 22, 2025) - Latest Release</strong></summary>
+
+**T5AI Platform and Hardware Support:**
+- Optimized the T5AI platform with full support for SMP (Symmetric Multi-Processing) architecture, improving multi-core performance
+- Added support for multiple official and ecosystem development boards, including TUYA_T5AI_Pocket, TUYA_T5A_Core, and WAVESHARE_T5AI_TOUCH_AMOLED_1_75, enriching the hardware ecosystem
+- Introduced the tuya_t5_pocket game console application to showcase T5AI hardware capabilities
+
+**Graphics and Display:**
+- Added support for the LVGL V8 graphics library, allowing users to flexibly switch between LVGL V9 and V8 versions to meet different project needs
+- Introduced a new lvgl game application, featuring classic games such as 2048, Huarong Dao, and Match-3, enhancing interactive experience
+
+**AI and Cloud Applications:**
+- Added the camera_demo example, enabling camera integration with Tuya Cloud, supporting various video sensor drivers and demos to expand AI vision capabilities
+- Added the weather_get_demo example, allowing retrieval of various weather information formats from Tuya Cloud for smart scenario development
+
+**Peripheral and Driver Expansion:**
+- Added multiple T5AI DVP video sensor drivers and application examples, improving video capture and processing capabilities
+- Added IR remote control receiving and transmitting examples, supporting various infrared remote control scenarios
+- Added drivers and application examples for ws2812 and other addressable RGB LEDs, enriching lighting control and creative possibilities
+
+</details>
+
 <details>
 <summary><strong>v1.4.0 (June 27, 2025) - Latest Release</strong></summary>
 
