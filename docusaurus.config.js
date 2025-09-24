@@ -46,8 +46,7 @@ const config = {
   },
 
   markdown: {
-    mermaid: true,
-    format: 'detect',
+    mermaid: true
   },
   themes: ['@docusaurus/theme-mermaid'],
 
