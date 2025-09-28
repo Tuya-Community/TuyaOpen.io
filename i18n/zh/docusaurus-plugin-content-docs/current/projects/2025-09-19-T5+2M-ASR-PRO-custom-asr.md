@@ -1,6 +1,5 @@
 ---
 title: "T5+2M-ASR-PRO 定制命令词"
-date: 2025-9-19
 ---
 
 <BackToProjects />
@@ -31,7 +30,7 @@ date: 2025-9-19
 |-----------------------------------------------|-----------------------------------|
 | T5 开发板                     | 提供 AI 对话功能核心功能                                    |
 | ASR PRO 模组                 | 支持自定义唤醒词和离线语音识别                |
-| 串口板或 ASR-LINK 自动下载器 | 普通的 CH340 串口板即可，用于给 ASR PRO 下载程序。如果有条件可以自行购买 ASR-LINK 自动下载器
+| 串口板或 ASR-LINK 自动下载器 | 普通的 CH340 串口板即可，用于给 ASR PRO 下载程序, 如果有条件可以自行购买 ASR-LINK 自动下载器
 | 麦克风                          | 用于给 ASR RPO 模组拾音                     |
 
 
@@ -67,11 +66,11 @@ date: 2025-9-19
 |        5V       |             5V            |
 | P10（UART0 TX） |         PB5（RX）        |
 | P11（UART0 RX）   |         PB6（TX）     |
-|  P12（唤醒脚）   | PA4（演示使用，可自定义）。**注意**：如果使用串口程序唤醒，可以不接 P12 唤醒引脚|
+|  P12（唤醒脚）   | PA4（演示使用，可自定义）**注意**：如果使用串口程序唤醒，可以不接 P12 唤醒引脚|
 
 ### 运行效果
 
-<video src="https://images.tuyacn.com/content-platform/hestia/1756375350889423076cc.mp4" width="300" style={{maxWidth: "100%"}} controls></video>
+<video src="https://images.tuyacn.com/content-platform/hestia/1756375350889423076cc.mp4" width="300" controls></video>
 
 
 ## ASR PRO 程序制作

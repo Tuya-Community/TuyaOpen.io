@@ -17,11 +17,7 @@ This intelligent social necklace system enables meaningful connections through t
   <img
     src="https://images.tuyacn.com/fe-static/docs/img/206894ec-546e-4a6d-a0ce-9b521d574ccb.jpg"
     alt="Smart Social Necklace Project Screenshot"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 

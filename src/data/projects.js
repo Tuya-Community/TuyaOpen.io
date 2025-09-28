@@ -36,7 +36,6 @@ const projectsData = {
       markdownFile: '/docs/projects/2025-09-19-T5+2M-ASR-PRO-custom-asr',
       tags: ['iot', 'ai', 'voice', 'tutorial'],
     },
-
     {
       id: 'star-tracker',
       title: 'Star Tracker',

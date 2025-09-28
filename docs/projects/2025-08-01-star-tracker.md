@@ -17,11 +17,7 @@ We reinvented the compass using the TUYA T5-E1 development board, displaying the
   <img
     src="https://images.tuyacn.com/fe-static/docs/img/11fcf2a4-25b6-4a90-8f3a-bc6e5f0dde38.jpg"
     alt="Star Tracker Project Screenshot"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 

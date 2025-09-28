@@ -15,11 +15,7 @@ date: 2024-9-15
   <img
     src="/img/projects/project-iot-switch.png"
     alt="物联网开关项目截图"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 
@@ -56,19 +52,6 @@ PID（产品ID）是用于标识和关联云端产品定义的唯一字符串。
     href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_cloud/switch_demo"
     target="_blank"
     className="button button--primary"
-    style={{
-      fontSize: "1.15rem",
-      padding: "14px 2.5em",
-      borderRadius: "16px",
-      background: "linear-gradient(90deg, #4f8cff 0%, #38b2ac 100%)",
-      color: "#fff",
-      boxShadow: "0 4px 24px rgba(79,140,255,0.18), 0 1.5px 6px rgba(56,178,172,0.10)",
-      border: "none",
-      fontWeight: "bold",
-      letterSpacing: "0.04em",
-      transition: "transform 0.15s, box-shadow 0.15s",
-      display: "inline-block"
-    }}
   >
     前往项目仓库
   </a>

@@ -49,11 +49,6 @@ Please specify the open source license for your project (e.g., MIT, Apache 2.0, 
     href="https://github.com/your-repo-link"
     target="_blank"
     className="button button--primary"
-    style={{
-      fontSize: "1rem",
-      padding: "10px 2em",
-      borderRadius: "10px",
-    }}
   >
     Go to Project Repository
   </a>

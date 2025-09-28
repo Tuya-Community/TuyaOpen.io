@@ -47,7 +47,7 @@ title: "T5AI-Core 概述"
 
 <div align="center">
   <img src="https://images.tuyacn.com/fe-static/docs/img/dd9d442f-bd51-4ce0-bbb5-687058270bff.jpg" alt="" width="500" />
-  <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+  <div style={{display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap'}}>
     <img src="https://images.tuyacn.com/fe-static/docs/img/6a1310df-c48c-4c71-b52e-483ba4b49bc1.jpg" alt="" width="250" />
     <img src="https://images.tuyacn.com/fe-static/docs/img/2475d214-9adf-4aaa-a1fe-67c88b50fbd2.jpg" alt="" width="250" />
   </div>
@@ -89,7 +89,7 @@ T5AI-Core 开发板在设计之初，充分兼顾了便携性与开发灵活性�
 - **JST PH 1.25 mm 电池连接器**: 支持 3.7 V 锂电池供电，实现便携式应用。
 
 
-  <div style={{ display: 'flex', justifyContent: 'left', gap: '16px', flexWrap: 'wrap' }}>
+  <div style={{display: 'flex', justifyContent: 'left', gap: '16px', flexWrap: 'wrap'}}>
     <img src="https://images.tuyacn.com/fe-static/docs/img/b1f63d5f-80c7-44c6-9cbc-82e97461c6b2.png" alt="" width="150" />
     <img src="https://images.tuyacn.com/fe-static/docs/img/3911e3dd-680f-48d0-a448-f764bec39d67.png" alt="" width="150" />
   </div>
@@ -189,7 +189,7 @@ ETA6003 电池管理芯片负责控制充电指示灯（Charge LED），用于�
 | 用户 LED     | P9      | 由 T5-E1 模组控制的用户指示灯，连接至 GPIO 引脚 P9 |
 | 用户按钮     | P29     | 用户输入按钮，连接至 T5-E1 模组的 GPIO 引脚 P29   |
 | 复位按钮     | RST     | 专用复位按钮，向 T5-E1 模组发送复位信号         |
-<div style={{ display: "flex", justifyContent: "center", gap: "24px", alignItems: "center" }}>
+<div style={{display: 'flex', justifyContent: 'center', gap: '24px', alignItems: 'center'}}>
   <img src="https://images.tuyacn.com/fe-static/docs/img/2e0043dc-59d8-4900-b5d1-524de845131d.png" alt="" width="250" />
   <img src="https://images.tuyacn.com/fe-static/docs/img/cd0b54a3-d292-4d74-b91d-c474f51c89c1.png" alt="" width="250" />
 </div>

@@ -17,11 +17,7 @@ date: 2025-08-01
   <img
     src="https://images.tuyacn.com/fe-static/docs/img/303c2850-621d-4c50-84c2-b964e8c83d0f.jpg"
     alt="动感光效DIDI眼镜项目截图"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 
@@ -60,19 +56,6 @@ date: 2025-08-01
     href="https://github.com/CareTheDeaf/DIDIEYEGLASSES"
     target="_blank"
     className="button button--primary"
-    style={{
-      fontSize: "1.15rem",
-      padding: "14px 2.5em",
-      borderRadius: "16px",
-      background: "linear-gradient(90deg, #4f8cff 0%, #38b2ac 100%)",
-      color: "#fff",
-      boxShadow: "0 4px 24px rgba(79,140,255,0.18), 0 1.5px 6px rgba(56,178,172,0.10)",
-      border: "none",
-      fontWeight: "bold",
-      letterSpacing: "0.04em",
-      transition: "transform 0.15s, box-shadow 0.15s",
-      display: "inline-block"
-    }}
   >
     前往项目仓库
   </a>

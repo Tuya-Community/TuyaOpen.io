@@ -17,11 +17,7 @@ date: 2025-08-01
   <img
     src="https://images.tuyacn.com/fe-static/docs/img/61811184-3563-4a14-93e1-c603dcb29395.jpg"
     alt="国足之星项目截图"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 

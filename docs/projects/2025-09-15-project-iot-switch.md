@@ -15,11 +15,7 @@ The IoT Switch project is a simple yet powerful demonstration of how to build a 
   <img
     src="/img/projects/project-iot-switch.png"
     alt="IoT Switch Project Screenshot"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 

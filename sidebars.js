@@ -126,7 +126,7 @@ module.exports = {
           type: 'category',
           label: 'Tuya Cloud',
           collapsed: false,
-          items: ['cloud/tuya-cloud/creating-new-prduct'],
+          items: ['cloud/tuya-cloud/creating-new-product'],
         },
       ],
     },

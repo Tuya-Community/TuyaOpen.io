@@ -52,11 +52,6 @@ date: 2024-06-11
     href="https://github.com/your-repo-link"
     target="_blank"
     className="button button--primary"
-    style={{
-      fontSize: "1rem",
-      padding: "10px 2em",
-      borderRadius: "10px",
-    }}
   >
     前往项目仓库
   </a>

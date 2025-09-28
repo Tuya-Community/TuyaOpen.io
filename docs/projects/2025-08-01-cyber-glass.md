@@ -17,11 +17,7 @@ In modern social scenarios, non-verbal communication has become an important way
   <img
     src="https://images.tuyacn.com/fe-static/docs/img/303c2850-621d-4c50-84c2-b964e8c83d0f.jpg"
     alt="Cyber Glass Project Screenshot"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 

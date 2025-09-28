@@ -17,11 +17,7 @@ date: 2025-08-01
   <img
     src="https://images.tuyacn.com/fe-static/docs/img/fd0ed95b-c96d-4106-938b-7d203a45675c.jpg"
     alt="CyberPlant项目截图"
-    style={{
-      width: "80%",
-      borderRadius: "12px",
-      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
-    }}
+    width="80%"
   />
 </p>
 
