@@ -1,6 +1,24 @@
 const projectsData = {
   en: [
     {
+      id: 'led-matrix',
+      title: 'LED Pixel Art Light Matrix',
+      description:
+        'Create stunning visual effects with a 16x16 LED matrix display using TuyaOpen SDK. Features 8 different animation effects including waves, ripples, scrolling text, and mathematical patterns with real-time color management.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/47909930-54ec-483d-8aac-41eb4ed769f2.gif',
+      markdownFile: '/docs/projects/2025-09-28-led-matrix',
+      tags: ['iot', 'tutorial', 'open-source', 'open-hardware', 'entertainment'],
+    },
+    {
+      id: 't5ai-core-ai-chatbot',
+      title: 'Build AI Chatbot with T5AI-Core',
+      description:
+        'Quickly build an AI chatbot using the T5AI-Core development board and ST7789 screen. Features include real-time emotion display, voice input/output, and easy configuration with TuyaOpen SDK.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/62704802-0b90-42c0-8020-55e0da9cbd38.png',
+      markdownFile: '/docs/projects/2025-09-15-t5ai-core-ai-chatbot',
+      tags: ['iot', 'ai', 'chatbot', 'voice', 'open-source', 'open-hardware', 'tutorial'],
+    },
+    {
       id: 'simple-iot-switch',
       title: 'Simple IoT Switch',
       description:
@@ -9,6 +27,25 @@ const projectsData = {
       markdownFile: '/docs/projects/2025-09-15-project-iot-switch',
       tags: ['iot', 'smart-home', 'automation', 'open-source', 'open-hardware'],
     },
+    {
+      id: 'lvgl-font-change-tutorial',
+      title: 'LVGL Font Change Tutorial',
+      description:
+        'A step-by-step guide to customizing and applying fonts in LVGL, including local/global font setup, default font modification, and adding custom icons for embedded UI projects.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/3cff6dfb-ccff-4fde-8386-78babc9578b3.png',
+      markdownFile: '/docs/projects/2025-09-15-lvgl-font-change-tutorial',
+      tags: ['tutorial'],
+    },
+    {
+      id: 't5-2m-asr-pro-custom-asr',
+      title: 'T5+2M-ASR-PRO Custom Wake Words',
+      description:
+        'A tutorial for adding a 2M ASR PRO speech recognition module to the T5 development board, enabling custom wake words, offline recognition, and multi-role support. Includes wiring, firmware, and example code for serial and IO wakeup.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/e7b390c6-10bf-4a92-a499-c7bacea116d5.jpg',
+      markdownFile: '/docs/projects/2025-09-19-T5+2M-ASR-PRO-custom-asr',
+      tags: ['iot', 'ai', 'voice', 'tutorial'],
+    },
+
     {
       id: 'star-tracker',
       title: 'Star Tracker',
@@ -75,12 +112,47 @@ const projectsData = {
   ],
   zh: [
     {
+      id: 'led-matrix',
+      title: 'LED像素艺术灯矩阵',
+      description:
+        '使用TuyaOpen SDK创建16x16 LED矩阵显示器的令人惊叹的视觉效果。包含8种不同的动画效果，包括波浪、涟漪、滚动文本和数学图案，具有实时颜色管理功能。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/47909930-54ec-483d-8aac-41eb4ed769f2.gif',
+      markdownFile: '/docs/projects/2025-09-28-led-matrix',
+      tags: ['iot', 'tutorial', 'open-source', 'open-hardware', 'entertainment'],
+    },
+    {
+      id: 't5ai-core-ai-chatbot',
+      title: 'T5AI-Core 聊天机器人',
+      description:
+        '基于 T5AI-Core 开发板和 ST7789 屏幕，快速搭建 AI 聊天机器人。支持实时情感显示、语音输入输出，并可通过 TuyaOpen SDK 便捷配置。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/62704802-0b90-42c0-8020-55e0da9cbd38.png',
+      markdownFile: '/docs/projects/2025-09-15-t5ai-core-ai-chatbot',
+      tags: ['iot', 'ai', 'chatbot', 'voice', 'open-source', 'open-hardware', 'tutorial'],
+    },
+    {
       id: 'simple-iot-switch',
       title: '简单物联网开关',
       description: '一个基于涂鸦平台的简单云端连接物联网开关项目，支持 App 远程控制和安全设备认证。',
       image: '/img/projects/project-iot-switch.png',
       markdownFile: '/docs/projects/2025-09-15-project-iot-switch',
       tags: ['iot', 'smart-home', 'automation', 'open-source', 'open-hardware'],
+    },
+    {
+      id: 'lvgl-font-change-tutorial',
+      title: 'LVGL 字体变更',
+      description: '详细介绍如何在嵌入式项目中设置、引用和全局配置 LVGL 字体，包括自定义字体制作与全局生效方法。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/3cf655aa-37ed-46b5-9700-784c84a7b2b6.png',
+      markdownFile: '/docs/projects/2025-09-15-lvgl-font-change-tutorial',
+      tags: ['tutorial'],
+    },
+    {
+      id: 't5-2m-asr-pro-custom-asr',
+      title: 'T5+2M-ASR-PRO 定制唤醒词',
+      description:
+        '本教程介绍如何为 T5 开发板增加 2M ASR PRO 语音识别模组，实现自定义唤醒词、离线识别及多角色支持。内容涵盖硬件接线、固件烧录、串口与 IO 唤醒示例代码。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/5e634b99-003f-48c9-b7d1-04d086785b46.jpg',
+      markdownFile: '/docs/projects/2025-09-19-T5+2M-ASR-PRO-custom-asr',
+      tags: ['iot', 'ai', 'voice', 'tutorial'],
     },
     {
       id: 'star-tracker',
