@@ -1,6 +1,5 @@
 ---
 title: "Build AI Chatbot with T5AI-Core"
-date: 2025-09-19
 ---
 
 <BackToProjects />

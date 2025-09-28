@@ -1,9 +1,7 @@
 ---
 title: "AI Coding 助力 TuyaOpen 开发"
-date: 2025-09-19
 authors: [tuya]
 tags: ["AI", "TuyaOpen", "Development", "Tutorial"]
-lang: "zh"
 ---
 
 # AI Coding 助力 TuyaOpen 开发

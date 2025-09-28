@@ -1,6 +1,5 @@
 ---
 title: "使用 T5AI-Core 快速搭建 AI 聊天机器人"
-date: 2025-9-19
 ---
 
 <BackToProjects />

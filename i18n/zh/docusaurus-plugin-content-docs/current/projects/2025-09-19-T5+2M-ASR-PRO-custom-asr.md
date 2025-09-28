@@ -1,6 +1,5 @@
 ---
 title: "T5+2M-ASR-PRO 定制命令词"
-date: 2025-9-19
 ---
 
 <BackToProjects />

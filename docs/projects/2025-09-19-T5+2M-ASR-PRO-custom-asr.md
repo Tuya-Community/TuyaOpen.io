@@ -1,6 +1,5 @@
 ---
 title: "T5+2M-ASR-PRO Custom Wake Words"
-date: 2025-9-19
 ---
 
 <BackToProjects />

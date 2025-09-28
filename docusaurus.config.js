@@ -7,11 +7,6 @@ import { themes as prismThemes } from 'prism-react-renderer'
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  future: {
-    experimental_faster: true,
-    v4: true,
-  },
-
   title: 'TuyaOpen',
   tagline: 'A Powerful Open Source OS and Platform for IoTs Development',
   favicon: '/img/favicon.ico',
