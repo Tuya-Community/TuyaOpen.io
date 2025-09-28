@@ -1,6 +1,15 @@
 const projectsData = {
   en: [
     {
+      id: 'led-matrix',
+      title: 'LED Pixel Art Light Matrix',
+      description:
+        'Create stunning visual effects with a 16x16 LED matrix display using TuyaOpen SDK. Features 8 different animation effects including waves, ripples, scrolling text, and mathematical patterns with real-time color management.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/47909930-54ec-483d-8aac-41eb4ed769f2.gif',
+      markdownFile: '/docs/projects/2025-09-28-led-matrix',
+      tags: ['iot', 'tutorial', 'open-source', 'open-hardware', 'entertainment'],
+    },
+    {
       id: 't5ai-core-ai-chatbot',
       title: 'Build AI Chatbot with T5AI-Core',
       description:
@@ -102,6 +111,15 @@ const projectsData = {
     },
   ],
   zh: [
+    {
+      id: 'led-matrix',
+      title: 'LED像素艺术灯矩阵',
+      description:
+        '使用TuyaOpen SDK创建16x16 LED矩阵显示器的令人惊叹的视觉效果。包含8种不同的动画效果，包括波浪、涟漪、滚动文本和数学图案，具有实时颜色管理功能。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/47909930-54ec-483d-8aac-41eb4ed769f2.gif',
+      markdownFile: '/docs/projects/2025-09-28-led-matrix',
+      tags: ['iot', 'tutorial', 'open-source', 'open-hardware', 'entertainment'],
+    },
     {
       id: 't5ai-core-ai-chatbot',
       title: 'T5AI-Core 聊天机器人',
