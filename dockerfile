@@ -23,8 +23,7 @@ COPY --chown=node:node . /home/node/app/
 FROM base AS development
 WORKDIR /home/node/app
 # Install (not ci) with dependencies, and for Linux vs. Linux Musl (which we use for -alpine)
-# Skip husky installation in Docker environment
-RUN npm install --ignore-scripts
+RUN npm install
 # Switch to the node user vs. root
 USER node
 # Expose port 9050
@@ -37,8 +36,8 @@ CMD ["npm", "start"]
 FROM base AS production
 WORKDIR /home/node/app
 COPY --chown=node:node --from=development /home/node/app/node_modules /home/node/app/node_modules
-# Build the Docusaurus app (skip scripts to avoid husky issues)
-RUN npm run build --ignore-scripts
+# Build the Docusaurus app
+RUN npm run build
 # Expose port 9050
 EXPOSE 9050
 # Switch to the node user

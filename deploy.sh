@@ -19,11 +19,11 @@ if [ ! -d ".git" ] || [ ! -f "dockerfile" ]; then
 fi
 
 echo -e "${YELLOW}Pulling latest changes from ${GIT_BRANCH}...${NC}"
-git checkout $GIT_BRANCH && git pull origin $GIT_BRANCH
-if [ $? -ne 0 ]; then
-  echo -e "${RED}Git pull failed!${NC}"
-  exit 1
-fi
+# git checkout $GIT_BRANCH && git pull origin $GIT_BRANCH
+# if [ $? -ne 0 ]; then
+  # echo -e "${RED}Git pull failed!${NC}"
+  # exit 1
+# fi
 
 echo -e "${YELLOW}Building Docker image...${NC}"
 # Set environment variables to help with SSG issues
