@@ -119,6 +119,20 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
+      label: 'Cloud Services',
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'Tuya Cloud Platform',
+          collapsed: false,
+          items: ['cloud/tuya-cloud/creating-new-product'],
+        },
+      ],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
       label: 'TKL APIs',
       collapsed: true,
       items: [

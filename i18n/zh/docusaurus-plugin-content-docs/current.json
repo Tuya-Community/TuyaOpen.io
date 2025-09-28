@@ -27,6 +27,10 @@
     "message": "涂鸦云",
     "description": "The label for category Tuya Cloud in sidebar docs"
   },
+  "sidebar.docs.category.Tuya Cloud Platform": {
+    "message": "涂鸦云平台开发",
+    "description": "The label for category Tuya Cloud Platform in sidebar docs"
+  },
   "sidebar.docs.category.Tuya.AI": {
     "message": "Tuya.AI",
     "description": "The label for category Tuya.AI in sidebar docs"
@@ -46,6 +50,10 @@
   "sidebar.docs.category.New Project": {
     "message": "添加新项目",
     "description": "The label for category New Project in sidebar docs"
+  },
+  "sidebar.docs.category.Cloud Services": {
+    "message": "云服务",
+    "description": "The label for category Cloud Services in sidebar docs"
   },
   "sidebar.docs.category.TKL APIs": {
     "message": "TKL APIs",
