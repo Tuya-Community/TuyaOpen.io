@@ -32,7 +32,7 @@ date: 2025-9-28
 
 欢迎来到终极LED像素矩阵冒险！本教程将指导您使用TuyaOpen SDK构建令人难以置信的16x16 LED矩阵显示器。我们将创建从简单颜色效果到复杂动画、滚动文本，甚至会让您惊叹的数学图案！
 
-![LED矩阵动画](https://images.tuyacn.com/fe-static/docs/img/47909930-54ec-483d-8aac-41eb4ed769f2.gif)  
+![LED矩阵动画](https://images.tuyacn.com/fe-static/docs/img/40c94bdf-cab2-4069-9298-862c7be9e315.gif)  
   *16x16 LED矩阵上运行的所有动画效果 - 从呼吸颜色到2D波浪、滚动文本等等！*
 
 ## 🚀 您将构建什么
