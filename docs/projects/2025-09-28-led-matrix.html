@@ -1,0 +1,556 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-projects/2025-09-28-led-matrix" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.1"><title data-rh=true>LED Pixel Art Light Matrix | TuyaOpen</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://tuyaopen.io/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true name=twitter:image content=https://tuyaopen.io/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true property=og:url content=https://tuyaopen.io/docs/projects/2025-09-28-led-matrix /><meta data-rh=true property=og:locale content=en /><meta data-rh=true property=og:locale:alternate content=zh /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="LED Pixel Art Light Matrix | TuyaOpen"/><meta data-rh=true name=description content="This is series part-1 of lighting up a single-wire LED matrix. In future posts, we'll show how to turn this into a full IoT project!"/><meta data-rh=true property=og:description content="This is series part-1 of lighting up a single-wire LED matrix. In future posts, we'll show how to turn this into a full IoT project!"/><link data-rh=true rel=icon href=/img/favicon.ico /><link data-rh=true rel=canonical href=https://tuyaopen.io/docs/projects/2025-09-28-led-matrix /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/projects/2025-09-28-led-matrix hreflang=en /><link data-rh=true rel=alternate href=https://tuyaopen.io/zh/docs/projects/2025-09-28-led-matrix hreflang=zh /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/projects/2025-09-28-led-matrix hreflang=x-default /><link data-rh=true rel=preconnect href=https://NT1L7IWROF-dsn.algolia.net crossorigin=anonymous /><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="TuyaOpen RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="TuyaOpen Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-3M0J54E8XF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3M0J54E8XF",{})</script><link rel=search type=application/opensearchdescription+xml title=TuyaOpen href=/opensearch.xml><link rel=preconnect href=https://www.clarity.ms><script>!function(t,e,n,c,r,s,a){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(s=e.createElement(c)).async=1,s.src="https://www.clarity.ms/tag/"+r,(a=e.getElementsByTagName(c)[0]).parentNode.insertBefore(s,a)}(window,document,"clarity","script","lggqck9srz")</script><meta name=algolia-site-verification content=6232065417750C16><link rel=stylesheet href=/assets/css/styles.b910efed.css /><script src=/assets/js/runtime~main.f2333166.js defer></script><script src=/assets/js/main.569a0275.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><div class=announcement-bar style=background-color:#0598ea;color:#ffffff><div class=announcement-content><span>🏆 Join the TuyaOpen AI Hardware Contest! 100 days to build the future of AI devices</span><a class=announcement-link style=color:#ffffff href=/blog/8-8-online-contest>Learn More →</a><button class=announcement-close aria-label="[object Object]" style=color:#ffffff>×</button></div></div><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/home/tuyaopen-logo-simple-dark.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/home/tuyaopen-logo-simple-light.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">TuyaOpen</b></a><a class="navbar__item navbar__link" href=/docs/about-tuyaopen>Documentation</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>Get Yours</a><ul class=dropdown__menu><li><a class=dropdown__link href=/pricing>Get License Key</a><li><a class=dropdown__link href=/get-hardware>Get Hardware</a><li><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class=dropdown__link>Get Code<svg width=12 height=12 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><a class="navbar__item navbar__link" href=/blog>Blog</a><a class="navbar__item navbar__link" href=/projects>Projects</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>Tools</a><ul class=dropdown__menu><li><a class=dropdown__link href=/tools/tyutool>Universal Serial Port Tools</a><li><a href=https://tuyaopen.ai/tools target=_blank rel="noopener noreferrer" class=dropdown__link>Web Serial/Flashing Tools<svg width=12 height=12 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>English</a><ul class=dropdown__menu><li><a href=/docs/projects/2025-09-28-led-matrix target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=en>English</a><li><a href=/zh/docs/projects/2025-09-28-led-matrix target=_self rel="noopener noreferrer" class=dropdown__link lang=zh>简体中文</a></ul></div><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label=GitHub></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Command+K)"><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 20 20" aria-hidden=true><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke=currentColor fill=none fill-rule=evenodd stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><div class=backToProjects_C0PF><a class=backButton_KcZF href=/projects>← <!-- -->Back to Projects</a></div>
+<header><h1 id=-led-pixel-matrix-magic-creating-stunning-visual-effects-with-tuyaopen>🌈 LED Pixel Matrix Magic: Creating Stunning Visual Effects with TuyaOpen</h1></header>
+<p><em>This is series part-1 of lighting up a single-wire LED matrix. In future posts, we'll show how to turn this into a full IoT project!</em></p>
+<h2 id=-about-tuyaopen>🚀 About TuyaOpen</h2>
+<p>This project is built using <strong>TuyaOpen</strong>, an open-source AI+IoT development framework that helps developers quickly create smart connected devices. TuyaOpen supports multiple chip platforms and RTOS-like operating systems, seamlessly integrating multimodal AI capabilities including audio, video, and sensor data processing.</p>
+<p><strong>Key Features of TuyaOpen:</strong></p>
+<ul>
+<li><strong>Multi-Platform Support</strong>: T5AI, ESP32, LN882H, and more</li>
+<li><strong>AI Integration</strong>: Voice recognition, LLM integration, and multimodal AI</li>
+<li><strong>Cloud Connectivity</strong>: Seamless integration with Tuya Cloud services</li>
+<li><strong>Cross-Platform Development</strong>: Support for C/C++, Arduino, Lua, and MicroPython</li>
+<li><strong>Rich Peripheral Drivers</strong>: Comprehensive hardware abstraction layer</li>
+<li><strong>Develop Projects With</strong>: MacOS/Windows/Linux Operating Systems.</li>
+</ul>
+<p><strong>📚 Learn More:</strong></p>
+<ul>
+<li><strong>Official Documentation</strong>: <a href=https://www.tuyaopen.ai/zh/docs/about-tuyaopen>TuyaOpen Documentation</a></li>
+<li><strong>GitHub Repository</strong>: <a href=https://github.com/tuya/TuyaOpen>TuyaOpen on GitHub</a></li>
+<li><strong>Source Code</strong>: <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/leds-pixel>LED Pixel Matrix Example</a></li>
+<li><strong>Community</strong>: Join the TuyaOpen community for support and collaboration</li>
+</ul>
+<h2 id=-project-overview>🎯 Project Overview</h2>
+<p>Welcome to the ultimate LED pixel matrix adventure! This tutorial will guide you through building an incredible 16x16 LED matrix display using the TuyaOpen SDK. We'll create everything from simple color effects to complex animations, scrolling text, and even mathematical patterns that will blow your mind!</p>
+<p><img src=https://images.tuyacn.com/fe-static/docs/img/40c94bdf-cab2-4069-9298-862c7be9e315.gif alt="LED Matrix Animations"/><br/>
+<em>All animation effects running on the 16x16 LED matrix - from breathing colors to 2D waves, scrolling text, and more!</em></p>
+<h2 id=-what-youll-build>🚀 What You'll Build</h2>
+<p>By the end of this tutorial, you'll have created:</p>
+<ul>
+<li><strong>16x16 LED Matrix Display</strong> (256 individual addressable LEDs!)</li>
+<li><strong>8 Different Animation Effects</strong> including waves, ripples, and text scrolling</li>
+<li><strong>Real-time Color Management</strong> with HSV to RGB conversion</li>
+<li><strong>Custom Font Rendering</strong> for scrolling text messages</li>
+<li><strong>Mathematical Pattern Generation</strong> using trigonometry and wave functions</li>
+</ul>
+<h2 id=️-hardware-requirements>🛠️ Hardware Requirements</h2>
+<h3 id=core-components>Core Components</h3>
+<ul>
+<li><strong>Tuya T5AI Development Board</strong> (T5AI-Core or T5AI-Board)</li>
+<li><strong>16x16 WS2812B LED Matrix</strong> (256 LEDs total)</li>
+<li><strong>Jumper Wires</strong> for connections</li>
+<li><strong>5V Power Supply</strong> (capable of 5V@3A+ for full brightness)</li>
+<li><strong>Breadboard</strong> (optional, for prototyping)</li>
+</ul>
+<h3 id=-t5ai-hardware-options>🎯 <strong>T5AI Hardware Options</strong></h3>
+<p>This demo is designed for the <strong>T5AI-Core</strong> development board, but all T5 Series boards are compatible. Choose the board that best fits your project needs:</p>
+<h4 id=t5ai-core-recommended-for-this-project><strong>T5AI-Core</strong> (Recommended for this project)</h4>
+<ul>
+<li><strong>Compact Design</strong>: Small form factor, perfect for breadboard prototyping</li>
+<li><strong>44-Pin Header</strong>: Easy connection to LED matrices and other peripherals</li>
+<li><strong>Battery Management</strong>: Built-in lithium battery support</li>
+<li><strong>Audio Capabilities</strong>: 2-channel microphone + 1-channel speaker</li>
+<li><strong>Perfect for</strong>: LED projects, IoT prototypes, embedded development</li>
+</ul>
+<p><strong>📚 Hardware Documentation</strong>: <a href=https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-core/overview-t5-ai-core>T5AI-Core Overview</a></p>
+<h4 id=t5ai-board-full-featured-option><strong>T5AI-Board</strong> (Full-featured option)</h4>
+<ul>
+<li><strong>Complete DevKit</strong>: Full development board with all features</li>
+<li><strong>Optional LCD Screen</strong>: 3.5" touchscreen support</li>
+<li><strong>Camera Module</strong>: DVP camera interface</li>
+<li><strong>Rich I/O</strong>: 56 GPIO pins, multiple interfaces</li>
+<li><strong>Perfect for</strong>: Complex projects, multimedia applications, AI development</li>
+</ul>
+<p><strong>📚 Hardware Documentation</strong>: <a href=https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board>T5AI-Board Overview</a></p>
+<h3 id=-where-to-get-hardware>🛒 <strong>Where to Get Hardware</strong></h3>
+<p><strong>Official TuyaOpen Hardware Store</strong>: <a href=https://tuyaopen.ai/zh/get-hardware>Get Hardware</a></p>
+<h2 id=-wiring-diagram>🔌 Wiring Diagram</h2>
+<p>The beauty of this project lies in its simplicity - just <strong>one data wire</strong> controls all 256 LEDs!</p>
+<p><img src=https://images.tuyacn.com/fe-static/docs/img/f1399919-33ad-4a77-92c2-73a878982d35.jpg alt="LED Matrix Wiring and Layout"/></p>
+<p><em>T5AI Core board connected to 16x16 LED matrix with coordinate system and wiring diagram</em></p>
+<table><thead><tr><th>T5AI Core Board Pin<th>LED Matrix Pin<th>External Power Supply<tbody><tr><td>SPI0_MISO (P16)<td>Data In<td><tr><td>-<td>VCC<td>+5V<tr><td>GND<td>GND<td>GND</table>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li>Connect the LED matrix data line to <strong>SPI0_MISO</strong> pin</li>
+<li>Use a separate 5V power supply for the LEDs (don't power from the board)</li>
+<li>Ensure proper grounding between power supply and board</li>
+</ul>
+<h2 id=-software-architecture>💻 Software Architecture</h2>
+<h3 id=project-structure>Project Structure</h3>
+<pre><code>leds-pixel/
+├── src/
+│   ├── example_led-pixels.c    # Main application logic
+│   └── led_font.h             # 8x8 font database
+├── include/
+│   └── example_led-pixels.h   # Header definitions
+├── config/
+│   └── TUYA_T5AI_CORE.config  # Board configuration
+└── CMakeLists.txt             # Build configuration
+</code></pre>
+<h3 id=key-components>Key Components</h3>
+<h4 id=1-led-driver-system>1. <strong>LED Driver System</strong></h4>
+<p>The project uses Tuya's pixel driver framework supporting multiple LED types:</p>
+<ul>
+<li>WS2812B (default)</li>
+<li>SK6812</li>
+<li>SM16703P</li>
+<li>YX1903B</li>
+</ul>
+<h4 id=2-matrix-coordinate-system>2. <strong>Matrix Coordinate System</strong></h4>
+<pre><code class=language-c>// 16x16 LED matrix layout with zigzag pattern
+// Coordinates: (0,0) = top-left, (15,15) = bottom-right
+// LED indexing follows column-based zigzag pattern
+</code></pre>
+<h4 id=3-color-management>3. <strong>Color Management</strong></h4>
+<ul>
+<li><strong>Resolution</strong>: 1000 levels per color channel</li>
+<li><strong>Color Space</strong>: RGB + Warm/Cold white</li>
+<li><strong>Effects</strong>: HSV to RGB conversion for smooth color transitions</li>
+</ul>
+<h2 id=-animation-effects-deep-dive>🎨 Animation Effects Deep Dive</h2>
+<p>The LED matrix demo includes multiple stunning animation effects. Here are two key examples that showcase the mathematical and programming concepts behind the visual magic:</p>
+<h3 id=1-breathing-color-effect>1. <strong>Breathing Color Effect</strong></h3>
+<pre><code class=language-c>static void __breathing_color_effect(void)
+{
+
+static void __breathing_color_effect(void)
+{
+    OPERATE_RET rt = OPRT_OK;
+    PIXEL_COLOR_T current_color = {0};
+    uint32_t step = 20;
+    uint32_t max_cycles = 3;
+    uint32_t color_num = CNTSOF(cCOLOR_ARR);
+
+    // Static variables for frame-by-frame animation
+    static uint32_t static_intensity = 0;
+    static int32_t static_direction = 1;
+    static uint32_t static_cycle_count = 0;
+    static uint32_t static_color_index = 0;
+    static bool animation_complete = false;
+
+    // Reset animation if complete
+    if (animation_complete) {
+        static_intensity = 0;
+        static_direction = 1;
+        static_cycle_count = 0;
+        static_color_index = 0;
+        animation_complete = false;
+    }
+
+    // Single frame update
+    static_intensity += (static_direction * step);
+
+    if (static_intensity >= COLOR_RESOLUION) {
+        static_intensity = COLOR_RESOLUION;
+        static_direction = -1;
+    } else if (static_intensity &lt;= 0) {
+        static_intensity = 0;
+        static_direction = 1;
+        static_cycle_count++;
+        static_color_index = (static_color_index + 1) % color_num;
+
+        if (static_cycle_count >= max_cycles) {
+            animation_complete = true;
+        }
+    }
+
+    current_color.red = (cCOLOR_ARR[static_color_index].red * static_intensity) / COLOR_RESOLUION;
+    current_color.green = (cCOLOR_ARR[static_color_index].green * static_intensity) / COLOR_RESOLUION;
+    current_color.blue = (cCOLOR_ARR[static_color_index].blue * static_intensity) / COLOR_RESOLUION;
+    current_color.warm = (cCOLOR_ARR[static_color_index].warm * static_intensity) / COLOR_RESOLUION;
+    current_color.cold = (cCOLOR_ARR[static_color_index].cold * static_intensity) / COLOR_RESOLUION;
+
+    TUYA_CALL_ERR_GOTO(tdl_pixel_set_single_color(sg_pixels_handle, 0, LED_PIXELS_TOTAL_NUM, &amp;current_color), __ERROR);
+    TUYA_CALL_ERR_GOTO(tdl_pixel_dev_refresh(sg_pixels_handle), __ERROR);
+
+__ERROR:
+    PR_ERR("breathing color effect error");
+    return;
+}
+}
+</code></pre>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Creates a smooth breathing effect across all LEDs</li>
+<li>Cycles through primary colors (red → green → blue)</li>
+<li>Uses intensity modulation for the "breathing" effect</li>
+<li>Demonstrates smooth color transitions and timing control</li>
+</ul>
+<p><strong>Technical Implementation:</strong></p>
+<ul>
+<li><strong>Intensity Modulation</strong>: Uses sine wave functions for smooth fade in/out</li>
+<li><strong>Color Cycling</strong>: Transitions between predefined color arrays</li>
+<li><strong>Frame Management</strong>: Static variables maintain animation state between frames</li>
+</ul>
+<h3 id=2-2d-wave-effect>2. <strong>2D Wave Effect</strong></h3>
+<pre><code class=language-c>static void __2d_wave_effect(void)
+{
+static void __2d_wave_effect(void)
+{
+    OPERATE_RET rt = OPRT_OK;
+    PIXEL_COLOR_T tinted_color = {0};
+    uint32_t max_cycles = 2;  // Reduced cycles to match other effects
+    float max_radius = 11.0f; // Maximum radius to cover the 16x16 matrix
+    float wave_speed = 0.5f;  // Faster wave speed for smoother transitions
+    float color_saturation = 1.0f;
+    float color_value = 1.0f;
+
+    // Static variables for frame-by-frame animation
+    static uint32_t static_cycle_count = 0;
+    static float static_wave_radius = 0.0f;
+    static float static_color_hue = 0.0f;
+    static bool animation_complete = false;
+
+    // Reset animation if complete
+    if (animation_complete) {
+        static_cycle_count = 0;
+        static_wave_radius = 0.0f;
+        static_color_hue = 0.0f;
+        animation_complete = false;
+    }
+
+    // Clear LEDs for each frame
+    PIXEL_COLOR_T off_color = {0};
+    TUYA_CALL_ERR_GOTO(tdl_pixel_set_single_color(sg_pixels_handle, 0, LED_PIXELS_TOTAL_NUM, &off_color), __ERROR);
+
+    // Calculate current wave radius
+    static_wave_radius += wave_speed;
+    if (static_wave_radius > max_radius) {
+        static_wave_radius = 0.0f;
+        static_cycle_count++;
+
+        if (static_cycle_count >= max_cycles) {
+            animation_complete = true;
+        }
+    }
+
+    // Continuous color spectrum transition at center
+    static_color_hue += 2.0f; // Faster color transition for smoother effect
+    if (static_color_hue >= 360.0f) {
+        static_color_hue = 0.0f;
+    }
+
+    // Base color from spectrum is calculated per LED in the loop below
+
+    // Apply wave effect to each LED
+    for (uint32_t y = 0; y &lt; 16; y++) {
+        for (uint32_t x = 0; x &lt; 16; x++) {
+            float distance = __distance_from_center(x, y);
+            float angle = __calculate_angle(x, y);
+
+            // Check if LED is within the expanding wave
+            if (distance &lt;= static_wave_radius) {
+                // Calculate hue based on distance from center for constant color bands
+                float distance_hue = (distance / max_radius) * 180.0f; // Reduced range for smoother transitions
+                float current_hue = static_color_hue - distance_hue;   // Hue shifts based on distance
+                if (current_hue &lt; 0.0f)
+                    current_hue += 360.0f;
+
+                // Convert hue to RGB for constant color
+                float h = current_hue / 60.0f;
+                float c = color_value * color_saturation;
+                float x_val = c * (1.0f - fabsf(fmodf(h, 2.0f) - 1.0f));
+                float m = color_value - c;
+
+                float r, g, b;
+                if (h &lt; 1.0f) {
+                    r = c;
+                    g = x_val;
+                    b = 0;
+                } else if (h &lt; 2.0f) {
+                    r = x_val;
+                    g = c;
+                    b = 0;
+                } else if (h &lt; 3.0f) {
+                    r = 0;
+                    g = c;
+                    b = x_val;
+                } else if (h &lt; 4.0f) {
+                    r = 0;
+                    g = x_val;
+                    b = c;
+                } else if (h &lt; 5.0f) {
+                    r = x_val;
+                    g = 0;
+                    b = c;
+                } else {
+                    r = c;
+                    g = 0;
+                    b = x_val;
+                }
+
+                // Set constant color (no intensity fade)
+                tinted_color.red = (uint32_t)((r + m) * COLOR_RESOLUION);
+                tinted_color.green = (uint32_t)((g + m) * COLOR_RESOLUION);
+                tinted_color.blue = (uint32_t)((b + m) * COLOR_RESOLUION);
+                tinted_color.warm = 0;
+                tinted_color.cold = 0;
+
+                // Apply 8-directional tinting
+                __apply_directional_tint(&tinted_color, angle, &tinted_color);
+
+                // Set LED color
+                uint32_t led_index = __matrix_coord_to_led_index(x, y);
+                if (led_index > 0 && led_index &lt;= LED_PIXELS_TOTAL_NUM) {
+                    TUYA_CALL_ERR_GOTO(tdl_pixel_set_single_color(sg_pixels_handle, led_index, 1, &tinted_color),
+                                       __ERROR);
+                }
+            }
+        }
+    }
+
+    TUYA_CALL_ERR_GOTO(tdl_pixel_dev_refresh(sg_pixels_handle), __ERROR);
+    // tal_system_sleep(30); // Removed - main loop controls timing // Faster refresh for smoother transitions
+
+__ERROR:Required Tools
+    PR_ERR("2D wave effect error");
+    return;
+}
+}
+</code></pre>
+<p><strong>Mathematical Magic:</strong></p>
+<ul>
+<li><strong>Distance Calculation</strong>: <code>sqrt((x-7.5)² + (y-7.5)²)</code> from matrix center</li>
+<li><strong>Wave Propagation</strong>: Expanding radius with time-based animation</li>
+<li><strong>Color Tinting</strong>: 8-directional color variation based on angle</li>
+<li><strong>HSV Color Space</strong>: Smooth color transitions using hue, saturation, value</li>
+<li><strong>Trigonometric Functions</strong>: Uses <code>atan2()</code> for angle calculation</li>
+<li><strong>Color Spectrum</strong>: Continuous hue rotation for rainbow effects</li>
+<li><strong>Directional Tinting</strong>: Different colors based on compass direction</li>
+</ul>
+<h3 id=more-animation-effects>More Animation Effects</h3>
+<p>The demo codebase includes several additional animation effects that showcase different programming techniques:</p>
+<ul>
+<li><strong>Scrolling Text</strong>: 8x8 font rendering with rainbow colors</li>
+<li><strong>Ripple Effect</strong>: Water-like ripples using sine wave mathematics</li>
+<li><strong>Snowflake Pattern</strong>: 6-fold rotational symmetry with mathematical precision</li>
+<li><strong>Scan Animation</strong>: Column and row scanning patterns</li>
+<li><strong>Breathing Circle</strong>: Pulsing circular patterns with color cycling</li>
+<li><strong>Running Light</strong>: Sequential LED activation with color transitions</li>
+<li><strong>Color Wave</strong>: Traveling wave effects across the matrix</li>
+</ul>
+<p>Each effect demonstrates different aspects of embedded programming, from basic LED control to advanced mathematical algorithms for visual effects.</p>
+<h2 id=-code-walkthrough>🔧 Code Walkthrough</h2>
+<h3 id=matrix-coordinate-conversion>Matrix Coordinate Conversion</h3>
+<p><img src=https://images.tuyacn.com/fe-static/docs/img/b48dd519-0cb5-452f-a713-9e79c12baf28.png alt="Animation Showcase - Multiple effects running on the LED matrix"/></p>
+<p>The LED matrix is physically a 2D grid (16x16), but the LEDs are wired in a single chain, so you need a way to convert (x, y) coordinates to the correct 1D LED index. This is handled by the <code>__matrix_coord_to_led_index</code> function.</p>
+<h4 id=zigzag-serpentine-mapping-explained>Zigzag (Serpentine) Mapping Explained</h4>
+<ul>
+<li><strong>Even Columns (x % 2 == 0):</strong><br/>
+<!-- -->The LEDs in even-numbered columns are wired from top to bottom.<!-- -->
+<ul>
+<li>The index is calculated as: <code>index = x * 16 + y</code></li>
+</ul>
+</li>
+<li><strong>Odd Columns (x % 2 == 1):</strong><br/>
+<!-- -->The LEDs in odd-numbered columns are wired from bottom to top.<!-- -->
+<ul>
+<li>The index is calculated as: <code>index = (x + 1) * 16 - 1 - y</code></li>
+</ul>
+</li>
+</ul>
+<p>This pattern ensures that the logical (x, y) coordinates always map to the correct physical LED, regardless of the wiring direction in each column.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>(x=0, y=0) → index 0 (top-left)</li>
+<li>(x=0, y=15) → index 15 (bottom of first column)</li>
+<li>(x=1, y=0) → index 31 (top of second column, since it's reversed)</li>
+<li>(x=1, y=15) → index 16 (bottom of second column)</li>
+</ul>
+<p>This mapping is essential for displaying images, animations, or text correctly on the matrix, as it abstracts away the physical wiring and lets you work with (x, y) coordinates naturally in your code.</p>
+<pre><code class=language-c>static uint32_t __matrix_coord_to_led_index(uint32_t x, uint32_t y)
+{
+    // Convert 2D matrix coordinates to 1D LED index
+    // Handles zigzag pattern for proper LED addressing
+    if (x % 2 == 0) {
+        // Even column: top to bottom
+        led_index = (x * 16 + y);
+    } else {
+        // Odd column: bottom to top
+        led_index = (x + 1) * 16 - 1 - y;
+    }
+    return led_index;
+}
+</code></pre>
+<h3 id=color-management>Color Management</h3>
+<pre><code class=language-c>// HSV to RGB conversion for smooth color transitions
+float h = hue / 60.0f;
+float c = saturation * value;
+float x = c * (1.0f - fabsf(fmodf(h, 2.0f) - 1.0f));
+// ... RGB calculation based on hue sector
+</code></pre>
+<h3 id=animation-state-management>Animation State Management</h3>
+<pre><code class=language-c>// Frame-by-frame animation using static variables
+static uint32_t frame_count = 0;
+static float wave_radius = 0.0f;
+static bool animation_complete = false;
+
+// Reset animation when complete
+if (animation_complete) {
+    frame_count = 0;
+    wave_radius = 0.0f;
+    animation_complete = false;
+}
+</code></pre>
+<h2 id=️-configuration--customization>🎛️ Configuration & Customization</h2>
+<h3 id=led-driver-selection>LED Driver Selection</h3>
+<pre><code class=language-c>// Choose your LED type by uncommenting the appropriate driver
+TUYA_CALL_ERR_RETURN(tdd_ws2812_driver_register(device_name, &dev_init_cfg));
+// TUYA_CALL_ERR_RETURN(tdd_sk6812_driver_register(device_name, &dev_init_cfg));
+// TUYA_CALL_ERR_RETURN(tdd_sm16703p_driver_register(device_name, &dev_init_cfg));
+</code></pre>
+<h3 id=effect-customization>Effect Customization</h3>
+<pre><code class=language-c>// Modify effect parameters
+#define LED_PIXELS_TOTAL_NUM 256    // Total LED count
+#define LED_CHANGE_TIME      800    // Effect timing (ms)
+#define COLOR_RESOLUION      1000u  // Color depth
+</code></pre>
+<h3 id=animation-timing>Animation Timing</h3>
+<pre><code class=language-c>// Adjust animation speed and duration
+static uint32_t max_cycles_per_effect = 200;  // Effect duration
+tal_system_sleep(50);  // Frame delay (ms)
+</code></pre>
+<h2 id=-building--flashing>🚀 Building & Flashing</h2>
+<h3 id=prerequisites>Prerequisites</h3>
+<p>Before building this project, you'll need to set up the TuyaOpen development environment. Follow the official setup guide for detailed instructions:</p>
+<p><strong>📚 Environment Setup Guide</strong>: <a href=https://www.tuyaopen.ai/zh/docs/quick-start/enviroment-setup>TuyaOpen Environment Setup</a></p>
+<h4 id=quick-setup-commands>Quick Setup Commands</h4>
+<pre><code class=language-bash># Install required tools (Ubuntu/Debian)
+sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
+
+# Clone TuyaOpen repository
+git clone https://github.com/tuya/TuyaOpen.git
+cd TuyaOpen
+
+# Activate tos.py environment
+. ./export.sh
+
+# Verify installation
+tos.py version
+tos.py check
+</code></pre>
+<h1 id=project-compilation>Project Compilation</h1>
+<p><strong>📚 Compilation Guide</strong>: <a href=https://www.tuyaopen.ai/zh/docs/quick-start/project-compilation>TuyaOpen Project Compilation</a></p>
+<h4 id=step-1-navigate-to-project>Step 1: Navigate to Project</h4>
+<pre><code class=language-bash>cd examples/peripherals/leds-pixel
+</code></pre>
+<h4 id=step-2-configure-project>Step 2: Configure Project</h4>
+<pre><code class=language-bash># Configure for T5AI board
+tos.py config choice
+# Select: T5AI.config
+</code></pre>
+<h4 id=step-3-build-project>Step 3: Build Project</h4>
+<pre><code class=language-bash># Build the project
+tos.py build
+</code></pre>
+<h4 id=step-4-clean-build-if-needed>Step 4: Clean Build (if needed)</h4>
+<pre><code class=language-bash># Clean build cache
+tos.py clean
+
+# Deep clean
+tos.py clean -f
+</code></pre>
+<h3 id=firmware-flashing>Firmware Flashing</h3>
+<p><strong>📚 Flashing Guide</strong>: <a href=https://www.tuyaopen.ai/zh/docs/quick-start/firmware-burning>TuyaOpen Firmware Burning</a></p>
+<h4 id=prerequisites-1>Prerequisites</h4>
+<ul>
+<li>Connect T5AI board to PC via USB</li>
+<li>For Linux/Mac users: <code>sudo usermod -aG dialout $USER</code> (then restart)</li>
+<li>For Windows: Install appropriate USB drivers</li>
+</ul>
+<h4 id=flashing-process>Flashing Process</h4>
+<pre><code class=language-bash># Flash firmware to device
+tos.py flash
+
+# Select the correct serial port when prompted
+# T5AI boards typically have two ports:
+# - Lower number: Programming port
+# - Higher number: Logging port
+</code></pre>
+<h4 id=monitor-output>Monitor Output</h4>
+<pre><code class=language-bash># Monitor serial output for debugging
+tos.py monitor
+</code></pre>
+<h3 id=configuration-options>Configuration Options</h3>
+<h2 id=-advanced-effects--modifications>🎪 Advanced Effects & Modifications</h2>
+<h3 id=creating-custom-effects>Creating Custom Effects</h3>
+<pre><code class=language-c>static void __custom_effect(void)
+{
+    // Your custom animation logic here
+    // Use the matrix coordinate system
+    // Apply color mathematics
+    // Refresh display
+}
+</code></pre>
+<h3 id=adding-new-characters>Adding New Characters</h3>
+<pre><code class=language-c>// Extend the font database in led_font.h
+{'@', {0x00, 0x3C, 0x66, 0x6E, 0x6A, 0x6E, 0x60, 0x3C}, 8},
+</code></pre>
+<h3 id=performance-optimization>Performance Optimization</h3>
+<ul>
+<li><strong>Frame Rate</strong>: Adjust <code>tal_system_sleep()</code> for desired FPS</li>
+<li><strong>Color Depth</strong>: Modify <code>COLOR_RESOLUION</code> for brightness levels</li>
+<li><strong>Memory Usage</strong>: Optimize static variables for RAM efficiency</li>
+</ul>
+<h2 id=-troubleshooting>🔍 Troubleshooting</h2>
+<h3 id=common-issues>Common Issues</h3>
+<h4 id=leds-not-lighting-up>LEDs Not Lighting Up</h4>
+<ul>
+<li><strong>Check Power</strong>: Ensure 5V supply can handle full load</li>
+<li><strong>Data Connection</strong>: Verify SPI0_MISO connection</li>
+<li><strong>Ground Connection</strong>: Ensure common ground between board and LED matrix</li>
+</ul>
+<h4 id=flickering-or-unstable-display>Flickering or Unstable Display</h4>
+<ul>
+<li><strong>Power Supply</strong>: Insufficient current capacity</li>
+<li><strong>Timing Issues</strong>: Adjust frame delay timing</li>
+<li><strong>Signal Quality</strong>: Check for loose connections</li>
+</ul>
+<h4 id=color-issues>Color Issues</h4>
+<ul>
+<li><strong>RGB Order</strong>: Verify <code>RGB_ORDER</code> configuration</li>
+<li><strong>Brightness</strong>: Check <code>COLOR_RESOLUION</code> setting</li>
+<li><strong>Driver Selection</strong>: Ensure correct LED type selected</li>
+</ul>
+<hr/>
+<h1 id=-project-extensions---what-to-build-next>🌟 Project Extensions - What to Build Next?</h1>
+<h3 id=iot-integration>IoT Integration</h3>
+<ul>
+<li><strong>Tuya Cloud</strong>: Connect to Tuya IoT platform</li>
+<li><strong>Remote Control</strong>: Control effects via mobile app</li>
+<li><strong>Scheduling</strong>: Time-based effect switching</li>
+</ul>
+<h3 id=advanced-patterns>Advanced Patterns</h3>
+<ul>
+<li><strong>Game of Life</strong>: Cellular automaton simulation</li>
+<li><strong>Fractal Patterns</strong>: Mandelbrot set visualization</li>
+<li><strong>Audio Visualization</strong>: Real-time audio reactive effects</li>
+</ul>
+<h3 id=hardware-upgrades>Hardware Upgrades</h3>
+<ul>
+<li><strong>Larger Matrix</strong>: Scale to 32x32 or 64x64</li>
+<li><strong>Multiple Panels</strong>: Chain multiple matrices</li>
+<li><strong>3D Effects</strong>: Add depth with layered displays</li>
+</ul>
+<h2 id=-conclusion>🎉 Conclusion</h2>
+<p>Congratulations! You've built an incredible LED matrix display system that demonstrates the power of embedded programming, mathematical algorithms, and creative engineering. This project showcases:</p>
+<ul>
+<li><strong>Advanced Animation Techniques</strong>: From simple color changes to complex wave patterns</li>
+<li><strong>Mathematical Modeling</strong>: Using trigonometry and wave functions for visual effects</li>
+<li><strong>Hardware Integration</strong>: Seamless communication between microcontroller and LED matrix</li>
+<li><strong>Creative Programming</strong>: Turning mathematical concepts into stunning visual art</li>
+</ul>
+<h3 id=whats-next>What's Next?</h3>
+<ul>
+<li>Experiment with your own custom effects</li>
+<li>Integrate with IoT platforms for remote control</li>
+<li>Scale up to larger matrices for even more impressive displays</li>
+<li>Share your creations with the maker community!</li>
+</ul>
+<hr/>
+<p><em>Happy Making! 🌈✨</em>
+<em>Built with ❤️ using TuyaOpen SDK</em></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class=col><a href=https://github.com/Tuya-Community/TuyaOpen.io/edit/master/docs/projects/2025-09-28-led-matrix.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#-about-tuyaopen class="table-of-contents__link toc-highlight">🚀 About TuyaOpen</a><li><a href=#-project-overview class="table-of-contents__link toc-highlight">🎯 Project Overview</a><li><a href=#-what-youll-build class="table-of-contents__link toc-highlight">🚀 What You'll Build</a><li><a href=#️-hardware-requirements class="table-of-contents__link toc-highlight">🛠️ Hardware Requirements</a><ul><li><a href=#core-components class="table-of-contents__link toc-highlight">Core Components</a><li><a href=#-t5ai-hardware-options class="table-of-contents__link toc-highlight">🎯 <strong>T5AI Hardware Options</strong></a><li><a href=#-where-to-get-hardware class="table-of-contents__link toc-highlight">🛒 <strong>Where to Get Hardware</strong></a></ul><li><a href=#-wiring-diagram class="table-of-contents__link toc-highlight">🔌 Wiring Diagram</a><li><a href=#-software-architecture class="table-of-contents__link toc-highlight">💻 Software Architecture</a><ul><li><a href=#project-structure class="table-of-contents__link toc-highlight">Project Structure</a><li><a href=#key-components class="table-of-contents__link toc-highlight">Key Components</a></ul><li><a href=#-animation-effects-deep-dive class="table-of-contents__link toc-highlight">🎨 Animation Effects Deep Dive</a><ul><li><a href=#1-breathing-color-effect class="table-of-contents__link toc-highlight">1. <strong>Breathing Color Effect</strong></a><li><a href=#2-2d-wave-effect class="table-of-contents__link toc-highlight">2. <strong>2D Wave Effect</strong></a><li><a href=#more-animation-effects class="table-of-contents__link toc-highlight">More Animation Effects</a></ul><li><a href=#-code-walkthrough class="table-of-contents__link toc-highlight">🔧 Code Walkthrough</a><ul><li><a href=#matrix-coordinate-conversion class="table-of-contents__link toc-highlight">Matrix Coordinate Conversion</a><li><a href=#color-management class="table-of-contents__link toc-highlight">Color Management</a><li><a href=#animation-state-management class="table-of-contents__link toc-highlight">Animation State Management</a></ul><li><a href=#️-configuration--customization class="table-of-contents__link toc-highlight">🎛️ Configuration & Customization</a><ul><li><a href=#led-driver-selection class="table-of-contents__link toc-highlight">LED Driver Selection</a><li><a href=#effect-customization class="table-of-contents__link toc-highlight">Effect Customization</a><li><a href=#animation-timing class="table-of-contents__link toc-highlight">Animation Timing</a></ul><li><a href=#-building--flashing class="table-of-contents__link toc-highlight">🚀 Building & Flashing</a><ul><li><a href=#prerequisites class="table-of-contents__link toc-highlight">Prerequisites</a><li><a href=#firmware-flashing class="table-of-contents__link toc-highlight">Firmware Flashing</a><li><a href=#configuration-options class="table-of-contents__link toc-highlight">Configuration Options</a></ul><li><a href=#-advanced-effects--modifications class="table-of-contents__link toc-highlight">🎪 Advanced Effects & Modifications</a><ul><li><a href=#creating-custom-effects class="table-of-contents__link toc-highlight">Creating Custom Effects</a><li><a href=#adding-new-characters class="table-of-contents__link toc-highlight">Adding New Characters</a><li><a href=#performance-optimization class="table-of-contents__link toc-highlight">Performance Optimization</a></ul><li><a href=#-troubleshooting class="table-of-contents__link toc-highlight">🔍 Troubleshooting</a><ul><li><a href=#common-issues class="table-of-contents__link toc-highlight">Common Issues</a><li><a href=#iot-integration class="table-of-contents__link toc-highlight">IoT Integration</a><li><a href=#advanced-patterns class="table-of-contents__link toc-highlight">Advanced Patterns</a><li><a href=#hardware-upgrades class="table-of-contents__link toc-highlight">Hardware Upgrades</a></ul><li><a href=#-conclusion class="table-of-contents__link toc-highlight">🎉 Conclusion</a><ul><li><a href=#whats-next class="table-of-contents__link toc-highlight">What's Next?</a></ul></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs/quick-start/unboxing>Tutorial</a><li class=footer__item><a class=footer__link-item href=/pricing>Service</a><li class=footer__item><a class=footer__link-item href=/docs/hardware-specific>Hardware List</a><li class=footer__item><a class=footer__link-item href=/docs/hardware-specific/t5-ai-board/overview-t5-ai-board>Tuya T5AI Dev Kit</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Tools</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://tuyaopen.ai/tools target=_blank rel="noopener noreferrer" class=footer__link-item>Web Serial Tool<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Community</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://discord.com/invite/yPPShSTttG target=_blank rel="noopener noreferrer" class=footer__link-item>Discord<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://x.com/tuyasmart target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://www.youtube.com/@tuya2023 target=_blank rel="noopener noreferrer" class=footer__link-item>Youtube<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://www.linkedin.com/company/tuya-smart target=_blank rel="noopener noreferrer" class=footer__link-item>Linkedin<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://gitee.com/tuya-open/TuyaOpen target=_blank rel="noopener noreferrer" class=footer__link-item>Gitee(Mirror)<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Acknowledgements</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://storyset.com/technology target=_blank rel="noopener noreferrer" class=footer__link-item>Thanks for the technology illustrations by Storyset<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>
+        <p style="font-weight: 500;">Copyright © TuyaOpen Authors 2025 | Documentation Distributed under Apache License Version 2.0</p>
+      </div></div></div></footer></div></body>
