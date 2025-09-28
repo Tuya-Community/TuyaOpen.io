@@ -40,7 +40,7 @@ date: 2025-9-19
 芯片规格书：[点击查看](https://www.haohaodada.com/jpeguploadfile/twen/ASRPRO/ASRPROCoreV1.1.pdf)
 
 外观图：
-<img alt="芯片规格书" src="https://images.tuyacn.com/content-platform/hestia/1756373260721d3bdc55a.png" width="400" >
+<img alt="芯片规格书" src="https://images.tuyacn.com/content-platform/hestia/1756373260721d3bdc55a.png" width="400" />
 
 ## 硬件接线说明
 
@@ -104,7 +104,7 @@ Tuya AI 智能体支持多角色，ASR PRO 模组支持最多 5 个唤醒词，�
 
 参考图：
 
-<img alt="固件烧录" src="https://images.tuyacn.com/content-platform/hestia/17564346638e93644cea5.png" width="800" >
+<img alt="固件烧录" src="https://images.tuyacn.com/content-platform/hestia/17564346638e93644cea5.png" width="800" />
 
 ## T5 程序制作
 

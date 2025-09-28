@@ -26,7 +26,7 @@ date: 2025-9-19
 
 效果图：
 
-<img alt="效果图" src="https://images.tuyacn.com/content-platform/hestia/1755847709989bdfd44cf.png" width="650" >
+<img alt="效果图" src="https://images.tuyacn.com/content-platform/hestia/1755847709989bdfd44cf.png" width="650" />
 
 ## 配置 menuconfig
 
