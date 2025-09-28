@@ -35,7 +35,7 @@ Welcome to the ultimate LED pixel matrix adventure! This tutorial will guide you
 <!-- ![Project Hero Image - A stunning 16x16 LED matrix displaying a rainbow wave effect] -->
 <!-- ![Project Overview - Split screen showing the hardware setup and the final animated display] -->
 
-![LED Matrix Animations](https://images.tuyacn.com/fe-static/docs/img/47909930-54ec-483d-8aac-41eb4ed769f2.gif)  
+![LED Matrix Animations](https://images.tuyacn.com/fe-static/docs/img/40c94bdf-cab2-4069-9298-862c7be9e315.gif)  
   *All animation effects running on the 16x16 LED matrix - from breathing colors to 2D waves, scrolling text, and more!*
 
 ## 🚀 What You'll Build
