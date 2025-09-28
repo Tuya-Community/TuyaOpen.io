@@ -12,8 +12,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "prepare": "husky",
-    "update-npm": "npm install -g npm@11.6.1"
+    "prepare": "husky"
   },
   "dependencies": {
     "@docsearch/react": "^3.9.0",
@@ -58,8 +57,7 @@
     "tailwindcss": "^3.4.17"
   },
   "engines": {
-    "node": ">=18.0",
-    "npm": ">=11.6.1"
+    "node": ">=18.0"
   },
   "lint-staged": {
     "*.js": "prettier --write"

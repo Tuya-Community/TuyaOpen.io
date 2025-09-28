@@ -26,6 +26,9 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "${YELLOW}Building Docker image...${NC}"
+# Set environment variables to help with SSG issues
+export DOCUSAURUS_IGNORE_SSG_WARNINGS=true
+export NODE_ENV=production
 docker build -t $IMAGE_NAME --target production .
 if [ $? -ne 0 ]; then
   echo -e "${RED}Docker build failed!${NC}"
