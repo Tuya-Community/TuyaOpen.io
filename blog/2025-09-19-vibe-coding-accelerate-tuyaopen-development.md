@@ -34,8 +34,8 @@ TuyaOpen 集成了端侧 AI 推理引擎，支持涂鸦云智能体中枢，支�
 
 | 设备 | 参数 |
 |----------|---------------------|
-| T5AI-Board | 主控模组：<ul><li>T5-E1-IPEX 模组 ARMv8-M Star (M33F) @480MHz</li><li>16 KB ITCM + 16 KB DTCM</li><li>8 MB SiP Flash</li><li>16 MB SiP PSRAM</li><li>640 KB Share SRAM |
-| 屏幕 | <ul><li>RGB565 触摸屏</li><li>480 x 320 像素</li><li>显示驱动芯片：ILI9488</li><li>触摸驱动芯片：GT1151</li></ul>  |
+| T5AI-Board | 主控模组：T5-E1-IPEX 模组 ARMv8-M Star (M33F) @480MHz，16 KB ITCM + 16 KB DTCM，8 MB SiP Flash，16 MB SiP PSRAM，640 KB Share SRAM |
+| 屏幕 | RGB565 触摸屏，480 x 320 像素，显示驱动芯片：ILI9488，触摸驱动芯片：GT1151 |
 
 ![T5AI-Board 开发板.png](https://images.tuyacn.com/content-platform/hestia/17561085897400828f8e3.png)
 
@@ -113,7 +113,7 @@ https://tuyaopen.ai/zh/docs/quick-start/firmware-burning
 
 |        场景        |      典型编码格式及说明             |
 |-----------------|----------------------|
-|   电脑桌面显示 PNG  |  <ul><li>RGB24：标准真彩色</li><li>ARGB32：支持透明度</li></ul>    |
+|   电脑桌面显示 PNG  |  RGB24：标准真彩色，ARGB32：支持透明度    |
 | 嵌入式 UI（如 LVGL） | RGB565/Indexed Color：为节省资源使用 16 位色或索引色 |
 |    游戏/视频渲染   |        RGBA8888：高性能 GPU 通常使用 32 位格式  |
 
