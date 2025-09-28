@@ -35,7 +35,8 @@ CMD ["npm", "start"]
 # Also define a production target which doesn't use devDeps
 FROM base AS production
 WORKDIR /home/node/app
-COPY --chown=node:node --from=development /home/node/app/node_modules /home/node/app/node_modules
+# Copy everything from development stage
+COPY --chown=node:node --from=development /home/node/app /home/node/app
 # Build the Docusaurus app
 RUN npm run build
 # Expose port 9050
