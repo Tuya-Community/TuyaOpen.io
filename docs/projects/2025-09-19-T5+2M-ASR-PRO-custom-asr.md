@@ -29,7 +29,7 @@ This tutorial introduces the first solution: adding a voice recognition module. 
 |------------------------------------|-------------------------------------------------------------------------------------|
 | T5 Development Board               | Provides core AI conversation functionality                                         |
 | ASR PRO Module                     | Supports custom wake words and offline speech recognition                           |
-| Serial Board or ASR-LINK Downloader| A standard CH340 serial board is sufficient for downloading programs to ASR PRO.<br><br>If available, you can purchase the ASR-LINK automatic downloader. |
+| Serial Board or ASR-LINK Downloader| A standard CH340 serial board is sufficient for downloading programs to ASR PRO. If available, you can purchase the ASR-LINK automatic downloader. |
 | Microphone                         | Used for audio pickup by the ASR PRO module                                         |
 
 
@@ -64,11 +64,11 @@ First, you need to program and flash firmware to the ASR PRO, then connect the A
 |        5V             |       5V                 |
 | P10 (UART0 TX)        |   PB5 (RX)               |
 | P11 (UART0 RX)        |   PB6 (TX)               |
-|  P12 (Wake Pin)       | PA4 (Demo use, customizable)<br><br>**Note**: If using serial wakeup, you can skip connecting the P12 wake pin.|
+|  P12 (Wake Pin)       | PA4 (Demo use, customizable). **Note**: If using serial wakeup, you can skip connecting the P12 wake pin.|
 
 ### Demo Video
 
-<video src="https://images.tuyacn.com/content-platform/hestia/1756375350889423076cc.mp4" width="300" style="max-width: 100%" controls></video>
+<video src="https://images.tuyacn.com/content-platform/hestia/1756375350889423076cc.mp4" width="300" style={{maxWidth: "100%"}} controls></video>
 
 
 ## ASR PRO Program Development
