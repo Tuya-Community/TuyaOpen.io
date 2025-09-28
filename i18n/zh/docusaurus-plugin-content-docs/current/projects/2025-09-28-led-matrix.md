@@ -6,7 +6,7 @@ date: 2025-9-28
 <BackToProjects />
 
 
-# 🌈 LED像素矩阵：使用TuyaOpen创建助阵幻灯
+# 🌈 LED像素矩阵：使用TuyaOpen创建彩色幻灯矩阵
 
 *这是单线LED矩阵系列的第一部分。在未来的文章中，我们将展示如何将其转换为完整的IoT项目！*
 

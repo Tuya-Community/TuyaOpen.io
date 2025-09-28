@@ -1,77 +1,77 @@
 ---
-title: "Creating New Product"
+title: "创建新产品"
 ---
 
-# TuyaOpen SDK Quick Start
+# Tuya 云
 
-## Environment Setup and SDK Download
+## 环境搭建及 SDK 下载
 
-First, you need to set up the development environment and download the TuyaOpen SDK. For detailed tutorials, please visit the [TuyaOpen Documentation Center](https://tuyaopen.ai/zh/docs/about-tuyaopen).
+首先，您需要搭建开发环境并下载 TuyaOpen SDK，详细教程请前往 [TuyaOpen 文档中心](https://tuyaopen.ai/zh/docs/about-tuyaopen) 查看。
 
-## Create Product
+## 创建产品
 
-Go to the [Tuya Developer Platform > **Product Development**](https://platform.tuya.com/pmg/list) page, click **Create Product**, select the category based on your product form, and refer to [Create Product](https://developer.tuya.com/cn/docs/iot/create-product?id=K914jp1ijtsfe) to complete product creation.
+前往登录 [涂鸦开发者平台 > **产品开发**](https://platform.tuya.com/pmg/list) 页面，单击 **创建产品**，根据您的产品形态选择品类，并参考 [创建产品](https://developer.tuya.com/cn/docs/iot/create-product?id=K914jp1ijtsfe) 完成产品的创建。
 
-![Create Product.png](https://images.tuyacn.com/content-platform/hestia/175577153664954543874.png)
+![创建产品.png](https://images.tuyacn.com/content-platform/hestia/175577153664954543874.png)
 
-After entering the product development process, please focus on the following configurations: adding product functions, AI capabilities, and new firmware.
+进入产品开发流程后，请重点关注下文介绍的添加产品功能、AI 能力和新增固件相关配置。
 
-### Add Product Functions
+### 添加产品功能
 
-Under **01 Function Definition** > **Product Functions**, click **Add Function** to add standard/custom functions to the product, or enable advanced functions.
+在 **01 功能定义** > **产品功能** 下，单击 **添加功能** 来为产品添加标准/自定义功能，或开启高级功能。
 
-To learn about product functions, please refer to [Product Functions](https://developer.tuya.com/cn/docs/iot/define-product-features?id=K97vug7wgxpoq).
+了解产品功能，请参考 [产品功能](https://developer.tuya.com/cn/docs/iot/define-product-features?id=K97vug7wgxpoq)。
 
-![Add Product Functions.png](https://images.tuyacn.com/content-platform/hestia/17557717576bbf113ed8f.png)
+![添加产品功能.png](https://images.tuyacn.com/content-platform/hestia/17557717576bbf113ed8f.png)
 
-### Add AI Capabilities
+### 添加 AI 能力
 
-Under **01 Function Definition** > **Product AI Functions**, click **Add Intelligent Agent** to add AI capabilities to the product.
+在 **01 功能定义** > **产品 AI 功能** 下，单击 **新增智能体** 来为产品添加 AI 能力。
 
-After entering the intelligent agent development process, refer to [Product AI Function Development](https://developer.tuya.com/cn/docs/iot/AI-feature?id=Keapy1et1fc63) to complete intelligent agent development. Focus on the following configurations:
+进入智能体开发流程后，参考 [产品 AI 功能开发](https://developer.tuya.com/cn/docs/iot/AI-feature?id=Keapy1et1fc63) 完成智能体的开发。其中，重点关注以下配置：
 
-![Add Intelligent Agent.png](https://images.tuyacn.com/content-platform/hestia/1757318291e68cc87672c.png)
-
-
-#### Add Tool Set:
-1. Under **01 Model Capability Configuration** > **Skill Configuration**, select **Tool Set**, click the add (**+**) button on the right to enter the **Add Tool** page.
-2. Under **Device Control** > **Device Self-Control - Only control devices associated with Agent**, select to add **Control devices bound to intelligent agent**.
-
-![Add Tool.png](https://images.tuyacn.com/content-platform/hestia/1755773751f7b81957a77.png)
-
-![Add Tool.png](https://images.tuyacn.com/content-platform/hestia/17557738127051a6780ef.png)
-
-#### Develop Prompts
-
-Under **02 Prompt Development**, refer to [Prompt Tutorial](https://www.tuyaos.com/viewtopic.php?t=3724) to complete prompt development.
-
-![Develop Prompts.png](https://images.tuyacn.com/content-platform/hestia/175577395562cc51ae786.png)
-
-### Add Custom Firmware
-
-To enable subsequent OTA upgrades and batch module ordering, custom firmware needs to be added.
-
-After entering the product development process, under **03 Hardware Development**, select **Cloud Access Development Method** as **TuyaOS AI**, select **Cloud Access Hardware** as T5 module, then click **Create Custom Firmware** and complete related configurations.
-
-![Add Firmware.png](https://images.tuyacn.com/content-platform/hestia/1757318532460587f4648.png)
+![添加智能体.png](https://images.tuyacn.com/content-platform/hestia/1757318291e68cc87672c.png)
 
 
-## AI Control Command Configuration
+#### 添加工具集：
+1. 在 **01 模型能力配置** > **技能配置** 下选择 **工具集**，单击右侧添加（**+**）按钮进入 **添加工具** 页面。
+2. 在 **设备控制** > **设备自控 - 仅控制与 Agent 关联的设备** 下，选择添加 **控制智能体绑定的设备**。
+
+![添加工具.png](https://images.tuyacn.com/content-platform/hestia/1755773751f7b81957a77.png)
+
+![添加工具.png](https://images.tuyacn.com/content-platform/hestia/17557738127051a6780ef.png)
+
+#### 开发提示词
+
+在 **02 提示词开发** 下，参考 [Prompt 入门教程](https://www.tuyaos.com/viewtopic.php?t=3724) 完成提示词的开发。
+
+![开发提示词.png](https://images.tuyacn.com/content-platform/hestia/175577395562cc51ae786.png)
+
+### 新增自定义固件
+
+为了后续 OTA 升级和模组批量下单，需要新增自定义固件。
+
+进入产品开发流程后，在 **03 硬件开发** 下，选择 **云端接入开发方式** 为 **TuyaOS AI**，选择 **云端接入硬件** 为 T5 模组，然后单击 **新建自定义固件** 并完成相关配置。
+
+![新增固件.png](https://images.tuyacn.com/content-platform/hestia/1757318532460587f4648.png)
+
+
+## AI 控制指令配置
 
 :::info
-If all product functions added during product development are standard functions (Data Point, DP; standard functions are function points with DP ID less than 100), self-control commands are configured by default and this step can be skipped; if you have added custom function points, you need to complete this step to modify the command scheme.
+如您在产品开发过程中添加的产品功能均为标准功能（Data Point，DP；标准功能即 DP ID 小于 100 的功能点），则默认已配置自控指令，可以跳过本步骤；如您增加了自定义功能点，则需要完成本步骤修改指令方案。
 :::
 
-Go to the [**AI Product Command Configuration**](https://platform.tuya.com/exp/voice/ai) page, under **Self-Control Commands**, click **Modify Command Scheme**, and refer to [Device Self-Control Commands](https://developer.tuya.com/cn/docs/iot/Self-control?id=Kep3yhifdrvah) to complete related configurations. 
+前往 [**AI 产品指令配置**](https://platform.tuya.com/exp/voice/ai) 页面，在 **自控指令** 下单击 **修改指令方案**，并参考 [设备自控指令](https://developer.tuya.com/cn/docs/iot/Self-control?id=Kep3yhifdrvah) 完成相关配置。 
 
-![AI Product Command Configuration.png](https://images.tuyacn.com/content-platform/hestia/1757320122af584c90f10.png)
+![AI 产品指令配置.png](https://images.tuyacn.com/content-platform/hestia/1757320122af584c90f10.png)
 
 
-## Implement Product Functions
+## 实现产品功能
 
-DP (Data Point) is Tuya's data model for defining product functions, used to describe product functionality. To achieve large-scale and digital management of massive and diverse devices, an abstract language is needed to describe devices. For detailed description of the DP model, please refer to [DP Model and Control Protocol](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr).
+DP（Data Point）是涂鸦对产品功能定义的数据模型，用于描述产品的功能。为了实现对海量且多样的设备进行规模化和数字化管理，需要使用一种抽象语言来描述设备。关于 DP 模型的详细说明，请参考 [DP 模型与控制协议](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr)。
 
-Taking the `your_chat_bot` Demo in TuyaOpen as an example, when the App or AI sends control commands, it will enter the `user_event_handler_on` interface. Among them, Object types (Boolean, Value, Enum, Bitmap, String) enter the `TUYA_EVENT_DP_RECEIVE_OBJ` branch, and Raw types enter the `TUYA_EVENT_DP_RECEIVE_RAW` branch.
+以 TuyaOpen 中的 `your_chat_bot` Demo 为例，当 App 或者 AI 下发控制指令时，会进入 `user_event_handler_on` 接口。其中，Object 类型（Boolean、Value、Enum、Bitmap、String）进入 `TUYA_EVENT_DP_RECEIVE_OBJ` 分支，Raw 类型进入 `TUYA_EVENT_DP_RECEIVE_RAW` 分支。
 
 ```c
 void user_event_handler_on(tuya_iot_client_t *client, tuya_event_msg_t *event)
@@ -124,20 +124,20 @@ void user_event_handler_on(tuya_iot_client_t *client, tuya_event_msg_t *event)
 ```
 
 
-## Authorize Development Board
+## 授权开发板
 
-### Method 1: Code Authorization
+### 方式一：代码授权
 
-Modify header files. For detailed process, please refer to [Device Authorization](https://tuyaopen.ai/zh/docs/quick-start/equipment-authorization).
+修改头文件。详细流程，请参考 [设备授权](https://tuyaopen.ai/zh/docs/quick-start/equipment-authorization)。
 
-For example, open the `your_chat_bot` project, find the `tuya_config.h` file at path: `apps/tuya.ai/your_chat_bot/include/tuya_config.h`, and modify the following three parameters:
-- `TUYA_PRODUCT_ID`: Product ID (PID) generated when creating the product.
-- `TUYA_OPENSDK_UUID`: UUID can be obtained for free, please contact Tuya staff to get it.
-- `TUYA_OPENSDK_AUTHKEY`: Authkey can be obtained for free, please contact Tuya staff to get it.
+例如，打开 `your_chat_bot` 项目，找到 `tuya_config.h` 文件，路径为：`apps/tuya.ai/your_chat_bot/include/tuya_config.h`，并修改以下三个参数：
+- `TUYA_PRODUCT_ID`：产品创建时生成的 Product ID（PID）。
+- `TUYA_OPENSDK_UUID`：UUID 可免费获取，请联系涂鸦工作人员领取。
+- `TUYA_OPENSDK_AUTHKEY`：Authkey 可免费获取，请联系涂鸦工作人员领取。
 
-![Get PID.png](https://images.tuyacn.com/content-platform/hestia/175577227898c13ebfae5.png)
+![获取 PID.png](https://images.tuyacn.com/content-platform/hestia/175577227898c13ebfae5.png)
 
-Example as follows:
+示例如下：
 
 ```
 #ifndef TUYA_PRODUCT_ID
@@ -149,26 +149,26 @@ Example as follows:
 
 ```
 
-### Method 2: Tool Authorization
+### 方式二：工具授权
 
-In **Tuya Uart Tool**, select the flashing serial port and **BaudRate**, click **Start** to open the serial port, then click **Authorize** to authorize.
+在 **Tuya Uart Tool** 中，选择烧录串口和 **BaudRate**（波特率），单击 **Start** 打开串口，然后单击 **Authorize** 进行授权。
 
-<img alt="Tool Authorization" src="https://images.tuyacn.com/content-platform/hestia/1757310278591d8030b54.png" width="600"  />
+<img alt="工具授权" src="https://images.tuyacn.com/content-platform/hestia/1757310278591d8030b54.png" width="600"  />
 
-## Compile and Flash
+## 编译和烧录
 
-Enter the following in the terminal:
+在终端输入以下：
 
 ```
 tos.py build && tos.py flash 
 ```
 
-![Example.png](https://images.tuyacn.com/content-platform/hestia/17557741754d231019d50.png)
+![示例图.png](https://images.tuyacn.com/content-platform/hestia/17557741754d231019d50.png)
 
-If using the T5AI-Board development board, the board itself is configured with two serial ports, one for flashing and one for log output. If flashing fails, you can switch port numbers and retry.
+如果使用 T5AI-Board 开发板，板本身配置有两路串口，一路用于烧录，另一路用于日志输出。如果烧录失败，可以切换端口号并重试。
 
-## Common Issues
+## 常见问题
 
-### Flashing always fails at Write, how to solve?
+### 烧录总是在 Write 时失败，如何解决？
 
-Please refer to [Install Corresponding Driver](https://tuyaopen.ai/zh/docs/tos-tools/tools-tyutool#%E7%83%A7%E5%BD%95%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%80%BB%E6%98%AF%E5%9C%A8write%E6%97%B6%E5%A4%B1%E8%B4%A5) to try to solve it.
+请参考 [安装对应驱动](https://tuyaopen.ai/zh/docs/tos-tools/tools-tyutool#%E7%83%A7%E5%BD%95%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%80%BB%E6%98%AF%E5%9C%A8write%E6%97%B6%E5%A4%B1%E8%B4%A5) 尝试解决。
