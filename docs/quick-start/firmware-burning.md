@@ -14,6 +14,9 @@ For Linux and Mac users, run the command `sudo usermod -aG dialout $USER` to gra
 
 Run the command `tos.py flash` to flash the firmware, and select the correct flashing port. If multiple ports exist, try them sequentially.
 
+:::tip
+The prerequisite for using this command is that you must be in the application project path (where `tos.py build` is executed) and the project has been successfully compiled.
+:::
 
 ```bash
 ❯ tos.py flash

@@ -20,6 +20,10 @@ You can use either of the following authorization methods:
    Select the serial port number used for flashing.
    :::
 
+   :::tip
+   The prerequisite for using this command is that you must be in the application project path (where `tos.py build` is executed) and the project has been successfully compiled.
+   :::
+
 2. Enter the interactive command, use `auth,` and then press Enter. You will get the following information:
 
    ```bash
@@ -46,7 +50,18 @@ You can use either of the following authorization methods:
    Authorization write succeeds.
    ```
 
-4. After successful operation, reboot the device for the authorization information to take effect.
+4. Use the `auth-read` command to verify if the authorization was successful.
+
+   The following output indicates successful authorization:
+   ```bash
+   tuya>
+   auth-read
+   auth-read
+   uuid9f6a6xxxxxxxxxxx
+   cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
+   ```
+
+5. After successful operation, reboot the device for the authorization information to take effect.
 
    If the device does not support authorization commands, refer to the section below to configure authorization information by modifying the header file.
 

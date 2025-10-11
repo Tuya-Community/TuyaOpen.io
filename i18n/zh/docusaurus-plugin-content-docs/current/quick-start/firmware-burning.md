@@ -14,6 +14,10 @@ title: 固件烧录
 
 使用命令 `tos.py flash` 烧录固件，并选择烧录口。若有多个串口可以依次尝试。
 
+:::tip
+使用该命令的前提是，必须在应用项目路径中（执行`tos.py build`的位置），并且项目已经编译成功。
+:::
+
 ```bash
 ❯ tos.py flash
 [INFO]: Run Tuya Uart Tool.
