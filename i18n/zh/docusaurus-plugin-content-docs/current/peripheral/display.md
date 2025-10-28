@@ -1,6 +1,7 @@
 ---
 title: 显示屏驱动
 ---
+## 简介
 
 [display](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/display) 组件实现了显示设备的统一注册、管理、控制和帧缓冲操作，为多种显示屏提供了抽象和统一的管理接口。
 
@@ -76,11 +77,11 @@ title: 显示屏驱动
 
 显示组件主要分为两大模块：抽象管理模块和实例化注册模块。
 
-- 抽象管理模块（`tdl_display`）
+- 抽象管理模块（`tdl_display`）：
   - 为应用提供统一的显示屏操作接口。
   - 对屏幕驱动芯片进行抽象处理，提供统一的适配接口。
   - 为使用几种常规驱动接口（RGB/SPI/QSPI/MCU8080）的屏幕提供更加集成的接口。
-- 实例化注册模块（`tdd_display`）
+- 实例化注册模块（`tdd_display`）：
   - 屏幕驱动实例化，目前已经接入了十几种驱动芯片，后续会持续增加。
   - 提供将屏幕挂载到抽象管理模块上的注册接口。
 
@@ -136,11 +137,11 @@ title: 显示屏驱动
 
 2. 选择目标 Board，以 TUYA_T5AI_EVB 为例。
 
-  ![](/img/peripheral/display/choos_board.png)
+    ![](/img/peripheral/display/choos_board.png)
 
 3. 查看显示驱动的使能宏是否被打开。
 
-  ![](/img/peripheral/display/display_enable.png)
+    ![](/img/peripheral/display/display_enable.png)
 
 #### 已开启需要屏幕驱动的功能
 
@@ -153,11 +154,11 @@ title: 显示屏驱动
     ```
 2. 打开 LVGL 功能。
 
-  ![](/img/peripheral/display/choose_lvgl.png)
+    ![](/img/peripheral/display/choose_lvgl.png)
 
 3. 查看显示驱动的使能宏是否被打开。
 
-  ![](/img/peripheral/display/display_enable.png)
+    ![](/img/peripheral/display/display_enable.png)
 
 #### 手动打开使能宏
 
@@ -169,7 +170,7 @@ title: 显示屏驱动
 
 2. 打开驱动使能宏。
 
-  ![](/img/peripheral/display/open_display.png)
+    ![](/img/peripheral/display/open_display.png)
 
 ### 使用方法
 
