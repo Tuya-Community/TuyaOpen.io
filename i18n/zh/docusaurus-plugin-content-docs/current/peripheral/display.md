@@ -1,7 +1,7 @@
 ---
 title: 显示屏驱动
 ---
-## 简介
+## 概述
 
 [display](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/display) 组件实现了显示设备的统一注册、管理、控制和帧缓冲操作，为多种显示屏提供了抽象和统一的管理接口。
 
