@@ -1,6 +1,6 @@
 # 音频驱动
 
-## 简介
+## 概述
 
 [音频驱动](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/audio_codecs) 是 TuyaOpen 中用于处理音频输入和输出的核心组件。它提供了统一的接口来管理不同类型的音频设备，如麦克风和扬声器。通过这个驱动，应用可以轻松地进行音频采集、播放和配置，而无需关心底层硬件的具体实现细节。
 
