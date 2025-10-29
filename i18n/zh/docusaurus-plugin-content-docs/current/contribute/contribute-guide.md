@@ -7,7 +7,7 @@
 1. 在本地 PC 中安装 git 工具
 2. 将 TuyaOpen 仓库 fork 到自己的 github 仓库中
 3. 将 fork 后的 TuyaOpen 仓库通过 `git clone` 命令 clone 到本地 PC 中
-4. 从待合并的分支中，通过 `git checout -b <BranchName>` 命令创建自己的本地开发分支
+4. 从待合并的分支中，通过 `git checkout -b <BranchName>` 命令创建自己的本地开发分支
 5. 在本地修改待提交的代码/文档等内容
 6. 提交修改至自己的 github 仓库
 
