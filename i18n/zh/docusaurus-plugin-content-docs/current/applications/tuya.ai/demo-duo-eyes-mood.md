@@ -2,6 +2,8 @@
 title: 双眼屏情绪机器人
 ---
 
+## 概述
+
 [duo_eye_mood](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/duo_eye_mood) 是基于 Tuya.AI 开源的大模型智能聊天机器人。通过麦克风采集语音，经语音识别处理后，实现对话交流、互动响应及调侃功能，同时可在屏幕上实时显示聊天内容。
 
 ## 功能介绍
