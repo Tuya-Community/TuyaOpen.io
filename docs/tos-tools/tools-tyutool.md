@@ -83,11 +83,9 @@ After the device serial port is successfully connected, the `Authorize` button w
 The TuyaOpen `UUID` and `AuthKey` can be obtained from the [Tuya IoT Platform](https://platform.tuya.com/purchase/index?type=6) or purchased from [Tuya's official Taobao store](https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP).
 :::
 
-After successful authorization, the following log output will appear:
+After successful authorization, you can use the `auth-read` command to verify:
 
-```
-Authorization write succeeds.
-```
+![auth-read](/img/tyutool/auth-read.png)
 
 ## Frequently Asked Questions
 

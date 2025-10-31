@@ -83,11 +83,9 @@ tyutool_gui 打开后界面如下显示：
 TuyaOpen `UUID` 和 `AuthKey` 可以在 [Tuya IoT 平台](https://platform.tuya.com/purchase/index?type=6) 或在 [淘宝浙江涂鸦智能的小店](https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP) 购买获取。
 :::
 
-授权成功后，会出现以下日志输出：
+授权成功后，可以使用`auth-read`命令验证：
 
-```
-Authorization write succeeds.
-```
+![auth-read](/img/tyutool/auth-read.png)
 
 ## 常见问题
 

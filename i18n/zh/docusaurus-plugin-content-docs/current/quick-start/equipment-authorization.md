@@ -20,6 +20,10 @@ title: 设备授权
     这里选择烧录时使用的串口号。
     :::
 
+    :::tip
+    使用该命令的前提是，必须在应用项目路径中（执行`tos.py build`的位置），并且项目已经编译成功。
+    :::
+
 2. 输入交互命令，使用 `auth` 并回车，可以得到如下信息：
 
     ```bash
@@ -43,6 +47,17 @@ title: 设备授权
     auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
     auth uuid9f6a6xxxxxxxxxxx cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
     Authorization write succeeds.
+    ```
+
+4. 使用`auth-read`命令验证是否授权成功
+
+    出现如下输出，表示授权成功
+    ```bash
+    tuya>
+    auth-read
+    auth-read
+    uuid9f6a6xxxxxxxxxxx
+    cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
     ```
 
 4. 操作成功后，需要重启设备，重启后授权信息生效。
