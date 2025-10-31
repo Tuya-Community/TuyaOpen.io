@@ -4,7 +4,7 @@ title: Generic Demos
 
 # Generic Demos
 
-The TuyaOpen provides a variety of sample projects to facilitate developers in quickly getting started and understanding the usage of the TuyaOpen.
+TuyaOpen provides a variety of example projects to help you quickly familiarize yourself with and master the usage of TuyaOpen, significantly reducing the learning curve.
 
 ```bash
 $ examples
@@ -42,17 +42,15 @@ $ examples
     └── sta
 ```
 
-## Select the project to be compiled
-
+## Select a project to build
 
 Each chip model comes with corresponding example projects.
 
-To select the example to be compiled, enter the example directory using the command `cd ./example/xxx/xxx`, then set the compilation platform with the command `tos.py config choice`.
+Navigate to the desired example by using the command `cd ./example/xxx/xxx`. Then, run the `tos.py config choice` command to set the compilation platform.
 
-Each sample project includes a README.md file that provides detailed instructions on configuring, compiling, and running the project.
 
-## Compile the example
+## Build the example
 
-1. Run the `tos.py config choice` command to select the current development board or platform.
-2. If you need to modify the configuration, run the `tos.py config menu` command to make changes.
-3. Run the `tos.py build` command to compile the project.
+1. Run the `tos.py config choice` command to select the desired development board or platform.
+2. If you need to modify the configuration, run the `tos.py config menu` command first.
+3. Run `tos.py build` to build the project.
