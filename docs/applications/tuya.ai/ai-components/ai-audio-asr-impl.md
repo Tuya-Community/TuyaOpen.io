@@ -2,173 +2,174 @@
 title: AI Voice Interaction Implementation
 ---
 
+## Terms and definitions
 
-## Terminology
+| Term | Description |
+| ---- | ------------------------------------------------------------ |
+| VAD | Voice activity detection, used to determine whether speech is present in an audio signal. |
+| ASR | Automatic speech recognition. Converts speech content into text or commands recognizable by a computer. |
+| PCM | Pulse code modulation. A lossless compression format that stores raw audio sample data directly. |
+| Opus | A lossy compression format optimized for a mix of speech and music. |
 
-| Term | Explanation                                                         |
-| ---- | ------------------------------------------------------------------- |
-| VAD  | Voice Activity Detection, a technology used to determine whether there is speech in an audio signal. |
-| ASR  | Automatic Speech Recognition, a technology that converts speech content into computer-recognizable text or commands. |
+## Features
 
-## Function Overview
+The `ai_audio` component is primarily used for handling AI and audio-related operations, including audio input, output, configuration management, and creating AI sessions. Below is a detailed description of its functionalities:
+- Captures audio data.
+- Play audio data.
+- Create a cloud AI session: Send captured valid data to the cloud for ASR. The cloud replies based on the content recognized by ASR.
+- Preprocess captured audio data: Identify valid content before sending it to the cloud for processing, reducing the load on cloud resources.
+   - VAD
+   - ASR: Perform wake word detection.
+- Four distinct **operating modes** are provided, based on different combinations of **dialogue mode** and **trigger method**.
+   - Dialogue mode
+      - Single-turn dialogue: Each trigger results in only one round of conversation (Q&A).
+      - Free dialogue: After each trigger, N rounds of continuous conversation are possible.
+   - Trigger methods:
+      - Manual control: For example, hold down a button.
+      - VAD: Dialogue starts upon detecting sound (voice activity).
+      - Local ASR wake-up detection: Dialogue starts upon detecting a specific wake word.
+   - Available operating modes:
+      - Manually triggered single-turn dialogue
+      - VAD-triggered free dialogue
+      - ASR wake-up for single-turn dialogue
+      - ASR wake-up for free dialogue
 
-ai_audio is mainly used to handle operations related to AI and audio, including audio input, output, configuration management, and creating AI sessions. The following is a detailed description of the component's functions:
-- Collect audio data
-- Play audio data
-- Create a cloud AI session, send the collected valid data to the cloud for ASR recognition, and the cloud will reply based on the ASR result
-- Preprocess the collected audio data, send it to the cloud only after valid content is detected, reducing the cloud processing load.
-  - VAD detection
-  - ASR wake word detection
-- Provides four **working modes** according to different **dialogue modes** and **trigger methods**:
-  - Dialogue mode
-    - Single-turn dialogue: Each trigger only performs one round of Q&A.
-    - Free dialogue: Each trigger allows N rounds of continuous dialogue.
-  - Dialogue trigger method
-    - Manual control, such as pressing and holding a button.
-    - VAD detection: Start dialogue when voice is detected.
-    - Local ASR wake word detection: Start dialogue when the wake word is detected.
-  - Working modes
-    - Manually triggered single-turn dialogue
-    - VAD triggered free dialogue
-    - ASR wakeup single-turn dialogue
-    - ASR wakeup free dialogue
+## Functional modules
 
-## Functional Modules
+The component primarily consists of five functional modules:
+- Audio input module
+   - Captures audio data.
+   - Performs audio data preprocessing.
+   - Notifies of module state changes.
+- AI agent module
+   - Creates cloud sessions.
+   - Reports data to the cloud. **Default format: PCM (OPUS optional).**
+   - Receives cloud data. **Default format: MP3, 16-bit width, 16 kHz sampling rate, mono.**
+- Cloud ASR processing module (Cloud ASR)
+   - Initiates reporting.
+   - Terminates reporting.
+   - Waits for cloud ASR results.
+- Audio playback module (Player)
+   - Plays audio data returned from the cloud.
+   - Plays built-in prompt tones.
+- Management module (Main)
+   - Serves as the component entry point.
+   - Manages the four modules listed above.
 
-This component mainly consists of five functional modules:
-- Audio Input Module (input)
-  - Collect audio data
-  - Audio data preprocessing
-  - Module state change notification
-- AI Agent Module (ai agent)
-  - Create cloud session
-  - Data reporting, **default format: PCM (OPUS optional)**
-  - Receive cloud data, **default format: MP3, 16bit, 16KHz, mono**
-- Cloud ASR Processing Module (cloud asr)
-  - Start reporting
-  - End reporting
-  - Wait for cloud ASR
-- Audio Playback Module (player)
-  - Play audio data returned from the cloud
-  - Play built-in prompt sounds
-- Management Module (main)
-  - Component entry
-  - Manage the above four modules
+## Process
 
-## Workflow
+### Manually triggered single-turn dialogue
 
-### Manually Triggered Single-Turn Dialogue
-
-Under external conditions, the user can initiate a dialogue. Each trigger only performs one round of Q&A. For example, when the button is pressed, the user can input speech, and releasing the button indicates the end of speech input, then wait for the AI to reply.
+Users can initiate a dialogue when triggered by an external condition. Each trigger results in exactly one turn of dialogue—a single question-and-answer pair. For example, when a button is pressed and held, the user can provide voice input. Releasing the button signals the end of the voice input, after which the system waits for the AI's response.
 
 ```javascript
-usr: "Who are you" (under some external condition, e.g., button pressed)
-ai : "I am xxx"
-usr: "What's the weather today" (under some external condition, e.g., button pressed)
-ai : "xxxx"
+User: "Who are you?" (Triggered under an external condition, for example, a button is pressed and held)
+AI: "I am xxx."
+User: "What's the weather today?" (Triggered under an external condition, for example, a button is pressed and held)
+AI: "xxxx."
 ```
 
 ![](/img/applications/ai_components/en/manual_once_talk.svg)
 
-### VAD Triggered Free Dialogue
+### VAD-triggered free dialogue
 
-The device sends the collected audio data to the VAD module for human voice detection. If human voice is detected, the session is considered started. That is, the user can speak at any time, and the module will send the user's voice data to the cloud to initiate a session.
+The device streams captured audio data to the VAD module for human voice detection. If voice activity is detected, a session is considered active. This enables users to speak naturally at any time, as the module will continuously stream their speech data to the cloud to initiate and maintain the session.
 
 ```javascript
-usr: "Who are you"
-ai : "I am xxx"
-usr: "What's the weather today"
-ai : "xxxx"
+User: "Who are you?"
+AI: "I am xxx."
+User: "What's the weather today?"
+AI: "xxxx."
 ```
 
 ![](/img/applications/ai_components/en/vad_free_talk.svg)
 
-### ASR Wakeup Single-Turn Dialogue
+### ASR wake-up for single-turn dialogue
 
-The user needs to say the wake word before each dialogue to wake up the device. After each wakeup, the user can only initiate one dialogue. After the dialogue ends, the user needs to say the wake word again to start a new dialogue, similar to a smart speaker mode.
+Before initiating a dialogue, the user must speak a wake word to activate the device. Each time the device is woken up, the user can only initiate one dialogue session. After the session concludes, the user must speak the wake word again to start a new interaction, similar to the behavior of smart speakers.
 
 ```javascript
-usr: "Hello, xxxx" (wake word)
-ai : "I'm here" (prompt sound)
-usr: "Who are you"
-ai : "I am xxx"
-usr: "Hello, xxxx" (wake word)
-ai : "I'm here" (prompt sound)
-usr: "What's the weather today"
-ai : "xxxx"
+User: "Hello, xxxx." (Wake word)
+AI: (Play prompt tone) "I'm here."
+User: "Who are you?"
+AI: "I am xxx."
+User: "Hello, xxxx." (Wake word)
+AI: (Play prompt tone) "I'm here."
+User: "What's the weather today?"
+AI: "xxxx."
 ```
 
 ![](/img/applications/ai_components/en/asr_once_talk.svg)
 
-### ASR Wakeup Free Dialogue
+### ASR wake-up for free dialogue
 
-After the user says the wake word to wake up the device, continuous dialogue can be carried out. After being woken up, if no sound is detected for 30 seconds, the device will re-enter the wake word detection state.
+After the user speaks the wake word to activate the device, they can engage in a continuous, multi-turn dialogue. Once awakened, if the device does not detect any sound for 30 seconds, it will automatically return to the wake word detection state.
 
 ```javascript
-usr: "Hello, xxxx" (wake word)
-ai : "I'm here" (prompt sound)
-usr: "Who are you"
-ai : "I am xxx"
-usr: "What's the weather today"
-ai : "xxxx"
+User: "Hello, xxxx." (Wake word)
+AI: (Play prompt tone) "I'm here."
+User: "Who are you?"
+AI: "I am xxx."
+User: "What's the weather today?"
+AI: "xxxx."
 ```
 
 ![](/img/applications/ai_components/en/asr_free_talk.svg)
 
-## Development Process
+## Development process
 
-### Structure Description
+### Structs
 
-#### Working Modes
+#### Available operating modes:
 
 ```C
 typedef uint8_t AI_AUDIO_WORK_MODE_E;
-#define AI_AUDIO_MODE_MANUAL_SINGLE_TALK     1 //Manually triggered single-turn dialogue
-#define AI_AUDIO_WORK_VAD_FREE_TALK          2 //VAD triggered free dialogue
-#define AI_AUDIO_WORK_ASR_WAKEUP_SINGLE_TALK 3 //ASR wakeup single-turn dialogue
-#define AI_AUDIO_WORK_ASR_WAKEUP_FREE_TALK   4 //ASR wakeup free dialogue
+#define AI_AUDIO_MODE_MANUAL_SINGLE_TALK     1 // Manually triggered single-turn dialogue
+#define AI_AUDIO_WORK_VAD_FREE_TALK          2 // VAD-triggered free dialogue
+#define AI_AUDIO_WORK_ASR_WAKEUP_SINGLE_TALK 3 // ASR wake-up for single-turn dialogue
+#define AI_AUDIO_WORK_ASR_WAKEUP_FREE_TALK   4 // ASR wake-up for free dialogue
 ```
 
-#### Event Types
+#### Event types
 
 ```c
 typedef enum {
-    AI_AUDIO_EVT_NONE,                      //None
-    AI_AUDIO_EVT_HUMAN_ASR_TEXT,            //Return user speech text
-    AI_AUDIO_EVT_AI_REPLIES_TEXT_START,     //Start transmitting AI speech text
-    AI_AUDIO_EVT_AI_REPLIES_TEXT_DATA,      //Transmit AI speech text
-    AI_AUDIO_EVT_AI_REPLIES_TEXT_END,       //End transmitting AI speech text
-    AI_AUDIO_EVT_AI_REPLIES_EMO,            //Return AI emotion
-    AI_AUDIO_EVT_ASR_WAKEUP,                //Wake word detected
+    AI_AUDIO_EVT_NONE,                      // No event
+    AI_AUDIO_EVT_HUMAN_ASR_TEXT,            // Returns user's speech-to-text result
+    AI_AUDIO_EVT_AI_REPLIES_TEXT_START,     // Starts streaming AI response text
+    AI_AUDIO_EVT_AI_REPLIES_TEXT_DATA,      // Streaming AI response text data
+    AI_AUDIO_EVT_AI_REPLIES_TEXT_END,       // Ends streaming AI response text
+    AI_AUDIO_EVT_AI_REPLIES_EMO,            // Returns AI emotion data
+    AI_AUDIO_EVT_ASR_WAKEUP,                // Wake word detected
 } AI_AUDIO_EVENT_E;
 
 typedef struct {
     char *name;
     char *text;
-} AI_AUDIO_EMOTION_T;                       //Emotion structure
+} AI_AUDIO_EMOTION_T;                       // Emotion data struct
 
-//Event notification callback
+// Event notification callback
 typedef void (*AI_AUDIO_EVT_INFORM_CB)(AI_AUDIO_EVENT_E event, uint8_t *data, uint32_t len, void *arg);
 ```
 
-#### Component States
+#### Component state
 
 ```c
 typedef enum {
-    AI_AUDIO_STATE_STANDBY,                 //Standby state
-    AI_AUDIO_STATE_LISTEN,                  //Listening
-    AI_AUDIO_STATE_UPLOAD,                  //Uploading data to cloud
-    AI_AUDIO_STATE_AI_SPEAK,                //Playing AI speech returned from cloud
-    AI_AUDIO_STATE_MAX = 0xFF,              //Invalid state
+    AI_AUDIO_STATE_STANDBY,                 // Standby state
+    AI_AUDIO_STATE_LISTEN,                  // Listening
+    AI_AUDIO_STATE_UPLOAD,                  // Upload data to cloud
+    AI_AUDIO_STATE_AI_SPEAK,                // Play AI audio response from cloud
+    AI_AUDIO_STATE_MAX = 0xFF,             // Invalid state
 } AI_AUDIO_STATE_E;
 
-//State notification callback
+// State notification callback
 typedef void (*AI_AUDIO_STATE_INFORM_CB)(AI_AUDIO_STATE_E state);
 ```
 
-### API Description
+### API description
 
-#### Module Initialization
+#### Initialize module
 
 This API is mainly used to initialize AI-related services, audio devices, and other resources.
 
@@ -187,9 +188,9 @@ typedef struct {
 OPERATE_RET ai_audio_init(AI_AUDIO_CONFIG_T *cfg);
 ```
 
-#### Open Audio Module
+#### Enable the audio module
 
-The audio module is off by default. The user needs to call this API to open the module.
+The audio module is disabled by default. You must call this API to enable it.
 
 ```c
 /**
@@ -200,9 +201,9 @@ The audio module is off by default. The user needs to call this API to open the 
 OPERATE_RET ai_audio_set_open(bool is_open);
 ```
 
-#### Set Volume
+#### Set volume
 
-Set the microphone volume.
+Set the volume of the microphone.
 
 ```c
 /**
@@ -213,9 +214,9 @@ Set the microphone volume.
 OPERATE_RET ai_audio_set_volume(uint8_t volume);
 ```
 
-#### Get Volume
+#### Get volume
 
-Get the current microphone volume.
+Get the current volume of the microphone.
 
 ```c
 /**
@@ -226,9 +227,9 @@ Get the current microphone volume.
 uint8_t ai_audio_get_volume(void);
 ```
 
-#### Manually Start Voice Input
+#### Manually start voice input
 
-After calling this API, the module enters the valid audio receiving state. By default, the subsequently collected audio data will be sent to the cloud for ASR recognition.
+After calling this API, the module enters a state ready to receive valid audio input. By default, all subsequently captured audio data will be streamed to the cloud for ASR recognition.
 
 ```c
 /**
@@ -240,9 +241,9 @@ After calling this API, the module enters the valid audio receiving state. By de
 OPERATE_RET ai_audio_manual_start_single_talk(void);
 ```
 
-#### Manually Stop Voice Input
+#### Manually stop voice input
 
-After calling this API, the module will no longer receive valid audio. The subsequently collected audio data will not be sent to the cloud.
+After calling this API, the module exits the state of receiving valid audio input. Subsequently captured audio data will no longer be sent to the cloud.
 
 ```c
 /**
@@ -253,9 +254,9 @@ After calling this API, the module will no longer receive valid audio. The subse
 OPERATE_RET ai_audio_manual_stop_single_talk(void);
 ```
 
-#### Wakeup Module
+#### Wake up the module
 
-After calling this API, the module will enter the state of detecting a new round of dialogue (valid audio detection state). If the module is currently in a dialogue, the current session will be interrupted.
+After calling this API, the module enters a state ready to detect a new dialogue session (listening for valid audio input). If the module is currently engaged in a dialogue, that session will be interrupted.
 
 ```c
 /**
@@ -269,7 +270,7 @@ After calling this API, the module will enter the state of detecting a new round
 OPERATE_RET ai_audio_set_wakeup(void);
 ```
 
-#### Get Module State
+#### Get module state
 
 Get the current state of the module.
 
@@ -282,25 +283,25 @@ Get the current state of the module.
 AI_AUDIO_STATE_E ai_audio_get_state(void);
 ```
 
-#### Play Built-in Prompt Sound
+#### Play built-in prompt tones
 
-Play various built-in prompt sounds, such as network configuration status, dialogue mode, etc.
+Play various built-in prompt tones, such as those indicating pairing status or dialogue mode.
 
 ```c
 typedef enum {
     AI_AUDIO_ALERT_NORMAL = 0,
-    AI_AUDIO_ALERT_POWER_ON,             /* Power on broadcast */
-    AI_AUDIO_ALERT_NOT_ACTIVE,           /* Not networked yet, please configure network first */
-    AI_AUDIO_ALERT_NETWORK_CFG,          /* Enter network configuration state, start configuring */
-    AI_AUDIO_ALERT_NETWORK_CONNECTED,    /* Network connected successfully */
-    AI_AUDIO_ALERT_NETWORK_FAIL,         /* Network connection failed, retry */
-    AI_AUDIO_ALERT_NETWORK_DISCONNECT,   /* Network disconnected */
+    AI_AUDIO_ALERT_POWER_ON,             /* Power-on announcement */
+    AI_AUDIO_ALERT_NOT_ACTIVE,           /* Device not activated, please perform pairing first */
+    AI_AUDIO_ALERT_NETWORK_CFG,          /* Enter pairing mode */
+    AI_AUDIO_ALERT_NETWORK_CONNECTED,    /* Network is connected successfully */
+    AI_AUDIO_ALERT_NETWORK_FAIL,         /* Network connection failed. Try again. */
+    AI_AUDIO_ALERT_NETWORK_DISCONNECT,   /* Network is disconnected */
     AI_AUDIO_ALERT_BATTERY_LOW,          /* Low battery */
     AI_AUDIO_ALERT_PLEASE_AGAIN,         /* Please say it again */
-    AI_AUDIO_ALERT_WAKEUP,               /* Hello, I'm here */
-    AI_AUDIO_ALERT_LONG_KEY_TALK,        /* Long press button to talk */
-    AI_AUDIO_ALERT_KEY_TALK,             /* Button talk */
-    AI_AUDIO_ALERT_WAKEUP_TALK,          /* Wakeup talk */
+    AI_AUDIO_ALERT_WAKEUP,               /* Hello, I'm here*/
+    AI_AUDIO_ALERT_LONG_KEY_TALK,        /* Press and hold the button to talk */
+    AI_AUDIO_ALERT_KEY_TALK,             /* Press the button to talk */
+    AI_AUDIO_ALERT_WAKEUP_TALK,          /* Wake up and talk */
     AI_AUDIO_ALERT_FREE_TALK,            /* Free talk */
 } AI_AUDIO_ALERT_TYPE_E;
 
@@ -313,9 +314,9 @@ typedef enum {
 OPERATE_RET ai_audio_player_play_alert(AI_AUDIO_ALERT_TYPE_E type);
 ```
 
-### Development Steps
+### Development steps
 
-1. Call the module initialization interface, set the working mode, and register notification callbacks.
-2. Call the interface to open the audio module.
-3. If the working mode is manually triggered single-turn dialogue, the developer needs to call the manual start/stop voice input interface to control the timing of voice reporting. For other modes, the component will handle it internally.
-4. Developers can handle different events and states in the notification callback according to actual product requirements.
+1. Call the module initialization API to set the operating mode and register the notification callbacks.
+2. Call the API to enable the audio module.
+3. Suppose the operating mode is set to manually triggered single-turn dialogue. In that case, you must call the manually start/stop voice input APIs to control the timing of voice data reporting. For other modes, the component handles this internally.
+4. Based on specific product requirements, you can implement appropriate handling for different events and states within the notification callbacks.
