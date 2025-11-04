@@ -23,9 +23,9 @@ title: 创建 Platform
 
 2. 生成 `Kconfig` 配置：
 
-    * 首先，会创建一个顶层的 `Kconfig` 文件，用于将新平台集成到项目的配置系统中。
+    1. 首先，会创建一个顶层的 `Kconfig` 文件，用于将新平台集成到项目的配置系统中。
 
-    * 然后，会弹出一个 menuconfig 交互界面，您可以选择此新平台需要支持哪些基础功能（如 Wi-Fi、BLE、GPIO、I2C 等），选择会保存在一个 `default.config` 文件中。
+    2. 然后，会弹出一个 menuconfig 交互界面，您可以选择此新平台需要支持哪些基础功能（如 Wi-Fi、BLE、GPIO、I2C 等），选择会保存在一个 `default.config` 文件中。
 
     ![](/img/new-platform/new-platform-menu.png)
 
