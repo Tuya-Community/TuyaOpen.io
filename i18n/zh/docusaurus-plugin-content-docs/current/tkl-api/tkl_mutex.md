@@ -22,7 +22,7 @@ OPERATE_RET tkl_mutex_create_init(TKL_MUTEX_HANDLE *handle);
 
 #### 返回值
 
-返回值为 `OPRT_OK` 则表示成功创建互斥锁，其他值表示发生错误，详细错误代码请参考 `tuya_error_code.h`。
+返回值为 `OPRT_OK` 则表示成功创建互斥锁，其他值表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
 ### tkl_mutex_lock
 
@@ -40,7 +40,7 @@ OPERATE_RET tkl_mutex_lock(const TKL_MUTEX_HANDLE handle);
 
 #### 返回值
 
-返回值为 `OPRT_OK` 则表示成功锁定互斥锁，失败时返回相应的错误代码，详细错误代码请参考 `tuya_error_code.h`。
+返回值为 `OPRT_OK` 则表示成功锁定互斥锁，失败时返回相应的错误代码。详细错误代码请参考 `tuya_error_code.h`。
 
 ### tkl_mutex_trylock
 
@@ -58,7 +58,7 @@ OPERATE_RET tkl_mutex_trylock(const TKL_MUTEX_HANDLE mutexHandle);
 
 #### 返回值
 
-返回值为 `OPRT_OK` 则表示成功尝试锁定互斥锁，其他值表示发生错误，详细错误代码请参考 `tuya_error_code.h`。
+返回值为 `OPRT_OK` 则表示成功尝试锁定互斥锁，其他值表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
 ### tkl_mutex_unlock
 
@@ -76,7 +76,7 @@ OPERATE_RET tkl_mutex_unlock(const TKL_MUTEX_HANDLE handle);
 
 #### 返回值
 
-返回值为 `OPRT_OK` 则表示成功解锁了互斥锁，其他值表示发生错误，详细错误代码请参考 `tuya_error_code.h`。
+返回值为 `OPRT_OK` 则表示成功解锁了互斥锁，其他值表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
 ### tkl_mutex_release
 
@@ -94,4 +94,4 @@ OPERATE_RET tkl_mutex_release(const TKL_MUTEX_HANDLE handle);
 
 #### 返回值
 
-返回值为 `OPRT_OK` 则表示成功释放资源，其他值代表示发生错误，详细错误代码请参考 `tuya_error_code.h`。
+返回值为 `OPRT_OK` 则表示成功释放资源，其他值代表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
