@@ -1,239 +1,242 @@
 ---
-title: Roadmap & Releases
+title: Technical Roadmap & Releases
 description: Comprehensive information about TuyaOpen maintenance frequency, SDK releases, platform support, roadmap, and release notes.
 ---
 
-# Roadmap & Releases
+# Technical Roadmap & Releases
 
-This page provides comprehensive information about TuyaOpen's maintenance schedule, release cycles, platform support, and development roadmap.
+This topic walks you through the TuyaOpen maintenance plan, release cycle, platform support, and development roadmap.
 
-## Maintenance Plan
+## Maintenance plan
 
-### TuyaOpen OS Core (C/C++)
+### TuyaOpen OS core (C/C++)
 
 TuyaOpen follows a structured maintenance plan to ensure reliability and continuous improvement:
 
-- **Active Development**: Ongoing development with daily code commits.
-- **Bug Fixes**: Critical bugs are resolved within 24-48 hours. Submit issues and feedback via [Github Issue](https://github.com/tuya/TuyaOpen/issues).
-- **Feature Updates**: New features are released every two weeks.
-- **Major Releases**: Major versions with significant new features are released quarterly.
+- **Active development**: Ongoing development with daily code commits.
+- **Bug fixes**: Critical bugs are resolved within 24 to 48 hours. You can report issues and provide feedback via [GitHub Issues](https://github.com/tuya/TuyaOpen/issues).
+- **Feature updates**: New features are released every two weeks.
+- **Major releases**: Major versions with significant new features are released quarterly.
 
-### New Feature Requests？
-Have suggestions for the project? You're welcome to join the discussion at [https://github.com/tuya/TuyaOpen/discussions](https://github.com/tuya/TuyaOpen/discussions).
+### New feature requests
 
-- **New Chip Hardware Support**: We continuously evaluate and introduce support for new chips based on community needs, product roadmap, and technical feasibility.
-- **New Peripheral & Driver Support**: Our R&D team actively expands the diversity of devices and peripherals, regularly introducing new drivers. Community partners are also encouraged to participate in the ecosystem by contributing device drivers or capability components.
-- **Third-Party Library (Libs) Support**: We encourage community contributions of third-party libraries that comply with open-source licenses such as Apache License. All third-party libraries must meet open-source compliance requirements. Apache License is preferred; other licenses must ensure compatibility and be clearly declared to promote a thriving ecosystem.
+Have suggestions for the project? You're welcome to [join the discussion](https://github.com/tuya/TuyaOpen/discussions).
+- **New chip support**: Tuya continuously evaluates and introduces support for new chips based on community demand, product roadmap priorities, and technical feasibility.
+- **New peripherals & driver support**: The R&D team consistently extends the diversity of supported devices and peripherals by actively integrating new drivers (updated regularly). **Community partners are also encouraged to participate in the ecosystem** by contributing device drivers or other capability components.
+- **Third-party library (libs) support**: Tuya encourages community co-creation and welcomes contributions of third-party libraries that comply with open-source licenses such as the Apache License. All contributed libraries must meet open-source compliance requirements. While Apache License is preferred, libraries under other licenses are acceptable provided license compatibility is verified and explicitly declared, thereby fostering a thriving ecosystem.
+
+## Platform support plan
+
+### SDK support plan
+
+| SDK | Activity level (Update frequency) | Description |
+|-----------------|------------------------|------|
+| **C/C++** | Highly active - daily development | Supports popular embedded platforms and chips, with continuous optimization and extension. |
+| **Arduino** | Supported, slow updates | Supports Arduino IDE, compatible with Tuya T-Series and ESP development boards, and continuously follows updates to the Tuya Cloud/AI SDK versions. |
+| **Lua** | Supported, slow updates | Adapted for popular Lua platforms, suitable for various embedded application scenarios. |
+| **MicroPython** | Planned, not yet initiated | It is planned to support popular MicroPython firmware and development boards (such as ESP32 and T5AI) to enable Python development for embedded systems and integration with Tuya Cloud. |
+
+### Chip platform support
+
+Tuya chip platforms are regularly updated and maintained.
+
+| Chip platform | Support status | Activity level (Update frequency) | Remarks |
+|------------------|------------|------------------------|-------|
+| **MCU T5AI** | ✅ Active | Highly active | Ideal for: AI multimodal interaction, including audio, video, and text. |
+| **MCU T2/T3** | ✅ Active | Actively maintained | Ideal for: AI text LLM + IoT capabilities, with advantages in low power scenarios. |
+| **MCU BK7231N** | ✅ Active | Regularly maintained | - |
+| **MCU LN882H** | ✅ Active | Regularly maintained | - |
+| **MCU ESP32 series** | ✅ Active | Regularly maintained | - |
+| **SoC ARM Cortex-A** | 🚧 Beta | Developing (Available on master branch) | Primarily supports networking, connection to the Tuya IoT PaaS cloud, and cloud AI capabilities. The hardware architecture differs significantly from the MCU series. Users need to develop DTS device trees for peripheral integration. |
+| **SoC Raspberry Pi 5** | 🚧 Beta | Developing | Primarily supports networking, connection to the Tuya IoT PaaS cloud, and cloud AI capabilities. The hardware driver architecture differs from the MCU series. Users need to develop DTS device trees for peripheral integration. Given the Raspberry Pi's rich peripheral ecosystem and predefined 40-pin extension, it is recommended to refer to the official hardware ecosystem documentation for device integration before connecting to cloud services. |
+| **Ubuntu** | ✅ Active | Actively maintained | Primarily supports networking, connection to the Tuya IoT PaaS cloud, and cloud AI capabilities. |
 
 
-## Platform Support Plan
+## Development roadmap
+## To-dos
+- Enable SMP CPU architecture support for the T5 series chip.
+- Extend support to popular SoC platforms (such as Raspberry Pi, Rockchip, and Allwinner).
+- Optimize video modality capabilities for TuyaOpen DVP cameras.
+- Establish partnerships with third-party development board ecosystems.
+- Upgrade cloud APIs to AI SDK 3.0 specification.
+- Publish cloud development tutorials on official portals.
+- Launch the Tuya Pocket open source project with full T5 hardware demonstration.
+- Enrich official peripheral and driver libraries.
+- Implement BlueZ protocol for Bluetooth pairing on Raspberry Pi.
+- Develop ALSA HAL layer to enable SoC-based ASR (CPU KWS/VAD).
+- Integrate 4G Cat.1 cellular modules via USB/AT interfaces.
+- Enable third-party cloud connections (Doubao, Coze, and Alibaba Bailian).
+- Activate ASR-LLM integration with Netease Cloud Music services.
 
-### SDK Support Plan
-
-| SDK             | Activity (Update Frequency) | Description |
-|-----------------|----------------------------|-------------|
-| **C/C++**       | Highly active - daily dev   | Full support for mainstream embedded platforms and chips, continuous optimization and expansion |
-| **Arduino**     | Supported, slower updates   | Supports Arduino IDE, compatible with Tuya T series and ESP boards, follows Tuya Cloud/AI SDK version upgrades |
-| **Lua**         | Supported, slower updates   | Adapted for mainstream Lua platforms, suitable for various embedded scenarios |
-| **MicroPython** | Planned, not started yet    | Planned support for major MicroPython firmware and boards (e.g., ESP32, T5AI) for Python-based embedded and Tuya Cloud integration |
-
-### Chip Platform Support
-
-Our chip platform support is regularly updated and maintained:
-
-| Chip Platform         | Support Status | Activity (Update Frequency) | Notes |
-|----------------------|----------------|-----------------------------|-------|
-| **MCU T5AI**         | ✅ Active      | Highly active               | Ideal module for AI multimodal(audio & vision) interaction |
-| **MCU T2/T3**        | ✅ Active      | Actively maintained         | AI text LLM + IoT use-cases, advantages in low-power scenarios |
-| **MCU BK7231N**      | ✅ Active      | Regular maintenance         |       |
-| **MCU LN882H**       | ✅ Active      | Regular maintenance         |       |
-| **MCU ESP32 Series** | ✅ Active      | Regular maintenance         |       |
-| **SoC ARM Cortex-A** | 🚧 Beta        | In development, try on master branch | Mainly supports networking and Tuya IoT PaaS cloud connection and cloud AI capabilities. This platform's hardware architecture differs significantly from MCU series; users need to develop DTS device trees for peripheral integration. |
-| **SoC Raspberry Pi 5** | 🚧 Beta      | In development              | Mainly supports networking and Tuya IoT PaaS cloud connection and cloud AI capabilities. Hardware driver architecture differs from MCU series; users need to develop DTS device trees for peripherals. Given Raspberry Pi's rich peripheral ecosystem and predefined 40P expansion, refer to official hardware docs for device integration before connecting to cloud services. |
-| **Ubuntu**           | ✅ Active      | Actively maintained         | Mainly supports networking and Tuya IoT PaaS cloud connection and cloud AI capabilities. |
-
-## Development Roadmap
-## Todos
-- [ ] T5 series chip SMP CPU architecture support
-- [ ] Support for more mainstream SoC chip platforms (Raspberry Pi/Rockchip/Allwinner, etc.)
-- [ ] TuyaOpen DVP camera and video modality support optimization
-- [ ] Third-party ecosystem development board collaboration
-- [ ] AI SDK 3.0 cloud API version upgrade
-- [ ] Official cloud development example tutorials
-- [ ] Tuya Pocket open source project, official release. Showcases all T5 hardware capabilities
-- [ ] Enrich official peripheral and driver library
-- [ ] Raspberry Pi, Bluetooth BlueZ integration for Bluetooth provisioning
-- [ ] SoC ALSA library HAL integration, supporting for AI and ASR capabilities (CPU KWS and VAD)
-- [ ] USB/AT 4G Cat.1 cellular module support
-- [ ] Third-party cloud integration: direct connection to Doubao/Coze, and Ali Bailian
-- [ ] Support ASR LLM to call NetEase Cloud Music
 
 ---
 
-## TuyaOpen Release Notes
+## TuyaOpen release notes
+
 #### **2025**
 
 <details>
-<summary><strong>v1.5.0 (September 22, 2025) - Latest Release</strong></summary>
+<summary><strong>v1.5.0 (September 22, 2025) [Latest stable release]</strong></summary>
 
-**T5AI Platform and Hardware Support:**
-- Optimized the T5AI platform with full support for SMP (Symmetric Multi-Processing) architecture, improving multi-core performance
-- Added support for multiple official and ecosystem development boards, including TUYA_T5AI_Pocket, TUYA_T5A_Core, and WAVESHARE_T5AI_TOUCH_AMOLED_1_75, enriching the hardware ecosystem
-- Introduced the tuya_t5_pocket game console application to showcase T5AI hardware capabilities
+**T5AI platform and hardware support:**
+- Enhanced the T5AI platform with full symmetric multiprocessing (SMP) architecture support, improving multi-core performance.
+- Added support for multiple new official and ecosystem development boards, including `TUYA_T5AI_Pocket`, `TUYA_T5A_Core`, and `WAVESHARE_T5AI_TOUCH_AMOLED_1_75`, enriching the hardware ecosystem.
+- Introduced the `tuya_t5_pocket` gaming console application to showcase T5AI hardware capabilities.
 
-**Graphics and Display:**
-- Added support for the LVGL V8 graphics library, allowing users to flexibly switch between LVGL V9 and V8 versions to meet different project needs
-- Introduced a new lvgl game application, featuring classic games such as 2048, Huarong Dao, and Match-3, enhancing interactive experience
+**Graphics and display:**
+- Added support for the LVGL v8 graphics library, allowing users to flexibly switch between LVGL v9 and v8 to meet different project requirements.
+- Launched the LVGL game application, featuring built-in classic games like 2048, Klotski (Hua Rong Dao), and Match-3 to enhance the interactive experience.
 
-**AI and Cloud Applications:**
-- Added the camera_demo example, enabling camera integration with Tuya Cloud, supporting various video sensor drivers and demos to expand AI vision capabilities
-- Added the weather_get_demo example, allowing retrieval of various weather information formats from Tuya Cloud for smart scenario development
+**AI and cloud applications:**
+- Introduced the `camera_demo` demo, enabling camera integration with the Tuya Cloud and supporting various video sensor drivers and demos to extend AI vision capabilities.
+- Added the `weather_get_demo` demo, which retrieves weather information in multiple formats via the Tuya Cloud, facilitating smart scenario development.
 
-**Peripheral and Driver Expansion:**
-- Added multiple T5AI DVP video sensor drivers and application examples, improving video capture and processing capabilities
-- Added IR remote control receiving and transmitting examples, supporting various infrared remote control scenarios
-- Added drivers and application examples for ws2812 and other addressable RGB LEDs, enriching lighting control and creative possibilities
+**Peripherals and driver extension:**
+- Integrated multiple new T5AI DVP video sensor drivers and application examples, enhancing video capture and processing capabilities.
+- Added IR remote control reception and transmission examples, supporting various IR remote control scenarios.
+- Introduced drivers and application examples for RGB light beads like WS2812, enriching lighting control and creative applications.
 
 </details>
 
+
 <details>
-<summary><strong>v1.4.0 (June 27, 2025) - Latest Release</strong></summary>
+<summary><strong>v1.4.0 (June 27, 2025)</strong></summary>
 
-**Build System & Cross-Platform Support:**
-- Implemented Python-based build system architecture for enhanced cross-platform compatibility
-- Extended T5AI and ESP32 chip series support on Linux, Windows, and macOS
-- Introduced comprehensive build automation and dependency management
+**Build system and cross-platform support:**
+- Implemented a Python-based build system architecture to enhance cross-platform compatibility.
+- Extended support for T5AI and ESP32 chip series on Linux, Windows, and macOS platforms.
+- Introduced comprehensive build automation and dependency management.
 
-**Display & Graphics Engine:**
-- Upgraded LVGL graphics library to v9.1.0, resolving GIF playback performance issues
-- Implemented screen rotation with hardware acceleration support
-- Enhanced display driver architecture, supporting QSPI and MCU8080 interfaces
-- Integrated three new display drivers: SPI ST7305, QSPI ST7735S, and MCU8080_ST7796
-- Optimized monochrome display driver compatibility for embedded applications
+**Display and graphics engine:**
+- Upgraded the LVGL graphics library to v9.1.0, resolving GIF playback performance issues.
+- Implemented screen rotation functionality with hardware acceleration support.
+- Enhanced the display driver architecture to support QSPI and MCU8080 interfaces.
+- Integrated three new display drivers: SPI ST7305, QSPI ST7735S, and MCU8080 ST7796.
+- Optimized monochrome display driver compatibility for embedded applications.
 
-**Hardware Integration & Drivers:**
-- Optimized IO expander XL9555 driver performance and reliability
-- Enhanced hardware compatibility for DNESP32-BOX ES8311 and NS4168 development boards
-- Resolved ESP32 platform compile warnings, improving code quality
+**Hardware integration and drivers:**
+- Improved the driver performance and reliability of the I/O extension chip XL9555.
+- Enhanced hardware compatibility for the DNESP32-BOX ES8311 and NS4168 development boards.
+- Resolved compilation warnings on the ESP32 platform, improving code quality.
 
-**AI Applications & User Interface:**
-- Released dual-eye screen emotion robot application with advanced AI features
-- Enhanced chat_bot UI, optimizing emotion display and interaction modes
+**AI applications and user interface:**
+- Released the dual-screen emotional robot application with advanced AI capabilities.
+- Enhanced the `chat_bot` user interface, optimizing emotional display and interaction modes.
 
-**Technical Improvements:**
-- Refactored build system architecture for better maintainability
-- Implemented comprehensive error handling and logging mechanisms
-- Enhanced memory management and resource optimization
+**Technical improvements:**
+- Refactored the compilation system architecture to improve maintainability.
+- Implemented a comprehensive error handling and logging mechanism.
+- Enhanced memory management and resource optimization.
 
 </details>
 
 <details>
 <summary><strong>v1.3.1 (June 9, 2025)</strong></summary>
 
-**AI Applications & Robotics:**
-- Integrated Otto robot AI application with advanced motion control algorithms
-- Enhanced AI voice interaction, improved interrupt handling and response accuracy
+**AI applications and robotics:**
+- Integrated the Otto Robot AI application featuring advanced motion control algorithms.
+- Enhanced AI voice interaction with improved interrupt handling and response accuracy.
 
-**Development Tools & Environment:**
-- Implemented comprehensive logging system for TuyaOpen and platform diagnostics
-- Introduced dedicated Product IDs (PID) for T5AI/ESP32 development boards
-- Released Docker-based build environment for consistent development workflows
-- Added license burning feature for secure device configuration
+**Development tools and environment:**
+- Implemented a comprehensive logging system for TuyaOpen and platform diagnostics.
+- Introduced dedicated product IDs (PIDs) for T5AI/ESP32 development boards.
+- Released a Docker-based build environment to ensure consistent development workflows.
+- Added license flashing functionality for secure device configuration.
 
-**Hardware Integration & Performance:**
-- Integrated LED peripheral driver components with advanced control features
-- Optimized example project build methods for improved efficiency
-- Enhanced ESP32 AI/IoT build system compatibility and stability
-- Improved ESP32/T5AI display rendering performance and visual quality
-- Fine-tuned audio processing algorithms for ESP32-S3 development boards
+**Hardware integration and performance:**
+- Integrated an LED peripheral driver component with advanced control capabilities.
+- Optimized compilation methods for sample projects to improve build efficiency.
+- Enhanced compatibility and stability of the ESP32 AI/IoT build system.
+- Improved display rendering performance and visual quality for ESP32/T5AI platforms.
+- Fine-tuned audio processing algorithms for the ESP32-S3 development board.
 
-**System Architecture:**
-- Simplified build process, enhanced dependency management
-- Improved error reporting and debugging features
-- Enhanced cross-platform compatibility and portability
+**System architecture:**
+- Streamlined build processes with enhanced dependency management.
+- Improved error reporting and debugging capabilities.
+- Strengthened cross-platform compatibility and portability.
 
 </details>
 
 <details>
 <summary><strong>v1.3.0 (May 16, 2025)</strong></summary>
 
-**AI Platform & Multimodal Features:**
-- Integrated Tuya.AI 2.0 platform, enhancing multimodal processing for voice and video interaction
-- Enabled ESP32S3 integration with Tuya.AI cloud services, providing advanced AI features
-- Optimized interaction response time and processing efficiency
+**AI platform and multimodal capabilities:**
+- Integrated the Tuya.AI 2.0 platform, enhancing multimodal processing capabilities for voice and video interactions.
+- Enabled ESP32S3 integration with Tuya.AI cloud services to deliver advanced AI functionalities.
+- Optimized interaction response time and processing efficiency.
 
-**Hardware Platform Support:**
-- Extended T5AI board support: T5AI_Board, T5AI_EVB, and T5AI_MOJI
-- Integrated four ESP32S3 development boards: ESP32 Breadboard, Atomic ESP32S3_BOX, Waveshare ESP32 1.8 AMOLED, Xingzhi Cube 0.96 OLED
-- Enhanced hardware abstraction layer for improved device compatibility
+**Hardware platform support:**
+- Extended T5AI development board support for T5AI_Board, T5AI_EVB, and T5AI_MOJI.
+- Integrated four ESP32S3 development boards: ESP32 Breadboard, Alientek ESP32S3_BOX, Waveshare ESP32 1.8" AMOLED, and Xingzhi Cube 0.96" OLED.
+- Enhanced the hardware abstraction layer (HAL) to improve device compatibility.
 
-**Application Integration & User Experience:**
-- Resolved compatibility issues between ESP32 Tuya Cloud IoT and AI applications
-- Enhanced your_chat_bot voice interaction experience, improving response accuracy and latency
-- Upgraded your_chat_bot UI to support emoji display and enhanced visual feedback
-- Implemented keyword wake-up and interrupt handling for natural conversation flow
+**Application integration and user experience:**
+- Resolved compatibility issues between ESP32 Tuya Cloud IoT applications and AI applications.
+- Enhanced the `your_chat_bot` voice interaction experience, improving response accuracy and reducing latency.
+- Updated the `your_chat_bot` user interface to support emotion display and enhanced visual feedback.
+- Implemented keyword wake-up and interrupt handling to support natural conversation flow.
 
-**System Architecture:**
-- Improved application isolation and resource management
-- Enhanced cross-platform compatibility and portability
-- Optimized memory usage and performance metrics
+**System architecture:**
+- Improved application isolation and resource management.
+- Strengthened cross-platform compatibility and portability.
+- Optimized memory usage and performance metrics.
 
 </details>
 
 <details>
 <summary><strong>v1.2.1 (May 6, 2025)</strong></summary>
 
-**Platform Integration:**
-- Achieved comprehensive ESP32S3 platform support with optimized performance
-- Enhanced hardware abstraction layer for improved device compatibility
+**Platform integration:**
+- Achieved comprehensive ESP32S3 platform support with optimized performance.
+- Enhanced the hardware abstraction layer (HAL) to improve device compatibility.
 
-**AI Application Optimization:**
-- Optimized your_chat_bot application for T5AI platform architecture
-- Improved AI processing efficiency and response accuracy
+**AI application optimization:**
+- Optimized the `your_chat_bot` application for the T5AI platform architecture.
+- Improved AI processing efficiency and response accuracy.
 
-**System Improvements:**
-- Enhanced cross-platform compatibility and stability
-- Improved resource management and memory optimization
+**System improvements:**
+- Strengthened cross-platform compatibility and stability.
+- Improved resource management and memory optimization.
 
 </details>
 
 <details>
 <summary><strong>v1.2.0 (March 20, 2025)</strong></summary>
 
-**AI Platform Integration:**
-- Integrated Tuya.AI support for your_chat_bot AI application
-- Implemented advanced natural language processing features
+**AI platform integration:**
+- Integrated Tuya.AI support to power the `your_chat_bot` AI application.
+- Implemented advanced natural language processing (NLP) capabilities.
 
-**Graphics & Display Framework:**
-- Integrated LVGL graphics library demo for T5AI platform
-- Enhanced visual rendering and UI components
+**Graphics and display framework:**
+- Integrated LVGL graphics library demos for the T5AI platform.
+- Enhanced visual rendering capabilities and user interface components.
 
-**Development Framework:**
-- Improved application development tools and APIs
-- Enhanced debugging and analysis features
+**Development framework:**
+- Improved application development tools and APIs.
+- Enhanced debugging and analytics capabilities.
 
 </details>
 
 <details>
 <summary><strong>v1.1.1 (February 28, 2025)</strong></summary>
 
-**Audio & Multimedia Support:**
-- Implemented comprehensive audio capture and playback for T5AI_Board
-- Integrated advanced audio processing algorithms and codec support
+**Audio and multimedia support:**
+- Implemented comprehensive audio capture and playback functionality for the T5AI_Board.
+- Integrated advanced audio processing algorithms and codec support.
 
-**Display & Touch Interface:**
-- Added SPI-TFT display driver support: ILI9341, ST7789, and GC9A01
-- Integrated IIC touch chip drivers: GT911 and CST816X, enhancing user interaction
+**Display and touch interface:**
+- Added SPI-TFT screen driver support for ILI9341, ST7789, and GC9A01.
+- Integrated I2C touch chip drivers for GT911 and CST816X, enhancing user interaction.
 
-**Hardware Integration:**
-- Implemented rotary encoder driver component with advanced control features
-- Integrated LVGL components and examples for T3 platform
-- Extended BK7231N and LN882H chip architecture support
+**Hardware integration:**
+- Implemented a rotary encoder driver component with advanced control features.
+- Integrated LVGL components and examples for the T3 platform.
+- Extended support for BK7231N and LN882H chip architectures.
 
-**Development Tools & Security:**
-- Updated TOS burning tool to support ESP32 series chip programming
-- Upgraded Ninja build tool for improved build performance
-- Added HTTPS client example for secure communication protocol support
+**Development tools and security:**
+- Updated the TOS flashing tool to support ESP32 series chip flashing.
+- Upgraded the Ninja build tool for improved build performance.
+- Added HTTPS client examples supporting secure communication protocols.
 
 </details>
 
@@ -242,73 +245,72 @@ Our chip platform support is regularly updated and maintained:
 <details>
 <summary><strong>v1.1.0 (October 22, 2024)</strong></summary>
 
-**Platform Support & Integration:**
-- Achieved comprehensive T5 platform support with optimized performance
-- Extended ESP32/ESP32C3 platform compatibility and feature set
-- Integrated PlatformIO development environment for improved developer experience
+**Platform support and integration:**
+- Achieved comprehensive T5 platform support with optimized performance.
+- Extended ESP32/ESP32C3 platform compatibility and feature set.
+- Integrated the PlatformIO development environment to enhance the developer experience.
 
-**Security & Communication:**
-- Upgraded TOS tool for enhanced security features and performance improvements
-- Updated TLS component to support mbedTLS v3.5 for improved encryption security
+**Security and communication:**
+- Upgraded the TOS tool with enhanced security features and performance improvements.
+- Updated the TLS component to support Mbed TLS v3.5, improving cryptographic security.
 
-**Development Framework:**
-- Enhanced build system architecture and dependency management
-- Improved cross-platform compatibility and portability
+**Development framework:**
+- Enhanced the build system architecture and dependency management.
+- Strengthened cross-platform compatibility and portability.
 
 </details>
 
 <details>
-<summary><strong>v1.0.0 (August 30, 2024) - Initial Release</strong></summary>
+<summary><strong>v1.0.0 (August 30, 2024) [Initial release]</strong></summary>
 
-**Core Platform Architecture:**
-- Implemented TOS command-based build system for simplified development workflow
-- Established T2/T3/Ubuntu platform support with comprehensive hardware abstraction
+**Core platform architecture:**
+- Implemented a TOS command-based build system to streamline development workflows.
+- Established T2/T3/Ubuntu platform support with comprehensive hardware abstraction.
 
-**Development Framework:**
-- Introduced independent build method for example projects
-- Implemented modular architecture for improved code organization and maintainability
+**Development framework:**
+- Introduced independent compilation methods for sample projects.
+- Implemented a modular architecture to improve code organization and maintainability.
 
-**Connectivity & Cloud Integration:**
-- Integrated comprehensive connectivity: Wi-Fi, Bluetooth, and wired modes
-- Implemented Tuya Cloud integration for IoT device management and data sync
-- Added onboard license reading for secure device authentication
+**Connectivity and cloud integration:**
+- Integrated comprehensive connectivity support, including Wi-Fi, Bluetooth, and wired connection modes.
+- Enabled Tuya Cloud integration for IoT device management and data synchronization.
+- Added on-board license reading functionality for secure device authentication.
 
-**System Foundation:**
-- Established core system architecture and API framework
-- Implemented comprehensive error handling and logging mechanisms
+**System foundation:**
+- Established the core system architecture and API framework.
+- Implemented a comprehensive error handling and logging mechanism.
 
 </details>
 
-## TuyaAI Platform / Tuya Cloud Service Release Notes
 
-For the latest updates on TuyaAI platform capabilities and Tuya Cloud Service release announcements and details,  
-##### please visit the official announcement page: ---> [Release Announcements & Update Notes](https://developer.tuya.com/cn/docs/iot/announcement-update?id=Ka5o4ytv9ihvq)
-
----
-
-## Support & Maintenance
-
-### Community Support Channels
-
-- **WX/QQ (Chinese Community) / Discord (Global)**: Real-time technical support and interactive communication. Developers are welcome to join at any time.
-- **GitHub Issues**: For submitting bug reports, feature requests, and technical questions. The development team will respond promptly.
-- **Official Documentation**: Comprehensive development guides, API references, and practical tutorials to help you get started quickly and develop in depth.
-- **Community Forum**: Open discussion area for developers to exchange experiences, answer questions, and share best practices.
-
-## Software Version Access & Updates
-
-### How to Get Updates & Upgrade
-
-- **GitHub/Gitee Releases**: Download the latest official version directly, or use Git Clone/Git Pull to get the latest code.
-- **Version History & Changelog**: See the repository Release page for details on each update.
-
-### Release & Update Notifications
-
-- **GitHub Watch/Star**: We recommend watching and starring the main repository to get notified of new releases and features.
-- **Social Media & Official Channels**: Follow official accounts for real-time updates and important announcements.
-    - China: WeChat Official Account, Official Website
-    - International: Discord, YouTube, Official Website
+## TuyaAI platform/Tuya cloud service release notes
+For information about TuyaAI platform capability updates and the latest Tuya Cloud Service release announcements and detailed updates, please visit the official announcement page: [Release announcements & update notes](https://developer.tuya.com/en/docs/iot/announcement-update?id=Ka5o4ytv9ihvq).
 
 ---
 
-*For the latest news and version information, please visit our [GitHub repository](https://github.com/tuya/TuyaOpen), or join the [Discord community](https://discord.gg/cbGrBjx7) to interact with developers worldwide.*
+## Support and maintenance
+
+### Community support channels
+
+- **WeChat/Tencent QQ (in China)/Discord (Global)**: Receive real-time technical support and interactive communication. You are welcome to join at any time.
+- **GitHub Issues**: Submit bug reports, feature suggestions, and technical questions. The development team responds promptly.
+- **Official documentation**: Comprehensive development guides, API references, and practical tutorials to facilitate quick onboarding and in-depth development.
+- **Community forum**: An open discussion area for you to share experiences, answer questions, and discuss best practices.
+
+## Software version acquisition and updates
+
+### Get and update versions
+
+- **GitHub/Gitee releases**: Download the latest stable release directly, or get the newest code via Git Clone or Git Pull.
+- **Version history and changelog**: Available on the repository's Releases page for tracking update contents.
+
+### Release and update notifications
+
+- **GitHub watch/star**: It is recommended to watch and star the main repository to receive immediate notifications for new versions and feature releases.
+- **Social media and official channels**: Follow official accounts to get real-time updates and important announcements.
+   - China region: WeChat official account and official website
+   - International region: Discord, YouTube, and official website
+
+---
+
+*To access the latest updates and version information, please visit Tuya's [GitHub repository](https://github.com/tuya/TuyaOpen) or join the [Discord Community](https://discord.com/invite/yPPShSTttG) to interact with developers worldwide.*
