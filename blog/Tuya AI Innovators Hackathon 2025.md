@@ -27,8 +27,6 @@ tags: [TuyaOpen, Contest]
 
 - 开放报名时间段：2025年11月20日 – 12月20日
 
-<img src="https://images.tuyacn.com/rms-static/4fb5ef70-bf8e-11f0-8d7c-0576ce46d19e-1762927839207.png?tyName=11%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1fddd0ae-2aea-406d-95a7-e9474d0fb042.png" alt="扫码立即报名" width="300" />
-
 - 初筛作品提交时间：2025年月12日20日前
 
 - 线上评审路演：2025年12月中
