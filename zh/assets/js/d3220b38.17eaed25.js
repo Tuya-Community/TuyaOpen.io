@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([["8240"],{4794:function(e){e.exports=JSON.parse('{"name":"hardware-pages-generator","id":"default"}')}}]);
