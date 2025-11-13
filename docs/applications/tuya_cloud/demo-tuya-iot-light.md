@@ -12,7 +12,7 @@ The `switch_demo` application is a minimal-functionality application demo provid
 - Receives LAN TCP control data from the app and automatically replies.
 - Supports the over-the-air (OTA) update feature.
 
-Currently, `switch_demo` does not control physical hardware and can run on [all supported platforms](../../about-tuyaopen.md##supported-platforms).
+Currently, `switch_demo` does not control physical hardware and can run on [all supported platforms](../../about-tuyaopen.md#supported-platforms).
 
 Before using `switch_demo`, you need to understand the following terms:
 
