@@ -1,8 +1,8 @@
 # tkl_system | 系统接口
 
-## 说明
+## 概述
 
-系统相关的功能接口
+系统相关的功能接口。
 
 ## API 描述
 
@@ -12,17 +12,22 @@
 void tkl_system_reset(void)
 ```
 
-**功能简介**：执行系统重启。
+**功能简介**
 
-**参数**：
+执行系统重启。
 
-- 无
+**参数**
 
-**返回**：
+无
 
-- 无
+**返回值**
 
-**备注**：调用该函数会导致系统重启。
+无
+
+:::important
+调用该函数会导致系统重启。
+:::
+
 
 ### tkl_system_get_tick_count
 
@@ -30,15 +35,17 @@ void tkl_system_reset(void)
 SYS_TICK_T tkl_system_get_tick_count(void)
 ```
 
-**功能简介**：获取系统的滴答计数。
+**功能简介**
 
-**参数**：
+获取系统的滴答计数。
 
-- 无
+**参数**
 
-**返回**：
+无
 
-- `SYS_TICK_T`：系统滴答计数的当前值。
+**返回值**
+
+`SYS_TICK_T`：系统滴答计数的当前值。
 
 ### tkl_system_get_millisecond
 
@@ -46,15 +53,17 @@ SYS_TICK_T tkl_system_get_tick_count(void)
 SYS_TIME_T tkl_system_get_millisecond(void)
 ```
 
-**功能简介**：获取从系统启动开始的毫秒数。
+**功能简介**
 
-**参数**：
+获取从系统启动开始的毫秒数。
 
-- 无
+**参数**
 
-**返回**：
+无
 
-- `SYS_TIME_T`：从系统启动到当前时刻的总毫秒数。
+**返回值**
+
+`SYS_TIME_T`：从系统启动到当前时刻的总毫秒数。
 
 ### tkl_system_get_random
 
@@ -62,17 +71,21 @@ SYS_TIME_T tkl_system_get_millisecond(void)
 int tkl_system_get_random(uint32_t range)
 ```
 
-**功能简介**：获取一个指定范围内的随机数。
+**功能简介**
 
-**参数**：
+获取一个指定范围内的随机数。
 
-- `range`：随机数的范围，从 `0` 到 `range`（不包括`range`本身）。
+**参数**
 
-**返回**：
+`range`：随机数的范围，从 `0` 到 `range`（不包括 `range` 本身）。
 
-- `int`：生成的随机数。
+**返回值**
 
-**备注**：随机数生成器在初次调用时会被初始化。
+`int`：生成的随机数。
+
+:::important
+随机数生成器在初次调用时会被初始化。
+:::
 
 ### tkl_system_get_reset_reason
 
@@ -80,15 +93,17 @@ int tkl_system_get_random(uint32_t range)
 TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
 ```
 
-**功能简介**：获取系统复位的原因。
+**功能简介**
 
-**参数**：
+获取系统复位的原因。
 
-- `describe`：指向描述系统复位原因的字符串的指针。
+**参数**
 
-**返回**：
+`describe`：指向描述系统复位原因的字符串的指针。
 
-- `TUYA_RESET_REASON_E`：复位原因的枚举值。
+**返回值**
+
+`TUYA_RESET_REASON_E`：复位原因的枚举值。
 
 ```c
     typedef enum {
@@ -110,7 +125,9 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
     } TUYA_RESET_REASON_E;
 ```
 
-**备注**：不同的复位来源会被映射到特定的枚举值上。
+:::important
+不同的复位来源会被映射到特定的枚举值上。
+:::
 
 ### tkl_system_sleep
 
@@ -118,17 +135,21 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
 void tkl_system_sleep(uint32_t num_ms)
 ```
 
-**功能简介**：使系统进入休眠状态一定时间。
+**功能简介**
 
-**参数**：
+使系统进入休眠状态一定时间。
 
-- `num_ms`：休眠的时间，单位为毫秒。
+**参数**
 
-**返回**：
+`num_ms`：休眠的时间，单位为毫秒。
 
-- 无
+**返回值**
 
-**备注**：调用此函数会导致任务调度器暂停调用当前任务指定的时间。
+无
+
+:::important
+调用此函数会导致任务调度器暂停调用当前任务指定的时间。
+:::
 
 ### tkl_system_delay
 
@@ -136,15 +157,17 @@ void tkl_system_sleep(uint32_t num_ms)
 void tkl_system_delay(uint32_t num_ms)
 ```
 
-**功能简介**：使系统延时一定时间。
+**功能简介**
 
-**参数**：
+使系统延时一定时间。
 
-- `num_ms`：延时的时间，单位为毫秒。
+**参数**
 
-**返回**：
+`num_ms`：延时的时间，单位为毫秒。
 
-- 无
+**返回值**
+
+无
 
 ### tkl_system_get_cpu_info
 
@@ -152,15 +175,19 @@ void tkl_system_delay(uint32_t num_ms)
 OPERATE_RET tkl_system_get_cpu_info(TUYA_CPU_INFO_T **cpu_ary, int *cpu_cnt)
 ```
 
-**功能简介**：获取系统CPU信息。
+**功能简介**
 
-**参数**：
+获取系统 CPU 信息。
+
+**参数**
 
 - `cpu_ary`：指向 `TUYA_CPU_INFO_T` 类型数组的指针，用于接收 CPU 信息。
 - `cpu_cnt`：指针，用于接收 CPU 数量。
 
-**返回**：
+**返回值**
 
-- `OPERATE_RET`：操作结果，`OPRT_OK` 表示成功，其他值请参考 `tuya_error_code.h`。
+`OPERATE_RET`：操作结果，`OPRT_OK` 表示成功，其他值请参考 `tuya_error_code.h`。
 
-**备注**：该函数在当前实现中不支持，调用将返回`OPRT_NOT_SUPPORTED`。
+:::important
+该函数在当前实现中不支持，调用将返回 `OPRT_NOT_SUPPORTED`。
+:::
