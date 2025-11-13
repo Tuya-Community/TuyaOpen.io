@@ -1,6 +1,6 @@
 ---
-slug: /8-8-online-contest
-title: 'Tuya AI Innovators Hackathon 2025'
+slug: /2025-tuya-ces-hackathon
+title: 'CES Hackathon 2025'
 authors: [tuya]
 image: /img/home/tuyaopen-logo-social-preview.png
 tags: [TuyaOpen, Contest]
@@ -10,12 +10,12 @@ tags: [TuyaOpen, Contest]
 
 **For AI, for Innovation, For the Future.**
 
-<img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="Discord" width="300" />
-Scan to join Discord and sign up!
 
+**Scan the QR code to join our Discord community, or click the link below to register and connect with developers from around the world in real-time!**
 
+<img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="Scan to join the Discord community and sign up" width="150" />
 
-
+- Discord link: [https://discord.com/invite/yPPShSTttG](https://discord.com/invite/yPPShSTttG)
 
 
 ## 1.Event Overview
@@ -73,8 +73,9 @@ Follow Tuya’s official YouTube channel: https://www.youtube.com/@tuya2023/vide
 
 - **Live Streaming**：Regular developer bootcamp live sessions will be held during the event. Follow the competition Discord group for updates.
 
-<img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="Discord" width="300" />
+<img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="Scan to join the Discord community and sign up" width="150" />
 
+- Discord link: [https://discord.com/invite/yPPShSTttG](https://discord.com/invite/yPPShSTttG)
 
 
 ## Competition Requirements  

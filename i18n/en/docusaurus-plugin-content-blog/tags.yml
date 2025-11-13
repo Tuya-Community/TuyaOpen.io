@@ -1,0 +1,14 @@
+release:
+  label: Release
+  permalink: /release
+  description: TuyaOpen SDK Releases tag description
+
+TuyaOpen:
+  label: TuyaOpen
+  permalink: /TuyaOpen
+  description: TuyaOpen platform and development related content
+
+Contest:
+  label: Contest
+  permalink: /Contest
+  description: Developer contests and hackathons

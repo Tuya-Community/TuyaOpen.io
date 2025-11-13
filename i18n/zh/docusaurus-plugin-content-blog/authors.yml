@@ -1,0 +1,18 @@
+tuya:
+  name: Tuya
+  title: All maintainers of TuyaOpen
+  url: https://github.com/tuya/tuya-open
+  image_url: https://avatars.githubusercontent.com/u/73523937?v=4
+  socials:
+    github: tuya
+    youtube: tuyasmart5602
+    website: https://tuyaopen.io
+hsuanhanlai:
+  name: Edward Lai
+  title: Maintainer of TuyaOpen
+  url: https://github.com/adwuard
+  image_url: https://avatars.githubusercontent.com/u/12602411?v=4
+  email: huate.lai@tuya.com
+  socials:
+    GitHub: adwuard
+    website: https://hsuanhanlai.com
