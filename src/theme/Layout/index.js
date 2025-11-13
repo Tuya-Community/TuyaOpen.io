@@ -5,7 +5,7 @@ import React from 'react'
 export default function LayoutWrapper(props) {
   return (
     <>
-      <AnnouncementBar />
+      {/* <AnnouncementBar /> */}
       <Layout {...props} />
     </>
   )
