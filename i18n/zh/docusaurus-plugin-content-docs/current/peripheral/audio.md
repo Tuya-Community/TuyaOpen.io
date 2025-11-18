@@ -267,7 +267,7 @@ sequenceDiagram
 
 ### 运行环境
 
-如果想要运行该驱动，需要先把驱动的 **总使能宏**（`ENABLE_AUDIO_CODECS`）打开。打开该使能宏的方式有三种， **目标 Board 默认打开**、**开启了需要屏幕驱动的功能** 和 **手动打开**。
+如果想要运行该驱动，需要先把驱动的 **总使能宏**（`ENABLE_AUDIO_CODECS`）打开。打开该使能宏的方式有三种， **目标 Board 默认打开**、**开启了需要音频驱动的功能** 和 **手动打开**。
 
 :::warning
 
@@ -279,7 +279,7 @@ sequenceDiagram
 
 :::info
 
-这种情况通常为您选择的开发板已经注册好了屏幕设备。此时，目标 Board 里的源文件中已经写好注册代码， 
+这种情况通常为您选择的开发板已经注册好了音频设备。此时，目标 Board 里的源文件中已经写好注册代码， 
 
 例如，TUYA_T5AI_EVB 开发板支持麦克风和扬声器，在适配这块开发板时就已经注册了音频设备，`boards/T5AI/TUYA_T5AI_EVB/Kconfig` 文件也会写上 `select ENABLE_AUDIO_CODECS`。（具体示例代码和配置可参考 `boards/T5AI/TUYA_T5AI_EVB`）。
 
