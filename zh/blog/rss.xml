@@ -9,13 +9,16 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
         <item>
-            <title><![CDATA[CES 2025 全球黑客松]]></title>
-            <link>https://tuyaopen.io/zh/blog/2025-tuya-ces-hackathon</link>
-            <guid>https://tuyaopen.io/zh/blog/2025-tuya-ces-hackathon</guid>
+            <title><![CDATA[涂鸦AI创新黑客松大赛 2025]]></title>
+            <link>https://tuyaopen.io/zh/blog/2025-tuya-ai-innovatores-hackathon</link>
+            <guid>https://tuyaopen.io/zh/blog/2025-tuya-ai-innovatores-hackathon</guid>
             <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Tuya AI Innovators Hackathon 2025]]></description>
             <content:encoded><![CDATA[<h2 id="tuya-ai-innovators-hackathon-2025">Tuya AI Innovators Hackathon 2025</h2>
 <h2 id="拆掉边界用ai造未来--build-ai-hardware-as-easy-as-stacking-blocks">拆掉边界，用AI造未来 | Build AI Hardware, As Easy As stacking blocks</h2>
+<img src="https://images.tuyacn.com/rms-static/0561b9d0-c5f7-11f0-8d7c-0576ce46d19e-1763632518637.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_b253474d-4a55-4447-a758-73f614cb6990.png">
+<p><strong>点击链接立即报名参赛</strong>
+<a href="https://pages.tuya.com/develop/a83a0c8d834745ad801d">https://pages.tuya.com/develop/a83a0c8d834745ad801d</a></p>
 <p><strong>扫码加入Discord社群或点击下方链接立即报名参赛，与全球开发者实时交流！</strong></p>
 <img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="扫码加入discord社群立即报名参赛" width="150">
 <ul>
@@ -25,7 +28,7 @@
 <h3 id="涂鸦开发平台-httpstuyaopenaizh-简介">涂鸦开发平台 （<a href="https://tuyaopen.ai/zh%EF%BC%89">https://tuyaopen.ai/zh）</a> 简介</h3>
 <p>是面向 AI+IoT（人工智能物联网）行业 的开放、共创型开发框架，基于成熟的商业级物联网系统 TuyaOS 构建而成。平台具备 跨平台、模块化、安全合规 等核心特性，已通过 全球超1亿台设备 与 百万级开发者 的实践验证，为全球开发者提供从硬件、软件到云端的一体化创新环境。</p>
 <h3 id="大赛简介">大赛简介</h3>
-<p>本次大赛由 涂鸦智能（Tuya Smart） 主办，AWS作为官方云合作伙伴支持。</p>
+<p>本次大赛由 涂鸦智能（Tuya Smart） 主办，AWS Kiro作为官方云合作伙伴支持。</p>
 <p>活动将在 2026年1月（CES期间） 举行，以“Tuya AI Innovators Hackathon 2025，Build AI Hardware, As Easy As Stacking Blocks”为主题，邀请来自全球的开发者、创客和高校团队共同参与。结合AI coding（KIRO） 让开发体验低代码快速入门。</p>
 <h2 id="二报名时间">二、报名时间</h2>
 <ul>
@@ -72,7 +75,7 @@
 </ul>
 <img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="扫码入群" width="150">
 <ul>
-<li>物理链接：<a href="https://discord.com/invite/yPPShSTttG">https://discord.com/invite/yPPShSTttG</a></li>
+<li>物理链接：<a href="https://discord.com/invite/yPPShSTttG">https://discord.com/invite/yPPShSTttG</a>](<a href="https://discord.com/invite/yPPShSTttG">https://discord.com/invite/yPPShSTttG</a>)</li>
 </ul>
 <h3 id="参赛要求">参赛要求：</h3>
 <p><strong>团队规模</strong>：1–3人，可跨国组队</p>
@@ -142,7 +145,7 @@
 <p>演示视频链接（放在最显眼的位置）</p>
 </li>
 <li>
-<p>Demo 视频（1–3分钟） 在YouTube平台分享项目开发过程，带上话题标签#TuyaOpen #TuyaAI #HackWithTuya #CES2026</p>
+<p>Demo 视频（1–3分钟） 在YouTube平台分享项目开发过程，带上话题标签#TuyaOpen #TuyaAI #HackWithTuya #TuyaHackathon #TuyaDevelopers #TuyaGlobal</p>
 </li>
 </ul>
 <p><strong>要求</strong>：</p>
@@ -179,7 +182,7 @@
 <h2 id="四活动奖励总价值超过3万元">四、活动奖励（总价值超过3万元）</h2>
 <h3 id="-grand-prize总冠军1位可获得">🏆 Grand Prize（总冠军）1位，可获得</h3>
 <ul>
-<li>$2,00Amazon礼品卡</li>
+<li>$2,000Amazon礼品卡</li>
 <li>获得涂鸦官方媒体专访和报道机会</li>
 <li>Tuya技术团队1对1孵化支持&amp;商业化创投资源对接</li>
 </ul>
@@ -200,6 +203,16 @@
 <h3 id="最佳作品热度奖-community-favorite-5位可获得">🌍最佳作品热度奖 Community Favorite 5位，可获得</h3>
 <ul>
 <li>$100Amazon礼品卡</li>
+</ul>
+<h2 id="额外奖励">额外奖励</h2>
+<p>我们鼓励开发者使用 Vibe Coding 工具结合 TuyaOpen 开发 AI 硬件，提高开发效率；针对使用 Vibe Coding 工具的开发者，我们将给予额外奖励。</p>
+<ul>
+<li>国内开发者可叠加 Kiro“百万奖池计划”（奖励仅限中国大陆开发者）。</li>
+<li>
+<img src="https://images.tuyacn.com/rms-static/f3722230-c5f8-11f0-8d7c-0576ce46d19e-1763633347539.jpg?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_c0909bb7-9ef4-4622-bc49-c3562d689b6a.jpg">
+</li>
+<li>个人版的 Vibe Coding 工具——由涂鸦买单（限中国大陆以外的海外开发者）。<br>
+<!-- -->海外开发者使用 Vibe Coding 工具的选手，我们将选出最佳使用案例奖并给出工具购买补贴（单 ID 限 300 美金）。</li>
 </ul>
 <h3 id="获奖团队生态支持">🌛获奖团队生态支持</h3>
 <ul>
