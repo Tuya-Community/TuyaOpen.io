@@ -1,15 +1,20 @@
 ---
-slug: /2025-tuya-ces-hackathon
-title: 'CES Hackathon 2025'
+slug: /2025-tuya-ai-innovatores-hackathon
+title: 'Tuya AI Innovators Hackathon 2025'
 authors: [tuya]
 image: /img/home/tuyaopen-logo-social-preview.png
 tags: [TuyaOpen, Contest]
 ---
+
+
 ## Build AI Hardware, As Easy As Stacking Blocks
 
 
 **For AI, for Innovation, For the Future.**
 
+<img src="https://images.tuyacn.com/rms-static/0561b9d0-c5f7-11f0-8d7c-0576ce46d19e-1763632518637.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_b253474d-4a55-4447-a758-73f614cb6990.png" />
+
+**Sign Up Now!:https://pages.tuya.com/develop/a83a0c8d834745ad801d** 
 
 **Scan the QR code to join our Discord community, or click the link below to register and connect with developers from around the world in real-time!**
 
@@ -27,7 +32,7 @@ TuyaOpen (https://tuyaopen.ai/) It is an open and co-creative development framew
 
 ### About the Hackathon
 
-The hackathon is hosted by Tuya Smart, with Amazon Web Services (AWS) as the official cloud partner.
+The hackathon is hosted by Tuya Smart, with Amazon Web Services (AWS) Kiro as the official cloud partner.
 Scheduled for January 2026 (during CES), the event—titled “Tuya AI Innovators Hackathon 2025: Build AI Hardware, As Easy As Stacking Blocks”—aims to empower global developers to leverage the Tuya Open Platform to drive innovation at the intersection of AI and IoT. Participants will prototype the next generation of AI-powered smart hardware and solutions, showcasing the innovation and influence of the Tuya Open Global AI+IoT Ecosystem Center.
 
 Tuya Smart welcomes developers, makers, and university teams from around the world to join this global innovation event. With AI coding powered by KIRO, participants can enjoy a low-code and fast-start development experience.
@@ -129,7 +134,8 @@ Participants attending Demo Day will have the chance to receive **exclusive Tuya
  ○ Hardware List (Exact models, e.g., Tuya T5 Dev Board, Raspberry Pi 4, OV5647 Camera, etc.)  
  ○ Demo Video Link (placed in the most prominent location)  
 ● **Demo Video (1–3 minutes)**  
- ○ Share the project development process on YouTube with hashtags: #TuyaOpen #TuyaAI #HackWithTuya #CES2026
+ ○ Share the project development process on YouTube with hashtags: #TuyaOpen #TuyaAI #HackWithTuya #TuyaHackathon #TuyaDevelopers #TuyaGlobal
+
  
 
 ## Requirements
@@ -154,7 +160,7 @@ A limited number of T5 AI Development Boards will be provided to selected develo
 c. **Access to Tuya Cloud Services**  
 Participants can freely use Tuya’s AI capabilities, including speech synthesis, voice cloning, speech recognition, and other AI-powered cloud services.
 
-## 4. Awards (Total Value Over $8,000)
+## 4. Awards (Total Value Over $4,000)
 
 🏆 **Grand Prize (1 Winner)** – Includes:  
 ● $2,000 Amazon Gift Card  
@@ -174,6 +180,19 @@ Participants can freely use Tuya’s AI capabilities, including speech synthesis
 
 🌍 **Community Favorite Award (5 Winners)** – Includes:  
 ● $100 Amazon Gift Card  
+
+## Additional Incentives
+
+We encourage developers to use the Vibe Coding tool together with TuyaOpen to build AI hardware and improve development efficiency. Developers who adopt Vibe Coding will be eligible for additional rewards.
+
+- **For developers in Mainland China:**  
+  Eligible participants can receive additional rewards through the Kiro “Million Bonus Pool Program” (available only to developers based in Mainland China).
+
+<img src="https://images.tuyacn.com/rms-static/f3722230-c5f8-11f0-8d7c-0576ce46d19e-1763633347539.jpg?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_c0909bb7-9ef4-4622-bc49-c3562d689b6a.jpg" />
+
+- **For overseas developers (outside Mainland China):**  
+  The personal edition of the Vibe Coding tool will be covered by Tuya.  
+  Among overseas participants who use Vibe Coding, we will select a Best Use Case Award, and offer a tool purchase subsidy (up to USD 300 per ID).
 
 ### Ecosystem Support for Winning Teams  
 ● One-on-One Guidance from Tuya Technical Mentors to help advance commercialization.  
