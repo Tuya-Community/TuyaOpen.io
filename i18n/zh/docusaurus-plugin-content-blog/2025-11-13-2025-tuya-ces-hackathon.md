@@ -1,6 +1,6 @@
 ---
-slug: /2025-tuya-ces-hackathon
-title: 'CES 2025 全球黑客松'
+slug: /2025-tuya-ai-innovatores-hackathon
+title: '涂鸦AI创新黑客松大赛 2025'
 authors: [tuya]
 image: /img/home/tuyaopen-logo-social-preview.png
 tags: [TuyaOpen, Contest]
@@ -9,7 +9,14 @@ tags: [TuyaOpen, Contest]
 ## Tuya AI Innovators Hackathon 2025
 ## 拆掉边界，用AI造未来 | Build AI Hardware, As Easy As stacking blocks
 
+<img src="https://images.tuyacn.com/rms-static/0561b9d0-c5f7-11f0-8d7c-0576ce46d19e-1763632518637.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_b253474d-4a55-4447-a758-73f614cb6990.png" />
+
+**点击链接立即报名参赛** 
+https://pages.tuya.com/develop/a83a0c8d834745ad801d
+
 **扫码加入Discord社群或点击下方链接立即报名参赛，与全球开发者实时交流！**
+
+
 <img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="扫码加入discord社群立即报名参赛" width="150" />
 
 - 物理链接：[https://discord.com/invite/yPPShSTttG](https://discord.com/invite/yPPShSTttG)
@@ -22,7 +29,7 @@ tags: [TuyaOpen, Contest]
 
 ### 大赛简介 
 
-本次大赛由 涂鸦智能（Tuya Smart） 主办，AWS作为官方云合作伙伴支持。
+本次大赛由 涂鸦智能（Tuya Smart） 主办，AWS Kiro作为官方云合作伙伴支持。
 
 活动将在 2026年1月（CES期间） 举行，以“Tuya AI Innovators Hackathon 2025，Build AI Hardware, As Easy As Stacking Blocks”为主题，邀请来自全球的开发者、创客和高校团队共同参与。结合AI coding（KIRO） 让开发体验低代码快速入门。
 
@@ -71,7 +78,7 @@ tags: [TuyaOpen, Contest]
 - **直播类**：活动期间安排定期开发者训练营直播，关注大赛群Discord动态
 
 <img src="https://images.tuyacn.com/rms-static/09896aa0-bf8d-11f0-946a-f10d211a0860-1762927291978.png?tyName=111%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6832ebee-7982-4fe0-8f05-eb170dbb9911.png" alt="扫码入群" width="150" />
-- 物理链接：[https://discord.com/invite/yPPShSTttG](https://discord.com/invite/yPPShSTttG)
+- 物理链接：https://discord.com/invite/yPPShSTttG](https://discord.com/invite/yPPShSTttG)
 
 
 ### 参赛要求：
@@ -146,7 +153,7 @@ https://tuyaopen.ai/zh/docs/about-tuyaopen
   
   - 演示视频链接（放在最显眼的位置）
   
-  - Demo 视频（1–3分钟） 在YouTube平台分享项目开发过程，带上话题标签#TuyaOpen #TuyaAI #HackWithTuya #CES2026
+  - Demo 视频（1–3分钟） 在YouTube平台分享项目开发过程，带上话题标签#TuyaOpen #TuyaAI #HackWithTuya #TuyaHackathon #TuyaDevelopers #TuyaGlobal
 
 **要求**：
 - 作品内容须遵守国家有关法律法规，内容积极健康。
@@ -174,7 +181,7 @@ https://tuyaopen.ai/zh/docs/about-tuyaopen
 
 ### 🏆 Grand Prize（总冠军）1位，可获得 
 
-- $2,00Amazon礼品卡  
+- $2,000Amazon礼品卡  
 - 获得涂鸦官方媒体专访和报道机会
 - Tuya技术团队1对1孵化支持&商业化创投资源对接
 
@@ -197,6 +204,16 @@ https://tuyaopen.ai/zh/docs/about-tuyaopen
 ### 🌍最佳作品热度奖 Community Favorite 5位，可获得
 
 - $100Amazon礼品卡 
+
+## 额外奖励
+
+我们鼓励开发者使用 Vibe Coding 工具结合 TuyaOpen 开发 AI 硬件，提高开发效率；针对使用 Vibe Coding 工具的开发者，我们将给予额外奖励。
+
+- 国内开发者可叠加 Kiro“百万奖池计划”（奖励仅限中国大陆开发者）。
+- <img src="https://images.tuyacn.com/rms-static/f3722230-c5f8-11f0-8d7c-0576ce46d19e-1763633347539.jpg?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_c0909bb7-9ef4-4622-bc49-c3562d689b6a.jpg" />
+- 个人版的 Vibe Coding 工具——由涂鸦买单（限中国大陆以外的海外开发者）。  
+  海外开发者使用 Vibe Coding 工具的选手，我们将选出最佳使用案例奖并给出工具购买补贴（单 ID 限 300 美金）。
+
 
 ### 🌛获奖团队生态支持
 
