@@ -6,19 +6,19 @@ title: 关于 TuyaOpen
 
 ## 概述
 
-TuyaOpen 是一个开源的 AI+IoT 开发框架，旨在帮助开发者快速创建智能互联设备。它支持多种芯片平台和类 RTOS 操作系统，能够无缝集成多模态 AI 能力，包括音频、视频和传感器数据处理。
+TuyaOpen 是一个开源的 AI + IoT 开发框架，旨在帮助开发者快速创建智能互联设备。它支持多种芯片平台和类 RTOS 操作系统，能够无缝集成多模态 AI 能力，包括音频、视频和传感器数据处理。
 
 ### 🚀 使用 TuyaOpen，你可以：
-- 开发具备语音技术的硬件产品，如 `ASR`（Automatic Speech Recognition）、`KWS`（Keyword Spotting）、`TTS`（Text-to-Speech）、`STT`（Speech-to-Text）
-- 集成主流 LLMs 及 AI 平台，包括 `Deepseek`、`ChatGPT`、`Claude`、`Gemini` 等
-- 构建具备 `多模态AI能力` 的智能设备，包括文本、语音、视觉和基于传感器的功能
-- 创建自定义产品，并无缝连接至涂鸦云，实现 `远程控制`、`监控` 和 `OTA 升级`
-- 开发兼容 `Google Home` 和 `Amazon Alexa` 的设备
-- 设计自定义的 `Powered by Tuya` 硬件
-- 支持广泛的硬件应用，包括 `蓝牙`、`Wi-Fi`、`以太网` 等多种连接方式
-- 受益于强大的内置 `安全性`、`设备认证` 和 `数据加密` 能力
+- 开发具备语音技术的硬件产品，如 `ASR`（Automatic Speech Recognition）、`KWS`（Keyword Spotting）、`TTS`（Text-to-Speech）、`STT`（Speech-to-Text）。
+- 集成主流 LLMs 及 AI 平台，包括 `Deepseek`、`ChatGPT`、`Claude`、`Gemini` 等。
+- 构建具备 `多模态 AI 能力` 的智能设备，包括文本、语音、视觉和基于传感器的功能。
+- 创建自定义产品，并无缝连接至涂鸦云，实现 `远程控制`、`监控` 和 `OTA 升级`。
+- 开发兼容 `Google Home` 和 `Amazon Alexa` 的设备。
+- 设计自定义的 `Powered by Tuya` 硬件。
+- 支持广泛的硬件应用，包括 `蓝牙`、`Wi-Fi`、`以太网` 等多种连接方式。
+- 受益于强大的内置 `安全性`、`设备认证` 和 `数据加密` 能力。
 
-无论你是在开发智能家居产品、工业 IoT 解决方案，还是定制 AI 应用，TuyaOpen 都能为你提供快速入门和跨平台扩展的工具与示例。
+无论您是在开发智能家居产品、工业 IoT 解决方案，还是定制 AI 应用，TuyaOpen 都能为您提供快速入门和跨平台扩展的工具与示例。
 
 ---
 
@@ -30,30 +30,30 @@ TuyaOpen SDK 采用分层架构，主要包括以下五个层级：
 
 ---
 
-#### 1. **TKL Kernel Layer（TKL 内核层）** 
+#### **TKL Kernel Layer（TKL 内核层）** 
 
 
-- **定位**：架构的最底层，负责硬件平台的基础适配，为上层提供跨硬件、跨操作系统的驱动支持，是整个架构的“硬件基石”。
+- **定位**：架构的最底层，负责硬件平台的基础适配，为上层提供跨硬件、跨操作系统的驱动支持，是整个架构的 “硬件基石”。
 - **主要内容**：
   - **硬件平台 SDK**：支持不同芯片/平台的核心 SDK，如 Tuya T-Series MCU Core-SDK（涂鸦自研 MCU 系列）、ESP32-Series IDF SDK（乐鑫 ESP32 系列），以及即将支持的 Raspberry Pi Pico。
   - **通用硬件驱动**：提供 PWM、ADC、DAC、GPIO、I2C 等通用外设的 TKL 驱动，屏蔽硬件差异，让上层无需关注具体硬件细节。
   - **异构平台适配**：支持需 BSP（板级支持包）的平台（如 ARM SoCs、Linux/Ubuntu），确保架构能在多类硬件上运行。
->开发者通常无需关注此层的具体实现细节，这里TKL大多是芯片能力的对接和映射
+>开发者通常无需关注此层的具体实现细节，这里 TKL 大多是芯片能力的对接和映射。
 ---
 
-#### 2. **TAL Abstract Layer（TAL 抽象层）**
+#### **TAL Abstract Layer（TAL 抽象层）**
 
-- **定位**：位于 TKL 之上，抽象硬件与系统差异，为上层提供统一的接口与基础能力，是连接“底层硬件”与“上层软件”的“中间桥梁”。
+- **定位**：位于 TKL 之上，抽象硬件与系统差异，为上层提供统一的接口与基础能力，是连接 “底层硬件” 与 “上层软件” 的 “中间桥梁”。
 - **主要内容**：
-  - **TuyaOpen API（OS+Device）功能组件**：提供系统级核心接口，涵盖内存管理、日志、事件/消息/调度队列、时间/时区管理、线程管理、安全存储、TAL 驱动等，支撑上层的并发、存储、调度等基础能力。
+  - **TuyaOpen API（OS + Device）功能组件**：提供系统级核心接口，涵盖内存管理、日志、事件/消息/调度队列、时间/时区管理、线程管理、安全存储、TAL 驱动等，支撑上层的并发、存储、调度等基础能力。
   - **Connectivity（连接性）**：负责设备联网，支持 Wi-Fi、Ethernet、LTE Cat.1、Bluetooth 等多种连接方式，让设备能灵活接入网络。
   - **Security（安全）**：保障设备与数据安全，提供 Security Algorithms（加密/解密等安全算法）和 Security Engine（硬件/软件级安全引擎）。
 
 ---
 
-#### 3. **Libraries（库层）**
+#### **Libraries（库层）**
 
-- **定位**：基于 TAL 的统一接口，封装各类通用库与协议，为上层“服务层”和“应用层”提供“即拿即用”的能力组件。
+- **定位**：基于 TAL 的统一接口，封装各类通用库与协议，为上层 “服务层” 和 “应用层” 提供 “即拿即用” 的能力组件。
 - **主要内容**：
   - **Networking Protocols（网络协议）**：支持 MQTT（物联网主流协议）、mbedTLS（安全传输）、HTTP、WebSocket，满足设备联网、数据传输的协议需求。
   - **Resource Managers（资源管理器）**：管理核心资源，如 AI Service Manager/APIs（AI 服务管理）、Display Manager（显示资源）、Audio Manager（音频资源）。
@@ -62,18 +62,18 @@ TuyaOpen SDK 采用分层架构，主要包括以下五个层级：
 
 ---
 
-#### 4. **Services（服务层）**
+#### **Services（服务层）**
 
-- **定位**：基于 Libraries 的能力，封装更高级的服务与开发工具，降低应用层的开发复杂度，是“应用创新”的直接支撑层。
+- **定位**：基于 Libraries 的能力，封装更高级的服务与开发工具，降低应用层的开发复杂度，是 “应用创新” 的直接支撑层。
 - **主要内容**：
-  - **Cross-Platform Dev Tools（跨平台开发工具）**：提供多技术栈的开发支持，如 TuyaOpen SDK (C/C++)、“tos.py” 辅助工具、Arduino IDE、Lua、MicroPython。
-  - **Tuya Cloud Services（涂鸦云服务）**：涂鸦核心云能力，涵盖 AI Agent（AI 智能体）、Multi-Model (Audio/Video)（音视频多模型）、Cloud ASR/VAD（云端语音处理）、IoT PaaS（物联网平台服务），以及 LLM Model（大语言模型）、RAG（检索增强生成）、Tuya AI+IoT Cloud（AI 与 IoT 融合云）等。
+  - **Cross-Platform Dev Tools（跨平台开发工具）**：提供多技术栈的开发支持，如 TuyaOpen SDK（C/C++）、“tos.py” 辅助工具、Arduino IDE、Lua、MicroPython。
+  - **Tuya Cloud Services（涂鸦云服务）**：涂鸦核心云能力，涵盖 AI Agent（AI 智能体）、Multi-Model（Audio/Video）（音视频多模型）、Cloud ASR/VAD（云端语音处理）、IoT PaaS（物联网平台服务），以及 LLM Model（大语言模型）、RAG（检索增强生成）、Tuya AI+IoT Cloud（AI 与 IoT 融合云）等。
   - **Peripherals Drivers（外设驱动）**：即 Tuya Device Drivers (TDD)，支持按钮、LED、显示屏、音频编解码及 ADC、SPI 等硬件接口。
   - **Audio ASR（音频 ASR）**：专注语音处理，包含 VAD（语音活动检测）、DOA（声源定位 *计划中）、AEC（回声消除）、Beam-forming（波束成形 *计划中）、Wake-Word（唤醒词）等能力。
 
 ---
 
-#### 5. **Applications（应用层-用户应用）**
+#### **Applications（应用层-用户应用）**
 
 - **定位**：作为架构的最上层，直接面向业务场景与终端应用，整合下层所有能力，支撑多领域产品落地。
 - **典型场景**：
