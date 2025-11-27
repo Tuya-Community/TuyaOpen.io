@@ -4,7 +4,7 @@
 
 wakeup 用于设置芯片唤醒源，唤醒源可以是 GPIO、定时器等。
 
-## API 描述
+## API 说明
 
 ### tkl_wakeup_source_set
 
