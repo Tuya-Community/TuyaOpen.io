@@ -4,7 +4,7 @@
 
 系统相关的功能接口。
 
-## API 描述
+## API 说明
 
 ### tkl_system_reset
 
