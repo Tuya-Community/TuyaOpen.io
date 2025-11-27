@@ -138,7 +138,7 @@ OPERATE_RET tkl_system_get_cpu_info(TUYA_CPU_INFO_T **cpu_ary, int *cpu_cnt)
     - `cpu_ary`：指向 `TUYA_CPU_INFO_T` 类型数组的指针，用于接收 CPU 信息。
     - `cpu_cnt`：指针，用于接收 CPU 数量。
 
-- 返回值：`OPERATE_RET` 为操作结果，返回 `OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPERATE_RET` 为操作结果，`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
 :::important
 该函数在当前实现中不支持，调用将返回 `OPRT_NOT_SUPPORTED`。
