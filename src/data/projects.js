@@ -1,6 +1,15 @@
 const projectsData = {
   en: [
     {
+      id: 't5-pocket',
+      title: 'T5-Pocket: Your AI+IoT Smart Companion',
+      description:
+        'A portable AI+IoT smart device based on TuyaOpen framework. Features AI virtual pet system, multimodal conversation, audio and video capabilities, and rich sensor support. Perfect for developers and makers.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/0f9616de-e94e-49af-ac0b-a6842296e1db.png',
+      markdownFile: '/docs/projects/2025-11-25-T5AI-Pocket',
+      tags: ['iot', 'ai', 'open-source', 'open-hardware', 'tutorial', 'chatbot', 'voice'],
+    },
+    {
       id: 'led-matrix',
       title: 'LED Pixel Art Light Matrix',
       description:
@@ -111,6 +120,15 @@ const projectsData = {
     },
   ],
   zh: [
+    {
+      id: 't5-pocket',
+      title: '【开源】玩转 T5-Pocket：你的 AI+IoT 智能伙伴',
+      description:
+        '基于 TuyaOpen 框架的便携式 AI+IoT 智能主机。内置 AI 虚拟宠物系统、多模态对话、音视频等功能，支持丰富的传感器扩展。开发者和创客的理想选择。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/0f9616de-e94e-49af-ac0b-a6842296e1db.png',
+      markdownFile: '/docs/projects/2025-11-25-T5AI-Pocket',
+      tags: ['iot', 'ai', 'open-source', 'open-hardware', 'tutorial', 'chatbot', 'voice'],
+    },
     {
       id: 'led-matrix',
       title: 'LED像素艺术灯矩阵',
