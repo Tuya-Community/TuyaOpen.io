@@ -1,0 +1,332 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-projects/2025-11-25-T5AI-Pocket" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>[Open Source] Play with T5-Pocket: Your AI+IoT Smart Companion | TuyaOpen</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://tuyaopen.io/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true name=twitter:image content=https://tuyaopen.io/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true property=og:url content=https://tuyaopen.io/docs/projects/2025-11-25-T5AI-Pocket /><meta data-rh=true property=og:locale content=en /><meta data-rh=true property=og:locale:alternate content=zh /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="[Open Source] Play with T5-Pocket: Your AI+IoT Smart Companion | TuyaOpen"/><meta data-rh=true name=description content="<img"/><meta data-rh=true property=og:description content="<img"/><link data-rh=true rel=icon href=/img/favicon.ico /><link data-rh=true rel=canonical href=https://tuyaopen.io/docs/projects/2025-11-25-T5AI-Pocket /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/projects/2025-11-25-T5AI-Pocket hreflang=en /><link data-rh=true rel=alternate href=https://tuyaopen.io/zh/docs/projects/2025-11-25-T5AI-Pocket hreflang=zh /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/projects/2025-11-25-T5AI-Pocket hreflang=x-default /><link data-rh=true rel=preconnect href=https://NT1L7IWROF-dsn.algolia.net crossorigin=anonymous /><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="TuyaOpen RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="TuyaOpen Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-3M0J54E8XF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3M0J54E8XF",{})</script><link rel=search type=application/opensearchdescription+xml title=TuyaOpen href=/opensearch.xml><link rel=preconnect href=https://www.clarity.ms><script>!function(t,e,n,c,r,s,a){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(s=e.createElement(c)).async=1,s.src="https://www.clarity.ms/tag/"+r,(a=e.getElementsByTagName(c)[0]).parentNode.insertBefore(s,a)}(window,document,"clarity","script","lggqck9srz")</script><meta name=algolia-site-verification content=6232065417750C16><link rel=stylesheet href=/assets/css/styles.ee9e0cf5.css /><script src=/assets/js/runtime~main.d7ec55f2.js defer></script><script src=/assets/js/main.024b9632.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/home/tuyaopen-logo-simple-dark.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/home/tuyaopen-logo-simple-light.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">TuyaOpen</b></a><a class="navbar__item navbar__link" href=/docs/about-tuyaopen>Documentation</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>Get Yours</a><ul class=dropdown__menu><li><a class=dropdown__link href=/pricing>Get License Key</a><li><a class=dropdown__link href=/get-hardware>Get Hardware</a><li><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class=dropdown__link>Get Code<svg width=12 height=12 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><a class="navbar__item navbar__link" href=/blog>Blog</a><a class="navbar__item navbar__link" href=/projects>Projects</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>Tools</a><ul class=dropdown__menu><li><a class=dropdown__link href=/tools/tyutool>Universal Serial Port Tools</a><li><a href=https://tuyaopen.ai/tools target=_blank rel="noopener noreferrer" class=dropdown__link>Web Serial/Flashing Tools<svg width=12 height=12 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>English</a><ul class=dropdown__menu><li><a href=/docs/projects/2025-11-25-T5AI-Pocket target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=en>English</a><li><a href=/zh/docs/projects/2025-11-25-T5AI-Pocket target=_self rel="noopener noreferrer" class=dropdown__link lang=zh>简体中文</a></ul></div><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label=GitHub></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Command+K)"><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 20 20" aria-hidden=true><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke=currentColor fill=none fill-rule=evenodd stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><div class=backToProjects_C0PF><a class=backButton_KcZF href=/projects>← <!-- -->Back to Projects</a></div>
+<header><h1 id=open-source-play-with-t5-pocket-your-aiiot-smart-companion>[Open Source] Play with T5-Pocket: Your AI+IoT Smart Companion</h1></header>
+<p align=center><img src=https://images.tuyacn.com/fe-static/docs/img/0f9616de-e94e-49af-ac0b-a6842296e1db.png alt="T5-Pocket show" style="width:80%;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.08)"/></p>
+<h2 id=-t5-pocket-latest-features>✨ T5-Pocket Latest Features</h2>
+<p>Based on the latest TuyaOpen firmware, <strong><a href=https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai>T5-Pocket</a></strong> has implemented the following core features:</p>
+<h3 id=-ai-virtual-pet-system>🎮 AI Virtual Pet System</h3>
+<ul>
+<li><strong>Pet Animations</strong>: Rich animations including eating, bathing, sleeping, dancing, getting sick, using bathroom, etc.</li>
+<li><strong>State Management</strong>: Real-time changes in health, energy, cleanliness, and happiness</li>
+<li><strong>Emotion Expression</strong>: Happy, sad, sick and other emotions that switch automatically based on state</li>
+<li><strong>Interactive Operations</strong>: Feeding (burgers, pizza, apples, etc.), bathing, seeing doctor, sleeping, etc.</li>
+<li><strong>Smart Timer System</strong>: Automatically decreases stats every 20 minutes to simulate real pet needs</li>
+<li><strong>Data Persistence</strong>: Pet states automatically saved to KV storage, no data loss on power off</li>
+<li><strong>Cloud Sync</strong>: Real-time status reporting to Tuya Cloud, supports remote viewing and control</li>
+</ul>
+<h3 id=-multimodal-ai-conversation>💬 Multimodal AI Conversation</h3>
+<ul>
+<li><strong>4 Conversation Modes</strong>:<!-- -->
+<ul>
+<li>Push-to-talk single conversation (press to talk, release to send)</li>
+<li>VAD free conversation (automatic voice activity detection)</li>
+<li>Wake word single conversation (like smart speakers)</li>
+<li>Wake word free conversation (continuous dialogue mode)</li>
+</ul>
+</li>
+<li><strong>Emotion Recognition</strong>: AI recognizes user emotions (happy, angry, fearful, sad) and adjusts responses</li>
+<li><strong>Streaming Text Processing</strong>: Supports streaming reception and display of AI responses</li>
+<li><strong>Multi-language Support</strong>: Chinese and English voice recognition and synthesis</li>
+</ul>
+<h3 id=️-ui-interface>🖥️ UI Interface</h3>
+<ul>
+<li><strong>Main Screen</strong>: Displays pet animations, status bar (Wi-Fi, battery, 4G), pet attributes</li>
+<li><strong>Menu System</strong>:<!-- -->
+<ul>
+<li>Feeding menu (food selection)</li>
+<li>Bath menu</li>
+<li>Health menu (see doctor)</li>
+<li>Sleep menu</li>
+<li>Info menu (detailed pet attributes)</li>
+<li>Peripheral menu (gyroscope, I2C scan, WiFi scan, games)</li>
+</ul>
+</li>
+<li><strong>Game Interface</strong>:<!-- -->
+<ul>
+<li>Snake game (fully implemented)</li>
+<li>Dino runner game (fully implemented)</li>
+</ul>
+</li>
+<li><strong>Tool Interface</strong>:<!-- -->
+<ul>
+<li>RFID scanning interface</li>
+<li>I2C device scanning interface</li>
+<li>Temperature/humidity display</li>
+<li>Level meter interface</li>
+<li>AI log analysis interface</li>
+<li>E-book reader</li>
+<li>Keyboard input interface</li>
+</ul>
+</li>
+</ul>
+<h3 id=-audio-system>🎵 Audio System</h3>
+<ul>
+<li><strong>System Sounds</strong>:<!-- -->
+<ul>
+<li>Network configuration sounds</li>
+<li>Network connection success/failure sounds</li>
+<li>Wake-up sounds</li>
+<li>Various conversation mode sounds</li>
+</ul>
+</li>
+<li><strong>Pet Sound Effects</strong>:<!-- -->
+<ul>
+<li>Eating sounds</li>
+<li>Bathing sounds</li>
+<li>Sick sounds</li>
+<li>And more</li>
+</ul>
+</li>
+<li><strong>Volume Control</strong>: 0-100 level volume adjustment with cloud sync support</li>
+</ul>
+<h3 id=-extended-features>🔌 Extended Features</h3>
+<ul>
+<li><strong>RFID Card Reader</strong>: Supports UID reading and data parsing, CRC16 verification</li>
+<li><strong>Thermal Printer</strong>: Supports text and image printing, UTF-8 to GBK encoding</li>
+<li><strong>AI Log Analysis</strong>: Real-time serial log capture with AI intelligent error analysis</li>
+<li><strong>BMI270 Gyroscope</strong>: Posture detection and step counting</li>
+<li><strong>I2C Device Scanning</strong>: Automatically scans and displays I2C device addresses</li>
+</ul>
+<h2 id=how-to-play-with-t5-pocket>How to Play with T5-Pocket?</h2>
+<p>T5-Pocket is an open-source project based on <code>TuyaOpen</code>. Users can download source code or firmware from the <a href=https://tuyaopen.ai>TuyaOpen official website</a> to implement custom features. The <code>TuyaOpen</code> team provides rich example projects that users can reference to develop their own projects.</p>
+<h3 id=joystick>Joystick</h3>
+<h4 id=overview>Overview</h4>
+<p>T5-Pocket is equipped with a dual-channel joystick and independent button, supporting x, y dual-channel 12-bit precision ADC sampling. It can function as a joystick, knob, or directional pad. The joystick enables more precise UI switching and function selection, along with many hidden gameplay features.</p>
+<h4 id=use-cases>Use Cases</h4>
+<ul>
+<li><strong>Game Controller</strong>: Like common game controllers, you can use the joystick on T5-Pocket to control game character movement. Classic games like Dino Runner and Snake can all be implemented.</li>
+<li><strong>Menu Navigation</strong>: Use the joystick for more precise UI page switching, including function icon selection, e-book page turning, and flexible page navigation controlled by the joystick.</li>
+</ul>
+<h4 id=development>Development</h4>
+<p>For joystick development, refer to the <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/joystick>example project</a>.</p>
+<hr/>
+<h3 id=gyroscope>Gyroscope</h3>
+<h4 id=overview-1>Overview</h4>
+<p>T5-Pocket features a high-performance 6-axis inertial measurement unit (IMU) from Bosch Sensortec—<strong>BMI270</strong>. It integrates a 16-bit three-axis accelerometer and a 16-bit three-axis gyroscope in an extremely small package, achieving ultra-low power consumption with precise device posture sensing.</p>
+<h4 id=use-cases-1>Use Cases</h4>
+<ul>
+<li><strong>Activity Recognition/Step Counting</strong>: Utilize BMI270's built-in powerful algorithms to easily implement real-time monitoring of user steps and movement status.</li>
+<li><strong>Gesture Control and Level Meter</strong>: By calculating the quaternion data output from the IMU, you can obtain precise Euler angles of the device, enabling creative applications like gesture mice and level meters.</li>
+<li><strong>Action Recognition</strong>: Collect dynamic gesture data from the device, deploy a CNN model locally on T5, train and recognize specific actions such as "shake" or "flip," creating new interaction dimensions.</li>
+<li><strong>Balance Vehicle</strong>: Combined with expansion interfaces to drive motors, use the pitch angle data calculated from the IMU to build a mini balance vehicle.</li>
+</ul>
+<h4 id=development-1>Development</h4>
+<p>For BMI270 development, refer to the <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/imu/bmi270>example project</a>. The latest T5-Pocket firmware already supports level meter display.</p>
+<hr/>
+<h3 id=display>Display</h3>
+<h4 id=overview-2>Overview</h4>
+<p>T5-Pocket features a 2.9-inch 384 × 168 resolution fully reflective low-power eye-care screen, developed based on LVGL (Light and Versatile Graphics Library), providing users with intuitive visual feedback and interactive interface.</p>
+<h4 id=use-cases-2>Use Cases</h4>
+<ul>
+<li>
+<p><strong>AI Pet Animation</strong>: The display is the "face" of the AI virtual pet, showcasing various states and emotions through rich animations. Pets eat, bathe, sleep, and dance, with corresponding animation effects for each action, making the virtual pet more lively and adorable.</p>
+</li>
+<li>
+<p><strong>Information Dashboard</strong>: Use T5-Pocket as a desktop information center, displaying weather, time, to-do items, sensor data, and more in real-time. Switch between different information pages with the joystick to grasp important information at a glance.</p>
+</li>
+<li>
+<p><strong>Gaming Console</strong>: Using the display and joystick, develop various classic games such as Snake, Tetris, and Dino Runner. The monochrome screen brings the unique charm of retro gaming consoles.</p>
+</li>
+<li>
+<p><strong>E-Reader</strong>: The high-reflective screen features 0 blue light, making it eye-friendly for long-term use. Developers can read txt files from SD cards for handheld reading.</p>
+</li>
+</ul>
+<h4 id=development-2>Development</h4>
+<p>The latest T5-Pocket firmware supports AI pet animations, information display, gaming console, e-reader, and many other functions. Developers can easily create their own UI pages following the <a href=https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/display/UI_DEVELOPMENT_GUIDE.md>UI Design Guide</a>.</p>
+<p>For display development, refer to <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/display>Display Examples</a> and <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/graphics>LVGL Examples</a>. LVGL provides rich documentation and examples for quick UI development.</p>
+<hr/>
+<h3 id=sd-card>SD Card</h3>
+<h4 id=overview-3>Overview</h4>
+<p>T5-Pocket supports external Micro SD cards, providing large-capacity external storage for audio files, log data, configuration files, image resources, and more.</p>
+<h4 id=use-cases-3>Use Cases</h4>
+<ul>
+<li>
+<p><strong>Audio Player</strong>: Store music files on the SD card, and T5-Pocket can function as a portable music player. Supports multiple audio formats, with joystick control for play, pause, track skipping, and display of song information and playback progress.</p>
+</li>
+<li>
+<p><strong>Data Logger</strong>: Connect various sensors to record collected data in real-time to the SD card. Suitable for environmental monitoring, motion tracking, experimental data collection, and other scenarios. Data is stored in CSV or JSON format for easy subsequent analysis.</p>
+</li>
+<li>
+<p><strong>Offline Voice Library</strong>: Pre-store common voice prompts and TTS audio on the SD card to provide voice feedback in offline environments. Suitable for applications requiring offline operation.</p>
+</li>
+</ul>
+<h4 id=development-3>Development</h4>
+<p>For SD card development, refer to the <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/sd>example project</a>.</p>
+<hr/>
+<h3 id=microphonespeaker>Microphone/Speaker</h3>
+<h4 id=overview-4>Overview</h4>
+<p>T5-Pocket has a built-in high-quality audio system, including 2 digital microphones and 1 speaker, which is the core hardware for AI voice interaction. Combined with TuyaOpen's audio processing capabilities, it can achieve professional-level voice recognition and synthesis.</p>
+<h4 id=use-cases-4>Use Cases</h4>
+<ul>
+<li>
+<p><strong>Smart Voice Assistant</strong>: Interact with AI through voice to inquire about weather, set reminders, query information, control smart home devices, and more. Supports multi-turn conversations, with AI understanding context to provide smarter responses.</p>
+</li>
+<li>
+<p><strong>Voice Translator</strong>: Utilize AI's multilingual capabilities for real-time voice translation. Speak in Chinese and AI responds in English; speak in English and AI responds in Chinese. Suitable for foreign language learning or cross-language communication.</p>
+</li>
+<li>
+<p><strong>Story Machine</strong>: Tell stories, sing nursery rhymes, and recite poems for children. AI can generate personalized story content based on the child's age and interests. You can also record parents' voices, letting the pet tell stories in the parents' voice.</p>
+</li>
+<li>
+<p><strong>Voice Memo</strong>: Quickly record voice memos, with AI automatically converting to text and saving. Supports voice search to quickly find needed memo content.</p>
+</li>
+<li>
+<p><strong>Music Player</strong>: Play music files from SD card or stream online music. Supports playback control, volume adjustment, lyrics display, and other functions.</p>
+</li>
+</ul>
+<h4 id=development-4>Development</h4>
+<p>For audio development, refer to the following examples:</p>
+<ul>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_speaker>Speaker Playback Example</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_recorder>Microphone Recording Example</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_asr>Voice Recognition Example</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_vad>Voice Activity Detection Example</a></li>
+</ul>
+<hr/>
+<h3 id=camera>Camera</h3>
+<h4 id=overview-5>Overview</h4>
+<p>T5-Pocket supports connecting camera modules through the DVP (Digital Video Port) interface, adding visual perception capabilities to the device. Combined with AI vision algorithms, it can implement face recognition, object detection, QR code scanning, and other functions. <strong>(AI video capabilities are currently being enhanced...)</strong></p>
+<h4 id=use-cases-5>Use Cases</h4>
+<ul>
+<li>
+<p><strong>AI Vision Pet</strong>: Pets can "see" the owner. When a face is detected, they'll actively greet. Can recognize the owner's expressions—if the owner smiles, the pet will be happy; if the owner frowns, the pet will ask with concern.</p>
+</li>
+<li>
+<p><strong>Smart Access Control</strong>: Implement access control through face recognition. When authorized personnel are recognized, automatically open the door and record entry/exit times. Can connect to electromagnetic locks, servos, and other actuators.</p>
+</li>
+<li>
+<p><strong>Object Recognition Assistant</strong>: Take photos of objects, and AI identifies the category and provides related information. For example, identify food and display nutritional information, identify plants and introduce care methods.</p>
+</li>
+<li>
+<p><strong>QR Code Scanner</strong>: Scan QR codes to obtain information for product traceability, electronic business cards, Wi-Fi configuration, and other scenarios. Scan results are displayed on screen or announced via voice.</p>
+</li>
+</ul>
+<h4 id=development-5>Development</h4>
+<p>For camera development, refer to the <a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/camera>example project</a>. TuyaOpen provides complete camera drivers and image processing APIs.</p>
+<hr/>
+<h2 id=extended-devices>Extended Devices</h2>
+<p>T5-Pocket provides rich expansion interfaces including I2C, SPI, UART, GPIO, PWM, Pogo Pin, etc. Developers can freely connect various peripherals and sensors to create personalized IoT applications.</p>
+<h3 id=rfid-card-reader>RFID Card Reader</h3>
+<h4 id=overview-6>Overview</h4>
+<p>RFID (Radio Frequency Identification) technology is a contactless information transmission technology using radio waves, enabling automatic identification and data collection of target objects. T5-Pocket connects RFID reader modules through UART interface, supporting reading of various types of RFID tags.</p>
+<h4 id=use-cases-6>Use Cases</h4>
+<ul>
+<li>
+<p><strong>Access Card Duplicator</strong>: Read access cards, elevator cards, and other unencrypted RFID card data, write data to blank cards to achieve card duplication. Suitable for backing up important access cards to avoid inconvenience from loss.</p>
+</li>
+<li>
+<p><strong>Virtual Pet Item System</strong>: Design physical item cards for AI virtual pets. Scan "food card" to feed pet, scan "toy card" to play with pet, scan "medicine card" to treat pet. Combine virtual and reality to enhance interactive experience.</p>
+</li>
+<li>
+<p><strong>Smart Attendance System</strong>: Employees or students swipe cards to check in, system automatically records attendance time and uploads to cloud. Can set late reminders, statistics on attendance rates, and other functions.</p>
+</li>
+<li>
+<p><strong>Item Management System</strong>: Attach RFID tags to items, scan tags to view item information, usage records, maintenance plans, etc. Suitable for tool management, asset inventory, warehouse management, and other scenarios.</p>
+</li>
+<li>
+<p><strong>Interactive Game Cards</strong>: Develop games based on RFID cards, such as card battles, role-playing, etc. Each card represents different characters, skills, or items. Scanning cards triggers corresponding game events.</p>
+</li>
+</ul>
+<h4 id=development-6>Development</h4>
+<p>T5-Pocket provides complete <a href=https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/uart_expand.c>RFID scanning example code</a>, including data parsing, CRC verification, UI display, and other functions. Developers can quickly develop their own RFID applications based on this.</p>
+<hr/>
+<h3 id=ai-thermal-printer>AI Thermal Printer</h3>
+<h4 id=overview-7>Overview</h4>
+<p>Thermal printers print text and images by heating the print head to contact special thermal paper (coating changes color when heated), without requiring ink cartridges. T5-Pocket connects thermal printer modules through UART interface, combining AI capabilities to achieve intelligent printing functions.</p>
+<h4 id=use-cases-7>Use Cases</h4>
+<ul>
+<li>
+<p><strong>AI Story Printer</strong>: Ask AI "Tell me a story about courage," AI generates story content and automatically prints it. Children can collect printed stories to create their own storybooks.</p>
+</li>
+<li>
+<p><strong>Smart Recipe Printer</strong>: Ask AI "What should I cook for dinner tonight," AI recommends recipes based on season, nutrition, and taste, and prints detailed ingredient lists and cooking steps.</p>
+</li>
+<li>
+<p><strong>Math Problem Generator</strong>: Tell AI "Generate 20 second-grade addition and subtraction problems," AI generates problems and prints them with answers on the back. Helps children practice math while giving parents peace of mind.</p>
+</li>
+<li>
+<p><strong>Daily Quote Printer</strong>: Automatically print an inspirational quote or poem every morning, post it in a visible place to start a beautiful day.</p>
+</li>
+<li>
+<p><strong>AI Drawing Printer</strong>: Describe a scene to AI, such as "a cat sitting on the moon," AI generates an image and prints it. Although black and white, it's full of creativity and fun.</p>
+</li>
+<li>
+<p><strong>Shopping List Printer</strong>: Voice input items to buy, AI organizes them into a list and prints. When shopping at the supermarket, don't worry about forgetting what to buy.</p>
+</li>
+<li>
+<p><strong>Meeting Minutes Printer</strong>: After meetings, AI summarizes meeting content and prints minutes, including discussion points, decisions, and to-do tasks.</p>
+</li>
+</ul>
+<h4 id=development-7>Development</h4>
+<p>T5-Pocket provides thermal printer <a href=https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/uart_expand.c>example code</a>, supporting text and image printing. Developers can refer to example code to implement their own printing applications.</p>
+<hr/>
+<h3 id=ai-log-analysis-assistant>AI Log Analysis Assistant</h3>
+<h4 id=overview-8>Overview</h4>
+<p>In embedded development, analyzing logs is an important means of locating problems, but facing massive logs, manual analysis is inefficient. T5-Pocket's AI log analysis function can automatically capture device logs, use AI for intelligent analysis, and quickly locate problem root causes.</p>
+<h4 id=use-cases-8>Use Cases</h4>
+<ul>
+<li>
+<p><strong>Embedded Device Debugging Assistant</strong>: Connect the serial port of the embedded device under development to T5-Pocket. When the device runs, T5-Pocket monitors logs in real-time. Once an error occurs, immediately capture and analyze, providing possible causes and solutions.</p>
+</li>
+<li>
+<p><strong>Production Test Tool</strong>: On product production lines, connect T5-Pocket to devices under test, automatically run test programs and analyze logs. If anomalies are found, immediately alert and record, improving test efficiency and accuracy.</p>
+</li>
+<li>
+<p><strong>Remote Technical Support</strong>: When customer devices have problems, guide customers to connect devices to T5-Pocket, capture logs and upload to cloud. Technical support personnel remotely view AI analysis results to quickly locate problems without customers returning devices.</p>
+</li>
+<li>
+<p><strong>Learning Embedded Development</strong>: Beginners often encounter various errors when learning embedded development. T5-Pocket can serve as a learning assistant, analyzing error logs and providing easy-to-understand explanations to help understand problem essence.</p>
+</li>
+</ul>
+<h4 id=development-8>Development</h4>
+<p>Based on T5-Pocket's <a href=https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/uart_expand.c>AI log analysis example code</a>. Developers can customize error keywords, analysis logic, display styles, etc.</p>
+<hr/>
+<h3 id=sensor-expansion>Sensor Expansion</h3>
+<h4 id=overview-9>Overview</h4>
+<p>T5-Pocket supports connecting various sensors to digitize physical world information for environmental monitoring, motion tracking, health management, and other functions.</p>
+<h4 id=supported-sensor-types>Supported Sensor Types</h4>
+<p><strong>Environmental Sensors</strong></p>
+<table><thead><tr><th>Type<th>Example Sensors<tbody><tr><td>Temperature/Humidity<td>SHT30, AHT20, DHT22<tr><td>Barometric Pressure<td>BMP280, BMP180<tr><td>Light<td>BH1750, TSL2561<tr><td>Air Quality<td>SGP30, CCS811<tr><td>PM2.5<td>PMS5003, GP2Y1010AU</table>
+<p><strong>Motion Sensors</strong></p>
+<table><thead><tr><th>Type<th>Example Sensors<tbody><tr><td>Accelerometer / Gyroscope<td>BMI270 (onboard), MPU6050<tr><td>Magnetometer<td>QMC5883L, HMC5883L<tr><td>GPS Module<td>NEO-6M, NEO-M8N<tr><td>Ultrasonic Distance<td>HC-SR04</table>
+<p><strong>Biometric Sensors</strong></p>
+<table><thead><tr><th>Type<th>Example Sensors<tbody><tr><td>Heart Rate<td>MAX30102, MAX30100<tr><td>Body Temperature<td>MLX90614, DS18B20<tr><td>Blood Oxygen<td>MAX30102</table>
+<p><strong>Other Sensors</strong></p>
+<table><thead><tr><th>Type<th>Examples/Description<tbody><tr><td>Soil Moisture<td>Capacitive, Resistive<tr><td>Water Quality<td>TDS, pH<tr><td>Gas Sensors<td>MQ Series (CO, methane, alcohol, etc.)<tr><td>Infrared<td>Human presence, obstacle avoidance</table>
+<h4 id=use-cases-9>Use Cases</h4>
+<ul>
+<li>
+<p><strong>Smart Environmental Monitoring Station</strong>: Connect temperature/humidity, barometric pressure, light, air quality, and other sensors to monitor indoor environment in real-time. Data is displayed on screen and uploaded to cloud. When environmental parameters are abnormal (such as high temperature, low humidity, poor air quality), provide voice reminders and improvement suggestions.</p>
+</li>
+<li>
+<p><strong>Fitness Health Tracker</strong>: Utilize onboard BMI270 accelerometer and gyroscope to implement step counting, motion recognition, posture detection, and other functions. Connect heart rate sensor to monitor heart rate changes during exercise. Data can sync to mobile app to generate exercise reports.</p>
+</li>
+<li>
+<p><strong>Smart Plant Care Assistant</strong>: Connect soil moisture and light sensors to monitor plant growth environment. Remind to water when soil is too dry, remind to move location when light is insufficient. AI can provide personalized care suggestions based on plant species.</p>
+</li>
+<li>
+<p><strong>Air Quality Monitor</strong>: Connect PM2.5, formaldehyde, CO2 sensors to monitor indoor air quality in real-time. Visualize data and generate Air Quality Index (AQI). When air quality is poor, remind to open windows for ventilation or turn on air purifier.</p>
+</li>
+<li>
+<p><strong>Smart Aquarium Manager</strong>: Connect water temperature, TDS, pH sensors to monitor aquarium water quality. When water quality parameters are abnormal, timely remind and provide treatment suggestions. Can also control heaters, filters, lights, and other equipment.</p>
+</li>
+</ul>
+<h4 id=development-9>Development</h4>
+<p>TuyaOpen provides rich sensor drivers and example code:</p>
+<ul>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/i2c>I2C Sensor Examples</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/adc>ADC Driver Examples</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/spi>SPI Driver Examples</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/uart>UART Driver Examples</a></li>
+<li><a href=https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/imu/bmi270>IMU Sensor Examples</a></li>
+</ul>
+<p>Developers can refer to these examples to quickly integrate various sensors.</p>
+<hr/>
+<h2 id=conclusion>Conclusion</h2>
+<p>Whether you're an embedded developer, AI enthusiast, maker, or student, T5-Pocket can help you quickly realize your ideas and build your own smart devices.</p>
+<p>Start your T5-Pocket journey now and explore the infinite possibilities of AI+IoT!</p>
+<p align=center><a href=https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket target=_blank class="button button--primary" style="font-size:1.15rem;padding:14px 2.5em;border-radius:16px;background:linear-gradient(90deg, #4f8cff 0%, #38b2ac 100%);color:#fff;box-shadow:0 4px 24px rgba(79,140,255,0.18), 0 1.5px 6px rgba(56,178,172,0.10);border:none;font-weight:bold;letter-spacing:0.04em;transition:transform 0.15s, box-shadow 0.15s;display:inline-block"></a><p><a href=https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket target=_blank class="button button--primary" style="font-size:1.15rem;padding:14px 2.5em;border-radius:16px;background:linear-gradient(90deg, #4f8cff 0%, #38b2ac 100%);color:#fff;box-shadow:0 4px 24px rgba(79,140,255,0.18), 0 1.5px 6px rgba(56,178,172,0.10);border:none;font-weight:bold;letter-spacing:0.04em;transition:transform 0.15s, box-shadow 0.15s;display:inline-block">🚀 Go to Project Repository</a><p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/Tuya-Community/TuyaOpen.io/edit/master/docs/projects/2025-11-25-T5AI-Pocket.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#-t5-pocket-latest-features class="table-of-contents__link toc-highlight">✨ T5-Pocket Latest Features</a><ul><li><a href=#-ai-virtual-pet-system class="table-of-contents__link toc-highlight">🎮 AI Virtual Pet System</a><li><a href=#-multimodal-ai-conversation class="table-of-contents__link toc-highlight">💬 Multimodal AI Conversation</a><li><a href=#️-ui-interface class="table-of-contents__link toc-highlight">🖥️ UI Interface</a><li><a href=#-audio-system class="table-of-contents__link toc-highlight">🎵 Audio System</a><li><a href=#-extended-features class="table-of-contents__link toc-highlight">🔌 Extended Features</a></ul><li><a href=#how-to-play-with-t5-pocket class="table-of-contents__link toc-highlight">How to Play with T5-Pocket?</a><ul><li><a href=#joystick class="table-of-contents__link toc-highlight">Joystick</a><li><a href=#gyroscope class="table-of-contents__link toc-highlight">Gyroscope</a><li><a href=#display class="table-of-contents__link toc-highlight">Display</a><li><a href=#sd-card class="table-of-contents__link toc-highlight">SD Card</a><li><a href=#microphonespeaker class="table-of-contents__link toc-highlight">Microphone/Speaker</a><li><a href=#camera class="table-of-contents__link toc-highlight">Camera</a></ul><li><a href=#extended-devices class="table-of-contents__link toc-highlight">Extended Devices</a><ul><li><a href=#rfid-card-reader class="table-of-contents__link toc-highlight">RFID Card Reader</a><li><a href=#ai-thermal-printer class="table-of-contents__link toc-highlight">AI Thermal Printer</a><li><a href=#ai-log-analysis-assistant class="table-of-contents__link toc-highlight">AI Log Analysis Assistant</a><li><a href=#sensor-expansion class="table-of-contents__link toc-highlight">Sensor Expansion</a></ul><li><a href=#conclusion class="table-of-contents__link toc-highlight">Conclusion</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs/quick-start/unboxing>Tutorial</a><li class=footer__item><a class=footer__link-item href=/pricing>Service</a><li class=footer__item><a class=footer__link-item href=/docs/hardware-specific>Hardware List</a><li class=footer__item><a class=footer__link-item href=/docs/hardware-specific/t5-ai-board/overview-t5-ai-board>Tuya T5AI Dev Kit</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Tools</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://tuyaopen.ai/tools target=_blank rel="noopener noreferrer" class=footer__link-item>Web Serial Tool<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Community</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://discord.com/invite/yPPShSTttG target=_blank rel="noopener noreferrer" class=footer__link-item>Discord<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://x.com/tuyasmart target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://www.youtube.com/@tuya2023 target=_blank rel="noopener noreferrer" class=footer__link-item>Youtube<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://www.linkedin.com/company/tuya-smart target=_blank rel="noopener noreferrer" class=footer__link-item>Linkedin<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://gitee.com/tuya-open/TuyaOpen target=_blank rel="noopener noreferrer" class=footer__link-item>Gitee(Mirror)<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Acknowledgements</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://storyset.com/technology target=_blank rel="noopener noreferrer" class=footer__link-item>Thanks for the technology illustrations by Storyset<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>
+        <p style="font-weight: 500;">Copyright © TuyaOpen Authors 2025 | Documentation Distributed under Apache License Version 2.0</p>
+      </div></div></div></footer></div></body>
