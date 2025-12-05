@@ -45,7 +45,7 @@ title: 适配新 Platform
 + `ENABLE_FILE_SYSTEM`：如需使用原厂 SDK 的文件系统，请适配 `tkl_fs.c` 文件。若关闭此项，则会使用 TuyaOpen 内部的 littlefs 文件系统，其地址和大小由 `tkl_flash.c` 配置和提供。
 
 
-:::important
+:::info
 为什么需要预留一块未使用的 Flash？
 
 无论使用 TuyaOpen 还是 TuyaOS，都需要存储设备授权信息，且设备成功配网激活后还需保存部分设备信息和密钥等数据到 Flash。为保证文件系统掉电安全，TuyaOpen 采用开源的 littlefs + aec128 cbc，TuyaOS 则使用自研的 kv 文件系统，均安全可靠。基于安全性和稳定性考虑，同时便于开发者在 TuyaOpen 与 TuyaOS 间快速切换 SDK（两者的 TKL 适配层接口一致），因此需为 TuyaOpen 预留一块未使用的 Flash 区域。
