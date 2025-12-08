@@ -19,7 +19,7 @@ title: 创建 Platform
 
 1. 输入命令 `tos.py new platform` 后会提示您输入新平台的名称，例如 `my_new_chip`。
 
-![](/img/new-platform/new-platform-input.png)
+    ![](/img/new-platform/new-platform-input.png)
 
 2. 生成 `Kconfig` 配置：
 
@@ -31,7 +31,7 @@ title: 创建 Platform
 
 3. 创建平台目录：在 `platform/` 目录下创建一个以新平台名称命名的文件夹，例如 `platform/my-new-chip`。
 
-![](/img/new-platform/new-platform-filelist.png)
+    ![](/img/new-platform/new-platform-filelist.png)
 
 4. 复制适配层模板：根据您在上一步的选择，从 `tools/porting/adapter` 目录中复制对应的硬件抽象层（Tuya Kernel Layer，TKL）接口模板到 `platform/my_new_chip/tuyaos/` 目录下。
 
@@ -41,13 +41,13 @@ title: 创建 Platform
 
 5. 创建板级配置：在 `boards/` 目录下也创建一个同名文件夹（`boards/my-new-chip`），并生成相应的 `Kconfig` 文件，用于将此新平台作为可选项添加到编译系统中。
 
-![](/img/new-platform/new-platform-filelist2.png)
+    ![](/img/new-platform/new-platform-filelist2.png)
 
 6. 编译验证：使用命令 `tos.py new project` 创建一个新项目，选择 **my-new-chip** 平台，然后使用命令 `tos.py build` 编译验证。
 
-![](/img/new-platform/new-platform-build.png) 
+    ![](/img/new-platform/new-platform-build.png) 
 
-![](/img/new-platform/new-platform-build2.png)
+    ![](/img/new-platform/new-platform-build2.png)
 
 ## 后续操作
 
