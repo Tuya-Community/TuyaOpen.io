@@ -1,77 +1,79 @@
 ---
-title: "Creating New Product"
+title: "Create Product"
 ---
 
-# TuyaOpen SDK Quick Start
+# Tuya IoT Cloud
 
-## Environment Setup and SDK Download
+## Set up environment and download SDK
 
-First, you need to set up the development environment and download the TuyaOpen SDK. For detailed tutorials, please visit the [TuyaOpen Documentation Center](https://tuyaopen.ai/zh/docs/about-tuyaopen).
+First, set up a development environment and download the TuyaOpen SDK. For more information, visit the [TuyaOpen documentation center](https://tuyaopen.ai/docs/about-tuyaopen).
 
-## Create Product
+## Create a product
 
-Go to the [Tuya Developer Platform > **Product Development**](https://platform.tuya.com/pmg/list) page, click **Create Product**, select the category based on your product form, and refer to [Create Product](https://developer.tuya.com/cn/docs/iot/create-product?id=K914jp1ijtsfe) to complete product creation.
+Log in to the **Tuya Developer Platform** and navigate to the [AI Product > Development](https://platform.tuya.com/pmg/list) page. Click **Create**, select the appropriate category based on your product type, and then refer to the [Create Product](https://developer.tuya.com/en/docs/iot/create-product?id=K914jp1ijtsfe) guide to complete product creation.
 
-![Create Product.png](https://images.tuyacn.com/content-platform/hestia/175577153664954543874.png)
+![Create product](https://images.tuyacn.com/content-platform/hestia/1757320259ee8123626b5.png)
 
-After entering the product development process, please focus on the following configurations: adding product functions, AI capabilities, and new firmware.
+During the product development process, focus on how to add product functions, add AI capabilities, and configure new firmware as described below.
 
-### Add Product Functions
+### Add product functions
 
-Under **01 Function Definition** > **Product Functions**, click **Add Function** to add standard/custom functions to the product, or enable advanced functions.
+In the **Function Definition** tab, find **Product Functions**, click **Add** to add standard and custom functions to the product, or enable advanced functions.
 
-To learn about product functions, please refer to [Product Functions](https://developer.tuya.com/cn/docs/iot/define-product-features?id=K97vug7wgxpoq).
+For more information, see [Product Functions](https://developer.tuya.com/en/docs/iot/define-product-features?id=K97vug7wgxpoq).
 
-![Add Product Functions.png](https://images.tuyacn.com/content-platform/hestia/17557717576bbf113ed8f.png)
+![Add functions](https://images.tuyacn.com/content-platform/hestia/17573218285953b9bc340.png)
 
-### Add AI Capabilities
+### Add AI capabilities
 
-Under **01 Function Definition** > **Product AI Functions**, click **Add Intelligent Agent** to add AI capabilities to the product.
+In the **Function Definition** tab, find **Product AI Capabilities** and click **Add Agent** to add AI capabilities.
 
-After entering the intelligent agent development process, refer to [Product AI Function Development](https://developer.tuya.com/cn/docs/iot/AI-feature?id=Keapy1et1fc63) to complete intelligent agent development. Focus on the following configurations:
+For more information about how to develop an agent, see [AI Capabilities Development](https://developer.tuya.com/en/docs/iot/AI-feature?id=Keapy1et1fc63). Among them, focus on the following configurations:
 
-![Add Intelligent Agent.png](https://images.tuyacn.com/content-platform/hestia/1757318291e68cc87672c.png)
-
-
-#### Add Tool Set:
-1. Under **01 Model Capability Configuration** > **Skill Configuration**, select **Tool Set**, click the add (**+**) button on the right to enter the **Add Tool** page.
-2. Under **Device Control** > **Device Self-Control - Only control devices associated with Agent**, select to add **Control devices bound to intelligent agent**.
-
-![Add Tool.png](https://images.tuyacn.com/content-platform/hestia/1755773751f7b81957a77.png)
-
-![Add Tool.png](https://images.tuyacn.com/content-platform/hestia/17557738127051a6780ef.png)
-
-#### Develop Prompts
-
-Under **02 Prompt Development**, refer to [Prompt Tutorial](https://www.tuyaos.com/viewtopic.php?t=3724) to complete prompt development.
-
-![Develop Prompts.png](https://images.tuyacn.com/content-platform/hestia/175577395562cc51ae786.png)
-
-### Add Custom Firmware
-
-To enable subsequent OTA upgrades and batch module ordering, custom firmware needs to be added.
-
-After entering the product development process, under **03 Hardware Development**, select **Cloud Access Development Method** as **TuyaOS AI**, select **Cloud Access Hardware** as T5 module, then click **Create Custom Firmware** and complete related configurations.
-
-![Add Firmware.png](https://images.tuyacn.com/content-platform/hestia/1757318532460587f4648.png)
+![Add agent](https://images.tuyacn.com/content-platform/hestia/1757320405d1df1428baa.png)
 
 
-## AI Control Command Configuration
+#### Add a plugin
+
+1. In **01 Model Configuration** > **Skills Configuration**, select **Plugin** and click the **+** button on the right to enter the **Add Tool** page.
+   
+    ![Add tool](https://images.tuyacn.com/content-platform/hestia/1757320476afd9b9187e0.png)
+
+2. In the **Device control** tab, click **Device Control · Bound Only**, find **Control the device itself**, and then click **Add**.
+
+   ![Device control](https://images.tuyacn.com/content-platform/hestia/1757320567346a0cffce4.png)
+
+#### Develop a prompt
+
+In the tab **02 Prompt Development**, develop your prompt based on the [Prompt Guide](https://www.tuyaos.com/viewtopic.php?t=3725).
+
+![Develop a prompt](https://images.tuyacn.com/content-platform/hestia/1757321381a528942f97c.png)
+
+### Add custom firmware
+
+To support subsequent OTA updates and bulk module ordering, you need to create a custom firmware.
+
+In the step of **Hardware Development**, set the **Cloud Access Mode** to **TuyaOS AI**, select a T5 module as the **Cloud Access Hardware**, click **Add Custom Firmware**, and then complete the relevant configurations.
+
+![Add firmware](https://images.tuyacn.com/content-platform/hestia/17573208516655d5cc41f.png)
+
+
+## Configure AI control commands
 
 :::info
-If all product functions added during product development are standard functions (Data Point, DP; standard functions are function points with DP ID less than 100), self-control commands are configured by default and this step can be skipped; if you have added custom function points, you need to complete this step to modify the command scheme.
+Product functions added during the product development process are also known as data points (DPs), and standard functions refer to DPs with IDs less than 100. If all functions added are standard functions, the self-control commands are configured by default, and this step can be skipped. However, if you have added custom functions, you need to complete this step to modify the command solution.
 :::
 
-Go to the [**AI Product Command Configuration**](https://platform.tuya.com/exp/voice/ai) page, under **Self-Control Commands**, click **Modify Command Scheme**, and refer to [Device Self-Control Commands](https://developer.tuya.com/cn/docs/iot/Self-control?id=Kep3yhifdrvah) to complete related configurations. 
+Go to the [**AI ​​Product Command**](https://platform.tuya.com/exp/voice/ai) page, find the **Self-control command**, and then click **Modify command solution**. Complete the configurations by referring to [Self-control Commands](https://developer.tuya.com/en/docs/iot/Self-control?id=Kep3yhifdrvah).
 
-![AI Product Command Configuration.png](https://images.tuyacn.com/content-platform/hestia/1757320122af584c90f10.png)
+![AI ​​product command](https://images.tuyacn.com/content-platform/hestia/17573209519b80058e8dd.png)
 
 
-## Implement Product Functions
+## Implement product functions
 
-DP (Data Point) is Tuya's data model for defining product functions, used to describe product functionality. To achieve large-scale and digital management of massive and diverse devices, an abstract language is needed to describe devices. For detailed description of the DP model, please refer to [DP Model and Control Protocol](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr).
+A data point (DP) is a data model defined by Tuya to describe the functions of a product. To enable scalable and digital management of massive and diverse devices, an abstract language is required to describe these devices. For more information, see [DP Model and Control Protocol](https://developer.tuya.com/en/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr).
 
-Taking the `your_chat_bot` Demo in TuyaOpen as an example, when the App or AI sends control commands, it will enter the `user_event_handler_on` interface. Among them, Object types (Boolean, Value, Enum, Bitmap, String) enter the `TUYA_EVENT_DP_RECEIVE_OBJ` branch, and Raw types enter the `TUYA_EVENT_DP_RECEIVE_RAW` branch.
+Taking the `your_chat_bot` demo in TuyaOpen as an example, when the app or AI agent sends a control command, the `user_event_handler_on` interface is triggered. Among these, object types (including boolean, value, enum, bitmap, and string) enter the `TUYA_EVENT_DP_RECEIVE_OBJ` branch, while raw types enter the `TUYA_EVENT_DP_RECEIVE_RAW` branch.
 
 ```c
 void user_event_handler_on(tuya_iot_client_t *client, tuya_event_msg_t *event)
@@ -123,21 +125,20 @@ void user_event_handler_on(tuya_iot_client_t *client, tuya_event_msg_t *event)
 
 ```
 
+## Authorize the development board
 
-## Authorize Development Board
+### Method 1: Authorize by code
 
-### Method 1: Code Authorization
+Modify the header file. For detailed steps, refer to [Authorize Devices](https://tuyaopen.ai/docs/quick-start/equipment-authorization).
 
-Modify header files. For detailed process, please refer to [Device Authorization](https://tuyaopen.ai/zh/docs/quick-start/equipment-authorization).
+For example, open the `your_chat_bot` project, locate the `tuya_config.h` file at the following path: `apps/tuya.ai/your_chat_bot/include/tuya_config.h`, and modify the following three parameters:
+- `TUYA_PRODUCT_ID`: The product ID (PID) generated during product creation.
+- `TUYA_OPENSDK_UUID`: The UUID can be obtained free of charge. Please contact Tuya support to receive it.
+- `TUYA_OPENSDK_AUTHKEY`: The AuthKey can be obtained free of charge. Please contact Tuya support to receive it.
 
-For example, open the `your_chat_bot` project, find the `tuya_config.h` file at path: `apps/tuya.ai/your_chat_bot/include/tuya_config.h`, and modify the following three parameters:
-- `TUYA_PRODUCT_ID`: Product ID (PID) generated when creating the product.
-- `TUYA_OPENSDK_UUID`: UUID can be obtained for free, please contact Tuya staff to get it.
-- `TUYA_OPENSDK_AUTHKEY`: Authkey can be obtained for free, please contact Tuya staff to get it.
+![Get PID](https://images.tuyacn.com/content-platform/hestia/17573217004faaa23cc52.png)
 
-![Get PID.png](https://images.tuyacn.com/content-platform/hestia/175577227898c13ebfae5.png)
-
-Example as follows:
+Example:
 
 ```
 #ifndef TUYA_PRODUCT_ID
@@ -149,26 +150,26 @@ Example as follows:
 
 ```
 
-### Method 2: Tool Authorization
+### Method 2: Authorize by tool
 
-In **Tuya Uart Tool**, select the flashing serial port and **BaudRate**, click **Start** to open the serial port, then click **Authorize** to authorize.
+In **Tuya Uart Tool**, select the serial port and **BaudRate** for flashing, click **Start** to enable the serial port, and then click **Authorize**.
 
-<img alt="Tool Authorization" src="https://images.tuyacn.com/content-platform/hestia/1757310278591d8030b54.png" width="600"  />
+<img alt="Tool" src="https://images.tuyacn.com/content-platform/hestia/1757310278591d8030b54.png" width="500"  />
 
-## Compile and Flash
+## Compile and flash
 
-Enter the following in the terminal:
+Enter the following command in the terminal.
 
 ```
-tos.py build && tos.py flash 
+tos.py build && tos.py flash
 ```
 
-![Example.png](https://images.tuyacn.com/content-platform/hestia/17557741754d231019d50.png)
+<img alt="Example" src="https://images.tuyacn.com/content-platform/hestia/17557741754d231019d50.png" width="500"  />
 
-If using the T5AI-Board development board, the board itself is configured with two serial ports, one for flashing and one for log output. If flashing fails, you can switch port numbers and retry.
+The T5AI-Board development board is configured with two serial ports: one for flashing and the other for log output. If flashing failed, switch to another port number and try again.
 
-## Common Issues
+## FAQs
 
-### Flashing always fails at Write, how to solve?
+### Flashing always failed during the write phase. How can I resolve this?
 
-Please refer to [Install Corresponding Driver](https://tuyaopen.ai/zh/docs/tos-tools/tools-tyutool#%E7%83%A7%E5%BD%95%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%80%BB%E6%98%AF%E5%9C%A8write%E6%97%B6%E5%A4%B1%E8%B4%A5) to try to solve it.
+[Install the driver](https://tuyaopen.ai/docs/tos-tools/tools-tyutool) to try to resolve this issue.
