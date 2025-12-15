@@ -1,10 +1,10 @@
-# tkl_system | System Interface
+# tkl_system | System Interfaces
 
-## Description
+## Overview
 
-Interfaces related to system functions.
+This topic describes the interfaces related to system functions.
 
-## API Description
+## API description
 
 ### tkl_system_reset
 
@@ -12,17 +12,15 @@ Interfaces related to system functions.
 void tkl_system_reset(void)
 ```
 
-**Brief Description**: Performs a system reset.
+- Feature: Performs a system reboot.
 
-**Parameters**:
+- Parameter: None.
 
-- None
+- Return value: None.
 
-**Return**:
-
-- None
-
-**Remarks**: Calling this function will cause the system to restart.
+:::tip
+Calling this function will cause the system to reboot.
+:::
 
 ### tkl_system_get_tick_count
 
@@ -30,15 +28,11 @@ void tkl_system_reset(void)
 SYS_TICK_T tkl_system_get_tick_count(void)
 ```
 
-**Brief Description**: Gets the system tick count.
+- Feature: Gets the system tick count.
 
-**Parameters**:
+- Parameter: None.
 
-- None
-
-**Return**:
-
-- `SYS_TICK_T`: The current value of the system tick count.
+- Return value: `SYS_TICK_T`, the current value of the system tick count.
 
 ### tkl_system_get_millisecond
 
@@ -46,15 +40,11 @@ SYS_TICK_T tkl_system_get_tick_count(void)
 SYS_TIME_T tkl_system_get_millisecond(void)
 ```
 
-**Brief Description**: Gets the number of milliseconds since the system started.
+- Feature: Gets the number of milliseconds elapsed since system startup.
 
-**Parameters**:
+- Parameter: None.
 
-- None
-
-**Return**:
-
-- `SYS_TIME_T`: The total number of milliseconds from system start to the current time.
+- Return value: `SYS_TIME_T`, the total number of milliseconds from system startup to the current moment.
 
 ### tkl_system_get_random
 
@@ -62,17 +52,15 @@ SYS_TIME_T tkl_system_get_millisecond(void)
 int tkl_system_get_random(uint32_t range)
 ```
 
-**Brief Description**: Gets a random number within a specified range.
+- Feature: Gets a random number within a specified range.
 
-**Parameters**:
+- Parameter: `range` indicates the range of the random number, from `0` to `range` (excluding `range` itself).
 
-- `range`: The range of the random number, from `0` to `range` (not including `range` itself).
+- Return value: `int`, the generated random number.
 
-**Return**:
-
-- `int`: The generated random number.
-
-**Remarks**: The random number generator is initialized upon the first call.
+:::tip
+The random number generator is initialized upon its first call.
+:::
 
 ### tkl_system_get_reset_reason
 
@@ -80,21 +68,18 @@ int tkl_system_get_random(uint32_t range)
 TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
 ```
 
-**Brief Description**: Gets the reason for the system reset.
+- Feature: Gets the reason for the system reset.
 
-**Parameters**:
+- Parameter: `describe`, a pointer to a string describing the system reset reason.
 
-- `describe`: A pointer to a string describing the reason for the system reset.
+- Return value: `TUYA_RESET_REASON_E`, an enumeration value indicating the reset reason.
 
-**Return**:
-
-- `TUYA_RESET_REASON_E`: An enumeration value representing the reset reason.
 
 ```c
     typedef enum {
-        TUYA_RESET_REASON_POWERON    = 0,  ///< Poweron reset type, supply voltage < power-on threshold (TY_RST_POWER_OFF)
+        TUYA_RESET_REASON_POWERON    = 0,  ///< Power-on reset type, supply voltage < power-on threshold (TY_RST_POWER_OFF)
         TUYA_RESET_REASON_HW_WDOG    = 1,  ///< Hardware watchdog reset occurred (TY_RST_HARDWARE_WATCHDOG)
-        TUYA_RESET_REASON_FAULT      = 2,  ///< A access fault occurred (TY_RST_FATAL_EXCEPTION)
+        TUYA_RESET_REASON_FAULT      = 2,  ///< An access fault occurred (TY_RST_FATAL_EXCEPTION)
         TUYA_RESET_REASON_SW_WDOG    = 3,  ///< Software watchdog reset occurred (TY_RST_SOFTWARE_WATCHDOG)
         TUYA_RESET_REASON_SOFTWARE   = 4,  ///< Software triggered reset (TY_RST_SOFTWARE)
         TUYA_RESET_REASON_DEEPSLEEP  = 5,  ///< Reset caused by entering deep sleep (TY_RST_DEEPSLEEP)
@@ -103,14 +88,16 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
         TUYA_RESET_REASON_FIB        = 8,  ///< Reset originated from the FIB bootloader
         TUYA_RESET_REASON_BOOTLOADER = 8,  ///< Reset relates to an bootloader
         TUYA_RESET_REASON_CRASH      = 10, ///< Software crash
-        TUYA_RESET_REASON_FLASH      = 11, ///< Flash failure cause reset
+        TUYA_RESET_REASON_FLASH      = 11, ///< Flash failure caused reset
         TUYA_RESET_REASON_FATAL      = 12, ///< A non-recoverable fatal error occurred
         TUYA_RESET_REASON_BROWNOUT   = 13, ///< Brown out
         TUYA_RESET_REASON_UNSUPPORT  = 0xFF,
     } TUYA_RESET_REASON_E;
 ```
 
-**Remarks**: Different reset sources are mapped to specific enumeration values.
+:::tip
+Different reset sources are mapped to specific enumeration values.
+:::
 
 ### tkl_system_sleep
 
@@ -118,17 +105,15 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
 void tkl_system_sleep(uint32_t num_ms)
 ```
 
-**Brief Description**: Puts the system to sleep for a specified duration.
+- Feature: Puts the system into a sleep state for a specified duration.
 
-**Parameters**:
+- Parameter: `num_ms`, the sleep duration in milliseconds.
 
-- `num_ms`: The duration to sleep, in milliseconds.
+- Return value: None.
 
-**Return**:
-
-- None
-
-**Remarks**: Calling this function will pause the task scheduler for the current task for the specified duration.
+:::tip
+Calling this function will pause the task scheduler for the current task for a specified duration.
+:::
 
 ### tkl_system_delay
 
@@ -136,15 +121,11 @@ void tkl_system_sleep(uint32_t num_ms)
 void tkl_system_delay(uint32_t num_ms)
 ```
 
-**Brief Description**: Delays the system for a specified duration.
+- Feature: Delays the system for a specified duration.
 
-**Parameters**:
+- Parameter: `num_ms`, the delay duration in milliseconds.
 
-- `num_ms`: The duration to delay, in milliseconds.
-
-**Return**:
-
-- None
+- Return value: None.
 
 ### tkl_system_get_cpu_info
 
@@ -152,15 +133,14 @@ void tkl_system_delay(uint32_t num_ms)
 OPERATE_RET tkl_system_get_cpu_info(TUYA_CPU_INFO_T **cpu_ary, int *cpu_cnt)
 ```
 
-**Brief Description**: Gets system CPU information.
+- Feature: Gets the system CPU information.
 
-**Parameters**:
+- Parameters:
+   - `cpu_ary`: Pointer to an array of type `TUYA_CPU_INFO_T`, used to receive CPU information.
+   - `cpu_cnt`: Pointer used to receive the number of CPUs.
 
-- `cpu_ary`: A pointer to an array of `TUYA_CPU_INFO_T` type, used to receive CPU information.
-- `cpu_cnt`: A pointer used to receive the number of CPUs.
+- Return value: `OPERATE_RET` indicates the operation result. `OPRT_OK` indicates success, while any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
-**Return**:
-
-- `OPERATE_RET`: The operation result, `OPRT_OK` indicates success, other values please refer to `tuya_error_code.h`.
-
-**Remarks**: This function is not supported in the current implementation and will return `OPRT_NOT_SUPPORTED`.
+:::tip
+This function is not supported in the current implementation. Calling it will return `OPRT_NOT_SUPPORTED`.
+:::
