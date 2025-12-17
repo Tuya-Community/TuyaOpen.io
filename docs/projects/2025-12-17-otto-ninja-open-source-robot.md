@@ -92,7 +92,7 @@ The project has three core advantages:
 | Servo               | 360° Servo (MG90S) + 180° Servo (MG90S)                     | 4 each    | [Taobao Link](https://item.taobao.com/item.htm?id=39376480811) | 360° for wheeled drive, 180° for walking joints              |
 | OLED Display        | 0.71-inch, 12P plug-in, SPI interface, GC9D01 compatible    | 2 piece   | [Taobao Link](https://item.taobao.com/item.htm?id=866988150753) | Displays posture data and interaction information            |
 | Battery Component   | 3.7V Lithium Battery, 1.25mm red-black terminal connector   | 1 set     | Purchased on Taobao                                          | It is recommended to choose lithium battery with protection board |
-| Speaker Module | 2030 Square 4R3W1.25 200MM 1.25 Plug | 1 pc | Taobao Link | For voice interaction and audio playback |
+| Speaker Module | 2030 Square 4R3W1.25 200MM 1.25 Plug | 1 pc | [Taobao Link](https://e.tb.cn/h.6aQKt3qWEBJ70iY?tk=zKwNeq6Y2fm) | For voice interaction and audio playback |
 | Microphone Module   | Model 6027, analog signal, 1.25mm terminal, IP65 waterproof | 1 piece   | [Taobao Link](https://item.taobao.com/item.htm?id=764269727410) | Used for voice interaction function                          |
 | Main Control Board  | T5 OTTO Development Board / Complete Set of Materials       | 1 piece   | [Taobao Link](https://tuyasmart.taobao.com/?spm=a1z10.5-c-s.0.0.223d5cb0RYr5fX) | Complete materials                                           |
 
