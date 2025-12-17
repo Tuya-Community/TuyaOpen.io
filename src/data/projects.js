@@ -1,6 +1,15 @@
 const projectsData = {
   en: [
     {
+      id: 'otto-ninja-open-source-robot',
+      title: 'Otto Ninja Robot',
+      description:
+        'Otto Ninja is a dual-mode smart robot based on the Otto DIY open-source ecosystem, supporting switching between walking and wheeled racing modes, specially designed for makers, students, and robot enthusiasts.',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/402dea40-bf93-43ae-ab9a-e502233e8604.png',
+      markdownFile: '/docs/projects/2025-12-17-otto-ninja-open-source-robot',
+      tags: ['iot', 'ai', 'robotics', 'open-source', 'open-hardware', 'tutorial', 'chatbot', 'voice'],
+    },
+    {
       id: 't5-pocket',
       title: 'T5-Pocket: Your AI+IoT Smart Companion',
       description:
@@ -120,6 +129,15 @@ const projectsData = {
     },
   ],
   zh: [
+    {
+      id: 'otto-ninja-open-source-robot',
+      title: 'Otto Ninja 开源机器人',
+      description:
+        'Otto Ninja 是一款基于 Otto DIY 开源生态开发的双模式智能机器人，核心支持步行模式与轮式竞速模式一键切换，专为创客、学生及机器人爱好者设计。',
+      image: 'https://images.tuyacn.com/fe-static/docs/img/0cd58a4c-eaf9-40f8-88fa-4f46d17cb833.png',
+      markdownFile: '/docs/projects/2025-12-17-otto-ninja-open-source-robot',
+      tags: ['iot', 'ai', 'robotics', 'open-source', 'open-hardware', 'tutorial', 'chatbot', 'voice'],
+    },
     {
       id: 't5-pocket',
       title: '【开源】玩转 T5-Pocket：你的 AI+IoT 智能伙伴',
