@@ -4,10 +4,68 @@
         <title>TuyaOpen Blog</title>
         <link>https://tuyaopen.io/zh/blog</link>
         <description>TuyaOpen Blog</description>
-        <lastBuildDate>Thu, 13 Nov 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Dec 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
+        <item>
+            <title><![CDATA[HackStorm Hackathon 2026]]></title>
+            <link>https://tuyaopen.io/zh/blog/HackStorm-Hackathon-2026</link>
+            <guid>https://tuyaopen.io/zh/blog/HackStorm-Hackathon-2026</guid>
+            <pubDate>Fri, 19 Dec 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Tuya is excited to join HackStorm AI + IoT Hackathon//www.hackstorm.ai/) as a Co-host and Core Technology Sponsor.]]></description>
+            <content:encoded><![CDATA[<p>Tuya is excited to join <strong>HackStorm AI + IoT Hackathon: Makers Gathering</strong>  (<a href="https://www.hackstorm.ai/">https://www.hackstorm.ai/</a>) as a <strong>Co-host and Core Technology Sponsor</strong>.</p>
+<img src="https://images.tuyacn.com/rms-static/0495a670-dcd0-11f0-946a-f10d211a0860-1766144643671.jpg?tyName=%E9%BB%91%E5%AE%A2%E6%9D%BE%20(1).jpg" alt="banner" width="1300">
+<p>As a global IoT platform provider, Tuya is committed to empowering developers to turn AI ideas into real-world smart devices. Through <a href="https://tuyaopen.ai/">TuyaOpen</a>, official development hardware, and on-site technical support, Tuya helps makers move beyond software-only projects and bring intelligence into physical products.</p>
+<p>If you are bored with software-only hackathons, this one is for you!<br>
+<!-- -->With Tuya’s IoT infrastructure and AI capabilities, developers can build devices that <strong>sense, speak, react</strong>, and create <strong>emotional connections</strong> in the real world.</p>
+<h3 id="-what-tuya-provides-to-approved-makers">🎁 What Tuya provides to approved makers</h3>
+<ul>
+<li>Tuya T5 E1 development kit with an AMOLED display, WiFi, and Bluetooth</li>
+<li>USB Type-C cable</li>
+<li>External speaker</li>
+<li>GPS module</li>
+<li>Designed for rapid prototyping and intelligent interaction</li>
+</ul>
+<h3 id="-prizes">🏆 Prizes</h3>
+<ul>
+<li><strong>1st</strong>: $5,000</li>
+<li><strong>2nd</strong>: $3,000</li>
+<li><strong>3rd</strong>: $2,000</li>
+<li><strong>Extra awards</strong> including VC’s Choice and Visitors’ Choice</li>
+</ul>
+<h3 id="-event-info">📍 Event Info</h3>
+<ul>
+<li><strong>Where</strong>: JJ Lake Business Center, 340 E Middlefield Rd, Mountain View, CA 94043</li>
+<li><strong>When</strong>: Fri Jan 9 (6:00 PM) → Sun Jan 11 (8:00 PM), 2026</li>
+<li><strong>Makers Registration</strong>: <a href="https://luma.com/qin89snk">https://luma.com/qin89snk</a></li>
+<li><strong>Visitors only</strong>: <a href="https://luma.com/qi4ta2jw">https://luma.com/qi4ta2jw</a></li>
+<li><strong>Event details</strong>: <a href="https://www.hackstorm.ai/">https://www.hackstorm.ai/</a></li>
+</ul>
+<h3 id="-what-you-can-build-with-tuya">💡 What you can build with Tuya</h3>
+<ul>
+<li>AI Pet Badge</li>
+<li>AI Voice Clock (speaks / reacts / coaches you)</li>
+<li>Astrology / personality widget (mood + vibe display)</li>
+<li>AI companions &amp; expressive devices (emotion + animation + speech)</li>
+<li>Smart mirror / smart display with personalized intelligence</li>
+<li>Wearables, AI toys, ambient devices…</li>
+</ul>
+<h3 id="-key-schedule">🧭 Key Schedule</h3>
+<ul>
+<li><strong>Jan 7–8 (7–9 PM)</strong>: Online workshops</li>
+<li><strong>Jan 9 (6–7 PM)</strong>: Team meet-up + formation</li>
+<li><strong>Jan 9 (7–9 PM)</strong>: Onsite setup workshop + tech support</li>
+<li><strong>Jan 10</strong>: Dev Day</li>
+<li><strong>Jan 11 (3 PM)</strong>: Submission deadline → demos + awards + social</li>
+</ul>
+<h3 id="-comment-what-you-would-build-with-tuya-and-join-tuyas-official-developer-discord-community">💬 Comment what you would build with Tuya and Join Tuya’s official developer Discord community.</h3>
+<p>Connect with AIoT builders worldwide, exchange project ideas, get technical support, and stay updated on HackStorm.<br>
+<!-- -->👉 <a href="https://discord.gg/yPPShSTttG">discord.gg/yPPShSTttG</a></p>
+<p>#HackStorm #Tuya #AIoT #Hackathon #IoT #Hardware #Makers #GenerativeAI #BayArea</p>]]></content:encoded>
+            <category>TuyaOpen</category>
+            <category>Contest</category>
+        </item>
         <item>
             <title><![CDATA[涂鸦AI创新黑客松大赛 2025]]></title>
             <link>https://tuyaopen.io/zh/blog/2025-tuya-ai-innovatores-hackathon</link>
