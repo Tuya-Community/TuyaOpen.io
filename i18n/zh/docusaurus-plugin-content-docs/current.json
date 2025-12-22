@@ -55,6 +55,26 @@
     "message": "云服务",
     "description": "The label for category Cloud Services in sidebar docs"
   },
+  "sidebar.docs.category.AI Agent Development": {
+    "message": "AI Agent 开发",
+    "description": "The label for category AI Agent Development in sidebar docs"
+  },
+  "sidebar.docs.category.Voice & Language": {
+    "message": "语音音色与语言",
+    "description": "The label for category Voice & Language in sidebar docs"
+  },
+  "sidebar.docs.category.Triggers": {
+    "message": "触发器",
+    "description": "The label for category Triggers in sidebar docs"
+  },
+  "sidebar.docs.category.MCP Services": {
+    "message": "MCP Server 服务",
+    "description": "The label for category MCP Services in sidebar docs"
+  },
+  "sidebar.docs.category.Agent OpenAPIs & Chat": {
+    "message": "智能体开放接口",
+    "description": "The label for category Agent OpenAPIs & Chat in sidebar docs"
+  },
   "sidebar.docs.category.TKL APIs": {
     "message": "TKL APIs",
     "description": "The label for category TKL APIs in sidebar docs"
