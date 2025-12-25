@@ -75,8 +75,9 @@ Otto Ninja 是一款基于 **Otto DIY 开源生态**开发的双模式智能机�
 | ----------- | ------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------ |
 | 橡胶密封圈  | O 型圈、70*5(5个）                          | 按需 | [淘宝链](https://e.tb.cn/h.SwzLdCs7xnQF7FB?tk=ajRffNdG3MQ)[接](https://e.tb.cn/h.SwzLdCs7xnQF7FB?tk=ajRffNdG3MQ) | 用于轮足                             |
 | 舵机        | 360° 舵机（MG90S）+ 180° 舵机（MG90S）      | 4 个 | [淘宝链接](https://item.taobao.com/item.htm?id=39376480811)  | 360° 用于轮式驱动，180° 用于步行关节 |
-| OLED 显示屏 | 0.71寸-插接12P、SPI接口、适配 GC9D01、      | 1 块 | [淘宝链接](https://item.taobao.com/item.htm?id=866988150753) | 显示姿态数据、交互信息               |
+| OLED 显示屏 | 0.71寸-插接12P、SPI接口、适配 GC9D01、      | 2 块 | [淘宝链接](https://item.taobao.com/item.htm?id=866988150753) | 显示姿态数据、交互信息               |
 | 电池组件    | 3.7V锂电池  、1.25mm 红黑端子插头           | 1 套 | 淘宝购买                                                     | 建议选择带保护板的锂电池             |
+| 喇叭模块    | 2030方形4R3W1.25 200MM1.25插头              | 1 个 | [淘宝链接](https://e.tb.cn/h.6aQKt3qWEBJ70iY?tk=zKwNeq6Y2fm ) | 用于对话，播放音频                   |
 | 麦克风模块  | 6027 型号、模拟信号、1.25mm 端子、IP65 防水 | 1 个 | [淘宝链](https://item.taobao.com/item.htm?id=764269727410)[接](https://item.taobao.com/item.htm?id=764269727410) | 用于语音交互功能                     |
 | 主控板      | T5 OTTO开发板/整套材料                      | 1 块 | [淘宝链](https://item.taobao.com/item.htm?id=764269727410)[接](https://tuyasmart.taobao.com/?spm=a1z10.5-c-s.0.0.223d5cb0RYr5fX) | 整体材料                             |
 
