@@ -1,45 +1,42 @@
 ---
-title: Create board
+title: Create Board
 ---
 
-# Create `board`
+# Create Board
 
-This document is for developers who have designed a new hardware development board and need to do some driver initialization and adaptation work for this new development board.
 
 ## Overview
 
-`tos.py new board` is a command-line tool provided by TuyaOpen SDK.
+This topic is intended for developers designing new hardware development boards independently, providing guidance on the driver initialization process and adaptation for that development board.
 
-It is used to quickly create a new hardware development board support package based on chip platforms already supported by `TuyaOpen`.
+`tos.py new board` is a command-line tool provided by the TuyaOpen SDK. It is used to rapidly create a new support package based on chip platforms already supported by TuyaOpen. Utilizing an interactive interface and a template system, this command helps you quickly add new board configurations for existing chip platforms, significantly simplifying the hardware porting and adaptation workflow.
 
-This command helps developers quickly add new development board configurations for existing chip platforms through an interactive interface and template system, greatly simplifying the workflow of hardware porting and adaptation.
+## Board naming
 
-## Board Naming
+### Required fields
 
-### Mandatory Fields
+- Manufacturer name: The manufacturer of the development board. Boards released by Tuya would start with **TUYA**.
+- Chip name: The platform name, such as **T2** and **T5AI**.
 
-- Manufacturer name: Represents the board manufacturer (e.g. "TUYA" for Tuya's boards)
-- Chip name: Platform name (e.g. "T2", "T5AI")
+### Optional fields
 
-### Optional Fields
+- Key features: If the board has specific functional modules or characteristics, they should reflect the board's main features or functions, such as **LCD** and **CAM**.
+- Series name and version information: Some manufacturers have product series, which can be reflected in the naming along with version numbers.
+- Other: Various hardware identifiers.
 
-- Key features: Indicate special functionalities (e.g. "LCD", "CAM")
-- Series and version: For products with series variations
-- Other identifiers: Additional hardware markers
+### Naming rules
 
-### Naming Rules
+- Use uppercase English letters.
+- Connect fields with underscores (_).
+- Field combination order: **Manufacturer name_Development board name_Optional fields**.
+- Avoid using special characters.
 
-1. UPPERCASE letters only
-2. Fields separated by underscores
-3. Order: Manufacturer_CoreBoardName_OptionalFields
+Example: `TUYA_T5AI_BOARD`.
 
-Example: `TUYA_T5AI_BOARD`
 
-## Operation Principle
+## Procedure
 
-1. Use the command `tos.py new board` to select the target platform
-
-    After executing the command, the system will list all available hardware platforms:
+1. Run the command `tos.py new board` and select the desired platform. After the command is run, the system will list all available hardware platforms.
 
     ```
     [INFO]: Running tos.py ...
@@ -56,34 +53,30 @@ Example: `TUYA_T5AI_BOARD`
     Choice platform: 6
     ```
 
-    Use the arrow keys to select your target platform (here we use `T5AI` as an example), and press Enter to confirm.
+    Use the arrow keys to select the desired platform (using T5AI as an example here), then press Enter to confirm.
 
-2. Enter board name
+2. Enter the development board name.
 
     ```
     [NOTE] Input new board name.
     input: MY_CUSTOM_BOARD
     ```
 
-    Enter the new development board name. It is recommended to use:
+    :::tip
+    Strictly adhere to the naming rules during this process.
+    :::
 
-    - English uppercase letters
-    - Underscores to separate words
-    - Avoid using special characters
+3. The system will automatically generate the following file structure.
 
-3. Automatically generate files
+   ```
+   boards/<platform>/<board_name>/
+   ├── Kconfig           # Board-level configuration file
+   ├── CMakeLists.txt    # CMake build configuration
+   ├── board_com_api.h   # Board-level API declarations
+   └── board_com_api.c   # Board-level API implementations
+   ```
 
-    The system will automatically create the following file structure:
-
-    ```
-    boards/<platform>/<board_name>/
-    ├── Kconfig           # Board-level configuration file
-    ├── CMakeLists.txt    # CMake build configuration
-    ├── board_com_api.h   # Board-level API declarations
-    └── board_com_api.c   # Board-level API implementation
-    ```
-
-    The `boards/<platform>/Kconfig` file will be automatically updated to include the new board configuration options:
+   The `boards/<platform>/Kconfig` file will be automatically updated to include the configuration options for the new board.
 
     ```
     config BOARD_CHOICE_MY_CUSTOM_BOARD
@@ -93,63 +86,59 @@ Example: `TUYA_T5AI_BOARD`
     endif
     ```
 
-## Next Steps
+## Next step
 
 Overview:
 
-    > 1. Verify compilation
+    > 1. Verify the compilation.
     >
-    > 2. Modify the `boards/<platform>/<board_name>/board_com_api.c` file to adapt the new development board
+    > 2. Modify the `boards/<platform>/<board_name>/board_com_api.c` file to adapt to the new development board.
     >
-    > 3. Adjust configuration
+    > 3. Adjust the configuration.
     >
-    > 4. Save board-level default configuration file
+    > 4. Save the board-level default configuration file.
 
-### Verify Compilation
+### Verify the compilation
 
-Use the command `tos.py new project` to create a new project, enter the project directory.
+1. Run the command `tos.py new project` to create a new project and navigate to the project directory.
 
-Use the command `tos.py config choice` to select a configuration for the same chip platform.
+2. Run the command `tos.py config choice` to select configurations for the same chip platform (this can save configuration time).
 
-The advantage of this is that it can save configuration time.
+3. Run the command `tos.py config menu` to select the newly created development board.
 
-Then use the command `tos.py config menu` to select the newly created development board.
+4. Run the command `tos.py build` to verify the compilation.
 
-Execute the command `tos.py build` to verify compilation.
 
-### Adapt Development Board
+### Adapt to development boards
 
-Modify the `boards/<platform>/<board_name>/board_com_api.c` file to adapt the new development board.
+Modify the `boards/<platform>/<board_name>/board_com_api.c` file to adapt to the new development board.
 
-Find the `PERATE_RET board_register_hardware(void)` function in the file and modify it according to the hardware information of the new development board.
+Locate the `PERATE_RET board_register_hardware(void)` function within the file and modify it based on the new board's hardware information.
 
-For example, add initialization code for peripherals such as KEY, LED, I2C, etc. This process can refer to existing development board implementations.
+For example, add initialization code for peripherals such as KEY, LED, and I2C. You can refer to the implementation of existing development boards for this process.
 
-If you need to add other source files or header file directories, you can modify the `CMakeLists.txt` file to configure the `LIB_SRCS` and `LIB_PUBLIC_INC` variables.
+If you need to add other source files or header directories, you can do so by modifying the `CMakeLists.txt` file and configuring the `LIB_SRCS` and `LIB_PUBLIC_INC` variables.
 
-### Adjust Configuration
+### Adjust configuration
 
-Use the command `tos.py config menu` to enter the configuration menu and adjust function options and parameters.
+Run the command `tos.py config menu` to enter the configuration menu and adjust functional options and parameters.
 
-Combined with the previous step, verify functionality.
+Then, combine this with the previous step to verify the functionality.
 
-### Save Configuration
+### Save configuration
 
-Copy the `app_default.config` file from the project directory to the `boards/<platform>/config` directory.
+Copy the `app_default.config` file from the project directory to the `boards/<platform>/config` directory, and rename it to `<board_name>.config` to facilitate use by other developers.
 
-And rename it to `<board_name>.config`.
+## FAQs
 
-This makes it convenient for other developers to use.
+### How to delete a created development board?
 
-## FAQ
+Delete the `boards/<platform>/<board_name>` directory, then manually remove the relevant configuration from `boards/<platform>/Kconfig`.
 
-### How to delete a created board
+### How to rename a created development board?
 
-Directly delete the `boards/<platform>/<board_name>` directory and manually remove the related configuration from `boards/<platform>/Kconfig`.
+You can rename the board manually.
 
-### Modify the name of an already created board
-
-Manual modification is required:
-1. Rename the board directory
-2. Update references in the platform Kconfig
-3. Update the default values in the board's internal Kconfig
+1. Rename the development board directory.
+2. Update the references in the platform's Kconfig.
+3. Update the default values in the development board's internal Kconfig.
