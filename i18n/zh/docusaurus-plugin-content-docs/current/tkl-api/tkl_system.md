@@ -18,7 +18,7 @@ void tkl_system_reset(void)
 
 - 返回值：无。
 
-:::important
+:::tip
 调用该函数会导致系统重启。
 :::
 
@@ -58,7 +58,7 @@ int tkl_system_get_random(uint32_t range)
 
 - 返回值：`int`，生成的随机数。
 
-:::important
+:::tip
 随机数生成器在初次调用时会被初始化。
 :::
 
@@ -94,7 +94,7 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
     } TUYA_RESET_REASON_E;
 ```
 
-:::important
+:::tip
 不同的复位来源会被映射到特定的枚举值上。
 :::
 
@@ -110,7 +110,7 @@ void tkl_system_sleep(uint32_t num_ms)
 
 - 返回值：无。
 
-:::important
+:::tip
 调用此函数会导致任务调度器暂停调用当前任务指定的时间。
 :::
 
@@ -140,6 +140,6 @@ OPERATE_RET tkl_system_get_cpu_info(TUYA_CPU_INFO_T **cpu_ary, int *cpu_cnt)
 
 - 返回值：`OPERATE_RET` 为操作结果，`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-:::important
+:::tip
 该函数在当前实现中不支持，调用将返回 `OPRT_NOT_SUPPORTED`。
 :::
