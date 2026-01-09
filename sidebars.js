@@ -42,6 +42,7 @@ module.exports = {
       },
       collapsed: false,
       items: [
+        'hardware-specific/t5ai-peripheral-mapping',
         {
           type: 'category',
           label: 'T5-AI Board DevKit',
