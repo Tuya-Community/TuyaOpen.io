@@ -1,11 +1,10 @@
 # tkl_timer | Timer Driver
 
+## Overview
 
-## Brief Description
+A timer is an on-chip peripheral in microprocessors used for time measurement. Depending on the actual configuration requirements, different timing precisions are typically available, such as 16-bit and 32-bit. During practical use, configure parameters including the timer period, counting mode, and interrupt service routine.
 
-A timer is an on-chip peripheral in a microprocessor used for time measurement. Depending on the actual configuration requirements, timers usually have different timing precisions, such as 16-bit, 32-bit, etc. In actual use, it is usually necessary to configure parameters such as the timing period, counting method, and interrupt service routine.
-
-## API Description
+## API description
 
 ### tkl_timer_init
 
@@ -13,30 +12,28 @@ A timer is an on-chip peripheral in a microprocessor used for time measurement. 
 OPERATE_RET tkl_timer_init(TUYA_TIMER_NUM_E timer_id, TUYA_TIMER_BASE_CFG_T *cfg);
 ```
 
-- Function Description:
-  - Initializes the corresponding timer instance based on the port number and basic configuration, and returns the initialization result.
+- Feature: Initializes the specified timer instance using the port number and basic configuration, and returns the initialization result.
 - Parameters:
 
-  - `timer_id`: Port number.
-  - `cfg`: Timer basic configuration, including timing mode, callback function, and callback function parameters.
+   - `timer_id`: The port number.
+   - `cfg`: The basic configuration of the timer, including timing mode, callback function, and callback function parameters.
 
     ```c
     typedef struct {
         TKL_TIMER_MODE_E    mode;
         TKL_TIMER_ISR_CB    cb;
-        void                *args;
+        void                    *args;
     } TUYA_TIMER_BASE_CFG_T;
     ```
 
-    #### TKL_TIMER_MODE_E:
+    `TKL_TIMER_MODE_E`:
 
-    | Name                  | Definition     | Remarks |
-    | :-------------------- | :------------- | :------ |
-    | TKL_TIMER_MODE_ONCE   | One-shot timer |         |
-    | TKL_TIMER_MODE_PERIOD | Periodic timer |         |
+    | Parameter                  | Definition     |
+    | :-------------------- | :------- |
+    | TKL_TIMER_MODE_ONCE   | One-shot timer. |  
+    | TKL_TIMER_MODE_PERIOD | Periodic timer. |      
 
-- Return Value:
-  - OPRT_OK for success, others please refer to the file `tuya_error_code.h`.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
 ### tkl_timer_deinit
 
@@ -44,13 +41,11 @@ OPERATE_RET tkl_timer_init(TUYA_TIMER_NUM_E timer_id, TUYA_TIMER_BASE_CFG_T *cfg
 OPERATE_RET tkl_timer_deinit(TUYA_TIMER_NUM_E timer_id);
 ```
 
-- Function Description:
-  - Deinitializes the timer instance.
-  - This interface stops the timer and releases the software and hardware resources related to the timer.
-- Parameters:
-  - `timer_id`: Port number.
-- Return Value:
-  - OPRT_OK for success, others please refer to the file `tuya_error_code.h`.
+- Feature:
+   - Deinitializes the timer instance.
+   - This interface will stop the timer and release related software and hardware resources.
+- Parameter: `timer_id` indicates the port number.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
 ### tkl_timer_start
 
@@ -58,17 +53,15 @@ OPERATE_RET tkl_timer_deinit(TUYA_TIMER_NUM_E timer_id);
 OPERATE_RET tkl_timer_start(TUYA_TIMER_NUM_E timer_id, uint32_t us);
 ```
 
-- Function Description:
-
-  - Starts the timer.
+- Feature: Starts the timer.
 
 - Parameters:
 
-  - `timer_id`: Port number.
-  - `us`: Timer interval.
+   - `timer_id`: The port number.
 
-- Return Value:
-  - OPRT_OK for success, others please refer to the file `tuya_error_code.h`.
+   - `us`: The timing interval of the timer.
+
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
 ### tkl_timer_stop
 
@@ -76,12 +69,9 @@ OPERATE_RET tkl_timer_start(TUYA_TIMER_NUM_E timer_id, uint32_t us);
 OPERATE_RET tkl_timer_stop(TKL_TIMER_PORT_E port);
 ```
 
-- Function Description:
-  - Stops the timer.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - OPRT_OK for success, others please refer to the file `tuya_error_code.h`.
+- Feature: Stops the timer.
+- Parameter: `port` indicates the port number.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
 ### tkl_timer_get
 
@@ -89,13 +79,11 @@ OPERATE_RET tkl_timer_stop(TKL_TIMER_PORT_E port);
 OPERATE_RET tkl_timer_get(TKL_TIMER_PORT_E port, uint32_t *us);
 ```
 
-- Function Description:
-  - Gets the timer interval.
+- Feature: Gets the timing interval of the timer.
 - Parameters:
-  - `port`: Port number.
-  - `us`: Timer interval value, in microseconds, corresponding to the value set in tkl_timer_start.
-- Return Value:
-  - OPRT_OK for success, others please refer to the file `tuya_error_code.h`.
+   - `port`: The port number.
+   - `us`: The timing interval value, unit: μs, corresponding to the value set by `tkl_timer_start`.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
 ### tkl_timer_get_current_value
 
@@ -103,13 +91,11 @@ OPERATE_RET tkl_timer_get(TKL_TIMER_PORT_E port, uint32_t *us);
 OPERATE_RET tkl_timer_get_current_value(TUYA_TIMER_NUM_E timer_id, uint32_t *us);
 ```
 
-- Function Description:
-  - Gets the current count value of the timer.
+- Feature: Gets the actual count value of the timer.
 - Parameters:
-  - `timer_id`: Port number.
-  - `us`: Current count value, in microseconds.
-- Return Value:
-  - OPRT_OK for success, others please refer to the file `tuya_error_code.h`.
+   - `timer_id`: The port number.
+   - `us`: The actual count value, unit: μs.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
 
 ## Example
 
@@ -122,9 +108,9 @@ static void tkl_timer_isr_cb_fun(void *args)
 void tuya_timer_test(void)
 {
     OPERATE_RET ret;
-    TUYA_TIMER_BASE_CFG_T cfg;
+ 	TUYA_TIMER_BASE_CFG_T cfg;
     uint32_t interval_us;
-    uint32_t get_us;
+    uint32_t get_us；
 
     cfg.mode = TUYA_TIMER_MODE_PERIOD;
     cfg.cb = tkl_timer_isr_cb_fun;
@@ -167,7 +153,7 @@ void tuya_timer_test(void)
     }
     PR_DEBUG("current run time:%d us", get_us);
     tkl_system_delay(5000);
-    //uninitialize timer
+    //uninitialize iic
     ret = tkl_timer_deinit(TUYA_TIMER_NUM_0);
     if (ret != 0) {
        //failed
