@@ -1,88 +1,84 @@
 ---
-title: Create project
+title: Create Project
 ---
 
-# Create `project`
+# Create Project
 
 ## Overview
 
-The `tos.py new project` command is used to create new projects in the TuyaOpen development environment.
+This topic describes how to run the `tos.py new project` command to create a new project. The `tos.py new project` command is used to create a new project within the TuyaOpen development environment. This command quickly initializes the basic structure of a new project based on predefined templates.
 
-This command quickly initializes the basic structure of a new project based on predefined templates.
+## Procedure
 
-## Operation Principle
+Run the command `tos.py new project`. The system will prompt you to enter the new project's name and select a platform.
 
-1. Execute the command `tos.py new project`, the system will prompt you to enter the name of the new project and select a platform
+```bash
+❯ tos.py new project
+[INFO]: Running tos.py ...
+[NOTE]: Input new project name.
+input: new-project
+```
 
-    ```bash
-    ❯ tos.py new project
-    [INFO]: Running tos.py ...
-    [NOTE]: Input new project name.
-    input: new-project
-    ```
+After the command execution is completed, the system will create a folder named `new-project` in the current directory, containing the basic structure of the new project.
 
-    After the command execution is complete, the system will create a folder named `new-project` in the current directory, containing the basic structure of the new project.
+### Directory
 
-1. Directory Structure
+```
+new-project
+├── app_default.config  # Default configuration file
+├── CMakeLists.txt      # CMake build configuration
+└── src
+    └── hello_world.c   # Sample code file
+```
 
-    ```
-    new-project
-    ├── app_default.config  # Default configuration file
-    ├── CMakeLists.txt      # CMake build configuration
-    └── src
-        └── hello_world.c   # Sample code file
-    ```
+### Parameters
 
-1. Option Parameters
+`-f, --framework [base|arduino]`: Specifies the framework type used by the project.
+- `base` (default): Creates a base framework project.
+- `arduino`: Creates an Arduino framework project.
 
-    - `-f, --framework [base|arduino]`: Specify the framework type used by the project
-        - `base` (default): Create a basic framework project
-        - `arduino`: Create an Arduino framework project
 
-## Next Steps
+## Next step
 
 Overview:
 
-    > 1. Compilation verification
+    > 1. Build and verify.
     >
-    > 2. Code development
+    > 2. Write code.
     >
-    > 3. Modify configuration, function verification
+    > 3. Modify configuration and verify functionality.
     >
-    > 4. Save default configuration file for other developers to use
+    > 4. Save the default configuration file for use by other developers.
 
-### Compilation Verification
+### Build and verify
 
-Use the command `tos.py config choice` to select the chip platform configuration you want to use.
+First, use the command `tos.py config choice` to select the desired chip platform configuration.
 
-Then use the command `tos.py build` for compilation verification.
+Then, use the command `tos.py build` to perform compilation verification.
 
-### Code Development
+### Write code
 
-1. Determine your code directory structure and configure source file and header file paths in `CMakeLists.txt`
+1. Determine your code's directory structure and configure the source file and header file paths required for `add_library(${EXAMPLE_LIB})` in the `CMakeLists.txt` file.
 
-    Configure the source file and header file paths required by the target `add_library(${EXAMPLE_LIB})` in the file.
+   - `${EXAMPLE_LIB}`: This is the library name variable, defined by the main framework, and does not need to be modified manually.
 
-    Where `${EXAMPLE_LIB}` is a variable representing the library name, defined by the main framework, do not modify it yourself.
+   - Configure the `APP_SRC` and `APP_INC` variables using standard `CMake` syntax.
 
-    Use standard `cmake` syntax to configure the `APP_SRC` and `APP_INC` variables.
+2. Proceed with code development.
 
-1. Perform code development
+   Develop using the interfaces provided in `${tuyaopen_root}/src` and `${tuyaopen_root}/platform/.../tuyaos_adapter`.
 
-    Use the interfaces provided in `${tuyaopen_root}/src` and `${tuyaopen_root}/platform/.../tuyaos_adapter` for development.
+   You can refer to the official sample codes in `apps` and `examples`.
 
-    You can refer to the official sample code in `apps` and `examples`.
+3. Change the configuration file.
 
-1. Change configuration files
+   Run the command `tos.py config menu` to enter the configuration interface, then adjust TuyaOpen's configuration options.
 
-    Enter the configuration interface through the command `tos.py config menu` to adjust the configuration options of `TuyaOpen`.
 
-### Function Verification
+### Verify functionalities
 
-Flash and verify code functionality.
+Flash the firmware and verify the code's functionalities.
 
-### Save Default Configuration File
+### Save the default configuration file
 
-Save the current configuration as the default configuration file through the command `tos.py config save`.
-
-## FAQ
+Run the command `tos.py config save` to save the current configuration as the default configuration file.
