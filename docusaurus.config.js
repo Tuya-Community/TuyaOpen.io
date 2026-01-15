@@ -222,7 +222,7 @@ const config = {
             },
             {
               label: 'Tuya T5AI Dev Kit',
-              to: '/docs/hardware-specific/t5-ai-board/overview-t5-ai-board',
+              to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
             },
           ],
         },
@@ -307,6 +307,26 @@ const config = {
     './docusaurus-tailwind-v3',
     ['@gracefullight/docusaurus-plugin-microsoft-clarity', { projectId: 'lggqck9srz' }],
     './src/plugins/hardwarePagesGenerator',
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          // Redirect old T5 paths to new Tuya T5 folder structure (English)
+          {
+            from: '/docs/hardware-specific/t5ai-peripheral-mapping',
+            to: '/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+          },
+          {
+            from: '/docs/hardware-specific/t5-ai-board/overview-t5-ai-board',
+            to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
+          },
+          {
+            from: '/docs/hardware-specific/t5-ai-core/overview-t5-ai-core',
+            to: '/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core',
+          },
+        ],
+      },
+    ],
     // [
     //   '@docusaurus/plugin-content-docs',
     //   {
