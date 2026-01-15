@@ -1,4 +1,5 @@
 ---
+id: t5ai-peripheral-mapping
 title: T5AI 外设映射说明
 ---
 

@@ -1,4 +1,5 @@
 ---
+id: overview-t5-ai-board
 title: T5AI-Board 概述
 ---
 

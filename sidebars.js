@@ -42,18 +42,25 @@ module.exports = {
       },
       collapsed: false,
       items: [
-        'hardware-specific/t5ai-peripheral-mapping',
         {
           type: 'category',
-          label: 'T5-AI Board DevKit',
+          label: 'Tuya T5',
           collapsed: false,
-          items: ['hardware-specific/t5-ai-board/overview-t5-ai-board'],
-        },
-        {
-          type: 'category',
-          label: 'T5-AI Core DevKit',
-          collapsed: false,
-          items: ['hardware-specific/t5-ai-core/overview-t5-ai-core'],
+          items: [
+            'hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+            {
+              type: 'category',
+              label: 'T5-AI Board DevKit',
+              collapsed: false,
+              items: ['hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board'],
+            },
+            {
+              type: 'category',
+              label: 'T5-AI Core DevKit',
+              collapsed: false,
+              items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
+            },
+          ],
         },
       ],
     },
