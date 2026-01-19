@@ -1,10 +1,10 @@
-# tkl_wakeup | Wakeup Driver
+# tkl_wakeup | Wake-up Driver
 
-## Brief Description
+## Overview
 
-The wakeup driver is used to set the wake-up source for the chip. The wake-up source can be GPIO, timer, etc.
+The `tkl_wakeup` driver is used to set a wake-up source for the chip. The wake-up source can be a GPIO, a timer, and more.
 
-## API Description
+## API description
 
 ### tkl_wakeup_source_set
 
@@ -12,13 +12,10 @@ The wakeup driver is used to set the wake-up source for the chip. The wake-up so
 OPERATE_RET tkl_wakeup_source_set(const TUYA_WAKEUP_SOURCE_BASE_CFG_T  *param);
 ```
 
-- Function Description:
-  - Sets the wake-up source.
-- Parameters:
-  - `param`: Wake-up source, options include GPIO and timer.
-- Return Value:
-  - OPRT_OK: Success
-  - Others, please refer to the file `tuya_error_code.h`.
+- Feature: Sets a wake-up source.
+- Parameter: `param`, the wake-up source parameters. Options include GPIO and timer.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
+
 
 ### tkl_wakeup_source_clear
 
@@ -26,10 +23,6 @@ OPERATE_RET tkl_wakeup_source_set(const TUYA_WAKEUP_SOURCE_BASE_CFG_T  *param);
 OPERATE_RET tkl_wakeup_source_clear(const TUYA_WAKEUP_SOURCE_BASE_CFG_T *param);
 ```
 
-- Function Description:
-  - Clears the wake-up source.
-- Parameters:
-  - `param`: Wake-up source parameters.
-- Return Value:
-  - OPRT_OK: Success
-  - Others, please refer to the file `tuya_error_code.h`.
+- Feature: Clears a wake-up source.
+- Parameter: `param`, the wake-up source parameters.
+- Return value: `OPRT_OK` indicates a success. Any other value indicates an error. For detailed error codes, refer to `tuya_error_code.h`.
