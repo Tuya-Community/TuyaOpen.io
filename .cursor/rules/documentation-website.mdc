@@ -1,0 +1,221 @@
+---
+description: Conventions for the TuyaOpen Docusaurus documentation site (docs, blog, project posts, i18n, sidebars, config)
+globs:
+  - "docs/**/*.md"
+  - "docs/**/*.mdx"
+  - "i18n/**/docusaurus-plugin-content-docs/**/*.md"
+  - "i18n/**/docusaurus-plugin-content-blog/**/*.md"
+  - "sidebars.js"
+  - "docusaurus.config.js"
+  - "content/**/*.mdx"
+  - "blog/**/*.md"
+  - "src/data/projects.js"
+  - "src/data/projects_tags.js"
+alwaysApply: true
+---
+
+# TuyaOpen Documentation Website (Docusaurus)
+
+This project is a **Docusaurus** documentation site. When editing docs, config, or sidebars, follow these conventions.
+
+## TuyaOpen project definition (documentation context)
+
+TuyaOpen is an **open source** AI+IoT development framework. For documentation purposes, treat it as:
+
+- **Write once, deploy everywhere**: Standard Tuya/RTOS-like APIs let developers write code once and deploy to different hardware platforms (Tuya T-series, ESP32, Raspberry Pi Pico, etc.) without rewriting application logic.
+- **Large, layered system**: It includes TKL (hardware abstraction), TAL (OS/device abstraction), libraries, services (cloud, AI, drivers), and applications. Docs may cover any layer; always make the layer and audience (app developer vs BSP/driver developer) clear.
+- **Multiple entry points**: Demos (full applications), examples (focused snippets), drivers (TDD/peripheral), hardware guides (board-specific), and best practices. Use the correct doc type and link to the right repo paths (e.g. `apps/`, `drivers/`, `boards/`).
+- **Evolving ecosystem**: Future or planned support (e.g. Arduino IDE, MicroPython) may appear in roadmap or overview docs; do not document unsupported toolchains as current unless the source says so.
+- **License (授权码 / license key)**: Required **only when** the demo, example, or project uses **Tuya Cloud services** (e.g. AI features, IoT cloud connectivity). Generic or local-only demos and examples (e.g. GPIO, UART, peripheral-only) typically do **not** require license flashing or authorization. In Prerequisites and Requirements, list license or [equipment authorization](quick-start/equipment-authorization) only when the doc is for a cloud-dependent app; do not add them to every demo or example.
+
+When writing or editing any doc, ensure it fits this model and points readers to the right part of the codebase and the right follow-up docs (quick start, hardware guide, API reference, demo).
+
+## Technical documentation guidelines (AI must follow)
+
+Apply the following as a technical documentation expert with 10+ years of experience. These are mandatory for all new or edited docs.
+
+### Audience and document type
+
+- **Identify audience**: Is the reader an app developer, a driver/BSP developer, or someone evaluating hardware? Use the right level of detail and link to prerequisites (e.g. [Quick Start](quick-start/index), [Environment setup](quick-start/enviroment-setup)).
+- **Match doc type to content**: Choose the documentation type that fits the content; use the corresponding template to start. Do not mix reference tables into a tutorial or hide prerequisites in the middle of a guide.
+- **Demos vs examples vs drivers**: Demos are full applications (e.g. chatbot, smart light). Examples are focused snippets (e.g. GPIO, UART). Drivers are TDD/peripheral implementations. In prose, name them correctly and link to the actual paths (e.g. `apps/tuya.ai/your_chat_bot`, `examples/`, driver modules).
+
+### Documentation types and templates
+
+When creating a **new** doc, pick the type below and **start from the listed template**. All templates live under `docs/contribute/template/` unless noted.
+
+| Documentation type | Purpose | Template to start with |
+|--------------------|---------|------------------------|
+| **Concept** | Explain a concept, architecture, or module (what/why). | `docs/contribute/template/concept_template.md` |
+| **Development guide** | How to develop a feature/module (what, why, how to develop). | `docs/contribute/template/development_guide_template.md` |
+| **Operation guide** | How to operate or use a feature (task-oriented steps). | `docs/contribute/template/operation_guide-template.md` |
+| **FAQ** | Common questions and answers. | `docs/contribute/template/faq_template.md` |
+| **README** | Intro to a system/module (role, functions, usage, supported devices). | `docs/contribute/template/README-template.md` |
+| **Project page** | Community project or demo (overview, features, how to run). | `docs/projects/template-project.md` |
+| **Tutorial / Example** | Step-by-step learning or copy-paste example (Prerequisites, Requirements, Steps, References). | No single file; follow the structure in **Examples, tutorials, and project docs** below. Use Prerequisites → Requirements → Steps → References; optional reference: `docs/projects/template-project.md` for the section order. |
+| **Reference** | API, CLI, or option reference (overview, signature/usage, parameters, return, example, see also). | No template; use consistent headings: Overview, signature/usage, Parameters (table), Return value, Example, See also. |
+| **Hardware guide** | Board-specific pinout, interfaces, or setup. | Use Prerequisites, Requirements, Steps, References where applicable; link to `docs/hardware-specific/` and hardware docs. |
+
+Remove any italic guidance text from the template in the final doc. Adapt the template to the actual content; do not leave placeholder sections empty without a brief note (e.g. "Not applicable for this board.").
+
+### Creating a brand-new doc (from scratch)
+
+When the user asks to **create a complete new doc** and has given **little or generic input** (e.g. only a title or topic):
+
+1. **Do not over-generate.** Do not fill sections with long speculative or invented content. With minimal prompt, output a **skeleton only**.
+2. **Add placeholders for each section** according to the doc type and template. Use the section headings from the template; under each heading put a short **placeholder** (e.g. `<!-- TODO: describe overview in 1–3 sentences -->` or `[Add: list of hardware and software requirements]`) and a **one-line guide** telling the user what to add (e.g. "*Guide: Summarize what this doc covers and who it is for.*").
+3. **Ask for more information before continuing.** After providing the skeleton, explicitly ask the user to supply the missing information (e.g. "Please provide: (1) a short overview, (2) the target board or SDK version, (3) the main steps or points you want covered."). Do not proceed to write full prose until the user has provided enough detail.
+4. **Repeat as needed.** If the user’s next input is still vague, ask follow-up questions (e.g. "Which board is this for?" "Is this for Tuya Cloud or local-only?") and only then expand the placeholders into real content.
+
+When the user **has provided substantial input** (e.g. a detailed outline, existing draft, or clear requirements), you may fill in the sections accordingly while still using the template structure and leaving placeholders only where information is genuinely missing.
+
+### Structure and clarity
+
+- **One main topic per doc**: One concept, one task, or one reference set. Split long docs into child pages and link them; use the sidebar structure in `sidebars.js` to keep hierarchy clear.
+- **Overview first**: Start with 1–3 sentences stating what the doc covers and who it is for. Then prerequisites (if any), then body, then next steps or related docs.
+- **Headings**: Use a logical hierarchy (H2 for main sections, H3 for subsections). Do not skip levels. Heading text should be scannable (noun phrases or clear imperatives for tasks).
+- **Short sentences and paragraphs**: Prefer one idea per sentence; keep paragraphs to 3–5 lines when possible. Use lists for options, steps, or requirements instead of long prose.
+- **Active voice, present tense**: Write "Configure the port" not "The port can be configured." Use present for current behavior ("The API returns...") and past only for version history or deprecations.
+
+### Tone and voice
+
+Documentation should sound **clear, neutral, and helpful**. Apply the following so all docs feel consistent and professional.
+
+- **Voice**: Use **second person ("you")** for the reader and **first person plural ("we")** only for TuyaOpen/the project (e.g. "We recommend...", "TuyaOpen supports..."). Do not use "I" or informal "we" as if the writer is a single person. For procedures, address the reader: "You can configure...", "Set the option to...".
+- **Register**: Keep a **professional but approachable** register. Avoid slang, hype, or marketing fluff. Avoid overly stiff or legal phrasing. Prefer plain language: "before you start" not "prior to commencing"; "you need" not "it is necessary that you".
+- **Confidence and hedging**: State facts directly when they are true ("The API returns a handle."). Use "can", "may", or "optional" when something is conditional. Do not over-hedge ("you might perhaps want to consider") or sound uncertain when the behavior is defined.
+- **Inclusivity**: Use gender-neutral language ("the developer", "they" for singular when natural, "you"). Avoid assumptions about the reader's environment (e.g. "on your machine" is fine; avoid culture-specific idioms unless the doc is localized).
+- **Positive framing**: Prefer positive instructions ("Enable X") over negative ones ("Do not disable X") when both work. For warnings, state what to do instead of only what to avoid (e.g. "Use a 5 V supply" not only "Do not exceed 5 V").
+- **Consistency**: Match the tone of existing docs (`docs/about-tuyaopen.md`, `docs/quick-start/`). Do not switch between casual and formal within the same doc. Blog posts can be slightly more conversational; reference and API docs should stay neutral and concise.
+- **No emojis** in doc content unless the user explicitly asks. No exclamation marks for emphasis in body text; reserve for genuine warnings or rare emphasis.
+
+### Accuracy and scope
+
+- **Do not speculate**: Document only what the code, config, or official source supports. If something is planned or experimental, say so explicitly (e.g. "Planned support for Arduino IDE") and do not write as if it is generally available.
+- **Version and platform when it matters**: If a step or API applies only to a specific board, SDK version, or OS, state it at the start of the section (e.g. "On T5AI-Core with SDK 1.5.x...").
+- **Code and commands**: Show commands and code that match the current repo and config. Prefer real paths and options (e.g. `TUYA_T5AI_CORE.config`) over placeholders when the real value is known. Use fenced code blocks with the correct language (`bash`, `c`, `json`, etc.).
+- **Outcomes**: For task-based docs, state the expected result after the steps (e.g. "Firmware is flashed and the device boots to the demo."). If there are common failure modes, add a short troubleshooting or note block.
+
+### Consistency and reuse
+
+- **Terminology**: Use the I18n terminologies section in this rule. Do not invent new translations or alternate spellings for TuyaOpen, TKL, TAL, SDK, OTA, etc. For new terms, prefer `docs/advanced-use/terminologies.md` and add there if defining formally.
+- **Links**: Prefer relative doc links (`[Quick Start](quick-start/unboxing)`). For external links (GitHub, Tuya Cloud), use `href` with `target="_blank"` and `rel="noopener noreferrer"` in MDX when appropriate. Link to related docs at the end (Next steps / See also).
+- **Hardware and repo**: When referring to boards or apps, use the same names and paths as in the repo (e.g. `TUYA_T5AI_CORE`, `apps/tuya.ai/your_chat_bot`) and link to hardware guides or `docs/hardware-specific/` when relevant.
+- **Admonitions**: Use `:::note`, `:::tip`, `:::warning`, `:::danger` for asides. Keep them short; do not put long procedures inside an admonition.
+
+### Examples, tutorials, and project docs (required structure)
+
+For any doc that is an **example**, **tutorial**, or **project page** (including `docs/projects/*` and step-by-step guides), **always** include these sections in this order. Do not skip or merge them.
+
+1. **Prerequisites** (required)
+   - List what the reader must have done or have before starting (e.g. completed [Environment setup](quick-start/enviroment-setup), have a T5AI-Core board).
+   - Link to the prerequisite docs; do not repeat their content.
+   - If there are none, write "None beyond the [Quick Start](quick-start/index)." or equivalent.
+
+2. **Requirements** (required)
+   - List hardware, software, and optional items (e.g. board model, USB cable). Include **license key / 授权码 or equipment authorization only if** the demo or example uses Tuya Cloud services (AI, IoT); generic examples often do not need them.
+   - Use a bullet list. Specify versions or models when it matters (e.g. "T5AI-Core or T5-AI Board", "SDK 1.5.x or later").
+
+3. **Steps** (required)
+   - Numbered steps only for the main procedure. One action per step; keep each step short.
+   - Include commands, config changes, and file paths. Use fenced code blocks for commands and snippets.
+   - After the steps, add one sentence stating the **expected outcome** (e.g. "The device should boot and show the demo home screen.").
+
+4. **References** (required)
+   - End with a **References** or **See also** section: links to related docs (API reference, hardware guide, next tutorial, repo path).
+   - At least 2–3 links (e.g. Quick Start, hardware-specific guide, relevant demo or example in the repo).
+
+Templates: see **Documentation types and templates** above. For project pages use `docs/projects/template-project.md`; for other tutorials/examples use the same Prerequisites → Requirements → Steps → References pattern.
+
+### What to avoid
+
+- **No emojis** in doc content unless the user explicitly asks.
+- Do not copy large blocks from other docs; link to the canonical page instead.
+- Do not document internal or deprecated APIs as the main path unless the doc is explicitly for migration or legacy support.
+- Do not mix multiple locales in one file; keep en and zh in separate files under the i18n structure.
+
+## Stack and config
+
+- **Format**: Content is authored in **MDX** (Markdown with JSX). Config: `markdown.format: 'mdx'` in `docusaurus.config.js`.
+- **i18n**: Default locale is `en`; `zh` is in `i18n/zh/docusaurus-plugin-content-docs/current/`. When adding or changing docs, consider whether a Chinese version under that path is needed; `editLocalizedFiles: true` is set. Make sure the changes to zh and en has the latest requested changes.
+- **i18n terminologies**: When doing any translation or localization (en <-> zh), use the terminology list below. Do not translate terms in the "Do not translate" list; use the EN/ZH tables for consistent wording. Full definitions: `docs/advanced-use/terminologies.md`.
+- **Sidebars**: Doc order and categories are defined in `sidebars.js`. Doc IDs are paths without extension (e.g. `quick-start/unboxing` for `docs/quick-start/unboxing.md`). When creating a new doc, add accordingly to the sidebar.
+
+## Doc content
+
+- **Frontmatter**: Use a `title` (and other Docusaurus fields as needed). Example:
+  ```yaml
+  ---
+  title: About TuyaOpen
+  ---
+  ```
+- **Admonitions**: Use the built-in keywords: `note`, `tip`, `info`, `warning`, `danger`. Example:
+  ```markdown
+  :::note
+  Optional or clarifying note.
+  :::
+  ```
+- **Code blocks**: Use fenced code blocks with a language for highlighting (e.g. `bash`, `js`, `json`). See `docs/contribute/template/markdown-syntax.md` for examples.
+- **Images**: Add images only when they are **required and meaningful** (e.g. UI screenshot, wiring diagram, architecture diagram, board pinout). Do not add an image to every section; use them where they genuinely aid clarity or professionalism.
+  - **Paths**: Prefer `/img/` or project-relative paths from the site root; external URLs (e.g. Tuya CDN) are allowed.
+  - **Placeholder when needed**: If an image would improve clarity but the final asset is not yet available, use a **dummy/placeholder image** (e.g. a standard placeholder path or a simple diagram placeholder) and make the **required content clear in the image block** so a human or designer knows what to produce.
+  - **Image block guidance**: For every image, provide (1) **Alt text** that describes the image for accessibility and clarity, and (2) a **caption or inline description** when useful that states what the image shows or what it should show. Example: `![Configuration page showing the Port setting](path/to/image.png)` with an optional caption below, or for a placeholder: `![Placeholder: diagram of data flow from device to Tuya Cloud](/img/placeholder.svg)` and a short line such as "*Figure: Data flow from device to Tuya Cloud (diagram to be added).*" So each image block makes it clear what the image is or what is required.
+- **Links**: Prefer relative doc links (e.g. `[Quick Start](quick-start/unboxing)`) or paths under the docs base (e.g. `/docs/...`) as appropriate for Docusaurus.
+
+## Structure and navigation
+
+- **New docs**: Place under `docs/` to match the existing hierarchy (e.g. `docs/hardware-specific/`, `docs/quick-start/`). Add the doc ID to the correct section in `sidebars.js` so it appears in the sidebar.
+- **Redirects**: Old URLs are redirected in `docusaurus.config.js` via `@docusaurus/plugin-client-redirects`. When renaming or moving docs, add a redirect from the old path to the new one.
+- **Link and path updates**: When you change a doc’s path, filename, or doc ID (e.g. rename or move a file), **search the repo for all occurrences** of the old path, link text, or doc ID. Update every reference in `docs/`, `i18n/`, `blog/`, `sidebars.js`, `src/data/projects.js` (e.g. `markdownFile`), and any other config or content that links to it. Do not leave broken or outdated links; fix all occurrences in the same change set.
+
+## Style and tone
+
+- Follow the **Tone and voice** subsection (under Technical documentation guidelines) for how documentation should sound: second person, professional but approachable, confident, inclusive, consistent with existing docs.
+- Do not use emojis in doc content unless the prompt explicitly asks for them.
+- Follow the **Technical documentation guidelines** above for structure, clarity, accuracy, and consistency. Align with existing docs (e.g. `docs/about-tuyaopen.md`, `docs/contribute/template/markdown-syntax.md`).
+
+## Blog posts
+
+- **Location**: `blog/`. Filename format: `YYYY-MM-DD-slug.md` (e.g. `2025-09-22-v1.5.0-release.md`).
+- **Frontmatter**: Use `title`, `authors` (keys from `blog/authors.yml`, e.g. `[tuya]` or `[hsuanhanlai]`), `image` (path or URL), `tags` (keys from `blog/tags.yml`, e.g. `[TuyaOpen]`, `[release]`, `[Contest]`).
+  ```yaml
+  ---
+  title: 'Your Post Title'
+  authors: [tuya]
+  image: /img/home/tuyaopen-logo-social-preview.png
+  tags: [TuyaOpen]
+  ---
+  ```
+- **New authors/tags**: Add entries to `blog/authors.yml` and `blog/tags.yml` before using them in frontmatter. Tags need `label`, `permalink`, and `description` in `tags.yml`.
+- **i18n**: Chinese blog posts live in `i18n/zh/docusaurus-plugin-content-blog/` with the same filename pattern. Keep en and zh in sync when both exist.
+- **Style**: Do not use emojis unless the prompt explicitly asks. Prefer clear headings and short paragraphs.
+
+## Project posts
+
+- **Location**: `docs/projects/`. Filename format: `YYYY-MM-DD-project-slug.md` (e.g. `2025-12-17-otto-ninja-open-source-robot.md`). The slug is used in URLs and in `src/data/projects.js`.
+- **Frontmatter**: Use `title` and `date` (YYYY-MM-DD).
+  ```yaml
+  ---
+  title: "Project Display Name"
+  date: 2025-12-27
+  ---
+  ```
+- **Body**: Start with `<BackToProjects />`. Then follow the **Examples, tutorials, and project docs** structure in the Technical documentation guidelines: include **Prerequisites**, **Requirements**, **Steps** (with expected outcome), and **References**. Use level-1 heading for the project name; then overview/screenshots/features/tech stack; then Prerequisites, Requirements, Steps, References; then contributors, license, repository link. Follow `docs/projects/template-project.md`.
+- **Listing**: Every project post must be registered in `src/data/projects.js`. Add an object to the `en` (and `zh` if localized) array with: `id` (unique, kebab-case), `title`, `description`, `image` (URL or path), `markdownFile` (e.g. `/docs/projects/2025-12-17-otto-ninja-open-source-robot` — no `.md`), `tags` (array of tag slugs; see `src/data/projects_tags.js` for available tags). Order in the array controls display order on `/projects`.
+- **Style**: Do not use emojis unless the prompt explicitly asks. Use clear section headings and the same image/link conventions as docs.
+
+## I18n terminologies (check when translating en <-> zh)
+
+**Do not mix:** **Target Chip Platform** (目标硬件) = chip/hardware target (e.g. T5AI-Core, ESP32). **Cloud platform** (云平台) = Tuya Cloud / cloud services. Use the full term when the meaning is not obvious; do not use "platform" alone if it could mean either.
+
+**License key (授权码):** A license key / 授权码 is required **only when the user is using Tuya Cloud or Tuya cloud services** (e.g. device activation, cloud APIs). Not all demos or examples require it. In docs, list license key under Requirements only for content that uses Tuya Cloud; do not state or imply that every demo or example needs a license.
+
+**Do not translate (keep as-is in all locales):** TuyaOpen, TuyaOS, Tuya Cloud, Tuya T5 / T5-E1 / T5AI, T5AI-Core, T5-AI Board, TKL, TAL, BSP, SDK, API, OpenAPI, ASR, KWS, TTS, STT, LLM, MCP, RAG, AI-Agent, AI-Workflow, DP, DPID, DPCode, PID, UUID, AuthKey, DeviceID, MCU, SoC, OTA, FOTA, GPIO, PWM, ADC, DAC, UART, SPI, I2C, I2S, DVP, RTC, PCB, PCBA, PCB'A, Wi-Fi, Bluetooth, MQTT, P2P, RTP, Powered by Tuya, GitHub, Gitee, WindIDE, DeepSeek, ChatGPT, Claude, Gemini.
+
+**EN -> 简体中文:** firmware -> 固件; firmware burning/flashing -> 烧录固件/固件烧录; development board -> 开发板; quick start -> 快速开始; getting started -> 入门; overview -> 概述; documentation -> 文档; device -> 设备; Target Chip Platform -> 目标硬件; cloud platform -> 云平台; remote control -> 远程控制; monitoring -> 监控; security -> 安全性/安全; device authentication -> 设备认证; data encryption -> 数据加密; Ethernet -> 以太网; serial port -> 串口; driver -> 驱动; open source -> 开源; open hardware -> 开放硬件; contributor -> 贡献者; license -> 许可证; license key / authorization code (device) -> 授权码; repository -> 仓库; tutorial -> 教程; guide -> 指南; configuration -> 配置; compile/compilation -> 编译; build -> 构建; debug -> 调试; microphone -> 麦克风; speaker -> 扬声器; voice interaction -> 语音交互; voice recognition -> 语音识别; chatbot -> 聊天机器人; smart home -> 智能家居; IoT -> 物联网; hackathon -> 黑客松; contest -> 大赛/竞赛; release -> 发布; update -> 更新; upgrade -> 升级; pin -> 引脚; antenna -> 天线; schematic -> 原理图; silkscreen -> 丝印; hardware -> 硬件; software -> 软件; application -> 应用; project -> 项目; feature -> 功能; template -> 模板; workflow -> 工作流; variable -> 变量; trigger -> 触发器; agent (AI) -> 智能体; database -> 数据库; billing -> 计费; metering -> 计量; evaluation -> 评估; role -> 角色; permission -> 权限; network module -> 联网模块; low-power -> 低功耗; sleep (mode) -> 休眠(模式); timer -> 定时器; mutex -> 互斥锁; semaphore -> 信号量; thread -> 线程; flash (storage) -> 闪存; Bluetooth (when translated) -> 蓝牙.
+
+**简体中文 -> EN:** 固件 -> firmware; 烧录 -> burning/flashing; 开发板 -> development board; 概述 -> overview; 文档 -> documentation; 设备 -> device; 目标硬件 -> Target Chip Platform; 云平台 -> cloud platform; 远程控制 -> remote control; 监控 -> monitoring; 安全性/安全 -> security; 设备认证 -> device authentication; 数据加密 -> data encryption; 以太网 -> Ethernet; 串口 -> serial port; 驱动 -> driver; 开源 -> open source; 贡献者 -> contributor; 许可证 -> license; 授权码 -> license key / authorization code; 仓库 -> repository; 教程 -> tutorial; 指南 -> guide; 配置 -> configuration; 编译 -> compilation; 构建 -> build; 调试 -> debug; 麦克风 -> microphone; 扬声器 -> speaker; 语音交互 -> voice interaction; 语音识别 -> voice recognition; 聊天机器人 -> chatbot; 智能家居 -> smart home; 物联网 -> IoT; 发布 -> release; 更新 -> update; 升级 -> upgrade; 引脚 -> pin; 硬件 -> hardware; 软件 -> software; 应用 -> application; 项目 -> project; 功能 -> feature; 模板 -> template; 工作流 -> workflow; 变量 -> variable; 触发器 -> trigger; 智能体 -> agent; 数据库 -> database; 蓝牙 -> Bluetooth.
+
+## Edit URLs
+
+- Docs and blog use: `https://github.com/Tuya-Community/TuyaOpen.io/edit/master/`. Do not change this in content; it is set in the Docusaurus preset in `docusaurus.config.js`.
