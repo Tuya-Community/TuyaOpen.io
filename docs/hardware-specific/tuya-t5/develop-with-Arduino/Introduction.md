@@ -8,33 +8,48 @@ AIoT products developed on TuyaOpen can leverage the powerful ecosystem capabili
 
 TuyaOpen is continuously expanding with more cloud platform integrations, voice, video, and AI Agent features. Arduino-TuyaOpen will be updated in sync to support these new capabilities.
 
-## Supported Platform Chips
+## T5 + Arduino Supported Features
 
-| Platform  | Windows | Linux | macOS |
-| :-------: | :-----: | :---: | :-----: |
-|    T2     |    ✅    |   ✅   | ✅     |
-|    T3     |    ✅    |   ✅   | ✅     |
-| ESP32 |    ✅    |   ✅   | ✅     |
-|   LN882H   |    ✅    |   ✅   | ✅     |
-| TUYA-T5AI |    ✅    |   ✅   | ✅     |
+### Arduino Standard Interface
 
-## Capabilities
+Develop with T5 using familiar Arduino APIs:
 
- - Integrates mainstream LLMs and AI platforms, including `Deepseek`, `ChatGPT`, `Claude`, `Gemini`, and more. Supports various AI capability invocations (MCP, Skills, etc.).
+- **Digital I/O**: `pinMode()`, `digitalWrite()`, `digitalRead()` - Control LEDs, relays, read button states
+- **Analog Input**: `analogRead()` - Read sensor values (temperature, humidity, light, potentiometers, etc.), 12-bit resolution
+- **PWM Output**: `analogWrite()` - Control motor speed, LED brightness, servo angles
+- **Serial Communication**: `Serial`, `Serial1`, `Serial2` - Communicate with external modules (GPS, fingerprint, sensors)
+- **I2C Bus**: `Wire` - Connect OLED displays, sensor modules
+- **SPI Bus**: `SPI` - Connect SD cards, high-speed sensors
 
- - Develop hardware products with speech technologies such as `VAD` (Voice Activity Detection), `AEC` (Acoustic Echo Cancellation), `ASR` (Automatic Speech Recognition), `TTS` (Text-to-Speech), `KWS` (Keyword Wake-up), and more.
+### Wireless Connectivity
 
- - Build smart devices with `multimodal AI capabilities`, including text, voice, vision, and sensor-based functions.
+- **Wi-Fi Connection**: Supports AP provisioning and Bluetooth provisioning, connects to Tuya Cloud for remote control
+- **Bluetooth BLE**: Communicate with mobile apps for local control and data transmission
+- **OTA Upgrade**: Remotely upgrade firmware via cloud, facilitating product iterations
 
- - Create custom products that seamlessly connect to the Tuya Cloud for remote device control.
+### Tuya Cloud Services
 
- - Supports multiple communication protocols, including `Wi-Fi`, `Bluetooth`, and `Ethernet`, to meet the needs of various application scenarios.
+- **Device Activation**: Quickly connect to Tuya Cloud for device management capabilities
+- **DP Data Points**: Use standardized data point models for seamless interaction with Tuya App
+- **Remote Control**: Control devices anytime, anywhere via Tuya App
+- **Scene Linkage**: Link with other Power By Tuya devices to build smart home scenarios
 
- - Built-in `security and compliance`, `device authentication`, `data encryption`, and `communication encryption` features ensure device and data security, complying with data privacy regulations worldwide.
+### AI Intelligence Capabilities
 
- - Supports the Arduino ecosystem libraries for rapid integration of third-party sensors and modules to extend device functionality.
+- **Automatic Speech Recognition (ASR)**: Offline/online speech recognition for voice control
+- **Text-to-Speech (TTS)**: Text-to-speech announcements for voice feedback
+- **Keyword Wake-up (KWS)**: Support custom wake words
+- **AI Dialogue**: Integrate with Large Language Models (Deepseek, ChatGPT, etc.) to build AI assistants
 
-## Repositories
+### Application Scenarios
 
-- TuyaOpen: [tuya/TuyaOpen: Next-gen AI+IoT framework for T2/T3/T5AI/ESP32/and more – Fast IoT and AI Agent hardware integration](https://github.com/tuya/TuyaOpen)
-- Arduino-TuyaOpen: [tuya/arduino-TuyaOpen: Arduino core for the T2/T3/T5](https://github.com/tuya/arduino-TuyaOpen)
+**Smart Sensor Node**: Use `analogRead()` to read temperature and humidity sensors, upload data to Tuya Cloud via Wi-Fi, view historical charts and receive abnormal alerts in the App.
+
+**Smart Switch/Light Control**: Use `digitalWrite()` to control relays or `analogWrite()` to adjust PWM dimming, remotely switch via Tuya App, schedule control, and scene linkage.
+
+**Voice Interactive Device**: Combine T5's voice capabilities to develop voice control panels and AI speakers - wake up by voice, recognize commands, and execute actions.
+
+**Display Products**: Drive displays (OLED, TFT) via SPI/I2C to show sensor data, weather information, device status, etc. in real-time.
+
+**Motor Control**: Use PWM to control DC motors and stepper motors, develop smart curtains, fans, robots, and other products.
+
