@@ -17,7 +17,7 @@ TuyaAI (Main Class)
 An IoT switch example based on the Tuya Cloud. This example demonstrates how to use Tuya DP (Data Point) to implement three-way communication between `Device` - `Cloud` - `APP`, controlling the on-board LED on/off via the phone APP.
 
 - Hardware platform: Tuya-compatible development boards (T2, T3, T5AI, ESP32, LN882H, or XH_WB5E series)
-- [How to create a PID and configure DPs for cloud-device communication](https://tuyaopen.ai/en/docs/cloud/tuya-cloud/creating-new-product)
+- [How to create a PID and configure DPs for cloud-device communication](https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product)
 
 ### [01_AI_TextChat](https://github.com/tuya/arduino-TuyaOpen/tree/main/libraries/AIcomponents/examples/01_AI_TextChat)
 
@@ -49,11 +49,11 @@ An MCP (Model Context Protocol) example for AI Agent. This example demonstrates 
 > **Note:** Tuya's MCP feature currently supports two configuration methods:
 >
 > - **Device MCP**: Register MCP tools by calling APIs in the code. During conversations, the AI Agent can invoke device-side registered tools (e.g., taking photos, adjusting volume).
-> - **Custom MCP Service**: Download Tuya's [MCP SDK repository](https://github.com/tuya/tuya-mcp-sdk.git), customize MCP tools on the PC side and start the service. During conversations, the AI Agent can invoke PC-side defined tools. For detailed instructions, refer to the [Custom MCP Service Documentation](https://tuyaopen.ai/en/docs/cloud/tuya-cloud/ai-agent/13.1-custom-mcp-services).
+> - **Custom MCP Service**: Download Tuya's [MCP SDK repository](https://github.com/tuya/tuya-mcp-sdk.git), customize MCP tools on the PC side and start the service. During conversations, the AI Agent can invoke PC-side defined tools. For detailed instructions, refer to the [Custom MCP Service Documentation](https://tuyaopen.ai/docs/cloud/tuya-cloud/ai-agent/13.1-custom-mcp-services).
 
 ### [05_AI_Skill](https://github.com/tuya/arduino-TuyaOpen/tree/main/libraries/AIcomponents/examples/05_AI_Skill)
 
-A Skill example for AI Agent. This example demonstrates how to parse and handle skill events dispatched by the Agent, including music/story playback and emotion recognition — users can trigger music/story playback through conversation and obtain emotion data perceived by the Agent (emotion name / emoji). For Agent skill configuration, refer to the [AI Agent Development Platform Documentation](https://tuyaopen.ai/en/docs/cloud/tuya-cloud/ai-agent/ai-agent-dev-platform).
+A Skill example for AI Agent. This example demonstrates how to parse and handle skill events dispatched by the Agent, including music/story playback and emotion recognition — users can trigger music/story playback through conversation and obtain emotion data perceived by the Agent (emotion name / emoji). For Agent skill configuration, refer to the [AI Agent Development Platform Documentation](https://tuyaopen.ai/docs/cloud/tuya-cloud/ai-agent/ai-agent-dev-platform).
 
 - Music tools may have different pricing models depending on the service provider
 - NetEase Cloud Music is only available in the China data center; non-China regions can only play preview content

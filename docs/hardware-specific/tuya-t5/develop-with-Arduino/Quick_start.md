@@ -32,18 +32,18 @@ It is recommended to install the latest version of Arduino IDE. Visit the [Ardui
 
 ## Hardware Selection
 
-It is recommended to use the [T5AI-Board Devkit](https://tuyaopen.ai/en/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board) and the [T5AI-Core Devkit](https://tuyaopen.ai/en/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core) for development.
+It is recommended to use the [T5AI-Board Devkit](https://tuyaopen.ai/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board) and the [T5AI-Core Devkit](https://tuyaopen.ai/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core) for development.
 
 - **T5AI-Board Devkit**: Rich peripheral extensions including LCD screen, camera, microphone, speaker, SD card, and more.
 - **T5AI-Core Devkit**: Highly integrated voice core development board, ideal for low-power and portable AIoT voice interaction application development.
 
 ## APP Device Provisioning
 
-All Tuya AIoT devices use the `Smart Life APP` for network provisioning. For APP download and detailed provisioning instructions, please refer to the [Device Provisioning Documentation](https://tuyaopen.ai/en/docs/quick-start/device-network-configuration).
+All Tuya AIoT devices use the `Smart Life APP` for network provisioning. For APP download and detailed provisioning instructions, please refer to the [Device Provisioning Documentation](https://tuyaopen.ai/docs/quick-start/device-network-configuration).
 
 ## Cloud Services - AIoT Capabilities
 
-**All Tuya AIoT capabilities are deeply bound to the device's PID**. The default PID provided in the code supports the AIoT capabilities involved in the current examples. To extend additional capabilities (role management, device self-control, device remote control, database, triggers, AI agent, MCP server), please refer to the [Creating a New Product Documentation](https://tuyaopen.ai/en/docs/cloud/tuya-cloud/creating-new-product) for configuration.
+**All Tuya AIoT capabilities are deeply bound to the device's PID**. The default PID provided in the code supports the AIoT capabilities involved in the current examples. To extend additional capabilities (role management, device self-control, device remote control, database, triggers, AI agent, MCP server), please refer to the [Creating a New Product Documentation](https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product) for configuration.
 
 > It is recommended to start with the default PID configuration, get familiar with the device features, and then add more AI capabilities.
 

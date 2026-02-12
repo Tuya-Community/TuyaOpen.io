@@ -25,8 +25,8 @@ YourChatBot/
 2. In Arduino IDE, click `File` -> `Examples` -> `AI components` -> `YourChatBot` to open the example code.
 
 3. Replace the authorization code and product PID in the example file with your own credentials.
-    - [What is an authorization code](https://tuyaopen.ai/en/docs/quick-start#tuyaopen-authorization-code)
-    - [How to obtain an authorization code](https://tuyaopen.ai/en/docs/quick-start#obtaining-tuyaopen-authorization-code)
+    - [What is an authorization code](https://tuyaopen.ai/docs/quick-start#tuyaopen-authorization-code)
+    - [How to obtain an authorization code](https://tuyaopen.ai/docs/quick-start#obtaining-tuyaopen-authorization-code)
 
 ```cpp
 // Device authorization code (replace with your own)
@@ -57,7 +57,7 @@ YourChatBot/
 
 After flashing the firmware, the development board needs to connect to the network and register with the cloud to enable remote communication. Once provisioned, three-way communication between `Phone` - `Tuya Cloud` - `Device` is established.
 
-Device provisioning guide: [Device Network Configuration](https://tuyaopen.ai/en/docs/quick-start/device-network-configuration)
+Device provisioning guide: [Device Network Configuration](https://tuyaopen.ai/docs/quick-start/device-network-configuration)
 
 > **Quick Re-provisioning**: Press the reset button 3 times in quick succession, and the device will clear its saved network configuration and re-enter the provisioning state.
 
@@ -317,7 +317,7 @@ Users can use this component to directly drive the screen on the TUYA-T5AI-BOARD
 
 #### MCP
 
-[What is MCP](https://tuyaopen.ai/en/docs/cloud/tuya-cloud/ai-agent/mcp-management): MCP (Model Context Protocol) is a universal protocol interface that enables AI Agent to invoke device-side local tools.
+[What is MCP](https://tuyaopen.ai/docs/cloud/tuya-cloud/ai-agent/mcp-management): MCP (Model Context Protocol) is a universal protocol interface that enables AI Agent to invoke device-side local tools.
 
 The `appMCP.cpp/.h` files demonstrate how to register local MCP tools for AI Agent invocation.
 

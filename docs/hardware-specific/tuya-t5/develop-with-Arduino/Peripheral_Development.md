@@ -300,7 +300,7 @@ Tuya IoT quick start example. This example demonstrates the complete Tuya IoT de
 - A short button press toggles the LED state and reports it; a long press removes the device binding
 - Uses `TuyaIoT.write()` / `TuyaIoT.read()` for DP data read/write
 - Hardware platform: Tuya-compatible development boards (T2, T3, T5AI, ESP32, LN882H, or XH_WB5E series)
-- [How to create a PID and configure DPs for cloud-device communication](https://tuyaopen.ai/en/docs/cloud/tuya-cloud/creating-new-product)
+- [How to create a PID and configure DPs for cloud-device communication](https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product)
 
 ### [dpType](https://github.com/tuya/arduino-TuyaOpen/tree/main/libraries/TuyaIoT/examples/dpType)
 
