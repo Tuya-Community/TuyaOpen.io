@@ -4,7 +4,7 @@ This document describes the pin definitions and multiplexing mappings of the TUY
 
 ## GPIO Overview
 
-The T5AI provides 48 available pins. The table below lists the Arduino aliases and available multiplexed functions for each pin.
+The T5AI provides P0 - P55 available pins. The table below lists the Arduino aliases and available multiplexed functions for each pin.
 
 ---
 
