@@ -124,6 +124,7 @@ module.exports = {
           items: [
             'applications/tuya.ai/application-development-guide',
             'applications/tuya.ai/demo-your-chat-bot',
+            'applications/tuya.ai/demo-openclaw',
             'applications/tuya.ai/demo-duo-eyes-mood',
             {
               type: 'category',
