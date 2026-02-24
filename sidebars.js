@@ -91,7 +91,11 @@ module.exports = {
               type: 'category',
               label: 'Raspberry Pi',
               collapsed: false,
-              items: ['hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi'],
+              items: [
+                'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
+              ],
             },
           ],
         },

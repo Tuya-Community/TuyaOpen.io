@@ -64,6 +64,17 @@ Before adding a device via the app, make sure the device is in pairing mode. You
 Currently, TuyaOpen-supported modules can only connect to the 2.4 GHz band of routers. Attempting to pair with a 5 GHz band router will result in failure.
 :::
 
+### Scan to pair
+
+Some TuyaOpen devices support pairing by scanning a QR code in the **SmartLife** app. This method is commonly used on Linux devices (such as Raspberry Pi), where the device prints the QR code directly to the terminal.
+
+1. Make sure the device is in pairing mode and a QR code is shown in the terminal/logs.
+2. Open the **SmartLife** app and tap **+** in the top right corner.
+3. Select **Scan** and point the camera at the QR code displayed by the device.
+4. Follow the on-screen instructions to complete pairing.
+
+<img src="https://images.tuyacn.com/fe-static/docs/img/5971b072-a264-4324-ba3f-a90f8b899ddd.png" alt="smartlife_app" width="240" />
+
 ## FAQs
 
 ### Pairing failed due to incorrect authorization information
