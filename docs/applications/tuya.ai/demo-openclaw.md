@@ -5,23 +5,25 @@ title: OpenClaw Voice Assistant Demo
 This document describes how to connect TuyaOpen edge hardware to the OpenClaw gateway service so that speech is transcribed by Tuya Cloud ASR and the resulting text is sent to a local OpenClaw instance, enabling a "speak to execute" desktop voice assistant. It is aimed at application developers who have completed the TuyaOpen quick start and want to build a lightweight, demonstrable personal assistant.
 
 <div align="center">
-  <img src="/img/applications/demo-openclaw-local-network.png" alt="TuyaOpen device with microphone and speaker connected over local network to OpenClaw gateway" style={{width: '80%', height: 'auto'}} />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/3a684864-3a21-4c73-94c6-669a1b45b1d9.jpg" alt="TuyaOpen device with microphone and speaker connected over local network to OpenClaw gateway" style={{width: '80%', height: 'auto'}} />
 </div>
 
 *TuyaOpen hardware (mic + speaker) on the local network, connected to the OpenClaw gateway (PC).*
 
 ## Prerequisites
 
-- You have completed [Environment setup and code download](quick-start/enviroment-setup) from the [Quick Start](quick-start/index).
-- You are familiar with building, flashing, and network configuration for the [your_chat_bot](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/your_chat_bot) app in the TuyaOpen repository.
+- You have completed [Environment setup and code download](/docs/quick-start/enviroment-setup).
+- You are familiar with building, flashing, and network configuration for the `openclaw_demo_app` in the TuyaOpen repository.
 - A PC (Linux recommended) running OpenClaw and the MQTT bridge is on the same local network as the TuyaOpen device.
 
 ## Requirements
 
-- **Hardware**: A TuyaOpen development board supported by your_chat_bot (e.g. T5AI-Core, T5-AI Board), USB cable, and any peripherals (e.g. microphone) per the board documentation.
-- **Software**: TuyaOpen repository, Python 3, Mosquitto (MQTT broker), and an OpenClaw runtime on the PC.
-- **Network**: The TuyaOpen device and the PC running OpenClaw must be on the same LAN; the PC must have a known or static IP for MQTT.
-- **License key**: This demo uses Tuya Cloud ASR. Complete [Equipment authorization](quick-start/equipment-authorization) and configure PID and related settings as required by your_chat_bot.
+| Type | Details |
+|------|---------|
+| Hardware | A TuyaOpen development board supported by `openclaw_demo_app` (for example T5AI-Core, T5-AI Board), USB cable, and required peripherals (microphone and speaker) per board documentation. |
+| Software | TuyaOpen repository, Python 3, Mosquitto (MQTT broker), and an OpenClaw runtime on the PC. |
+| Network | The TuyaOpen device and the PC running OpenClaw must be on the same LAN; the PC must have a known or static IP for MQTT. |
+| License key | This demo uses Tuya Cloud ASR. Complete [Equipment authorization](/docs/quick-start/equipment-authorization) and configure PID and related settings required by the hardware app. |
 
 ## Architecture overview
 
@@ -41,7 +43,7 @@ graph TD
         A3[API Call - Tuya Cloud ASR Service]
         A4[Receive Text Result]
         A5[MQTT Send Text Message]
-        A6[Voice Synthesis/Display (User Feedback)]
+        A6["Voice Synthesis/Display (User Feedback)"]
 
         A1 --> A2
         A2 --> A3
@@ -80,7 +82,7 @@ graph TD
         B2 -->|Intent Parsing/Skill Execution| B3
         B3 -->|Control| B4
         B3 -->|API Call| B5
-        B6 -- Return Execution Result --> A4
+        B6 -- Return Execution Result --> B1
         B3 --> B6
         B3 --> B7
     end
@@ -111,112 +113,101 @@ graph TD
 
 ## Steps
 
-### 1. TuyaOpen environment and your_chat_bot
+### 1. Install OpenClaw by following the official docs
 
-1. **Clone TuyaOpen**
+Install OpenClaw on your PC first, then verify it can run local agent commands.
+
+1. Open the official guide and complete onboarding:
+   - [OpenClaw official documentation](https://openclaw.ai/)
+2. Verify `openclaw` is available from your shell:
+   ```bash
+   which openclaw && openclaw --version
+   ```
+3. Run a simple command test:
+   ```bash
+   openclaw agent --agent main --message "Hello from TuyaOpen"
+   ```
+
+### 2. Start the MQTT proxy to bridge hardware and OpenClaw gateway
+
+Use the latest proxy repository to run Mosquitto and the bridge process.
+
+1. Clone and enter the proxy repository:
+   ```bash
+   git clone https://github.com/adwuard/openclaw_tuya_mqtt_proxy.git ~/mqtt_openclaw_bridge
+   cd ~/mqtt_openclaw_bridge
+   ```
+2. Install Python dependencies:
+   ```bash
+   pip3 install --user -r requirements.txt
+   ```
+3. Install and start Mosquitto:
+   ```bash
+   sudo bash install.sh install-mosquitto
+   ```
+4. Optional: allow LAN clients to connect when needed:
+   ```bash
+   sudo bash install.sh mosquitto-listen-all
+   ```
+5. Start the bridge script:
+   ```bash
+   python3 openclaw_mqtt_bridge.py
+   ```
+6. Optional quick routing test (separate terminals):
+   ```bash
+   mosquitto_sub -h localhost -t openclaw/server/response -v
+   ```
+   ```bash
+   mosquitto_pub -h localhost -t openclaw/device/user_speech_text -m "Hello from MQTT"
+   ```
+
+### 3. Build and run the TuyaOpen hardware code
+
+1. Clone TuyaOpen and set up the build environment:
    ```bash
    git clone https://github.com/tuya/TuyaOpen.git
    cd TuyaOpen
-   ```
-
-2. **Activate the build environment**  
-   Run this again in each new terminal:
-   ```bash
    . ./export.sh
    ```
+2. Update the MQTT broker IP in `apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c` to your PC LAN IP:
+   ```c
+   /**
+    * Remote MQTT broker host.
+    *
+    * NOTE: Please update the IP address below to match your actual MQTT broker.
+   at https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c
+   apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c
+    */
+   #define OPENCLAW_REMOTE_MQTT_BROKER_HOST "192.168.100.132"
 
-3. **Enter the app and build**  
-   Buildable apps are under `apps` and `example`. For your_chat_bot:
+   /** Remote MQTT broker port. */
+   #define OPENCLAW_REMOTE_MQTT_BROKER_PORT 1883
+   ```
+3. Complete device authorization and app configuration by following the existing TuyaOpen guide:
+   - [Equipment authorization](/docs/quick-start/equipment-authorization)
+4. Build `openclaw_demo_app`:
    ```bash
-   cd apps/tuya.ai/your_chat_bot
+   cd apps/tuya.ai/openclaw_demo_app
    tos.py build
    ```
-
-4. **Flash firmware**  
-   Follow [Firmware burning](quick-start/firmware-burning) to flash the built image.
-
-5. **Configure device network**  
-   Follow [Device network configuration](quick-start/device-network-configuration) so the device can reach Tuya Cloud and the LAN.
-
-6. **Verify**  
-   After power-on and network setup, the device should support voice interaction (ASR via Tuya Cloud). For issues, see [Project walkthrough](project-walkthrough).
-
-### 2. Install OpenClaw
-
-OpenClaw is an Alibaba Cloud model-related service that runs on the PC and executes tasks from text commands. Install and configure it from the official docs:
-
-- [OpenClaw installation and configuration](https://help.aliyun.com/zh/model-studio/openclaw#step-config-manual-title) (Alibaba Cloud)
-
-Example command on the PC:
-```bash
-openclaw agent --agent main --message "How is Seattle's Weather?"
-```
-
-### 3. Connect TuyaOpen to OpenClaw
-
-Run an MQTT broker and a bridge script on the PC. On the TuyaOpen side, add an MQTT client that publishes ASR results to a topic the bridge subscribes to; the bridge then invokes OpenClaw.
-
-#### 3.1 MQTT and bridge on the PC
-
-1. **Install and start Mosquitto**
-   ```bash
-   sudo apt-get install mosquitto mosquitto-clients
-   sudo systemctl start mosquitto
-   sudo systemctl enable mosquitto
-   ```
-   If a `setup_mosquitto.sh` is provided, run it as needed:
-   ```bash
-   sudo ./setup_mosquitto.sh
-   ```
-
-2. **Run the MQTT–OpenClaw bridge**  
-   Place the bridge code (e.g. `mqtt_openclaw_bridge`) on the PC and start it:
-   ```bash
-   cd ~/mqtt_openclaw_bridge
-   python3 mqtt_openclaw_bridge.py
-   ```
-   The bridge subscribes to the device MQTT topic, sends received text to OpenClaw, and can publish results back to the device.
-
-3. **Test MQTT (optional)**
-   ```bash
-   cd ~/mqtt_openclaw_bridge
-   python3 test_receiver.py
-   ```
-   In another terminal:
-   ```bash
-   python3 test_sender.py "Create a Desktop folder and generate a new text file containing 10 poems."
-   ```
-   Confirm that OpenClaw receives and executes the command.
-
-#### 3.2 Device: MQTT connection and sending ASR results
-
-In the your_chat_bot project, add a connection to the PC MQTT broker and, when ASR results are received from Tuya Cloud, publish the text to the topic used by the bridge.
-
-1. **Add MQTT connect function**  
-   Add a function such as `claw_mqtt_connect` to connect to the broker (see the configuration table below for address and port).
-
-2. **Publish from the ASR callback**  
-   In the callback that receives ASR results (e.g. `__app_ai_audio_evt_inform_cb`), publish the transcribed text to the command topic, for example:
-   ```c
-   // Send ASR text to AI_CMD topic via MQTT
-   uint16_t cmd_msgid = ai_cmd_send(data, len, MQTT_QOS_1);
-   ```
-   Implementation details depend on your project layout; refer to any OpenClaw integration sample code if provided in the repo or community.
-
-3. **Set MQTT parameters**  
-   Use the same MQTT settings on the device and in the bridge; set the broker address to the LAN IP of the PC running OpenClaw.
+5. Flash firmware:
+   - Follow [Firmware burning](/docs/quick-start/firmware-burning)
+6. Configure network with Smart Life:
+   - Follow [Device network configuration](/docs/quick-start/device-network-configuration)
+7. Start chatting with the device and observe bridge logs:
+   - Speak to the device after network setup.
+   - You should see proxied ASR messages in `openclaw_mqtt_bridge.py` output and response messages returned through MQTT.
 
 ## MQTT configuration
 
 | Option | Description | Example |
 |--------|-------------|---------|
-| MQTT_BROKER | MQTT broker address (LAN IP of the PC running OpenClaw) | `192.168.100.132` |
+| MQTT_BROKER | MQTT broker host used by `openclaw_mqtt_bridge.py` and the device client | `127.0.0.1` (local broker) / `192.168.100.132` (LAN broker) |
 | MQTT_PORT | MQTT broker port | `1883` |
-| MQTT_TOPIC_CMD | Topic for device commands | `AI_CMD` |
-| MQTT_TOPIC_RET | Topic for results to the device | `AI_RET` |
-| MQTT_CLIENT_ID | Device MQTT client ID | `T5_AI_CLAW` |
+| MQTT_TOPIC_IN_COMMAND | Topic carrying device ASR text to OpenClaw | `openclaw/device/user_speech_text` |
+| MQTT_TOPIC_OUT_RESULT | Topic carrying OpenClaw results back to the device | `openclaw/server/response` |
 
-Set `MQTT_BROKER` in both `mqtt_openclaw_bridge.py` and in the your_chat_bot project to your PC’s actual LAN IP.
+Use `127.0.0.1` for a local broker, or the broker machine's LAN IP/domain for a remote broker.
 
 ## Notes
 
@@ -226,6 +217,7 @@ This is a developer-experience setup with specific environment requirements.
 
 - **Same LAN**: The TuyaOpen device and the PC running OpenClaw and Mosquitto must be on the same local network, and the device must be able to reach the PC’s MQTT port.
 - **IP**: If the PC’s IP changes, update `MQTT_BROKER` on both the device and the bridge.
+- **Broker reachability**: If LAN clients cannot connect, verify Mosquitto is listening on the expected interface/port and open `1883/tcp` in the firewall.
 - **Ecosystem**: Additional TuyaOpen + OpenClaw integration options are in development; check the repository and docs for updates.
 
 ## Expected result
@@ -234,10 +226,11 @@ After completing the steps, voice input on the TuyaOpen device is transcribed by
 
 ## References
 
-- [Quick Start](quick-start/index)
-- [Environment setup and code download](quick-start/enviroment-setup)
-- [Firmware burning](quick-start/firmware-burning)
-- [Device network configuration](quick-start/device-network-configuration)
+- [Environment setup and code download](/docs/quick-start/enviroment-setup)
+- [Firmware burning](/docs/quick-start/firmware-burning)
+- [Device network configuration](/docs/quick-start/device-network-configuration)
+- [Equipment authorization](/docs/quick-start/equipment-authorization)
 - [Project walkthrough](project-walkthrough)
-- [Chatbot Demo (your_chat_bot)](applications/tuya.ai/demo-your-chat-bot)
-- [OpenClaw documentation](https://help.aliyun.com/zh/model-studio/openclaw) (Alibaba Cloud)
+- [OpenClaw official documentation](https://openclaw.ai/)
+- [MQTT OpenClaw Bridge README](https://github.com/adwuard/openclaw_tuya_mqtt_proxy/blob/main/README.md)
+- [openclaw_remote_mqtt.c (TuyaOpen)](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c)
