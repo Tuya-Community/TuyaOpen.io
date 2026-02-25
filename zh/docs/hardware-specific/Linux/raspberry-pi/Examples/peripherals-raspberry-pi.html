@@ -1,436 +1,405 @@
-<!doctype html><html lang=zh dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Raspberry Pi 外设 | TuyaOpen</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://tuyaopen.io/zh/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true name=twitter:image content=https://tuyaopen.io/zh/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true property=og:url content=https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi /><meta data-rh=true property=og:locale content=zh /><meta data-rh=true property=og:locale:alternate content=en /><meta data-rh=true name=docusaurus_locale content=zh /><meta data-rh=true name=docsearch:language content=zh /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Raspberry Pi 外设 | TuyaOpen"/><meta data-rh=true name=description content="本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（examples/peripherals），包含 GPIO、I2C、SPI、PWM、UART。"/><meta data-rh=true property=og:description content="本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（examples/peripherals），包含 GPIO、I2C、SPI、PWM、UART。"/><link data-rh=true rel=icon href=/zh/img/favicon.ico /><link data-rh=true rel=canonical href=https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi hreflang=en /><link data-rh=true rel=alternate href=https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi hreflang=zh /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi hreflang=x-default /><link data-rh=true rel=preconnect href=https://NT1L7IWROF-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://tuyaopen.io/zh/docs/hardware-specific/","name":"硬件文档","position":1},{"@type":"ListItem","item":"https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi","name":"Raspberry Pi 外设","position":2}]}</script><link rel=alternate type=application/rss+xml href=/zh/blog/rss.xml title="TuyaOpen RSS Feed"><link rel=alternate type=application/atom+xml href=/zh/blog/atom.xml title="TuyaOpen Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-3M0J54E8XF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3M0J54E8XF",{})</script><link rel=search type=application/opensearchdescription+xml title=TuyaOpen href=/zh/opensearch.xml><link rel=preconnect href=https://www.clarity.ms><script>!function(t,e,n,c,r,s,a){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(s=e.createElement(c)).async=1,s.src="https://www.clarity.ms/tag/"+r,(a=e.getElementsByTagName(c)[0]).parentNode.insertBefore(s,a)}(window,document,"clarity","script","lggqck9srz")</script><meta name=algolia-site-verification content=6232065417750C16><link rel=stylesheet href=/zh/assets/css/styles.92660d3d.css /><script src=/zh/assets/js/runtime~main.f04c2465.js defer></script><script src=/zh/assets/js/main.21e9d42a.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
+<!doctype html><html lang=zh dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Raspberry Pi 外设 | TuyaOpen</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://tuyaopen.io/zh/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true name=twitter:image content=https://tuyaopen.io/zh/img/home/tuyaopen-logo-social-preview.png /><meta data-rh=true property=og:url content=https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi /><meta data-rh=true property=og:locale content=zh /><meta data-rh=true property=og:locale:alternate content=en /><meta data-rh=true name=docusaurus_locale content=zh /><meta data-rh=true name=docsearch:language content=zh /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Raspberry Pi 外设 | TuyaOpen"/><meta data-rh=true name=description content="本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（examples/peripherals），包含 GPIO、I2C、SPI、PWM、UART。"/><meta data-rh=true property=og:description content="本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（examples/peripherals），包含 GPIO、I2C、SPI、PWM、UART。"/><link data-rh=true rel=icon href=/zh/img/favicon.ico /><link data-rh=true rel=canonical href=https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi hreflang=en /><link data-rh=true rel=alternate href=https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi hreflang=zh /><link data-rh=true rel=alternate href=https://tuyaopen.io/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi hreflang=x-default /><link data-rh=true rel=preconnect href=https://NT1L7IWROF-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://tuyaopen.io/zh/docs/hardware-specific/","name":"硬件文档","position":1},{"@type":"ListItem","item":"https://tuyaopen.io/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi","name":"Raspberry Pi 外设","position":2}]}</script><link rel=alternate type=application/rss+xml href=/zh/blog/rss.xml title="TuyaOpen RSS Feed"><link rel=alternate type=application/atom+xml href=/zh/blog/atom.xml title="TuyaOpen Atom Feed"><link rel=preconnect href=https://www.google-analytics.com><link rel=preconnect href=https://www.googletagmanager.com><script async src="https://www.googletagmanager.com/gtag/js?id=G-3M0J54E8XF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3M0J54E8XF",{})</script><link rel=search type=application/opensearchdescription+xml title=TuyaOpen href=/zh/opensearch.xml><link rel=preconnect href=https://www.clarity.ms><script>!function(t,e,n,c,r,s,a){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(s=e.createElement(c)).async=1,s.src="https://www.clarity.ms/tag/"+r,(a=e.getElementsByTagName(c)[0]).parentNode.insertBefore(s,a)}(window,document,"clarity","script","lggqck9srz")</script><meta name=algolia-site-verification content=6232065417750C16><link rel=stylesheet href=/zh/assets/css/styles.120d1f55.css /><script src=/zh/assets/js/runtime~main.497a0117.js defer></script><script src=/zh/assets/js/main.2afd1f50.js defer></script></head><body class=navigation-with-keyboard><svg style="display: none;"><defs>
 <symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
 <script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><div role=region aria-label=跳到主要内容><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>跳到主要内容</a></div><nav aria-label=主导航 class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label=切换导航栏 aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/zh/><div class=navbar__logo><img src=/zh/img/home/tuyaopen-logo-simple-dark.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/zh/img/home/tuyaopen-logo-simple-light.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">TuyaOpen</b></a><a class="navbar__item navbar__link" href=/zh/docs/about-tuyaopen>文档</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>获取</a><ul class=dropdown__menu><li><a class=dropdown__link href=/zh/pricing>服务授权码</a><li><a class=dropdown__link href=/zh/get-hardware>获取硬件</a><li><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class=dropdown__link>获取代码<svg width=12 height=12 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><a class="navbar__item navbar__link" href=/zh/blog>博客</a><a class="navbar__item navbar__link" href=/zh/projects>项目</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>工具</a><ul class=dropdown__menu><li><a class=dropdown__link href=/zh/tools/tyutool>涂鸦通用串口工具</a><li><a href=https://tuyaopen.ai/tools target=_blank rel="noopener noreferrer" class=dropdown__link>Web串口/烧录工具<svg width=12 height=12 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>简体中文</a><ul class=dropdown__menu><li><a href=/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi target=_self rel="noopener noreferrer" class=dropdown__link lang=en>English</a><li><a href=/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=zh>简体中文</a></ul></div><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label=GitHub></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="搜索 (Command+K)"><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 20 20" aria-hidden=true><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke=currentColor fill=none fill-rule=evenodd stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>搜索</span></span><span class=DocSearch-Button-Keys></span></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label=回到顶部 class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex=-1 class=sidebarLogo_isFc href=/zh/><img src=/zh/img/home/tuyaopen-logo-simple-dark.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/zh/img/home/tuyaopen-logo-simple-light.png alt=TuyaOpen class="themedComponent_mlkZ themedComponent--dark_xIcU"/><b>TuyaOpen</b></a><nav aria-label=文档侧边栏 class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/zh/docs/about-tuyaopen><span title="关于 TuyaOpen" class=linkLabel_WmDU>关于 TuyaOpen</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/zh/docs/maintenance-and-releases><span title="技术 Roadmap 与发布" class=linkLabel_WmDU>技术 Roadmap 与发布</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/zh/docs/project-walkthrough><span title=目录结构 class=linkLabel_WmDU>目录结构</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/zh/docs/quick-start><span title=快速开始 class=categoryLinkLabel_W154>快速开始</span></a><button aria-label="折叠侧边栏分类 '快速开始'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/unboxing><span title=极速体验 class=linkLabel_WmDU>极速体验</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/enviroment-setup><span title=环境搭建 class=linkLabel_WmDU>环境搭建</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/project-compilation><span title=项目编译 class=linkLabel_WmDU>项目编译</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/firmware-burning><span title=固件烧录 class=linkLabel_WmDU>固件烧录</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/equipment-authorization><span title=设备授权 class=linkLabel_WmDU>设备授权</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/device-network-configuration><span title=设备配网 class=linkLabel_WmDU>设备配网</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/quick-start/device-debug><span title=设备调试 class=linkLabel_WmDU>设备调试</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/zh/docs/hardware-specific><span title=硬件文档 class=categoryLinkLabel_W154>硬件文档</span></a><button aria-label="折叠侧边栏分类 '硬件文档'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=true tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping><span title="Tuya T5" class=categoryLinkLabel_W154>Tuya T5</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping><span title="T5AI 外设映射说明" class=linkLabel_WmDU>T5AI 外设映射说明</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=true tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board><span title="T5-AI Board DevKit" class=categoryLinkLabel_W154>T5-AI Board DevKit</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board><span title="T5AI-Board 概述" class=linkLabel_WmDU>T5AI-Board 概述</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=true tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core><span title="T5-AI Core DevKit" class=categoryLinkLabel_W154>T5-AI Core DevKit</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core><span title="T5AI-Core 概述" class=linkLabel_WmDU>T5AI-Core 概述</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false tabindex=0 href=/zh/docs/hardware-specific/tuya-t5/develop-with-Arduino/Introduction><span title="使用 Arduino 开发" class=categoryLinkLabel_W154>使用 Arduino 开发</span></a></div></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role=button aria-expanded=true tabindex=0 href=/zh/docs/hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1><span title=Linux class=categoryLinkLabel_W154>Linux</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=true tabindex=0 href=/zh/docs/hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1><span title="DshanPi A1" class=categoryLinkLabel_W154>DshanPi A1</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1><span title="在 DshanPi-A1 上运行 your_chat_bot" class=linkLabel_WmDU>在 DshanPi-A1 上运行 your_chat_bot</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role=button aria-expanded=true tabindex=0 href=/zh/docs/hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi><span title="Raspberry Pi" class=categoryLinkLabel_W154>Raspberry Pi</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi><span title="在 Raspberry Pi 上运行 your_chat_bot" class=linkLabel_WmDU>在 Raspberry Pi 上运行 your_chat_bot</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi><span title="Raspberry Pi 外设" class=linkLabel_WmDU>Raspberry Pi 外设</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/hardware-specific/Linux/raspberry-pi/wifi-bluetooth><span title="Raspberry Pi配网失败排障" class=linkLabel_WmDU>Raspberry Pi配网失败排障</span></a></ul></ul></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/zh/docs/applications><span title=应用示例 class=categoryLinkLabel_W154>应用示例</span></a><button aria-label="展开侧边栏分类 '应用示例'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/examples/demo-generic-examples><span title=示例 class=categoryLinkLabel_W154>示例</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/peripheral/support_peripheral_list><span title=外设驱动 class=categoryLinkLabel_W154>外设驱动</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/new-hardware/porting-platform><span title=添加新项目 class=categoryLinkLabel_W154>添加新项目</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=true href=/zh/docs/cloud/tuya-cloud/creating-new-product><span title=云服务 class=categoryLinkLabel_W154>云服务</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=true tabindex=0 href=/zh/docs/cloud/tuya-cloud/creating-new-product><span title=涂鸦云平台开发 class=categoryLinkLabel_W154>涂鸦云平台开发</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/zh/docs/cloud/tuya-cloud/creating-new-product><span title=创建新产品 class=linkLabel_WmDU>创建新产品</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false tabindex=0 href=/zh/docs/cloud/tuya-cloud/ai-agent/index><span title="AI Agent 开发" class=categoryLinkLabel_W154>AI Agent 开发</span></a></div></ul></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/tkl-api/tkl_mutex><span title="TKL APIs" class=categoryLinkLabel_W154>TKL APIs</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/tos-tools/tos-guide><span title="Tos 工具" class=categoryLinkLabel_W154>Tos 工具</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/build-system/compilation-guide><span title=构建系统 class=categoryLinkLabel_W154>构建系统</span></a></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/zh/docs/faqs><span title=常见问题 class=linkLabel_WmDU>常见问题</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/zh/docs/contribute/contribute-guide><span title=贡献 class=categoryLinkLabel_W154>贡献</span></a></div></ul></nav></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=页面路径><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label=主页面 class=breadcrumbs__link href=/zh/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/zh/docs/hardware-specific><span>硬件文档</span></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Linux</span><li class=breadcrumbs__item><span class=breadcrumbs__link>Raspberry Pi</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Raspberry Pi 外设</span></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Raspberry Pi 外设</h1></header><p>本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（<code>examples/peripherals</code>），包含 GPIO、I2C、SPI、PWM、UART。</p>
 <blockquote>
-<p><strong>建议</strong>：如果你是首次在树莓派上跑 TuyaOpen，建议先阅读同目录下的 <a href=/zh/docs/hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi>在 Raspberry Pi 上运行 your_chat_bot</a>。</p>
+<p><strong>建议</strong>：如果你是首次在树莓派上跑 TuyaOpen，建议先阅读同目录下的 <a class="" href=/zh/docs/hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi>在 Raspberry Pi 上运行 your_chat_bot</a>。</p>
 </blockquote>
-<h2 id=文档导航>文档导航</h2>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=文档导航>文档导航<a href=#文档导航 class=hash-link aria-label=文档导航的直接链接 title=文档导航的直接链接 translate=no>​</a></h2>
 <ul>
-<li><a href=#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B>快速开始</a></li>
-<li><a href=#%E9%80%9A%E7%94%A8%E8%AF%B4%E6%98%8E>通用说明</a></li>
-<li><a href=#gpio>GPIO</a></li>
-<li><a href=#i2c>I2C</a></li>
-<li><a href=#spi>SPI</a></li>
-<li><a href=#pwm>PWM</a></li>
-<li><a href=#uart>UART</a></li>
+<li class=""><a href=#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B class="">快速开始</a></li>
+<li class=""><a href=#%E9%80%9A%E7%94%A8%E8%AF%B4%E6%98%8E class="">通用说明</a></li>
+<li class=""><a href=#gpio class="">GPIO</a></li>
+<li class=""><a href=#i2c class="">I2C</a></li>
+<li class=""><a href=#spi class="">SPI</a></li>
+<li class=""><a href=#pwm class="">PWM</a></li>
+<li class=""><a href=#uart class="">UART</a></li>
 </ul>
-<h2 id=快速开始>快速开始</h2>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=快速开始>快速开始<a href=#快速开始 class=hash-link aria-label=快速开始的直接链接 title=快速开始的直接链接 translate=no>​</a></h2>
 <ol>
-<li>确保你已完成 TuyaOpen 基础环境搭建，并进入 TuyaOpen 仓库根目录。</li>
-<li>打开配置界面：</li>
+<li class="">确保你已完成 TuyaOpen 基础环境搭建，并进入 TuyaOpen 仓库根目录。</li>
+<li class="">打开配置界面：</li>
 </ol>
 <ul>
-<li>运行 <code>tos.py config menu</code></li>
-<li>选择板卡：<code>Choice a board → LINUX → Choice a board → RaspberryPi</code></li>
-<li>选择型号：<code>Raspberry Pi Board Configuration → Choose Raspberry Pi model → Raspberry Pi 5</code>（按实际型号选择）</li>
+<li class="">运行 <code>tos.py config menu</code></li>
+<li class="">选择板卡：<code>Choice a board → LINUX → Choice a board → RaspberryPi</code></li>
+<li class="">选择型号：<code>Raspberry Pi Board Configuration → Choose Raspberry Pi model → Raspberry Pi 5</code>（按实际型号选择）</li>
 </ul>
 <ol start=3>
-<li>按需开启外设开关：进入 <code>Choice a board → LINUX → TKL Board Configuration</code>，勾选 <code>ENABLE_GPIO</code>/<code>ENABLE_I2C</code>/<code>ENABLE_SPI</code>/<code>ENABLE_PWM</code>/<code>ENABLE_UART</code>。</li>
+<li class="">按需开启外设开关：进入 <code>Choice a board → LINUX → TKL Board Configuration</code>，勾选 <code>ENABLE_GPIO</code>/<code>ENABLE_I2C</code>/<code>ENABLE_SPI</code>/<code>ENABLE_PWM</code>/<code>ENABLE_UART</code>。</li>
 </ol>
-<p><img src=https://images.tuyacn.com/fe-static/docs/img/4b6127c5-ab9f-415a-b365-cb136467efed.png alt=models_path_config /></p>
+<p><figure><img decoding=async loading=lazy src=https://images.tuyacn.com/fe-static/docs/img/4b6127c5-ab9f-415a-b365-cb136467efed.png alt=models_path_config class=img_ev3q /><figcaption class="text--italic text--center" style=color:var(--ifm-color-content-secondary);font-size:0.875rem>models_path_config</figcaption></figure><p></p>
 <ol start=4>
-<li>进入对应示例目录（如 <code>examples/peripherals/gpio</code>），执行 <code>tos.py build</code> 编译，然后用 <code>sudo</code> 运行生成的 <code>*.elf</code>。</li>
+<li class="">进入对应示例目录（如 <code>examples/peripherals/gpio</code>），执行 <code>tos.py build</code> 编译，然后用 <code>sudo</code> 运行生成的 <code>*.elf</code>。</li>
 </ol>
 <blockquote>
 <p><strong>说明（编译方式）</strong>：Raspberry Pi 支持交叉编译与本地编译两种方式；构建时会根据当前平台自动选择合适的编译方式。</p>
 </blockquote>
-<h2 id=通用说明>通用说明</h2>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=通用说明>通用说明<a href=#通用说明 class=hash-link aria-label=通用说明的直接链接 title=通用说明的直接链接 translate=no>​</a></h2>
 <ul>
-<li><strong>权限</strong>：外设示例通常需要访问 <code>/dev/*</code> 或 <code>/sys/class/*</code>，建议在树莓派上运行时使用 <code>sudo</code>。</li>
-<li><strong>设备节点</strong>：不同系统镜像下外设节点名称可能不同（例如 UART 可能是 <code>/dev/ttyAMA0</code> 或 <code>/dev/ttyS0</code>）。如节点与 TuyaOpen 端口映射不一致，请以实际节点为准做适配或调整配置。</li>
+<li class=""><strong>权限</strong>：外设示例通常需要访问 <code>/dev/*</code> 或 <code>/sys/class/*</code>，建议在树莓派上运行时使用 <code>sudo</code>。</li>
+<li class=""><strong>设备节点</strong>：不同系统镜像下外设节点名称可能不同（例如 UART 可能是 <code>/dev/ttyAMA0</code> 或 <code>/dev/ttyS0</code>）。如节点与 TuyaOpen 端口映射不一致，请以实际节点为准做适配或调整配置。</li>
 </ul>
-<h2 id=gpio>GPIO</h2>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=gpio>GPIO<a href=#gpio class=hash-link aria-label=GPIO的直接链接 title=GPIO的直接链接 translate=no>​</a></h2>
 <p>本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 GPIO。</p>
 <details><summary><strong>适配说明（Linux TKL GPIO）</strong></summary><p><strong>已支持（可用）</strong><ul>
-<li>基础读写<!-- -->
+<li class="">基础读写<!-- -->
 <ul>
-<li><code>tkl_gpio_init()</code> / <code>tkl_gpio_deinit()</code>：基于 Linux gpio-cdev（<code>/dev/gpiochip*</code>）申请/释放 line handle。</li>
-<li><code>tkl_gpio_write()</code> / <code>tkl_gpio_read()</code>：通过 <code>GPIOHANDLE_*</code> ioctl 写入/读取电平。</li>
+<li class=""><code>tkl_gpio_init()</code> / <code>tkl_gpio_deinit()</code>：基于 Linux gpio-cdev（<code>/dev/gpiochip*</code>）申请/释放 line handle。</li>
+<li class=""><code>tkl_gpio_write()</code> / <code>tkl_gpio_read()</code>：通过 <code>GPIOHANDLE_*</code> ioctl 写入/读取电平。</li>
 </ul>
 </li>
-<li>中断回调（事件通知）<!-- -->
+<li class="">中断回调（事件通知）<!-- -->
 <ul>
-<li><code>tkl_gpio_irq_init()</code> / <code>tkl_gpio_irq_enable()</code> / <code>tkl_gpio_irq_disable()</code>：通过 <code>GPIO_GET_LINEEVENT_IOCTL</code> 请求事件 fd，并由线程 <code>poll()</code> 监听触发回调。</li>
+<li class=""><code>tkl_gpio_irq_init()</code> / <code>tkl_gpio_irq_enable()</code> / <code>tkl_gpio_irq_disable()</code>：通过 <code>GPIO_GET_LINEEVENT_IOCTL</code> 请求事件 fd，并由线程 <code>poll()</code> 监听触发回调。</li>
 </ul>
 </li>
 </ul><p><strong>说明/限制</strong><ul>
-<li>依赖系统提供 <code>/dev/gpiochip*</code>（内核需启用 gpio 字符设备接口，且当前用户具备访问权限；通常建议 <code>sudo</code> 运行示例）。</li>
-<li><code>TUYA_GPIO_NUM_E</code> 在 Linux 侧按 gpiochip 的 line offset 使用；在树莓派上通常与 BCM GPIO 编号一致，但不同发行版/内核配置可能存在差异，建议用 <code>gpioinfo</code>/<code>pinctrl</code> 核对。</li>
-<li><code>TUYA_GPIO_IRQ_LOW/HIGH</code> 属于“近似实现”：底层使用边沿事件监听，再读取当前电平做过滤，不等同硬件电平触发中断。</li>
+<li class="">依赖系统提供 <code>/dev/gpiochip*</code>（内核需启用 gpio 字符设备接口，且当前用户具备访问权限；通常建议 <code>sudo</code> 运行示例）。</li>
+<li class=""><code>TUYA_GPIO_NUM_E</code> 在 Linux 侧按 gpiochip 的 line offset 使用；在树莓派上通常与 BCM GPIO 编号一致，但不同发行版/内核配置可能存在差异，建议用 <code>gpioinfo</code>/<code>pinctrl</code> 核对。</li>
+<li class=""><code>TUYA_GPIO_IRQ_LOW/HIGH</code> 属于“近似实现”：底层使用边沿事件监听，再读取当前电平做过滤，不等同硬件电平触发中断。</li>
 </ul></details>
-<h3 id=进入示例目录>进入示例目录</h3>
-<pre><code class=language-bash>cd examples/peripherals/gpio
-</code></pre>
-<h3 id=配置>配置</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=进入示例目录>进入示例目录<a href=#进入示例目录 class=hash-link aria-label=进入示例目录的直接链接 title=进入示例目录的直接链接 translate=no>​</a></h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token builtin class-name">cd</span><span class="token plain"> examples/peripherals/gpio</span><br/></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=配置>配置<a href=#配置 class=hash-link aria-label=配置的直接链接 title=配置的直接链接 translate=no>​</a></h3>
 <p>启动配置界面：</p>
-<pre><code class=language-bash>tos.py config menu
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py config menu</span><br/></span></code></pre></div></div>
 <p>按“快速开始”完成板卡与型号选择后，进入：<code>Choice a board → LINUX → TKL Board Configuration</code></p>
 <p>勾选 <code>ENABLE_GPIO</code>。</p>
 <p>在 <code>Application config</code> 中选择合适的引脚作为：</p>
 <ul>
-<li>output pin</li>
-<li>input pin</li>
-<li>irq pin</li>
+<li class="">output pin</li>
+<li class="">input pin</li>
+<li class="">irq pin</li>
 </ul>
 <p>请确保所选引脚为空闲且与硬件连接一致。</p>
-<h3 id=编译与运行>编译与运行</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=编译与运行>编译与运行<a href=#编译与运行 class=hash-link aria-label=编译与运行的直接链接 title=编译与运行的直接链接 translate=no>​</a></h3>
 <p>编译：</p>
-<pre><code class=language-bash>tos.py build
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py build</span><br/></span></code></pre></div></div>
 <p>编译完成后会生成类似 <code>gpio_1.0.0.elf</code> 的可执行文件。在树莓派上运行：</p>
-<pre><code class=language-bash>sudo ./gpio_1.0.0.elf
-</code></pre>
-<h2 id=i2c>I2C</h2>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> ./gpio_1.0.0.elf</span><br/></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=i2c>I2C<a href=#i2c class=hash-link aria-label=I2C的直接链接 title=I2C的直接链接 translate=no>​</a></h2>
 <p>本章节演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 I2C。</p>
 <details><summary><strong>适配说明（Linux TKL I2C）</strong></summary><p><strong>已支持（可用）</strong><ul>
-<li>主机模式基础收发<!-- -->
+<li class="">主机模式基础收发<!-- -->
 <ul>
-<li><code>tkl_i2c_master_send()</code>：对指定设备地址执行写入（底层使用 <code>/dev/i2c-X</code> + <code>I2C_SLAVE</code> + <code>write()</code>）。</li>
-<li><code>tkl_i2c_master_receive()</code>：对指定设备地址执行读取（底层使用 <code>I2C_SLAVE</code> + <code>read()</code>）。</li>
+<li class=""><code>tkl_i2c_master_send()</code>：对指定设备地址执行写入（底层使用 <code>/dev/i2c-X</code> + <code>I2C_SLAVE</code> + <code>write()</code>）。</li>
+<li class=""><code>tkl_i2c_master_receive()</code>：对指定设备地址执行读取（底层使用 <code>I2C_SLAVE</code> + <code>read()</code>）。</li>
 </ul>
 </li>
-<li>寄存器读取的常见组合事务（Repeated Start）<!-- -->
+<li class="">寄存器读取的常见组合事务（Repeated Start）<!-- -->
 <ul>
-<li>当 <code>tkl_i2c_master_send(..., xfer_pending=true)</code> 之后紧接 <code>tkl_i2c_master_receive()</code>，会合并为一次 <code>I2C_RDWR</code> 事务，实现“先写寄存器地址/命令，再重复起始读数据”。</li>
+<li class="">当 <code>tkl_i2c_master_send(..., xfer_pending=true)</code> 之后紧接 <code>tkl_i2c_master_receive()</code>，会合并为一次 <code>I2C_RDWR</code> 事务，实现“先写寄存器地址/命令，再重复起始读数据”。</li>
 </ul>
 </li>
-<li>地址探测（扫描）<!-- -->
+<li class="">地址探测（扫描）<!-- -->
 <ul>
-<li>当 <code>tkl_i2c_master_send()</code> 的 <code>size==0</code> 时，使用 SMBus “quick”方式尝试探测设备是否应答（适合做简单地址扫描）。</li>
+<li class="">当 <code>tkl_i2c_master_send()</code> 的 <code>size==0</code> 时，使用 SMBus “quick”方式尝试探测设备是否应答（适合做简单地址扫描）。</li>
 </ul>
 </li>
 </ul><p><strong>暂未支持（接口保留，当前实现返回 <code>OPRT_NOT_SUPPORTED</code>）</strong><ul>
-<li>从机模式（Slave）：<code>tkl_i2c_set_slave_addr()</code>、<code>tkl_i2c_slave_send()</code>、<code>tkl_i2c_slave_receive()</code>。</li>
-<li>中断/事件回调：<code>tkl_i2c_irq_init()</code>、<code>tkl_i2c_irq_enable()</code>、<code>tkl_i2c_irq_disable()</code>。</li>
-<li>扩展控制/状态查询：<code>tkl_i2c_ioctl()</code>、<code>tkl_i2c_get_status()</code>。<!-- -->
+<li class="">从机模式（Slave）：<code>tkl_i2c_set_slave_addr()</code>、<code>tkl_i2c_slave_send()</code>、<code>tkl_i2c_slave_receive()</code>。</li>
+<li class="">中断/事件回调：<code>tkl_i2c_irq_init()</code>、<code>tkl_i2c_irq_enable()</code>、<code>tkl_i2c_irq_disable()</code>。</li>
+<li class="">扩展控制/状态查询：<code>tkl_i2c_ioctl()</code>、<code>tkl_i2c_get_status()</code>。<!-- -->
 <ul>
-<li>说明：<code>tkl_i2c_get_status()</code> 当前实现会将输出结构体清零后返回 <code>OPRT_NOT_SUPPORTED</code>，请勿依赖其返回内容。</li>
+<li class="">说明：<code>tkl_i2c_get_status()</code> 当前实现会将输出结构体清零后返回 <code>OPRT_NOT_SUPPORTED</code>，请勿依赖其返回内容。</li>
 </ul>
 </li>
 </ul></details>
-<h3 id=在树莓派启用-i2c系统配置>在树莓派启用 I2C（系统配置）</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=在树莓派启用-i2c系统配置>在树莓派启用 I2C（系统配置）<a href=#在树莓派启用-i2c系统配置 class=hash-link aria-label="在树莓派启用 I2C（系统配置）的直接链接" title="在树莓派启用 I2C（系统配置）的直接链接" translate=no>​</a></h3>
 <p>在树莓派终端执行：</p>
-<pre><code class=language-bash>sudo raspi-config
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> raspi-config</span><br/></span></code></pre></div></div>
 <p>在 <code>raspi-config</code> 中按以下路径启用 I2C：</p>
 <ul>
-<li><code>3 Interface Options</code> → <code>I5 I2C</code> → <code>Enable</code></li>
+<li class=""><code>3 Interface Options</code> → <code>I5 I2C</code> → <code>Enable</code></li>
 </ul>
-<p><img src=https://images.tuyacn.com/fe-static/docs/img/c8daf0da-c625-472e-888f-090968719dc9.png alt=models_path_config /></p>
+<p><figure><img decoding=async loading=lazy src=https://images.tuyacn.com/fe-static/docs/img/c8daf0da-c625-472e-888f-090968719dc9.png alt=models_path_config class=img_ev3q /><figcaption class="text--italic text--center" style=color:var(--ifm-color-content-secondary);font-size:0.875rem>models_path_config</figcaption></figure><p></p>
 <p>确认设备节点已创建：</p>
-<pre><code class=language-bash>ls /dev | grep i2c
-</code></pre>
-<h3 id=示例-1扫描总线i2c_scan>示例 1：扫描总线（i2c_scan）</h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>ls</span><span class="token plain"> /dev </span><span class="token operator" style=color:#393A34>|</span><span class="token plain"> </span><span class="token function" style=color:#d73a49>grep</span><span class="token plain"> i2c</span><br/></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=示例-1扫描总线i2c_scan>示例 1：扫描总线（i2c_scan）<a href=#示例-1扫描总线i2c_scan class=hash-link aria-label="示例 1：扫描总线（i2c_scan）的直接链接" title="示例 1：扫描总线（i2c_scan）的直接链接" translate=no>​</a></h3>
 <p>进入示例目录：</p>
-<pre><code class=language-bash>cd examples/peripherals/i2c/i2c_scan
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token builtin class-name">cd</span><span class="token plain"> examples/peripherals/i2c/i2c_scan</span><br/></span></code></pre></div></div>
 <p>配置：</p>
-<pre><code class=language-bash>tos.py config menu
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py config menu</span><br/></span></code></pre></div></div>
 <ul>
-<li><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_I2C</code></li>
-<li><code>Application config</code>：配置 <code>i2c port</code>、<code>sda pin</code>、<code>scl pin</code></li>
+<li class=""><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_I2C</code></li>
+<li class=""><code>Application config</code>：配置 <code>i2c port</code>、<code>sda pin</code>、<code>scl pin</code></li>
 </ul>
 <p>说明：</p>
 <ul>
-<li>Linux 适配会访问 <code>/dev/i2c-${port}</code>。</li>
-<li>树莓派系统侧常见为 <code>/dev/i2c-1</code>（对应 GPIO2/3），因此 <code>i2c port</code> 通常需要与实际节点编号一致。</li>
+<li class="">Linux 适配会访问 <code>/dev/i2c-${port}</code>。</li>
+<li class="">树莓派系统侧常见为 <code>/dev/i2c-1</code>（对应 GPIO2/3），因此 <code>i2c port</code> 通常需要与实际节点编号一致。</li>
 </ul>
 <p>编译与运行：</p>
-<pre><code class=language-bash>tos.py build
-sudo ./i2c_scan_1.0.0.elf
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py build</span><br/></span><span class=token-line style=color:#393A34><span class="token plain"></span><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> ./i2c_scan_1.0.0.elf</span><br/></span></code></pre></div></div>
 <p>若扫描到设备，会打印类似日志：</p>
 <ul>
-<li><code>[example_i2c_scan.c:xx] i2c device found at address: 0x44</code></li>
+<li class=""><code>[example_i2c_scan.c:xx] i2c device found at address: 0x44</code></li>
 </ul>
-<h3 id=示例-2读取温湿度sht3x_4x_sensor>示例 2：读取温湿度（sht3x_4x_sensor）</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=示例-2读取温湿度sht3x_4x_sensor>示例 2：读取温湿度（sht3x_4x_sensor）<a href=#示例-2读取温湿度sht3x_4x_sensor class=hash-link aria-label="示例 2：读取温湿度（sht3x_4x_sensor）的直接链接" title="示例 2：读取温湿度（sht3x_4x_sensor）的直接链接" translate=no>​</a></h3>
 <p>进入示例目录：</p>
-<pre><code class=language-bash>cd examples/peripherals/i2c/sht3x_4x_sensor
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token builtin class-name">cd</span><span class="token plain"> examples/peripherals/i2c/sht3x_4x_sensor</span><br/></span></code></pre></div></div>
 <p>配置与编译方式同上，在 <strong>Application config</strong> 中选择：</p>
 <ul>
-<li><code>sensor type</code>：sht3x 或 sht4x（按你的硬件选择）</li>
+<li class=""><code>sensor type</code>：sht3x 或 sht4x（按你的硬件选择）</li>
 </ul>
 <p>运行：</p>
-<pre><code class=language-bash>sudo ./sht3x_4x_sensor_1.0.0.elf
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> ./sht3x_4x_sensor_1.0.0.elf</span><br/></span></code></pre></div></div>
 <p>可看到周期性输出的温度与湿度日志。</p>
-<h2 id=spi>SPI</h2>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=spi>SPI<a href=#spi class=hash-link aria-label=SPI的直接链接 title=SPI的直接链接 translate=no>​</a></h2>
 <p>本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 SPI（用户态 spidev）。</p>
 <details><summary><strong>适配说明（Linux TKL SPI）</strong></summary><p><strong>已支持（可用）</strong><ul>
-<li>主机模式（Master）<!-- -->
+<li class="">主机模式（Master）<!-- -->
 <ul>
-<li><code>tkl_spi_init()</code>：打开 <code>/dev/spidevX.Y</code> 并配置 mode/bits/speed/bitorder。</li>
-<li>仅支持 <code>TUYA_SPI_ROLE_MASTER</code> / <code>TUYA_SPI_ROLE_MASTER_SIMPLEX</code>。</li>
+<li class=""><code>tkl_spi_init()</code>：打开 <code>/dev/spidevX.Y</code> 并配置 mode/bits/speed/bitorder。</li>
+<li class="">仅支持 <code>TUYA_SPI_ROLE_MASTER</code> / <code>TUYA_SPI_ROLE_MASTER_SIMPLEX</code>。</li>
 </ul>
 </li>
-<li>基础收发<!-- -->
+<li class="">基础收发<!-- -->
 <ul>
-<li><code>tkl_spi_send()</code>：底层 <code>write()</code> 发送。</li>
-<li><code>tkl_spi_recv()</code>：底层 <code>read()</code> 接收。</li>
+<li class=""><code>tkl_spi_send()</code>：底层 <code>write()</code> 发送。</li>
+<li class=""><code>tkl_spi_recv()</code>：底层 <code>read()</code> 接收。</li>
 </ul>
 </li>
-<li>传输<!-- -->
+<li class="">传输<!-- -->
 <ul>
-<li><code>tkl_spi_transfer()</code>：<code>SPI_IOC_MESSAGE(1)</code> 全双工 TX/RX。</li>
-<li><code>tkl_spi_transfer_with_length()</code>：<code>SPI_IOC_MESSAGE(2)</code> 支持“先发后收”。</li>
+<li class=""><code>tkl_spi_transfer()</code>：<code>SPI_IOC_MESSAGE(1)</code> 全双工 TX/RX。</li>
+<li class=""><code>tkl_spi_transfer_with_length()</code>：<code>SPI_IOC_MESSAGE(2)</code> 支持“先发后收”。</li>
 </ul>
 </li>
-<li>计数与状态（兼容接口）<!-- -->
+<li class="">计数与状态（兼容接口）<!-- -->
 <ul>
-<li><code>tkl_spi_get_data_count()</code>：返回最近一次传输字节数。</li>
-<li><code>tkl_spi_get_status()</code>：返回 <code>OPRT_OK</code>，当前仅清零结构体（不提供真实状态）。</li>
+<li class=""><code>tkl_spi_get_data_count()</code>：返回最近一次传输字节数。</li>
+<li class=""><code>tkl_spi_get_status()</code>：返回 <code>OPRT_OK</code>，当前仅清零结构体（不提供真实状态）。</li>
 </ul>
 </li>
 </ul><p><strong>暂未支持（接口保留，当前实现返回 <code>OPRT_NOT_SUPPORTED</code>）</strong><ul>
-<li>中断回调：<code>tkl_spi_irq_init()</code> / <code>tkl_spi_irq_enable()</code> / <code>tkl_spi_irq_disable()</code> 返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
-<li>扩展控制：<code>tkl_spi_ioctl()</code> 返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
+<li class="">中断回调：<code>tkl_spi_irq_init()</code> / <code>tkl_spi_irq_enable()</code> / <code>tkl_spi_irq_disable()</code> 返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
+<li class="">扩展控制：<code>tkl_spi_ioctl()</code> 返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
 </ul><p><strong>行为限制/兼容实现</strong><ul>
-<li>中止传输：<code>tkl_spi_abort_transfer()</code> 返回 <code>OPRT_OK</code>，但不执行真实 abort。</li>
-<li>DMA 长度：<code>tkl_spi_get_max_dma_data_length()</code> 返回 0（Linux spidev 下该值无实际意义）。</li>
+<li class="">中止传输：<code>tkl_spi_abort_transfer()</code> 返回 <code>OPRT_OK</code>，但不执行真实 abort。</li>
+<li class="">DMA 长度：<code>tkl_spi_get_max_dma_data_length()</code> 返回 0（Linux spidev 下该值无实际意义）。</li>
 </ul><p><strong>端口到设备节点映射（默认）</strong><table><thead><tr><th>spi port<th>设备节点<tbody><tr><td>0<td><code>/dev/spidev0.0</code><tr><td>1<td><code>/dev/spidev0.1</code><tr><td>2<td><code>/dev/spidev1.0</code><tr><td>3<td><code>/dev/spidev1.1</code><tr><td>4<td><code>/dev/spidev2.0</code><tr><td>5<td><code>/dev/spidev2.1</code></table></details>
-<h3 id=在树莓派启用-spi系统配置>在树莓派启用 SPI（系统配置）</h3>
-<pre><code class=language-bash>sudo raspi-config
-</code></pre>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=在树莓派启用-spi系统配置>在树莓派启用 SPI（系统配置）<a href=#在树莓派启用-spi系统配置 class=hash-link aria-label="在树莓派启用 SPI（系统配置）的直接链接" title="在树莓派启用 SPI（系统配置）的直接链接" translate=no>​</a></h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> raspi-config</span><br/></span></code></pre></div></div>
 <p>在 <code>raspi-config</code> 中按以下路径启用 SPI：</p>
 <ul>
-<li><code>3 Interface Options</code> → <code>I4 SPI</code> → <code>Enable</code></li>
+<li class=""><code>3 Interface Options</code> → <code>I4 SPI</code> → <code>Enable</code></li>
 </ul>
 <p>确认设备节点已创建：</p>
-<pre><code class=language-bash>ls /dev | grep spidev
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>ls</span><span class="token plain"> /dev </span><span class="token operator" style=color:#393A34>|</span><span class="token plain"> </span><span class="token function" style=color:#d73a49>grep</span><span class="token plain"> spidev</span><br/></span></code></pre></div></div>
 <blockquote>
 <p>TuyaOpen 的 SPI 示例里，<code>Application config -> spi port</code> 是一个 <strong>端口号</strong>。
 Linux 适配层会把端口号映射到具体设备节点（见 <code>platform/LINUX/tuyaos_adapter/src/tkl_spi.c</code> 的 <code>prv_spi_dev_path()</code>）：</p>
 <ul>
-<li><code>spi port = 0</code> → <code>/dev/spidev0.0</code></li>
-<li><code>spi port = 1</code> → <code>/dev/spidev0.1</code></li>
-<li><code>spi port = 2</code> → <code>/dev/spidev1.0</code></li>
-<li><code>spi port = 3</code> → <code>/dev/spidev1.1</code></li>
-<li><code>spi port = 4</code> → <code>/dev/spidev2.0</code></li>
-<li><code>spi port = 5</code> → <code>/dev/spidev2.1</code></li>
+<li class=""><code>spi port = 0</code> → <code>/dev/spidev0.0</code></li>
+<li class=""><code>spi port = 1</code> → <code>/dev/spidev0.1</code></li>
+<li class=""><code>spi port = 2</code> → <code>/dev/spidev1.0</code></li>
+<li class=""><code>spi port = 3</code> → <code>/dev/spidev1.1</code></li>
+<li class=""><code>spi port = 4</code> → <code>/dev/spidev2.0</code></li>
+<li class=""><code>spi port = 5</code> → <code>/dev/spidev2.1</code></li>
 </ul>
 <p>比如 <code>spidev0.0 / spidev0.1</code>，对应把 <code>spi port</code> 设为 <code>0 / 1</code>。</p>
 </blockquote>
-<h3 id=进入示例目录-1>进入示例目录</h3>
-<pre><code class=language-bash>cd examples/peripherals/spi
-</code></pre>
-<h3 id=配置编译与运行>配置、编译与运行</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=进入示例目录-1>进入示例目录<a href=#进入示例目录-1 class=hash-link aria-label=进入示例目录的直接链接 title=进入示例目录的直接链接 translate=no>​</a></h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token builtin class-name">cd</span><span class="token plain"> examples/peripherals/spi</span><br/></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=配置编译与运行>配置、编译与运行<a href=#配置编译与运行 class=hash-link aria-label=配置、编译与运行的直接链接 title=配置、编译与运行的直接链接 translate=no>​</a></h3>
 <p>配置：</p>
-<pre><code class=language-bash>tos.py config menu
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py config menu</span><br/></span></code></pre></div></div>
 <ul>
-<li><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_SPI</code></li>
-<li><code>Application config</code>：配置 <code>spi port</code>、<code>spi baudrate</code></li>
+<li class=""><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_SPI</code></li>
+<li class=""><code>Application config</code>：配置 <code>spi port</code>、<code>spi baudrate</code></li>
 </ul>
 <p><code>spi port</code> 建议这样选：</p>
 <ul>
-<li>需要走 <code>/dev/spidev0.0</code>：设为 <code>0</code></li>
-<li>需要走 <code>/dev/spidev0.1</code>：设为 <code>1</code></li>
+<li class="">需要走 <code>/dev/spidev0.0</code>：设为 <code>0</code></li>
+<li class="">需要走 <code>/dev/spidev0.1</code>：设为 <code>1</code></li>
 </ul>
 <p><code>spi baudrate</code>（Hz）建议先用 <code>1000000</code> 或 <code>8000000</code> 跑通回环/通讯，再按外设能力逐步提高。</p>
 <p>编译与运行：</p>
-<pre><code class=language-bash>tos.py build
-sudo ./spi_1.0.0.elf
-</code></pre>
-<h2 id=pwm>PWM</h2>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py build</span><br/></span><span class=token-line style=color:#393A34><span class="token plain"></span><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> ./spi_1.0.0.elf</span><br/></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=pwm>PWM<a href=#pwm class=hash-link aria-label=PWM的直接链接 title=PWM的直接链接 translate=no>​</a></h2>
 <p>本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 PWM。</p>
 <details><summary><strong>适配说明（Linux TKL PWM）</strong></summary><p><strong>已支持（可用）</strong><ul>
-<li>PWM 输出（<code>/sys/class/pwm</code>）<!-- -->
+<li class="">PWM 输出（<code>/sys/class/pwm</code>）<!-- -->
 <ul>
-<li><code>tkl_pwm_init()</code>：export 通道并配置 polarity/period/duty。</li>
-<li><code>tkl_pwm_start()</code> / <code>tkl_pwm_stop()</code>：写 <code>enable</code> 启停。</li>
-<li><code>tkl_pwm_duty_set()</code>：更新占空比。</li>
-<li><code>tkl_pwm_frequency_set()</code>：更新频率。</li>
-<li><code>tkl_pwm_polarity_set()</code>：更新极性。</li>
-<li><code>tkl_pwm_info_set()</code> / <code>tkl_pwm_info_get()</code>：整组参数设置/读取（读取为软件保存的 cfg）。</li>
-<li><code>tkl_pwm_multichannel_start()</code> / <code>tkl_pwm_multichannel_stop()</code>：多通道依次启停。</li>
-<li><code>tkl_pwm_deinit()</code>：停止并 unexport。</li>
+<li class=""><code>tkl_pwm_init()</code>：export 通道并配置 polarity/period/duty。</li>
+<li class=""><code>tkl_pwm_start()</code> / <code>tkl_pwm_stop()</code>：写 <code>enable</code> 启停。</li>
+<li class=""><code>tkl_pwm_duty_set()</code>：更新占空比。</li>
+<li class=""><code>tkl_pwm_frequency_set()</code>：更新频率。</li>
+<li class=""><code>tkl_pwm_polarity_set()</code>：更新极性。</li>
+<li class=""><code>tkl_pwm_info_set()</code> / <code>tkl_pwm_info_get()</code>：整组参数设置/读取（读取为软件保存的 cfg）。</li>
+<li class=""><code>tkl_pwm_multichannel_start()</code> / <code>tkl_pwm_multichannel_stop()</code>：多通道依次启停。</li>
+<li class=""><code>tkl_pwm_deinit()</code>：停止并 unexport。</li>
 </ul>
 </li>
 </ul><p><strong>暂未支持（接口保留，当前实现返回 <code>OPRT_NOT_SUPPORTED</code>）</strong><ul>
-<li>PWM 捕获（Capture）：<code>tkl_pwm_cap_start()</code> / <code>tkl_pwm_cap_stop()</code>。<!-- -->
+<li class="">PWM 捕获（Capture）：<code>tkl_pwm_cap_start()</code> / <code>tkl_pwm_cap_stop()</code>。<!-- -->
 <ul>
-<li>说明：当前实现直接返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
+<li class="">说明：当前实现直接返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
 </ul>
 </li>
 </ul></details>
-<h3 id=pwm-实验步骤gpio18-示例>PWM 实验步骤（GPIO18 示例）</h3>
-<h4 id=进入示例目录-2>进入示例目录</h4>
-<pre><code class=language-bash>cd examples/peripherals/pwm
-</code></pre>
-<h4 id=在树莓派启用-pwm系统配置>在树莓派启用 PWM（系统配置）</h4>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=pwm-实验步骤gpio18-示例>PWM 实验步骤（GPIO18 示例）<a href=#pwm-实验步骤gpio18-示例 class=hash-link aria-label="PWM 实验步骤（GPIO18 示例）的直接链接" title="PWM 实验步骤（GPIO18 示例）的直接链接" translate=no>​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=进入示例目录-2>进入示例目录<a href=#进入示例目录-2 class=hash-link aria-label=进入示例目录的直接链接 title=进入示例目录的直接链接 translate=no>​</a></h4>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token builtin class-name">cd</span><span class="token plain"> examples/peripherals/pwm</span><br/></span></code></pre></div></div>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=在树莓派启用-pwm系统配置>在树莓派启用 PWM（系统配置）<a href=#在树莓派启用-pwm系统配置 class=hash-link aria-label="在树莓派启用 PWM（系统配置）的直接链接" title="在树莓派启用 PWM（系统配置）的直接链接" translate=no>​</a></h4>
 <ol>
-<li>
+<li class="">
 <p>确认引脚未被占用：</p>
-<pre><code class=language-bash>pinctrl get 18
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">pinctrl get </span><span class="token number" style=color:#36acaa>18</span><br/></span></code></pre></div></div>
 <p>若未被复用，通常会看到类似输出：</p>
 <ul>
-<li><code>18: no    pd | -- // GPIO18 = none</code></li>
+<li class=""><code>18: no    pd | -- // GPIO18 = none</code></li>
 </ul>
 </li>
-<li>
+<li class="">
 <p>启用 PWM overlay：</p>
 <p>在 <code>/boot/firmware/config.txt</code> 末尾添加：</p>
-<pre><code class=language-text>dtoverlay=pwm,pin=18,func=2
-</code></pre>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-text codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">dtoverlay=pwm,pin=18,func=2</span><br/></span></code></pre></div></div>
 <p>重启树莓派使其生效。</p>
 </li>
-<li>
+<li class="">
 <p>重启后确认映射关系：</p>
-<pre><code class=language-bash>pinctrl get 18
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">pinctrl get </span><span class="token number" style=color:#36acaa>18</span><br/></span></code></pre></div></div>
 <p>期望看到类似输出（表示已切到 PWM 通道）：</p>
 <ul>
-<li><code>18: a3    pd | lo // GPIO18 = PWM0_CHAN2</code></li>
+<li class=""><code>18: a3    pd | lo // GPIO18 = PWM0_CHAN2</code></li>
 </ul>
 </li>
 </ol>
-<h4 id=配置-1>配置</h4>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=配置-1>配置<a href=#配置-1 class=hash-link aria-label=配置的直接链接 title=配置的直接链接 translate=no>​</a></h4>
 <p>启动配置界面：</p>
-<pre><code class=language-bash>tos.py config menu
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py config menu</span><br/></span></code></pre></div></div>
 <ul>
-<li><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_PWM</code></li>
-<li>在同一配置树里设置：<!-- -->
+<li class=""><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_PWM</code></li>
+<li class="">在同一配置树里设置：<!-- -->
 <ul>
-<li><code>PWM_SYSFS_CHIP = 0</code>（对应 <code>/sys/class/pwm/pwmchip0</code>）</li>
-<li><code>PWM_SYSFS_CHANNEL_BASE = 2</code>（因为 GPIO18 映射为 <code>PWM0_CHAN2</code>）</li>
+<li class=""><code>PWM_SYSFS_CHIP = 0</code>（对应 <code>/sys/class/pwm/pwmchip0</code>）</li>
+<li class=""><code>PWM_SYSFS_CHANNEL_BASE = 2</code>（因为 GPIO18 映射为 <code>PWM0_CHAN2</code>）</li>
 </ul>
 </li>
-<li><code>Application config</code>：选择 <code>pwm port = 0</code>（因为是 <code>PWM0</code>）</li>
+<li class=""><code>Application config</code>：选择 <code>pwm port = 0</code>（因为是 <code>PWM0</code>）</li>
 </ul>
-<h4 id=编译与运行-1>编译与运行</h4>
-<pre><code class=language-bash>tos.py build
-sudo ./pwm_1.0.0.elf
-</code></pre>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=编译与运行-1>编译与运行<a href=#编译与运行-1 class=hash-link aria-label=编译与运行的直接链接 title=编译与运行的直接链接 translate=no>​</a></h4>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py build</span><br/></span><span class=token-line style=color:#393A34><span class="token plain"></span><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> ./pwm_1.0.0.elf</span><br/></span></code></pre></div></div>
 <p>如需快速核对 sysfs 节点是否符合预期，可检查 <code>/sys/class/pwm/pwmchip0/</code> 下是否存在（或可 export）对应的 <code>pwm2</code>。</p>
 <blockquote>
 <p><strong>提示</strong>：PWM 的 sysfs 接口依赖内核/overlay 配置；不同镜像的 <code>/boot/firmware/config.txt</code> 路径可能不同，请以实际系统为准。</p>
 </blockquote>
-<h2 id=uart>UART</h2>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=uart>UART<a href=#uart class=hash-link aria-label=UART的直接链接 title=UART的直接链接 translate=no>​</a></h2>
 <p>本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 UART。</p>
-<h3 id=硬件连接注意事项物理串口>硬件连接注意事项（物理串口）</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=硬件连接注意事项物理串口>硬件连接注意事项（物理串口）<a href=#硬件连接注意事项物理串口 class=hash-link aria-label=硬件连接注意事项（物理串口）的直接链接 title=硬件连接注意事项（物理串口）的直接链接 translate=no>​</a></h3>
 <p>如果你使用<strong>物理串口</strong>（例如树莓派 UART 引脚对接 USB-TTL 模块或另一块板子的 UART）：</p>
 <ul>
-<li>必须将双方 <strong>GND 共地</strong>。不共地时常见现象是接收数据乱码、丢字节或通信极不稳定。</li>
+<li class="">必须将双方 <strong>GND 共地</strong>。不共地时常见现象是接收数据乱码、丢字节或通信极不稳定。</li>
 </ul>
 <details><summary><strong>适配说明（Linux TKL UART）</strong></summary><p><strong>已支持（可用）</strong><ul>
-<li>基础收发<!-- -->
+<li class="">基础收发<!-- -->
 <ul>
-<li><code>tkl_uart_init()</code>：打开串口设备并用 termios 配置波特率/数据位/校验/停止位。</li>
-<li><code>tkl_uart_write()</code>：底层 <code>write()</code> 发送。</li>
-<li><code>tkl_uart_read()</code>：底层 <code>read()</code> 接收。</li>
-<li><code>tkl_uart_deinit()</code>：关闭 fd 并停止接收线程。</li>
+<li class=""><code>tkl_uart_init()</code>：打开串口设备并用 termios 配置波特率/数据位/校验/停止位。</li>
+<li class=""><code>tkl_uart_write()</code>：底层 <code>write()</code> 发送。</li>
+<li class=""><code>tkl_uart_read()</code>：底层 <code>read()</code> 接收。</li>
+<li class=""><code>tkl_uart_deinit()</code>：关闭 fd 并停止接收线程。</li>
 </ul>
 </li>
-<li>RX 回调通知（近似“中断”语义）<!-- -->
+<li class="">RX 回调通知（近似“中断”语义）<!-- -->
 <ul>
-<li><code>tkl_uart_rx_irq_cb_reg()</code>：注册接收回调。</li>
-<li>Linux 侧通过线程 <code>select()</code> 监听 fd 可读事件，触发后调用回调。</li>
+<li class=""><code>tkl_uart_rx_irq_cb_reg()</code>：注册接收回调。</li>
+<li class="">Linux 侧通过线程 <code>select()</code> 监听 fd 可读事件，触发后调用回调。</li>
 </ul>
 </li>
 </ul><p><strong>暂未支持（接口保留，当前实现返回 <code>OPRT_NOT_SUPPORTED</code>）</strong><ul>
-<li><code>tkl_uart_set_tx_int()</code> / <code>tkl_uart_set_rx_flowctrl()</code> / <code>tkl_uart_wait_for_data()</code> / <code>tkl_uart_ioctl()</code>：返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
+<li class=""><code>tkl_uart_set_tx_int()</code> / <code>tkl_uart_set_rx_flowctrl()</code> / <code>tkl_uart_wait_for_data()</code> / <code>tkl_uart_ioctl()</code>：返回 <code>OPRT_NOT_SUPPORTED</code>。</li>
 </ul><p><strong>空实现（调用无效果）</strong><ul>
-<li><code>tkl_uart_tx_irq_cb_reg()</code>：当前为空实现。</li>
+<li class=""><code>tkl_uart_tx_irq_cb_reg()</code>：当前为空实现。</li>
 </ul><p><strong>设备节点映射（与 FAKE 串口开关相关）</strong><ul>
-<li>当 <code>TKL_UART_USE_FAKE = n</code>（关闭 FAKE，使用真实硬件 UART）时，默认映射为：<!-- -->
+<li class="">当 <code>TKL_UART_USE_FAKE = n</code>（关闭 FAKE，使用真实硬件 UART）时，默认映射为：<!-- -->
 <ul>
-<li><code>port 0 -> /dev/ttyAMA0</code></li>
-<li><code>port 1 -> /dev/ttyAMA1</code></li>
-<li><code>port 2 -> /dev/ttyAMA2</code></li>
+<li class=""><code>port 0 -> /dev/ttyAMA0</code></li>
+<li class=""><code>port 1 -> /dev/ttyAMA1</code></li>
+<li class=""><code>port 2 -> /dev/ttyAMA2</code></li>
 </ul>
 </li>
-<li>当 <code>TKL_UART_USE_FAKE = y</code>（开启 FAKE）时，不会访问 <code>/dev/ttyAMA*</code>，而是使用“伪串口”实现（见下文）。</li>
+<li class="">当 <code>TKL_UART_USE_FAKE = y</code>（开启 FAKE）时，不会访问 <code>/dev/ttyAMA*</code>，而是使用“伪串口”实现（见下文）。</li>
 </ul></details>
-<h3 id=fake-串口stdinudp说明>FAKE 串口（stdin/UDP）说明</h3>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=fake-串口stdinudp说明>FAKE 串口（stdin/UDP）说明<a href=#fake-串口stdinudp说明 class=hash-link aria-label="FAKE 串口（stdin/UDP）说明的直接链接" title="FAKE 串口（stdin/UDP）说明的直接链接" translate=no>​</a></h3>
 <p>Linux 平台为了在<strong>没有接入真实串口硬件</strong>的情况下也能跑通 UART 相关组件，提供了一个 <code>TKL_UART_USE_FAKE</code> 开关（在 LINUX 的 <code>TKL Board Configuration</code> 中）。</p>
 <p>当开启 FAKE 后，<code>tkl_uart.c</code> 的行为大致如下（与真实 UART 不同，主要用于联调/演示）：</p>
 <ul>
-<li><code>TUYA_UART_NUM_0</code>（port 0）：<!-- -->
+<li class=""><code>TUYA_UART_NUM_0</code>（port 0）：<!-- -->
 <ul>
-<li>RX：从当前进程的标准输入 <code>/dev/stdin</code> 读取（也就是你运行 <code>*.elf</code> 的终端键盘输入）。</li>
-<li>TX：写到标准输出 <code>stdout</code>（终端上直接打印）。</li>
-<li>典型用途：在 SSH/本地终端里直接“键盘输入 → UART RX”，并在屏幕看到“UART TX”输出，不依赖任何 <code>/dev/ttyAMA*</code>。</li>
+<li class="">RX：从当前进程的标准输入 <code>/dev/stdin</code> 读取（也就是你运行 <code>*.elf</code> 的终端键盘输入）。</li>
+<li class="">TX：写到标准输出 <code>stdout</code>（终端上直接打印）。</li>
+<li class="">典型用途：在 SSH/本地终端里直接“键盘输入 → UART RX”，并在屏幕看到“UART TX”输出，不依赖任何 <code>/dev/ttyAMA*</code>。</li>
 </ul>
 </li>
-<li><code>TUYA_UART_NUM_1</code>（port 1）：<!-- -->
+<li class=""><code>TUYA_UART_NUM_1</code>（port 1）：<!-- -->
 <ul>
-<li>RX：通过 UDP socket 接收数据，逐字节喂给上层 RX 回调。</li>
-<li>TX：通过 UDP socket 把数据发到对端。</li>
-<li>注意：当前实现里 UDP 的 bind/send IP 与端口是写死的（环境相关），不同网络环境下通常需要修改适配层源码后重新编译。</li>
+<li class="">RX：通过 UDP socket 接收数据，逐字节喂给上层 RX 回调。</li>
+<li class="">TX：通过 UDP socket 把数据发到对端。</li>
+<li class="">注意：当前实现里 UDP 的 bind/send IP 与端口是写死的（环境相关），不同网络环境下通常需要修改适配层源码后重新编译。</li>
 </ul>
 </li>
 </ul>
 <p>FAKE 模式的限制/注意点：</p>
 <ul>
-<li>波特率/校验位/停止位等 termios 配置在 FAKE 模式下<strong>不等价于真实串口</strong>（port 0 仅把 stdin 设为非规范模式以便即时读到字符；stdout 也不具备真实串口时序）。</li>
-<li>FAKE 主要用于“功能跑通/交互演示”，不适合做严肃的串口协议时序验证。</li>
+<li class="">波特率/校验位/停止位等 termios 配置在 FAKE 模式下<strong>不等价于真实串口</strong>（port 0 仅把 stdin 设为非规范模式以便即时读到字符；stdout 也不具备真实串口时序）。</li>
+<li class="">FAKE 主要用于“功能跑通/交互演示”，不适合做严肃的串口协议时序验证。</li>
 </ul>
 <p>如何选择是否使用 FAKE：</p>
 <ul>
-<li>如果你希望 UART 示例/CLI 走树莓派真实串口引脚（<code>/dev/ttyAMA*</code> 或 <code>/dev/ttyS*</code>），请在：<!-- -->
+<li class="">如果你希望 UART 示例/CLI 走树莓派真实串口引脚（<code>/dev/ttyAMA*</code> 或 <code>/dev/ttyS*</code>），请在：<!-- -->
 <ul>
-<li><code>Choice a board → LINUX → TKL Board Configuration</code></li>
-<li>将 <code>Use fake UART (stdin/UDP) instead of hardware ttyAMA*</code> 设为 <code>n</code></li>
-<li>说明：该选项<strong>不勾选</strong>时，即走物理串口（访问真实的 <code>ttyAMA*</code>/<code>ttyS*</code> 设备节点）。</li>
+<li class=""><code>Choice a board → LINUX → TKL Board Configuration</code></li>
+<li class="">将 <code>Use fake UART (stdin/UDP) instead of hardware ttyAMA*</code> 设为 <code>n</code></li>
+<li class="">说明：该选项<strong>不勾选</strong>时，即走物理串口（访问真实的 <code>ttyAMA*</code>/<code>ttyS*</code> 设备节点）。</li>
 </ul>
 </li>
-<li>如果你只是想快速验证 UART 逻辑、且暂时没有外接 USB-TTL/硬件回环线，可以保持该选项为 <code>y</code>。</li>
+<li class="">如果你只是想快速验证 UART 逻辑、且暂时没有外接 USB-TTL/硬件回环线，可以保持该选项为 <code>y</code>。</li>
 </ul>
-<h4 id=注意your_chat_bot-配网二维码输出通道fake-uart>注意：your_chat_bot 配网二维码输出通道（FAKE UART）</h4>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=注意your_chat_bot-配网二维码输出通道fake-uart>注意：your_chat_bot 配网二维码输出通道（FAKE UART）<a href=#注意your_chat_bot-配网二维码输出通道fake-uart class=hash-link aria-label="注意：your_chat_bot 配网二维码输出通道（FAKE UART）的直接链接" title="注意：your_chat_bot 配网二维码输出通道（FAKE UART）的直接链接" translate=no>​</a></h4>
 <p>在 Linux/树莓派上运行 <code>your_chat_bot</code> 做配网演示时，推荐开启 <code>TKL_UART_USE_FAKE</code>，以便将配网阶段的二维码内容直接输出到当前终端。</p>
 <p><strong>1）期望现象（开启 FAKE）</strong></p>
 <ul>
-<li>在运行 <code>your_chat_bot*.elf</code> 的终端内可以直接看到二维码（二维码字符串/ASCII 图形）。</li>
+<li class="">在运行 <code>your_chat_bot*.elf</code> 的终端内可以直接看到二维码（二维码字符串/ASCII 图形）。</li>
 </ul>
 <p><strong>2）原理说明（输出走 UART0 TX）</strong></p>
 <ul>
-<li><code>your_chat_bot</code> 配网阶段的二维码内容通常通过 UART0（<code>TUYA_UART_NUM_0</code>）发送。</li>
-<li>当 <code>TKL_UART_USE_FAKE = y</code> 时：UART0 TX 映射到 <code>stdout</code>，因此二维码会显示在当前终端。</li>
-<li>当 <code>TKL_UART_USE_FAKE = n</code> 时：UART0 TX 写入真实串口设备（例如 <code>/dev/ttyAMA0</code>/<code>/dev/ttyS0</code>），因此二维码不会显示在当前终端，而是输出到串口线上。</li>
+<li class=""><code>your_chat_bot</code> 配网阶段的二维码内容通常通过 UART0（<code>TUYA_UART_NUM_0</code>）发送。</li>
+<li class="">当 <code>TKL_UART_USE_FAKE = y</code> 时：UART0 TX 映射到 <code>stdout</code>，因此二维码会显示在当前终端。</li>
+<li class="">当 <code>TKL_UART_USE_FAKE = n</code> 时：UART0 TX 写入真实串口设备（例如 <code>/dev/ttyAMA0</code>/<code>/dev/ttyS0</code>），因此二维码不会显示在当前终端，而是输出到串口线上。</li>
 </ul>
-<h3 id=在树莓派启用-uart系统配置>在树莓派启用 UART（系统配置）</h3>
-<pre><code class=language-bash>sudo raspi-config
-</code></pre>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=在树莓派启用-uart系统配置>在树莓派启用 UART（系统配置）<a href=#在树莓派启用-uart系统配置 class=hash-link aria-label="在树莓派启用 UART（系统配置）的直接链接" title="在树莓派启用 UART（系统配置）的直接链接" translate=no>​</a></h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> raspi-config</span><br/></span></code></pre></div></div>
 <p>在 <code>raspi-config</code> 中按以下路径配置串口：</p>
 <ul>
-<li><code>3 Interface Options</code> → <code>I6 Serial Port</code></li>
+<li class=""><code>3 Interface Options</code> → <code>I6 Serial Port</code></li>
 </ul>
 <p>通常建议按提示选择：</p>
 <ul>
-<li><strong>Disable serial login shell</strong></li>
-<li><strong>Enable serial port hardware</strong></li>
+<li class=""><strong>Disable serial login shell</strong></li>
+<li class=""><strong>Enable serial port hardware</strong></li>
 </ul>
 <p>检查系统串口节点：</p>
-<pre><code class=language-bash>ls -l /dev/ttyAMA* /dev/ttyS* 2>/dev/null
-</code></pre>
-<h3 id=进入示例目录-3>进入示例目录</h3>
-<pre><code class=language-bash>cd examples/peripherals/uart
-</code></pre>
-<h3 id=配置编译与运行-1>配置、编译与运行</h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>ls</span><span class="token plain"> </span><span class="token parameter variable" style=color:#36acaa>-l</span><span class="token plain"> /dev/ttyAMA* /dev/ttyS* </span><span class="token operator file-descriptor important" style=color:#393A34>2</span><span class="token operator" style=color:#393A34>></span><span class="token plain">/dev/null</span><br/></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=进入示例目录-3>进入示例目录<a href=#进入示例目录-3 class=hash-link aria-label=进入示例目录的直接链接 title=进入示例目录的直接链接 translate=no>​</a></h3>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token builtin class-name">cd</span><span class="token plain"> examples/peripherals/uart</span><br/></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id=配置编译与运行-1>配置、编译与运行<a href=#配置编译与运行-1 class=hash-link aria-label=配置、编译与运行的直接链接 title=配置、编译与运行的直接链接 translate=no>​</a></h3>
 <p>配置：</p>
-<pre><code class=language-bash>tos.py config menu
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py config menu</span><br/></span></code></pre></div></div>
 <ul>
-<li><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_UART</code></li>
+<li class=""><code>Choice a board → LINUX → TKL Board Configuration</code>：勾选 <code>ENABLE_UART</code></li>
 </ul>
 <p>可选：在同一菜单中按需设置 <code>Use fake UART (stdin/UDP) instead of hardware ttyAMA*</code>（是否使用 FAKE 串口）。</p>
 <ul>
-<li>勾选（<code>*</code>）：使用 FAKE 串口（stdin/UDP），不依赖真实硬件串口设备节点。</li>
-<li>不勾选（<code> </code>）：使用物理串口（访问真实 <code>ttyAMA*</code>/<code>ttyS*</code> 设备节点）。</li>
+<li class="">勾选（<code>*</code>）：使用 FAKE 串口（stdin/UDP），不依赖真实硬件串口设备节点。</li>
+<li class="">不勾选（<code> </code>）：使用物理串口（访问真实 <code>ttyAMA*</code>/<code>ttyS*</code> 设备节点）。</li>
 </ul>
 <p>编译：</p>
-<pre><code class=language-bash>tos.py build
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token plain">tos.py build</span><br/></span></code></pre></div></div>
 <p>运行：</p>
-<pre><code class=language-bash>sudo ./uart_1.0.0.elf
-</code></pre>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><span class=token-line style=color:#393A34><span class="token function" style=color:#d73a49>sudo</span><span class="token plain"> ./uart_1.0.0.elf</span><br/></span></code></pre></div></div>
 <blockquote>
 <p>提醒：示例代码默认使用 <code>TUYA_UART_NUM_0</code>（UART0）。在树莓派上 UART0 可能被系统控制台占用；若运行无回显或打开失败，请先检查系统串口占用情况，并按需修改示例选择的 UART 端口或调整适配层设备节点映射。</p>
 </blockquote></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href=https://github.com/Tuya-Community/TuyaOpen.io/edit/master/i18n/zh/docusaurus-plugin-content-docs/current/hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi.md target=_blank rel="noopener noreferrer" class=theme-edit-this-page><svg fill=currentColor height=20 width=20 viewBox="0 0 40 40" class=iconEdit_Z9Sw aria-hidden=true><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"/></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label=文件选项卡><a class="pagination-nav__link pagination-nav__link--prev" href=/zh/docs/hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi><div class=pagination-nav__sublabel>上一页</div><div class=pagination-nav__label>在 Raspberry Pi 上运行 your_chat_bot</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/zh/docs/hardware-specific/Linux/raspberry-pi/wifi-bluetooth><div class=pagination-nav__sublabel>下一页</div><div class=pagination-nav__label>Raspberry Pi配网失败排障</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#文档导航 class="table-of-contents__link toc-highlight">文档导航</a><li><a href=#快速开始 class="table-of-contents__link toc-highlight">快速开始</a><li><a href=#通用说明 class="table-of-contents__link toc-highlight">通用说明</a><li><a href=#gpio class="table-of-contents__link toc-highlight">GPIO</a><ul><li><a href=#进入示例目录 class="table-of-contents__link toc-highlight">进入示例目录</a><li><a href=#配置 class="table-of-contents__link toc-highlight">配置</a><li><a href=#编译与运行 class="table-of-contents__link toc-highlight">编译与运行</a></ul><li><a href=#i2c class="table-of-contents__link toc-highlight">I2C</a><ul><li><a href=#在树莓派启用-i2c系统配置 class="table-of-contents__link toc-highlight">在树莓派启用 I2C（系统配置）</a><li><a href=#示例-1扫描总线i2c_scan class="table-of-contents__link toc-highlight">示例 1：扫描总线（i2c_scan）</a><li><a href=#示例-2读取温湿度sht3x_4x_sensor class="table-of-contents__link toc-highlight">示例 2：读取温湿度（sht3x_4x_sensor）</a></ul><li><a href=#spi class="table-of-contents__link toc-highlight">SPI</a><ul><li><a href=#在树莓派启用-spi系统配置 class="table-of-contents__link toc-highlight">在树莓派启用 SPI（系统配置）</a><li><a href=#进入示例目录-1 class="table-of-contents__link toc-highlight">进入示例目录</a><li><a href=#配置编译与运行 class="table-of-contents__link toc-highlight">配置、编译与运行</a></ul><li><a href=#pwm class="table-of-contents__link toc-highlight">PWM</a><ul><li><a href=#pwm-实验步骤gpio18-示例 class="table-of-contents__link toc-highlight">PWM 实验步骤（GPIO18 示例）</a></ul><li><a href=#uart class="table-of-contents__link toc-highlight">UART</a><ul><li><a href=#硬件连接注意事项物理串口 class="table-of-contents__link toc-highlight">硬件连接注意事项（物理串口）</a><li><a href=#fake-串口stdinudp说明 class="table-of-contents__link toc-highlight">FAKE 串口（stdin/UDP）说明</a><li><a href=#在树莓派启用-uart系统配置 class="table-of-contents__link toc-highlight">在树莓派启用 UART（系统配置）</a><li><a href=#进入示例目录-3 class="table-of-contents__link toc-highlight">进入示例目录</a><li><a href=#配置编译与运行-1 class="table-of-contents__link toc-highlight">配置、编译与运行</a></ul></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>文档</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/zh/docs/quick-start/unboxing>教程</a><li class=footer__item><a class=footer__link-item href=/zh/pricing>服务</a><li class=footer__item><a class=footer__link-item href=/zh/docs/hardware-specific>硬件支持清单</a><li class=footer__item><a class=footer__link-item href=/zh/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board>Tuya T5AI 开发套件</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>工具</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://tuyaopen.ai/tools target=_blank rel="noopener noreferrer" class=footer__link-item>Web Serial 工具<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>社区</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://discord.com/invite/yPPShSTttG target=_blank rel="noopener noreferrer" class=footer__link-item>Discord<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://x.com/tuyasmart target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://www.youtube.com/@tuya2023 target=_blank rel="noopener noreferrer" class=footer__link-item>Youtube<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://www.linkedin.com/company/tuya-smart target=_blank rel="noopener noreferrer" class=footer__link-item>Linkedin<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>更多</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/tuya/TuyaOpen target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://gitee.com/tuya-open/TuyaOpen target=_blank rel="noopener noreferrer" class=footer__link-item>Gitee(Mirror)<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>致谢</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://storyset.com/technology target=_blank rel="noopener noreferrer" class=footer__link-item>Thanks for the technology illustrations by Storyset<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>
