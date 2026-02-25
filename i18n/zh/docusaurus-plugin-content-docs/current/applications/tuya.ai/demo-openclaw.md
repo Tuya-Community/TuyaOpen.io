@@ -5,7 +5,7 @@ title: OpenClaw 语音助手 Demo
 本文介绍如何基于 TuyaOpen 端侧硬件与 OpenClaw 网关服务打通，通过语音转写（ASR）将用户指令发送到本机 OpenClaw，实现“动口即执行”的桌面语音助手。适合已完成 TuyaOpen 快速入门的应用开发者，用于搭建可演示的轻量化个人助手。
 
 <div align="center">
-<img src="https://images.tuyacn.com/fe-static/docs/img/3a684864-3a21-4c73-94c6-669a1b45b1d9.jpg" alt="TuyaOpen 设备（麦克风与扬声器）经局域网连接至 OpenClaw 网关" style={{width: '80%', height: 'auto'}} />
+<img src="https://images.tuyacn.com/fe-static/docs/img/4cec60bc-1978-4be2-879e-dab0384e56ca.jpg" alt="TuyaOpen 设备（麦克风与扬声器）经局域网连接至 OpenClaw 网关" style={{width: '80%', height: 'auto'}} />
 </div>
 
 *TuyaOpen 硬件（麦克风 + 扬声器）与 OpenClaw 网关（PC）通过本地网络连接。*
