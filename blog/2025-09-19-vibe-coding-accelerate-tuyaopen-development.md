@@ -10,6 +10,8 @@ tags: ["AI", "TuyaOpen", "Development", "Tutorial"]
 
 In the current era of AI technology boom, ordinary objects around us can be redefined and given intelligence. Today, let's unlock an interesting approach: using the Tuya T5AI-Board development board to create a **customized smart desktop chatbot**.
 
+<!-- truncate -->
+
 With the powerful support of the TuyaOpen framework and Tuya intelligent agents, even beginners with zero foundation can easily achieve "zero-code" development with AI Coding tools: it can not only keenly capture emotional fluctuations in conversations but also display corresponding images in real-time to convey emotional tension. What's even more surprising is that in a short time, the development board can transform into a fully playable game console, easily achieving a cross-boundary transformation from a chat assistant to an entertainment device.
 
 ### Effect Images
