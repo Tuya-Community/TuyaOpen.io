@@ -230,7 +230,6 @@ After completing the steps, voice input on the TuyaOpen device is transcribed by
 - [Firmware burning](/docs/quick-start/firmware-burning)
 - [Device network configuration](/docs/quick-start/device-network-configuration)
 - [Equipment authorization](/docs/quick-start/equipment-authorization)
-- [Project walkthrough](project-walkthrough)
 - [OpenClaw official documentation](https://openclaw.ai/)
 - [MQTT OpenClaw Bridge README](https://github.com/adwuard/openclaw_tuya_mqtt_proxy/blob/main/README.md)
 - [openclaw_remote_mqtt.c (TuyaOpen)](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c)
