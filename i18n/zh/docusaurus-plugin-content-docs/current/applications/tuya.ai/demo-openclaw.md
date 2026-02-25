@@ -230,7 +230,6 @@ graph TD
 - [设备配网](/docs/quick-start/device-network-configuration)
 - [设备授权](/docs/quick-start/equipment-authorization)
 - [项目演练](project-walkthrough)
-- [Raspberry Pi 示例：OpenClaw 流程](hardware-specific/Linux/raspberry-pi/Examples/claw-flow)
 - [OpenClaw 官网文档](https://openclaw.ai/)
 - [MQTT OpenClaw Bridge README](https://github.com/adwuard/openclaw_tuya_mqtt_proxy/blob/main/README.md)
 - [openclaw_remote_mqtt.c（TuyaOpen）](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c)
