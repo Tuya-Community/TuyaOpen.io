@@ -27,6 +27,14 @@
     "message": "应用示例",
     "description": "The label for category Applications in sidebar docs"
   },
+  "sidebar.docs.category.AI Chat Mode": {
+    "message": "AI 聊天模式管理",
+    "description": "The label for category AI Chat Mode Management in sidebar docs"
+  },
+  "sidebar.docs.category.AI Chat UI": {
+    "message": "AI 聊天界面管理",
+    "description": "The label for category AI Chat UI Management in sidebar docs"
+  },
   "sidebar.docs.category.Tuya Cloud": {
     "message": "涂鸦云",
     "description": "The label for category Tuya Cloud in sidebar docs"
