@@ -211,10 +211,6 @@ Use `127.0.0.1` for a local broker, or the broker machine's LAN IP/domain for a 
 
 ## Notes
 
-:::note
-This is a developer-experience setup with specific environment requirements.
-:::
-
 - **Same LAN**: The TuyaOpen device and the PC running OpenClaw and Mosquitto must be on the same local network, and the device must be able to reach the PC’s MQTT port.
 - **IP**: If the PC’s IP changes, update `MQTT_BROKER` on both the device and the bridge.
 - **Broker reachability**: If LAN clients cannot connect, verify Mosquitto is listening on the expected interface/port and open `1883/tcp` in the firewall.
@@ -231,5 +227,5 @@ After completing the steps, voice input on the TuyaOpen device is transcribed by
 - [Device network configuration](/docs/quick-start/device-network-configuration)
 - [Equipment authorization](/docs/quick-start/equipment-authorization)
 - [OpenClaw official documentation](https://openclaw.ai/)
-- [MQTT OpenClaw Bridge README](https://github.com/adwuard/openclaw_tuya_mqtt_proxy/blob/main/README.md)
+- [MQTT OpenClaw Bridge](https://github.com/adwuard/openclaw_tuya_mqtt_proxy)
 - [openclaw_remote_mqtt.c (TuyaOpen)](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/openclaw_demo_app/src/openclaw_remote_mqtt.c)

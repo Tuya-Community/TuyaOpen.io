@@ -210,10 +210,6 @@ graph TD
 
 ## 注意事项
 
-:::note
-本方案为开发者体验版本，对环境有明确要求。
-:::
-
 - **局域网**：TuyaOpen 设备与运行 OpenClaw、Mosquitto 的 PC 必须在同一局域网，且设备能访问 PC 的 MQTT 端口。
 - **IP 配置**：PC 的 IP 可能随网络变化而改变，若 IP 变更需同步修改设备端与桥接脚本中的 `MQTT_BROKER`。
 - **broker 可达性**：如果局域网设备连不上 broker，请检查 Mosquitto 的监听网卡和端口，并在防火墙放通 `1883/tcp`。
