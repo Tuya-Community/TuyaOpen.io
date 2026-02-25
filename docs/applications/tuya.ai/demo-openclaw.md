@@ -4,7 +4,9 @@ title: OpenClaw Voice Assistant Demo
 
 This document describes how to connect TuyaOpen edge hardware to the OpenClaw gateway service so that speech is transcribed by Tuya Cloud ASR and the resulting text is sent to a local OpenClaw instance, enabling a "speak to execute" desktop voice assistant. It is aimed at application developers who have completed the TuyaOpen quick start and want to build a lightweight, demonstrable personal assistant.
 
-<img src="/img/applications/demo-openclaw-local-network.png" alt="TuyaOpen device with microphone and speaker connected over local network to OpenClaw gateway" style={{width: '80%', height: 'auto'}} />
+<div align="center">
+  <img src="/img/applications/demo-openclaw-local-network.png" alt="TuyaOpen device with microphone and speaker connected over local network to OpenClaw gateway" style={{width: '80%', height: 'auto'}} />
+</div>
 
 *TuyaOpen hardware (mic + speaker) on the local network, connected to the OpenClaw gateway (PC).*
 

@@ -4,7 +4,9 @@ title: OpenClaw 语音助手 Demo
 
 本文介绍如何基于 TuyaOpen 端侧硬件与 OpenClaw 网关服务打通，通过语音转写（ASR）将用户指令发送到本机 OpenClaw，实现“动口即执行”的桌面语音助手。适合已完成 TuyaOpen 快速入门的应用开发者，用于搭建可演示的轻量化个人助手。
 
+<div align="center">
 <img src="/img/applications/demo-openclaw-local-network.png" alt="TuyaOpen 设备（麦克风与扬声器）经局域网连接至 OpenClaw 网关" style={{width: '80%', height: 'auto'}} />
+</div>
 
 *TuyaOpen 硬件（麦克风 + 扬声器）与 OpenClaw 网关（PC）通过本地网络连接。*
 
@@ -32,7 +34,7 @@ TuyaOpen 设备与涂鸦云建立连接，获取 ASR 语音转写结果；设备
 ```mermaid
 graph TD
 
-    subgraph TuyaOpen 端侧硬件-超级助手
+    subgraph EDGE["TuyaOpen 端侧硬件-超级助手"]
         A1[麦克风阵列]
         A2[本地语音采集]
         A3[API 调用 - 涂鸦云 ASR 服务]
@@ -47,24 +49,25 @@ graph TD
         A4 --> A6
     end
 
-    subgraph OpenClaw PC沙盒环境
-    subgraph OpenClaw MQTT 中继
-        A5 -. 局网 MQTT 协议 .-> B1
+    subgraph PC["OpenClaw PC沙盒环境"]
+    subgraph RELAY["OpenClaw MQTT 中继"]
+        A5 -. "局网 MQTT 协议" .-> B1
         B1[本地 MQTT 服务器]
     end
 
-    subgraph OpenClaw 消息集成服务
+    subgraph MSG["OpenClaw 消息集成服务"]
 
     M1[Telegram 消息]
     M2[WhatsApp 消息]
     M3[消息收集服务]
 
-    M1 & M2 -->|发送消息| M3
+    M1 -->|发送消息| M3
+    M2 -->|发送消息| M3
     M3 -->|通过消息接口 API| B2
     end
 
 
-    subgraph OpenClaw Gateway
+    subgraph GATEWAY["OpenClaw Gateway"]
         B2[文本消息接口 API]
         B3[意图理解 / 技能执行层]
         B4[控制指令到智能家居设备]
@@ -77,7 +80,7 @@ graph TD
         B2 -->|意图解析/技能执行| B3
         B3 -->|控制| B4
         B3 -->|API 调用| B5
-        B6 -- 返回执行结果 --> A4
+        B6 -->|返回执行结果| A4
         B3 --> B6
         B3 --> B7
     end
