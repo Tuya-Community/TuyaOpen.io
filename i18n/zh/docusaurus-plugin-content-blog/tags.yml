@@ -12,3 +12,18 @@ Contest:
   label: Contest
   permalink: /Contest
   description: Developer contests and hackathons
+
+AI:
+  label: AI
+  permalink: /AI
+  description: AI 相关文章、教程与更新
+
+Development:
+  label: Development
+  permalink: /Development
+  description: 开发指南、实践与工程内容
+
+Tutorial:
+  label: Tutorial
+  permalink: /Tutorial
+  description: 分步教程与学习内容
