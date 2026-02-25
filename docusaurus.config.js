@@ -172,25 +172,6 @@ const config = {
             },
           ],
         },
-        // ======Hardware List ========
-        // {
-        //   to: '/hardware_pages',
-        //   label: 'Supported Hardware',
-        //   position: 'left',
-        // },
-
-        // {
-        // type: 'docsVersionDropdown',
-        // dropdownItemsAfter: [
-        //     {
-        //       type: 'html',
-        //       value: '<hr style="margin: .5em 0;" />',
-        //     },
-        //     { to: '/versions', label: 'All Versions' },
-        //     { to: '/supported-releases', label: 'Supported Releases' },
-        //   ],
-        //   position: 'right',
-        // },
         {
           type: 'localeDropdown',
           position: 'right',
@@ -306,7 +287,6 @@ const config = {
   plugins: [
     './docusaurus-tailwind-v3',
     ['@gracefullight/docusaurus-plugin-microsoft-clarity', { projectId: 'lggqck9srz' }],
-    './src/plugins/hardwarePagesGenerator',
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -327,16 +307,6 @@ const config = {
         ],
       },
     ],
-    // [
-    //   '@docusaurus/plugin-content-docs',
-    //   {
-    //     id: 'hardware-content',
-    //     path: 'content/hardware',
-    //     routeBasePath: 'hardware-content',
-    //     include: ['*.md'],
-    //     sidebarPath: false,
-    //   },
-    // ],
   ],
   headTags: [
     {
