@@ -1,5 +1,5 @@
 ---
-title: Flashing and Logging
+title: "Step 2: Flashing and Logging"
 ---
 
 # Flashing and Logging

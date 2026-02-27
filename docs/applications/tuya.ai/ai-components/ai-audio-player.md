@@ -1,5 +1,5 @@
 ---
-title: AI Audio Player
+title: Audio Player
 ---
 
 ## Glossary

@@ -1,5 +1,5 @@
 ---
-title: AI OLED 显示器界面风格
+title: OLED GUI
 ---
 
 ## 名词解释

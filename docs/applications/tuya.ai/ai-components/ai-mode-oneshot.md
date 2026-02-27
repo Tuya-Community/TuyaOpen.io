@@ -1,5 +1,5 @@
 ---
-title: AI One-Shot Chat Mode
+title: One-Shot Chat Mode
 ---
 
 ## Glossary

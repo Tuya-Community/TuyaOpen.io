@@ -1,5 +1,5 @@
 ---
-title: Build Project
+title: "Step 1: Build Project"
 ---
 
 # Build Project

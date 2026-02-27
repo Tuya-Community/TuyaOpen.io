@@ -1,5 +1,5 @@
 ---
-title: AI Chat Mode Management
+title: Chat Mode Management
 ---
 
 ## Glossary

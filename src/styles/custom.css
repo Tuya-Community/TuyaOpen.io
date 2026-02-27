@@ -71,6 +71,51 @@ a.tw-btn {
 @tailwind components;
 @tailwind utilities;
 
+/* Sidebar divider with centered label */
+.sidebar-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0.75rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.sidebar-divider::before,
+.sidebar-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid var(--ifm-color-emphasis-400);
+  
+}
+
+.sidebar-divider > span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #161616b1; /* light dark gray */
+  white-space: nowrap;
+}
+
+
+/* Locale-specific divider labels */
+html[lang^='zh'] .sidebar-divider-en {
+  display: none;
+}
+
+html[lang^='zh'] .sidebar-divider-zh {
+  display: inline;
+}
+
+html[lang]:not([lang^='zh']) .sidebar-divider-en {
+  display: inline;
+}
+
+html[lang]:not([lang^='zh']) .sidebar-divider-zh {
+  display: none;
+}
+
 /* Custom styles for config flag table */
 .hw-config-flag-table {
   width: 100%;

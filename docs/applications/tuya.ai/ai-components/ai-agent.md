@@ -1,5 +1,5 @@
 ---
-title: AI Agent
+title: Agent
 ---
 
 ## Glossary

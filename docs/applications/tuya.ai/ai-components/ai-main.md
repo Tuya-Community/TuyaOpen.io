@@ -1,5 +1,5 @@
 ---
-title: AI Framework Entry
+title: Framework Entry
 ---
 
 ## Glossary

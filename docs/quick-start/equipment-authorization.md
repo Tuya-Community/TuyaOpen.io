@@ -1,5 +1,5 @@
 ---
-title: Authorize Devices
+title: "Step 3: Authorize Devices"
 ---
 
 # Authorize Devices

@@ -1,5 +1,5 @@
 ---
-title: AI MCP Tool Collection
+title: MCP Tools
 ---
 
 ## Glossary

@@ -1,5 +1,5 @@
 ---
-title: AI MCP Server
+title: MCP Server
 ---
 
 ## Glossary

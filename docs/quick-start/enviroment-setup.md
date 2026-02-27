@@ -1,5 +1,5 @@
 ---
-title: Set up Environment
+title: "Step 0: Environment Setup"
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

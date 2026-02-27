@@ -1,5 +1,5 @@
 ---
-title: AI Component Framework
+title: Component Framework
 ---
 
 ## Overview

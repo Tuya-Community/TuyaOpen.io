@@ -1,5 +1,5 @@
 ---
-title: AI MCP 工具合集
+title: MCP 工具合集
 ---
 
 ## 名词解释

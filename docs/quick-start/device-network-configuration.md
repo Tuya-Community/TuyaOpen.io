@@ -1,6 +1,7 @@
 ---
-title: Device Pairing
+title: "Step 4: Device Pairing w/ Smartphone"
 ---
+# Device Pairing w/ Smartphone
 
 ## Overview
 

@@ -118,5 +118,20 @@
   "sidebar.docs.category.Docs Templates": {
     "message": "文档模板",
     "description": "The label for category Docs Templates in sidebar docs"
+  },
+  "sidebar.docs.category.AI App SDKs": {
+    "message": "AI 应用 SDK"
+  },
+  "sidebar.docs.category.Chat Mode Management": {
+    "message": "对话模式"
+  },
+  "sidebar.docs.category.System APIs": {
+    "message": "系统编程 APIs"
+  },
+  "sidebar.docs.category.Hardware Interface APIs": {
+    "message": "硬件协议 APIs"
+  },
+  "sidebar.docs.category.tos.py Tool (Flash/Debug)": {
+    "message": "tos.py 工具（烧录/调试）"
   }
 }

@@ -1,6 +1,6 @@
 ---
 id: overview-t5-ai-board
-title: T5AI-Board 概述
+title: 概述
 ---
 
 # **T5AI-Board** 开发套件

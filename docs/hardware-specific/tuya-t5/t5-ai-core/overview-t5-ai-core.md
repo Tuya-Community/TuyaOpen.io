@@ -1,5 +1,5 @@
 ---
-title: "T5AI-Core Overview"
+title: "Overview"
 ---
 
 # T5AI-Core Development Kit

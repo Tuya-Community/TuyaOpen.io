@@ -1,5 +1,5 @@
 ---
-title: AI Chat UI Management
+title: Chat GUI Management
 ---
 
 ## Glossary
