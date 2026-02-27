@@ -19,6 +19,21 @@ slug: /hardware-specific/Linux/raspberry-pi/wifi-bluetooth
 - 蓝牙扫描/配网失败（BLE 不工作、找不到设备）。
 - Wi‑Fi 或蓝牙被系统禁用（`rfkill` 显示 blocked）。
 
+## 首次运行需要扫描配网
+
+应用首次运行时通常需要进行扫码配网（例如通过终端输出的二维码进行配网）。
+
+如果扫描配网或联网失败，可以尝试清理设备信息后重新运行：
+
+1. 停止正在运行的程序。
+2. 删除程序运行目录下的 `tuyadb` 文件夹。
+
+```bash
+rm -rf tuyadb
+```
+
+3. 重新运行程序并再次进入配网流程。
+
 ## 配网二维码未输出到终端
 
 在 Raspberry Pi 上，为了让配网二维码等信息直接输出到当前终端，建议启用“fake UART（stdin/UDP）”。

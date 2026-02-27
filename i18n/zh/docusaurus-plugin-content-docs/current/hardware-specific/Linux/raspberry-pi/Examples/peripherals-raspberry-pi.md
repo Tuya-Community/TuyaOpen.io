@@ -4,18 +4,6 @@ title: "Raspberry Pi 外设"
 
 本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（`examples/peripherals`），包含 GPIO、I2C、SPI、PWM、UART。
 
-> **建议**：如果你是首次在树莓派上跑 TuyaOpen，建议先阅读同目录下的 [在 Raspberry Pi 上运行 your_chat_bot](../Applications/your-chat-bot-on-raspberry-pi.md)。
-
-## 文档导航
-
-- [快速开始](#快速开始)
-- [通用说明](#通用说明)
-- [GPIO](#gpio)
-- [I2C](#i2c)
-- [SPI](#spi)
-- [PWM](#pwm)
-- [UART](#uart)
-
 ## 快速开始
 
 1. 确保你已完成 TuyaOpen 基础环境搭建，并进入 TuyaOpen 仓库根目录。
@@ -35,15 +23,15 @@ title: "Raspberry Pi 外设"
 
 - **权限**：外设示例通常需要访问 `/dev/*` 或 `/sys/class/*`，建议在树莓派上运行时使用 `sudo`。
 - **设备节点**：不同系统镜像下外设节点名称可能不同（例如 UART 可能是 `/dev/ttyAMA0` 或 `/dev/ttyS0`）。如节点与 TuyaOpen 端口映射不一致，请以实际节点为准做适配或调整配置。
+- **`OPRT_NOT_SUPPORTED`**：部分 TKL 外设接口为跨 MCU/Linux 统一抽象而保留；在 Raspberry Pi（Linux 用户态）下，如果底层标准接口（如 i2c-dev/spidev/sysfs/tty/gpio-cdev）无法提供对应能力，或需要额外内核驱动/子系统支持但当前适配未实现，则该接口会返回 `OPRT_NOT_SUPPORTED`。
 
-## GPIO
+## GPIO 示例
 
 本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 GPIO。
 
-<details>
-<summary><strong>适配说明（Linux TKL GPIO）</strong></summary>
+### 适配说明（Linux TKL GPIO）
 
-**已支持（可用）**
+#### 已支持（可用）
 
 - 基础读写
   - `tkl_gpio_init()` / `tkl_gpio_deinit()`：基于 Linux gpio-cdev（`/dev/gpiochip*`）申请/释放 line handle。
@@ -51,13 +39,15 @@ title: "Raspberry Pi 外设"
 - 中断回调（事件通知）
   - `tkl_gpio_irq_init()` / `tkl_gpio_irq_enable()` / `tkl_gpio_irq_disable()`：通过 `GPIO_GET_LINEEVENT_IOCTL` 请求事件 fd，并由线程 `poll()` 监听触发回调。
 
-**说明/限制**
+#### 说明/限制
 
 - 依赖系统提供 `/dev/gpiochip*`（内核需启用 gpio 字符设备接口，且当前用户具备访问权限；通常建议 `sudo` 运行示例）。
 - `TUYA_GPIO_NUM_E` 在 Linux 侧按 gpiochip 的 line offset 使用；在树莓派上通常与 BCM GPIO 编号一致，但不同发行版/内核配置可能存在差异，建议用 `gpioinfo`/`pinctrl` 核对。
 - `TUYA_GPIO_IRQ_LOW/HIGH` 属于“近似实现”：底层使用边沿事件监听，再读取当前电平做过滤，不等同硬件电平触发中断。
 
-</details>
+#### 参考
+
+- GPIO 的接口定义、参数说明与适配注意事项请参考 [GPIO驱动](https://tuyaopen.ai/zh/docs/tkl-api/tkl_gpio)。
 
 ### 进入示例目录
 
@@ -73,9 +63,10 @@ cd examples/peripherals/gpio
 tos.py config menu
 ```
 
-按“快速开始”完成板卡与型号选择后，进入：`Choice a board → LINUX → TKL Board Configuration`
+按“快速开始”完成板卡与型号选择后，进入：`Choice a board → LINUX → TKL Board Configuration`并勾选 `ENABLE_GPIO`。
 
-勾选 `ENABLE_GPIO`。
+> 
+> **提示**：GPIO 引脚分布图与 RP1 复用功能表可参考 [树莓派 5 GPIO 参考手册](https://tuyaopen.ai/zh/docs/hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi.md)。
 
 在 `Application config` 中选择合适的引脚作为：
 
@@ -99,14 +90,60 @@ tos.py build
 sudo ./gpio_1.0.0.elf
 ```
 
-## I2C
+### 最小示例
+
+下面代码演示：
+
+- 初始化一个输出脚并每秒翻转一次电平
+- 初始化一个输入脚并读取电平
+
+> 说明：代码片段仅展示核心调用，完整可编译工程请直接参考 `examples/peripherals/gpio`。
+
+```c
+#include "tal_api.h"
+#include "tkl_gpio.h"
+
+// 这两个宏在示例工程里通常通过 Kconfig/Application config 配置
+// #define EXAMPLE_OUTPUT_PIN ...
+// #define EXAMPLE_INPUT_PIN  ...
+
+static void gpio_min_demo(void)
+{
+  TUYA_GPIO_BASE_CFG_T out_cfg = {
+    .mode   = TUYA_GPIO_PUSH_PULL,
+    .direct = TUYA_GPIO_OUTPUT,
+    .level  = TUYA_GPIO_LEVEL_LOW,
+  };
+  TUYA_GPIO_BASE_CFG_T in_cfg = {
+    .mode   = TUYA_GPIO_PULLUP,
+    .direct = TUYA_GPIO_INPUT,
+  };
+
+  tkl_gpio_init(EXAMPLE_OUTPUT_PIN, &out_cfg);
+  tkl_gpio_init(EXAMPLE_INPUT_PIN,  &in_cfg);
+
+  while (1) {
+    static uint8_t level = 0;
+    TUYA_GPIO_LEVEL_E in_level = TUYA_GPIO_LEVEL_LOW;
+
+    level ^= 1;
+    tkl_gpio_write(EXAMPLE_OUTPUT_PIN, level ? TUYA_GPIO_LEVEL_HIGH : TUYA_GPIO_LEVEL_LOW);
+
+    tkl_gpio_read(EXAMPLE_INPUT_PIN, &in_level);
+    PR_NOTICE("GPIO in=%d out=%d", (int)in_level, (int)level);
+
+    tal_system_sleep(1000);
+  }
+}
+```
+
+## I2C 示例
 
 本章节演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 I2C。
 
-<details>
-<summary><strong>适配说明（Linux TKL I2C）</strong></summary>
+### 适配说明（Linux TKL I2C）
 
-**已支持（可用）**
+#### 已支持（可用）
 
 - 主机模式基础收发
   - `tkl_i2c_master_send()`：对指定设备地址执行写入（底层使用 `/dev/i2c-X` + `I2C_SLAVE` + `write()`）。
@@ -116,14 +153,16 @@ sudo ./gpio_1.0.0.elf
 - 地址探测（扫描）
   - 当 `tkl_i2c_master_send()` 的 `size==0` 时，使用 SMBus “quick”方式尝试探测设备是否应答（适合做简单地址扫描）。
 
-**暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）**
+#### 暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）
 
 - 从机模式（Slave）：`tkl_i2c_set_slave_addr()`、`tkl_i2c_slave_send()`、`tkl_i2c_slave_receive()`。
 - 中断/事件回调：`tkl_i2c_irq_init()`、`tkl_i2c_irq_enable()`、`tkl_i2c_irq_disable()`。
 - 扩展控制/状态查询：`tkl_i2c_ioctl()`、`tkl_i2c_get_status()`。
   - 说明：`tkl_i2c_get_status()` 当前实现会将输出结构体清零后返回 `OPRT_NOT_SUPPORTED`，请勿依赖其返回内容。
 
-</details>
+#### 参考
+
+- I2C 的接口定义、参数说明与适配注意事项请参考 [I2C驱动](https://tuyaopen.ai/zh/docs/tkl-api/tkl_i2c)。
 
 ### 在树莓派启用 I2C（系统配置）
 
@@ -178,6 +217,27 @@ sudo ./i2c_scan_1.0.0.elf
 
 - `[example_i2c_scan.c:xx] i2c device found at address: 0x44`
 
+### 最小示例
+
+下面代码演示“扫描 I2C 7-bit 地址”（Linux 适配下 `size==0` 会走 quick 探测）：
+
+> 说明：完整可编译工程参考 `examples/peripherals/i2c/i2c_scan`。
+
+```c
+#include "tal_api.h"
+#include "tkl_i2c.h"
+
+static void i2c_scan_demo(TUYA_I2C_NUM_E port)
+{
+  for (uint8_t addr = 0x08; addr <= 0x77; addr++) {
+    // size=0：用于探测
+    if (tkl_i2c_master_send(port, addr, NULL, 0, TRUE) == OPRT_OK) {
+      PR_NOTICE("I2C device found: 0x%02X", addr);
+    }
+  }
+}
+```
+
 ### 示例 2：读取温湿度（sht3x_4x_sensor）
 
 进入示例目录：
@@ -188,7 +248,7 @@ cd examples/peripherals/i2c/sht3x_4x_sensor
 
 配置与编译方式同上，在 **Application config** 中选择：
 
-- `sensor type`：sht3x 或 sht4x（按你的硬件选择）
+- `sensor type`：sht3x 或 sht4x
 
 运行：
 
@@ -198,14 +258,13 @@ sudo ./sht3x_4x_sensor_1.0.0.elf
 
 可看到周期性输出的温度与湿度日志。
 
-## SPI
+## SPI 示例
 
 本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 SPI（用户态 spidev）。
 
-<details>
-<summary><strong>适配说明（Linux TKL SPI）</strong></summary>
+### 适配说明（Linux TKL SPI）
 
-**已支持（可用）**
+#### 已支持（可用）
 
 - 主机模式（Master）
   - `tkl_spi_init()`：打开 `/dev/spidevX.Y` 并配置 mode/bits/speed/bitorder。
@@ -220,17 +279,17 @@ sudo ./sht3x_4x_sensor_1.0.0.elf
   - `tkl_spi_get_data_count()`：返回最近一次传输字节数。
   - `tkl_spi_get_status()`：返回 `OPRT_OK`，当前仅清零结构体（不提供真实状态）。
 
-**暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）**
+#### 暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）
 
 - 中断回调：`tkl_spi_irq_init()` / `tkl_spi_irq_enable()` / `tkl_spi_irq_disable()` 返回 `OPRT_NOT_SUPPORTED`。
 - 扩展控制：`tkl_spi_ioctl()` 返回 `OPRT_NOT_SUPPORTED`。
 
-**行为限制/兼容实现**
+#### 行为限制/兼容实现
 
 - 中止传输：`tkl_spi_abort_transfer()` 返回 `OPRT_OK`，但不执行真实 abort。
 - DMA 长度：`tkl_spi_get_max_dma_data_length()` 返回 0（Linux spidev 下该值无实际意义）。
 
-**端口到设备节点映射（默认）**
+#### 端口到设备节点映射（默认）
 
 | spi port | 设备节点 |
 | --- | --- |
@@ -241,7 +300,9 @@ sudo ./sht3x_4x_sensor_1.0.0.elf
 | 4 | `/dev/spidev2.0` |
 | 5 | `/dev/spidev2.1` |
 
-</details>
+#### 参考
+
+- SPI 的接口定义、参数说明与适配注意事项请参考 [SPI驱动](https://tuyaopen.ai/zh/docs/tkl-api/tkl_spi)。
 
 ### 在树莓派启用 SPI（系统配置）
 
@@ -302,14 +363,47 @@ tos.py build
 sudo ./spi_1.0.0.elf
 ```
 
-## PWM
+### 最小示例
+
+下面代码演示 SPI Master 发送固定字符串（Linux 下走 `/dev/spidevX.Y`）：
+
+> 说明：完整可编译工程参考 `examples/peripherals/spi`。
+
+```c
+#include "tal_api.h"
+#include "tkl_spi.h"
+
+// #define EXAMPLE_SPI_PORT ...
+// #define EXAMPLE_SPI_BAUDRATE ...
+
+static void spi_min_demo(void)
+{
+  TUYA_SPI_BASE_CFG_T cfg = {
+    .mode     = TUYA_SPI_MODE0,
+    .freq_hz  = EXAMPLE_SPI_BAUDRATE,
+    .databits = TUYA_SPI_DATA_BIT8,
+    .bitorder = TUYA_SPI_ORDER_LSB2MSB,
+    .role     = TUYA_SPI_ROLE_MASTER,
+    .type     = TUYA_SPI_AUTO_TYPE,
+  };
+
+  uint8_t tx[] = "Hello Tuya";
+  tkl_spi_init(EXAMPLE_SPI_PORT, &cfg);
+
+  while (1) {
+    tkl_spi_send(EXAMPLE_SPI_PORT, tx, sizeof(tx));
+    tal_system_sleep(500);
+  }
+}
+```
+
+## PWM 示例
 
 本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 PWM。
 
-<details>
-<summary><strong>适配说明（Linux TKL PWM）</strong></summary>
+### 适配说明（Linux TKL PWM）
 
-**已支持（可用）**
+#### 已支持（可用）
 
 - PWM 输出（`/sys/class/pwm`）
   - `tkl_pwm_init()`：export 通道并配置 polarity/period/duty。
@@ -321,14 +415,16 @@ sudo ./spi_1.0.0.elf
   - `tkl_pwm_multichannel_start()` / `tkl_pwm_multichannel_stop()`：多通道依次启停。
   - `tkl_pwm_deinit()`：停止并 unexport。
 
-**暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）**
+#### 暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）
 
 - PWM 捕获（Capture）：`tkl_pwm_cap_start()` / `tkl_pwm_cap_stop()`。
   - 说明：当前实现直接返回 `OPRT_NOT_SUPPORTED`。
 
-</details>
+#### 参考
 
-### PWM 实验步骤（GPIO18 示例）
+- PWM 的接口定义、参数说明与适配注意事项请参考 [PWM驱动](https://tuyaopen.ai/zh/docs/tkl-api/tkl_pwm)。
+
+### PWM 实验步骤（以 GPIO18 输出PWM方波为例）
 
 #### 进入示例目录
 
@@ -389,25 +485,49 @@ tos.py build
 sudo ./pwm_1.0.0.elf
 ```
 
+### 最小示例
+
+下面代码演示 PWM 输出（初始化 + start）：
+
+> 说明：完整可编译工程参考 `examples/peripherals/pwm`。
+
+```c
+#include "tal_api.h"
+#include "tkl_pwm.h"
+
+// #define EXAMPLE_PWM_PORT ...
+// #define EXAMPLE_PWM_FREQUENCY ...
+// #define EXAMPLE_PWM_DUTY ... // 1-10000
+
+static void pwm_min_demo(void)
+{
+  TUYA_PWM_BASE_CFG_T cfg = {
+    .duty      = EXAMPLE_PWM_DUTY,
+    .frequency = EXAMPLE_PWM_FREQUENCY,
+    .polarity  = TUYA_PWM_NEGATIVE,
+  };
+
+  tkl_pwm_init(EXAMPLE_PWM_PORT, &cfg);
+  tkl_pwm_start(EXAMPLE_PWM_PORT);
+
+  while (1) {
+    tal_system_sleep(2000);
+  }
+}
+```
+
 如需快速核对 sysfs 节点是否符合预期，可检查 `/sys/class/pwm/pwmchip0/` 下是否存在（或可 export）对应的 `pwm2`。
 
 > **提示**：PWM 的 sysfs 接口依赖内核/overlay 配置；不同镜像的 `/boot/firmware/config.txt` 路径可能不同，请以实际系统为准。
 
 
-## UART
+## UART 示例
 
 本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 操作 UART。
 
-### 硬件连接注意事项（物理串口）
+### 适配说明（Linux TKL UART）
 
-如果你使用**物理串口**（例如树莓派 UART 引脚对接 USB-TTL 模块或另一块板子的 UART）：
-
-- 必须将双方 **GND 共地**。不共地时常见现象是接收数据乱码、丢字节或通信极不稳定。
-
-<details>
-<summary><strong>适配说明（Linux TKL UART）</strong></summary>
-
-**已支持（可用）**
+#### 已支持（可用）
 
 - 基础收发
   - `tkl_uart_init()`：打开串口设备并用 termios 配置波特率/数据位/校验/停止位。
@@ -418,15 +538,15 @@ sudo ./pwm_1.0.0.elf
   - `tkl_uart_rx_irq_cb_reg()`：注册接收回调。
   - Linux 侧通过线程 `select()` 监听 fd 可读事件，触发后调用回调。
 
-**暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）**
+#### 暂未支持（接口保留，当前实现返回 `OPRT_NOT_SUPPORTED`）
 
 - `tkl_uart_set_tx_int()` / `tkl_uart_set_rx_flowctrl()` / `tkl_uart_wait_for_data()` / `tkl_uart_ioctl()`：返回 `OPRT_NOT_SUPPORTED`。
 
-**空实现（调用无效果）**
+#### 空实现（调用无效果）
 
 - `tkl_uart_tx_irq_cb_reg()`：当前为空实现。
 
-**设备节点映射（与 FAKE 串口开关相关）**
+#### 设备节点映射（与 FAKE 串口开关相关）
 
 - 当 `TKL_UART_USE_FAKE = n`（关闭 FAKE，使用真实硬件 UART）时，默认映射为：
   - `port 0 -> /dev/ttyAMA0`
@@ -434,13 +554,21 @@ sudo ./pwm_1.0.0.elf
   - `port 2 -> /dev/ttyAMA2`
 - 当 `TKL_UART_USE_FAKE = y`（开启 FAKE）时，不会访问 `/dev/ttyAMA*`，而是使用“伪串口”实现（见下文）。
 
-</details>
+#### 参考
 
-### FAKE 串口（stdin/UDP）说明
+- UART 的接口定义、参数说明与适配注意事项请参考 [UART驱动](https://tuyaopen.ai/zh/docs/tkl-api/tkl_uart)。
 
-Linux 平台为了在**没有接入真实串口硬件**的情况下也能跑通 UART 相关组件，提供了一个 `TKL_UART_USE_FAKE` 开关（在 LINUX 的 `TKL Board Configuration` 中）。
+### 硬件连接注意事项（物理串口）
 
-当开启 FAKE 后，`tkl_uart.c` 的行为大致如下（与真实 UART 不同，主要用于联调/演示）：
+如果使用**物理串口**（例如树莓派 UART 引脚对接 USB-TTL 模块或另一块板子的 UART）：
+
+- 必须将双方 **GND 共地**。不共地时常见现象是接收数据乱码、丢字节或通信极不稳定。
+
+### 串口重定向（Dummy 串口：stdin/stdout/UDP）说明
+
+Linux 平台为了在**没有接入真实串口硬件**的情况下也能跑通 UART 相关组件，提供了一个 `TKL_UART_REDIRECT_LOG_TO_STDOUT` 开关（在 LINUX 的 `TKL Board Configuration` 中）。
+
+当开启重定向（Dummy 串口）后，`tkl_uart.c` 的行为大致如下（与真实 UART 不同，主要用于联调/演示）：
 
 - `TUYA_UART_NUM_0`（port 0）：
   - RX：从当前进程的标准输入 `/dev/stdin` 读取（也就是你运行 `*.elf` 的终端键盘输入）。
@@ -449,34 +577,34 @@ Linux 平台为了在**没有接入真实串口硬件**的情况下也能跑通 
 - `TUYA_UART_NUM_1`（port 1）：
   - RX：通过 UDP socket 接收数据，逐字节喂给上层 RX 回调。
   - TX：通过 UDP socket 把数据发到对端。
-  - 注意：当前实现里 UDP 的 bind/send IP 与端口是写死的（环境相关），不同网络环境下通常需要修改适配层源码后重新编译。
+  - 注意：当前实现里 UDP 的 bind/send IP 与端口是固定的（环境相关），不同网络环境下通常需要修改适配层源码后重新编译。
 
-FAKE 模式的限制/注意点：
+Dummy 模式的限制/注意点：
 
-- 波特率/校验位/停止位等 termios 配置在 FAKE 模式下**不等价于真实串口**（port 0 仅把 stdin 设为非规范模式以便即时读到字符；stdout 也不具备真实串口时序）。
-- FAKE 主要用于“功能跑通/交互演示”，不适合做严肃的串口协议时序验证。
+- 波特率/校验位/停止位等 termios 配置在 Dummy 模式下**不等价于真实串口**（port 0 仅把 stdin 设为非规范模式以便即时读到字符；stdout 也不具备真实串口时序）。
+- Dummy 主要用于“功能跑通/交互演示”，不适合做严肃的串口协议时序验证。
 
-如何选择是否使用 FAKE：
+如何选择是否使用串口重定向：
 
 - 如果你希望 UART 示例/CLI 走树莓派真实串口引脚（`/dev/ttyAMA*` 或 `/dev/ttyS*`），请在：
   - `Choice a board → LINUX → TKL Board Configuration`
-  - 将 `Use fake UART (stdin/UDP) instead of hardware ttyAMA*` 设为 `n`
+  - 将 `UART redirection (stdin/stdout/UDP) instead of hardware ttyAMA*` 设为 `n`
   - 说明：该选项**不勾选**时，即走物理串口（访问真实的 `ttyAMA*`/`ttyS*` 设备节点）。
-- 如果你只是想快速验证 UART 逻辑、且暂时没有外接 USB-TTL/硬件回环线，可以保持该选项为 `y`。
+- 如果只是想快速验证 UART 逻辑、且暂时没有外接 USB-TTL/硬件回环线，可以保持该选项为 `y`。
 
-#### 注意：your_chat_bot 配网二维码输出通道（FAKE UART）
+#### 注意：your_chat_bot 配网二维码输出通道（串口重定向）
 
-在 Linux/树莓派上运行 `your_chat_bot` 做配网演示时，推荐开启 `TKL_UART_USE_FAKE`，以便将配网阶段的二维码内容直接输出到当前终端。
+在 Linux/树莓派上运行 `your_chat_bot` 做配网演示时，推荐开启 `TKL_UART_REDIRECT_LOG_TO_STDOUT`，以便将配网阶段的二维码内容直接输出到当前终端。
 
-**1）期望现象（开启 FAKE）**
+**1）期望现象（开启重定向）**
 
 - 在运行 `your_chat_bot*.elf` 的终端内可以直接看到二维码（二维码字符串/ASCII 图形）。
 
 **2）原理说明（输出走 UART0 TX）**
 
 - `your_chat_bot` 配网阶段的二维码内容通常通过 UART0（`TUYA_UART_NUM_0`）发送。
-- 当 `TKL_UART_USE_FAKE = y` 时：UART0 TX 映射到 `stdout`，因此二维码会显示在当前终端。
-- 当 `TKL_UART_USE_FAKE = n` 时：UART0 TX 写入真实串口设备（例如 `/dev/ttyAMA0`/`/dev/ttyS0`），因此二维码不会显示在当前终端，而是输出到串口线上。
+- 当 `TKL_UART_REDIRECT_LOG_TO_STDOUT = y` 时：UART0 TX 映射到 `stdout`，因此二维码会显示在当前终端。
+- 当 `TKL_UART_REDIRECT_LOG_TO_STDOUT = n` 时：UART0 TX 写入真实串口设备（例如 `/dev/ttyAMA0`/`/dev/ttyS0`），因此二维码不会显示在当前终端，而是输出到串口线上。
 
 ### 在树莓派启用 UART（系统配置）
 
@@ -515,9 +643,9 @@ tos.py config menu
 
 - `Choice a board → LINUX → TKL Board Configuration`：勾选 `ENABLE_UART`
 
-可选：在同一菜单中按需设置 `Use fake UART (stdin/UDP) instead of hardware ttyAMA*`（是否使用 FAKE 串口）。
+可选：在同一菜单中按需设置 `UART redirection (stdin/stdout/UDP) instead of hardware ttyAMA*`（是否开启串口重定向 / Dummy 串口）。
 
-- 勾选（`*`）：使用 FAKE 串口（stdin/UDP），不依赖真实硬件串口设备节点。
+- 勾选（`*`）：开启串口重定向（Dummy 串口：stdin/stdout/UDP），不依赖真实硬件串口设备节点。
 - 不勾选（` `）：使用物理串口（访问真实 `ttyAMA*`/`ttyS*` 设备节点）。
 
 编译：
@@ -533,3 +661,117 @@ sudo ./uart_1.0.0.elf
 ```
 
 > 提醒：示例代码默认使用 `TUYA_UART_NUM_0`（UART0）。在树莓派上 UART0 可能被系统控制台占用；若运行无回显或打开失败，请先检查系统串口占用情况，并按需修改示例选择的 UART 端口或调整适配层设备节点映射。
+
+### 最小示例 1：交互式回显（Echo）
+
+这个示例最适合在 **Dummy 串口重定向**（stdin/stdout）模式下快速验证 UART 通路：你在终端输入什么，它就回显什么。
+
+> 说明：该思路与 `examples/peripherals/uart` 一致。
+
+```c
+#include "tal_api.h"
+
+#include "tkl_output.h"
+
+#define UART_NUM TUYA_UART_NUM_0
+
+static void uart_echo_demo(void)
+{
+  TAL_UART_CFG_T cfg = {0};
+  cfg.base_cfg.baudrate = 115200;
+  cfg.base_cfg.databits = TUYA_UART_DATA_LEN_8BIT;
+  cfg.base_cfg.stopbits = TUYA_UART_STOP_LEN_1BIT;
+  cfg.base_cfg.parity   = TUYA_UART_PARITY_TYPE_NONE;
+  cfg.rx_buffer_size    = 256;
+  cfg.open_mode         = O_BLOCK;
+
+  tal_uart_init(UART_NUM, &cfg);
+  tal_uart_write(UART_NUM, (const uint8_t*)"Please input text:\r\n", sizeof("Please input text:\r\n") - 1);
+
+  while (1) {
+    uint8_t buf[128];
+    int n = tal_uart_read(UART_NUM, buf, sizeof(buf));
+    if (n > 0) {
+      tal_uart_write(UART_NUM, buf, n);
+    } else {
+      tal_system_sleep(10);
+    }
+  }
+}
+```
+
+### 最小示例 2：硬件回环自检（TX 与 RX 短接）
+
+这个示例用于做“发出去的数据能否原样读回来”的自检（`memcmp` 校验），通常需要：
+
+- 关闭 Dummy 重定向（使用物理串口设备节点）
+- 将同一 UART 的 **TX 与 RX 短接**（同时确保 GND 共地）
+
+```c
+#include <string.h>
+
+#include "tal_api.h"
+#include "tkl_uart.h"
+
+static OPERATE_RET uart_loopback_test(TUYA_UART_NUM_E port)
+{
+  TUYA_UART_BASE_CFG_T cfg = {0};
+  cfg.baudrate = 115200;
+  cfg.databits = TUYA_UART_DATA_LEN_8BIT;
+  cfg.parity   = TUYA_UART_PARITY_TYPE_NONE;
+  cfg.stopbits = TUYA_UART_STOP_LEN_1BIT;
+  cfg.flowctrl = TUYA_UART_FLOWCTRL_NONE;
+
+  OPERATE_RET ret = tkl_uart_init(port, &cfg);
+  if (ret != OPRT_OK) {
+    return ret;
+  }
+
+  const uint32_t timeout_ms = 5000;
+  const int bufsize = 8;
+  uint8_t tx[bufsize];
+  uint8_t rx[bufsize];
+
+  for (int i = 0; i < bufsize; i++) {
+    tx[i] = (uint8_t)('A' + i);
+  }
+
+  for (int round = 0; round < 3; round++) {
+    memset(rx, 0, sizeof(rx));
+
+    int wr = tkl_uart_write(port, tx, sizeof(tx));
+    if (wr != (int)sizeof(tx)) {
+      ret = OPRT_COM_ERROR;
+      break;
+    }
+
+    int got = 0;
+    SYS_TIME_T start = tal_system_get_millisecond();
+    while (got < (int)sizeof(rx)) {
+      SYS_TIME_T now = tal_system_get_millisecond();
+      if ((uint32_t)(now - start) > timeout_ms) {
+        ret = OPRT_TIMEOUT;
+        break;
+      }
+
+      int rd = tkl_uart_read(port, rx + got, (uint32_t)sizeof(rx) - (uint32_t)got);
+      if (rd > 0) {
+        got += rd;
+      } else {
+        tal_system_sleep(5);
+      }
+    }
+
+    if (ret != OPRT_OK) {
+      break;
+    }
+    if (memcmp(tx, rx, sizeof(tx)) != 0) {
+      ret = OPRT_COM_ERROR;
+      break;
+    }
+  }
+
+  tkl_uart_deinit(port);
+  return ret;
+}
+```

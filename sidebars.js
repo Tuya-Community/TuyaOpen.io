@@ -93,6 +93,7 @@ module.exports = {
               collapsed: false,
               items: [
                 'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
                 'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
                 'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
               ],

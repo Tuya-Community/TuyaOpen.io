@@ -3,27 +3,42 @@ title: "Raspberry Pi Provisioning Troubleshooting"
 slug: /hardware-specific/Linux/raspberry-pi/wifi-bluetooth
 ---
 
-This document helps you troubleshoot WiFi/Bluetooth issues when running TuyaOpen apps on Raspberry Pi (for example, `apps/tuya.ai/your_chat_bot`). Common cases include: the provisioning QR code is not printed, Bluetooth is unavailable, or WiFi/Bluetooth is blocked by the system.
+This document helps troubleshoot Wi‑Fi/Bluetooth-related issues when running TuyaOpen apps on Raspberry Pi (for example, `apps/tuya.ai/your_chat_bot`), including: provisioning QR code not shown, Bluetooth unavailable, or Wi‑Fi/Bluetooth being disabled by the OS.
 
 ## Prerequisites
 
-Please read [Quick Start](https://tuyaopen.ai/docs/quick-start) and its sub-sections first, so you understand:
+Read the [Quick Start](https://tuyaopen.ai/docs/quick-start) and its subsections to understand:
 
 - How to set up the [TuyaOpen development environment](https://tuyaopen.ai/docs/quick-start/enviroment-setup)
-- How to obtain the [TuyaOpen dedicated authorization code](https://tuyaopen.ai/docs/quick-start/equipment-authorization). It is recommended to authorize by modifying the header file.
-- How to do [device provisioning](https://tuyaopen.ai/docs/quick-start/device-network-configuration)
+- How to obtain a [TuyaOpen authorization code](https://tuyaopen.ai/docs/quick-start/equipment-authorization) (the header-file method is recommended)
+- How to perform [device network provisioning](https://tuyaopen.ai/docs/quick-start/device-network-configuration)
 
-## Common symptoms
+## Common Symptoms
 
-- The program does not enter the provisioning flow, or the terminal does not print the provisioning QR code.
-- Bluetooth scan/provisioning fails (BLE does not work, or the device cannot be found).
-- WiFi or Bluetooth is disabled by the system (`rfkill` shows blocked).
+- The program cannot enter the provisioning flow, or the terminal does not print a provisioning QR code.
+- Bluetooth scan/provisioning fails (BLE not working, device not discoverable).
+- Wi‑Fi or Bluetooth is disabled by the OS (`rfkill` shows blocked).
 
-## Provisioning QR code is not printed to the terminal
+## First Run Requires Provisioning Scan
 
-On Raspberry Pi, to print the provisioning QR code and related logs directly to the current terminal, it is recommended to enable **fake UART (stdin/UDP)**.
+On the first run, the app typically requires QR code provisioning (for example, scanning the QR code output in the terminal).
 
-1. Activate the `tos.py` environment and enter the app directory (take `your_chat_bot` as an example):
+If provisioning or network connection fails, try clearing device data and running again:
+
+1. Stop the running program.
+2. Delete the `tuyadb` folder in the program's working directory:
+
+```bash
+rm -rf tuyadb
+```
+
+3. Run the program again and re-enter the provisioning flow.
+
+## Provisioning QR Code Not Printed in Terminal
+
+On Raspberry Pi, to print the provisioning QR code (and related content) directly to the current terminal, it is recommended to enable "fake UART (stdin/UDP)".
+
+1. Activate the `tos.py` environment and enter the app directory (taking `your_chat_bot` as an example):
 
 ```bash
 cd apps/tuya.ai/your_chat_bot
@@ -35,20 +50,20 @@ cd apps/tuya.ai/your_chat_bot
 tos.py config menu
 ```
 
-3. Navigate to `Choice a board → LINUX → TKL Board Configuration`, then enable:
+3. Go to `Choice a board → LINUX → TKL Board Configuration` and enable:
 
 - `Enable UART`
 - `Use fake UART (stdin/UDP) instead of hardware ttyAMA*`
 
-Example UI:
+Example screenshot:
 
 ![Raspberry Pi fake UART configuration example](https://images.tuyacn.com/fe-static/docs/img/842c4b01-3d4b-487b-973d-4744e82935e9.png)
 
-After enabling fake UART, during provisioning the app will usually print the QR code to the current terminal. Use the **Smart Life** app to scan it and complete provisioning.
+After enabling fake UART, the app usually prints the QR code to the current terminal during provisioning. Then use the Tuya Smart app to scan the QR code and provision the device.
 
-## Check whether WiFi/Bluetooth is blocked by rfkill
+## Check Whether Wi‑Fi/Bluetooth Is Disabled by rfkill
 
-1. Check the WiFi and Bluetooth status:
+1. Check Wi‑Fi and Bluetooth status:
 
 ```bash
 rfkill list
@@ -58,36 +73,36 @@ Example output:
 
 ```text
 0: hci0: Bluetooth
-	Soft blocked: no
-	Hard blocked: no
+        Soft blocked: no
+        Hard blocked: no
 1: phy0: Wireless LAN
-	Soft blocked: yes
-	Hard blocked: no
+        Soft blocked: yes
+        Hard blocked: no
 ```
 
 Where:
 
-- `Soft blocked: yes` means the device is disabled at the software level.
-- `Hard blocked: yes` means the device is disabled at the hardware level (for example, a physical switch). You must clear the hardware block first.
+- `Soft blocked: yes` means the device is disabled in software.
+- `Hard blocked: yes` means the device is disabled in hardware (for example, a physical switch); remove the hardware block first.
 
-2. Unblock at the software level:
+2. Unblock in software:
 
 ```bash
 sudo rfkill unblock all
 ```
 
-If you only want to unblock one item:
+To unblock a specific item:
 
 ```bash
 sudo rfkill unblock wifi
 sudo rfkill unblock bluetooth
 ```
 
-## Bluetooth service and TuyaOpen config checks
+## Bluetooth Service and TuyaOpen Config Checks
 
-### Confirm TuyaOpen has Bluetooth service enabled
+### Confirm TuyaOpen Bluetooth service is enabled
 
-In `tos.py config menu`, check:
+In `tos.py config menu`, verify:
 
 ```text
 configure tuyaopen  --->
@@ -98,14 +113,14 @@ configure tuyaopen  --->
 
 In general, it is recommended to:
 
-- Enable the Bluetooth service.
-- Keep the `NIMBLE` stack disabled.
+- Enable the Bluetooth service
+- Keep `NIMBLE` disabled
 
-After changing the configuration, you must rebuild (for example, run `tos.py build`), otherwise the changes will not take effect.
+After changing configuration, rebuild (for example, run `tos.py build`), otherwise the config change will not take effect.
 
-## Runtime permissions
+## Runtime Permissions
 
-On Raspberry Pi, when running apps/examples, operations related to WiFi/Bluetooth/peripherals often require access to `/dev/*` or system service interfaces. It is recommended to run the generated executable with `sudo`, for example:
+On Raspberry Pi, Wi‑Fi/Bluetooth/peripheral operations often require access to `/dev/*` or system service interfaces. It is recommended to run the generated executable with `sudo`, for example:
 
 ```bash
 sudo ./your_chat_bot_*.elf
