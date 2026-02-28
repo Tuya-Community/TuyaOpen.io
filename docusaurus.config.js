@@ -81,6 +81,16 @@ const config = {
 
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   themeConfig: {
+    zoom: {
+      selector: '.markdown :not(em) > img', // default
+      background: {
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)',
+      },
+      // medium-zoom options
+      // see: https://github.com/francoischalifour/medium-zoom#usage
+      config: {},
+    },
     mermaid: {
       theme: {
         light: 'neutral',
@@ -286,6 +296,7 @@ const config = {
 
   plugins: [
     './docusaurus-tailwind-v3',
+    'docusaurus-plugin-image-zoom',
     ['@gracefullight/docusaurus-plugin-microsoft-clarity', { projectId: 'lggqck9srz' }],
     [
       '@docusaurus/plugin-client-redirects',
