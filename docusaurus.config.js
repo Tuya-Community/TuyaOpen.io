@@ -82,31 +82,28 @@ const config = {
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   themeConfig: {
     zoom: {
-      selector: '.markdown :not(em) > img', // default
+      // Markdown and HTML images: single-click to enlarge, click overlay to close (medium-zoom)
+      selector: '.theme-doc-markdown img, .markdown img',
       background: {
         light: 'rgb(255, 255, 255)',
         dark: 'rgb(50, 50, 50)',
       },
-      // medium-zoom options
-      // see: https://github.com/francoischalifour/medium-zoom#usage
+      // medium-zoom options: https://github.com/francoischalifour/medium-zoom#usage
       config: {},
     },
     mermaid: {
       theme: {
         light: 'neutral',
-        dark: 'forest',
+        dark: 'dark',
       },
       options: {
         fontFamily: 'Inter, Arial, sans-serif',
         fontSize: 16,
         themeVariables: {
           primaryColor: '#2e7dff',
-          primaryTextColor: '#222',
           primaryBorderColor: '#2e7dff',
           lineColor: '#2e7dff',
           fontFamily: 'Inter, Arial, sans-serif',
-          nodeTextColor: '#222',
-          background: '#f8fafc',
         },
       },
     },
@@ -297,6 +294,7 @@ const config = {
   plugins: [
     './docusaurus-tailwind-v3',
     'docusaurus-plugin-image-zoom',
+    './plugins/mermaid-panzoom',
     ['@gracefullight/docusaurus-plugin-microsoft-clarity', { projectId: 'lggqck9srz' }],
     [
       '@docusaurus/plugin-client-redirects',

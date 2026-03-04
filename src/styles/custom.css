@@ -380,3 +380,54 @@ body.announcement-visible .navbar {
   padding: 1rem;
   padding-top: 0;
 }
+
+/* Mermaid diagram pan/zoom wrapper and bottom-right control buttons */
+.mermaid-panzoom-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.mermaid-panzoom-wrapper > .docusaurus-mermaid-container {
+  cursor: move;
+}
+
+[data-theme='dark'] .docusaurus-mermaid-container {
+  background-color: var(--ifm-background-color);
+}
+
+.mermaid-panzoom-buttons {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.mermaid-panzoom-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  line-height: 1;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.mermaid-panzoom-btn:hover {
+  background: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+.mermaid-panzoom-btn:active {
+  background: var(--ifm-color-emphasis-200);
+}
