@@ -27,7 +27,7 @@ export default function Pricing() {
               '社区支持',
             ],
             buttonText: '见文档',
-            buttonLink: '/docs/about-tuyaopen',
+            buttonLink: '/zh/docs/faqs/get-developer-license',
             featured: false,
           },
           {
@@ -51,6 +51,7 @@ export default function Pricing() {
             unit: '/设备',
             features: [
               '所有免费和IoT连接功能，加上....',
+              '多模态 AI Token 使用',
               '多模态AI (ASR/TTS/STT/LLM/AI-Agent/Vision/Text/AI Pipelining)',
               '云端LLM tokens',
               'Tuya模块量产及固件烧录服务',
@@ -91,7 +92,7 @@ export default function Pricing() {
               'Community support',
             ],
             buttonText: 'See Docs',
-            buttonLink: '/docs/about-tuyaopen',
+            buttonLink: '/docs/faqs/get-developer-license',
             featured: false,
           },
           {
@@ -116,6 +117,7 @@ export default function Pricing() {
             features: [
               'All Free and IoT Connection features, plus...',
               'Multimodal AI (ASR/TTS/STT/LLM/AI-Agent/Vision/Text/AI Pipelining)',
+              'Multi-modal AI token usage access',
               'Cloud LLM tokens',
               'Tuya module mass production & firmware flashing service',
               'TuyaOpen commercial mass production ready',
