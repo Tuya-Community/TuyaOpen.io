@@ -60,8 +60,10 @@ TuyaOpen 项目目前支持以下开发板：
 
 <ChipRow 
    chipData={[
-      { name: 'T2-U 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/cn/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0', imgWidth: 200},
-      { name: 'T5AI-Board 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board', imgWidth: 200 },
-      { name: 'T5AI-Core 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/aa9cceee-b0ee-4bb3-8b93-8e6e2e0013a3.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core', imgWidth: 200 }
+      { name: 'T2-U 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/cn/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0' },
+      { name: 'T5AI-Board 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board' },
+      { name: 'T5AI-Core 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/aa9cceee-b0ee-4bb3-8b93-8e6e2e0013a3.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core' }
    ]}
+   imgWidth={280}
+   imgHeight={200}
 />
