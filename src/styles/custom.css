@@ -94,10 +94,18 @@ a.tw-btn {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #161616b1; /* light dark gray */
+  color: #161616b1;
   white-space: nowrap;
 }
 
+[data-theme='dark'] .sidebar-divider > span {
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .sidebar-divider::before,
+[data-theme='dark'] .sidebar-divider::after {
+  border-bottom-color: var(--ifm-color-emphasis-500);
+}
 
 /* Locale-specific divider labels */
 html[lang^='zh'] .sidebar-divider-en {
