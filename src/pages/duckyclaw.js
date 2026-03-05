@@ -14,9 +14,10 @@ const ARCH_IMG = 'https://images.tuyacn.com/fe-static/docs/img/5f408897-2151-4f2
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
 /* Neo beams: shorter length; each shoots briefly, long cycle = fewer lit at once */
-const NEO_BEAM_COUNT = 28
+const NEO_BEAM_COUNT = 20
 const neoBeams = Array.from({ length: NEO_BEAM_COUNT }, (_, i) => {
-  const angle = (360 / NEO_BEAM_COUNT) * i
+  const baseAngle = (360 / NEO_BEAM_COUNT) * i
+  const angle = baseAngle + (Math.random() * 20 - 10) // ±10° offset
   const duration = 7 + (i % 4) * 1.5 + (i % 3) * 0.8
   const delay = (i % 9) * 0.9 + (i % 2) * 0.4
   return { angle, duration, delay }
