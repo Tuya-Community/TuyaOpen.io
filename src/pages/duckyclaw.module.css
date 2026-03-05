@@ -596,11 +596,32 @@
 }
 
 .featureCard {
+  position: relative;
   padding: 1.5rem;
   border-radius: 0.25rem;
   background: var(--card-bg, rgba(255, 255, 255, 0.04));
   border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCardNewTag {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+  background: #22c55e;
+  color: #fff;
+}
+
+.duckyclawTheme .featureCardNewTag {
+  background: #16a34a;
+  color: #fff;
 }
 
 .duckyclawTheme .featureCard {
@@ -916,6 +937,9 @@
 
 .specsTableWrap {
   margin-top: 0.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 56rem;
   overflow-x: auto;
   border-radius: 0.25rem;
 }

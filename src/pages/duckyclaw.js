@@ -230,17 +230,7 @@ export default function DuckyClaw() {
           </p>
           <div className={styles.featuresGrid}>
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>💬</div>
-              <h3 className={styles.featureTitle}>{t('Unified messaging', '统一消息', isZh)}</h3>
-              <p className={styles.featureDesc}>
-                {t(
-                  'Telegram, Discord, Feishu via one gateway. No platform lock-in.',
-                  '通过统一网关接入 Telegram、Discord、飞书，无平台锁定。',
-                  isZh,
-                )}
-              </p>
-            </div>
-            <div className={styles.featureCard}>
+              <span className={styles.featureCardNewTag}>{t('NEW', 'NEW', isZh)}</span>
               <div className={styles.featureIcon}>☁️</div>
               <h3 className={styles.featureTitle}>{t('Device–cloud agent', '端云 Agent', isZh)}</h3>
               <p className={styles.featureDesc}>
@@ -252,6 +242,7 @@ export default function DuckyClaw() {
               </p>
             </div>
             <div className={styles.featureCard}>
+              <span className={styles.featureCardNewTag}>{t('NEW', 'NEW', isZh)}</span>
               <div className={styles.featureIcon}>🏠</div>
               <h3 className={styles.featureTitle}>{t('IoT device control', 'IoT 设备控制', isZh)}</h3>
               <p className={styles.featureDesc}>
@@ -263,12 +254,36 @@ export default function DuckyClaw() {
               </p>
             </div>
             <div className={styles.featureCard}>
+              <span className={styles.featureCardNewTag}>{t('NEW', 'NEW', isZh)}</span>
               <div className={styles.featureIcon}>🎤</div>
               <h3 className={styles.featureTitle}>{t('Hardware voice (ASR)', '硬件语音 ASR', isZh)}</h3>
               <p className={styles.featureDesc}>
                 {t(
                   'Voice input with ASR on supported boards. No extra app needed.',
                   '在支持的板子上用 ASR 语音输入，无需额外应用。',
+                  isZh,
+                )}
+              </p>
+            </div>
+            <div className={styles.featureCard}>
+              <span className={styles.featureCardNewTag}>{t('NEW', 'NEW', isZh)}</span>
+              <div className={styles.featureIcon}>🔌</div>
+              <h3 className={styles.featureTitle}>{t('Device skills', '设备技能', isZh)}</h3>
+              <p className={styles.featureDesc}>
+                {t(
+                  'Extensible hardware skills: cameras, sensors, displays. Build and plug in your own; deep integration with the agent loop.',
+                  '可扩展硬件技能：摄像头、传感器、显示屏。自建并接入，与 Agent 循环深度集成。',
+                  isZh,
+                )}
+              </p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>💬</div>
+              <h3 className={styles.featureTitle}>{t('Unified messaging', '统一消息', isZh)}</h3>
+              <p className={styles.featureDesc}>
+                {t(
+                  'Telegram, Discord, Feishu via one gateway. No platform lock-in.',
+                  '通过统一网关接入 Telegram、Discord、飞书，无平台锁定。',
                   isZh,
                 )}
               </p>
@@ -296,17 +311,6 @@ export default function DuckyClaw() {
               </p>
             </div>
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🔌</div>
-              <h3 className={styles.featureTitle}>{t('Device skills', '设备技能', isZh)}</h3>
-              <p className={styles.featureDesc}>
-                {t(
-                  'Extensible hardware skills: cameras, sensors, displays. Build and plug in your own; deep integration with the agent loop.',
-                  '可扩展硬件技能：摄像头、传感器、显示屏。自建并接入，与 Agent 循环深度集成。',
-                  isZh,
-                )}
-              </p>
-            </div>
-            <div className={styles.featureCard}>
               <div className={styles.featureIcon}>💓</div>
               <h3 className={styles.featureTitle}>{t('Agent loop heartbeat', 'Agent 循环心跳', isZh)}</h3>
               <p className={styles.featureDesc}>
@@ -324,6 +328,46 @@ export default function DuckyClaw() {
               {t('Read full feature list', '查看完整功能列表', isZh)} →
             </Link>
           </div> */}
+        </div>
+      </section>
+
+      {/* Quick start */}
+      <section className={`${styles.section} ${styles.sectionAlt}`} id="quickstart">
+        <div className={styles.sectionInner}>
+          <h2 className={styles.sectionTitle}>{t('Quick start', '快速开始', isZh)}</h2>
+          <p className={styles.sectionSubtitle}>
+            {t(
+              'One TuyaOpen key. Pick your board. Configure and run.',
+              '一个 TuyaOpen 密钥。选择开发板。配置并运行。',
+              isZh,
+            )}
+          </p>
+          <div className={styles.quickstartSteps}>
+            <Link to="/pricing" className={styles.quickstartBtn}>
+              {t('Get Auth/License Key', '获取授权码', isZh)}
+            </Link>
+            <a
+              href="https://github.com/tuya/DuckyClaw#readme"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.quickstartBtn}
+            >
+              Install → GitHub
+            </a>
+            <Link to="/docs/quick-start/enviroment-setup" className={styles.quickstartBtn}>
+              {t('Environment setup', '环境配置', isZh)}
+            </Link>
+            <a href="#hardware" className={styles.quickstartBtn}>
+              {t('Pick your board', '选择开发板', isZh)} →
+            </a>
+          </div>
+          <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem', marginBottom: 0 }}>
+            {t(
+              '🚧 Under active development. Docs and guides are being added.',
+              '🚧 开发中。文档与指南持续补充。',
+              isZh,
+            )}
+          </p>
         </div>
       </section>
 
@@ -759,46 +803,6 @@ export default function DuckyClaw() {
             <li>Cloud third-party MCPs</li>
             <li>Tuya Agentic IoT Control</li>
           </ul>
-        </div>
-      </section>
-
-      {/* Quick start */}
-      <section className={`${styles.section} ${styles.sectionAlt}`} id="quickstart">
-        <div className={styles.sectionInner}>
-          <h2 className={styles.sectionTitle}>{t('Quick start', '快速开始', isZh)}</h2>
-          <p className={styles.sectionSubtitle}>
-            {t(
-              'One TuyaOpen key. Pick your board. Configure and run.',
-              '一个 TuyaOpen 密钥。选择开发板。配置并运行。',
-              isZh,
-            )}
-          </p>
-          <div className={styles.quickstartSteps}>
-            <Link to="/pricing" className={styles.quickstartBtn}>
-              {t('Get Auth/License Key', '获取授权码', isZh)}
-            </Link>
-            <a
-              href="https://github.com/tuya/DuckyClaw#readme"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.quickstartBtn}
-            >
-              Install → GitHub
-            </a>
-            <Link to="/docs/quick-start/enviroment-setup" className={styles.quickstartBtn}>
-              {t('Environment setup', '环境配置', isZh)}
-            </Link>
-            <a href="#hardware" className={styles.quickstartBtn}>
-              {t('Pick your board', '选择开发板', isZh)} →
-            </a>
-          </div>
-          <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem', marginBottom: 0 }}>
-            {t(
-              '🚧 Under active development. Docs and guides are being added.',
-              '🚧 开发中。文档与指南持续补充。',
-              isZh,
-            )}
-          </p>
         </div>
       </section>
 
