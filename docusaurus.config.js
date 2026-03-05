@@ -163,6 +163,10 @@ const config = {
           label: 'Projects',
         },
         {
+          to: '/duckyclaw',
+          label: 'DuckyClaw 🦞',
+        },
+        {
           label: 'Tools',
           position: 'left',
           items: [

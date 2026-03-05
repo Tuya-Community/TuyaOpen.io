@@ -1,10 +1,25 @@
 module.exports = {
   docs: [
     // ------------------------------------------------------------------
+
+    // ------------------------------------------------------------------
     'about-tuyaopen',
     'maintenance-and-releases',
     'project-walkthrough',
     // ------------------------------------------------------------------
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">DuckyClaw</span><span class="sidebar-divider-zh">DuckyClaw 专区</span></div>',
+      defaultStyle: false,
+    },
+    {
+      type: 'category',
+      label: 'DuckyClaw',
+      collapsed: true,
+      items: [{ type: 'link', label: 'Overview', href: '/duckyclaw' }, 'duckyclaw/custom-device-mcp'],
+    },
     {
       type: 'html',
       value:
