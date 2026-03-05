@@ -9,7 +9,8 @@ import IconGithub from '../../static/img/icons/github.svg'
 import styles from './duckyclaw.module.css'
 
 const BANNER_IMG = 'https://images.tuyacn.com/fe-static/docs/img/210f532a-0bb1-4ca5-9037-f5488958a709.jpg'
-const ARCH_IMG = 'https://images.tuyacn.com/fe-static/docs/img/5f408897-2151-4f2f-9f22-216391a14f58.jpg'
+const ARCH_IMG_ZH = 'https://images.tuyacn.com/fe-static/docs/img/9b8d1a57-3359-4837-af84-710f729d8e48.png'
+const ARCH_IMG_EN = 'https://images.tuyacn.com/fe-static/docs/img/bbeed5a9-9fb5-4710-b20b-76fb3ed1add4.png'
 
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
@@ -40,6 +41,25 @@ const snowAshFlakes = Array.from({ length: FLAKE_COUNT }, (_, i) => {
 export default function DuckyClaw() {
   const { siteConfig, i18n } = useDocusaurusContext()
   const isZh = i18n.currentLocale === 'zh'
+  const [archLightboxOpen, setArchLightboxOpen] = React.useState(false)
+  const [workflowLightboxOpen, setWorkflowLightboxOpen] = React.useState(false)
+  const workflowImageSrc = 'https://images.tuyacn.com/content-platform/hestia/175551024951299d2e04e.png'
+  React.useEffect(() => {
+    if (!archLightboxOpen) return
+    const onEscape = (e) => {
+      if (e.key === 'Escape') setArchLightboxOpen(false)
+    }
+    window.addEventListener('keydown', onEscape)
+    return () => window.removeEventListener('keydown', onEscape)
+  }, [archLightboxOpen])
+  React.useEffect(() => {
+    if (!workflowLightboxOpen) return
+    const onEscape = (e) => {
+      if (e.key === 'Escape') setWorkflowLightboxOpen(false)
+    }
+    window.addEventListener('keydown', onEscape)
+    return () => window.removeEventListener('keydown', onEscape)
+  }, [workflowLightboxOpen])
 
   return (
     <Layout
@@ -657,13 +677,48 @@ export default function DuckyClaw() {
                 </p>
               </div>
             </div>
-            <div className={styles.agentWorkflowImageWrap}>
+            <div
+              className={styles.agentWorkflowImageWrap}
+              role="button"
+              tabIndex={0}
+              onClick={() => setWorkflowLightboxOpen(true)}
+              onKeyDown={(e) => e.key === 'Enter' && setWorkflowLightboxOpen(true)}
+              aria-label={t('Click to enlarge workflow diagram', '点击放大工作流示意图', isZh)}
+            >
               <img
-                src="https://images.tuyacn.com/content-platform/hestia/175551024951299d2e04e.png"
+                src={workflowImageSrc}
                 alt={t('DuckyClaw agent and workflow diagram', 'DuckyClaw Agent 与工作流示意', isZh)}
                 className={styles.agentWorkflowImage}
               />
             </div>
+            {workflowLightboxOpen && (
+              <div
+                className={styles.archLightboxBackdrop}
+                onClick={() => setWorkflowLightboxOpen(false)}
+                onKeyDown={(e) => e.key === 'Escape' && setWorkflowLightboxOpen(false)}
+                role="button"
+                tabIndex={0}
+                aria-label={t('Close', '关闭', isZh)}
+              >
+                <button
+                  type="button"
+                  className={styles.archLightboxClose}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setWorkflowLightboxOpen(false)
+                  }}
+                  aria-label={t('Close', '关闭', isZh)}
+                >
+                  ×
+                </button>
+                <img
+                  src={workflowImageSrc}
+                  alt={t('DuckyClaw agent and workflow diagram', 'DuckyClaw Agent 与工作流示意', isZh)}
+                  className={styles.archLightboxImage}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -679,13 +734,48 @@ export default function DuckyClaw() {
               isZh,
             )}
           </p>
-          <div className={styles.archImageWrap}>
+          <div
+            className={styles.archImageWrap}
+            role="button"
+            tabIndex={0}
+            onClick={() => setArchLightboxOpen(true)}
+            onKeyDown={(e) => e.key === 'Enter' && setArchLightboxOpen(true)}
+            aria-label={t('Click to enlarge architecture diagram', '点击放大架构图', isZh)}
+          >
             <img
-              src={ARCH_IMG}
+              src={isZh ? ARCH_IMG_ZH : ARCH_IMG_EN}
               alt={t('DuckyClaw architecture diagram', 'DuckyClaw 架构图', isZh)}
               className={styles.archImage}
             />
           </div>
+          {archLightboxOpen && (
+            <div
+              className={styles.archLightboxBackdrop}
+              onClick={() => setArchLightboxOpen(false)}
+              onKeyDown={(e) => e.key === 'Escape' && setArchLightboxOpen(false)}
+              role="button"
+              tabIndex={0}
+              aria-label={t('Close', '关闭', isZh)}
+            >
+              <button
+                type="button"
+                className={styles.archLightboxClose}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setArchLightboxOpen(false)
+                }}
+                aria-label={t('Close', '关闭', isZh)}
+              >
+                ×
+              </button>
+              <img
+                src={isZh ? ARCH_IMG_ZH : ARCH_IMG_EN}
+                alt={t('DuckyClaw architecture diagram', 'DuckyClaw 架构图', isZh)}
+                className={styles.archLightboxImage}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          )}
           <p className={styles.introLead} style={{ marginTop: '1.5rem' }}>
             {t(
               'Gateway aggregates messaging and voice; Agent Brain runs locally or in the cloud; modular skills handle both digital (FILE, CRON, MCP) and hardware (IoT, GPIO, sensors) actions.',
@@ -924,30 +1014,24 @@ export default function DuckyClaw() {
         </div>
       </section>
 
-      {/* Optional: extra media/CTA section — placeholder for more images or buttons
+      {/* Optional: extra media/CTA section — placeholder for more images or buttons */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="more">
         <div className={styles.sectionInner}>
-          <h2 className={styles.sectionTitle}>
-            {t('See it in action', '效果展示', isZh)}
-          </h2>
+          <h2 className={styles.sectionTitle}>{t('See it in action', '效果展示', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
-            {t('Screenshots, demos, and videos. (Add your media below.)', '截图、演示与视频。（在下方添加你的素材。）', isZh)}
+            {t(
+              'Experience DuckyClaw in action — watch highlight videos, see live demos, and explore real-world deployments below.',
+              '体验 DuckyClaw — 观看高光视频、实机演示与实际应用案例。',
+              isZh,
+            )}
           </p>
           <div className={styles.bannerWrap}>
             <div className={styles.bannerPlaceholder}>
               {t('Placeholder: add screenshot or video embed', '占位：可添加截图或视频嵌入', isZh)}
             </div>
           </div>
-          <div className="tw-flex tw-flex-wrap tw-justify-center tw-gap-3 tw-mt-6">
-            <span className={styles.heroCtaSecondary} style={{ cursor: 'default', opacity: 0.8 }}>
-              {t('Demo video (TODO)', '演示视频（待补充）', isZh)}
-            </span>
-            <span className={styles.heroCtaSecondary} style={{ cursor: 'default', opacity: 0.8 }}>
-              {t('Gallery (TODO)', '图库（待补充）', isZh)}
-            </span>
-          </div>
         </div>
-      </section> */}
+      </section>
     </Layout>
   )
 }
