@@ -135,7 +135,7 @@ export default function DuckyClaw() {
         </div>
       </section>
 
-      {/* In-page nav (anchor strip) */}
+      {/* In-page nav (anchor strip) — order matches page flow */}
       <div className="tw-container tw-mx-auto tw-px-4">
         <nav className={styles.anchorStrip} aria-label={t('Page sections', '页面章节', isZh)}>
           <a href="#intro" className={styles.anchorLink}>
@@ -143,6 +143,9 @@ export default function DuckyClaw() {
           </a>
           <a href="#features" className={styles.anchorLink}>
             {t('Core features', '核心功能', isZh)}
+          </a>
+          <a href="#quickstart" className={styles.anchorLink}>
+            {t('Quick start', '快速开始', isZh)}
           </a>
           <a href="#hardware" className={styles.anchorLink}>
             {t('Hardware support', '硬件支持', isZh)}
@@ -158,9 +161,6 @@ export default function DuckyClaw() {
           </a>
           <a href="#specs" className={styles.anchorLink}>
             {t('Platform overview', '平台总览', isZh)}
-          </a>
-          <a href="#quickstart" className={styles.anchorLink}>
-            {t('Quick start', '快速开始', isZh)}
           </a>
           <a href="#community" className={styles.anchorLink}>
             {t('Community & links', '社区与链接', isZh)}
@@ -233,7 +233,7 @@ export default function DuckyClaw() {
             <div className={styles.featureCard}>
               <span className={styles.featureCardNewTag}>{t('NEW', 'NEW', isZh)}</span>
               <div className={styles.featureIcon}>☁️</div>
-              <h3 className={styles.featureTitle}>{t('Device–cloud agent', '端云 Agent', isZh)}</h3>
+              <h3 className={styles.featureTitle}>{t('Device–Cloud Multi-Agent', '端/云 混合Agent', isZh)}</h3>
               <p className={styles.featureDesc}>
                 {t(
                   'On-device and cloud agents in one system. Tuya Cloud for LLM, RAG, MCP.',
