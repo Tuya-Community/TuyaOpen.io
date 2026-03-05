@@ -8,9 +8,9 @@ title: 自定义设备 MCP（硬件技能开发指南）
 
 ## 前置条件
 
-- 已针对目标平台（Tuya T5AI、ESP32、Raspberry Pi 或 Linux）完成[环境配置](quick-start/enviroment-setup)。
-- 对 [MCP Server](applications/tuya.ai/ai-components/ai-mcp-server)（工具发现与执行）与 [MCP Tools](applications/tuya.ai/ai-components/ai-mcp-tools)（预定义设备工具）有基本了解。
-- 具备可运行 DuckyClaw 的开发板或运行环境。支持的平台见 [DuckyClaw 项目](https://github.com/Tuya-Community/DuckyClaw)。
+- 已针对目标平台（Tuya T5AI、ESP32、Raspberry Pi 或 Linux）完成[环境配置](/docs/quick-start/enviroment-setup)。
+- 对 [MCP Server](/docs/applications/tuya.ai/ai-components/ai-mcp-server)（工具发现与执行）与 [MCP Tools](/docs/applications/tuya.ai/ai-components/ai-mcp-tools)（预定义设备工具）有基本了解。
+- 具备可运行 DuckyClaw 的开发板或运行环境。支持的平台见 [DuckyClaw 项目](https://github.com/tuya/DuckyClaw)。
 
 ## 要求
 
@@ -47,7 +47,7 @@ OPERATE_RET init_my_mcp(void)
 }
 ```
 
-详见：[MCP Server – 初始化 MCP 服务器](applications/tuya.ai/ai-components/ai-mcp-server#initialize-mcp-server)。
+详见：[MCP Server – 初始化 MCP 服务器](/docs/applications/tuya.ai/ai-components/ai-mcp-server#initialize-mcp-server)。
 
 ### 2. 定义工具回调
 
@@ -96,7 +96,7 @@ TUYA_CALL_ERR_RETURN(AI_MCP_TOOL_ADD(
 ));
 ```
 
-参考：[MCP Server – 属性定义宏](applications/tuya.ai/ai-components/ai-mcp-server#attribute-definition-macro)与[开发步骤](applications/tuya.ai/ai-components/ai-mcp-server#development-steps)。
+参考：[MCP Server – 属性定义宏](/docs/applications/tuya.ai/ai-components/ai-mcp-server#attribute-definition-macro)与[开发步骤](/docs/applications/tuya.ai/ai-components/ai-mcp-server#development-steps)。
 
 ### 4. 接入消息处理
 
@@ -117,14 +117,12 @@ ai_mcp_server_parse_message(json, NULL);
 硬件技能应尽量使用 TuyaOpen 驱动与 API，使工具回调在不同开发板上保持可移植。通过 TKL 或驱动层访问外设（如传感器的 ADC、继电器的 GPIO），避免板级专用代码。这与 [DuckyClaw 页面](/duckyclaw) 中「基于 TuyaOpen 驱动与 API 快速原型开发」的做法一致。
 
 :::info
-[通用示例](examples/demo-generic-examples) 提供示例代码，便于你验证硬件接口与最小接口代码。在将外设（如 GPIO、UART、ADC）接入设备 MCP 工具回调前，可先通过该文档进行验证。
+[通用示例](/docs/examples/demo-generic-examples) 提供示例代码，便于你验证硬件接口与最小接口代码。在将外设（如 GPIO、UART、ADC）接入设备 MCP 工具回调前，可先通过该文档进行验证。
 :::
 
 ## 参考资料
 
-- [MCP Server](applications/tuya.ai/ai-components/ai-mcp-server) — 设备 MCP 接入、工具注册与 API 说明。
-- [MCP Tools](applications/tuya.ai/ai-components/ai-mcp-tools) — 预定义设备工具与初始化。
-- [快速开始](quick-start/index) — 环境与开发板配置。
-- [硬件指南](hardware-specific/index) — 板级引脚与接口说明。
-- [通用示例](examples/demo-generic-examples) — 验证硬件接口及最小接口代码示例。
-- [DuckyClaw 项目](https://github.com/Tuya-Community/DuckyClaw) — 仓库与内置设备 MCP 工具（CRON、FILE、IoT、EXEC）。
+- [MCP Server](/docs/applications/tuya.ai/ai-components/ai-mcp-server) — 设备 MCP 接入、工具注册与 API 说明。
+- [MCP Tools](/docs/applications/tuya.ai/ai-components/ai-mcp-tools) — 预定义设备工具与初始化。
+- [通用示例](/docs/examples/demo-generic-examples) — 验证硬件接口及最小接口代码示例。
+- [DuckyClaw 项目](https://github.com/tuya/DuckyClaw) — 仓库与内置设备 MCP 工具（CRON、FILE、IoT、EXEC）。

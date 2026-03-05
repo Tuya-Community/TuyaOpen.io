@@ -8,9 +8,9 @@ This guide describes how to create custom device MCP tools (hardware skills) for
 
 ## Prerequisites
 
-- Completed [Environment setup](quick-start/enviroment-setup) for your target platform (Tuya T5AI, ESP32, Raspberry Pi, or Linux).
-- Basic familiarity with the [MCP Server](applications/tuya.ai/ai-components/ai-mcp-server) (tool discovery and execution) and [MCP Tools](applications/tuya.ai/ai-components/ai-mcp-tools) (predefined device tools).
-- A DuckyClaw-capable board or runtime. See the [DuckyClaw project](https://github.com/Tuya-Community/DuckyClaw) for supported platforms.
+- Completed [Environment setup](/docs/quick-start/enviroment-setup) for your target platform (Tuya T5AI, ESP32, Raspberry Pi, or Linux).
+- Basic familiarity with the [MCP Server](/docs/applications/tuya.ai/ai-components/ai-mcp-server) (tool discovery and execution) and [MCP Tools](/docs/applications/tuya.ai/ai-components/ai-mcp-tools) (predefined device tools).
+- A DuckyClaw-capable board or runtime. See the [DuckyClaw project](https://github.com/tuya/DuckyClaw) for supported platforms.
 
 ## Requirements
 
@@ -48,7 +48,7 @@ OPERATE_RET init_my_mcp(void)
 }
 ```
 
-Details: [MCP Server – Initialize MCP server](applications/tuya.ai/ai-components/ai-mcp-server#initialize-mcp-server).
+Details: [MCP Server – Initialize MCP server](/docs/applications/tuya.ai/ai-components/ai-mcp-server#initialize-mcp-server).
 
 ### 2. Define a tool callback
 
@@ -97,7 +97,7 @@ TUYA_CALL_ERR_RETURN(AI_MCP_TOOL_ADD(
 ));
 ```
 
-Reference: [MCP Server – Attribute definition macro](applications/tuya.ai/ai-components/ai-mcp-server#attribute-definition-macro) and [Development steps](applications/tuya.ai/ai-components/ai-mcp-server#development-steps).
+Reference: [MCP Server – Attribute definition macro](/docs/applications/tuya.ai/ai-components/ai-mcp-server#attribute-definition-macro) and [Development steps](/docs/applications/tuya.ai/ai-components/ai-mcp-server#development-steps).
 
 ### 4. Wire message handling
 
@@ -118,14 +118,12 @@ Build your application for the target board, flash or deploy, and run DuckyClaw.
 For hardware skills, use TuyaOpen drivers and APIs where available so your tool callbacks stay portable across boards. Access peripherals through the TKL or driver layer (e.g. ADC for a sensor, GPIO for a relay) rather than board-specific code when possible. This aligns with the "build on TuyaOpen drivers and APIs for fast prototyping" approach described on the [DuckyClaw page](/duckyclaw).
 
 :::info
-[Generic examples](examples/demo-generic-examples) include sample code to help you validate hardware interfaces and minimal interface code. Use them to test peripherals (e.g. GPIO, UART, ADC) before wiring them into your device MCP tool callbacks.
+[Generic examples](/docs/examples/demo-generic-examples) include sample code to help you validate hardware interfaces and minimal interface code. Use them to test peripherals (e.g. GPIO, UART, ADC) before wiring them into your device MCP tool callbacks.
 :::
 
 ## References
 
-- [MCP Server](applications/tuya.ai/ai-components/ai-mcp-server) — Device MCP access, tool registration, and API reference.
-- [MCP Tools](applications/tuya.ai/ai-components/ai-mcp-tools) — Predefined device tools and initialization.
-- [Quick Start](quick-start/index) — Environment and board setup.
-- [Hardware Guides](hardware-specific/index) — Board-specific pinout and interfaces.
-- [Generic examples](examples/demo-generic-examples) — Validate hardware interfaces and minimal interface code examples.
-- [DuckyClaw project](https://github.com/Tuya-Community/DuckyClaw) — Repository and built-in device MCP tools (CRON, FILE, IoT, EXEC).
+- [MCP Server](/docs/applications/tuya.ai/ai-components/ai-mcp-server) — Device MCP access, tool registration, and API reference.
+- [MCP Tools](/docs/applications/tuya.ai/ai-components/ai-mcp-tools) — Predefined device tools and initialization.
+- [Generic examples](/docs/examples/demo-generic-examples) — Validate hardware interfaces and minimal interface code examples.
+- [DuckyClaw project](https://github.com/tuya/DuckyClaw) — Repository and built-in device MCP tools (CRON, FILE, IoT, EXEC).
