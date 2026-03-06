@@ -596,6 +596,15 @@ export default function DuckyClaw() {
                 </Link>
               </div>
             </div>
+            <div className={clsx(styles.hardwareCard, styles.hardwareCardMore)}>
+              <p className={styles.hardwareCardMoreText}>
+                {t(
+                  '🧩 More boards are supported. The framework is highly portable and compatible — contributions are welcome.',
+                  '🧩 更多开发板支持中，框架支持移植和兼容性良好，欢迎共建。',
+                  isZh,
+                )}
+              </p>
+            </div>
           </div>
         </div>
       </section>
