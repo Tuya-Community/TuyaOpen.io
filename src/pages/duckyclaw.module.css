@@ -351,6 +351,15 @@
   background: var(--section-bg, #0f172a);
 }
 
+/* Tighter spacing between Quick start and Hardware support */
+.sectionCompactAfter {
+  padding-bottom: 1.25rem;
+}
+
+.sectionCompactBefore {
+  padding-top: 1.25rem;
+}
+
 .duckyclawTheme .sectionAlt {
   --section-bg: var(--dc-bg-elevated);
   background: var(--dc-bg-elevated);
@@ -679,12 +688,19 @@
   color: var(--dc-text-muted);
 }
 
+/* Quick start CTA above hardware grid — smaller gap so 硬件支持 feels closer */
+.quickstartCtaWrap {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 /* Hardware */
 .hardwareGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: 1.25rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .hardwareCard {

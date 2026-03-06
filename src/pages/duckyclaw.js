@@ -353,7 +353,7 @@ export default function DuckyClaw() {
       </section>
 
       {/* Quick start */}
-      <section className={`${styles.section} ${styles.sectionAlt}`} id="quickstart">
+      <section className={`${styles.section} ${styles.sectionAlt} ${styles.sectionCompactAfter}`} id="quickstart">
         <div className={styles.sectionInner}>
           <h2 className={styles.sectionTitle}>{t('Quick start', '快速开始', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
@@ -367,33 +367,15 @@ export default function DuckyClaw() {
             <Link to="/pricing" className={styles.quickstartBtn}>
               {t('Get Auth/License Key', '获取授权码', isZh)}
             </Link>
-            <a
-              href="https://github.com/tuya/DuckyClaw#readme"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.quickstartBtn}
-            >
-              Install → GitHub
-            </a>
-            <Link to="/docs/quick-start/enviroment-setup" className={styles.quickstartBtn}>
-              {t('Environment setup', '环境配置', isZh)}
-            </Link>
             <a href="#hardware" className={styles.quickstartBtn}>
               {t('Pick your board', '选择开发板', isZh)} →
             </a>
           </div>
-          <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem', marginBottom: 0 }}>
-            {t(
-              '🚧 Under active development. Docs and guides are being added.',
-              '🚧 开发中。文档与指南持续补充。',
-              isZh,
-            )}
-          </p>
         </div>
       </section>
 
       {/* Hardware support */}
-      <section className={`${styles.section} ${styles.sectionAlt}`} id="hardware">
+      <section className={`${styles.section} ${styles.sectionAlt} ${styles.sectionCompactBefore}`} id="hardware">
         <div className={styles.sectionInner}>
           <h2 className={styles.sectionTitle}>{t('Hardware support', '硬件支持', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
@@ -403,6 +385,16 @@ export default function DuckyClaw() {
               isZh,
             )}
           </p>
+
+          <div className={styles.quickstartCtaWrap}>
+            <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.quickstartBtn}>
+              {t(
+                'DuckyClaw quick start: T5-AI Board · ESP32-S3 · Raspberry Pi 5',
+                'DuckyClaw 快速开始：T5-AI Board · ESP32-S3 · Raspberry Pi 5',
+                isZh,
+              )}
+            </Link>
+          </div>
           <div className={styles.hardwareGrid}>
             <div className={styles.hardwareCard}>
               <span className={styles.hardwareCardRecommendTag}>{t('Recommend', '推荐', isZh)}</span>
@@ -425,9 +417,9 @@ export default function DuckyClaw() {
                 >
                   {t('HW Docs', '硬件文档', isZh)}
                 </Link>
-                <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
-                  {t('Docs', '文档', isZh)} — {t('Coming soon', '即将推出', isZh)}
-                </span>
+                <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                  {t('Quick start(T5)', '快速开始(T5)', isZh)}
+                </Link>
               </div>
             </div>
             <div className={styles.hardwareCard}>
@@ -451,9 +443,9 @@ export default function DuckyClaw() {
                 >
                   {t('HW Docs', '硬件文档', isZh)}
                 </Link>
-                <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
-                  {t('Docs', '文档', isZh)} — {t('Coming soon', '即将推出', isZh)}
-                </span>
+                <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                  {t('Quick start (T5)', '快速开始 (T5)', isZh)}
+                </Link>
               </div>
             </div>
             <div className={styles.hardwareCard}>
@@ -467,9 +459,9 @@ export default function DuckyClaw() {
               <div className={styles.hardwareCategory}>MCU</div>
               <p className={styles.hardwareList}>ESP32 series</p>
               <div className={styles.hardwareCardBtns}>
-                <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
-                  {t('Docs', '文档', isZh)} — {t('Coming soon', '即将推出', isZh)}
-                </span>
+                <Link to="/docs/duckyclaw/ducky-quick-start-ESP32S3" className={styles.hardwareCardBtnSecondary}>
+                  {t('Quick start (ESP32-S3)', '快速开始 (ESP32-S3)', isZh)}
+                </Link>
               </div>
             </div>
             <div className={styles.hardwareCard}>
@@ -483,9 +475,9 @@ export default function DuckyClaw() {
               <div className={styles.hardwareCategory}>SoC</div>
               <p className={styles.hardwareList}>Raspberry Pi 4/5, CM4/CM5</p>
               <div className={styles.hardwareCardBtns}>
-                <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
-                  {t('Docs', '文档', isZh)} — {t('Coming soon', '即将推出', isZh)}
-                </span>
+                <Link to="/docs/duckyclaw/ducky-quick-start-raspberry-pi-5" className={styles.hardwareCardBtnSecondary}>
+                  {t('Quick start (Raspberry Pi 5)', '快速开始 (Raspberry Pi 5)', isZh)}
+                </Link>
               </div>
             </div>
             <div className={styles.hardwareCard}>
@@ -500,7 +492,7 @@ export default function DuckyClaw() {
               <p className={styles.hardwareList}>Linux Ubuntu</p>
               <div className={styles.hardwareCardBtns}>
                 <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
-                  {t('Docs', '文档', isZh)} — {t('Coming soon', '即将推出', isZh)}
+                  {t('Docs', '文档', isZh)} — {t('🚧Coming soon', '🚧即将推出', isZh)}
                 </span>
               </div>
             </div>
@@ -532,17 +524,11 @@ export default function DuckyClaw() {
                 >
                   {t('HW Docs', '硬件文档', isZh)}
                 </a>
-                <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
-                  {t('Docs', '文档', isZh)} — {t('Coming soon', '即将推出', isZh)}
-                </span>
+                <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                  {t('Quick start (T5)', '快速开始 (T5)', isZh)}
+                </Link>
               </div>
             </div>
-          </div>
-          {/* Placeholder: add board-specific docs later */}
-          <div className="tw-text-center tw-mt-6">
-            <span className={styles.quickstartBtn} style={{ cursor: 'default', opacity: 0.8 }}>
-              {t('Board-specific guides (coming soon)', '板级指南（即将推出）', isZh)}
-            </span>
           </div>
         </div>
       </section>
