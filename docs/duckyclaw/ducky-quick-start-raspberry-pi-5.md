@@ -1,5 +1,5 @@
 ---
-title: DuckyClaw Quick Start (Raspberry Pi 5)
+title: DuckyClaw with Raspberry Pi 5
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
@@ -102,13 +102,14 @@ Download, install, and add to your PATH (then restart the computer so the comman
 </SyncedTabItem>
 </SyncedTabs>
 
-### 2. Clone the repo and activate the build environment
+### 2. Clone the repo
 
 :::info
 You can increase Git buffer size for large clones:
 
 ```bash
 git config --global http.postBuffer 524288000
+git clone https://github.com/tuya/DuckyClaw.git
 ```
 
 :::
@@ -117,8 +118,9 @@ git config --global http.postBuffer 524288000
 Use a project path **without** spaces or non-ASCII characters. On Windows, avoid using the C: drive root.
 :::
 
+### 3. Activate the build environment
+
 ```bash
-git clone https://github.com/tuya/DuckyClaw.git
 cd DuckyClaw
 git submodule update --init
 ```

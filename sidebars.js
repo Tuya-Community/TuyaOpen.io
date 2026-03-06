@@ -25,9 +25,9 @@ module.exports = {
           label: 'Quick Start',
           collapsed: false,
           items: [
-            'duckyclaw/ducky-quick-start-ESP32S3',
             'duckyclaw/ducky-quick-start-T5AI',
             'duckyclaw/ducky-quick-start-raspberry-pi-5',
+            'duckyclaw/ducky-quick-start-ESP32S3',
           ],
         },
         'duckyclaw/custom-device-mcp',
