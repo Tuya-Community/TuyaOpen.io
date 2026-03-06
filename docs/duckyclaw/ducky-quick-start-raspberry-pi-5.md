@@ -175,7 +175,7 @@ tos.py check
 
 You should see version output and a list of tools (git, cmake, make, ninja) with OK status. Submodules will be downloaded if needed.
 
-### 3. Select the board configuration
+### 4. Select the board configuration
 
 Run the config chooser from the project root:
 
@@ -196,7 +196,7 @@ Input "q" to exit.
 Choice config file: 2
 ```
 
-### 4. Edit application configuration
+### 5. Edit application configuration
 
 Open `DuckyClaw/include/tuya_app_config.h` and set the following.
 
@@ -246,7 +246,7 @@ tuya> im_set_tg_token <token>
 ```
 :::
 
-### 5. Build and run
+### 6. Build and run
 
 Raspberry Pi is a Linux host target: there is **no flashing**. The build produces an executable in `dist/`. You can build locally on the Pi or cross-compile on a Linux PC.
 
@@ -278,7 +278,7 @@ Replace `username` with your Pi user and `<pi-ip>` with the Pi’s IP address.
 
 **Expected outcome:** The build succeeds, the executable runs on the Pi, and the device enters activation mode so you can add it in the Smart Life app.
 
-### 6. Device activation and network setup
+### 7. Device activation and network setup
 
 To use Tuya Cloud features, add the device in the **Smart Life** app.
 
