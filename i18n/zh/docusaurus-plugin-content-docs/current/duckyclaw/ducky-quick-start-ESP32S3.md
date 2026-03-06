@@ -228,6 +228,8 @@ tos.py flash
 tos.py monitor
 ```
 
+**预期结果**：工程编译通过，固件烧录到 ESP32-S3 后设备正常启动。可通过串口监控确认启动及云连接状态（若已配置）。
+
 ### 6. 设备激活与配网
 
 使用 Tuya Cloud 功能前，需在 **智能生活** App 中添加设备并完成 Wi‑Fi 配网。
@@ -273,7 +275,6 @@ tos.py monitor
 
 若 `productkey`（PID）为占位符，说明产品 ID 未正确设置。请通过 [该链接](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2) 复制或创建产品并获取 PID，在 `tuya_app_config.h` 中设置 `TUYA_PRODUCT_ID`，重新编译并烧录。
 
-**预期结果**：工程编译通过，固件烧录到 ESP32-S3 后设备正常启动。可通过串口监控确认启动及云连接状态（若已配置）。
 
 ## 参考资料
 
