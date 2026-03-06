@@ -1026,8 +1026,8 @@ export default function DuckyClaw() {
             )}
           </p>
           <div className={styles.bannerWrap}>
-            <div className={styles.bannerPlaceholder}>
-              {t('Placeholder: add screenshot or video embed', '占位：可添加截图或视频嵌入', isZh)}
+            <div className={styles.bannerPlaceholder} style={{ fontSize: '1.5em' }}>
+              {t('🚧 Under Construction 🚧', '🚧 内容建设中 🚧', isZh)}
             </div>
           </div>
         </div>

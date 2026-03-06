@@ -18,7 +18,16 @@ module.exports = {
       type: 'category',
       label: 'DuckyClaw',
       collapsed: true,
-      items: [{ type: 'link', label: 'Overview', href: '/duckyclaw' }, 'duckyclaw/custom-device-mcp'],
+      items: [
+        { type: 'link', label: 'Overview', href: '/duckyclaw' },
+        {
+          type: 'category',
+          label: 'Additional quick start',
+          collapsed: true,
+          items: ['duckyclaw/ducky-quick-start-ESP32S3', 'duckyclaw/ducky-quick-start-T5AI'],
+        },
+        'duckyclaw/custom-device-mcp',
+      ],
     },
     {
       type: 'html',
