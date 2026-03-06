@@ -17,7 +17,7 @@ title: 自定义设备 MCP（硬件技能开发指南）
 - **硬件**：支持的目标板（如 Tuya T5AI 模块、ESP32、Raspberry Pi 4/5 或 Linux ARM/x64）以及要作为技能暴露的外设（摄像头、传感器、显示屏等）。
 - **软件**：支持 MCP 的 TuyaOpen SDK；在配置中启用 `ENABLE_COMP_AI_MCP`。
 - **授权码**：使用 Tuya 云能力时需有效的 Tuya 授权码。
-- **可选**：所接入外设对应的 TuyaOpen 驱动或 API（如传感器的 TDD、显示屏驱动）。
+- **可选**：所接入外设对应的 TuyaOpen 驱动或 API（如传感器驱动、显示屏驱动）。
 
 ## 概述：DuckyClaw 中的设备 MCP
 

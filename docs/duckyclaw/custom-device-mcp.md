@@ -17,7 +17,7 @@ This guide describes how to create custom device MCP tools (hardware skills) for
 - **Hardware**: A supported board (e.g. Tuya T5AI Module, ESP32, Raspberry Pi 4/5, or Linux ARM/x64) and any peripherals you want to expose as skills (camera, sensors, display, etc.).
 - **Software**: TuyaOpen SDK with MCP support; `ENABLE_COMP_AI_MCP` enabled in your configuration.
 - **License key**: A valid Tuya license key is required for Tuya cloud access.
-- **Optional**: TuyaOpen drivers or APIs for the peripherals you are integrating (e.g. TDD for a sensor, display driver).
+- **Optional**: TuyaOpen drivers or APIs for the peripherals you are integrating (e.g. sensor driver, display driver).
 
 
 ## Overview: Device MCP in DuckyClaw

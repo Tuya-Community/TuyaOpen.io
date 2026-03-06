@@ -99,13 +99,14 @@ brew install python3 git make
 </SyncedTabItem>
 </SyncedTabs>
 
-### 2. 克隆仓库并激活构建环境
+### 2. 克隆仓库
 
 :::info
 可适当增大 Git 缓冲区以加速克隆：
 
 ```bash
 git config --global http.postBuffer 524288000
+git clone https://github.com/tuya/DuckyClaw.git
 ```
 
 :::
@@ -114,8 +115,9 @@ git config --global http.postBuffer 524288000
 项目路径请勿包含空格或非 ASCII 字符；Windows 下请勿放在 C 盘根目录。
 :::
 
+### 3. 激活构建环境
+
 ```bash
-git clone https://github.com/tuya/DuckyClaw.git
 cd DuckyClaw
 git submodule update --init
 ```
