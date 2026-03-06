@@ -8,16 +8,16 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 This guide walks you through building and flashing the DuckyClaw firmware on an ESP32-S3 development board. It is for developers who want to run DuckyClaw on ESP32-S3 with Wi‑Fi.
 
-## Prerequisites
-
-- None beyond the [Quick Start](quick-start/index) overview. Basic familiarity with a terminal and Git is helpful.
-
 ## Requirements
 
 - **ESP32-S3 development board** with PSRAM 8 MB and FLASH 16 MB.
 - **USB data cable** to connect the board to your computer.
 - **Computer** running Windows 10/11, Linux (e.g. Ubuntu 20/22/24 LTS), or macOS.
-- **Tuya Cloud**: This demo uses Tuya Cloud services. You need a valid [license key (authorization code)](quick-start/equipment-authorization) and correct PID, UUID, and AuthKey in `tuya_app_config.h` for cloud and LLM features.
+- **Tuya Cloud**: This demo uses Tuya Cloud services. You need a valid [license key (authorization code)](/docs/quick-start/equipment-authorization) and correct PID, UUID, and AuthKey in `tuya_app_config.h` for cloud and LLM features.
+
+:::note
+If your development board has microphone and speaker support, **ASR** (Automatic Speech Recognition) is enabled as the default input method and can coexist with IM (messaging apps).
+:::
 
 ## Steps
 
@@ -205,7 +205,25 @@ Replace the placeholder values. Obtain:
 - **PID**: [Tuya product / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2).
 - **UUID and AuthKey**: [Tuya IoT Platform – Open SDK purchase](https://platform.tuya.com/purchase/index?type=6).
 
-**IM / app channel** (optional): Set your messaging channel and credentials (Feishu, Telegram, or Discord) in the same file as needed.
+**IM configuration** (optional): To receive DuckyClaw notifications or interact via a messaging app, set the channel to `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
+
+```c
+// IM configuration
+// feishu | telegram | discord
+#define IM_SECRET_CHANNEL_MODE      "feishu"
+
+#define IM_SECRET_FS_APP_ID         ""
+#define IM_SECRET_FS_APP_SECRET     ""
+
+#define IM_SECRET_DC_TOKEN          ""
+#define IM_SECRET_DC_CHANNEL_ID     ""
+
+#define IM_SECRET_TG_TOKEN          ""
+```
+
+- For **Feishu**: set `IM_SECRET_CHANNEL_MODE` to `"feishu"` and fill `IM_SECRET_FS_APP_ID` and `IM_SECRET_FS_APP_SECRET`.
+- For **Discord**: set `IM_SECRET_CHANNEL_MODE` to `"discord"` and fill `IM_SECRET_DC_TOKEN` and `IM_SECRET_DC_CHANNEL_ID`.
+- For **Telegram**: set `IM_SECRET_CHANNEL_MODE` to `"telegram"` and fill `IM_SECRET_TG_TOKEN`.
 
 ### 5. Build and flash
 
@@ -232,6 +250,6 @@ du
 ## References
 
 - [DuckyClaw Overview](/duckyclaw)
-- [Quick Start – Environment setup](quick-start/enviroment-setup)
-- [Custom Device MCP (hardware skills)](custom-device-mcp)
+- [Quick Start – Environment setup](/docs/quick-start/enviroment-setup)
+- [Custom Device MCP (hardware skills)](/docs/duckyclaw/custom-device-mcp)
 - [DuckyClaw repository](https://github.com/tuya/DuckyClaw) (external)

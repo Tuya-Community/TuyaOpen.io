@@ -8,16 +8,17 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 本文介绍如何在 ESP32-S3 开发板上构建并烧录 DuckyClaw 固件，面向希望在 ESP32-S3 + Wi‑Fi 上运行 DuckyClaw 的开发者。
 
-## 前置条件
-
-- 无额外要求，了解 [快速开始](quick-start/index) 即可。具备终端与 Git 的基本使用经验更佳。
 
 ## 硬件与软件要求
 
 - **ESP32-S3 开发板**：PSRAM 8 MB，FLASH 16 MB。
 - **USB 数据线**：用于连接开发板与电脑。
 - **电脑**：Windows 10/11、Linux（如 Ubuntu 20/22/24 LTS）或 macOS。
-- **Tuya Cloud**：本示例使用 Tuya 云服务。需具备有效的[授权码](quick-start/equipment-authorization)，并在 `tuya_app_config.h` 中填写正确的 PID、UUID、AuthKey，以使用云与 LLM 功能。
+- **Tuya Cloud**：本示例使用 Tuya 云服务。需具备有效的[授权码](/docs/quick-start/equipment-authorization)，并在 `tuya_app_config.h` 中填写正确的 PID、UUID、AuthKey，以使用云与 LLM 功能。
+
+:::note
+若开发板支持麦克风与扬声器，则 **ASR**（语音识别）为默认启用的输入方式，并且能与消息软件 IM 共存。
+:::
 
 ## 操作步骤
 
@@ -205,7 +206,25 @@ Choice config file: 1
 - **PID**：[Tuya 产品 / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2)。
 - **UUID 与 AuthKey**：[Tuya IoT 平台 – Open SDK 采购](https://platform.tuya.com/purchase/index?type=6)。
 
-**IM / 应用通道**（可选）：按需在同一文件中配置 Feishu、Telegram 或 Discord 等通道及凭证。
+**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `feishu`、`telegram` 或 `discord`，并填写对应凭证：
+
+```c
+// IM configuration
+// feishu | telegram | discord
+#define IM_SECRET_CHANNEL_MODE      "feishu"
+
+#define IM_SECRET_FS_APP_ID         ""
+#define IM_SECRET_FS_APP_SECRET     ""
+
+#define IM_SECRET_DC_TOKEN          ""
+#define IM_SECRET_DC_CHANNEL_ID     ""
+
+#define IM_SECRET_TG_TOKEN          ""
+```
+
+- **Feishu**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"feishu"`，并填写 `IM_SECRET_FS_APP_ID`、`IM_SECRET_FS_APP_SECRET`。
+- **Discord**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"discord"`，并填写 `IM_SECRET_DC_TOKEN`、`IM_SECRET_DC_CHANNEL_ID`。
+- **Telegram**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"telegram"`，并填写 `IM_SECRET_TG_TOKEN`。
 
 ### 5. 编译与烧录
 

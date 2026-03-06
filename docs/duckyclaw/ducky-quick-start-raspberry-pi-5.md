@@ -1,23 +1,25 @@
 ---
-title: DuckyClaw with T5AI
+title: DuckyClaw Quick Start (Raspberry Pi 5)
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# DuckyClaw Quick Start (T5-AI Board)
+# DuckyClaw Quick Start (Raspberry Pi 5)
 
-This guide walks you through building, flashing, and activating the DuckyClaw firmware on the [T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board) development kit. It is for developers who want to run DuckyClaw on Tuya T5-AI hardware and connect the device to Tuya Cloud via the Smart Life app.
+This guide walks you through building and running DuckyClaw on a Raspberry Pi 5. The Pi is a Linux host target: you build an executable (no firmware flashing). It is for developers who want to run DuckyClaw on Raspberry Pi 5 and connect the device to Tuya Cloud via the Smart Life app.
 
+## Prerequisites
+
+- None beyond the [Quick Start](/docs/quick-start/index) overview. Basic familiarity with a terminal and Git is helpful.
 
 ## Requirements
 
-- **[T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)** development board (carries the T5 module).
-- **USB data cable** to connect the board to your computer.
-- **Computer** running Windows 10/11, Linux (e.g. Ubuntu 20/22/24 LTS), or macOS.
+- **Raspberry Pi 5** and power adapter.
+- **Computer** running Windows 10/11, Linux (e.g. Ubuntu 20/22/24 LTS), or macOS (for building; cross-compile is Linux-only).
 - **Tuya Cloud**: This demo uses Tuya Cloud services. You need a valid [license key (authorization code)](/docs/quick-start/equipment-authorization) and correct PID, UUID, and AuthKey in `tuya_app_config.h` for cloud and LLM features.
 
 :::note
-The T5-AI Board has built-in microphone and speaker support. On boards with mic/speaker, **ASR** (Automatic Speech Recognition) is the default input method and can coexist with IM (messaging apps).
+If your Raspberry Pi has microphone and speaker support (e.g. USB mic/speaker), **ASR** (Automatic Speech Recognition) is enabled as the default input method and can coexist with IM (messaging apps).
 :::
 
 ## Steps
@@ -169,7 +171,7 @@ tos.py version
 tos.py check
 ```
 
-You should see version output (e.g. `v1.3.0`) and a list of tools (git, cmake, make, ninja) with OK status. Submodules will be downloaded if needed.
+You should see version output and a list of tools (git, cmake, make, ninja) with OK status. Submodules will be downloaded if needed.
 
 ### 3. Select the board configuration
 
@@ -180,7 +182,7 @@ cd ..
 tos.py config choice
 ```
 
-Enter **3** to select **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**:
+Enter **2** to select **RaspberryPi.config**:
 
 ```text
 --------------------
@@ -189,7 +191,7 @@ Enter **3** to select **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**:
 3. TUYA_T5AI_BOARD_LCD_3.5_CAMERA.config
 --------------------
 Input "q" to exit.
-Choice config file: 3
+Choice config file: 2
 ```
 
 ### 4. Edit application configuration
@@ -227,31 +229,56 @@ Replace the placeholder values. Obtain:
 - For **Discord**: set `IM_SECRET_CHANNEL_MODE` to `"discord"` and fill `IM_SECRET_DC_TOKEN` and `IM_SECRET_DC_CHANNEL_ID`.
 - For **Telegram**: set `IM_SECRET_CHANNEL_MODE` to `"telegram"` and fill `IM_SECRET_TG_TOKEN`.
 
-### 5. Build and flash
+:::tip
+**Configure IM at runtime via CLI**  
+You can also configure IM without editing the header: after the program is running, press Enter to enter the `tuya>` shell, then use the IM commands (run `im_help` for usage):
 
-Build the project:
+```text
+tuya> im_help
+tuya> im_set_channel_mode <telegram|discord|feishu>
+tuya> im_set_fs_appid <app_id>
+tuya> im_set_fs_appsecret <app_secret>
+tuya> im_set_dc_token <token>
+tuya> im_set_dc_channel <channel_id>
+tuya> im_set_tg_token <token>
+```
+:::
+
+### 5. Build and run
+
+Raspberry Pi is a Linux host target: there is **no flashing**. The build produces an executable in `dist/`. You can build locally on the Pi or cross-compile on a Linux PC.
+
+:::info
+**Build options:** **Local build** — build and run directly on the Raspberry Pi (recommended). **Cross-compile** — build on a Linux PC, then copy the binary to the Pi. macOS does not support cross-compile; use a Linux host or build on the Pi.
+:::
+
+Build (with `RaspberryPi.config` selected):
 
 ```bash
 tos.py build
 ```
 
-After a successful build, flash the firmware to the board:
+**If you built on the Pi:** go to the next step. **If you cross-compiled on a PC:** copy the built artifact to the Pi. The exact path under `dist/` depends on your project version (e.g. `dist/DuckyClaw_1.0.1/DuckyClaw_1.0.1.elf`). Example:
 
 ```bash
-tos.py flash
+scp -r dist/DuckyClaw_* username@<pi-ip>:~/
 ```
 
-Connect to the serial console to view logs:
+Replace `username` with your Pi user and `<pi-ip>` with the Pi’s IP address.
+
+**Run on the Raspberry Pi:**
 
 ```bash
-tos.py monitor
+./DuckyClaw_1.0.1.elf
 ```
 
-**Expected outcome:** The firmware builds without errors, flashes to the T5-AI Board, and the device boots. Use the serial monitor to confirm startup and activation mode before adding the device in the app.
+(Use the actual binary name from your `dist/` folder.)
+
+**Expected outcome:** The build succeeds, the executable runs on the Pi, and the device enters activation mode so you can add it in the Smart Life app.
 
 ### 6. Device activation and network setup
 
-To use Tuya Cloud features, add the device in the **Smart Life** app and complete Wi‑Fi provisioning.
+To use Tuya Cloud features, add the device in the **Smart Life** app.
 
 #### Download the Smart Life app
 
@@ -259,7 +286,7 @@ Install **Smart Life** (智能生活) from the Apple App Store or your Android a
 
 #### Confirm device is in provisioning mode
 
-Before adding the device in the app, ensure it is in activation (provisioning) mode. In the serial log you should see lines similar to (TuyaOpen):
+Before adding the device, ensure it is in activation (provisioning) mode. In the terminal or log you should see lines similar to:
 
 ```text
 [01-01 00:00:01 ty D][tuya_iot.c:774] STATE_START
@@ -267,16 +294,18 @@ Before adding the device in the app, ensure it is in activation (provisioning) m
 [01-01 00:00:01 ty D][tuya_main.c:143] Tuya Event ID:1(TUYA_EVENT_BIND_START)
 ```
 
-#### Add the device in the app
+#### Add the device: QR code (Linux / Raspberry Pi)
 
-1. In the Smart Life app, tap **Add device** (or the **+** button) to open the add-device flow.
-2. Grant the app **Wi‑Fi** and **Bluetooth** permissions when prompted; otherwise the app cannot discover the device.
-3. Follow the in-app steps to connect the device to your Wi‑Fi network.
-4. On the **Home** or **Add device** screen, when the device appears, tap **Add** and complete the guided setup.
+Many TuyaOpen Linux targets (including Raspberry Pi) support **scan-to-provision**: the device shows a QR code in the terminal, and you scan it with the Smart Life app.
 
-:::warning
-TuyaOpen-supported modules connect only to **2.4 GHz** Wi‑Fi. Using a 5 GHz network will cause provisioning to fail.
-:::
+1. Ensure the device is in provisioning mode and the QR code is visible in the terminal/log.
+2. Open the **Smart Life** app and tap the **+** (Add device) on the home screen.
+3. Choose **Scan** and scan the QR code shown by the device.
+4. Follow the in-app steps to complete binding and network setup.
+
+![Smart Life app scan to add device](https://images.tuyacn.com/fe-static/docs/img/5971b072-a264-4324-ba3f-a90f8b899ddd.png)
+
+Alternatively, add the device via the normal add-device flow (grant Wi‑Fi and Bluetooth permissions, then discover and add the device). TuyaOpen-supported modules connect only to **2.4 GHz** Wi‑Fi.
 
 ## Troubleshooting
 
@@ -290,14 +319,13 @@ If authorization data was not written correctly, the device may log errors such 
 [01-01 00:00:00 ty W][tuya_main.c:288] Replace the TUYA_OPENSDK_UUID and TUYA_OPENSDK_AUTHKEY contents...
 ```
 
-If the log shows `uuid` and `authkey` as placeholder values (e.g. `uuidxxxxxxxxxxxxxxxx`), the license (UUID and AuthKey) was not applied correctly. Obtain or purchase a TuyaOpen license at [Tuya IoT Platform – Open SDK](https://platform.tuya.com/purchase/index?type=6) and set `TUYA_OPENSDK_UUID` and `TUYA_OPENSDK_AUTHKEY` in `tuya_app_config.h`, then rebuild and reflash.
+If the log shows `uuid` and `authkey` as placeholder values, the license (UUID and AuthKey) was not applied correctly. Obtain or purchase a TuyaOpen license at [Tuya IoT Platform – Open SDK](https://platform.tuya.com/purchase/index?type=6) and set `TUYA_OPENSDK_UUID` and `TUYA_OPENSDK_AUTHKEY` in `tuya_app_config.h`, then rebuild and rerun.
 
-If `productkey` (PID) appears as placeholders, the product ID was not set. Copy or create a product and get your PID from the [Tuya product link](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2), then set `TUYA_PRODUCT_ID` in `tuya_app_config.h`, rebuild, and reflash.
+If `productkey` (PID) appears as placeholders, the product ID was not set. Copy or create a product and get your PID from the [Tuya product link](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2), then set `TUYA_PRODUCT_ID` in `tuya_app_config.h`, rebuild, and rerun.
 
 ## References
 
 - [DuckyClaw Overview](/duckyclaw)
-- [T5-AI Board overview](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)
 - [Quick Start – Environment setup](/docs/quick-start/enviroment-setup)
 - [Quick Start – Equipment authorization](/docs/quick-start/equipment-authorization)
 - [Custom Device MCP (hardware skills)](/docs/duckyclaw/custom-device-mcp)
