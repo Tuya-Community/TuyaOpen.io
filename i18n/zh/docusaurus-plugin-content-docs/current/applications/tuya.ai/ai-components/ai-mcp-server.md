@@ -1,5 +1,5 @@
 ---
-title: AI 设备 MCP 服务
+title: 设备 MCP 服务
 ---
 
 ## 名词解释

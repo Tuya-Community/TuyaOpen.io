@@ -1,5 +1,5 @@
 ---
-title: AI Chatbot UI
+title: Chatbot GUI
 ---
 
 ## Glossary

@@ -60,8 +60,10 @@ The TuyaOpen project currently supports the following development boards:
 
 <ChipRow 
    chipData={[
-      { name: 'T2-U Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/en/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0', imgWidth: 400, imgHeight: 120 },
-      { name: 'T5AI-Board Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/docs/hardware-specific/t5-ai-board/overview-t5-ai-board', imgWidth: 400, imgHeight: 325 },
-      { name: 'T5AI-Core Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/aa9cceee-b0ee-4bb3-8b93-8e6e2e0013a3.png', link: 'https://tuyaopen.ai/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core', imgWidth: 200 }
+      { name: 'T2-U Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/en/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0' },
+      { name: 'T5AI-Board Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/docs/hardware-specific/t5-ai-board/overview-t5-ai-board' },
+      { name: 'T5AI-Core Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/aa9cceee-b0ee-4bb3-8b93-8e6e2e0013a3.png', link: 'https://tuyaopen.ai/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core' }
    ]}
+   imgWidth={280}
+   imgHeight={200}
 />

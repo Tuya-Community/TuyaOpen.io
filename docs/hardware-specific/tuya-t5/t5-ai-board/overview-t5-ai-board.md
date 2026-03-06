@@ -1,5 +1,5 @@
 ---
-title: T5AI-Board Overview
+title: Overview
 ---
 
 # T5AI-Board Development Kit

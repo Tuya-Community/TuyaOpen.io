@@ -1,5 +1,5 @@
 ---
-title: 环境搭建
+title: "Step 0: 环境搭建"
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

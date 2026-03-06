@@ -1,5 +1,5 @@
 ---
-title: AI Free Chat Mode
+title: Free Chat Mode
 ---
 
 ## Glossary

@@ -1,0 +1,305 @@
+---
+title: DuckyClaw 与 T5-AI
+---
+
+import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
+
+# DuckyClaw 快速开始（T5-AI Board）
+
+本文介绍如何在 [T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board) 开发板上构建、烧录并激活 DuckyClaw 固件，面向希望在 Tuya T5-AI 硬件上运行 DuckyClaw 并通过智能生活 App 连接 Tuya Cloud 的开发者。
+
+## 硬件与软件要求
+
+- **[T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)** 开发板（搭载 T5 模组）。
+- **USB 数据线**：用于连接开发板与电脑。
+- **电脑**：Windows 10/11、Linux（如 Ubuntu 20/22/24 LTS）或 macOS。
+- **Tuya Cloud**：本示例使用 Tuya 云服务。需具备有效的[授权码](/docs/quick-start/equipment-authorization)，并在 `tuya_app_config.h` 中填写正确的 PID、UUID、AuthKey，以使用云与 LLM 功能。
+
+:::note
+T5-AI Board 具备麦克风与扬声器。在支持麦克风/扬声器的开发板上，**ASR**（语音识别）为默认输入方式，并且能与消息软件 IM 共存。
+:::
+
+## 操作步骤
+
+### 1. 安装构建工具（Python、Make、Git）
+
+在主机上安装所需工具。
+
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: 'Ubuntu 与 Debian', value: 'Linux' },
+    { label: 'Mac', value: 'Mac' },
+    { label: 'Windows', value: 'Windows' },
+  ]}
+>
+<SyncedTabItem value="Linux">
+
+:::info
+推荐使用 Ubuntu 20/22/24 LTS。
+:::
+
+安装依赖包：
+
+```bash
+sudo apt-get install lcov cmake-curses-gui build-essential ninja-build wget git python3 python3-pip python3-venv libc6-i386 libsystemd-dev
+```
+
+</SyncedTabItem>
+<SyncedTabItem value="Mac">
+
+:::info
+推荐使用 Homebrew 安装上述工具。
+:::
+
+Mac 自带工具可能较旧。可先安装 Homebrew 并升级 bash，再安装构建工具：
+
+<details>
+<summary>安装 Homebrew 并升级 bash（可选）</summary>
+
+```bash
+# 安装 Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 安装 bash
+brew install bash
+
+# 将 bash 加入可用 shell 列表
+echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+
+# 将当前用户默认 shell 设为新 bash
+chsh -s /usr/local/bin/bash
+```
+
+</details>
+
+安装所需工具：
+
+```bash
+brew install python3 git make
+```
+
+</SyncedTabItem>
+<SyncedTabItem value="Windows">
+
+:::info
+请使用 Windows 10 或 11。
+:::
+
+:::warning
+请仅使用 **CMD** 或 **PowerShell**。不要使用 Git Bash、MSYS2 等仿 Linux 终端，当前不支持。
+:::
+
+下载并安装下列工具，加入系统 PATH，并重启电脑以使命令生效：
+
+- **Python** 3.8 或更高：[下载](https://www.python.org/downloads/windows/)
+- **Git** 2.0 或更高：[下载](https://git-scm.com/downloads/win)
+- **Make** 3.0 或更高：[下载](https://gnuwin32.sourceforge.net/packages/make.htm)
+
+</SyncedTabItem>
+</SyncedTabs>
+
+### 2. 克隆仓库
+
+:::info
+可适当增大 Git 缓冲区以加速克隆：
+
+```bash
+git config --global http.postBuffer 524288000
+git clone https://github.com/tuya/DuckyClaw.git
+```
+
+:::
+
+:::warning
+项目路径请勿包含空格或非 ASCII 字符；Windows 下请勿放在 C 盘根目录。
+:::
+
+### 3. 激活构建环境
+
+```bash
+cd DuckyClaw
+git submodule update --init
+```
+
+激活 TuyaOpen 构建环境，使 `tos.py` 可用：
+
+:::warning
+每次新开终端后均需重新执行激活命令。
+:::
+
+<SyncedTabs
+  defaultValue="Linux"
+  values={[
+    { label: 'Linux', value: 'Linux' },
+    { label: 'Mac', value: 'Mac' },
+    { label: 'Windows', value: 'Windows' },
+  ]}
+>
+<SyncedTabItem value="Linux">
+
+```bash
+. ./TuyaOpen/export.sh
+```
+
+</SyncedTabItem>
+<SyncedTabItem value="Mac">
+
+```bash
+. ./TuyaOpen/export.sh
+```
+
+</SyncedTabItem>
+<SyncedTabItem value="Windows">
+
+```bash
+.\TuyaOpen\export.ps1
+```
+
+PowerShell 下如需先执行：`Set-ExecutionPolicy RemoteSigned -Scope LocalMachine`。
+
+CMD 下使用：`.\TuyaOpen\export.bat`
+
+</SyncedTabItem>
+</SyncedTabs>
+
+验证环境：
+
+```bash
+tos.py version
+tos.py check
+```
+
+应能看到版本号（如 `v1.3.0`）以及各工具（git、cmake、make、ninja）检查通过。如有需要会自动拉取子模块。
+
+### 3. 选择开发板配置
+
+在项目根目录执行配置选择：
+
+```bash
+cd ..
+tos.py config choice
+```
+
+输入 **3** 选择 **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**：
+
+```text
+--------------------
+1. ESP32S3_BREAD_COMPACT_WIFI.config
+2. RaspberryPi.config
+3. TUYA_T5AI_BOARD_LCD_3.5_CAMERA.config
+--------------------
+Input "q" to exit.
+Choice config file: 3
+```
+
+### 4. 修改应用配置
+
+打开 `DuckyClaw/include/tuya_app_config.h`，设置以下项。
+
+**LLM / Tuya Cloud**（使用云与 AI 必填）：
+
+- `TUYA_PRODUCT_ID`：产品 ID（PID），为设备与云平台配置的绑定键。
+- `TUYA_OPENSDK_UUID`：Open SDK UUID。
+- `TUYA_OPENSDK_AUTHKEY`：Open SDK AuthKey。
+
+将占位符替换为真实值。获取方式：
+
+- **PID**：[Tuya 产品 / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2)。
+- **UUID 与 AuthKey**：[Tuya IoT 平台 – Open SDK 采购](https://platform.tuya.com/purchase/index?type=6)。
+
+**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `feishu`、`telegram` 或 `discord`，并填写对应凭证：
+
+```c
+// IM configuration
+// feishu | telegram | discord
+#define IM_SECRET_CHANNEL_MODE      "feishu"
+
+#define IM_SECRET_FS_APP_ID         ""
+#define IM_SECRET_FS_APP_SECRET     ""
+
+#define IM_SECRET_DC_TOKEN          ""
+#define IM_SECRET_DC_CHANNEL_ID     ""
+
+#define IM_SECRET_TG_TOKEN          ""
+```
+
+- **Feishu**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"feishu"`，并填写 `IM_SECRET_FS_APP_ID`、`IM_SECRET_FS_APP_SECRET`。
+- **Discord**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"discord"`，并填写 `IM_SECRET_DC_TOKEN`、`IM_SECRET_DC_CHANNEL_ID`。
+- **Telegram**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"telegram"`，并填写 `IM_SECRET_TG_TOKEN`。
+
+### 5. 编译与烧录
+
+编译工程：
+
+```bash
+tos.py build
+```
+
+编译成功后烧录固件：
+
+```bash
+tos.py flash
+```
+
+连接串口查看日志：
+
+```bash
+tos.py monitor
+```
+
+**预期结果**：工程编译通过，固件烧录到 T5-AI Board 后设备正常启动。可通过串口确认进入激活模式，再在 App 中添加设备。
+
+### 6. 设备激活与配网
+
+使用 Tuya Cloud 功能前，需在 **智能生活** App 中添加设备并完成 Wi‑Fi 配网。
+
+#### 下载智能生活 App
+
+从苹果 App Store 或各大安卓应用市场搜索 **智能生活** 下载，或扫描 [Tuya 智能生活 App 页面](https://images.tuyacn.com/fe-static/docs/img/48b9e225-aa49-4e95-9d61-511bb7df27c8.png) 上的二维码。
+
+#### 确认设备处于配网状态
+
+在 App 中添加设备前，请确认设备已进入配网（激活）模式。串口日志中可见类似输出（TuyaOpen）：
+
+```text
+[01-01 00:00:01 ty D][tuya_iot.c:774] STATE_START
+[01-01 00:00:01 ty I][tuya_iot.c:792] Activation data read fail, go activation mode...
+[01-01 00:00:01 ty D][tuya_main.c:143] Tuya Event ID:1(TUYA_EVENT_BIND_START)
+```
+
+#### 在 App 中添加设备
+
+1. 打开智能生活 App，点击 **添加设备** 或右上角 **+** 进入添加流程。
+2. 按提示授予 App **Wi‑Fi** 与 **蓝牙** 权限，否则无法发现设备。
+3. 按 App 内步骤将设备连接到家庭 Wi‑Fi。
+4. 在 **首页** 或 **添加设备** 页看到待添加设备后，点击 **去添加**，按引导完成添加。
+
+:::warning
+当前 TuyaOpen 支持的模组仅支持路由器 **2.4 GHz** 频段，使用 5 GHz 会导致配网失败。
+:::
+
+## 常见问题
+
+### 授权信息错误导致无法发现设备或配网失败
+
+若授权数据未正确写入，设备可能打印类似日志：
+
+```text
+[01-01 00:00:00 ty E][tal_kv.c:269] lfs open UUID_TUYAOPEN -2 err
+[01-01 00:00:00 ty E][tuya_authorize.c:107] Authorization read failure.
+[01-01 00:00:00 ty W][tuya_main.c:288] Replace the TUYA_OPENSDK_UUID and TUYA_OPENSDK_AUTHKEY contents...
+```
+
+若日志中 `uuid`、`authkey` 仍为占位符（如 `uuidxxxxxxxxxxxxxxxx`），说明授权码未正确写入。请前往 [Tuya IoT 平台 – Open SDK](https://platform.tuya.com/purchase/index?type=6) 获取或购买 TuyaOpen 授权码，在 `tuya_app_config.h` 中正确设置 `TUYA_OPENSDK_UUID` 与 `TUYA_OPENSDK_AUTHKEY`，重新编译并烧录。
+
+若 `productkey`（PID）为占位符，说明产品 ID 未正确设置。请通过 [该链接](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2) 复制或创建产品并获取 PID，在 `tuya_app_config.h` 中设置 `TUYA_PRODUCT_ID`，重新编译并烧录。
+
+## 参考资料
+
+- [DuckyClaw 概述](/duckyclaw)
+- [T5-AI Board 概述](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)
+- [快速开始 – 环境搭建](/docs/quick-start/enviroment-setup)
+- [快速开始 – 设备授权](/docs/quick-start/equipment-authorization)
+- [自定义设备 MCP（硬件技能）](/docs/duckyclaw/custom-device-mcp)
+- [DuckyClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）

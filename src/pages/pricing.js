@@ -27,37 +27,39 @@ export default function Pricing() {
               '社区支持',
             ],
             buttonText: '见文档',
-            buttonLink: '/docs/about-tuyaopen',
+            buttonLink: '/zh/docs/faqs/get-developer-license',
             featured: false,
           },
-          {
-            title: '授权码- IoT连接',
-            price: '￥5',
-            unit: '/设备',
-            features: [
-              '所有免费的能力，加上....',
-              '将您的设备连接到涂鸦云',
-              'IoT连接',
-              '自定义IoT产品设备',
-              '可自定义App云服务',
-            ],
-            buttonText: '购买',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
-            featured: false,
-          },
+          // IoT-only tier (disabled; purchase link replaced by IoT+AI tier)
+          // {
+          //   title: '授权码- IoT连接',
+          //   price: '￥5',
+          //   unit: '/设备',
+          //   features: [
+          //     '所有免费的能力，加上....',
+          //     '将您的设备连接到涂鸦云',
+          //     'IoT连接',
+          //     '自定义IoT产品设备',
+          //     '可自定义App云服务',
+          //   ],
+          //   buttonText: '购买',
+          //   buttonLink: 'https://platform.tuya.com/purchase/index?type=6',
+          //   featured: false,
+          // },
           {
             title: '授权码- IoT连接 + AI',
             price: '￥12',
             unit: '/设备',
             features: [
               '所有免费和IoT连接功能，加上....',
+              '多模态 AI Token 使用',
               '多模态AI (ASR/TTS/STT/LLM/AI-Agent/Vision/Text/AI Pipelining)',
               '云端LLM tokens',
               'Tuya模块量产及固件烧录服务',
               'TuyaOpen商业量产就绪',
             ],
             buttonText: '购买',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
+            buttonLink: 'https://platform.tuya.com/purchase/index?type=6',
             featured: true,
           },
           {
@@ -91,24 +93,25 @@ export default function Pricing() {
               'Community support',
             ],
             buttonText: 'See Docs',
-            buttonLink: '/docs/about-tuyaopen',
+            buttonLink: '/docs/faqs/get-developer-license',
             featured: false,
           },
-          {
-            title: 'License Key - IoT Connection',
-            price: '$0.7',
-            unit: '/device',
-            features: [
-              'All Free features, plus...',
-              'Connect your device to Tuya Cloud',
-              'IoT connection',
-              'Custom IoT product devices',
-              'Customizable App cloud services',
-            ],
-            buttonText: 'Buy',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
-            featured: false,
-          },
+          // IoT-only tier (disabled; purchase link replaced by IoT+AI tier)
+          // {
+          //   title: 'License Key - IoT Connection',
+          //   price: '$0.7',
+          //   unit: '/device',
+          //   features: [
+          //     'All Free features, plus...',
+          //     'Connect your device to Tuya Cloud',
+          //     'IoT connection',
+          //     'Custom IoT product devices',
+          //     'Customizable App cloud services',
+          //   ],
+          //   buttonText: 'Buy',
+          //   buttonLink: 'https://platform.tuya.com/purchase/index?type=6',
+          //   featured: false,
+          // },
           {
             title: 'License Key - IoT Connection + AI',
             price: '$1.7',
@@ -116,12 +119,13 @@ export default function Pricing() {
             features: [
               'All Free and IoT Connection features, plus...',
               'Multimodal AI (ASR/TTS/STT/LLM/AI-Agent/Vision/Text/AI Pipelining)',
+              'Multi-modal AI token usage access',
               'Cloud LLM tokens',
               'Tuya module mass production & firmware flashing service',
               'TuyaOpen commercial mass production ready',
             ],
             buttonText: 'Buy',
-            buttonLink: 'https://www.tuyaopen.ai/docs/quick-start/unboxing#obtaining-a-license-key',
+            buttonLink: 'https://platform.tuya.com/purchase/index?type=6',
             featured: true,
           },
           {
@@ -274,9 +278,20 @@ export default function Pricing() {
                     ))}
                   </ul>
                 </div>
-                <Link to={card.buttonLink} className={styles.cardButton}>
-                  {card.buttonText}
-                </Link>
+                {card.buttonLink.startsWith('http') || card.buttonLink.startsWith('mailto:') ? (
+                  <a
+                    href={card.buttonLink}
+                    target={card.buttonLink.startsWith('http') ? '_blank' : undefined}
+                    rel={card.buttonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className={styles.cardButton}
+                  >
+                    {card.buttonText}
+                  </a>
+                ) : (
+                  <Link to={card.buttonLink} className={styles.cardButton}>
+                    {card.buttonText}
+                  </Link>
+                )}
               </div>
             ))}
           </div>

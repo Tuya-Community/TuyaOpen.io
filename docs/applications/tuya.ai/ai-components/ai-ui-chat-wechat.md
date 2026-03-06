@@ -1,5 +1,5 @@
 ---
-title: AI WeChat UI
+title: WeChat GUI
 ---
 
 ## Glossary

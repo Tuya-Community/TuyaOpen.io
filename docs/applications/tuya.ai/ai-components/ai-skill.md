@@ -1,5 +1,5 @@
 ---
-title: AI Skill Processing
+title: Skill Processing
 ---
 
 ## Glossary

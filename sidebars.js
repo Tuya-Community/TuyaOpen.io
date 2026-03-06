@@ -1,14 +1,49 @@
 module.exports = {
   docs: [
     // ------------------------------------------------------------------
+
+    // ------------------------------------------------------------------
     'about-tuyaopen',
     'maintenance-and-releases',
     'project-walkthrough',
     // ------------------------------------------------------------------
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">DuckyClaw</span><span class="sidebar-divider-zh">DuckyClaw 专区</span></div>',
+      defaultStyle: false,
+    },
+    {
+      type: 'category',
+      label: 'DuckyClaw',
+      collapsed: true,
+      items: [
+        { type: 'link', label: 'Overview', href: '/duckyclaw' },
+        {
+          type: 'category',
+          label: 'Quick Start',
+          collapsed: false,
+          items: [
+            'duckyclaw/ducky-quick-start-T5AI',
+            'duckyclaw/ducky-quick-start-raspberry-pi-5',
+            'duckyclaw/ducky-quick-start-ESP32S3',
+          ],
+        },
+        'duckyclaw/custom-device-mcp',
+      ],
+    },
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">👇Start Here👇</span><span class="sidebar-divider-zh">👇来吧！从这里开始👇</span></div>',
+      defaultStyle: false,
+    },
     {
       type: 'category',
       label: 'Getting Started',
       collapsed: false,
+      className: 'sidebar-getting-started',
       link: {
         type: 'doc',
         id: 'quick-start/index',
@@ -23,15 +58,13 @@ module.exports = {
         'quick-start/device-debug',
       ],
     },
-    // ------------------------------------------------------------------
-    // {
-    //   type: 'category',
-    //   label: 'Advanced Use',
-    //   collapsed: true,
-    //   items: [
-    //     'advanced-use/terminologies',
-    //   ],
-    // },
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">🛠️ Hardware</span><span class="sidebar-divider-zh">🛠️ 硬件指南</span></div>',
+      defaultStyle: false,
+    },
     // ------------------------------------------------------------------
     {
       type: 'category',
@@ -45,54 +78,41 @@ module.exports = {
         {
           type: 'category',
           label: 'Tuya T5',
-          collapsed: false,
+          collapsed: true,
           items: [
             'hardware-specific/tuya-t5/t5ai-peripheral-mapping',
             {
               type: 'category',
               label: 'T5-AI Board DevKit',
-              collapsed: false,
+              collapsed: true,
               items: ['hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board'],
             },
             {
               type: 'category',
               label: 'T5-AI Core DevKit',
-              collapsed: false,
-              items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
-            },
-            {
-              type: 'category',
-              label: 'Develop with Arduino',
               collapsed: true,
-              items: [
-                'hardware-specific/tuya-t5/develop-with-Arduino/Introduction',
-                'hardware-specific/tuya-t5/develop-with-Arduino/Quick_start',
-                'hardware-specific/tuya-t5/develop-with-Arduino/Application',
-                'hardware-specific/tuya-t5/develop-with-Arduino/AI_API_Development',
-                'hardware-specific/tuya-t5/develop-with-Arduino/Peripheral_Development',
-                'hardware-specific/tuya-t5/develop-with-Arduino/Arduino_Library',
-                'hardware-specific/tuya-t5/develop-with-Arduino/Pinmux',
-              ],
+              items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
             },
           ],
         },
         {
           type: 'category',
           label: 'Linux',
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               type: 'category',
               label: 'DshanPi A1',
-              collapsed: false,
+              collapsed: true,
               items: ['hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1'],
             },
             {
               type: 'category',
               label: 'Raspberry Pi',
-              collapsed: false,
+              collapsed: true,
               items: [
                 'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
                 'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
                 'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
               ],
@@ -101,6 +121,14 @@ module.exports = {
         },
       ],
     },
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">💡 Apps & Examples</span><span class="sidebar-divider-zh">💡 应用与示例</span></div>',
+      defaultStyle: false,
+    },
+
     // ------------------------------------------------------------------
     {
       type: 'category',
@@ -114,7 +142,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Tuya Cloud',
-          collapsed: false,
+          collapsed: true,
           items: ['applications/tuya_cloud/demo-tuya-iot-light'],
         },
         {
@@ -126,51 +154,6 @@ module.exports = {
             'applications/tuya.ai/demo-your-chat-bot',
             'applications/tuya.ai/demo-openclaw',
             'applications/tuya.ai/demo-duo-eyes-mood',
-            {
-              type: 'category',
-              label: 'AI App Components',
-              collapsed: false,
-              items: [
-                'applications/tuya.ai/ai-components/ai-components',
-                'applications/tuya.ai/ai-components/ai-main',
-                'applications/tuya.ai/ai-components/ai-agent',
-                'applications/tuya.ai/ai-components/ai-skill',
-                'applications/tuya.ai/ai-components/ai-audio-input',
-                'applications/tuya.ai/ai-components/ai-audio-player',
-                'applications/tuya.ai/ai-components/ai-video-input',
-                {
-                  type: 'category',
-                  label: 'AI Chat Mode',
-                  collapsed: false,
-                  link: {
-                    type: 'doc',
-                    id: 'applications/tuya.ai/ai-components/ai-mode-manage',
-                  },
-                  items: [
-                    'applications/tuya.ai/ai-components/ai-mode-hold',
-                    'applications/tuya.ai/ai-components/ai-mode-oneshot',
-                    'applications/tuya.ai/ai-components/ai-mode-wakeup',
-                    'applications/tuya.ai/ai-components/ai-mode-free',
-                  ],
-                },
-                {
-                  type: 'category',
-                  label: 'AI Chat UI',
-                  collapsed: false,
-                  link: {
-                    type: 'doc',
-                    id: 'applications/tuya.ai/ai-components/ai-ui-manage',
-                  },
-                  items: [
-                    'applications/tuya.ai/ai-components/ai-ui-chat-wechat',
-                    'applications/tuya.ai/ai-components/ai-ui-chat-chatbot',
-                    'applications/tuya.ai/ai-components/ai-ui-chat-oled',
-                  ],
-                },
-                'applications/tuya.ai/ai-components/ai-mcp-server',
-                'applications/tuya.ai/ai-components/ai-mcp-tools',
-              ],
-            },
           ],
         },
       ],
@@ -202,6 +185,14 @@ module.exports = {
       ],
     },
     // ------------------------------------------------------------------
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">☁️ Cloud Agent Docs</span><span class="sidebar-divider-zh">☁️ 云端智能体文档</span></div>',
+      defaultStyle: false,
+    },
+
     {
       type: 'category',
       label: 'Cloud Services',
@@ -267,9 +258,61 @@ module.exports = {
       ],
     },
     // ------------------------------------------------------------------
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">👨🏻‍💻 TuyaOpen SDKs</span><span class="sidebar-divider-zh">👨🏻‍💻 TuyaOpen SDK 套件</span></div>',
+      defaultStyle: false,
+    },
     {
       type: 'category',
-      label: 'TKL APIs',
+      label: 'AI App SDKs',
+      collapsed: true,
+      items: [
+        'applications/tuya.ai/ai-components/ai-components',
+        'applications/tuya.ai/ai-components/ai-main',
+        'applications/tuya.ai/ai-components/ai-agent',
+        'applications/tuya.ai/ai-components/ai-skill',
+        'applications/tuya.ai/ai-components/ai-audio-input',
+        'applications/tuya.ai/ai-components/ai-audio-player',
+        'applications/tuya.ai/ai-components/ai-video-input',
+        {
+          type: 'category',
+          label: 'Chat Mode Management',
+          collapsed: false,
+          link: {
+            type: 'doc',
+            id: 'applications/tuya.ai/ai-components/ai-mode-manage',
+          },
+          items: [
+            'applications/tuya.ai/ai-components/ai-mode-hold',
+            'applications/tuya.ai/ai-components/ai-mode-oneshot',
+            'applications/tuya.ai/ai-components/ai-mode-wakeup',
+            'applications/tuya.ai/ai-components/ai-mode-free',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'GUI',
+          collapsed: false,
+          link: {
+            type: 'doc',
+            id: 'applications/tuya.ai/ai-components/ai-ui-manage',
+          },
+          items: [
+            'applications/tuya.ai/ai-components/ai-ui-chat-wechat',
+            'applications/tuya.ai/ai-components/ai-ui-chat-chatbot',
+            'applications/tuya.ai/ai-components/ai-ui-chat-oled',
+          ],
+        },
+        'applications/tuya.ai/ai-components/ai-mcp-server',
+        'applications/tuya.ai/ai-components/ai-mcp-tools',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'System APIs',
       collapsed: true,
       items: [
         {
@@ -287,25 +330,7 @@ module.exports = {
             'tkl-api/tkl_output',
           ],
         },
-        {
-          type: 'category',
-          label: 'Hardware Interfaces',
-          collapsed: false,
-          items: [
-            'tkl-api/tkl_adc',
-            'tkl-api/tkl_dac',
-            'tkl-api/tkl_flash',
-            'tkl-api/tkl_gpio',
-            'tkl-api/tkl_i2c',
-            'tkl-api/tkl_i2s',
-            'tkl-api/tkl_pinmux',
-            'tkl-api/tkl_pwm',
-            'tkl-api/tkl_register',
-            'tkl-api/tkl_rtc',
-            'tkl-api/tkl_spi',
-            'tkl-api/tkl_uart',
-          ],
-        },
+
         {
           type: 'category',
           label: 'Networking',
@@ -320,10 +345,60 @@ module.exports = {
         },
       ],
     },
-    // ------------------------------------------------------------------
+
     {
       type: 'category',
-      label: 'Tos Tools',
+      label: 'Hardware Interface APIs',
+      collapsed: true,
+      items: [
+        'tkl-api/tkl_adc',
+        'tkl-api/tkl_dac',
+        'tkl-api/tkl_flash',
+        'tkl-api/tkl_gpio',
+        'tkl-api/tkl_i2c',
+        'tkl-api/tkl_i2s',
+        'tkl-api/tkl_pinmux',
+        'tkl-api/tkl_pwm',
+        'tkl-api/tkl_register',
+        'tkl-api/tkl_rtc',
+        'tkl-api/tkl_spi',
+        'tkl-api/tkl_uart',
+      ],
+    },
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">♾️ TuyaOpen with Arduino IDE</span><span class="sidebar-divider-zh">♾️ TuyaOpen 与 Arduino IDE</span></div>',
+      defaultStyle: false,
+    },
+    {
+      type: 'category',
+      label: 'T5 + Arduino IDE',
+      collapsed: true,
+      items: [
+        'hardware-specific/tuya-t5/develop-with-Arduino/Introduction',
+        'hardware-specific/tuya-t5/develop-with-Arduino/Quick_start',
+        'hardware-specific/tuya-t5/develop-with-Arduino/Application',
+        'hardware-specific/tuya-t5/develop-with-Arduino/AI_API_Development',
+        'hardware-specific/tuya-t5/develop-with-Arduino/Peripheral_Development',
+        'hardware-specific/tuya-t5/develop-with-Arduino/Arduino_Library',
+        'hardware-specific/tuya-t5/develop-with-Arduino/Pinmux',
+      ],
+    },
+
+    // ------------------------------------------------------------------
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">📦 Developer Tools</span><span class="sidebar-divider-zh">📦 开发者工具</span></div>',
+      defaultStyle: false,
+    },
+
+    {
+      type: 'category',
+      label: 'tos.py Tool (Flash/Debug)',
       collapsed: true,
       items: ['tos-tools/tos-guide', 'tos-tools/tools-tyutool'],
     },
@@ -334,8 +409,16 @@ module.exports = {
       collapsed: true,
       items: ['build-system/compilation-guide'],
     },
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">🌱 Other</span><span class="sidebar-divider-zh">🌱 其他</span></div>',
+      defaultStyle: false,
+    },
+
     // ------------------------------------------------------------------
     'faqs/faqs',
+    'faqs/get-developer-license',
     // ------------------------------------------------------------------
     {
       type: 'category',

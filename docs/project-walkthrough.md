@@ -1,8 +1,8 @@
 ---
-title: Directory Structure
+title: TuyaOpen Directory Walkthrough
 ---
 
-# Directory Structure
+# TuyaOpen Project Directory Structure
 
 ## Overview
 

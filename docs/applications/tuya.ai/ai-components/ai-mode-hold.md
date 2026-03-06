@@ -1,5 +1,5 @@
 ---
-title: AI Hold-to-Chat Mode
+title: Hold-to-Chat Mode
 ---
 
 ## Glossary

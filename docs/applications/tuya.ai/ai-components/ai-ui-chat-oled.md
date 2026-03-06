@@ -1,5 +1,5 @@
 ---
-title: AI OLED UI
+title: OLED GUI
 ---
 
 ## Glossary

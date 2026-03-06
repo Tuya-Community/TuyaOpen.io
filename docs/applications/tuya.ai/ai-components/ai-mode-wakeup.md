@@ -1,5 +1,5 @@
 ---
-title: AI Wake Word Chat Mode
+title: Wake Word Chat Mode
 ---
 
 ## Glossary

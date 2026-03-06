@@ -1,5 +1,5 @@
 ---
-title: "T5AI-Core 概述"
+title: "概述"
 ---
 
 # **T5AI-Core** 开发套件
