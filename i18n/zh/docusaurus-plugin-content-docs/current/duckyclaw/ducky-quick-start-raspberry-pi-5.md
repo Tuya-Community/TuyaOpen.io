@@ -1,5 +1,5 @@
 ---
-title: DuckyClaw 快速开始（Raspberry Pi 5）
+title: DuckyClaw 与 Raspberry Pi 4/5
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
