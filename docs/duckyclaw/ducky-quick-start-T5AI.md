@@ -173,7 +173,7 @@ tos.py check
 
 You should see version output (e.g. `v1.3.0`) and a list of tools (git, cmake, make, ninja) with OK status. Submodules will be downloaded if needed.
 
-### 3. Select the board configuration
+### 4. Select the board configuration
 
 Run the config chooser from the project root:
 
@@ -194,7 +194,7 @@ Input "q" to exit.
 Choice config file: 3
 ```
 
-### 4. Edit application configuration
+### 5. Edit application configuration
 
 Open `DuckyClaw/include/tuya_app_config.h` and set the following.
 
@@ -229,7 +229,7 @@ Replace the placeholder values. Obtain:
 - For **Discord**: set `IM_SECRET_CHANNEL_MODE` to `"discord"` and fill `IM_SECRET_DC_TOKEN` and `IM_SECRET_DC_CHANNEL_ID`.
 - For **Telegram**: set `IM_SECRET_CHANNEL_MODE` to `"telegram"` and fill `IM_SECRET_TG_TOKEN`.
 
-### 5. Build and flash
+### 6. Build and flash
 
 Build the project:
 
@@ -251,7 +251,7 @@ tos.py monitor
 
 **Expected outcome:** The firmware builds without errors, flashes to the T5-AI Board, and the device boots. Use the serial monitor to confirm startup and activation mode before adding the device in the app.
 
-### 6. Device activation and network setup
+### 7. Device activation and network setup
 
 To use Tuya Cloud features, add the device in the **Smart Life** app and complete Wi‑Fi provisioning.
 

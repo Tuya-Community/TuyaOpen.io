@@ -172,7 +172,7 @@ tos.py check
 
 应能看到版本号（如 `v1.3.0`）以及各工具（git、cmake、make、ninja）检查通过。如有需要会自动拉取子模块。
 
-### 3. 选择开发板配置
+### 4. 选择开发板配置
 
 在项目根目录执行配置选择：
 
@@ -193,7 +193,7 @@ Input "q" to exit.
 Choice config file: 3
 ```
 
-### 4. 修改应用配置
+### 5. 修改应用配置
 
 打开 `DuckyClaw/include/tuya_app_config.h`，设置以下项。
 
@@ -228,7 +228,7 @@ Choice config file: 3
 - **Discord**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"discord"`，并填写 `IM_SECRET_DC_TOKEN`、`IM_SECRET_DC_CHANNEL_ID`。
 - **Telegram**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"telegram"`，并填写 `IM_SECRET_TG_TOKEN`。
 
-### 5. 编译与烧录
+### 6. 编译与烧录
 
 编译工程：
 
@@ -250,7 +250,7 @@ tos.py monitor
 
 **预期结果**：工程编译通过，固件烧录到 T5-AI Board 后设备正常启动。可通过串口确认进入激活模式，再在 App 中添加设备。
 
-### 6. 设备激活与配网
+### 7. 设备激活与配网
 
 使用 Tuya Cloud 功能前，需在 **智能生活** App 中添加设备并完成 Wi‑Fi 配网。
 
