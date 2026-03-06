@@ -448,6 +448,41 @@ export default function DuckyClaw() {
                 </Link>
               </div>
             </div>
+            {isZh && (
+              <div className={styles.hardwareCard}>
+                <span className={styles.hardwareCardRecommendTag}>推荐</span>
+                <div className={styles.hardwareCardImageWrap}>
+                  <img
+                    src="https://images.tuyacn.com/fe-static/docs/img/f3d126d5-3613-491a-847f-490440354837.jpg"
+                    alt="正点电子 T5AI"
+                    className={styles.hardwareCardImage}
+                  />
+                </div>
+                <div className={styles.hardwareCategory}>MCU</div>
+                <p className={styles.hardwareList}>正点电子 T5AI</p>
+                <div className={styles.hardwareCardBtns}>
+                  <a
+                    href="https://detail.tmall.com/item.htm?abbucket=14&id=1003181296002&rn=7f1543f99cd08ddb7ff3e50cc9d30043&skuId=6156250414801&spm=a1z10.5-b.w4011-22287621884.60.340c7ed3QgtFMz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.hardwareCardBtnPrimary}
+                  >
+                    购买
+                  </a>
+                  <a
+                    href="https://wiki.alientek.com/docs/category/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97-2/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.hardwareCardBtnSecondary}
+                  >
+                    硬件文档
+                  </a>
+                  <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                    快速开始 (T5)
+                  </Link>
+                </div>
+              </div>
+            )}
             <div className={styles.hardwareCard}>
               <div className={styles.hardwareCardImageWrap}>
                 <img
@@ -462,6 +497,38 @@ export default function DuckyClaw() {
                 <Link to="/docs/duckyclaw/ducky-quick-start-ESP32S3" className={styles.hardwareCardBtnSecondary}>
                   {t('Quick start (ESP32-S3)', '快速开始 (ESP32-S3)', isZh)}
                 </Link>
+              </div>
+            </div>
+            <div className={styles.hardwareCard}>
+              <div className={styles.hardwareCardImageWrap}>
+                <img
+                  src="https://images.tuyacn.com/fe-static/docs/img/b748b5fb-ac48-4fa1-98c6-9faaf5430d32.png"
+                  alt="DshanPI-A1 RK3576"
+                  className={styles.hardwareCardImage}
+                />
+              </div>
+              <div className={styles.hardwareCategory}>SoC</div>
+              <p className={styles.hardwareList}>DshanPI-A1 RK3576</p>
+              <div className={styles.hardwareCardBtns}>
+                <a
+                  href="https://item.taobao.com/item.htm?abbucket=12&id=967894092488&mi_id=00000nOXSB4r1ZaQXcCIxcYrEMOMYzE4c3vgpsZWLGSWvEU&ns=1&skuId=6097645322398&spm=a21n57.1.hoverItem.1&utparam=%7B%22aplus_abtest%22%3A%22f0530f6557e6318bdabd61ab6573770f%22%7D&xxc=taobaoSearch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.hardwareCardBtnPrimary}
+                >
+                  {t('Purchase', '购买', isZh)}
+                </a>
+                <a
+                  href="https://wiki.dshanpi.org/en/docs/DshanPi-A1/intro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.hardwareCardBtnSecondary}
+                >
+                  {t('HW Docs', '硬件文档', isZh)}
+                </a>
+                <span className={styles.hardwareCardBtnDisabled} aria-disabled="true">
+                  {t('Guide', '指南', isZh)} — {t('Coming soon', '即将推出', isZh)}
+                </span>
               </div>
             </div>
             <div className={styles.hardwareCard}>
@@ -528,6 +595,15 @@ export default function DuckyClaw() {
                   {t('Quick start (T5)', '快速开始 (T5)', isZh)}
                 </Link>
               </div>
+            </div>
+            <div className={clsx(styles.hardwareCard, styles.hardwareCardMore)}>
+              <p className={styles.hardwareCardMoreText}>
+                {t(
+                  '🧩 More boards are supported. The framework is highly portable and compatible — contributions are welcome.',
+                  '🧩 更多开发板支持中，框架支持移植和兼容性良好，欢迎共建。',
+                  isZh,
+                )}
+              </p>
             </div>
           </div>
         </div>

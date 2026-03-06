@@ -121,6 +121,7 @@ git clone https://github.com/tuya/DuckyClaw.git
 ```bash
 cd DuckyClaw
 git submodule update --init
+git submodule update --init
 ```
 
 激活 TuyaOpen 构建环境，使 `tos.py` 可用：
@@ -296,6 +297,52 @@ tos.py monitor
 若日志中 `uuid`、`authkey` 仍为占位符（如 `uuidxxxxxxxxxxxxxxxx`），说明授权码未正确写入。请前往 [Tuya IoT 平台 – Open SDK](https://platform.tuya.com/purchase/index?type=6) 获取或购买 TuyaOpen 授权码，在 `tuya_app_config.h` 中正确设置 `TUYA_OPENSDK_UUID` 与 `TUYA_OPENSDK_AUTHKEY`，重新编译并烧录。
 
 若 `productkey`（PID）为占位符，说明产品 ID 未正确设置。请通过 [该链接](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2) 复制或创建产品并获取 PID，在 `tuya_app_config.h` 中设置 `TUYA_PRODUCT_ID`，重新编译并烧录。
+
+### 6. 设备激活与配网
+
+使用 Tuya Cloud 功能前，需在 **智能生活** App 中添加设备并完成 Wi‑Fi 配网。
+
+#### 下载智能生活 App
+
+从苹果 App Store 或各大安卓应用市场搜索 **智能生活** 下载，或扫描 [Tuya 智能生活 App 页面](https://images.tuyacn.com/fe-static/docs/img/48b9e225-aa49-4e95-9d61-511bb7df27c8.png) 上的二维码。
+
+#### 确认设备处于配网状态
+
+在 App 中添加设备前，请确认设备已进入配网（激活）模式。串口日志中可见类似输出（TuyaOpen）：
+
+```text
+[01-01 00:00:01 ty D][tuya_iot.c:774] STATE_START
+[01-01 00:00:01 ty I][tuya_iot.c:792] Activation data read fail, go activation mode...
+[01-01 00:00:01 ty D][tuya_main.c:143] Tuya Event ID:1(TUYA_EVENT_BIND_START)
+```
+
+#### 在 App 中添加设备
+
+1. 打开智能生活 App，点击 **添加设备** 或右上角 **+** 进入添加流程。
+2. 按提示授予 App **Wi‑Fi** 与 **蓝牙** 权限，否则无法发现设备。
+3. 按 App 内步骤将设备连接到家庭 Wi‑Fi。
+4. 在 **首页** 或 **添加设备** 页看到待添加设备后，点击 **去添加**，按引导完成添加。
+
+:::warning
+当前 TuyaOpen 支持的模组仅支持路由器 **2.4 GHz** 频段，使用 5 GHz 会导致配网失败。
+:::
+
+## 常见问题
+
+### 授权信息错误导致无法发现设备或配网失败
+
+若授权数据未正确写入，设备可能打印类似日志：
+
+```text
+[01-01 00:00:00 ty E][tal_kv.c:269] lfs open UUID_TUYAOPEN -2 err
+[01-01 00:00:00 ty E][tuya_authorize.c:107] Authorization read failure.
+[01-01 00:00:00 ty W][tuya_main.c:288] Replace the TUYA_OPENSDK_UUID and TUYA_OPENSDK_AUTHKEY contents...
+```
+
+若日志中 `uuid`、`authkey` 仍为占位符（如 `uuidxxxxxxxxxxxxxxxx`），说明授权码未正确写入。请前往 [Tuya IoT 平台 – Open SDK](https://platform.tuya.com/purchase/index?type=6) 获取或购买 TuyaOpen 授权码，在 `tuya_app_config.h` 中正确设置 `TUYA_OPENSDK_UUID` 与 `TUYA_OPENSDK_AUTHKEY`，重新编译并烧录。
+
+若 `productkey`（PID）为占位符，说明产品 ID 未正确设置。请通过 [该链接](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2) 复制或创建产品并获取 PID，在 `tuya_app_config.h` 中设置 `TUYA_PRODUCT_ID`，重新编译并烧录。
+
 
 ## 参考资料
 
