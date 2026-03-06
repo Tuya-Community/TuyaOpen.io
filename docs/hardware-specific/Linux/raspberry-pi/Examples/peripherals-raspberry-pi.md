@@ -547,11 +547,11 @@ This section shows how to use TuyaOpen to operate UART on Raspberry Pi.
 
 #### Device node mapping (related to the FAKE UART switch)
 
-- When `TKL_UART_USE_FAKE = n` (FAKE off; use real hardware UART), the default mapping is:
+- When `TKL_UART_REDIRECT_LOG_TO_STDOUT = n` (UART redirection disabled; use real hardware UART), the default mapping is:
   - `port 0 -> /dev/ttyAMA0`
   - `port 1 -> /dev/ttyAMA1`
   - `port 2 -> /dev/ttyAMA2`
-- When `TKL_UART_USE_FAKE = y` (FAKE on), the adapter does not access `/dev/ttyAMA*` and uses a “fake UART” implementation (see below).
+- When `TKL_UART_REDIRECT_LOG_TO_STDOUT = y` (UART redirection enabled), the adapter does not access `/dev/ttyAMA*` and uses a Dummy UART implementation (see below).
 
 #### Reference
 
@@ -775,4 +775,168 @@ static OPERATE_RET uart_loopback_test(TUYA_UART_NUM_E port)
   tkl_uart_deinit(port);
   return ret;
 }
+```
+
+## Button Example
+
+This example demonstrates how to handle button input on Raspberry Pi using TuyaOpen’s Button component (TDL Button management layer).
+
+### Adaptation Notes (Raspberry Pi: keyboard-simulated button)
+
+On Raspberry Pi, buttons are simulated via keyboard input by default: pressing a character in the terminal where you run `*.elf` triggers a button event.
+
+- Enabled by board Kconfig: `ENABLE_KEYBOARD_INPUT`
+- Trigger character is specified by `BUTTON_NAME` (default `s`)
+
+> Note: in the example project, the log for `TDL_BUTTON_PRESS_DOWN` is printed as `single click` (see `examples/peripherals/button/src/example_button.c`). It represents the “press down” event.
+
+### Enter the Example Directory
+
+```bash
+cd examples/peripherals/button
+```
+
+### Configuration
+
+```bash
+tos.py config choice
+```
+
+Select the number corresponding to `RaspberryPi.config` and press Enter.
+
+```bash
+tos.py config menu
+```
+
+After completing board/model selection per “Quick Start”, go to:
+
+- `Choice a board → LINUX → Raspberry Pi Board Configuration`
+  - Confirm `Enable keyboard input for Raspberry Pi` is checked.
+  - Set `Keyboard button device value`, for example: `s`
+
+Note: `Keyboard button device value` corresponds to the board config item `BUTTON_NAME`, meaning “which keyboard character is used to simulate the button”.
+
+- Set to `s`: pressing `s` in the terminal running `*.elf` triggers a button event named `s`.
+- It is recommended to use a **single character** (e.g., `s` / `a` / `d` / `1`). Avoid multi-character strings to prevent confusion if some implementations only take the first character.
+
+### Build and Run
+
+Build:
+
+```bash
+tos.py build
+```
+
+Run:
+
+```bash
+sudo ./button_1.0.0.elf
+```
+
+### Expected Behavior
+
+- Press the character corresponding to `BUTTON_NAME` (default `s`) in the terminal, and it prints `s: single click` once (press-down event).
+- Hold it for about 3 seconds (in the example, `long_start_valid_time=3000ms`), and it prints `s: long press` (long-press event).
+
+
+## Audio Codecs Example (audio_codecs)
+
+This example demonstrates **recording + playback** via ALSA on Raspberry Pi (PCM 16k/16bit/mono), and shows how to use TuyaOpen’s `TDL Audio` management-layer APIs.
+
+### Adaptation Notes (Linux ALSA)
+
+- On Raspberry Pi (Linux), audio is accessed via ALSA `/dev/snd/*`.
+- This example depends on the `src/peripherals/audio_codecs` component and uses the ALSA driver implementation (`tdd_audio_alsa.c`).
+- It is recommended to run with `sudo`, or ensure the current user is in the `audio` group (otherwise opening sound card device nodes may fail).
+
+### Pre-check (Verify USB Sound Card Is Recognized)
+
+Using a USB audio module (e.g., YD1076/Y1076) as an example, run on Raspberry Pi:
+
+```bash
+aplay -l
+arecord -l
+ls -la /dev/snd/
+```
+
+You should see a device like `card 2: Y1076 ...` in the list.
+
+### Enter the Example Directory
+
+```bash
+cd examples/peripherals/audio_codecs
+```
+
+### Configuration
+
+Open the configuration UI:
+
+
+```bash
+tos.py config choice
+```
+
+Select the number corresponding to `RaspberryPi.config` and press Enter.
+
+```bash
+tos.py config menu
+```
+
+After completing board selection per “Quick Start”, go to:
+
+- `Choice a board → LINUX → Choice a board → RaspberryPi → Raspberry Pi Board Configuration`
+  - Confirm `Enable keyboard input for Raspberry Pi` is checked.
+  - Set `Keyboard button device value`, for example: `s`
+
+### Build and Run
+
+Build:
+
+```bash
+tos.py build
+```
+
+Run (recommended with `sudo` on Raspberry Pi):
+
+```bash
+sudo ./audio_codecs_1.0.0.elf
+```
+
+Interaction: the example uses keyboard input to simulate a button by default (usually `s`). Press and hold to start recording, release to stop recording and play back (follow actual logs/behavior).
+
+### Common Troubleshooting
+
+1) **Failed to open `default` device**
+
+If you see errors like:
+
+- `ALSA lib pcm_asym.c:... capture slave is not defined`
+- `Audio capture device 'default' not available: Invalid argument`
+
+It indicates that the ALSA `default` PCM config on the current system cannot be used for recording.
+
+Possible solution:
+
+- Create `/etc/asound.conf` on Raspberry Pi and map `default` to the USB sound card:
+
+```bash
+sudo tee /etc/asound.conf >/dev/null <<'EOF'
+pcm.!default {
+    type asym
+    playback.pcm "plughw:CARD=Y1076,DEV=0"
+    capture.pcm  "plughw:CARD=Y1076,DEV=0"
+}
+
+ctl.!default {
+    type hw
+    card "Y1076"
+}
+EOF
+```
+
+After creating it, you can validate with:
+
+```bash
+arecord -D default -f S16_LE -c1 -r16000 -d2 /tmp/t.wav
+aplay -D default /tmp/t.wav
 ```

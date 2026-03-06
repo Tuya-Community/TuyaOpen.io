@@ -2,7 +2,7 @@
 title: "Raspberry Pi 外设"
 ---
 
-本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（`examples/peripherals`），包含 GPIO、I2C、SPI、PWM、UART。
+本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（`examples/peripherals`），包含 GPIO、I2C、SPI、PWM、UART等。
 
 ## 快速开始
 
@@ -548,11 +548,11 @@ static void pwm_min_demo(void)
 
 #### 设备节点映射（与 FAKE 串口开关相关）
 
-- 当 `TKL_UART_USE_FAKE = n`（关闭 FAKE，使用真实硬件 UART）时，默认映射为：
+- 当 `TKL_UART_REDIRECT_LOG_TO_STDOUT = n`（关闭串口重定向，使用真实硬件 UART）时，默认映射为：
   - `port 0 -> /dev/ttyAMA0`
   - `port 1 -> /dev/ttyAMA1`
   - `port 2 -> /dev/ttyAMA2`
-- 当 `TKL_UART_USE_FAKE = y`（开启 FAKE）时，不会访问 `/dev/ttyAMA*`，而是使用“伪串口”实现（见下文）。
+- 当 `TKL_UART_REDIRECT_LOG_TO_STDOUT = y`（开启串口重定向）时，不会访问 `/dev/ttyAMA*`，而是使用 Dummy 串口实现（见下文）。
 
 #### 参考
 
@@ -775,3 +775,169 @@ static OPERATE_RET uart_loopback_test(TUYA_UART_NUM_E port)
   return ret;
 }
 ```
+
+## Button 示例
+
+本示例演示如何在 Raspberry Pi 上使用 TuyaOpen 的 Button 组件（TDL Button 管理层）处理按键输入。
+
+### 适配说明（Raspberry Pi：键盘模拟按键）
+
+Raspberry Pi 平台默认通过“键盘输入”模拟按键：你在运行 `*.elf` 的终端里按下某个字符，即可触发按钮事件。
+
+- 是否启用由板卡 Kconfig 控制：`ENABLE_KEYBOARD_INPUT`
+- 触发按键字符由 `BUTTON_NAME` 指定（默认 `s`）
+
+> 说明：示例工程里将 `TDL_BUTTON_PRESS_DOWN` 的日志打印成了 `single click`（见 `examples/peripherals/button/src/example_button.c`），它代表“按下”事件。
+
+### 进入示例目录
+
+```bash
+cd examples/peripherals/button
+```
+
+### 配置
+
+```bash
+tos.py config choice
+```
+
+选择 `RaspberryPi.config` 对应的数字并按下回车。
+
+```bash
+tos.py config menu
+```
+
+按“快速开始”完成板卡与型号选择后，进入：
+
+- `Choice a board → LINUX → Raspberry Pi Board Configuration`
+  - 确认 `Enable keyboard input for Raspberry Pi` 已被勾选。
+  - 设置 `Keyboard button device value`，例如：`s`
+
+说明：这里的 `Keyboard button device value` 对应板卡配置项 `BUTTON_NAME`，表示“用键盘上的哪个字符来模拟按键”。
+
+- 设为 `s`：在运行 `*.elf` 的终端里按下 `s`，会触发名为 `s` 的按钮事件。
+- 建议使用**单个字符**（如 `s` / `a` / `d` / `1`），避免使用多字符字符串，以免不同实现只取第一个字符导致理解偏差。
+
+### 编译与运行
+
+编译：
+
+```bash
+tos.py build
+```
+
+运行：
+
+```bash
+sudo ./button_1.0.0.elf
+```
+
+### 期望现象
+
+- 在终端按下 `BUTTON_NAME` 对应字符（默认 `s`），会打印一次 `s: single click`（按下事件）。
+- 按住不放约 3 秒（示例里 `long_start_valid_time=3000ms`），会打印 `s: long press`（长按事件）。
+
+
+## Audio Codecs 示例（audio_codecs）
+
+本示例演示如何在 Raspberry Pi 上通过 ALSA 进行**录音 + 回放**（PCM 16k/16bit/mono），并展示 TuyaOpen 的 `TDL Audio` 管理层接口用法。
+
+### 适配说明（Linux ALSA）
+
+- Raspberry Pi（Linux）下音频通过 ALSA 访问 `/dev/snd/*`。
+- 该示例依赖 `src/peripherals/audio_codecs` 组件，并使用 ALSA 驱动实现（`tdd_audio_alsa.c`）。
+- 建议用 `sudo` 运行，或确保当前用户属于 `audio` 组（否则可能无法打开声卡设备节点）。
+
+### 前置检查（确认 USB 声卡已识别）
+
+以 USB 音频模块（例如 YD1076/Y1076）为例，在树莓派终端执行：
+
+```bash
+aplay -l
+arecord -l
+ls -la /dev/snd/
+```
+
+你应能在列表中看到类似 `card 2: Y1076 ...` 的设备。
+
+### 进入示例目录
+
+```bash
+cd examples/peripherals/audio_codecs
+```
+
+### 配置
+
+打开配置界面：
+
+
+```bash
+tos.py config choice
+```
+
+选择 `RaspberryPi.config` 对应的数字并按下回车。
+
+```bash
+tos.py config menu
+```
+
+按“快速开始”完成板卡选择后，进入：
+
+- `Choice a board → LINUX → Choice a board → RaspberryPi → Raspberry Pi Board Configuration`
+  - 确认 `Enable keyboard input for Raspberry Pi` 已被勾选。
+  - 设置 `Keyboard button device value`，例如：`s`
+
+### 编译与运行
+
+编译：
+
+```bash
+tos.py build
+```
+
+运行（树莓派上建议用 `sudo`）：
+
+```bash
+sudo ./audio_codecs_1.0.0.elf
+```
+
+交互说明：示例默认使用键盘按键模拟按钮（通常为 `s`）。按住开始录音，松开结束录音并回放（以实际日志/行为为准）。
+
+### 常见问题排查
+
+1) **打开 `default` 设备失败**
+
+如果看到类似：
+
+- `ALSA lib pcm_asym.c:... capture slave is not defined`
+- `Audio capture device 'default' not available: Invalid argument`
+
+说明当前系统的 ALSA `default` PCM 配置不可用于录音。
+
+解决思路：
+
+- 在树莓派上创建 `/etc/asound.conf`，将 `default` 映射到 USB 声卡：
+
+```bash
+sudo tee /etc/asound.conf >/dev/null <<'EOF'
+pcm.!default {
+    type asym
+    playback.pcm "plughw:CARD=Y1076,DEV=0"
+    capture.pcm  "plughw:CARD=Y1076,DEV=0"
+}
+
+ctl.!default {
+    type hw
+    card "Y1076"
+}
+EOF
+```
+
+创建后可用以下命令验证：
+
+```bash
+arecord -D default -f S16_LE -c1 -r16000 -d2 /tmp/t.wav
+aplay -D default /tmp/t.wav
+```
+
+
