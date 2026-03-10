@@ -365,6 +365,15 @@
   background: var(--dc-bg-elevated);
 }
 
+/* Skills list section — distinct background for contrast with adjacent sections */
+.sectionSkillsList {
+  background: #0c0f1a;
+}
+
+.duckyclawTheme .sectionSkillsList {
+  background: var(--dc-bg);
+}
+
 .sectionInner {
   max-width: var(--dc-max-width);
   margin: 0 auto;
@@ -1052,6 +1061,188 @@
   margin-top: 0;
 }
 
+/* Skills list section — image above title */
+.skillsListImage {
+  display: block;
+  width: 100%;
+  max-width: 25rem;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.agentWorkflowImage {
+  display: block;
+  width: 100%;
+  max-width: 21rem;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.communityImage {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.quickStartImage {
+  display: block;
+  width: 100%;
+  max-width: 25rem;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+/* Skills table: blur when collapsed, overlay button */
+.skillsTableOuter {
+  position: relative;
+  margin-top: 0.75rem;
+}
+
+.skillsTableBlurWrap {
+  transition: filter 0.25s ease, max-height 0.35s ease;
+}
+
+.skillsTableBlurWrapCollapsed {
+  max-height: 21rem;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Blur only the lower 25%: non-linear clear→blur (top→bottom) via layered masks */
+.skillsTableBlurStripWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28%;
+  min-height: 3.5rem;
+  pointer-events: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  overflow: hidden;
+}
+
+.skillsTableBlurLayer {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 25%,
+    var(--dc-bg, rgba(12, 8, 9, 0.15)) 60%,
+    var(--dc-bg, rgba(12, 8, 9, 0.5)) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.4) 45%,
+    black 85%,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.4) 45%,
+    black 85%,
+    black 100%
+  );
+  mask-size: 100% 100%;
+  mask-position: 0 0;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: 0 0;
+}
+
+.skillsTableBlurLayer[data-layer='2'] {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.5) 70%,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.5) 70%,
+    black 100%
+  );
+}
+
+.skillsTableBlurLayer[data-layer='3'] {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.6) 85%,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.6) 85%,
+    black 100%
+  );
+}
+
+.skillsTableOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  padding-bottom: 0.5rem;
+}
+
+.skillsTableOverlay .skillsTableExpandBtn {
+  pointer-events: auto;
+}
+
+.skillsTableExpandBtnWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.skillsTableExpandBtn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--dc-red-bright, var(--ifm-color-primary));
+  background: var(--dc-bg-card, rgba(0, 0, 0, 0.3));
+  border: 1px solid var(--dc-border, rgba(255, 255, 255, 0.15));
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.skillsTableExpandBtn:hover {
+  background: var(--dc-bg-elevated, rgba(255, 255, 255, 0.08));
+  border-color: var(--dc-border-hover, rgba(255, 255, 255, 0.25));
+}
+
+.duckyclawTheme .skillsTableExpandBtn {
+  color: var(--dc-red-bright);
+  background: var(--dc-bg-card);
+  border-color: var(--dc-border);
+}
+
+.duckyclawTheme .skillsTableExpandBtn:hover {
+  background: var(--dc-bg-elevated);
+  border-color: var(--dc-border-hover);
+}
+
 .specsTableWrap {
   margin-top: 0.75rem;
   margin-left: auto;
@@ -1059,6 +1250,10 @@
   max-width: 56rem;
   overflow-x: auto;
   border-radius: 0.25rem;
+}
+
+.skillsTableOuter .specsTableWrap {
+  margin-top: 0;
 }
 
 .specsTable {
@@ -1105,6 +1300,28 @@
 
 .duckyclawTheme .specsTable td {
   color: var(--dc-text-muted);
+}
+
+/* Skills table: first three columns single line; Core purpose column wraps */
+.skillNameCell {
+  display: inline-block;
+}
+
+.skillsTableOuter .specsTable th:nth-child(1),
+.skillsTableOuter .specsTable th:nth-child(2),
+.skillsTableOuter .specsTable th:nth-child(3),
+.skillsTableOuter .specsTable td:nth-child(1),
+.skillsTableOuter .specsTable td:nth-child(2),
+.skillsTableOuter .specsTable td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.skillsTableOuter .specsTable th:nth-child(4),
+.skillsTableOuter .specsTable td:nth-child(4) {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 10rem;
 }
 
 .specsLayerList {

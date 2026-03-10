@@ -14,6 +14,293 @@ const ARCH_IMG_EN = 'https://images.tuyacn.com/fe-static/docs/img/bbeed5a9-9fb5-
 
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
+/** DuckyClaw skills list: name, category, deployment, purpose (en/zh) */
+const SKILLS_LIST = [
+  {
+    nameEn: 'Long-term memory',
+    nameZh: '长期记忆',
+    emoji: '🧠',
+    categoryEn: 'Memory & storage',
+    categoryZh: '记忆与存储',
+    deployEn: 'Device',
+    deployZh: '端侧',
+    purposeEn: 'Persist key conversation and daily event logs on device for cross-session long-term memory.',
+    purposeZh: '在设备端持久化存储关键对话信息与每日事件日志，实现跨会话的长期记忆能力',
+  },
+  {
+    nameEn: 'CORN (local cron)',
+    nameZh: 'CORN（本地定时）',
+    emoji: '⏰',
+    categoryEn: 'Task scheduling',
+    categoryZh: '任务调度',
+    deployEn: 'Device',
+    deployZh: '端侧',
+    purposeEn: 'Parse timed and scheduled tasks from conversation; trigger reminders or to-dos at specified times.',
+    purposeZh: '解析对话中的定时与计划任务，于指定时间自动触发 AI 执行提醒或待办事项',
+  },
+  {
+    nameEn: 'Skill creation',
+    nameZh: '技能创建',
+    emoji: '✨',
+    categoryEn: 'Capability extension',
+    categoryZh: '能力扩展',
+    deployEn: 'Device',
+    deployZh: '端侧',
+    purposeEn: 'Users grant AI new abilities via natural language; AI learns and stores new skills locally over time.',
+    purposeZh: '支持用户通过自然语言交互主动赋予 AI 新能力，AI 在持续对话中自主学习并本地化存储新技能',
+  },
+  {
+    nameEn: 'Personality definition',
+    nameZh: '性格定义',
+    emoji: '🎭',
+    categoryEn: 'Personalization',
+    categoryZh: '个性化配置',
+    deployEn: 'Device',
+    deployZh: '端侧',
+    purposeEn:
+      'Configure AI personality, language style, values and behavior on device; record user profile perceived by AI.',
+    purposeZh: '在设备本地配置 AI 的性格特质、语言风格、价值取向与行为规范，并记录 AI 对用户特征的认知画像',
+  },
+  {
+    nameEn: 'Heartbeat wake-up',
+    nameZh: '心跳唤醒',
+    emoji: '💓',
+    categoryEn: 'Task scheduling',
+    categoryZh: '任务调度',
+    deployEn: 'Device',
+    deployZh: '端侧',
+    purposeEn: 'AI periodically checks device to-do list and proactively reminds unfinished tasks for closure.',
+    purposeZh: 'AI 按周期自主检查设备端待办清单，对未完成任务进行主动提醒，保障任务闭环执行',
+  },
+  {
+    nameEn: 'Command terminal',
+    nameZh: '命令终端',
+    emoji: '💻',
+    categoryEn: 'Capability extension',
+    categoryZh: '能力扩展',
+    deployEn: 'Device (Linux only)',
+    deployZh: '端侧-Linux Only',
+    purposeEn:
+      'Natural language to local Shell; AI parses and runs Bash commands for toolchains and system management.',
+    purposeZh:
+      '支持通过自然语言与设备本地 Shell 命令交互，AI 可解析并执行 Bash 指令，适用于定制化工具链调用、系统管理等高级需求',
+  },
+  {
+    nameEn: 'File operations',
+    nameZh: '文件操作',
+    emoji: '📁',
+    categoryEn: 'Capability extension',
+    categoryZh: '能力扩展',
+    deployEn: 'Device',
+    deployZh: '端侧',
+    purposeEn: 'Read, write, move, and delete files on device; control file management via conversation.',
+    purposeZh: '实现对设备本地文件系统的读取、写入、移动及删除操作，通过会话控制文件管理任务，提升端侧自动化能力',
+  },
+  {
+    nameEn: 'Local service monitoring',
+    nameZh: '本地服务监控',
+    emoji: '📊',
+    categoryEn: 'Task scheduling',
+    categoryZh: '任务调度',
+    deployEn: 'Device (Linux only)',
+    deployZh: '端侧-Linux Only',
+    purposeEn:
+      'Monitor key local service processes; alert on failure and support auto-heal or restart for high availability.',
+    purposeZh: '检查与监控本地关键服务进程运行状态，异常时自动告警，并支持服务自愈或重启操作，保障系统高可用性',
+  },
+  {
+    nameEn: 'Resource usage analysis',
+    nameZh: '资源占用分析',
+    emoji: '📈',
+    categoryEn: 'Information retrieval',
+    categoryZh: '信息检索',
+    deployEn: 'Device (Linux only)',
+    deployZh: '端侧-Linux Only',
+    purposeEn: 'Report real-time CPU, memory, disk usage to help optimize performance and resource allocation.',
+    purposeZh: '提供对本地 CPU、内存、磁盘等资源实时占用情况的分析与汇报，辅助用户优化系统性能和资源分配',
+  },
+  {
+    nameEn: 'Web search',
+    nameZh: '联网搜索',
+    emoji: '🔍',
+    categoryEn: 'Information retrieval',
+    categoryZh: '信息检索',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Search the internet for accurate, up-to-date information and knowledge.',
+    purposeZh: '自主检索互联网实时信息，提供准确、时效性强的知识支持',
+  },
+  {
+    nameEn: 'IoT whole-home control',
+    nameZh: 'IoT 全屋控制',
+    emoji: '🏠',
+    categoryEn: 'Device control',
+    categoryZh: '设备控制',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Control Powered by Tuya devices: lighting, appliances, cleaning, and full smart-home scenarios.',
+    purposeZh: '全面支持控制基于 Powered by Tuya 生态的硬件设备，覆盖照明、用电、清洁等全品类智能家居场景',
+  },
+  {
+    nameEn: 'Emotion perception',
+    nameZh: '情绪感知',
+    emoji: '😊',
+    categoryEn: 'Emotional interaction',
+    categoryZh: '情感交互',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Analyze conversation to detect user emotion and present it as text or Emoji.',
+    purposeZh: '实时分析对话内容以识别用户情绪状态，并通过文本或 Emoji 的形式直观呈现情绪信息',
+  },
+  {
+    nameEn: 'Weather',
+    nameZh: '天气获取',
+    emoji: '🌤️',
+    categoryEn: 'Information retrieval',
+    categoryZh: '信息检索',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Get global real-time weather without extra config; support multi-scenario queries.',
+    purposeZh: '无需额外配置，即可跨地域获取全球实时天气数据，支持多场景气象信息查询',
+  },
+  {
+    nameEn: 'MCP tools',
+    nameZh: 'MCP 工具',
+    emoji: '🔧',
+    categoryEn: 'Capability extension',
+    categoryZh: '能力扩展',
+    deployEn: 'Cloud / Device',
+    deployZh: '云端/端侧',
+    purposeEn: 'Develop and deploy MCP servers to extend AI capabilities without changing the LLM application.',
+    purposeZh: '支持独立开发与部署 MCP 服务器，在不变更 LLM 应用本体的前提下，灵活扩展 AI 的功能边界与工具能力',
+  },
+  {
+    nameEn: 'Image recognition',
+    nameZh: '图片识别',
+    emoji: '🖼️',
+    categoryEn: 'Multimodal perception',
+    categoryZh: '多模态感知',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Understand and analyze image content; support object detection and scene description.',
+    purposeZh: '对输入的图像内容进行语义理解与结构化分析，支持目标检测、场景描述等视觉认知任务',
+  },
+  {
+    nameEn: 'Text-to-image',
+    nameZh: '文字生图',
+    emoji: '🎨',
+    categoryEn: 'Multimodal generation',
+    categoryZh: '多模态生成',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Generate images from natural language descriptions; support multiple styles and scenes.',
+    purposeZh: '根据自然语言描述生成对应的图像内容，支持多风格、多场景的 AI 图像创作',
+  },
+  {
+    nameEn: 'ASR',
+    nameZh: 'ASR',
+    emoji: '🎤',
+    categoryEn: 'Voice processing',
+    categoryZh: '语音处理',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Convert user speech into structured text for AI processing.',
+    purposeZh: '将用户输入的语音信号精准转换为可供 AI 处理的结构化文本内容',
+  },
+  {
+    nameEn: 'TTS',
+    nameZh: 'TTS',
+    emoji: '🔊',
+    categoryEn: 'Voice processing',
+    categoryZh: '语音处理',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Synthesize LLM text into natural speech and stream to device for playback.',
+    purposeZh: '将 LLM 生成的文本响应合成为自然语音，并实时下发至设备端进行播放',
+  },
+  {
+    nameEn: 'Triggers',
+    nameZh: '触发器',
+    emoji: '⚡',
+    categoryEn: 'Automation rules',
+    categoryZh: '自动化规则',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn:
+      'When device meets trigger conditions, invoke agent automatically (e.g. low battery, temperature alert).',
+    purposeZh:
+      '当设备满足预设的事件触发条件时，自动唤起智能体执行对应任务，适用于低电量告警、温度异常等规则化自动化场景',
+  },
+  {
+    nameEn: 'NetEase Cloud Music',
+    nameZh: '网易云音乐',
+    emoji: '🎵',
+    categoryEn: 'Media service',
+    categoryZh: '媒体服务',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Access NetEase Cloud Music and play streams on device.',
+    purposeZh: '接入网易云音乐服务，获取音乐资源流并在设备端进行本地播放',
+  },
+  {
+    nameEn: 'Device self-control',
+    nameZh: '设备自控',
+    emoji: '🤖',
+    categoryEn: 'Device control',
+    categoryZh: '设备控制',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Device parses user intent and controls its own hardware via conversation.',
+    purposeZh: '设备自主解析用户语义指令并执行相应操作，实现用户对话控制设备硬件功能',
+  },
+  {
+    nameEn: 'Device remote control',
+    nameZh: '设备被控',
+    emoji: '📡',
+    categoryEn: 'Device control',
+    categoryZh: '设备控制',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Device acts as controlled node; accept commands from other devices for cross-device automation.',
+    purposeZh: '当前设备作为受控端，接受其他设备下发的控制指令，支持构建跨设备协同联动的自动化控制场景',
+  },
+  {
+    nameEn: 'Model switching',
+    nameZh: '模型切换',
+    emoji: '🔄',
+    categoryEn: 'Platform management',
+    categoryZh: '平台管理',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Switch mainstream LLMs on Tuya developer platform to fit different scenarios.',
+    purposeZh: '通过涂鸦开发者平台快速切换主流大语言模型配置，灵活适配不同业务场景的模型需求',
+  },
+  {
+    nameEn: 'Voice switching',
+    nameZh: '音色切换',
+    emoji: '🎙️',
+    categoryEn: 'Platform management',
+    categoryZh: '平台管理',
+    deployEn: 'Cloud',
+    deployZh: '云端',
+    purposeEn: 'Switch TTS voice on Tuya developer platform for personalized experience.',
+    purposeZh: '通过涂鸦开发者平台快速切换设备 TTS 播放音色，满足个性化语音交互体验需求',
+  },
+  {
+    nameEn: 'MCP (multi-component processor)',
+    nameZh: 'MCP（多组件处理器）',
+    emoji: '⚙️',
+    categoryEn: 'Capability extension',
+    categoryZh: '能力扩展',
+    deployEn: 'Device / Cloud',
+    deployZh: '端侧/云端',
+    purposeEn:
+      'Register hardware (GPIO, sensors, relays, servos, motors) via open interfaces so AI can control and schedule them in conversation and automation.',
+    purposeZh:
+      '支持将底层硬件功能（如 GPIO 控制、环境传感器数据采集、继电器/舵机/电机控制等）通过开放接口统一注册到 AI 系统，实现硬件能力的原生对话调用与自动化调度，助力个性化智能场景开发与设备功能二次扩展',
+  },
+]
+
 /* Neo beams: shorter length; each shoots briefly, long cycle = fewer lit at once */
 const NEO_BEAM_COUNT = 20
 const neoBeams = Array.from({ length: NEO_BEAM_COUNT }, (_, i) => {
@@ -43,6 +330,7 @@ export default function DuckyClaw() {
   const isZh = i18n.currentLocale === 'zh'
   const [archLightboxOpen, setArchLightboxOpen] = React.useState(false)
   const [workflowLightboxOpen, setWorkflowLightboxOpen] = React.useState(false)
+  const [skillsExpanded, setSkillsExpanded] = React.useState(false)
   const workflowImageSrc = 'https://images.tuyacn.com/content-platform/hestia/175551024951299d2e04e.png'
   React.useEffect(() => {
     if (!archLightboxOpen) return
@@ -172,6 +460,9 @@ export default function DuckyClaw() {
           </a>
           <a href="#hardware-skills" className={styles.anchorLink}>
             {t('Hardware skills', '硬件技能', isZh)}
+          </a>
+          <a href="#skills-list" className={styles.anchorLink}>
+            {t('Skills list', '技能清单', isZh)}
           </a>
           <a href="#agent-workflow" className={styles.anchorLink}>
             {t('Agent & Cloud', 'Agent 与云', isZh)}
@@ -355,6 +646,11 @@ export default function DuckyClaw() {
       {/* Quick start */}
       <section className={`${styles.section} ${styles.sectionAlt} ${styles.sectionCompactAfter}`} id="quickstart">
         <div className={styles.sectionInner}>
+          <img
+            src="https://images.tuyacn.com/fe-static/docs/img/362d79aa-d41a-4bc8-8da5-794d8af7194c.png"
+            alt={t('Quick start illustration', '快速开始示意图', isZh)}
+            className={styles.quickStartImage}
+          />
           <h2 className={styles.sectionTitle}>{t('Quick start', '快速开始', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
@@ -674,9 +970,99 @@ export default function DuckyClaw() {
         </a>
       </section>
 
+      {/* DuckyClaw Skills list */}
+      <section className={`${styles.section} ${styles.sectionSkillsList}`} id="skills-list">
+        <div className={styles.sectionInner}>
+          <img
+            src="https://images.tuyacn.com/fe-static/docs/img/d8c2dc8a-3b70-41a4-b0d0-be3d07e2bde0.png"
+            alt={t('DuckyClaw skills list illustration', 'DuckyClaw 技能清单示意图', isZh)}
+            className={styles.skillsListImage}
+          />
+          <h2 className={styles.sectionTitle}>{t('DuckyClaw Skills list', 'DuckyClaw 技能清单', isZh)}</h2>
+          <p className={styles.sectionSubtitle}>
+            {t(
+              'Skills by category, capability scope, and core purpose.',
+              '按技能类别、能力所属与核心用途列出的技能清单。',
+              isZh,
+            )}
+          </p>
+          <div className={styles.skillsTableOuter}>
+            <div
+              className={clsx(
+                styles.specsTableWrap,
+                styles.skillsTableBlurWrap,
+                !skillsExpanded && styles.skillsTableBlurWrapCollapsed,
+              )}
+            >
+              <table className={styles.specsTable}>
+                <thead>
+                  <tr>
+                    <th>{t('Skill name', '技能名称', isZh)}</th>
+                    <th>{t('Category', '技能类别', isZh)}</th>
+                    <th>{t('Capability scope', '能力所属', isZh)}</th>
+                    <th>{t('Core purpose', '核心用途', isZh)}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(skillsExpanded ? SKILLS_LIST : SKILLS_LIST.slice(0, 6)).map((skill, i) => (
+                    <tr key={i}>
+                      <td>
+                        <span className={styles.skillNameCell}>
+                          {skill.emoji} {isZh ? skill.nameZh : skill.nameEn}
+                        </span>
+                      </td>
+                      <td>{isZh ? skill.categoryZh : skill.categoryEn}</td>
+                      <td>{isZh ? skill.deployZh : skill.deployEn}</td>
+                      <td>{isZh ? skill.purposeZh : skill.purposeEn}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {!skillsExpanded && (
+              <div className={styles.skillsTableBlurStripWrap} aria-hidden="true">
+                <div className={styles.skillsTableBlurLayer} data-layer="1" />
+                <div className={styles.skillsTableBlurLayer} data-layer="2" />
+                <div className={styles.skillsTableBlurLayer} data-layer="3" />
+              </div>
+            )}
+            {!skillsExpanded ? (
+              <div className={styles.skillsTableOverlay} aria-hidden="false">
+                <button
+                  type="button"
+                  className={styles.skillsTableExpandBtn}
+                  onClick={() => setSkillsExpanded(true)}
+                  aria-expanded="false"
+                  aria-label={t('Show more skills', '展开更多技能', isZh)}
+                >
+                  … {t('Show more', '展开更多', isZh)}
+                </button>
+              </div>
+            ) : (
+              <div className={styles.skillsTableExpandBtnWrap}>
+                <button
+                  type="button"
+                  className={styles.skillsTableExpandBtn}
+                  onClick={() => setSkillsExpanded(false)}
+                  aria-expanded="true"
+                  aria-label={t('Show fewer skills', '收起技能列表', isZh)}
+                >
+                  {t('Show less', '收起', isZh)}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Agent loop & Tuya Cloud workflow */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="agent-workflow">
         <div className={styles.sectionInner}>
+          <img
+            src="https://images.tuyacn.com/fe-static/docs/img/f66b08b2-2f2a-4358-b3b0-e1970ada4dbe.png"
+            alt={t('Local agent loop and Tuya Cloud illustration', '本地 Agent 循环与涂鸦云示意图', isZh)}
+            className={styles.agentWorkflowImage}
+          />
           <h2 className={styles.sectionTitle}>
             {t('Local agent loop + Tuya Cloud', '本地 Agent 循环 + 涂鸦云', isZh)}
           </h2>
@@ -962,6 +1348,11 @@ export default function DuckyClaw() {
       {/* Community & links */}
       <section className={styles.section} id="community">
         <div className={styles.sectionInner}>
+          <img
+            src="https://images.tuyacn.com/fe-static/docs/img/b7669327-0c0a-422b-abc0-582ab22d0f42.png"
+            alt={t('Community and links illustration', '社区与链接示意图', isZh)}
+            className={styles.communityImage}
+          />
           <h2 className={styles.sectionTitle}>{t('Community & links', '社区与链接', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t('Star, contribute, and stay in touch.', 'Star、参与贡献、保持联系。', isZh)}
