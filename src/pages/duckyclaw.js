@@ -12,6 +12,12 @@ const BANNER_IMG = 'https://images.tuyacn.com/fe-static/docs/img/210f532a-0bb1-4
 const ARCH_IMG_ZH = 'https://images.tuyacn.com/fe-static/docs/img/9b8d1a57-3359-4837-af84-710f729d8e48.png'
 const ARCH_IMG_EN = 'https://images.tuyacn.com/fe-static/docs/img/bbeed5a9-9fb5-4710-b20b-76fb3ed1add4.png'
 
+/** Demo video: set URL to show in 效果展示 (ZH). EN stays "Work in progress". */
+const DEMO_VIDEO_URL = 'https://www.bilibili.com/video/BV1dePxzfEvd'
+/** Optional: iframe embed URL (e.g. Bilibili player) so the video shows on the page for ZH. */
+const DEMO_VIDEO_EMBED_URL =
+  'https://player.bilibili.com/player.html?isOutside=true&aid=116182740896449&bvid=BV1dePxzfEvd&cid=36504996323&p=1'
+
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
 /** DuckyClaw skills list: name, category, deployment, purpose (en/zh) */
@@ -327,7 +333,7 @@ const snowAshFlakes = Array.from({ length: FLAKE_COUNT }, (_, i) => {
 
 export default function DuckyClaw() {
   const { siteConfig, i18n } = useDocusaurusContext()
-  const isZh = i18n.currentLocale === 'zh'
+  const isZh = (i18n.currentLocale || '').startsWith('zh')
   const [archLightboxOpen, setArchLightboxOpen] = React.useState(false)
   const [workflowLightboxOpen, setWorkflowLightboxOpen] = React.useState(false)
   const [skillsExpanded, setSkillsExpanded] = React.useState(false)
@@ -1479,9 +1485,31 @@ export default function DuckyClaw() {
             )}
           </p>
           <div className={styles.bannerWrap}>
-            <div className={styles.bannerPlaceholder} style={{ fontSize: '1.5em' }}>
-              {t('🚧 Under Construction 🚧', '🚧 内容建设中 🚧', isZh)}
-            </div>
+            {!isZh ? (
+              <div className={styles.bannerPlaceholder} style={{ fontSize: '1.5em' }}>
+                🚧 Work in progress 🚧
+              </div>
+            ) : DEMO_VIDEO_URL || DEMO_VIDEO_EMBED_URL ? (
+              <div className={styles.demoVideoWrap}>
+                {DEMO_VIDEO_EMBED_URL ? (
+                  <div className={styles.demoVideoEmbedWrap}>
+                    <iframe
+                      src={DEMO_VIDEO_EMBED_URL.replace(/([&?])autoplay=1/, '$1autoplay=0')}
+                      title={t('DuckyClaw demo video', 'DuckyClaw 演示视频', isZh)}
+                      className={styles.demoVideoEmbed}
+                      scrolling="no"
+                      frameBorder="0"
+                      allowFullScreen
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    />
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div className={styles.bannerPlaceholder} style={{ fontSize: '1.5em' }}>
+                🚧 内容建设中 🚧
+              </div>
+            )}
           </div>
         </div>
       </section>
