@@ -12,11 +12,14 @@ const BANNER_IMG = 'https://images.tuyacn.com/fe-static/docs/img/210f532a-0bb1-4
 const ARCH_IMG_ZH = 'https://images.tuyacn.com/fe-static/docs/img/9b8d1a57-3359-4837-af84-710f729d8e48.png'
 const ARCH_IMG_EN = 'https://images.tuyacn.com/fe-static/docs/img/bbeed5a9-9fb5-4710-b20b-76fb3ed1add4.png'
 
-/** Demo video: set URL to show in 效果展示 (ZH). EN stays "Work in progress". */
+/** Demo video (ZH): Bilibili. */
 const DEMO_VIDEO_URL = 'https://www.bilibili.com/video/BV1dePxzfEvd'
-/** Optional: iframe embed URL (e.g. Bilibili player) so the video shows on the page for ZH. */
 const DEMO_VIDEO_EMBED_URL =
   'https://player.bilibili.com/player.html?isOutside=true&aid=116182740896449&bvid=BV1dePxzfEvd&cid=36504996323&p=1'
+
+/** Demo video (EN): YouTube. */
+const DEMO_VIDEO_URL_EN = 'https://www.youtube.com/watch?v=kC36AVT3CHI'
+const DEMO_VIDEO_EMBED_URL_EN = 'https://www.youtube.com/embed/kC36AVT3CHI?si=mD9lcWupBD07azEI'
 
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
@@ -1486,9 +1489,27 @@ export default function DuckyClaw() {
           </p>
           <div className={styles.bannerWrap}>
             {!isZh ? (
-              <div className={styles.bannerPlaceholder} style={{ fontSize: '1.5em' }}>
-                🚧 Work in progress 🚧
-              </div>
+              DEMO_VIDEO_EMBED_URL_EN || DEMO_VIDEO_URL_EN ? (
+                <div className={styles.demoVideoWrap}>
+                  {DEMO_VIDEO_EMBED_URL_EN ? (
+                    <div className={styles.demoVideoEmbedWrap}>
+                      <iframe
+                        src={DEMO_VIDEO_EMBED_URL_EN}
+                        title="DuckyClaw demo video"
+                        className={styles.demoVideoEmbed}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <div className={styles.bannerPlaceholder} style={{ fontSize: '1.5em' }}>
+                  🚧 Work in progress 🚧
+                </div>
+              )
             ) : DEMO_VIDEO_URL || DEMO_VIDEO_EMBED_URL ? (
               <div className={styles.demoVideoWrap}>
                 {DEMO_VIDEO_EMBED_URL ? (
