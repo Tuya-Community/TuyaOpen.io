@@ -1803,3 +1803,58 @@
   width: auto;
   display: block;
 }
+
+/* Community section — colab logo grids (below contrib.rocks; data from homepageCopy.partners.colabSections) */
+.communityColabBlock {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--dc-border, rgba(255, 255, 255, 0.08));
+  text-align: center;
+}
+
+.duckyclawTheme .communityColabBlock {
+  border-color: var(--dc-border);
+}
+
+.communityColabSection + .communityColabSection {
+  margin-top: 1.5rem;
+}
+
+.communityColabTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.65rem;
+  color: var(--ifm-font-color-secondary);
+}
+
+.duckyclawTheme .communityColabTitle {
+  color: var(--dc-text-muted);
+}
+
+.communityColabGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 0.45rem 0.6rem;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.communityColabCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.35rem;
+}
+
+.communityColabImg {
+  display: block;
+  max-height: 28px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
