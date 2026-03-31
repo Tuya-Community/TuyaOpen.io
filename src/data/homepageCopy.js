@@ -9,8 +9,8 @@ export const homepageCopy = {
       'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCU, Raspberry Pi, ESP32, and more. Pair with Tuya Cloud multimodal AI, integrate leading LLMs, and build devices with voice, vision, and sensor features.',
     hero: {
       badge: 'Open source · AI + IoT',
-      line1: 'Open source AI',
-      line2: 'for real devices',
+      line1: 'Agentic AI',
+      line2: 'on real devices',
       line3: 'with TuyaOpen',
       subtitle: 'Build once, deploy across chips.',
       body: 'TuyaOpen powers next-gen AI-agent hardware: it supports gear (Tuya T-Series Wi-Fi/BT MCUs, Pi, ESP32s) via a flexible cross-platform C/C++ SDK, pairs with Tuya Cloud multimodal AI, integrates top models (ChatGPT, Gemini, Qwen, Doubao, and more), and streamlines open AI-IoT ecosystem building.',
@@ -49,6 +49,34 @@ tos.py flash`,
         {
           title: 'Cloud-connected and secure',
           body: 'Connect to Tuya Cloud for remote control, monitoring, and OTA updates. Built-in security, device authentication, and data encryption.',
+        },
+        {
+          title: 'From prototype to production',
+          body: 'Production-ready architecture from day one: reusable layers, stable connectivity, security-by-design, and scalable cloud integration so teams can move from proof-of-concept to shipped products with less rework.',
+        },
+      ],
+    },
+    audience: {
+      sectionTag: 'Who is it for?',
+      title: 'Built for builders at every stage',
+      subtitle:
+        'From first prototype to scaled shipment, TuyaOpen helps you build bold IoT and agentic hardware faster.',
+      items: [
+        {
+          title: 'Students and learners',
+          body: 'Turn ideas into working devices with a practical stack and clear workflows. Learn by building real AI+IoT products, not toy examples.',
+        },
+        {
+          title: 'Makers and IoT enthusiasts',
+          body: 'Move from hackathon concepts to polished demos quickly. Reusable SDK layers and ready integrations help you ship cool hardware with less glue code.',
+        },
+        {
+          title: 'AI agent hardware creators',
+          body: 'Design voice-first, multimodal products with agent workflows, tools, and cloud orchestration that map cleanly to real devices.',
+        },
+        {
+          title: 'Commercial product teams',
+          body: 'Adopt a production-oriented architecture with security, OTA, and scalable cloud capabilities to reduce risk and speed time-to-market.',
         },
       ],
     },
@@ -193,14 +221,16 @@ tos.py flash`,
       ],
     },
     t5: {
-      title: 'Tuya T5 MCU',
-      body: 'Tuya T5 chip/module is a high-performance embedded Wi-Fi 6 + Bluetooth 5.4 dual-mode communication module, embedded with ARMv8-M Star (M33F) processor, with a main frequency up to 480MHz, specially designed for smart audio-video applications.',
+      title: 'Tuya T5 : Cost-effective for Agentic AI',
+      body: 'Tuya T5 chip/module is a high-performance embedded Wi-Fi 6 + Bluetooth 5.4 dual-mode communication module, embedded with ARMv8-M Star (M33F) processor and a main frequency up to 480MHz. The chip is purpose-built for multimodal AI interaction scenarios with audio, video, and display enablement. Rich GPIO resources accelerate integration, and built-in Wi-Fi 6 (2.4 GHz) plus BLE connectivity simplifies product bring-up.',
+      imageSrc: 'https://images.tuyacn.com/fe-static/docs/img/8eb57de9-ec7b-4f8d-b602-e86f9e24f94a.png',
+      imageAlt: 'Tuya T5 MCU board image.',
     },
     arduinoExperimental: {
       sectionTag: 'Experimental feature',
       title: 'Now Develop agentic AI hardware with Arduino IDE.',
       body: 'Prototype on T5 with a familiar Arduino workflow—board support and libraries integrated with TuyaOpen so you can move fast on agentic AI hardware.',
-      imageUrl: '/img/home/tuyaopen-arduino-ide-dark.jpg',
+      imageUrl: 'https://images.tuyacn.com/fe-static/docs/img/e413737d-6270-4758-aff1-3a039c5d81b3.jpg',
       imageAlt: 'TuyaOpen in Arduino IDE on a dark theme',
       ctaPath: '/docs/hardware-specific/tuya-t5/develop-with-Arduino/Quick_start',
     },
@@ -292,6 +322,71 @@ tos.py flash`,
             {
               alt: 'AWS',
               src: 'https://static1.tuyaeu.com/static/portal-tuyaai/_next/static/img/9dbd17abc9287d7cf51e.png',
+            },
+          ],
+        },
+        {
+          title: 'Community and ecosystem partners',
+          items: [
+            {
+              alt: 'Arduino Community CN',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/d6bfd773-54f6-4c3a-807d-7bf91dffc5e6.png',
+            },
+            {
+              alt: 'CSDN',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/5bd5a630-e9e2-42bd-8be9-8ef23962ad09.png',
+            },
+            {
+              alt: 'GigaDev',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/78e893ea-6de1-447d-850b-4f35126da817.png',
+            },
+            {
+              alt: 'Hackster',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/cbb2e6ff-8c80-4220-800e-55a9855e6a7e.png',
+            },
+            {
+              alt: 'OpenJumper',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/d2f86404-5b90-4f53-888d-a37fb06181ca.png',
+            },
+            {
+              alt: 'OSCHINA',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/e43bce40-9efc-4ade-b49a-79dc6496ac8b.png',
+            },
+            {
+              alt: 'OSHWHub',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/6ec76beb-1f31-482b-806f-2f8668617ad2.png',
+            },
+            {
+              alt: 'Silicon Labs',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/4437cbf1-a892-4d9d-8512-c6f5eb077454.png',
+            },
+            {
+              alt: 'Sekorm',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/1c904de4-5200-416c-8d1d-cc25248f69e7.png',
+            },
+            {
+              alt: 'D-Robotics',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/06a9db0d-7e68-4f04-9544-e902e7b9c205.png',
+            },
+            {
+              alt: 'Waveshare',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/a2712d41-b969-47db-a9b0-bfb87376556a.png',
+            },
+            {
+              alt: 'Zhengdian Electronics',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/02e7aeb1-5a70-4f49-bdfa-f33acb8657aa.png',
+            },
+            {
+              alt: 'Elecfans',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/30d4d462-afc6-4369-a297-f4d4f939d913.png',
+            },
+            {
+              alt: 'Baiwenwang',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/75ba59d8-4174-4836-af42-bf0f71bf34ca.png',
+            },
+            {
+              alt: 'Wildfire',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/65d2ee1f-ab95-4ed7-9205-21e4b49e8e23.png',
             },
           ],
         },
@@ -442,6 +537,57 @@ tos.py flash`,
         },
       ],
     },
+    developerStory: {
+      sectionTag: 'Developer Story',
+      title: 'Cattle Tracking with AI Agents',
+      subtitle: 'HTX Studio: Bringing Smart Farming to Remote Villages',
+      story:
+        'When HTX Studio stepped into remote mountain villages, they saw farmers trekking rough slopes daily to find cattle, getting hurt again and again, while regular (4G Cellular) trackers simply lost signal in blind mountain terrain. Moved to help, the team leveraged TuyaOpen open-source capabilities to integrate long-range LoRa connectivity with local-dialect AI voice interaction. They quickly built a complete smart grazing system, skipping heavy low-level bottlenecks. With ready device-cloud and AI toolchains, they turned empathy into simple, reliable smart technology for farmers deep in the mountains. Conversational AI cattle tracking makes daily interaction easier, with almost no learning curve for elderly users.',
+      highlights: [
+        'Built with TuyaOpen',
+        'Agentic interaction with location awareness and LLM interpretation',
+        'Core hardware: Tuya T5',
+        'Custom-integrated GPS, LoRa, and accelerometer modules',
+        '4G cellular connectivity module paired with Tuya T5',
+        'Audio support for ASR and OLED display for tracking status',
+      ],
+      videoAriaLabel: 'AI cattle herding developer story video',
+      videoEmbed: {
+        src: 'https://www.youtube.com/embed/h_NnHgmB530?rel=0',
+        title: 'AI Cattle Herdeling demo video',
+      },
+      galleryAriaLabel: 'AI cattle herding gallery images',
+      galleryImages: [
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/ac0b58f9-e097-451b-a30f-d9fac6187f13.jpg',
+          alt: 'AI cattle herding gallery image 1.',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/54d885f5-7330-4a2a-a1ce-fd245f14469f.jpg',
+          alt: 'AI cattle herding gallery image 2.',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/4f08951a-5c4d-45f3-bc60-c19ea4a2d544.jpg',
+          alt: 'AI cattle herding gallery image 3.',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/7aeb0a86-197d-421a-b0c8-4e3495697b56.jpg',
+          alt: 'AI cattle herding gallery image 4.',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/ce94036a-6fa7-4758-9331-de6f5ef751cc.jpg',
+          alt: 'AI cattle herding gallery image 5.',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/3a7a3d50-70a0-4f92-98bd-4a1456193917.jpg',
+          alt: 'AI cattle herding gallery image 6.',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/7874237c-5f1b-491f-87c9-de8f8e3c040a.jpg',
+          alt: 'AI cattle herding gallery image 7.',
+        },
+      ],
+    },
     community: {
       title: 'Build the community together',
       body: 'Star the repo, open issues or discussions, join Discord, and read the Contribution Guide. Contributions are welcome under Apache License 2.0.',
@@ -460,7 +606,7 @@ tos.py flash`,
       'TuyaOpen 是开源 AI+IoT 开发框架：以跨平台 C/C++ SDK 支持涂鸦 T 系列 MCU、树莓派、ESP32 等设备，搭配涂鸦云多模态 AI，集成主流大模型，构建具备语音、视觉与传感能力的智能设备。',
     hero: {
       badge: '开源 · AI + IoT',
-      line1: '开源 AI',
+      line1: 'Agentic AI',
       line2: '落地真实硬件',
       line3: '就用 TuyaOpen',
       subtitle: '一次开发，多端部署。',
@@ -501,6 +647,33 @@ tos.py flash`,
           title: '连云与安全',
           body: '连接涂鸦云实现远程控制、监控与 OTA 升级；内置安全性、设备认证与数据加密等能力。',
         },
+        {
+          title: '从原型到量产',
+          body: '面向生产的架构从第一天开始：可复用分层、稳定连接、安全能力与可扩展云端集成，帮助团队更少返工，更快从 PoC 走向可交付产品。',
+        },
+      ],
+    },
+    audience: {
+      sectionTag: '适合谁？',
+      title: '面向每一类硬件创造者',
+      subtitle: '从第一个原型到规模化交付，TuyaOpen 帮你更快做出更酷的 IoT 与智能体硬件。',
+      items: [
+        {
+          title: '学生与学习者',
+          body: '用真实可跑的工程栈把想法变成设备，在实践中快速掌握 AI+IoT 开发，而不是停留在玩具示例。',
+        },
+        {
+          title: '创客与 IoT 爱好者',
+          body: '从灵感到成品 Demo 更高效。可复用分层与现成能力减少胶水代码，让硬件创意更快落地。',
+        },
+        {
+          title: '智能体硬件开发者',
+          body: '围绕语音优先与多模态交互打造产品，结合智能体工作流、工具能力与云端编排，直接映射到真实设备。',
+        },
+        {
+          title: '商业化产品团队',
+          body: '以量产为导向的架构配合安全、OTA 与可扩展云能力，降低研发风险，加速从验证到上市。',
+        },
       ],
     },
     code: {
@@ -538,7 +711,7 @@ tos.py flash`,
       ],
       diagramCaption: '示意图：左侧为 TuyaOpen 硬件开发，右侧为涂鸦云。',
       lightboxCloseLabel: '关闭',
-      diagramUrl: 'https://images.tuyacn.com/fe-static/docs/img/2eed8b23-0459-4db4-8f17-e7cce8b36b8a.png',
+      diagramUrl: 'https://images.tuyacn.com/fe-static/docs/img/207eb9a0-5583-4f04-a71d-1917cbefc5ba.png',
       diagramAlt:
         '信息图：左侧为 TuyaOpen C/C++ SDK 硬件开发（含 MCU、树莓派、SoC、ESP32 等），右侧为涂鸦云开发者平台与多模态 AI；中间为文本、语音、摄像头与传感器数据的双向流动。',
     },
@@ -642,14 +815,16 @@ tos.py flash`,
       ],
     },
     t5: {
-      title: '涂鸦 T5 芯片',
-      body: '涂鸦 T5 芯片/模组是一款高性能嵌入式 Wi-Fi 6 + 蓝牙 5.4 双模通信模组，内嵌 ARMv8-M Star (M33F) 处理器，主频高达 480MHz，专为智能音视频及人机交互场景设计。',
+      title: '涂鸦 T5 芯片 Agentic AI 高性价比之选',
+      body: '涂鸦 T5 芯片/模组是一款高性能嵌入式 Wi-Fi 6 + 蓝牙 5.4 双模通信模组，内嵌 ARMv8-M Star (M33F) 处理器，主频高达 480MHz。芯片面向多模态 AI 交互场景而设计，支持音频、视频与显示能力。丰富 GPIO 资源可加速集成，内置 Wi-Fi 6（2.4G）与 BLE 连接能力，帮助产品快速落地。',
+      imageSrc: 'https://images.tuyacn.com/fe-static/docs/img/8eb57de9-ec7b-4f8d-b602-e86f9e24f94a.png',
+      imageAlt: '涂鸦 T5 芯片板卡图片。',
     },
     arduinoExperimental: {
       sectionTag: '实验性功能',
       title: '使用 Arduino IDE 开发智能体 AI 硬件。',
       body: '在 T5 上沿用熟悉的 Arduino 工作流——板级支持与库与 TuyaOpen 打通，更快验证智能体 AI 硬件原型。',
-      imageUrl: '/img/home/tuyaopen-arduino-ide-dark.jpg',
+      imageUrl: 'https://images.tuyacn.com/fe-static/docs/img/e413737d-6270-4758-aff1-3a039c5d81b3.jpg',
       imageAlt: '深色主题下 Arduino IDE 中的 TuyaOpen 开发界面',
       ctaPath: '/docs/hardware-specific/tuya-t5/develop-with-Arduino/Quick_start',
     },
@@ -741,6 +916,71 @@ tos.py flash`,
             {
               alt: 'AWS',
               src: 'https://static1.tuyaeu.com/static/portal-tuyaai/_next/static/img/9dbd17abc9287d7cf51e.png',
+            },
+          ],
+        },
+        {
+          title: '社区与生态合作伙伴',
+          items: [
+            {
+              alt: 'Arduino 中文社区',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/d6bfd773-54f6-4c3a-807d-7bf91dffc5e6.png',
+            },
+            {
+              alt: 'CSDN',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/5bd5a630-e9e2-42bd-8be9-8ef23962ad09.png',
+            },
+            {
+              alt: 'GigaDev',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/78e893ea-6de1-447d-850b-4f35126da817.png',
+            },
+            {
+              alt: 'Hackster.io',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/cbb2e6ff-8c80-4220-800e-55a9855e6a7e.png',
+            },
+            {
+              alt: 'OpenJumper',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/d2f86404-5b90-4f53-888d-a37fb06181ca.png',
+            },
+            {
+              alt: 'OSCHINA',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/e43bce40-9efc-4ade-b49a-79dc6496ac8b.png',
+            },
+            {
+              alt: 'OSHWHub',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/6ec76beb-1f31-482b-806f-2f8668617ad2.png',
+            },
+            {
+              alt: 'Silicon Labs',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/4437cbf1-a892-4d9d-8512-c6f5eb077454.png',
+            },
+            {
+              alt: '世强',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/1c904de4-5200-416c-8d1d-cc25248f69e7.png',
+            },
+            {
+              alt: '地瓜机器人 D-Robotics',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/a2d0672b-d49c-401f-a2ef-d97355443258.png',
+            },
+            {
+              alt: '微雪电子 Waveshare',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/aaeb694c-029b-4066-9e80-f62864439655.png',
+            },
+            {
+              alt: '正点电子',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/02e7aeb1-5a70-4f49-bdfa-f33acb8657aa.png',
+            },
+            {
+              alt: '电子发烧友',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/30d4d462-afc6-4369-a297-f4d4f939d913.png',
+            },
+            {
+              alt: '百问网',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/75ba59d8-4174-4836-af42-bf0f71bf34ca.png',
+            },
+            {
+              alt: '野火电子',
+              src: 'https://images.tuyacn.com/fe-static/docs/img/65d2ee1f-ab95-4ed7-9205-21e4b49e8e23.png',
             },
           ],
         },
@@ -888,6 +1128,58 @@ tos.py flash`,
             label: '图片来源：Cova Software（Unsplash）',
             href: 'https://unsplash.com/@covasoftware',
           },
+        },
+      ],
+    },
+    developerStory: {
+      sectionTag: '开发者故事',
+      title: 'Cattle Tracking with AI Agents',
+      subtitle: '何同学：让山里养殖也能搭上智能快车',
+      story:
+        '何同学走进深山，亲眼看见农户日日爬陡坡寻牛，摔过、累过，普通定位器进了山里就彻底失联。心里放不下这份难处，团队决定用技术暖心相助。依托 TuyaOpen 开源能力，快速打通 LoRa 远距通信与方言 AI 语音，轻巧搭起整套智能放牛系统。不用啃底层难题，靠着成熟的端云与 AI 工具，把贴心好用的智慧方案，稳稳送到大山田间。通过对话式 AI 放牛追踪，日常交互更轻松，老年用户也几乎无需学习成本。',
+      highlights: [
+        '基于 TuyaOpen 构建',
+        '具备位置感知与 LLM 语义理解的智能体交互',
+        '核心硬件：Tuya T5',
+        '自定义集成 GPS、LoRa 与加速度传感模块',
+        '4G 蜂窝通信模块与 Tuya T5 组合部署',
+        '支持 ASR 语音能力，并通过 OLED 显示追踪状态',
+        'LoRa 组网能力，支持后续扩展',
+      ],
+      videoAriaLabel: 'AI 智能放牛开发者故事视频',
+      videoEmbed: {
+        src: '//player.bilibili.com/player.html?isOutside=true&aid=115570020190349&bvid=BV17PygBiETq&cid=34088224972&p=1',
+        title: 'AI Cattle Herdeling 演示视频',
+      },
+      galleryAriaLabel: 'AI 智能放牛图片画廊',
+      galleryImages: [
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/ac0b58f9-e097-451b-a30f-d9fac6187f13.jpg',
+          alt: 'AI 智能放牛画廊图片 1。',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/54d885f5-7330-4a2a-a1ce-fd245f14469f.jpg',
+          alt: 'AI 智能放牛画廊图片 2。',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/4f08951a-5c4d-45f3-bc60-c19ea4a2d544.jpg',
+          alt: 'AI 智能放牛画廊图片 3。',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/7aeb0a86-197d-421a-b0c8-4e3495697b56.jpg',
+          alt: 'AI 智能放牛画廊图片 4。',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/ce94036a-6fa7-4758-9331-de6f5ef751cc.jpg',
+          alt: 'AI 智能放牛画廊图片 5。',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/3a7a3d50-70a0-4f92-98bd-4a1456193917.jpg',
+          alt: 'AI 智能放牛画廊图片 6。',
+        },
+        {
+          src: 'https://images.tuyacn.com/fe-static/docs/img/7874237c-5f1b-491f-87c9-de8f8e3c040a.jpg',
+          alt: 'AI 智能放牛画廊图片 7。',
         },
       ],
     },

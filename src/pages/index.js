@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
@@ -17,39 +17,12 @@ function Home() {
   const copy = homepageCopy[locale]
   const [cloudDiagramLightboxOpen, setCloudDiagramLightboxOpen] = useState(false)
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0)
-  const partnersMarqueeViewportRef = useRef(null)
-  const partnersMarqueeFirstGroupRef = useRef(null)
-  const [partnersMarqueeCentered, setPartnersMarqueeCentered] = useState(false)
   const tuyaAiSectionRef = useRef(null)
   const tuyaAiCarouselRef = useRef(null)
   const tuyaAiWheelAccumRef = useRef(0)
   const [tuyaAiSlideIndex, setTuyaAiSlideIndex] = useState(0)
   const [tuyaAiCarouselMinHeightPx, setTuyaAiCarouselMinHeightPx] = useState(null)
-
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') {
-      return undefined
-    }
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setPartnersMarqueeCentered(false)
-      return undefined
-    }
-    const viewport = partnersMarqueeViewportRef.current
-    const firstGroup = partnersMarqueeFirstGroupRef.current
-    if (!viewport || !firstGroup) {
-      return undefined
-    }
-    const measure = () => {
-      const vw = viewport.clientWidth
-      const gw = firstGroup.scrollWidth
-      setPartnersMarqueeCentered(gw > 0 && gw * 2 <= vw + 8)
-    }
-    measure()
-    const ro = new ResizeObserver(measure)
-    ro.observe(viewport)
-    ro.observe(firstGroup)
-    return () => ro.disconnect()
-  }, [locale, copy.partners.items.length])
+  const [devStorySelectedImageIndex, setDevStorySelectedImageIndex] = useState(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -194,6 +167,7 @@ function Home() {
 
   useEffect(() => {
     setSelectedStoryIndex(0)
+    setDevStorySelectedImageIndex(null)
   }, [locale])
 
   const storyItems = copy.applicationsUseCases.items
@@ -293,6 +267,25 @@ function Home() {
             </div>
           </section>
 
+          {/* Audience */}
+          <section className={styles.audienceSection}>
+            <div className={styles.container}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionTag}>{copy.audience.sectionTag}</span>
+                <h2 className={styles.sectionTitle}>{copy.audience.title}</h2>
+                <p className={styles.sectionSubtitle}>{copy.audience.subtitle}</p>
+              </div>
+              <div className={styles.audienceGrid}>
+                {copy.audience.items.map((item) => (
+                  <article key={item.title} className={clsx(styles.audienceCard, 'scroll-to-display')}>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Code showcase (full): copy left, terminal + CTAs top-right on wide screens */}
           <section className={styles.codeShowcase}>
             <div className={styles.codeShowcaseInner}>
@@ -316,20 +309,36 @@ function Home() {
                       <code>{copy.code.block}</code>
                     </pre>
                   </div>
-                  <div className={styles.codeLinks}>
-                    <Link
-                      className={clsx(styles.codeLinkBtn, styles.codeLinkBtnPrimary)}
-                      to="/docs/tos-tools/tos-guide"
-                    >
-                      {copy.cta.tosGuide}
-                    </Link>
-                    <Link
-                      className={clsx(styles.codeLinkBtn, styles.codeLinkBtnSecondary)}
-                      to="/docs/quick-start/enviroment-setup"
-                    >
-                      {copy.cta.envSetup}
-                    </Link>
-                  </div>
+                  <div className={styles.codeLinks}></div>
+                </div>
+              </div>
+              <div className={styles.codeShowcaseSteps}>
+                <div className={styles.codeShowcaseHeader}>
+                  <h2 className={styles.sectionTitle}>{copy.steps.title}</h2>
+                </div>
+                <div className={styles.codeShowcaseStepsGrid}>
+                  {copy.steps.items.map((step, i) => (
+                    <div key={step.title} className={clsx(styles.codeShowcaseStepCard, 'scroll-to-display')}>
+                      <div className={styles.featureIcon}>{i + 1}</div>
+                      <h3>{step.title}</h3>
+                      <p>{step.body}</p>
+                      <div className={styles.codeShowcaseStepLinks}>
+                        {step.ctaLink && step.ctaLabel ? (
+                          <Link to={step.ctaLink} className={clsx(styles.codeLinkBtn, styles.codeLinkBtnSecondary)}>
+                            {step.ctaLabel} →
+                          </Link>
+                        ) : null}
+                        {i === 1 ? (
+                          <Link
+                            to="/docs/tos-tools/tos-guide"
+                            className={clsx(styles.codeLinkBtn, styles.codeLinkBtnPrimary)}
+                          >
+                            {copy.cta.tosGuide}
+                          </Link>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -468,52 +477,43 @@ function Home() {
             </div>
           </section>
 
-          {/* Steps */}
-          <section className={styles.mutedSection}>
-            <div className={styles.container}>
-              <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>{copy.steps.title}</h2>
-              </div>
-              <div className={styles.featuresGrid}>
-                {copy.steps.items.map((step, i) => (
-                  <div key={step.title} className={clsx(styles.featureCard, 'scroll-to-display')}>
-                    <div className={styles.featureIcon}>{i + 1}</div>
-                    <h3>{step.title}</h3>
-                    <p>{step.body}</p>
-                    {step.ctaLink && step.ctaLabel ? (
-                      <Link to={step.ctaLink} className={clsx(styles.btnOutlineDark, 'tw-mt-4 tw-inline-flex')}>
-                        {step.ctaLabel} →
-                      </Link>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
           {/* T5 + Tuya AI (partners follow customer stories + applications) */}
           <section className={styles.lightSection}>
             <div className={styles.container}>
-              <div className={styles.spotlightRow}>
-                <div className={styles.spotlightVisual}>
-                  <img className={styles.spotlightBg} src="/img/home/chaosd-bg.svg" alt="" />
-                  <img
-                    className={clsx(styles.spotlightImg, 'scroll-to-display')}
-                    src="img/features/Printed circuit board-bro.svg"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.spotlightCopy}>
-                  <h2 className={styles.spotlightTitle}>
-                    <span className={styles.spotlightTitleGrad}>{copy.t5.title}</span>
-                  </h2>
-                  <p className={styles.spotlightBody}>{copy.t5.body}</p>
-                  <Link
-                    to="/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board"
-                    className={clsx(styles.btnSolidPrimary, 'tw-mt-4 tw-inline-flex')}
-                  >
-                    {copy.cta.learnMore} →
-                  </Link>
+              <div
+                className={clsx(
+                  styles.experimentalArduino,
+                  styles.experimentalArduinoTuyaAi,
+                  styles.experimentalArduinoT5,
+                  'scroll-to-display',
+                )}
+              >
+                <div className={styles.experimentalArduinoInner}>
+                  <div className={styles.experimentalArduinoCopy}>
+                    <h2 className={styles.experimentalArduinoTitle}>
+                      <span className={styles.spotlightTitleGrad}>{copy.t5.title}</span>
+                    </h2>
+                    <p className={styles.experimentalArduinoBody}>{copy.t5.body}</p>
+                    <Link
+                      to="/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board"
+                      className={clsx(styles.btnSolidPrimary, 'tw-mt-4 tw-inline-flex')}
+                    >
+                      {copy.cta.learnMore} →
+                    </Link>
+                  </div>
+                  <div className={styles.experimentalArduinoVisual}>
+                    <div className={styles.experimentalArduinoFloat}>
+                      <div className={styles.experimentalArduinoFigure}>
+                        <img
+                          src={copy.t5.imageSrc}
+                          alt={copy.t5.imageAlt}
+                          className={styles.experimentalArduinoImg}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -535,7 +535,9 @@ function Home() {
                   </div>
                   <div className={styles.experimentalArduinoCopy}>
                     <span className={styles.experimentalArduinoTag}>{copy.arduinoExperimental.sectionTag}</span>
-                    <h2 className={styles.experimentalArduinoTitle}>{copy.arduinoExperimental.title}</h2>
+                    <h2 className={styles.experimentalArduinoTitle}>
+                      <span className={styles.spotlightTitleGrad}>{copy.arduinoExperimental.title}</span>
+                    </h2>
                     <p className={styles.experimentalArduinoBody}>{copy.arduinoExperimental.body}</p>
                     <Link
                       to={copy.arduinoExperimental.ctaPath}
@@ -696,6 +698,110 @@ function Home() {
             </div>
           </section>
 
+          {/* Developer story */}
+          <section className={styles.devStorySection}>
+            <div className={styles.container}>
+              <div className={styles.sectionHeader}>
+                <span className={clsx(styles.sectionTag, styles.devStoryTag)}>{copy.developerStory.sectionTag}</span>
+                <h2 className={styles.sectionTitle}>
+                  <span className={styles.devStoryTitleColor}>{copy.developerStory.title}</span>
+                </h2>
+                <p className={styles.sectionSubtitle}>{copy.developerStory.subtitle}</p>
+              </div>
+              <div className={clsx(styles.devStorySplit, 'scroll-to-display')}>
+                <article className={styles.devStoryNarrative}>
+                  <p>{copy.developerStory.story}</p>
+                  {copy.developerStory.highlights?.length ? (
+                    <ul className={styles.devStoryHighlights}>
+                      {copy.developerStory.highlights.map((line) => (
+                        <li key={line}>{line}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </article>
+                <div className={styles.devStoryMediaPanel}>
+                  <figure
+                    className={styles.devStoryVideoCard}
+                    role="region"
+                    aria-label={copy.developerStory.videoAriaLabel}
+                  >
+                    <div className={styles.devStoryMediaFrame}>
+                      {devStorySelectedImageIndex == null ? (
+                        <iframe
+                          src={copy.developerStory.videoEmbed.src}
+                          title={copy.developerStory.videoEmbed.title}
+                          className={styles.devStoryEmbed}
+                          loading="lazy"
+                          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <div
+                          className={styles.devStoryMainImageStage}
+                          style={{
+                            '--dev-story-image-bg': `url("${copy.developerStory.galleryImages[devStorySelectedImageIndex].src}")`,
+                          }}
+                        >
+                          <img
+                            src={copy.developerStory.galleryImages[devStorySelectedImageIndex].src}
+                            alt={copy.developerStory.galleryImages[devStorySelectedImageIndex].alt}
+                            className={styles.devStoryMainImage}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </figure>
+                  <div
+                    className={styles.devStoryGallery}
+                    role="region"
+                    aria-label={copy.developerStory.galleryAriaLabel}
+                  >
+                    <figure className={styles.devStoryGalleryCard}>
+                      <button
+                        type="button"
+                        className={clsx(
+                          styles.devStoryGalleryBtn,
+                          devStorySelectedImageIndex == null && styles.devStoryGalleryBtnActive,
+                        )}
+                        onClick={() => setDevStorySelectedImageIndex(null)}
+                        aria-pressed={devStorySelectedImageIndex == null}
+                        aria-label={copy.developerStory.videoEmbed.title}
+                      >
+                        <span className={styles.devStoryVideoThumb}>
+                          <span className={styles.devStoryVideoThumbPlay}>▶</span>
+                        </span>
+                      </button>
+                    </figure>
+                    {copy.developerStory.galleryImages.map((img, index) => (
+                      <figure key={`${img.src}-${index}`} className={styles.devStoryGalleryCard}>
+                        <button
+                          type="button"
+                          className={clsx(
+                            styles.devStoryGalleryBtn,
+                            devStorySelectedImageIndex === index && styles.devStoryGalleryBtnActive,
+                          )}
+                          onClick={() => setDevStorySelectedImageIndex(index)}
+                          aria-pressed={devStorySelectedImageIndex === index}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className={styles.devStoryThumbImg}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </button>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Partners — no bottom padding so band meets community gradient */}
           <section className={clsx(styles.lightSection, styles.lightSectionFlushBottom)}>
             <div className={styles.container}>
@@ -728,52 +834,6 @@ function Home() {
                     ))}
                   </div>
                 ) : null}
-                <div
-                  ref={partnersMarqueeViewportRef}
-                  className={clsx(
-                    styles.partnersMarqueeViewport,
-                    partnersMarqueeCentered && styles.partnersMarqueeViewportCentered,
-                  )}
-                >
-                  <div className={styles.partnersMarqueeTrack}>
-                    <div ref={partnersMarqueeFirstGroupRef} className={styles.partnersMarqueeGroup}>
-                      {copy.partners.items.map((item) => (
-                        <a
-                          key={`${item.href}-${item.src}`}
-                          href={item.href}
-                          className={styles.partnerLogoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className={styles.partnerLogoTile}>
-                            <img
-                              loading="lazy"
-                              decoding="async"
-                              className={styles.partnerLogoImg}
-                              src={item.src}
-                              alt={item.alt}
-                            />
-                          </span>
-                        </a>
-                      ))}
-                    </div>
-                    <div className={styles.partnersMarqueeGroup} aria-hidden="true">
-                      {copy.partners.items.map((item) => (
-                        <div key={`dup-${item.href}-${item.src}`} className={styles.partnerLogoDup}>
-                          <span className={styles.partnerLogoTile}>
-                            <img
-                              loading="lazy"
-                              decoding="async"
-                              className={styles.partnerLogoImg}
-                              src={item.src}
-                              alt=""
-                            />
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
