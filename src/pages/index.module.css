@@ -803,13 +803,14 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 768px) {
   .customerStoriesSplit {
     grid-template-columns: minmax(200px, 280px) 1fr;
     gap: 2rem;
+    align-items: stretch;
   }
 }
 
@@ -843,6 +844,12 @@
     border-color 0.15s,
     background 0.15s,
     color 0.15s;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.35;
 }
 
 [data-theme='dark'] .customerStoriesNavBtn {
@@ -878,6 +885,17 @@
   background: #fff;
   padding: 1.5rem;
   box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .customerStoriesPanel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    align-self: stretch;
+  }
 }
 
 [data-theme='dark'] .customerStoriesPanel {
@@ -886,12 +904,77 @@
   box-shadow: none;
 }
 
+.customerStoriesPanelSplit {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .customerStoriesPanelSplit {
+    flex: 1 1 auto;
+    min-height: 0;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 900px) {
+  .customerStoriesPanelSplit {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+}
+
+.customerStoriesPanelText {
+  min-width: 0;
+  text-align: left;
+}
+
+.customerStoriesPanelMedia {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .customerStoriesPanelMedia {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .customerStoriesPanelMedia .customerStoriesMediaBlock {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    min-height: 0;
+    justify-content: center;
+  }
+
+  .customerStoriesPanelMedia .customerStoriesMediaWrap {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+}
+
 .customerStoriesPanelTitle {
   margin: 0 0 0.75rem;
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--neutral-900);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.3;
 }
 
 [data-theme='dark'] .customerStoriesPanelTitle {
@@ -934,6 +1017,10 @@
   margin-bottom: 0;
 }
 
+.customerStoriesMediaBlock {
+  margin-top: 0.25rem;
+}
+
 .customerStoriesMediaWrap {
   border-radius: 12px;
   overflow: hidden;
@@ -950,6 +1037,46 @@
   height: auto;
   max-height: min(420px, 56vh);
   object-fit: contain;
+}
+
+@media (min-width: 900px) {
+  .customerStoriesPanelMedia .customerStoriesMedia {
+    max-height: min(560px, 70vh);
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.customerStoriesMediaCredit {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--neutral-500);
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .customerStoriesPanelMedia .customerStoriesMediaCredit {
+    text-align: left;
+  }
+}
+
+.customerStoriesMediaCredit a {
+  color: var(--neutral-600);
+  text-decoration: none;
+}
+
+.customerStoriesMediaCredit a:hover {
+  color: var(--brand-primary);
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .customerStoriesMediaCredit {
+  color: var(--neutral-500);
+}
+
+[data-theme='dark'] .customerStoriesMediaCredit a {
+  color: var(--neutral-400);
 }
 
 video.customerStoriesMedia {
@@ -1233,6 +1360,95 @@ video.customerStoriesMedia {
   color: var(--brand-primary) !important;
 }
 
+.demosGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.demosTitle {
+  text-align: left;
+  margin: 0 0 0.7rem;
+  padding-left: 0.35rem;
+}
+
+.demosIntro {
+  text-align: left;
+  max-width: 56rem;
+  margin: 0 0 1.35rem;
+  padding-left: 0.35rem;
+  line-height: 1.7;
+}
+
+@media (min-width: 900px) {
+  .demosGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .demosGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.demoCard {
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 100%;
+}
+
+[data-theme='dark'] .demoCard {
+  border-color: var(--neutral-700);
+  background: var(--neutral-900);
+}
+
+.demoCardName {
+  margin: 0;
+  color: #22c55e;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+}
+
+.demoCardDesc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--neutral-600);
+  flex: 1;
+}
+
+[data-theme='dark'] .demoCardDesc {
+  color: var(--neutral-300);
+}
+
+[data-theme='dark'] .demoCardName {
+  color: #4ade80;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.35);
+}
+
+.demoCardLinks {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.1rem;
+}
+
+.demoCardLinkBtn {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.78rem;
+}
+
 /* Split / spotlight rows */
 .spotlightRow {
   display: flex;
@@ -1346,10 +1562,13 @@ video.customerStoriesMedia {
 /* Negative rotateY: panel faces toward the left; mirror shadow to the left */
 .experimentalArduinoTuyaAi .experimentalArduinoFigure {
   transform: rotateX(12deg) rotateY(-15deg);
+  border: none;
+  background: transparent;
+  overflow: visible;
   box-shadow:
-    -22px 28px 52px rgba(0, 0, 0, 0.42),
-    -14px 16px 32px rgba(0, 102, 255, 0.16),
-    -6px 10px 20px rgba(0, 0, 0, 0.3);
+    -22px 28px 52px rgba(0, 0, 0, 0.28),
+    -14px 16px 32px rgba(0, 102, 255, 0.14),
+    -6px 10px 20px rgba(0, 0, 0, 0.22);
 }
 
 @media (hover: hover) {
@@ -1370,9 +1589,11 @@ video.customerStoriesMedia {
 }
 
 [data-theme='dark'] .experimentalArduinoTuyaAi .experimentalArduinoFigure {
+  border: none;
+  background: transparent;
   box-shadow:
-    -20px 36px 60px rgba(0, 0, 0, 0.55),
-    -12px 22px 36px rgba(0, 102, 255, 0.12);
+    -20px 36px 48px rgba(0, 0, 0, 0.4),
+    -12px 22px 32px rgba(0, 102, 255, 0.1);
 }
 
 .experimentalArduinoInner {
@@ -1510,6 +1731,25 @@ video.customerStoriesMedia {
   text-align: inherit;
 }
 
+.experimentalArduinoHighlights {
+  margin: -0.25rem 0 1.2rem;
+  padding-left: 1.1rem;
+  max-width: 40rem;
+  list-style: disc;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--neutral-700);
+  text-align: left;
+}
+
+.experimentalArduinoHighlights li {
+  margin-bottom: 0.25rem;
+}
+
+.experimentalArduinoHighlights li:last-child {
+  margin-bottom: 0;
+}
+
 .experimentalArduinoCopy .experimentalArduinoBody {
   margin-left: auto;
   margin-right: auto;
@@ -1526,11 +1766,62 @@ video.customerStoriesMedia {
   color: var(--neutral-400);
 }
 
+[data-theme='dark'] .experimentalArduinoHighlights {
+  color: var(--neutral-300);
+}
+
 .experimentalArduinoImg {
   display: block;
   width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+.tuyaAiCarousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tuyaAiCarouselImg {
+  object-fit: contain;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  animation: tuyaAiCarouselBlurIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes tuyaAiCarouselBlurIn {
+  from {
+    opacity: 0.55;
+    filter: blur(12px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes tuyaAiCarouselBlurInReduced {
+  from {
+    opacity: 0.75;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tuyaAiCarouselImg {
+    animation: tuyaAiCarouselBlurInReduced 0.35s ease forwards;
+    filter: none;
+  }
 }
 
 /* Partner block: full-bleed dark band; transparent logo cells (colab + marquee) */

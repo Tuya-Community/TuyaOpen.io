@@ -20,6 +20,11 @@ function Home() {
   const partnersMarqueeViewportRef = useRef(null)
   const partnersMarqueeFirstGroupRef = useRef(null)
   const [partnersMarqueeCentered, setPartnersMarqueeCentered] = useState(false)
+  const tuyaAiSectionRef = useRef(null)
+  const tuyaAiCarouselRef = useRef(null)
+  const tuyaAiWheelAccumRef = useRef(0)
+  const [tuyaAiSlideIndex, setTuyaAiSlideIndex] = useState(0)
+  const [tuyaAiCarouselMinHeightPx, setTuyaAiCarouselMinHeightPx] = useState(null)
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined') {
@@ -45,6 +50,129 @@ function Home() {
     ro.observe(firstGroup)
     return () => ro.disconnect()
   }, [locale, copy.partners.items.length])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTuyaAiSlideIndex(0)
+      return undefined
+    }
+    const el = tuyaAiSectionRef.current
+    if (!el) {
+      return undefined
+    }
+    const updateTuyaAiSlide = () => {
+      const rect = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      if (rect.bottom < 0 || rect.top > vh) {
+        return
+      }
+      const center = vh / 2
+      const p = (center - rect.top) / Math.max(1, rect.height)
+      const clamped = Math.max(0, Math.min(1, p))
+      const idx = Math.min(copy.tuyaAi.images.length - 1, Math.floor(clamped * copy.tuyaAi.images.length))
+      setTuyaAiSlideIndex((prev) => (prev === idx ? prev : idx))
+    }
+    window.addEventListener('scroll', updateTuyaAiSlide, { passive: true })
+    window.addEventListener('resize', updateTuyaAiSlide, { passive: true })
+    updateTuyaAiSlide()
+    return () => {
+      window.removeEventListener('scroll', updateTuyaAiSlide)
+      window.removeEventListener('resize', updateTuyaAiSlide)
+    }
+  }, [locale, copy.tuyaAi.images.length])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return undefined
+    }
+    const el = tuyaAiCarouselRef.current
+    if (!el) {
+      return undefined
+    }
+    tuyaAiWheelAccumRef.current = 0
+    const n = copy.tuyaAi.images.length
+    const onWheel = (e) => {
+      const h = el.clientHeight
+      const segment = Math.max(32, h / 3)
+      tuyaAiWheelAccumRef.current += e.deltaY
+      let consumed = false
+      while (tuyaAiWheelAccumRef.current >= segment) {
+        tuyaAiWheelAccumRef.current -= segment
+        setTuyaAiSlideIndex((i) => Math.min(n - 1, i + 1))
+        consumed = true
+      }
+      while (tuyaAiWheelAccumRef.current <= -segment) {
+        tuyaAiWheelAccumRef.current += segment
+        setTuyaAiSlideIndex((i) => Math.max(0, i - 1))
+        consumed = true
+      }
+      if (consumed) {
+        e.preventDefault()
+      }
+    }
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      el.removeEventListener('wheel', onWheel)
+    }
+  }, [locale, copy.tuyaAi.images.length])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+    setTuyaAiCarouselMinHeightPx(null)
+    const el = tuyaAiCarouselRef.current
+    if (!el) {
+      return undefined
+    }
+    const urls = copy.tuyaAi.images.map((item) => item.src)
+
+    const measureMaxHeight = () => {
+      const w = el.clientWidth
+      if (w < 8) {
+        return
+      }
+      Promise.all(
+        urls.map(
+          (url) =>
+            new Promise((resolve) => {
+              const img = new Image()
+              img.onload = () => {
+                const nw = img.naturalWidth
+                const nh = img.naturalHeight
+                if (nw < 1 || nh < 1) {
+                  resolve(0)
+                  return
+                }
+                resolve((nh / nw) * w)
+              }
+              img.onerror = () => resolve(0)
+              img.src = url
+            }),
+        ),
+      ).then((heights) => {
+        const maxH = Math.max(0, ...heights)
+        if (maxH > 0) {
+          setTuyaAiCarouselMinHeightPx(maxH)
+        }
+      })
+    }
+
+    measureMaxHeight()
+    const ro = new ResizeObserver(() => {
+      measureMaxHeight()
+    })
+    ro.observe(el)
+    return () => {
+      ro.disconnect()
+    }
+  }, [locale])
 
   useEffect(() => {
     if (!cloudDiagramLightboxOpen) {
@@ -103,13 +231,13 @@ function Home() {
                   <p className={styles.heroSubtitle}>{copy.hero.subtitle}</p>
                   <p className={styles.heroBody}>{copy.hero.body}</p>
                   <div className={styles.heroButtons}>
-                    <Link to="/docs/quick-start" className={styles.btnAccent}>
+                    <Link to="/docs/quick-start/enviroment-setup" className={styles.btnAccent}>
                       {copy.cta.quickStart} →
                     </Link>
                     <Link to="/docs/about-tuyaopen" className={styles.btnOutlineLight}>
                       {copy.cta.about}
                     </Link>
-                    <Link to="/docs/applications" className={styles.btnOutlineLight}>
+                    <Link to="#applications-use-cases-heading" className={styles.btnOutlineLight}>
                       {copy.cta.applications}
                     </Link>
                     <Link to="https://github.com/tuya/TuyaOpen" className={styles.btnGhostLight}>
@@ -311,23 +439,31 @@ function Home() {
                 </div>
               </div>
               <div className={clsx(styles.panel, 'scroll-to-display')}>
-                <h2 className={styles.sectionTitle} style={{ textAlign: 'left', marginBottom: '0.5rem' }}>
-                  {copy.demos.title}
-                </h2>
-                <p className={clsx(styles.sectionSubtitle, 'tw-text-left tw-max-w-none tw-mb-6')}>{copy.demos.intro}</p>
-                <ul className="tw-space-y-3 tw-mb-6">
+                <h2 className={clsx(styles.sectionTitle, styles.demosTitle)}>{copy.demos.title}</h2>
+                <p className={clsx(styles.sectionSubtitle, styles.demosIntro)}>{copy.demos.intro}</p>
+                <div className={styles.demosGrid}>
                   {copy.demos.items.map((d) => (
-                    <li key={d.name} className="tw-flex tw-flex-col sm:tw-flex-row sm:tw-gap-3">
-                      <code style={{ color: 'var(--brand-primary)', fontWeight: 700 }}>{d.name}</code>
-                      <span className={styles.sectionSubtitle} style={{ fontSize: '0.95rem', margin: 0 }}>
-                        {d.desc}
-                      </span>
-                    </li>
+                    <article key={d.name} className={styles.demoCard}>
+                      <h3 className={styles.demoCardName}>{d.name}</h3>
+                      <p className={styles.demoCardDesc}>{d.desc}</p>
+                      <div className={styles.demoCardLinks}>
+                        <Link
+                          to={d.codeLink}
+                          className={clsx(styles.btnOutlineDark, styles.demoCardLinkBtn)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {copy.demos.codeCta}
+                        </Link>
+                        {!d.hideGuide ? (
+                          <Link to={d.guideLink} className={clsx(styles.btnOutlineDark, styles.demoCardLinkBtn)}>
+                            {copy.demos.guideCta}
+                          </Link>
+                        ) : null}
+                      </div>
+                    </article>
                   ))}
-                </ul>
-                <Link to="/docs/applications" className={styles.btnSolidPrimary}>
-                  {copy.demos.cta} →
-                </Link>
+                </div>
               </div>
             </div>
           </section>
@@ -344,16 +480,13 @@ function Home() {
                     <div className={styles.featureIcon}>{i + 1}</div>
                     <h3>{step.title}</h3>
                     <p>{step.body}</p>
+                    {step.ctaLink && step.ctaLabel ? (
+                      <Link to={step.ctaLink} className={clsx(styles.btnOutlineDark, 'tw-mt-4 tw-inline-flex')}>
+                        {step.ctaLabel} →
+                      </Link>
+                    ) : null}
                   </div>
                 ))}
-              </div>
-              <div className="tw-flex tw-flex-wrap tw-justify-center tw-gap-4 tw-mt-10">
-                <Link to="/docs/maintenance-and-releases" className={styles.btnOutlineDark}>
-                  {copy.cta.releases}
-                </Link>
-                <Link to="/docs/contribute/contribute-guide" className={styles.btnOutlineDark}>
-                  {copy.cta.contribute}
-                </Link>
               </div>
             </div>
           </section>
@@ -414,8 +547,11 @@ function Home() {
                 </div>
               </div>
 
-              {/* Tuya AI — same gradient card as Arduino; copy left, image right, left-facing tilt */}
-              <div className={clsx(styles.experimentalArduino, styles.experimentalArduinoTuyaAi, 'scroll-to-display')}>
+              {/* Tuya AI — same gradient card as Arduino; copy left, image right, left-facing tilt; scroll syncs 3 screenshots */}
+              <div
+                ref={tuyaAiSectionRef}
+                className={clsx(styles.experimentalArduino, styles.experimentalArduinoTuyaAi, 'scroll-to-display')}
+              >
                 <div className={styles.experimentalArduinoInner}>
                   <div className={styles.experimentalArduinoCopy}>
                     <span className={styles.experimentalArduinoTag}>{copy.tuyaAi.sectionTag}</span>
@@ -423,26 +559,46 @@ function Home() {
                       <span className={styles.spotlightTitleGrad}>{copy.tuyaAi.title}</span>
                     </h2>
                     <p className={styles.experimentalArduinoBody}>{copy.tuyaAi.body}</p>
+                    {copy.tuyaAi.highlights?.length ? (
+                      <ul className={styles.experimentalArduinoHighlights}>
+                        {copy.tuyaAi.highlights.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                    ) : null}
                     <Link
-                      to="https://tuya.ai"
+                      to="/docs/cloud/tuya-cloud/ai-agent/ai-agent-dev-platform"
                       className={clsx(styles.btnSolidPrimary, 'tw-inline-flex')}
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
                       {copy.cta.learnMore} →
                     </Link>
                   </div>
                   <div className={styles.experimentalArduinoVisual}>
                     <div className={styles.experimentalArduinoFloat}>
-                      <div className={styles.experimentalArduinoFigure}>
-                        <img
-                          src={copy.tuyaAi.imageSrc}
-                          alt={copy.tuyaAi.imageAlt}
-                          className={styles.experimentalArduinoImg}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
+                      <figure
+                        className={styles.experimentalArduinoFigure}
+                        aria-live="polite"
+                        aria-label={`${copy.tuyaAi.title} ${tuyaAiSlideIndex + 1} / ${copy.tuyaAi.images.length}`}
+                      >
+                        <div
+                          ref={tuyaAiCarouselRef}
+                          className={styles.tuyaAiCarousel}
+                          style={
+                            tuyaAiCarouselMinHeightPx != null
+                              ? { minHeight: `${Math.round(tuyaAiCarouselMinHeightPx)}px` }
+                              : undefined
+                          }
+                        >
+                          <img
+                            src={copy.tuyaAi.images[tuyaAiSlideIndex].src}
+                            alt={copy.tuyaAi.images[tuyaAiSlideIndex].alt}
+                            className={clsx(styles.experimentalArduinoImg, styles.tuyaAiCarouselImg)}
+                            key={copy.tuyaAi.images[tuyaAiSlideIndex].src}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </figure>
                     </div>
                   </div>
                 </div>
@@ -490,35 +646,50 @@ function Home() {
                   id={`story-panel-${activeStory.id}`}
                   aria-labelledby={`story-tab-${activeStory.id}`}
                 >
-                  <h3 className={styles.customerStoriesPanelTitle}>{activeStory.title}</h3>
-                  <p className={styles.customerStoriesPanelBody}>{activeStory.body}</p>
-                  {activeStory.highlights?.length ? (
-                    <ul className={styles.customerStoriesHighlights}>
-                      {activeStory.highlights.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                  <div className={styles.customerStoriesMediaWrap}>
-                    {activeStory.mediaType === 'video' ? (
-                      <video
-                        className={styles.customerStoriesMedia}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        {...(activeStory.poster ? { poster: activeStory.poster } : {})}
-                      >
-                        <source src={activeStory.mediaSrc} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <img
-                        className={styles.customerStoriesMedia}
-                        src={activeStory.mediaSrc}
-                        alt={activeStory.mediaAlt}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
+                  <div className={styles.customerStoriesPanelSplit}>
+                    <div className={styles.customerStoriesPanelText}>
+                      <h3 className={styles.customerStoriesPanelTitle}>{activeStory.title}</h3>
+                      <p className={styles.customerStoriesPanelBody}>{activeStory.body}</p>
+                      {activeStory.highlights?.length ? (
+                        <ul className={styles.customerStoriesHighlights}>
+                          {activeStory.highlights.map((line) => (
+                            <li key={line}>{line}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                    <div className={styles.customerStoriesPanelMedia}>
+                      <div className={styles.customerStoriesMediaBlock}>
+                        <div className={styles.customerStoriesMediaWrap}>
+                          {activeStory.mediaType === 'video' ? (
+                            <video
+                              className={styles.customerStoriesMedia}
+                              controls
+                              playsInline
+                              preload="metadata"
+                              {...(activeStory.poster ? { poster: activeStory.poster } : {})}
+                            >
+                              <source src={activeStory.mediaSrc} type="video/mp4" />
+                            </video>
+                          ) : (
+                            <img
+                              className={styles.customerStoriesMedia}
+                              src={activeStory.mediaSrc}
+                              alt={activeStory.mediaAlt}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          )}
+                        </div>
+                        {activeStory.mediaCredit ? (
+                          <p className={styles.customerStoriesMediaCredit}>
+                            <a href={activeStory.mediaCredit.href} target="_blank" rel="noopener noreferrer">
+                              {activeStory.mediaCredit.label}
+                            </a>
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
