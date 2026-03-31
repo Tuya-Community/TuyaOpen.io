@@ -236,7 +236,7 @@ tos.py flash`,
     },
     tuyaAi: {
       sectionTag: 'Multimodal AI',
-      title: 'Tuya AI',
+      title: 'Tuya AI: Zero-Code Cloud Platform',
       body: 'Tuya AI: Multimodal edge-cloud intelligence with edge AI inference and a cloud agent hub, enabling access to leading AI models (DeepSeek, ChatGPT, Claude, Gemini) and cross-modal functions including voice/text interaction and image/video generation for edge devices. On the Tuya Cloud platform, you can build zero-code agents and customize IoT behaviors without rebuilding firmware.',
       highlights: [
         'Agentic Hardware Control',
@@ -830,7 +830,7 @@ tos.py flash`,
     },
     tuyaAi: {
       sectionTag: '多模态 AI',
-      title: 'Tuya AI',
+      title: 'Tuya AI：零代码云平台',
       body: 'Tuya AI：端云协同的多模态智能，支持端侧推理与云端智能体中枢，可接入 DeepSeek、ChatGPT、Claude、Gemini 等模型，并支持语音/文本交互与图像/视频生成等跨模态能力。基于 Tuya Cloud 平台，你可以零代码构建智能体，并按业务需求自定义 IoT 行为，无需反复改固件。',
       highlights: [
         'Agentic Hardware Control',
@@ -1133,8 +1133,8 @@ tos.py flash`,
     },
     developerStory: {
       sectionTag: '开发者故事',
-      title: 'Cattle Tracking with AI Agents',
-      subtitle: '何同学：让山里养殖也能搭上智能快车',
+      title: 'AI 智能体 · 放牛神助攻',
+      subtitle: '何同学团队-让山里养殖也能搭上智能快车',
       story:
         '何同学走进深山，亲眼看见农户日日爬陡坡寻牛，摔过、累过，普通定位器进了山里就彻底失联。心里放不下这份难处，团队决定用技术暖心相助。依托 TuyaOpen 开源能力，快速打通 LoRa 远距通信与方言 AI 语音，轻巧搭起整套智能放牛系统。不用啃底层难题，靠着成熟的端云与 AI 工具，把贴心好用的智慧方案，稳稳送到大山田间。通过对话式 AI 放牛追踪，日常交互更轻松，老年用户也几乎无需学习成本。',
       highlights: [
