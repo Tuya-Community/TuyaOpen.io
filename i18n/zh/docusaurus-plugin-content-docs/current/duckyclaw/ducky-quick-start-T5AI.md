@@ -106,7 +106,12 @@ brew install python3 git make
 
 ```bash
 git config --global http.postBuffer 524288000
+
+# Github repo
 git clone https://github.com/tuya/DuckyClaw.git
+
+# Gitee repo
+git clone https://gitee.com/tuya-open/DuckyClaw.git
 ```
 
 :::
@@ -119,8 +124,20 @@ git clone https://github.com/tuya/DuckyClaw.git
 
 ```bash
 cd DuckyClaw
+
+# update from github
+git submodule update --init
+
+# update from gitee
+git config --global url."https://gitee.com/tuya-open/".insteadOf "https://github.com/tuya/"
 git submodule update --init
 ```
+
+:::note
+如果需要切换到从 Github 拉取代码，需执行
+
+`git config --global url."https://github.com/tuya/".insteadOf "https://gitee.com/tuya/"`
+:::
 
 激活 TuyaOpen 构建环境，使 `tos.py` 可用：
 
@@ -181,16 +198,19 @@ cd ..
 tos.py config choice
 ```
 
-输入 **3** 选择 **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**：
+输入 **5** 选择 **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**：
 
 ```text
 --------------------
-1. ESP32S3_BREAD_COMPACT_WIFI.config
-2. RaspberryPi.config
-3. TUYA_T5AI_BOARD_LCD_3.5_CAMERA.config
+1. ATK_T5AI_MINI_BOARD_2.4LCD_CAMERA.config
+2. DshanPi_A1.config
+3. ESP32S3_BREAD_COMPACT_WIFI.config
+4. RaspberryPi.config
+5. TUYA_T5AI_BOARD_LCD_3.5_CAMERA.config
+6. WAVESHARE_T5AI_TOUCH_AMOLED_1_75.config
 --------------------
 Input "q" to exit.
-Choice config file: 3
+Choice config file: 5
 ```
 
 ### 5. 修改应用配置
@@ -208,11 +228,11 @@ Choice config file: 3
 - **PID**：[Tuya 产品 / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2)。
 - **UUID 与 AuthKey**：[Tuya IoT 平台 – Open SDK 采购](https://platform.tuya.com/purchase/index?type=6)。
 
-**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `feishu`、`telegram` 或 `discord`，并填写对应凭证：
+**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、`feishu`、`telegram` 或 `discord`，并填写对应凭证：
 
 ```c
 // IM configuration
-// feishu | telegram | discord
+// feishu | telegram | discord | weixin
 #define IM_SECRET_CHANNEL_MODE      "feishu"
 
 #define IM_SECRET_FS_APP_ID         ""
@@ -227,6 +247,15 @@ Choice config file: 3
 - **Feishu**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"feishu"`，并填写 `IM_SECRET_FS_APP_ID`、`IM_SECRET_FS_APP_SECRET`。
 - **Discord**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"discord"`，并填写 `IM_SECRET_DC_TOKEN`、`IM_SECRET_DC_CHANNEL_ID`。
 - **Telegram**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"telegram"`，并填写 `IM_SECRET_TG_TOKEN`。
+- **Weixin**：将 `IM_SECRET_CHANNEL_MODE` 设为 `"weixin"`，首次登录通过日志打开链接扫码绑定微信（按下复位键三次清除配网信息和微信绑定信息）。
+
+```c
+[weixin] =========================================================
+[weixin]   Weixin QR Login
+[weixin]   Open this URL in your PC browser, then scan with WeChat:
+[weixin]   https://open.weixin.qq.com/connect/qrconnect?...
+[weixin] =========================================================
+```
 
 ### 6. 编译与烧录
 

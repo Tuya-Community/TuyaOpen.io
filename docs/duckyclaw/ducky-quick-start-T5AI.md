@@ -107,7 +107,12 @@ You can increase Git buffer size for large clones:
 
 ```bash
 git config --global http.postBuffer 524288000
+
+# Github repo
 git clone https://github.com/tuya/DuckyClaw.git
+
+# Gitee repo
+git clone https://gitee.com/tuya-open/DuckyClaw.git
 ```
 
 :::
@@ -120,8 +125,20 @@ Use a project path **without** spaces or non-ASCII characters. On Windows, avoid
 
 ```bash
 cd DuckyClaw
+
+# update from github
+git submodule update --init
+
+# update from gitee
+git config --global url."https://gitee.com/tuya-open/".insteadOf "https://github.com/tuya/"
 git submodule update --init
 ```
+
+:::note
+If you need to switch back to pulling code from Github, run:
+
+`git config --global url."https://github.com/tuya/".insteadOf "https://gitee.com/tuya/"`
+:::
 
 Activate the TuyaOpen build environment so `tos.py` is available:
 
@@ -182,16 +199,19 @@ cd ..
 tos.py config choice
 ```
 
-Enter **3** to select **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**:
+Enter **5** to select **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**:
 
 ```text
 --------------------
-1. ESP32S3_BREAD_COMPACT_WIFI.config
-2. RaspberryPi.config
-3. TUYA_T5AI_BOARD_LCD_3.5_CAMERA.config
+1. ATK_T5AI_MINI_BOARD_2.4LCD_CAMERA.config
+2. DshanPi_A1.config
+3. ESP32S3_BREAD_COMPACT_WIFI.config
+4. RaspberryPi.config
+5. TUYA_T5AI_BOARD_LCD_3.5_CAMERA.config
+6. WAVESHARE_T5AI_TOUCH_AMOLED_1_75.config
 --------------------
 Input "q" to exit.
-Choice config file: 3
+Choice config file: 5
 ```
 
 ### 5. Edit application configuration
@@ -209,11 +229,11 @@ Replace the placeholder values. Obtain:
 - **PID**: [Tuya product / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2).
 - **UUID and AuthKey**: [Tuya IoT Platform – Open SDK purchase](https://platform.tuya.com/purchase/index?type=6).
 
-**IM configuration** (optional): To receive DuckyClaw notifications or interact via a messaging app, set the channel to `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
+**IM configuration** (optional): To receive DuckyClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
 
 ```c
 // IM configuration
-// feishu | telegram | discord
+// feishu | telegram | discord | weixin
 #define IM_SECRET_CHANNEL_MODE      "feishu"
 
 #define IM_SECRET_FS_APP_ID         ""
@@ -228,6 +248,15 @@ Replace the placeholder values. Obtain:
 - For **Feishu**: set `IM_SECRET_CHANNEL_MODE` to `"feishu"` and fill `IM_SECRET_FS_APP_ID` and `IM_SECRET_FS_APP_SECRET`.
 - For **Discord**: set `IM_SECRET_CHANNEL_MODE` to `"discord"` and fill `IM_SECRET_DC_TOKEN` and `IM_SECRET_DC_CHANNEL_ID`.
 - For **Telegram**: set `IM_SECRET_CHANNEL_MODE` to `"telegram"` and fill `IM_SECRET_TG_TOKEN`.
+- For **Weixin**: set `IM_SECRET_CHANNEL_MODE` to `"weixin"`. On first login, open the link printed in the log and scan the QR code with WeChat to bind. Press the reset button three times to clear Wi-Fi provisioning data and the Weixin binding.
+
+```c
+[weixin] =========================================================
+[weixin]   Weixin QR Login
+[weixin]   Open this URL in your PC browser, then scan with WeChat:
+[weixin]   https://open.weixin.qq.com/connect/qrconnect?...
+[weixin] =========================================================
+```
 
 ### 6. Build and flash
 
