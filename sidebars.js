@@ -31,6 +31,9 @@ module.exports = {
           ],
         },
         'duckyclaw/custom-device-mcp',
+        'duckyclaw/hardware-skill',
+        'duckyclaw/DuckyClaw-OpenClaw',
+        'duckyclaw/DuckyClaw-TuyaClaw',
       ],
     },
     {
