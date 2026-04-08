@@ -3,13 +3,23 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
+
+/** Terminal log `tag` → bottom step card id (see `realWorldValidation.steps` in homepageCopy). */
+const HIL_LOG_TAG_TO_STEP_NUM = {
+  VibeCoding: '01',
+  BUILD: '01',
+  FLASH: '01',
+  AUTH: '02',
+  DEBUG: '03',
+  HW_CLI: '03',
+}
 
 function hilToneTagClass(tone) {
   return clsx(
@@ -41,6 +51,19 @@ function Home() {
   const [hilPrefersReducedMotion, setHilPrefersReducedMotion] = useState(false)
   const [hilTerminalLines, setHilTerminalLines] = useState([])
   const [hilDiagramActiveIndex, setHilDiagramActiveIndex] = useState(null)
+
+  const hilHighlightedStepNum = useMemo(() => {
+    for (let i = hilTerminalLines.length - 1; i >= 0; i -= 1) {
+      const line = hilTerminalLines[i]
+      if (line.kind === 'log' && line.tag) {
+        const stepNum = HIL_LOG_TAG_TO_STEP_NUM[line.tag]
+        if (stepNum) {
+          return stepNum
+        }
+      }
+    }
+    return null
+  }, [hilTerminalLines])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -593,7 +616,11 @@ function Home() {
               </div>
               <div className={styles.hilSteps}>
                 {copy.realWorldValidation.steps.map((step) => (
-                  <div key={step.num} className={styles.hilStepCard}>
+                  <div
+                    key={step.num}
+                    className={clsx(styles.hilStepCard, hilHighlightedStepNum === step.num && styles.hilStepCardActive)}
+                    aria-current={hilHighlightedStepNum === step.num ? 'step' : undefined}
+                  >
                     <span className={styles.hilStepNum}>{step.num}</span>
                     <h3 className={styles.hilStepTitle}>{step.title}</h3>
                     <p className={styles.hilStepBody}>{step.body}</p>

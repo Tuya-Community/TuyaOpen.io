@@ -1328,15 +1328,16 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.02);
   padding: 1rem 1.05rem 1.05rem;
-  animation: hilStepPulse 7.2s ease-in-out infinite;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
-.hilStepCard:nth-child(2) {
-  animation-delay: -2.4s;
-}
-
-.hilStepCard:nth-child(3) {
-  animation-delay: -4.8s;
+.hilStepCardActive {
+  border-color: rgba(96, 165, 250, 0.65);
+  background: rgba(96, 165, 250, 0.08);
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
 }
 
 .hilStepNum {
@@ -1360,22 +1361,6 @@
   font-size: 0.72rem;
   line-height: 1.55;
   color: rgba(226, 232, 240, 0.55);
-}
-
-@keyframes hilStepPulse {
-  0%,
-  11% {
-    border-color: rgba(94, 234, 212, 0.45);
-    box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.12), 0 10px 32px rgba(0, 0, 0, 0.35);
-    background: rgba(94, 234, 212, 0.04);
-  }
-
-  16%,
-  100% {
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: none;
-    background: rgba(255, 255, 255, 0.02);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1404,16 +1389,18 @@
     opacity: 0.72 !important;
   }
 
-  .hilStepCard {
-    animation: none !important;
-  }
-
   .hilDiagramNode:not(.hilDiagramNodeActive) {
     border-color: rgba(255, 255, 255, 0.12);
   }
 
   .hilStepCard {
     border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .hilStepCardActive {
+    border-color: rgba(96, 165, 250, 0.65);
+    background: rgba(96, 165, 250, 0.08);
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
   }
 }
 
