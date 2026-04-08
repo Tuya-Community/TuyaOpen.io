@@ -9,7 +9,7 @@ tags: [TuyaOpen, Contest]
 
 Tuya is excited to join **HackStorm AI + IoT Hackathon: Makers Gathering**  (https://www.hackstorm.ai/) as a **Co-host and Core Technology Sponsor**.
 
-<!-- truncate -->
+{/* truncate */}
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/74b29c86-a93b-4de4-8001-84ac3a20965b.jpg" alt="banner" width="1300" />
 

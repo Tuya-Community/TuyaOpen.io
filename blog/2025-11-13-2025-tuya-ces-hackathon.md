@@ -12,7 +12,7 @@ tags: [TuyaOpen, Contest]
 
 **For AI, for Innovation, For the Future.**
 
-<!-- truncate -->
+{/* truncate */}
 
 <img src="https://images.tuyacn.com/rms-static/0561b9d0-c5f7-11f0-8d7c-0576ce46d19e-1763632518637.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_b253474d-4a55-4447-a758-73f614cb6990.png" />
 
