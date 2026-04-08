@@ -507,6 +507,903 @@
   color: var(--neutral-300);
 }
 
+/* Hardware-in-the-loop (Embedder-inspired: monospace console + flow + step pulse) */
+.hilSection {
+  position: relative;
+  padding: 3.5rem 1rem 4rem;
+  background: #0a0a0c;
+  color: #e5e7eb;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+}
+
+.hilSectionNewBadge {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  font-family: var(--ifm-font-family-base), system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  pointer-events: none;
+  background: linear-gradient(125deg, #ec4899 0%, #a855f7 35%, #38bdf8 70%, #34d399 100%);
+  background-size: 220% 220%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 4px 18px rgba(168, 85, 247, 0.45),
+    0 0 24px rgba(56, 189, 248, 0.25);
+  transform: rotate(-10deg);
+  animation: hilNewBadgeGradient 5s ease infinite, hilNewBadgeFloat 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hilSectionNewBadge {
+    animation: none;
+    background: linear-gradient(125deg, #db2777, #9333ea, #0ea5e9);
+  }
+}
+
+@keyframes hilNewBadgeGradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hilNewBadgeFloat {
+  0%,
+  100% {
+    transform: rotate(-10deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-10deg) translateY(-4px);
+  }
+}
+
+@media (min-width: 768px) {
+  .hilSectionNewBadge {
+    top: 1.25rem;
+    left: max(1rem, calc(50% - 640px));
+  }
+}
+
+.hilHeader {
+  max-width: 44rem;
+  margin-bottom: 2rem;
+}
+
+.hilEyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.45);
+  margin-bottom: 0.65rem;
+}
+
+.hilTitle {
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 4vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.hilTitleBase {
+  color: #f8fafc;
+}
+
+.hilTitleAccent {
+  color: #5eead4;
+  text-shadow: 0 0 32px rgba(94, 234, 212, 0.25);
+}
+
+.hilBody {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(226, 232, 240, 0.62);
+  font-weight: 400;
+}
+
+.hilBodyHighlight {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: inherit;
+  background: linear-gradient(110deg, #5eead4 0%, #38bdf8 40%, #a78bfa 75%, #f472b6 100%);
+  background-size: 160% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 14px rgba(94, 234, 212, 0.35));
+}
+
+/* CJK: gradient clip + glow stay readable with mixed Latin / 汉字 */
+.hilBodyHighlight:lang(zh),
+.hilBodyHighlight:lang(zh-CN) {
+  letter-spacing: 0.03em;
+  word-break: keep-all;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hilBodyHighlight {
+    color: #5eead4;
+    -webkit-text-fill-color: #5eead4;
+    background: none;
+    filter: none;
+    text-shadow: 0 0 18px rgba(94, 234, 212, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hilBodyHighlight {
+    animation: hilBodyHighlightShift 8s ease infinite;
+  }
+}
+
+@keyframes hilBodyHighlightShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hilBodyHighlight {
+    animation: none;
+    background: linear-gradient(110deg, #5eead4, #38bdf8, #a78bfa);
+    background-size: 100% 100%;
+  }
+}
+
+.hilHeaderCta {
+  margin-top: 1.35rem;
+  pointer-events: auto;
+}
+
+.hilVibeCodingBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  font-family: var(--ifm-font-family-base), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #2dd4bf 0%, #34d399 100%);
+  color: #0a0a0c !important;
+  text-decoration: none !important;
+  border: 1px solid rgba(167, 243, 208, 0.45);
+  box-shadow: 0 0 28px rgba(94, 234, 212, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.hilVibeCodingBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 36px rgba(94, 234, 212, 0.48);
+  filter: brightness(1.05);
+  color: #030303 !important;
+}
+
+.hilSplit {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 1024px) {
+  .hilSplit {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+.hilConsole {
+  box-sizing: border-box;
+  align-self: start;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 15, 18, 0.95);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Fixed viewport: inner body scrolls; card does not grow with log lines or stretch to diagram height. */
+  height: clamp(17rem, 52vh, 26rem);
+}
+
+.hilConsoleTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hilConsoleChannels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.hilConsoleChannel {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.hilConsoleStatus {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fbbf24;
+  white-space: nowrap;
+}
+
+.hilConsoleBar {
+  padding: 0.35rem 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hilConsoleBarTitle {
+  font-size: 0.65rem;
+  color: rgba(45, 212, 191, 0.72);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hilConsoleBody {
+  flex: 1 1 0;
+  min-height: 0;
+  padding: 0.65rem 0.7rem 0.85rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hilConsoleBody::-webkit-scrollbar {
+  display: none;
+}
+
+.hilLogLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.5rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: hilLogReveal 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hilLogLineLog {
+  padding-left: 1rem;
+  margin-left: 0.2rem;
+  border-left: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.hilLogTag {
+  flex-shrink: 0;
+  padding: 0.08rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.hilLogPrefixEmoji {
+  margin-right: 0.28rem;
+  font-size: 0.92em;
+  line-height: 1;
+}
+
+.hilLogTagOrange {
+  color: #d19a66;
+  background: rgba(209, 154, 102, 0.14);
+}
+
+.hilLogTagBlue {
+  color: #61afef;
+  background: rgba(97, 175, 239, 0.14);
+}
+
+.hilLogTagGreen {
+  color: #98c379;
+  background: rgba(152, 195, 121, 0.14);
+}
+
+.hilLogTagPurple {
+  color: #c678dd;
+  background: rgba(198, 120, 221, 0.14);
+}
+
+.hilLogTagTeal {
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.14);
+}
+
+.hilLogTagAmber {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+}
+
+.hilLogLineUser {
+  padding: 0.2rem 0.45rem 0.22rem 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border-left: 3px solid rgba(148, 163, 184, 0.55);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hilLogLineAgent {
+  padding: 0.2rem 0.45rem 0.22rem 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border-left: 3px solid rgba(94, 234, 212, 0.55);
+  background: rgba(94, 234, 212, 0.05);
+}
+
+.hilLogUserPrefix {
+  display: inline-flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #cbd5e1;
+}
+
+.hilLogUserPrefix::after {
+  content: ':';
+  margin-right: 0.35rem;
+}
+
+.hilLogAgentPrefix {
+  display: inline-flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #5eead4;
+  margin-right: 0.4rem;
+}
+
+.hilLogText {
+  color: rgba(226, 232, 240, 0.78);
+  word-break: break-word;
+}
+
+@keyframes hilLogReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hilDiagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(rgba(94, 234, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: rgba(12, 12, 14, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  min-height: 280px;
+  position: relative;
+  /* Do not clip Bézier strokes that extend past the card bounds */
+  overflow: visible;
+  padding: 0.85rem 0.55rem 0.85rem 0.5rem;
+}
+
+@media (min-width: 480px) {
+  .hilDiagram {
+    padding: 1rem 0.65rem 1rem 0.6rem;
+  }
+}
+
+/* Grid + SVG share one box: no inner padding so viewBox 360×220 matches layout 1:1. */
+.hilDiagramInner {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: minmax(68px, 104fr) minmax(0, 144fr) minmax(52px, 112fr);
+  grid-template-rows: minmax(11.5rem, auto);
+  align-items: stretch;
+  column-gap: 0.3rem;
+  min-height: 220px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+@media (min-width: 480px) {
+  .hilDiagramInner {
+    grid-template-columns: minmax(72px, 104fr) minmax(0, 144fr) minmax(56px, 112fr);
+    column-gap: 0.35rem;
+  }
+}
+
+.hilDiagramSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+  shape-rendering: geometricPrecision;
+}
+
+/* Solid trace underneath; dashed “runner” is hilFlowPathRun on top. */
+.hilFlowPathBase {
+  fill: none;
+  stroke: rgba(118, 249, 196, 0.35);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+  opacity: 0.16;
+  transition:
+    opacity 0.35s ease,
+    stroke 0.35s ease,
+    stroke-width 0.35s ease;
+}
+
+.hilSection[data-hil-active='true'] .hilFlowPathBase {
+  opacity: 0.26;
+}
+
+.hilSection[data-hil-active='false'] .hilFlowPathBase {
+  opacity: 0.1;
+}
+
+.hilSection[data-hil-active='false'] .hilFlowPathRun {
+  opacity: 0;
+}
+
+.hilSection[data-hil-active='true'] .hilFlowPathBase.hilFlowPathActive {
+  opacity: 0.95;
+  stroke: rgba(96, 165, 250, 1);
+  stroke-width: 1.45;
+}
+
+/* Runner overlay: hidden unless this path is the active diagram branch (solid only on others). */
+.hilFlowPathRun {
+  fill: none;
+  stroke: rgba(186, 250, 220, 0.88);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+  stroke-dasharray: 0.07 0.93;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hilSection[data-hil-active='true'] .hilFlowPathRun.hilFlowPathRunActive {
+  stroke: rgba(240, 249, 255, 1);
+  stroke-width: 1.55;
+  opacity: 0.92;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hilSection[data-hil-active='true'] .hilFlowPathRun.hilFlowPathRunActive {
+    animation: hilFlowDashMove 0.52s linear infinite;
+    stroke-dasharray: 0.05 0.95;
+  }
+}
+
+@keyframes hilFlowDashMove {
+  to {
+    stroke-dashoffset: 1;
+  }
+}
+
+.hilDiagramHub {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  box-sizing: border-box;
+  min-width: 10.5rem;
+  padding: 0.95rem 1.15rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  background: rgba(10, 10, 12, 0.85);
+  box-shadow: 0 0 27px rgba(94, 234, 212, 0.12);
+  text-align: center;
+  margin-left: 0;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hilSection[data-hil-active='true'] .hilDiagramHub {
+    animation: hilHubHardwareGlow 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes hilHubHardwareGlow {
+  0%,
+  100% {
+    border-color: rgba(94, 234, 212, 0.48);
+    box-shadow:
+      0 0 20px rgba(94, 234, 212, 0.28),
+      0 0 40px rgba(45, 212, 191, 0.12),
+      inset 0 0 14px rgba(94, 234, 212, 0.05);
+  }
+
+  38% {
+    border-color: rgba(74, 222, 128, 0.72);
+    box-shadow:
+      0 0 28px rgba(74, 222, 128, 0.5),
+      0 0 52px rgba(16, 185, 129, 0.18),
+      inset 0 0 16px rgba(74, 222, 128, 0.1);
+  }
+
+  70% {
+    border-color: rgba(56, 189, 248, 0.58);
+    box-shadow:
+      0 0 24px rgba(56, 189, 248, 0.38),
+      0 0 46px rgba(94, 234, 212, 0.14),
+      inset 0 0 12px rgba(56, 189, 248, 0.07);
+  }
+}
+
+.hilDiagramHubLed {
+  align-self: flex-start;
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #4ade80;
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.85);
+  transition:
+    opacity 0.04s linear,
+    transform 0.04s linear,
+    box-shadow 0.04s linear;
+}
+
+.hilDiagramHubLedDim {
+  opacity: 0.22;
+  transform: scale(0.82);
+  box-shadow: 0 0 4px rgba(74, 222, 128, 0.28);
+}
+
+.hilDiagramHubLabel {
+  width: 100%;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  color: #f8fafc;
+}
+
+.hilDiagramHubSub {
+  width: 100%;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(226, 232, 240, 0.45);
+}
+
+@media (min-width: 480px) {
+  .hilDiagramHub {
+    min-width: 11.25rem;
+    padding: 1.05rem 1.25rem 1.15rem;
+    gap: 0.48rem;
+  }
+
+  .hilDiagramHubLabel {
+    font-size: 1.08rem;
+  }
+
+  .hilDiagramHubSub {
+    font-size: 0.82rem;
+  }
+
+  .hilDiagramHubLed {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+.hilDiagramNodes {
+  position: relative;
+  z-index: 1;
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: stretch;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-height: 0;
+  transform: none;
+}
+
+.hilDiagramNode {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.18rem 0.32rem;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 8, 10, 0.75);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  color: rgba(226, 232, 240, 0.72);
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hilDiagramNodeActive {
+  border-color: rgba(96, 165, 250, 0.75);
+  color: #f1f5f9;
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.22);
+}
+
+/* Desktop: hub offset matches SVG trunk (M 95 …). */
+@media (min-width: 900px) {
+  .hilDiagramHub {
+    margin-left: 60px;
+    transform: translateX(40px);
+  }
+
+  .hilDiagramNodes {
+    transform: translateX(-20px);
+  }
+}
+
+/* Narrow viewports: keep diagram inside the card (no horizontal bleed). */
+@media (max-width: 899px) {
+  .hilDiagram {
+    overflow-x: hidden;
+  }
+}
+
+/* Tablet / small laptop: tighter grid; hub sits without extra horizontal push. */
+@media (max-width: 899px) and (min-width: 640px) {
+  .hilDiagramInner {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr) minmax(0, 1fr);
+    column-gap: 0.15rem;
+  }
+
+  .hilDiagramHub {
+    min-width: 0;
+    max-width: 9.75rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .hilDiagramHubLabel {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hilDiagramHubSub {
+    font-size: 0.72rem;
+  }
+
+  .hilDiagramNodes {
+    gap: 8px;
+  }
+
+  .hilDiagramNode {
+    white-space: normal;
+    font-size: 0.58rem;
+    line-height: 1.2;
+    padding: 0.14rem 0.22rem;
+  }
+}
+
+/* Phone: stack hub above steps; hide connector SVG (layout is no longer 3-column). */
+@media (max-width: 639px) {
+  .hilDiagram {
+    min-height: 0;
+    padding: 0.65rem 0.45rem 0.8rem;
+    align-items: stretch;
+  }
+
+  .hilDiagramInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 0;
+  }
+
+  .hilDiagramSvg {
+    display: none;
+  }
+
+  .hilDiagramHub {
+    min-width: 0;
+    width: 100%;
+    max-width: 15.5rem;
+    padding: 0.65rem 0.8rem 0.8rem;
+    gap: 0.32rem;
+  }
+
+  .hilDiagramHubLabel {
+    font-size: 0.88rem;
+    letter-spacing: 0.07em;
+  }
+
+  .hilDiagramHubSub {
+    font-size: 0.68rem;
+  }
+
+  .hilDiagramHubLed {
+    width: 9px;
+    height: 9px;
+  }
+
+  .hilDiagramNodes {
+    width: 100%;
+    max-width: 17.5rem;
+    gap: 8px;
+  }
+
+  .hilDiagramNode {
+    white-space: normal;
+    font-size: 0.6rem;
+    line-height: 1.22;
+    padding: 0.14rem 0.24rem;
+  }
+}
+
+.hilSteps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .hilSteps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.hilStepCard {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1rem 1.05rem 1.05rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.hilStepCardActive {
+  border-color: rgba(96, 165, 250, 0.65);
+  background: rgba(96, 165, 250, 0.08);
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
+}
+
+.hilStepNum {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(94, 234, 212, 0.85);
+  margin-bottom: 0.45rem;
+}
+
+.hilStepTitle {
+  margin: 0 0 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.hilStepBody {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: rgba(226, 232, 240, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hilLogLine {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .hilFlowPathBase {
+    transition: none !important;
+  }
+
+  .hilFlowPathRun {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .hilSection[data-hil-active='true'] .hilFlowPathBase {
+    opacity: 0.32 !important;
+  }
+
+  .hilSection[data-hil-active='true'] .hilFlowPathBase.hilFlowPathActive {
+    opacity: 0.72 !important;
+  }
+
+  .hilDiagramNode:not(.hilDiagramNodeActive) {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .hilStepCard {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .hilStepCardActive {
+    border-color: rgba(96, 165, 250, 0.65);
+    background: rgba(96, 165, 250, 0.08);
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
+  }
+}
+
 /* Dark code showcase */
 .codeShowcase {
   background: var(--neutral-800);
@@ -885,7 +1782,7 @@
   background: var(--neutral-900);
 }
 
-/* T5 + partners section: drop bottom padding so neutral-900 partners strip meets blue community (no white gap) */
+/* T5 + partners section: drop bottom padding so partners band meets community section (no gap) */
 .lightSectionFlushBottom {
   padding-bottom: 0;
 }
@@ -2181,15 +3078,21 @@ video.customerStoriesMedia {
   }
 }
 
-/* Partner block: full-bleed dark band; transparent logo cells (colab + marquee) */
+/* Partner block: dark band; plain logo grid (no per-logo card); flagged logos use contrast filter */
 .partnersShowcase {
   margin-top: 3.5rem;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding: 3rem 15% 3.5rem;
-  background: var(--neutral-900);
+  background: linear-gradient(180deg, #111827 0%, #030712 100%);
   color: #f1f5f9;
-  border-top: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .partnersShowcase {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  color: #f1f5f9;
+  border-top-color: rgba(255, 255, 255, 0.08);
 }
 
 .partnersShowcaseHeader {
@@ -2248,7 +3151,7 @@ video.customerStoriesMedia {
   display: grid;
   /* auto-fit collapses empty tracks so a short row stays centered; auto-fill leaves empty columns on the right */
   grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
-  gap: 0.45rem 0.6rem;
+  gap: 0.55rem 0.65rem;
   align-items: center;
   justify-items: center;
   justify-content: center;
@@ -2259,10 +3162,11 @@ video.customerStoriesMedia {
   align-items: center;
   justify-content: center;
   min-height: 2.65rem;
-  padding: 0.3rem 0.45rem;
-  border-radius: 10px;
+  padding: 0.35rem 0.5rem;
   border: none;
+  border-radius: 0;
   background: transparent;
+  box-shadow: none;
 }
 
 .partnersColabImg {
@@ -2271,6 +3175,11 @@ video.customerStoriesMedia {
   width: auto;
   max-width: 100%;
   object-fit: contain;
+}
+
+/* Flagged PNGs: black or white mono marks → light on dark partners band */
+.partnersColabImgInvertLight {
+  filter: brightness(0) invert(1);
 }
 
 .partnersMarqueeViewport {
@@ -2346,7 +3255,7 @@ video.customerStoriesMedia {
   display: flex;
   flex-shrink: 0;
   text-decoration: none;
-  border-radius: 14px;
+  border-radius: 0;
   outline-offset: 3px;
 }
 
@@ -2360,9 +3269,9 @@ video.customerStoriesMedia {
   align-items: center;
   justify-content: center;
   min-height: 2.65rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 10px;
+  padding: 0.35rem 0.5rem;
   border: none;
+  border-radius: 0;
   background: transparent;
   box-shadow: none;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -2380,16 +3289,13 @@ video.customerStoriesMedia {
   width: auto;
   max-width: 10rem;
   object-fit: contain;
-  filter: grayscale(1) brightness(0) invert(1);
-  opacity: 0.82;
-  transition:
-    filter 0.2s ease,
-    opacity 0.2s ease;
+  filter: none;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
 }
 
 @media (hover: hover) {
   .partnersShowcase .partnerLogoLink:hover .partnerLogoImg {
-    filter: grayscale(0) brightness(0) invert(1);
     opacity: 1;
   }
 }

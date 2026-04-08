@@ -32,8 +32,8 @@ This project is built using **TuyaOpen**, an open-source AI+IoT development fram
 
 Welcome to the ultimate LED pixel matrix adventure! This tutorial will guide you through building an incredible 16x16 LED matrix display using the TuyaOpen SDK. We'll create everything from simple color effects to complex animations, scrolling text, and even mathematical patterns that will blow your mind!
 
-<!-- ![Project Hero Image - A stunning 16x16 LED matrix displaying a rainbow wave effect] -->
-<!-- ![Project Overview - Split screen showing the hardware setup and the final animated display] -->
+{/* ![Project Hero Image - A stunning 16x16 LED matrix displaying a rainbow wave effect] */}
+{/* ![Project Overview - Split screen showing the hardware setup and the final animated display] */}
 
 ![LED Matrix Animations](https://images.tuyacn.com/fe-static/docs/img/40c94bdf-cab2-4069-9298-862c7be9e315.gif)  
   *All animation effects running on the 16x16 LED matrix - from breathing colors to 2D waves, scrolling text, and more!*
@@ -48,8 +48,8 @@ By the end of this tutorial, you'll have created:
 - **Custom Font Rendering** for scrolling text messages
 - **Mathematical Pattern Generation** using trigonometry and wave functions
 
-<!-- ![Final Project - Multiple screenshots showing different animation effects running on the LED matrix] -->
-<!-- ![Animation Showcase - GIF showing the transition between different effects] -->
+{/* ![Final Project - Multiple screenshots showing different animation effects running on the LED matrix] */}
+{/* ![Animation Showcase - GIF showing the transition between different effects] */}
 
 ## 🛠️ Hardware Requirements
 
@@ -106,8 +106,8 @@ The beauty of this project lies in its simplicity - just **one data wire** contr
 - Use a separate 5V power supply for the LEDs (don't power from the board)
 - Ensure proper grounding between power supply and board
 
-<!-- ![Wiring Diagram - Clear schematic showing the single-wire connection between T5AI and LED matrix] -->
-<!-- ![Pinout Reference - Close-up of the T5AI board with SPI0_MISO pin highlighted] -->
+{/* ![Wiring Diagram - Clear schematic showing the single-wire connection between T5AI and LED matrix] */}
+{/* ![Pinout Reference - Close-up of the T5AI board with SPI0_MISO pin highlighted] */}
 
 ## 💻 Software Architecture
 
@@ -145,8 +145,8 @@ The project uses Tuya's pixel driver framework supporting multiple LED types:
 - **Color Space**: RGB + Warm/Cold white
 - **Effects**: HSV to RGB conversion for smooth color transitions
 
-<!-- ![Code Architecture - Diagram showing the relationship between drivers, effects, and hardware] -->
-<!-- ![Matrix Layout - Visual representation of the 16x16 LED matrix with coordinate system] -->
+{/* ![Code Architecture - Diagram showing the relationship between drivers, effects, and hardware] */}
+{/* ![Matrix Layout - Visual representation of the 16x16 LED matrix with coordinate system] */}
 
 ## 🎨 Animation Effects Deep Dive
 
@@ -225,7 +225,7 @@ __ERROR:
 - **Color Cycling**: Transitions between predefined color arrays
 - **Frame Management**: Static variables maintain animation state between frames
 
-<!-- ![Breathing Effect - Screenshot showing the matrix in different breathing states] -->
+{/* ![Breathing Effect - Screenshot showing the matrix in different breathing states] */}
 
 ### 2. **2D Wave Effect**
 ```c
@@ -364,7 +364,7 @@ __ERROR:Required Tools
 - **Color Spectrum**: Continuous hue rotation for rainbow effects
 - **Directional Tinting**: Different colors based on compass direction
 
-<!-- ![2D Wave - Animation showing the expanding circular wave with color gradients] -->
+{/* ![2D Wave - Animation showing the expanding circular wave with color gradients] */}
 
 ### More Animation Effects
 
@@ -380,7 +380,7 @@ The demo codebase includes several additional animation effects that showcase di
 
 Each effect demonstrates different aspects of embedded programming, from basic LED control to advanced mathematical algorithms for visual effects.
 
-<!-- ![Animation Showcase - Screenshot showing multiple effects running on the LED matrix] -->
+{/* ![Animation Showcase - Screenshot showing multiple effects running on the LED matrix] */}
 
 ## 🔧 Code Walkthrough
 
@@ -450,7 +450,7 @@ if (animation_complete) {
 }
 ```
 
-<!-- ![Code Snippets - Screenshots of the key code sections with syntax highlighting] -->
+{/* ![Code Snippets - Screenshots of the key code sections with syntax highlighting] */}
 
 ## 🎛️ Configuration & Customization
 
@@ -477,7 +477,7 @@ static uint32_t max_cycles_per_effect = 200;  // Effect duration
 tal_system_sleep(50);  // Frame delay (ms)
 ```
 
-<!-- ![Configuration Options - Screenshot of the configuration files with explanations] -->
+{/* ![Configuration Options - Screenshot of the configuration files with explanations] */}
 
 ## 🚀 Building & Flashing
 
@@ -564,8 +564,8 @@ tos.py monitor
 ### Configuration Options
 
 
-<!-- ![Build Process - Screenshot of the build output and successful compilation] -->
-<!-- ![Flashing Process - Screenshot of the flashing interface and successful upload] -->
+{/* ![Build Process - Screenshot of the build output and successful compilation] */}
+{/* ![Flashing Process - Screenshot of the flashing interface and successful upload] */}
 
 ## 🎪 Advanced Effects & Modifications
 
@@ -591,7 +591,7 @@ static void __custom_effect(void)
 - **Color Depth**: Modify `COLOR_RESOLUION` for brightness levels
 - **Memory Usage**: Optimize static variables for RAM efficiency
 
-<!-- ![Custom Effects - Screenshots showing custom animations created by modifying the code] -->
+{/* ![Custom Effects - Screenshots showing custom animations created by modifying the code] */}
 
 ## 🔍 Troubleshooting
 
@@ -646,12 +646,12 @@ Congratulations! You've built an incredible LED matrix display system that demon
 - Scale up to larger matrices for even more impressive displays
 - Share your creations with the maker community!
 
-<!-- ![Project Completion - Final showcase of all the amazing effects running on the LED matrix] -->
-<!-- ![Community Showcase - Screenshots of other makers' projects inspired by this tutorial] -->
+{/* ![Project Completion - Final showcase of all the amazing effects running on the LED matrix] */}
+{/* ![Community Showcase - Screenshots of other makers' projects inspired by this tutorial] */}
 
 ---
 
 *Happy Making! 🌈✨*
 *Built with ❤️ using TuyaOpen SDK*
 
-<!-- ![Footer - TuyaOpen logo and project credits] -->
+{/* ![Footer - TuyaOpen logo and project credits] */}

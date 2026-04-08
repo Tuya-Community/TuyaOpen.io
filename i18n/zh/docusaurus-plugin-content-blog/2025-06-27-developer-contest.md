@@ -6,22 +6,22 @@ image: /img/home/tuyaopen-logo-social-preview.png
 tags: [TuyaOpen, Contest]
 ---
 
-<!-- truncate -->
+{/* truncate */}
 
 # title: '52H 创业森林活动'
-<!-- ![event](https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png) -->
+{/* ![event](https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png) */}
 
 > **本指南为大赛专用文档，旨在为参赛者提供全面的活动指引。**
 
-<!-- ### 比赛信息 -->
-<!-- - 活动时间：6/27 ~ 6/29（共 52 小时） -->
+{/* ### 比赛信息 */}
+{/* - 活动时间：6/27 ~ 6/29（共 52 小时） */}
 
 # 重要资源
-<!-- - 涂鸦大赛 PPT：[PPT 介绍](https://tuyaopen-pu9rufi.gamma.site/) -->
+{/* - 涂鸦大赛 PPT：[PPT 介绍](https://tuyaopen-pu9rufi.gamma.site/) */}
 - TuyaOpen 代码仓库：[GitHub](https://github.com/tuya/TuyaOpen)
 - TuyaOpen 文档官网：[文档](https://tuyaopen.ai)
 
-<!-- truncate -->
+{/* truncate */}
 
 ## TuyaOpen 与 TuyaOS
 
@@ -118,7 +118,7 @@ Tuya Wind IDE 是面向基于 TuyaOS EasyGo 的开发者提供的一站式集成
 - I/O Pin 脚高清下载：[Pinout](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
 - 如何快速编译项目 + 烧写？：[教程](/docs/quick-start/enviroment-setup)
 
-<!-- ### 涂鸦 T5 mini 开发板（第三方社区开发板）
+{/* ### 涂鸦 T5 mini 开发板（第三方社区开发板）
 
 - 优势是更小尺寸，适合空间要求较高方案。
 - 使用方法，您可以参考 [T5AI Board](/blog#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF)，功能较为接近。
@@ -133,7 +133,7 @@ Tuya Wind IDE 是面向基于 TuyaOS EasyGo 的开发者提供的一站式集成
 - Tuya App 远程控制 RDK X5 能力。
     - RDK + TuyaOpen 框架方案 Demo：[教程](/docs/rdk/rdk-originbot-with-tuya-dp-control-demo.pdf)
 - RDK X5 与 Tuya T5 芯片混合框架
-    - 边缘计算 + 云计算的结合：[教程](https://diguazhandian-rdkx5-tuya-t4otm0d.gamma.site/) -->
+    - 边缘计算 + 云计算的结合：[教程](https://diguazhandian-rdkx5-tuya-t4otm0d.gamma.site/) */}
 
 ---
 
@@ -146,7 +146,7 @@ Tuya Wind IDE 是面向基于 TuyaOS EasyGo 的开发者提供的一站式集成
 ### 开发板
 - [涂鸦 T5-AI 开发板](/docs/hardware-specific/t5-ai-board/overview-t5-ai-board)：15
 - 涂鸦 T5 mini 开发板：10
-<!-- - 地瓜机器人 RDK X5：20 -->
+{/* - 地瓜机器人 RDK X5：20 */}
 
 ### 外设配件
 - 喇叭（3020，4 欧，3 瓦）：20

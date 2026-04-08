@@ -8,9 +8,11 @@ import { themes as prismThemes } from 'prism-react-renderer'
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   future: {
-    experimental_faster: true,
+    faster: true,
     v4: true,
   },
+
+  clientModules: ['./src/clientModules/gtag-shim.js'],
 
   title: 'TuyaOpen',
   tagline: 'A Powerful Open Source OS and Platform for IoTs Development',
@@ -126,8 +128,8 @@ const config = {
       title: 'TuyaOpen',
       logo: {
         alt: 'TuyaOpen',
-        src: 'img/home/tuyaopen-logo-simple-dark.png',
-        srcDark: 'img/home/tuyaopen-logo-simple-light.png',
+        src: '/img/home/tuyaopen-logo-simple-dark.png',
+        srcDark: '/img/home/tuyaopen-logo-simple-light.png',
       },
       items: [
         {

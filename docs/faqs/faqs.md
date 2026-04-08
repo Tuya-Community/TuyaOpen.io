@@ -1,7 +1,7 @@
 # FAQs
 
 
-<!-- TOC -->
+{/* TOC */}
 - [FAQs](#faqs)
   - [General Troubleshooting FAQs](#general-troubleshooting-faqs)
 - [Environment Setup and Activation](#environment-setup-and-activation)
@@ -18,7 +18,7 @@
 - [Linux Runtime Support FAQs](#linux-runtime-support-faqs)
     - [Overview](#overview)
   - [](#)
-<!-- /TOC -->
+{/* /TOC */}
 
 
 

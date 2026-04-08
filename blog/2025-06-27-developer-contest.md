@@ -6,22 +6,22 @@ image: /img/home/tuyaopen-logo-social-preview.png
 tags: [TuyaOpen, Contest]
 ---
 
-<!-- truncate -->
+{/* truncate */}
 
 # title: '52H Startup Forest Event'
-<!-- ![event](https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png) -->
+{/* ![event](https://images.tuyacn.com/fe-static/docs/img/6d005a49-7b92-4602-af60-b7acca333eab.png) */}
 
 > **This guide is a dedicated document for the contest, designed to provide comprehensive event guidance for participants.**
 
-<!-- ### Competition Information -->
-<!-- - Event Time: 6/27 ~ 6/29 (52 hours total) -->
+{/* ### Competition Information */}
+{/* - Event Time: 6/27 ~ 6/29 (52 hours total) */}
 
 # Important Resources
-<!-- - Tuya Contest PPT: [PPT Introduction](https://tuyaopen-pu9rufi.gamma.site/) -->
+{/* - Tuya Contest PPT: [PPT Introduction](https://tuyaopen-pu9rufi.gamma.site/) */}
 - TuyaOpen Code Repository: [GitHub](https://github.com/tuya/TuyaOpen)
 - TuyaOpen Documentation Website: [Documentation](https://tuyaopen.ai)
 
-<!-- truncate -->
+{/* truncate */}
 
 ## TuyaOpen vs TuyaOS
 
@@ -118,7 +118,7 @@ Tuya Wind IDE is a one-stop integrated development environment for developers us
 - I/O Pin High-Resolution Download: [Pinout](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
 - How to Quickly Compile Project + Flash?: [Tutorial](/docs/quick-start/enviroment-setup)
 
-<!-- ### Tuya T5 mini Development Board (Third-party Community Development Board)
+{/* ### Tuya T5 mini Development Board (Third-party Community Development Board)
 
 - Advantage is smaller size, suitable for solutions with higher space requirements.
 - For usage methods, you can refer to [T5AI Board](/blog#%E6%B6%82%E9%B8%A6-t5ai-board-%E5%BC%80%E5%8F%91%E6%9D%BF), functionality is relatively similar.
@@ -133,7 +133,7 @@ Reference Documentation: [RDK X5 Documentation](https://developer.d-robotics.cc/
 - Tuya App remote control RDK X5 capabilities.
     - RDK + TuyaOpen framework solution Demo: [Tutorial](/docs/rdk/rdk-originbot-with-tuya-dp-control-demo.pdf)
 - RDK X5 and Tuya T5 chip hybrid framework
-    - Edge computing + cloud computing combination: [Tutorial](https://diguazhandian-rdkx5-tuya-t4otm0d.gamma.site/) -->
+    - Edge computing + cloud computing combination: [Tutorial](https://diguazhandian-rdkx5-tuya-t4otm0d.gamma.site/) */}
 
 ---
 
@@ -146,7 +146,7 @@ For the quantity of hardware resources available on-site, please refer to the fo
 ### Development Boards
 - [Tuya T5-AI Development Board](/docs/hardware-specific/t5-ai-board/overview-t5-ai-board): 15
 - Tuya T5 mini Development Board: 10
-<!-- - Digua Robot RDK X5: 20 -->
+{/* - Digua Robot RDK X5: 20 */}
 
 ### Peripheral Accessories
 - Speakers (3020, 4 ohm, 3 watt): 20
