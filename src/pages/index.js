@@ -3,13 +3,24 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
+
+function hilToneTagClass(tone) {
+  return clsx(
+    tone === 'orange' && styles.hilLogTagOrange,
+    tone === 'blue' && styles.hilLogTagBlue,
+    tone === 'green' && styles.hilLogTagGreen,
+    tone === 'purple' && styles.hilLogTagPurple,
+    tone === 'teal' && styles.hilLogTagTeal,
+    tone === 'amber' && styles.hilLogTagAmber,
+  )
+}
 
 function Home() {
   const { siteConfig, i18n } = useDocusaurusContext()
@@ -23,6 +34,144 @@ function Home() {
   const [tuyaAiSlideIndex, setTuyaAiSlideIndex] = useState(0)
   const [tuyaAiCarouselMinHeightPx, setTuyaAiCarouselMinHeightPx] = useState(null)
   const [devStorySelectedImageIndex, setDevStorySelectedImageIndex] = useState(null)
+  const hilSectionRef = useRef(null)
+  const hilConsoleBodyRef = useRef(null)
+  const hilHubLedRef = useRef(null)
+  const [hilActive, setHilActive] = useState(false)
+  const [hilPrefersReducedMotion, setHilPrefersReducedMotion] = useState(false)
+  const [hilTerminalLines, setHilTerminalLines] = useState([])
+  const [hilDiagramActiveIndex, setHilDiagramActiveIndex] = useState(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setHilPrefersReducedMotion(mq.matches)
+    const el = hilSectionRef.current
+    if (!el) {
+      return undefined
+    }
+    if (mq.matches) {
+      setHilActive(true)
+      return undefined
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        setHilActive(entry.isIntersecting)
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const hil = homepageCopy[locale].realWorldValidation
+    const seq = hil.hilTerminalSequence
+    if (hilPrefersReducedMotion) {
+      let lastDiagram = null
+      const staticLines = seq.map((step, i) => {
+        if (step.diagramIndex !== undefined && step.diagramIndex !== null) {
+          lastDiagram = step.diagramIndex
+        }
+        return { id: `hil-rm-${i}`, ...step }
+      })
+      setHilTerminalLines(staticLines)
+      setHilDiagramActiveIndex(lastDiagram ?? null)
+      return undefined
+    }
+    if (!hilActive) {
+      setHilTerminalLines([])
+      setHilDiagramActiveIndex(null)
+      return undefined
+    }
+    let cancelled = false
+    let lineCounter = 0
+    const nextLineId = () => {
+      lineCounter += 1
+      return `hil-${lineCounter}`
+    }
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+    const HIL_LOOP_TOTAL_MS = 10000
+    const HIL_INTRO_MS = 280
+    /* Subtracted from the 10s budget only for scaling step delays (not the pause after the last line). */
+    const HIL_TAIL_BUDGET_MS = 720
+    const HIL_RESTART_DELAY_MS = 5000
+    const weightSum = seq.reduce((acc, step) => acc + (step.delayBefore ?? 0), 0)
+    const stepBudget = Math.max(0, HIL_LOOP_TOTAL_MS - HIL_INTRO_MS - HIL_TAIL_BUDGET_MS)
+    const delayScale = weightSum > 0 ? stepBudget / weightSum : 1
+    const run = async () => {
+      while (!cancelled) {
+        setHilTerminalLines([])
+        setHilDiagramActiveIndex(null)
+        await sleep(HIL_INTRO_MS)
+        if (cancelled) {
+          break
+        }
+        for (let s = 0; s < seq.length; s += 1) {
+          if (cancelled) {
+            break
+          }
+          const step = seq[s]
+          const wait = Math.max(32, Math.round((step.delayBefore ?? 0) * delayScale))
+          await sleep(wait)
+          if (cancelled) {
+            break
+          }
+          if (step.kind === 'log' && step.diagramIndex !== undefined && step.diagramIndex !== null) {
+            setHilDiagramActiveIndex(step.diagramIndex)
+          }
+          setHilTerminalLines((prev) => [...prev, { id: nextLineId(), ...step }])
+        }
+        if (cancelled) {
+          break
+        }
+        await sleep(HIL_RESTART_DELAY_MS)
+      }
+    }
+    run()
+    return () => {
+      cancelled = true
+    }
+  }, [hilActive, hilPrefersReducedMotion, locale])
+
+  useEffect(() => {
+    const el = hilHubLedRef.current
+    if (!el) {
+      return undefined
+    }
+    if (hilPrefersReducedMotion || !hilActive) {
+      el.classList.remove(styles.hilDiagramHubLedDim)
+      return undefined
+    }
+    let timeoutId = null
+    let cancelled = false
+    const schedule = () => {
+      if (cancelled) {
+        return
+      }
+      el.classList.toggle(styles.hilDiagramHubLedDim)
+      /* ~5 Hz mean toggle rate: half-period ~100 ms, heavily jittered */
+      const ms = 40 + Math.random() * 160
+      timeoutId = window.setTimeout(schedule, ms)
+    }
+    timeoutId = window.setTimeout(schedule, 60 + Math.random() * 140)
+    return () => {
+      cancelled = true
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId)
+      }
+      el.classList.remove(styles.hilDiagramHubLedDim)
+    }
+  }, [hilActive, hilPrefersReducedMotion])
+
+  useLayoutEffect(() => {
+    const el = hilConsoleBodyRef.current
+    if (el) {
+      el.scrollTop = el.scrollHeight
+    }
+  }, [hilTerminalLines])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -281,6 +430,168 @@ function Home() {
                     <h3>{item.title}</h3>
                     <p>{item.body}</p>
                   </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Hardware-in-the-loop: Embedder-inspired console + flow diagram */}
+          <section
+            ref={hilSectionRef}
+            className={styles.hilSection}
+            data-hil-active={hilActive ? 'true' : 'false'}
+            aria-labelledby="hil-section-heading"
+          >
+            <span className={styles.hilSectionNewBadge}>{copy.realWorldValidation.newBadgeLabel}</span>
+            <div className={styles.container}>
+              <div className={styles.hilHeader}>
+                <span className={styles.hilEyebrow}>{copy.realWorldValidation.sectionTag}</span>
+                <h2 id="hil-section-heading" className={styles.hilTitle}>
+                  <span className={styles.hilTitleBase}>{copy.realWorldValidation.titleBase}</span>{' '}
+                  <span className={styles.hilTitleAccent}>{copy.realWorldValidation.titleAccent}</span>
+                </h2>
+                <p className={styles.hilBody}>{copy.realWorldValidation.body}</p>
+                <div className={styles.hilHeaderCta}>
+                  {copy.realWorldValidation.vibeCodingCtaHref.startsWith('http') ? (
+                    <a
+                      href={copy.realWorldValidation.vibeCodingCtaHref}
+                      className={styles.hilVibeCodingBtn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {copy.realWorldValidation.vibeCodingCtaLabel} →
+                    </a>
+                  ) : (
+                    <Link to={copy.realWorldValidation.vibeCodingCtaHref} className={styles.hilVibeCodingBtn}>
+                      {copy.realWorldValidation.vibeCodingCtaLabel} →
+                    </Link>
+                  )}
+                </div>
+              </div>
+              <div className={styles.hilSplit}>
+                <div className={styles.hilConsole}>
+                  <div className={styles.hilConsoleTop}>
+                    <div className={styles.hilConsoleChannels}>
+                      {copy.realWorldValidation.consoleChannels.map((ch) => (
+                        <span
+                          key={ch.id}
+                          className={clsx(styles.hilConsoleChannel, styles.hilLogTag, hilToneTagClass(ch.tone))}
+                        >
+                          {ch.id}
+                        </span>
+                      ))}
+                    </div>
+                    <span className={styles.hilConsoleStatus}>{copy.realWorldValidation.consoleStatus}</span>
+                  </div>
+                  <div className={styles.hilConsoleBar}>
+                    <span className={styles.hilConsoleBarTitle}>{copy.realWorldValidation.consoleTitle}</span>
+                  </div>
+                  <div
+                    ref={hilConsoleBodyRef}
+                    className={styles.hilConsoleBody}
+                    role="log"
+                    aria-live="polite"
+                    aria-relevant="additions"
+                  >
+                    {hilTerminalLines.map((line) => {
+                      if (line.kind === 'user') {
+                        return (
+                          <div key={line.id} className={clsx(styles.hilLogLine, styles.hilLogLineUser)}>
+                            <span className={styles.hilLogUserPrefix}>
+                              <span className={styles.hilLogPrefixEmoji} aria-hidden>
+                                👤
+                              </span>
+                              {copy.realWorldValidation.hilTerminalUserLabel}
+                            </span>
+                            <span className={styles.hilLogText}>{line.text}</span>
+                          </div>
+                        )
+                      }
+                      if (line.kind === 'agent') {
+                        return (
+                          <div key={line.id} className={clsx(styles.hilLogLine, styles.hilLogLineAgent)}>
+                            <span className={styles.hilLogAgentPrefix}>
+                              <span className={styles.hilLogPrefixEmoji} aria-hidden>
+                                🤖
+                              </span>
+                              {copy.realWorldValidation.hilTerminalAgentLabel}
+                            </span>
+                            <span className={styles.hilLogText}>{line.text}</span>
+                          </div>
+                        )
+                      }
+                      return (
+                        <div key={line.id} className={clsx(styles.hilLogLine, styles.hilLogLineLog)}>
+                          <span className={clsx(styles.hilLogTag, hilToneTagClass(line.tone))}>{line.tag}</span>
+                          <span className={styles.hilLogText}>{line.text}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+                <div className={styles.hilDiagram}>
+                  <div className={styles.hilDiagramInner}>
+                    <svg
+                      className={styles.hilDiagramSvg}
+                      viewBox="0 0 360 220"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      {[
+                        /* M / first control shifted right with hub (end + margin + larger card) so trunk meets box edge. */
+                        'M 95 110 C 190 110 228 44 272 38',
+                        'M 95 110 C 190 110 230 70 272 74',
+                        /* Cloud: straight horizontal from hub centerline. */
+                        'M 95 110 L 272 110',
+                        'M 95 110 C 190 110 230 150 272 146',
+                        'M 95 110 C 190 110 228 176 272 182',
+                      ].map((d, i) => {
+                        const active = hilDiagramActiveIndex === i
+                        return (
+                          <g key={i}>
+                            <path
+                              d={d}
+                              pathLength={1}
+                              className={clsx(styles.hilFlowPathBase, active && styles.hilFlowPathActive)}
+                            />
+                            <path
+                              d={d}
+                              pathLength={1}
+                              className={clsx(styles.hilFlowPathRun, active && styles.hilFlowPathRunActive)}
+                            />
+                          </g>
+                        )
+                      })}
+                    </svg>
+                    <div className={styles.hilDiagramHub}>
+                      <span ref={hilHubLedRef} className={styles.hilDiagramHubLed} aria-hidden />
+                      <span className={styles.hilDiagramHubLabel}>{copy.realWorldValidation.diagramCenterLabel}</span>
+                      <span className={styles.hilDiagramHubSub}>{copy.realWorldValidation.diagramCenterSub}</span>
+                    </div>
+                    <div className={styles.hilDiagramNodes}>
+                      {copy.realWorldValidation.diagramNodes.map((node, i) => (
+                        <div
+                          key={node.id}
+                          className={clsx(
+                            styles.hilDiagramNode,
+                            hilDiagramActiveIndex === i && styles.hilDiagramNodeActive,
+                          )}
+                        >
+                          {node.label}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.hilSteps}>
+                {copy.realWorldValidation.steps.map((step) => (
+                  <div key={step.num} className={styles.hilStepCard}>
+                    <span className={styles.hilStepNum}>{step.num}</span>
+                    <h3 className={styles.hilStepTitle}>{step.title}</h3>
+                    <p className={styles.hilStepBody}>{step.body}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -820,7 +1131,10 @@ function Home() {
                           {section.items.map((item) => (
                             <div key={`${secIdx}-${item.alt}-${item.src}`} className={styles.partnersColabCell}>
                               <img
-                                className={styles.partnersColabImg}
+                                className={clsx(
+                                  styles.partnersColabImg,
+                                  item.invertForLightBg && styles.partnersColabImgInvertLight,
+                                )}
                                 src={item.src}
                                 alt={item.alt}
                                 loading="lazy"
