@@ -440,17 +440,23 @@ function Home() {
             ref={hilSectionRef}
             className={styles.hilSection}
             data-hil-active={hilActive ? 'true' : 'false'}
-            aria-labelledby="hil-section-heading"
+            aria-labelledby="tuyaopen-vibe-coding"
           >
             <span className={styles.hilSectionNewBadge}>{copy.realWorldValidation.newBadgeLabel}</span>
             <div className={styles.container}>
               <div className={styles.hilHeader}>
                 <span className={styles.hilEyebrow}>{copy.realWorldValidation.sectionTag}</span>
-                <h2 id="hil-section-heading" className={styles.hilTitle}>
+                <h2 id="tuyaopen-vibe-coding" className={styles.hilTitle}>
                   <span className={styles.hilTitleBase}>{copy.realWorldValidation.titleBase}</span>{' '}
                   <span className={styles.hilTitleAccent}>{copy.realWorldValidation.titleAccent}</span>
                 </h2>
-                <p className={styles.hilBody}>{copy.realWorldValidation.body}</p>
+                <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                  {copy.realWorldValidation.bodyBefore}
+                  <span className={styles.hilBodyHighlight} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                    {copy.realWorldValidation.bodyHighlight}
+                  </span>
+                  {copy.realWorldValidation.bodyAfter}
+                </p>
                 <div className={styles.hilHeaderCta}>
                   {copy.realWorldValidation.vibeCodingCtaHref.startsWith('http') ? (
                     <a

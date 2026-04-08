@@ -618,6 +618,62 @@
   font-weight: 400;
 }
 
+.hilBodyHighlight {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: inherit;
+  background: linear-gradient(110deg, #5eead4 0%, #38bdf8 40%, #a78bfa 75%, #f472b6 100%);
+  background-size: 160% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 14px rgba(94, 234, 212, 0.35));
+}
+
+/* CJK: gradient clip + glow stay readable with mixed Latin / 汉字 */
+.hilBodyHighlight:lang(zh),
+.hilBodyHighlight:lang(zh-CN) {
+  letter-spacing: 0.03em;
+  word-break: keep-all;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hilBodyHighlight {
+    color: #5eead4;
+    -webkit-text-fill-color: #5eead4;
+    background: none;
+    filter: none;
+    text-shadow: 0 0 18px rgba(94, 234, 212, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hilBodyHighlight {
+    animation: hilBodyHighlightShift 8s ease infinite;
+  }
+}
+
+@keyframes hilBodyHighlightShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hilBodyHighlight {
+    animation: none;
+    background: linear-gradient(110deg, #5eead4, #38bdf8, #a78bfa);
+    background-size: 100% 100%;
+  }
+}
+
 .hilHeaderCta {
   margin-top: 1.35rem;
   pointer-events: auto;
@@ -1006,8 +1062,8 @@
   background: rgba(10, 10, 12, 0.85);
   box-shadow: 0 0 27px rgba(94, 234, 212, 0.12);
   text-align: center;
-  margin-left: 60px;
-  transform: translateX(40px);
+  margin-left: 0;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1115,7 +1171,7 @@
   width: 100%;
   max-width: 100%;
   min-height: 0;
-  transform: translateX(-20px);
+  transform: none;
 }
 
 .hilDiagramNode {
@@ -1142,6 +1198,115 @@
   border-color: rgba(96, 165, 250, 0.75);
   color: #f1f5f9;
   box-shadow: 0 0 12px rgba(96, 165, 250, 0.22);
+}
+
+/* Desktop: hub offset matches SVG trunk (M 95 …). */
+@media (min-width: 900px) {
+  .hilDiagramHub {
+    margin-left: 60px;
+    transform: translateX(40px);
+  }
+
+  .hilDiagramNodes {
+    transform: translateX(-20px);
+  }
+}
+
+/* Narrow viewports: keep diagram inside the card (no horizontal bleed). */
+@media (max-width: 899px) {
+  .hilDiagram {
+    overflow-x: hidden;
+  }
+}
+
+/* Tablet / small laptop: tighter grid; hub sits without extra horizontal push. */
+@media (max-width: 899px) and (min-width: 640px) {
+  .hilDiagramInner {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr) minmax(0, 1fr);
+    column-gap: 0.15rem;
+  }
+
+  .hilDiagramHub {
+    min-width: 0;
+    max-width: 9.75rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .hilDiagramHubLabel {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hilDiagramHubSub {
+    font-size: 0.72rem;
+  }
+
+  .hilDiagramNodes {
+    gap: 8px;
+  }
+
+  .hilDiagramNode {
+    white-space: normal;
+    font-size: 0.58rem;
+    line-height: 1.2;
+    padding: 0.14rem 0.22rem;
+  }
+}
+
+/* Phone: stack hub above steps; hide connector SVG (layout is no longer 3-column). */
+@media (max-width: 639px) {
+  .hilDiagram {
+    min-height: 0;
+    padding: 0.65rem 0.45rem 0.8rem;
+    align-items: stretch;
+  }
+
+  .hilDiagramInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 0;
+  }
+
+  .hilDiagramSvg {
+    display: none;
+  }
+
+  .hilDiagramHub {
+    min-width: 0;
+    width: 100%;
+    max-width: 15.5rem;
+    padding: 0.65rem 0.8rem 0.8rem;
+    gap: 0.32rem;
+  }
+
+  .hilDiagramHubLabel {
+    font-size: 0.88rem;
+    letter-spacing: 0.07em;
+  }
+
+  .hilDiagramHubSub {
+    font-size: 0.68rem;
+  }
+
+  .hilDiagramHubLed {
+    width: 9px;
+    height: 9px;
+  }
+
+  .hilDiagramNodes {
+    width: 100%;
+    max-width: 17.5rem;
+    gap: 8px;
+  }
+
+  .hilDiagramNode {
+    white-space: normal;
+    font-size: 0.6rem;
+    line-height: 1.22;
+    padding: 0.14rem 0.24rem;
+  }
 }
 
 .hilSteps {
