@@ -211,7 +211,7 @@ The specific process will complete the following steps:
 
     3. Create the compilation directory `.build` and parse the `CMakeLists.txt` file;
 
-    4. Execute the compilation command `ninja build`;
+    4. Execute the compilation command `ninja example`;
 
     5. Place the artifacts in the path `.build/bin`;
 

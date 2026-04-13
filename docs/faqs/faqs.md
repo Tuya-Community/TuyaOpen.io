@@ -608,10 +608,10 @@ Use `tos.py new project` to create a new application:
 ---
 
 <details>
-<summary><strong>Q3: What is the difference between `apps/` and `example/` directories?</strong></summary>
+<summary><strong>Q3: What is the difference between `apps/` and `examples/` directories?</strong></summary>
 
 - **`apps/`:** Contains full-featured applications and demos (e.g., `tuya_cloud/switch_demo`, `tuya.ai/your_chat_bot`)
-- **`example/`:** Contains smaller code examples demonstrating specific features or APIs
+- **`examples/`:** Contains smaller code examples demonstrating specific features or APIs
 - Both can be compiled using `tos.py build` after selecting a board configuration
 - Choose based on your learning or development needs
 

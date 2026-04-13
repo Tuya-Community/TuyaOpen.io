@@ -105,7 +105,7 @@ The TuyaOpen SDK adopts a layered architecture, consisting of the following five
 
 | Platform | Windows | Linux | macOS |
 | :------: | :-----: | :---: | :---: |
-| BK7231N | ⌛️ | ✅ | ⌛️ |
+| BK7231X | ⌛️ | ✅ | ⌛️ |
 | ESP32 | ✅ | ✅ | ✅️ |
 | ESP32-C3 | ✅ | ✅ | ✅️ |
 | ESP32-S3 | ✅ | ✅ | ✅️ |

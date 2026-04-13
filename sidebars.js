@@ -201,9 +201,45 @@ module.exports = {
     // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'Peripherals',
+      label: 'Peripherals & Drivers',
       collapsed: true,
-      items: ['peripheral/support_peripheral_list', 'peripheral/display', 'peripheral/audio', 'peripheral/button'],
+      items: [
+        'peripheral/support_peripheral_list',
+        'peripheral/driver-architecture',
+        'peripheral/display',
+        'peripheral/audio',
+        'peripheral/button',
+        {
+          type: 'category',
+          label: 'Peripheral Tutorials',
+          collapsed: true,
+          items: [
+            'peripheral/tutorials/gpio-interrupt-tutorial',
+            'peripheral/tutorials/i2c-guide',
+            'peripheral/tutorials/adc-guide',
+            'peripheral/tutorials/display-driver-guide',
+            'peripheral/tutorials/audio-codec-guide',
+            'peripheral/tutorials/writing-sensor-driver',
+            'peripheral/tutorials/migrating-sensor-driver',
+          ],
+        },
+      ],
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
+      label: 'Networking & System',
+      collapsed: true,
+      items: [
+        'peripheral/tutorials/wifi-station-tutorial',
+        'peripheral/tutorials/thread-timer-patterns',
+        {
+          type: 'category',
+          label: 'TAL API Reference',
+          collapsed: true,
+          items: ['peripheral/tutorials/tal-wifi-api', 'peripheral/tutorials/tal-system-api'],
+        },
+      ],
     },
     // ------------------------------------------------------------------
     {
