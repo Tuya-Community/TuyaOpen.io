@@ -85,7 +85,7 @@ $ examples
 | **wifi/** | Station 连接、AP 模式、扫描、低功耗 | [Wi-Fi 教程](/zh/docs/peripheral/tutorials/wifi-station-tutorial) |
 | **system/** | 线程、定时器、互斥锁、信号量、队列、事件、KV 存储 | [线程与定时器模式](/zh/docs/peripheral/tutorials/thread-timer-patterns) |
 | **ble/** | BLE 中心设备（扫描+连接）和外设（广播+GATT） | |
-| **protocols/** | HTTP/HTTPS 客户端、MQTT 客户端、TCP 客户端/服务器 | |
+| **protocols/** | HTTP/HTTPS 客户端、MQTT 客户端、TCP 客户端/服务器 | [HTTP 客户端](../peripheral/tutorials/http-client-tutorial)、[MQTT 客户端](../peripheral/tutorials/mqtt-client-tutorial)、[TCP 套接字](../peripheral/tutorials/tcp-socket-tutorial) |
 | **graphics/** | LVGL 演示、u8g2 I2C/SPI 显示 | [显示驱动指南](/zh/docs/peripheral/tutorials/display-driver-guide) |
 | **multimedia/** | 关键词识别 (KWS)、音频播放器、录音、VAD | [音频编解码器指南](/zh/docs/peripheral/tutorials/audio-codec-guide) |
 | **e-Paper/** | 电子墨水屏演示（1.54"、2.13"、2.9"） | |

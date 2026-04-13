@@ -255,6 +255,16 @@ module.exports = {
         'peripheral/tutorials/thread-timer-patterns',
         {
           type: 'category',
+          label: 'Protocol Tutorials',
+          collapsed: true,
+          items: [
+            'peripheral/tutorials/http-client-tutorial',
+            'peripheral/tutorials/mqtt-client-tutorial',
+            'peripheral/tutorials/tcp-socket-tutorial',
+          ],
+        },
+        {
+          type: 'category',
           label: 'TAL API Reference',
           collapsed: true,
           items: [
