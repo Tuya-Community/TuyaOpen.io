@@ -100,6 +100,37 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Espressif ESP32',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/espressif/overview-esp32',
+          },
+          items: [
+            'hardware-specific/espressif/esp32-quick-start',
+            'hardware-specific/espressif/esp32-supported-features',
+            {
+              type: 'category',
+              label: 'Pin Mapping',
+              collapsed: true,
+              link: {
+                type: 'doc',
+                id: 'hardware-specific/espressif/esp32-pin-mapping',
+              },
+              items: [
+                'hardware-specific/espressif/pinmux/esp32-classic',
+                'hardware-specific/espressif/pinmux/esp32-s3',
+                'hardware-specific/espressif/pinmux/esp32-c3',
+                'hardware-specific/espressif/pinmux/esp32-c6',
+              ],
+            },
+            'hardware-specific/espressif/esp32-migration-guide',
+            'hardware-specific/espressif/esp32-new-board',
+            'hardware-specific/espressif/esp32-production-guide',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Linux',
           collapsed: true,
           items: [

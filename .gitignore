@@ -24,3 +24,6 @@ package-lock.json
 
 # vscode
 .vscode
+
+# Agent planning workspace (persistent, not committed)
+agent-plan-workspace/
