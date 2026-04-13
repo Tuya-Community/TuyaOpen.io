@@ -100,6 +100,26 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Tuya T2',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/tuya-t2/overview-t2',
+          },
+          items: ['hardware-specific/tuya-t2/overview-t2'],
+        },
+        {
+          type: 'category',
+          label: 'Tuya T3',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/tuya-t3/overview-t3',
+          },
+          items: ['hardware-specific/tuya-t3/overview-t3'],
+        },
+        {
+          type: 'category',
           label: 'Espressif ESP32',
           collapsed: true,
           link: {
@@ -237,7 +257,12 @@ module.exports = {
           type: 'category',
           label: 'TAL API Reference',
           collapsed: true,
-          items: ['peripheral/tutorials/tal-wifi-api', 'peripheral/tutorials/tal-system-api'],
+          items: [
+            'peripheral/tutorials/tal-wifi-api',
+            'peripheral/tutorials/tal-system-api',
+            'peripheral/tutorials/tal-kv-guide',
+            'peripheral/tutorials/tal-bluetooth-api',
+          ],
         },
       ],
     },
@@ -469,7 +494,7 @@ module.exports = {
       type: 'category',
       label: 'tos.py Tool (Flash/Debug)',
       collapsed: true,
-      items: ['tos-tools/tos-guide', 'tos-tools/tools-tyutool'],
+      items: ['tos-tools/tos-guide', 'tos-tools/tos-idf-reference', 'tos-tools/tools-tyutool'],
     },
     // ------------------------------------------------------------------
     {

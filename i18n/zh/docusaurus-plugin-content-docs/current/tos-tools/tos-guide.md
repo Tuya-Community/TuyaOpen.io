@@ -27,6 +27,9 @@ Commands:
   flash    Flash the firmware.
   monitor  Display the device log.
   update   Update TuyaOpen dependencies.
+  new      Create project or platform templates.
+  dev      Development utilities (e.g. build-all-config).
+  idf      Run idf.py passthrough (ESP32 only).
 ```
 
 使用命令字 `-d` 或 `--debug`，可以显示更多执行日志。
@@ -199,7 +202,7 @@ Input save config name:
 
     3. 创建编译目录 `.build`，并解析 `CMakeLists.txt` 文件。
 
-    4. 执行编译命令 `ninja build`。
+    4. 执行编译命令 `ninja example`。
 
     5. 将产物放到路径 `.build/bin`。
 
@@ -273,6 +276,38 @@ Options:
 若使用 `git pull` 或 `git checkout` 更新了 `TuyaOpen` 主仓库，可使用 `update` 命令，自动更新相关依赖。
 
 工具链依赖关系记录在文件 `TuyaOpen/platform/platform_config.yaml` 中。
+
+## idf
+
+在已选择 **ESP32** 平台的工程下，将参数透传给 ESP-IDF 的 `idf.py`。若当前配置不是 ESP32，命令会报错。
+
+```bash
+tos.py idf --help
+```
+
+示例：
+
+```bash
+tos.py idf menuconfig
+tos.py idf fullclean
+tos.py idf --idf-flags="-v" build
+```
+
+`--idf-flags` 中的选项会插在 `idf.py` 与子命令之间（例如开启详细日志或传递 CMake 宏）。更完整的说明见 [tos.py idf 参考](tos-idf-reference) 与 [ESP32 快速开始](../hardware-specific/espressif/esp32-quick-start)。
+
+## dev
+
+开发辅助命令。当前主要子命令为 **`bac`**（build all config）：依次使用应用 `config/` 下每个 `.config`（若无 `config/` 则使用板级配置），每次构建前做深度清理，可选地将产物复制到指定目录。
+
+```bash
+tos.py dev --help
+tos.py dev bac --help
+```
+
+`bac` 常用选项：
+
+- `-d` / `--dist`：构建成功后，将固件复制到该目录并按配置重命名。
+- `-o` / `--log-dir`：将每个配置的构建日志写入该目录。
 
 ## new
 

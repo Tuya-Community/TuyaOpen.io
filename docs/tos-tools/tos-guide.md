@@ -31,6 +31,9 @@ Commands:
   flash    Flash the firmware.
   monitor  Display the device log.
   update   Update TuyaOpen dependencies.
+  new      Create project or platform templates.
+  dev      Development utilities (for example build-all-config).
+  idf      Run idf.py passthrough (ESP32 only).
 ```
 
 Using the command flag `-d` or `--debug`, you can display more execution logs
@@ -289,6 +292,38 @@ According to the dependency configuration file of `TuyaOpen`, switch related dep
 If you use `git pull` or `git checkout` to update the `TuyaOpen` main repository, you can use the `update` command to automatically update related dependencies
 
 Toolchain dependency relationships are recorded in the file `TuyaOpen/platform/platform_config.yaml`
+
+## idf
+
+Runs arbitrary [ESP-IDF](https://docs.espressif.com/projects/esp-idf/) `idf.py` commands against the ESP32 platform checkout. Only available when the project `app_default.config` selects **ESP32** as the platform.
+
+```bash
+tos.py idf --help
+```
+
+Examples:
+
+```bash
+tos.py idf menuconfig
+tos.py idf fullclean
+tos.py idf --idf-flags="-v" build
+```
+
+Use `--idf-flags` for extra flags that must appear before the subcommand (for example verbosity or CMake defines). For a full command reference and workflow, see [tos.py idf reference](tos-idf-reference) and [ESP32 quick start](../hardware-specific/espressif/esp32-quick-start).
+
+## dev
+
+Development helpers. The main subcommand today is **`bac`** (build all config): iterate every `.config` in the app `config/` directory (or board configs if the app has no `config/`), run a full clean between builds, and optionally copy binaries to a distribution folder.
+
+```bash
+tos.py dev --help
+tos.py dev bac --help
+```
+
+Options for `bac`:
+
+- `-d` / `--dist` — directory where renamed firmware binaries are copied after each successful build.
+- `-o` / `--log-dir` — write per-config build logs into this directory.
 
 ## new
 

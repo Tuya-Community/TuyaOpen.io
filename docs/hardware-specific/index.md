@@ -24,6 +24,8 @@ The TuyaOpen project currently supports WiFi & BLE dual-mode chips, including th
   imgHeight={150}
 />
 
+For TuyaOpen-oriented notes on T2 and T3 modules and BSP paths, see [T2 module overview](tuya-t2/overview-t2) and [T3 module overview](tuya-t3/overview-t3).
+
  - ESP32 Series
 
 <ChipRow 
