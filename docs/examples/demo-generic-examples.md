@@ -84,7 +84,7 @@ $ examples
 | **peripherals/** | GPIO, I2C, SPI, UART, PWM, ADC, display, audio, button, camera, IMU, LED, IR, touch | [GPIO Tutorial](/docs/peripheral/tutorials/gpio-interrupt-tutorial), [I2C Guide](/docs/peripheral/tutorials/i2c-guide), [ADC Guide](/docs/peripheral/tutorials/adc-guide), [Sensor Driver](/docs/peripheral/tutorials/writing-sensor-driver) |
 | **wifi/** | Station connect, AP mode, scanning, low power | [Wi-Fi Tutorial](/docs/peripheral/tutorials/wifi-station-tutorial) |
 | **system/** | Threads, timers, mutex, semaphore, queue, events, KV storage | [Thread & Timer Patterns](/docs/peripheral/tutorials/thread-timer-patterns) |
-| **ble/** | BLE central (scan + connect) and peripheral (advertise + GATT) | |
+| **ble/** | BLE central (scan + connect) and peripheral (advertise + GATT) | [BLE Central](../peripheral/tutorials/ble-central-tutorial), [BLE Peripheral](../peripheral/tutorials/ble-peripheral-tutorial) |
 | **protocols/** | HTTP/HTTPS client, MQTT client, TCP client/server | [HTTP and HTTPS (GET/POST, JSON)](../peripheral/tutorials/http-client-tutorial), [MQTT Client](../peripheral/tutorials/mqtt-client-tutorial), [TCP and UDP sockets](../peripheral/tutorials/tcp-socket-tutorial) |
 | **graphics/** | LVGL demos, u8g2 I2C/SPI displays | [Display Driver Guide](/docs/peripheral/tutorials/display-driver-guide) |
 | **multimedia/** | Keyword spotting (KWS), audio player, recorder, VAD | [Audio Codec Guide](/docs/peripheral/tutorials/audio-codec-guide) |

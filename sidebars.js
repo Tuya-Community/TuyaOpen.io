@@ -265,6 +265,12 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'BLE Tutorials',
+          collapsed: true,
+          items: ['peripheral/tutorials/ble-central-tutorial', 'peripheral/tutorials/ble-peripheral-tutorial'],
+        },
+        {
+          type: 'category',
           label: 'TAL API Reference',
           collapsed: true,
           items: [
