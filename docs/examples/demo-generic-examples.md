@@ -85,7 +85,7 @@ $ examples
 | **wifi/** | Station connect, AP mode, scanning, low power | [Wi-Fi Tutorial](/docs/peripheral/tutorials/wifi-station-tutorial) |
 | **system/** | Threads, timers, mutex, semaphore, queue, events, KV storage | [Thread & Timer Patterns](/docs/peripheral/tutorials/thread-timer-patterns) |
 | **ble/** | BLE central (scan + connect) and peripheral (advertise + GATT) | |
-| **protocols/** | HTTP/HTTPS client, MQTT client, TCP client/server | [HTTP Client](../peripheral/tutorials/http-client-tutorial), [MQTT Client](../peripheral/tutorials/mqtt-client-tutorial), [TCP Socket](../peripheral/tutorials/tcp-socket-tutorial) |
+| **protocols/** | HTTP/HTTPS client, MQTT client, TCP client/server | [HTTP and HTTPS (GET/POST, JSON)](../peripheral/tutorials/http-client-tutorial), [MQTT Client](../peripheral/tutorials/mqtt-client-tutorial), [TCP and UDP sockets](../peripheral/tutorials/tcp-socket-tutorial) |
 | **graphics/** | LVGL demos, u8g2 I2C/SPI displays | [Display Driver Guide](/docs/peripheral/tutorials/display-driver-guide) |
 | **multimedia/** | Keyword spotting (KWS), audio player, recorder, VAD | [Audio Codec Guide](/docs/peripheral/tutorials/audio-codec-guide) |
 | **e-Paper/** | E-paper display demos (1.54", 2.13", 2.9") | |
