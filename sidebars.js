@@ -197,7 +197,7 @@ module.exports = {
           type: 'category',
           label: 'Tuya Cloud',
           collapsed: true,
-          items: ['applications/tuya_cloud/demo-tuya-iot-light'],
+          items: ['applications/tuya_cloud/demo-tuya-iot-light', 'applications/tuya_cloud/tuya-iot-client-reference'],
         },
         {
           type: 'category',
@@ -260,6 +260,7 @@ module.exports = {
           items: [
             'peripheral/tutorials/tal-wifi-api',
             'peripheral/tutorials/tal-system-api',
+            'peripheral/tutorials/tal-network-api',
             'peripheral/tutorials/tal-kv-guide',
             'peripheral/tutorials/tal-bluetooth-api',
           ],
