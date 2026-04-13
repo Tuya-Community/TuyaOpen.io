@@ -182,3 +182,18 @@ git reset --soft HEAD~1
 2. Edit files to resolve conflicts (keep both changes where appropriate).
 3. `git add` resolved files.
 4. `git commit` to complete the merge.
+
+### Push fails: could not read Username for https://github.com
+
+The agent terminal cannot open an interactive HTTPS credential prompt.
+
+1. Prefer **SSH** for `origin` in this clone (one-time, local `.git/config`):
+   ```bash
+   git remote set-url origin git@github.com:Tuya-Community/TuyaOpen.io.git
+   ```
+2. Confirm: `ssh -T git@github.com` (expect a success message from GitHub).
+3. Retry: `git push --set-upstream origin HEAD` or `git push`.
+
+If `git remote set-url` fails with `Device or resource busy` on `.git/config`, run the same command in your normal WSL terminal or with full permissions so the sandbox does not lock the config file.
+
+Alternative: keep HTTPS and use a non-interactive credential helper (for example `credential.helper=store` with a line in `~/.git-credentials` after you authenticate once in an interactive shell). SSH is usually simpler for automation.

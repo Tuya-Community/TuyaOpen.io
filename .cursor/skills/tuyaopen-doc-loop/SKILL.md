@@ -156,6 +156,18 @@ Examples:
 - Always create a new branch from the current working branch.
 - Check `git status` before committing to avoid staging unintended files.
 
+### Push from the Cursor agent (HTTPS username prompt)
+
+If `git push` fails with `fatal: could not read Username for 'https://github.com': No such device or address`, the agent has no interactive TTY for HTTPS credentials. **Use SSH for `origin`** (local clone only; not committed):
+
+```bash
+git remote set-url origin git@github.com:Tuya-Community/TuyaOpen.io.git
+```
+
+Requires GitHub SSH access (`ssh -T git@github.com` succeeds). If changing the remote hits `could not write config file .git/config: Device or resource busy`, rerun the command outside the sandbox (full agent permissions / your WSL terminal).
+
+Your interactive terminal can keep using HTTPS with a credential manager; this URL change affects only this clone.
+
 ## Detailed Workflow Reference
 
 For the step-by-step checklist with examples, see [loop-workflow.md](loop-workflow.md).
