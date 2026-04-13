@@ -4,7 +4,7 @@ title: HTTP 与 HTTPS 客户端教程
 
 ## 概述
 
-本教程介绍如何使用 `http_client_interface.h` 中的 `http_client_request` 与 `http_client_free` 发送 HTTP 与 HTTPS 请求，包含 GET、带 JSON 正文的 POST、HTTPS 如何加载 CA 证书，以及使用 cJSON 的 `cJSON_ParseWithLength` 解析响应 JSON。可运行示例位于 `examples/protocols/http_client` 与 `examples/protocols/https_client`。
+本教程介绍如何使用 `http_client_interface.h` 中的 `http_client_request` 与 `http_client_free` 发送 HTTP 与 HTTPS 请求。文中说明**请求与响应结构体**各字段、**请求头**键值、`path` 上的**查询参数**，以及响应**状态码**与**原始响应头**块；并包含 GET、带 JSON 的 POST、HTTPS CA、以及用 cJSON 的 `cJSON_ParseWithLength` 解析正文。可运行示例位于 `examples/protocols/http_client` 与 `examples/protocols/https_client`。
 
 ## 前置条件
 
@@ -34,6 +34,76 @@ title: HTTP 与 HTTPS 客户端教程
 4. 查看串口日志。链路上线后，示例会向 `httpbin.org/get` 发 GET、打印正文，并调用 `http_client_free`。
 
 **预期结果：** 日志包含 DNS、TCP 连接与响应正文。
+
+## 请求与响应 API
+
+类型与函数定义见 `http_client_interface.h`。
+
+### `http_client_request_t`（发出的请求）
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| `host` | `const char *` | 主机名（不含协议前缀），例如 `httpbin.org`。 |
+| `port` | `uint16_t` | TCP 端口。HTTP 常用 `80`，HTTPS 常用 `443`；填 `0` 时客户端会按协议使用默认端口（80 / 443）。 |
+| `path` | `const char *` | 路径，以 `/` 开头。**查询参数**写在此字符串末尾，例如 `/get?foo=bar&count=3`。若值含保留字符，需自行做 **URL 编码**。 |
+| `method` | `const char *` | 方法名，如 `"GET"`、`"POST"`、`"PUT"`、`"DELETE"`。 |
+| `headers` | `http_client_header_t *` | 请求头数组（见下）。无自定义头时可 `NULL` 且 `headers_count == 0`。 |
+| `headers_count` | `uint8_t` | `headers` 元素个数。 |
+| `body` | `const uint8_t *` | POST/PUT 等请求体；GET 可用空字符串且 `body_length == 0`。 |
+| `body_length` | `size_t` | `body` 字节长度。 |
+| `timeout_ms` | `uint32_t` | 超时时间（毫秒）。 |
+| `cacert` | `const uint8_t *` | TLS 的 PEM 格式 CA；明文 HTTP 时为 `NULL`。 |
+| `cacert_len` | `size_t` | `cacert` 长度。 |
+| `tls_no_verify` | `bool` | 为 true 时可能跳过对端校验（仅联调；生产勿用）。 |
+
+### 请求头（`http_client_header_t`）
+
+每个头字段为一对键值：
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| `key` | `const char *` | 头名，如 `Content-Type`、`Authorization`、`Accept`。 |
+| `value` | `const char *` | 头值，如 `application/json`。 |
+
+示例：
+
+```c
+http_client_header_t headers[] = {
+    {.key = "Content-Type", .value = "application/json"},
+    {.key = "Accept", .value = "application/json"},
+};
+```
+
+底层实现会将这些条目序列化进 HTTP 请求（内部经 `HTTPClient_AddHeader` 等接口）。
+
+### `http_client_response_t`（收到的响应）
+
+`http_client_request` 成功后由客户端填充：
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| `status_code` | `uint16_t` | HTTP 状态码，如 `200`、`404`、`500`。 |
+| `headers` | `const uint8_t *` | **原始响应头块**在缓冲区中的起始位置（含状态行与头部文本；非键值表结构）。 |
+| `headers_length` | `size_t` | 上述头块的字节长度。 |
+| `body` | `const uint8_t *` | 响应体起始位置。 |
+| `body_length` | `size_t` | 响应体长度；**不一定**以 `\0` 结尾。 |
+| `buffer` | `uint8_t *` | 存放响应数据的缓冲区（分配细节见头文件注释）。 |
+| `buffer_length` | `size_t` | `buffer` 总长度。 |
+
+若需**以文本查看响应头**，把 `headers` 与 `headers_length` 当作一段字节区间打印（通常为 ASCII）。示例：
+
+```c
+if (http_response.headers && http_response.headers_length > 0) {
+    PR_DEBUG_RAW("response headers (%u bytes):\n%.*s\n",
+                 (unsigned int)http_response.headers_length,
+                 (int)http_response.headers_length,
+                 (const char *)http_response.headers);
+}
+```
+
+若要按字段解析（例如读取 `Content-Type`），需自行解析该文本块；若业务 API 只关心 JSON 正文，通常使用 `status_code` 与 `body` 即可。
+
+用毕请调用 **`http_client_free`** 释放响应相关内存。
 
 ## GET 请求
 

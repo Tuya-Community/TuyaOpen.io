@@ -4,7 +4,7 @@ title: HTTP and HTTPS Client Tutorial
 
 ## Overview
 
-This tutorial covers plain HTTP and HTTPS requests using `http_client_request` and `http_client_free` from `http_client_interface.h`. It shows GET and POST with a JSON body, how the HTTPS sample loads a CA certificate, and how to parse JSON from the response with cJSON (`cJSON_ParseWithLength`). Runnable samples are under `examples/protocols/http_client` and `examples/protocols/https_client`.
+This tutorial covers plain HTTP and HTTPS requests using `http_client_request` and `http_client_free` from `http_client_interface.h`. It documents **request and response structs** (fields, request headers, query args on `path`, response status and header block), then shows GET and POST with a JSON body, HTTPS CA setup, and JSON parsing with cJSON (`cJSON_ParseWithLength`). Runnable samples are under `examples/protocols/http_client` and `examples/protocols/https_client`.
 
 ## Prerequisites
 
@@ -34,6 +34,76 @@ This tutorial covers plain HTTP and HTTPS requests using `http_client_request` a
 4. Monitor the log. After the link is up, the sample sends a GET to `httpbin.org/get`, prints the body, and calls `http_client_free`.
 
 **Expected outcome:** Logs show DNS, TCP connect, and the response body from the test endpoint.
+
+## Request and response API
+
+Types and functions are defined in `http_client_interface.h`.
+
+### `http_client_request_t` (outgoing request)
+
+| Field | Type | Role |
+| ----- | ---- | ---- |
+| `host` | `const char *` | Server hostname (no scheme). Example: `httpbin.org`. |
+| `port` | `uint16_t` | TCP port. Use `80` for HTTP or `443` for HTTPS, or `0` to let the client default (80 / 443). |
+| `path` | `const char *` | Request path, starting with `/`. **Query string:** append it here, e.g. `/get?foo=bar&count=3`. You must **URL-encode** values yourself if they contain reserved characters. |
+| `method` | `const char *` | Method name, e.g. `"GET"`, `"POST"`, `"PUT"`, `"DELETE"`. |
+| `headers` | `http_client_header_t *` | Array of request header entries (see below). Can be `NULL` if `headers_count` is `0`. |
+| `headers_count` | `uint8_t` | Number of entries in `headers`. |
+| `body` | `const uint8_t *` | Request body for POST/PUT; use empty string and `body_length == 0` for GET. |
+| `body_length` | `size_t` | Length of `body` in bytes. |
+| `timeout_ms` | `uint32_t` | Overall timeout in milliseconds. |
+| `cacert` | `const uint8_t *` | PEM CA blob for TLS; `NULL` for plain HTTP. |
+| `cacert_len` | `size_t` | Length of `cacert`. |
+| `tls_no_verify` | `bool` | If true, TLS may skip peer verification (bring-up only; avoid in production). |
+
+### Request headers (`http_client_header_t`)
+
+Each header is one key/value pair:
+
+| Field | Type | Role |
+| ----- | ---- | ---- |
+| `key` | `const char *` | Header name, e.g. `"Content-Type"`, `"Authorization"`, `"Accept"`. |
+| `value` | `const char *` | Header value, e.g. `"application/json"`. |
+
+Example array:
+
+```c
+http_client_header_t headers[] = {
+    {.key = "Content-Type", .value = "application/json"},
+    {.key = "Accept", .value = "application/json"},
+};
+```
+
+The SDK serializes these into the outgoing HTTP request (internally via the core HTTP client `HTTPClient_AddHeader` path).
+
+### `http_client_response_t` (incoming response)
+
+After a successful `http_client_request`, the client fills:
+
+| Field | Type | Role |
+| ----- | ---- | ---- |
+| `status_code` | `uint16_t` | HTTP status code, e.g. `200`, `404`, `500`. |
+| `headers` | `const uint8_t *` | Start of the **raw response header block** in the receive buffer (status line and header fields as received; not a parsed map). |
+| `headers_length` | `size_t` | Length in bytes of that header block. |
+| `body` | `const uint8_t *` | Start of the response body. |
+| `body_length` | `size_t` | Body length in bytes. May not be null-terminated. |
+| `buffer` | `uint8_t *` | Owning buffer for the response (implementation detail for allocation; see header comment). |
+| `buffer_length` | `size_t` | Total size of `buffer`. |
+
+To **inspect response headers as text**, treat `headers` + `headers_length` as an opaque byte range (often ASCII). Example debug print:
+
+```c
+if (http_response.headers && http_response.headers_length > 0) {
+    PR_DEBUG_RAW("response headers (%u bytes):\n%.*s\n",
+                 (unsigned int)http_response.headers_length,
+                 (int)http_response.headers_length,
+                 (const char *)http_response.headers);
+}
+```
+
+For structured use (e.g. read `Content-Type`), parse that block yourself or use only `body` + `status_code` if enough for your API.
+
+Always call **`http_client_free`** when done; it releases memory allocated for the response.
 
 ## GET request
 
