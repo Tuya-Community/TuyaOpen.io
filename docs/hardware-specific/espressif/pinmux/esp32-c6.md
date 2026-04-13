@@ -1,92 +1,108 @@
 ---
-title: "ESP32-C6 Pin Mapping"
+title: "ESP32-C6 Peripheral Mapping"
 ---
 
-# ESP32-C6 Pin Mapping
+This document describes the mapping between ESP32-C6 (single RISC-V core, Wi-Fi 6) hardware peripherals and TuyaOpen TKL/TAL software ports.
 
-Pin mapping, peripheral assignments, and TKL implementation status for the **ESP32-C6** (single RISC-V core, Wi-Fi 6, Thread/Zigbee).
+## GPIO
 
-## GPIO Range
+- ESP32-C6 has 31 GPIO entries (GPIO 0-30). No gaps.
+- All GPIOs support interrupts.
 
-| Range | Pins | Notes |
-|-------|------|-------|
-| GPIO 0-30 | 31 pins | All usable |
-| **Total in pinmap** | **31 entries** | |
+| Board Pin | Function | Software Pin | Software Port |
+|-----------|----------|-------------|---------------|
+| GPIO 0-30 | GPIO | `TUYA_GPIO_NUM_0` - `TUYA_GPIO_NUM_30` | / |
 
-From [`tkl_pin.c`](https://github.com/tuya/TuyaOpen-esp32/blob/master/tuya_open_sdk/tuyaos_adapter/src/drivers/tkl_pin.c):
+Source: `tkl_pin.c` lines 59-62 (`CONFIG_IDF_TARGET_ESP32C6` block).
 
-```c
-#elif defined(CONFIG_IDF_TARGET_ESP32C6)
-{GPIO_NUM_21, NULL, NULL}, {GPIO_NUM_22, NULL, NULL}, ... {GPIO_NUM_30, NULL, NULL},
-/* pinmap: GPIO 0-30, no gaps */
-```
+## ADC
+
+- ADC1 has 7 channels. No ADC2 on C6.
+- Fixed attenuation `ADC_ATTEN_DB_12` (0-3.3 V). Calibration: curve-fitting.
+
+| ADC Channel | GPIO | Software Pin | Software Port |
+|-------------|------|-------------|---------------|
+| ADC1_CH0 | GPIO 0 | ch_0 (bit 0) | `TUYA_ADC_NUM_0` |
+| ADC1_CH1 | GPIO 1 | ch_1 (bit 1) | `TUYA_ADC_NUM_0` |
+| ADC1_CH2 | GPIO 2 | ch_2 (bit 2) | `TUYA_ADC_NUM_0` |
+| ADC1_CH3 | GPIO 3 | ch_3 (bit 3) | `TUYA_ADC_NUM_0` |
+| ADC1_CH4 | GPIO 4 | ch_4 (bit 4) | `TUYA_ADC_NUM_0` |
+| ADC1_CH5 | GPIO 5 | ch_5 (bit 5) | `TUYA_ADC_NUM_0` |
+| ADC1_CH6 | GPIO 6 | ch_6 (bit 6) | `TUYA_ADC_NUM_0` |
+
+Source: `tkl_adc.c` + Espressif `soc/esp32c6/include/soc/adc_channel.h`.
+
+## I2C
+
+- 1 I2C master port (I2C0).
+
+| Board Pin | Function | Software Pin | Software Port |
+|-----------|----------|-------------|---------------|
+| GPIO 0 (default) | I2C0_SCL | `TUYA_IIC0_SCL` | `TUYA_I2C_NUM_0` |
+| GPIO 1 (default) | I2C0_SDA | `TUYA_IIC0_SDA` | `TUYA_I2C_NUM_0` |
+
+Override via `tkl_io_pinmux_config()`.
 
 ## UART
 
-| Port | TX | RX | RTS | CTS | Source |
-|------|----|----|-----|-----|--------|
-| UART0 | GPIO 16 | GPIO 17 | NC | NC | `boards/ESP32/ESP32-C6/Kconfig` |
-| UART1 | GPIO 17 | GPIO 18 | NC | NC | `tkl_uart.c` (fixed) |
-
-:::warning UART Pin Conflict
-On ESP32-C6, UART0 RX (GPIO 17) and UART1 TX (GPIO 17) share the same pin by default. If you use both UART ports simultaneously, remap UART0 via Kconfig or remap UART1 in your application.
+:::warning Pin Conflict
+UART0 RX default (GPIO 17) and UART1 TX (GPIO 17) share the same pin. If using both UART ports, remap UART0 via Kconfig.
 :::
 
-## Pre-Configured Boards
+| Board Pin | Function | Software Pin | Software Port | Notes |
+|-----------|----------|-------------|---------------|-------|
+| GPIO 16 (default) | UART0_TX | / | `TUYA_UART_NUM_0` | Override via Kconfig |
+| GPIO 17 (default) | UART0_RX | / | `TUYA_UART_NUM_0` | **Conflicts with UART1 TX** |
+| GPIO 17 | UART1_TX | / | `TUYA_UART_NUM_1` | Fixed in driver |
+| GPIO 18 | UART1_RX | / | `TUYA_UART_NUM_1` | Fixed in driver |
 
-### ESP32-C6 Generic
+Source: `boards/ESP32/ESP32-C6/Kconfig`; `tkl_uart.c` lines 252-255.
 
-Minimal config. Config: `ESP32-C6.config`. Flash: 16 MB default.
+## PWM
 
-### Waveshare ESP32-C6 DevKit N16
+| Board Pin | Function | Software Pin | Software Port | Notes |
+|-----------|----------|-------------|---------------|-------|
+| GPIO 18 | PWM_CH0 | `TUYA_PWM0` | `TUYA_PWM_NUM_0` | |
+| GPIO 19 | PWM_CH1 | `TUYA_PWM1` | `TUYA_PWM_NUM_1` | |
+| GPIO 22 | PWM_CH2 | `TUYA_PWM2` | `TUYA_PWM_NUM_2` | Valid on C6 (0-30 range) |
+| GPIO 23 | PWM_CH3 | `TUYA_PWM3` | `TUYA_PWM_NUM_3` | Valid on C6 |
+| GPIO 25 | PWM_CH4 | `TUYA_PWM4` | `TUYA_PWM_NUM_4` | Valid on C6 |
+| GPIO 26 | PWM_CH5 | `TUYA_PWM5` | `TUYA_PWM_NUM_5` | Valid on C6 |
 
-A minimal dev kit with button and addressable LED:
+All default PWM pins are within the C6 GPIO range (0-30).
+
+## Board: Waveshare ESP32-C6 DevKit N16
 
 | Function | GPIO | Notes |
 |----------|------|-------|
-| Button | GPIO 9 | `TUYA_GPIO_NUM_9`, active low, pull-up |
+| Button | GPIO 9 | `TUYA_GPIO_NUM_9`, active low |
 | LED (WS2812) | GPIO 8 | `TUYA_GPIO_NUM_8`, addressable RGB via RMT |
 | UART0 TX | GPIO 16 | Default |
 | UART0 RX | GPIO 17 | Default |
 
-Source: [`boards/ESP32/WAVESHARE_ESP32C6_DEV_KIT_N16/board_com_api.c`](https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/WAVESHARE_ESP32C6_DEV_KIT_N16)
-
 Kconfig selects: `ENABLE_BUTTON`, `ENABLE_LED`, `PLATFORM_FLASHSIZE_16M`.
 
-No display or audio BSP is included.
+## TIMER
 
-## TKL/TAL Implementation Status
+- 3 GPTimer instances. Resolution: 1 MHz.
 
-| TKL Module | Implemented | Notes |
-|-----------|------------|-------|
-| `tkl_wifi` | Yes | 802.11 ax (Wi-Fi 6) |
-| `tkl_bt` (BLE) | Yes | BLE 5.0 |
-| `tkl_pin` (GPIO) | Yes | 31 pins |
-| `tkl_uart` | Yes | 2 ports (watch default pin conflict) |
-| `tkl_pwm` | Yes | LEDC, any GPIO |
-| `tkl_adc` | Yes | ADC1 (7 channels) |
-| `tkl_i2c` | Yes | 1 port (I2C0) |
-| `tkl_spi` | **Not implemented** | Use ESP-IDF `spi_bus_*` directly |
-| `tkl_i2s` | **Not practical** | C6 I2S is limited; no audio BSP |
-| `tkl_flash` | Yes | 16 MB default |
-| `tkl_timer` | Yes | |
-| `tkl_watchdog` | Yes | |
-| `tkl_rtc` | Yes | |
-| `tkl_ota` | Yes | |
-| `tkl_network` | Yes | Vendor lwIP |
-| `tkl_pinmux` | Partial | I2C + PWM only; SPI is no-op |
-| `tkl_dac` | **Not available** | ESP32-C6 has no DAC hardware |
-| `tkl_display` | **No TKL** | No display BSP for C6 boards |
-| `tkl_qspi` | **Not implemented** | |
-| `tkl_camera` | **Not available** | No camera interface on C6 |
-| Thread / Zigbee | **Not abstracted by TKL** | Use ESP-IDF `esp_openthread_*` or `esp_zb_*` directly |
+## Thread / Zigbee
 
-:::note Thread and Zigbee
-ESP32-C6 supports IEEE 802.15.4 (Thread/Zigbee) at the hardware level, but TuyaOpen does not abstract these protocols via TKL/TAL. To use Thread or Zigbee, call ESP-IDF APIs directly. This code will not be portable to other TuyaOpen platforms.
-:::
+- ESP32-C6 supports IEEE 802.15.4 (Thread, Zigbee) at the hardware level.
+- **TuyaOpen does not abstract these protocols.** Use ESP-IDF `esp_openthread_*` or `esp_zb_*` directly. This code is not portable to other TuyaOpen platforms.
+
+## TKL Not Implemented on ESP32-C6
+
+| Interface | Status | Notes |
+|-----------|--------|-------|
+| `tkl_spi` | Not implemented | Use ESP-IDF `spi_master` |
+| `tkl_i2s` | Not practical | No audio BSP for C6 |
+| `tkl_dac` | Not available | C6 has no DAC |
+| `tkl_display` | No TKL layer | No display BSP for C6 |
+| `tkl_camera` | Not available | No camera interface |
+| Thread / Zigbee | Not abstracted | Use ESP-IDF directly |
 
 ## References
 
-- [ESP32 Pin Mapping -- Overview](../esp32-pin-mapping)
+- [ESP32 Peripheral Mapping Overview](../esp32-pin-mapping)
 - [ESP32-C6 Datasheet](https://www.espressif.com.cn/sites/default/files/documentation/esp32-c6_datasheet_en.pdf)
-- [boards/ESP32/WAVESHARE_ESP32C6_DEV_KIT_N16/](https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/WAVESHARE_ESP32C6_DEV_KIT_N16)

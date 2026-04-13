@@ -203,7 +203,28 @@ module.exports = {
       type: 'category',
       label: 'Peripherals',
       collapsed: true,
-      items: ['peripheral/support_peripheral_list', 'peripheral/display', 'peripheral/audio', 'peripheral/button'],
+      items: [
+        'peripheral/support_peripheral_list',
+        'peripheral/driver-architecture',
+        'peripheral/display',
+        'peripheral/audio',
+        'peripheral/button',
+        {
+          type: 'category',
+          label: 'Tutorials',
+          collapsed: true,
+          items: [
+            'peripheral/tutorials/writing-sensor-driver',
+            'peripheral/tutorials/migrating-sensor-driver',
+            'peripheral/tutorials/i2c-guide',
+            'peripheral/tutorials/gpio-interrupt-tutorial',
+            'peripheral/tutorials/wifi-station-tutorial',
+            'peripheral/tutorials/thread-timer-patterns',
+            'peripheral/tutorials/display-driver-guide',
+            'peripheral/tutorials/audio-codec-guide',
+          ],
+        },
+      ],
     },
     // ------------------------------------------------------------------
     {

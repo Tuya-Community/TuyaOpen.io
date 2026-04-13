@@ -1,89 +1,103 @@
 ---
-title: "ESP32-C3 Pin Mapping"
+title: "ESP32-C3 Peripheral Mapping"
 ---
 
-# ESP32-C3 Pin Mapping
+This document describes the mapping between ESP32-C3 (single RISC-V core) hardware peripherals and TuyaOpen TKL/TAL software ports.
 
-Pin mapping, peripheral assignments, and TKL implementation status for the **ESP32-C3** (single RISC-V core, cost-optimized).
+## GPIO
 
-## GPIO Range
+- ESP32-C3 has 22 GPIO entries (GPIO 0-21). No gaps.
+- All GPIOs support interrupts.
 
-| Range | Pins | Notes |
-|-------|------|-------|
-| GPIO 0-21 | 22 pins | All usable |
-| **Total in pinmap** | **22 entries** | Smallest GPIO set among ESP32 family |
+| Board Pin | Function | Software Pin | Software Port |
+|-----------|----------|-------------|---------------|
+| GPIO 0-21 | GPIO | `TUYA_GPIO_NUM_0` - `TUYA_GPIO_NUM_21` | / |
 
-From [`tkl_pin.c`](https://github.com/tuya/TuyaOpen-esp32/blob/master/tuya_open_sdk/tuyaos_adapter/src/drivers/tkl_pin.c):
+Source: `tkl_pin.c` lines 57-58 (`CONFIG_IDF_TARGET_ESP32C3` block).
 
-```c
-#if defined(CONFIG_IDF_TARGET_ESP32C3)
-{GPIO_NUM_21, NULL, NULL},
-/* pinmap ends here -- only GPIO 0-21 */
-```
+## ADC
 
-:::note Limited Pin Count
-ESP32-C3 has only 22 GPIOs. Plan peripheral assignments carefully to avoid pin conflicts, especially when using Wi-Fi + BLE + UART + I2C simultaneously.
-:::
+- ADC1 has 5 channels. ADC2 has 1 channel.
+- Fixed attenuation `ADC_ATTEN_DB_12` (0-3.3 V). Calibration: curve-fitting.
+
+| ADC Channel | GPIO | Software Pin | Software Port |
+|-------------|------|-------------|---------------|
+| ADC1_CH0 | GPIO 0 | ch_0 (bit 0) | `TUYA_ADC_NUM_0` |
+| ADC1_CH1 | GPIO 1 | ch_1 (bit 1) | `TUYA_ADC_NUM_0` |
+| ADC1_CH2 | GPIO 2 | ch_2 (bit 2) | `TUYA_ADC_NUM_0` |
+| ADC1_CH3 | GPIO 3 | ch_3 (bit 3) | `TUYA_ADC_NUM_0` |
+| ADC1_CH4 | GPIO 4 | ch_4 (bit 4) | `TUYA_ADC_NUM_0` |
+| ADC2_CH0 | GPIO 5 | ch_0 (bit 0) | `TUYA_ADC_NUM_1` |
+
+Source: `tkl_adc.c` + Espressif `soc/esp32c3/include/soc/adc_channel.h`.
+
+## I2C
+
+- 1 I2C master port (I2C0). C3 hardware has only 1 I2C controller.
+
+| Board Pin | Function | Software Pin | Software Port |
+|-----------|----------|-------------|---------------|
+| GPIO 0 (default) | I2C0_SCL | `TUYA_IIC0_SCL` | `TUYA_I2C_NUM_0` |
+| GPIO 1 (default) | I2C0_SDA | `TUYA_IIC0_SDA` | `TUYA_I2C_NUM_0` |
+
+Override via `tkl_io_pinmux_config()`. Any GPIO 0-21 can be used.
 
 ## UART
 
-| Port | TX | RX | RTS | CTS | Source |
-|------|----|----|-----|-----|--------|
-| UART0 | GPIO 21 | GPIO 20 | NC | NC | `boards/ESP32/ESP32-C3/Kconfig` |
-| UART1 | GPIO 17 | GPIO 18 | NC | NC | `tkl_uart.c` (fixed) |
+| Board Pin | Function | Software Pin | Software Port | Notes |
+|-----------|----------|-------------|---------------|-------|
+| GPIO 21 (default) | UART0_TX | / | `TUYA_UART_NUM_0` | Override via Kconfig |
+| GPIO 20 (default) | UART0_RX | / | `TUYA_UART_NUM_0` | Override via Kconfig |
+| GPIO 17 | UART1_TX | / | `TUYA_UART_NUM_1` | Fixed in driver |
+| GPIO 18 | UART1_RX | / | `TUYA_UART_NUM_1` | Fixed in driver |
 
-## Pre-Configured Boards
+Source: `boards/ESP32/ESP32-C3/Kconfig`; `tkl_uart.c` lines 252-255.
 
-### ESP32-C3 Generic
+## PWM
 
-Minimal config, no BSP peripherals. Config: `ESP32-C3.config`.
+- 6 LEDC channels. C3 hardware supports 6 channels total.
 
-No display, audio, or additional peripheral BSP is included. This is a bare chip target for custom applications.
+| Board Pin | Function | Software Pin | Software Port | Notes |
+|-----------|----------|-------------|---------------|-------|
+| GPIO 18 | PWM_CH0 | `TUYA_PWM0` | `TUYA_PWM_NUM_0` | |
+| GPIO 19 | PWM_CH1 | `TUYA_PWM1` | `TUYA_PWM_NUM_1` | |
+| GPIO 22 | PWM_CH2 | `TUYA_PWM2` | `TUYA_PWM_NUM_2` | **Invalid: C3 max GPIO is 21. Must override.** |
+| GPIO 23 | PWM_CH3 | `TUYA_PWM3` | `TUYA_PWM_NUM_3` | **Invalid: must override.** |
+| GPIO 25 | PWM_CH4 | `TUYA_PWM4` | `TUYA_PWM_NUM_4` | **Invalid: must override.** |
+| GPIO 26 | PWM_CH5 | `TUYA_PWM5` | `TUYA_PWM_NUM_5` | **Invalid: must override.** |
 
-## TKL/TAL Implementation Status
-
-| TKL Module | Implemented | Notes |
-|-----------|------------|-------|
-| `tkl_wifi` | Yes | 802.11 b/g/n |
-| `tkl_bt` (BLE) | Yes | BLE 5.0 |
-| `tkl_pin` (GPIO) | Yes | 22 pins |
-| `tkl_uart` | Yes | 2 ports |
-| `tkl_pwm` | Yes | LEDC, any GPIO |
-| `tkl_adc` | Yes | ADC1 (6 channels) |
-| `tkl_i2c` | Yes | 1 port (I2C0 only on C3 hardware) |
-| `tkl_spi` | **Not implemented** | Use ESP-IDF `spi_bus_*` directly |
-| `tkl_i2s` | **Not available** | C3 has limited I2S; `ENABLE_AUDIO` not practical |
-| `tkl_flash` | Yes | |
-| `tkl_timer` | Yes | 2 hardware timer groups |
-| `tkl_watchdog` | Yes | |
-| `tkl_rtc` | Yes | |
-| `tkl_ota` | Yes | |
-| `tkl_network` | Yes | Vendor lwIP |
-| `tkl_pinmux` | Partial | I2C + PWM only; SPI is no-op |
-| `tkl_dac` | **Not available** | ESP32-C3 has no DAC hardware |
-| `tkl_display` | **No TKL** | No board BSP with display for C3 |
-| `tkl_qspi` | **Not implemented** | |
-| `tkl_camera` | **Not available** | No camera interface on C3 |
-
-:::warning Audio Limitations
-ESP32-C3 has limited I2S support and no pre-configured audio BSP in TuyaOpen. The AI chatbot and voice applications require ESP32-S3. If your project needs audio, use the S3 variant.
+:::warning
+Default PWM pins 22, 23, 25, 26 do not exist on ESP32-C3 (max GPIO 21). You **must** call `tkl_io_pinmux_config()` to remap channels 2-5 before using them.
 :::
 
-## ESP32-C3 Pin Planning Guide
+## TIMER
 
-With only 22 GPIOs, here is a practical allocation for a typical IoT application:
+- 3 GPTimer instances. Resolution: 1 MHz. `tkl_timer_get_current_value()`: `OPRT_NOT_SUPPORTED`.
+
+## Pin Planning Guide (22 GPIOs)
 
 | Allocation | Pins Used | Remaining |
 |-----------|-----------|-----------|
 | UART0 (debug) | GPIO 20, 21 | 20 |
-| UART1 (sensor) | GPIO 17, 18 | 18 |
+| UART1 (external) | GPIO 17, 18 | 18 |
 | I2C (sensor) | GPIO 0, 1 | 16 |
-| Wi-Fi + BLE | Internal (no GPIO) | 16 |
-| SPI (display, if needed) | 4-5 pins | 11-12 |
-| GPIO (buttons, LEDs, relays) | Remaining | Varies |
+| ADC (analog) | GPIO 2-5 | 12 |
+| PWM (LED/motor) | GPIO 6, 7 | 10 |
+| Wi-Fi + BLE | Internal | 10 |
+| Remaining GPIO | GPIO 8-16, 19 | 10 |
+
+## TKL Not Implemented on ESP32-C3
+
+| Interface | Status | Notes |
+|-----------|--------|-------|
+| `tkl_spi` | Not implemented | Use ESP-IDF `spi_master` |
+| `tkl_i2s` | Not practical | No audio BSP for C3 |
+| `tkl_dac` | Not available | C3 has no DAC |
+| `tkl_display` | No TKL layer | No display BSP for C3 |
+| `tkl_camera` | Not available | No camera interface |
+| `tkl_bt` | Supported | BLE 5.0 only (no classic BT) |
 
 ## References
 
-- [ESP32 Pin Mapping -- Overview](../esp32-pin-mapping)
+- [ESP32 Peripheral Mapping Overview](../esp32-pin-mapping)
 - [ESP32-C3 Datasheet](https://www.espressif.com.cn/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)
-- [boards/ESP32/ESP32-C3/ Kconfig](https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32)
