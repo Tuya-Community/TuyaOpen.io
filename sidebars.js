@@ -304,6 +304,16 @@ module.exports = {
             },
             {
               type: 'category',
+              label: 'Memory & storage',
+              collapsed: true,
+              items: [
+                'peripheral/memory/overview',
+                'peripheral/memory/heap-allocation-and-psram',
+                'peripheral/memory/flash-and-partitions',
+              ],
+            },
+            {
+              type: 'category',
               label: 'Hardware Interfaces',
               collapsed: true,
               items: [

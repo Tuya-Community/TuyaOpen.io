@@ -246,6 +246,10 @@
     "message": "系统编程",
     "description": "The label for category System Programming in sidebar docs"
   },
+  "sidebar.docs.category.Memory & storage": {
+    "message": "内存与存储",
+    "description": "The label for category Memory & storage in sidebar docs"
+  },
   "sidebar.docs.category.T5 + Arduino IDE": {
     "message": "T5 + Arduino IDE",
     "description": "The label for category T5 + Arduino IDE in sidebar docs"
