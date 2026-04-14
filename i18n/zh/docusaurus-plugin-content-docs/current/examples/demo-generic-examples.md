@@ -86,7 +86,7 @@ $ examples
 | **system/** | 线程、定时器、互斥锁、信号量、队列、事件、KV 存储 | [线程与定时器模式](/zh/docs/peripheral/tutorials/thread-timer-patterns) |
 | **ble/** | BLE 中心设备（扫描+连接）和外设（广播+GATT） | [BLE Central](../peripheral/tutorials/ble-central-tutorial)、[BLE Peripheral](../peripheral/tutorials/ble-peripheral-tutorial) |
 | **protocols/** | HTTP/HTTPS 客户端、MQTT 客户端、TCP 客户端/服务器 | [HTTP 与 HTTPS（GET/POST、JSON）](../peripheral/tutorials/http-client-tutorial)、[MQTT 客户端](../peripheral/tutorials/mqtt-client-tutorial)、[TCP 与 UDP 套接字](../peripheral/tutorials/tcp-socket-tutorial) |
-| **graphics/** | LVGL 演示、u8g2 I2C/SPI 显示 | [显示驱动指南](/zh/docs/peripheral/tutorials/display-driver-guide) |
+| **graphics/** | LVGL 演示、u8g2 I2C/SPI 显示 | [LVGL 应用指南](../peripheral/tutorials/lvgl-application-guide)、[显示驱动指南](../peripheral/tutorials/display-driver-guide) |
 | **multimedia/** | 关键词识别 (KWS)、音频播放器、录音、VAD | [音频编解码器指南](/zh/docs/peripheral/tutorials/audio-codec-guide) |
 | **e-Paper/** | 电子墨水屏演示（1.54"、2.13"、2.9"） | |
 | **tflite/** | TensorFlow Lite Micro hello-world 推理 | |

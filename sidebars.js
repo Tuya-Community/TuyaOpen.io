@@ -65,110 +65,299 @@ module.exports = {
     {
       type: 'html',
       value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">🛠️ Hardware</span><span class="sidebar-divider-zh">🛠️ 硬件指南</span></div>',
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">Embedded Programming</span><span class="sidebar-divider-zh">嵌入式编程</span></div>',
       defaultStyle: false,
     },
-    // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'Hardware Guides',
-      link: {
-        type: 'doc',
-        id: 'hardware-specific/index',
-      },
+      label: 'Embedded Programming',
       collapsed: false,
       items: [
         {
           type: 'category',
-          label: 'Tuya T5',
+          label: 'Networking',
           collapsed: true,
           items: [
-            'hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+            'peripheral/tutorials/wifi-station-tutorial',
             {
               type: 'category',
-              label: 'T5-AI Board DevKit',
+              label: 'Protocol Tutorials',
               collapsed: true,
-              items: ['hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board'],
+              items: [
+                'peripheral/tutorials/http-client-tutorial',
+                'peripheral/tutorials/mqtt-client-tutorial',
+                'peripheral/tutorials/tcp-socket-tutorial',
+              ],
             },
             {
               type: 'category',
-              label: 'T5-AI Core DevKit',
+              label: 'BLE Tutorials',
               collapsed: true,
-              items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
+              items: ['peripheral/tutorials/ble-central-tutorial', 'peripheral/tutorials/ble-peripheral-tutorial'],
+            },
+            {
+              type: 'category',
+              label: 'TAL API Reference',
+              collapsed: true,
+              items: [
+                'peripheral/tutorials/tal-wifi-api',
+                'peripheral/tutorials/tal-network-api',
+                'peripheral/tutorials/tal-bluetooth-api',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'TKL Networking',
+              collapsed: true,
+              items: [
+                'tkl-api/tkl_wifi',
+                'tkl-api/tkl_bluetooth',
+                'tkl-api/tkl_lwip',
+                'tkl-api/tkl_network',
+                'tkl-api/tkl_wired',
+              ],
             },
           ],
         },
         {
           type: 'category',
-          label: 'Tuya T2',
+          label: 'AI Development',
           collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'hardware-specific/tuya-t2/overview-t2',
-          },
-          items: ['hardware-specific/tuya-t2/overview-t2'],
-        },
-        {
-          type: 'category',
-          label: 'Tuya T3',
-          collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'hardware-specific/tuya-t3/overview-t3',
-          },
-          items: ['hardware-specific/tuya-t3/overview-t3'],
-        },
-        {
-          type: 'category',
-          label: 'Espressif ESP32',
-          collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'hardware-specific/espressif/overview-esp32',
-          },
           items: [
-            'hardware-specific/espressif/esp32-quick-start',
-            'hardware-specific/espressif/esp32-supported-features',
+            'applications/tuya.ai/application-development-guide',
+            'applications/tuya.ai/demo-your-chat-bot',
+            'applications/tuya.ai/demo-duo-eyes-mood',
+            'applications/tuya.ai/ai-components/ai-components',
+            'applications/tuya.ai/ai-components/ai-main',
+            'applications/tuya.ai/ai-components/ai-agent',
+            'applications/tuya.ai/ai-components/ai-skill',
+            'applications/tuya.ai/ai-components/ai-audio-input',
+            'applications/tuya.ai/ai-components/ai-audio-player',
+            'applications/tuya.ai/ai-components/ai-video-input',
             {
               type: 'category',
-              label: 'Pin Mapping',
+              label: 'Chat Mode Management',
+              collapsed: false,
+              link: {
+                type: 'doc',
+                id: 'applications/tuya.ai/ai-components/ai-mode-manage',
+              },
+              items: [
+                'applications/tuya.ai/ai-components/ai-mode-hold',
+                'applications/tuya.ai/ai-components/ai-mode-oneshot',
+                'applications/tuya.ai/ai-components/ai-mode-wakeup',
+                'applications/tuya.ai/ai-components/ai-mode-free',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'GUI',
+              collapsed: false,
+              link: {
+                type: 'doc',
+                id: 'applications/tuya.ai/ai-components/ai-ui-manage',
+              },
+              items: [
+                'applications/tuya.ai/ai-components/ai-ui-chat-wechat',
+                'applications/tuya.ai/ai-components/ai-ui-chat-chatbot',
+                'applications/tuya.ai/ai-components/ai-ui-chat-oled',
+              ],
+            },
+            'applications/tuya.ai/ai-components/ai-mcp-server',
+            'applications/tuya.ai/ai-components/ai-mcp-tools',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Graphics',
+          collapsed: true,
+          items: [
+            'peripheral/tutorials/lvgl-application-guide',
+            'peripheral/display',
+            'peripheral/tutorials/display-driver-guide',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Audio',
+          collapsed: true,
+          items: ['peripheral/audio', 'peripheral/tutorials/audio-codec-guide'],
+        },
+        {
+          type: 'category',
+          label: 'Peripherals',
+          collapsed: true,
+          items: [
+            'peripheral/support_peripheral_list',
+            'peripheral/driver-architecture',
+            'peripheral/button',
+            {
+              type: 'category',
+              label: 'Peripheral Tutorials',
+              collapsed: true,
+              items: [
+                'peripheral/tutorials/gpio-interrupt-tutorial',
+                'peripheral/tutorials/i2c-guide',
+                'peripheral/tutorials/adc-guide',
+                'peripheral/tutorials/writing-sensor-driver',
+                'peripheral/tutorials/migrating-sensor-driver',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'System Programming',
+          collapsed: true,
+          items: [
+            'peripheral/tutorials/thread-timer-patterns',
+            'peripheral/tutorials/tal-system-api',
+            'peripheral/tutorials/tal-kv-guide',
+            {
+              type: 'category',
+              label: 'TKL OS APIs',
+              collapsed: true,
+              items: [
+                'tkl-api/tkl_mutex',
+                'tkl-api/tkl_semaphore',
+                'tkl-api/tkl_system',
+                'tkl-api/tkl_timer',
+                'tkl-api/tkl_thread',
+                'tkl-api/tkl_wakeup',
+                'tkl-api/tkl_ota',
+                'tkl-api/tkl_output',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Hardware Interfaces',
+          collapsed: true,
+          items: [
+            {
+              type: 'category',
+              label: 'Board Guides',
               collapsed: true,
               link: {
                 type: 'doc',
-                id: 'hardware-specific/espressif/esp32-pin-mapping',
+                id: 'hardware-specific/index',
               },
               items: [
-                'hardware-specific/espressif/pinmux/esp32-classic',
-                'hardware-specific/espressif/pinmux/esp32-s3',
-                'hardware-specific/espressif/pinmux/esp32-c3',
-                'hardware-specific/espressif/pinmux/esp32-c6',
+                {
+                  type: 'category',
+                  label: 'Tuya T5',
+                  collapsed: true,
+                  items: [
+                    'hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+                    {
+                      type: 'category',
+                      label: 'T5-AI Board DevKit',
+                      collapsed: true,
+                      items: ['hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board'],
+                    },
+                    {
+                      type: 'category',
+                      label: 'T5-AI Core DevKit',
+                      collapsed: true,
+                      items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
+                    },
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Tuya T2',
+                  collapsed: true,
+                  link: {
+                    type: 'doc',
+                    id: 'hardware-specific/tuya-t2/overview-t2',
+                  },
+                  items: ['hardware-specific/tuya-t2/overview-t2'],
+                },
+                {
+                  type: 'category',
+                  label: 'Tuya T3',
+                  collapsed: true,
+                  link: {
+                    type: 'doc',
+                    id: 'hardware-specific/tuya-t3/overview-t3',
+                  },
+                  items: ['hardware-specific/tuya-t3/overview-t3'],
+                },
+                {
+                  type: 'category',
+                  label: 'Espressif ESP32',
+                  collapsed: true,
+                  link: {
+                    type: 'doc',
+                    id: 'hardware-specific/espressif/overview-esp32',
+                  },
+                  items: [
+                    'hardware-specific/espressif/esp32-quick-start',
+                    'hardware-specific/espressif/esp32-supported-features',
+                    {
+                      type: 'category',
+                      label: 'Pin Mapping',
+                      collapsed: true,
+                      link: {
+                        type: 'doc',
+                        id: 'hardware-specific/espressif/esp32-pin-mapping',
+                      },
+                      items: [
+                        'hardware-specific/espressif/pinmux/esp32-classic',
+                        'hardware-specific/espressif/pinmux/esp32-s3',
+                        'hardware-specific/espressif/pinmux/esp32-c3',
+                        'hardware-specific/espressif/pinmux/esp32-c6',
+                      ],
+                    },
+                    'hardware-specific/espressif/esp32-migration-guide',
+                    'hardware-specific/espressif/esp32-new-board',
+                    'hardware-specific/espressif/esp32-production-guide',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Linux',
+                  collapsed: true,
+                  items: [
+                    {
+                      type: 'category',
+                      label: 'DshanPi A1',
+                      collapsed: true,
+                      items: ['hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1'],
+                    },
+                    {
+                      type: 'category',
+                      label: 'Raspberry Pi',
+                      collapsed: true,
+                      items: [
+                        'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
+                        'hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
+                        'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
+                        'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
+                      ],
+                    },
+                  ],
+                },
               ],
             },
-            'hardware-specific/espressif/esp32-migration-guide',
-            'hardware-specific/espressif/esp32-new-board',
-            'hardware-specific/espressif/esp32-production-guide',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Linux',
-          collapsed: true,
-          items: [
             {
               type: 'category',
-              label: 'DshanPi A1',
-              collapsed: true,
-              items: ['hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1'],
-            },
-            {
-              type: 'category',
-              label: 'Raspberry Pi',
+              label: 'TKL Peripheral APIs',
               collapsed: true,
               items: [
-                'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
-                'hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
-                'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
-                'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
+                'tkl-api/tkl_adc',
+                'tkl-api/tkl_dac',
+                'tkl-api/tkl_flash',
+                'tkl-api/tkl_gpio',
+                'tkl-api/tkl_i2c',
+                'tkl-api/tkl_i2s',
+                'tkl-api/tkl_pinmux',
+                'tkl-api/tkl_pwm',
+                'tkl-api/tkl_register',
+                'tkl-api/tkl_rtc',
+                'tkl-api/tkl_spi',
+                'tkl-api/tkl_uart',
               ],
             },
           ],
@@ -183,7 +372,6 @@ module.exports = {
       defaultStyle: false,
     },
 
-    // ------------------------------------------------------------------
     {
       type: 'category',
       label: 'Applications',
@@ -199,91 +387,14 @@ module.exports = {
           collapsed: true,
           items: ['applications/tuya_cloud/demo-tuya-iot-light', 'applications/tuya_cloud/tuya-iot-client-reference'],
         },
-        {
-          type: 'category',
-          label: 'Tuya.AI',
-          collapsed: false,
-          items: [
-            'applications/tuya.ai/application-development-guide',
-            'applications/tuya.ai/demo-your-chat-bot',
-            'applications/tuya.ai/demo-duo-eyes-mood',
-          ],
-        },
       ],
     },
-    // ------------------------------------------------------------------
     {
       type: 'category',
       label: 'Examples',
       collapsed: true,
       items: ['examples/demo-generic-examples'],
     },
-    // ------------------------------------------------------------------
-    {
-      type: 'category',
-      label: 'Peripherals & Drivers',
-      collapsed: true,
-      items: [
-        'peripheral/support_peripheral_list',
-        'peripheral/driver-architecture',
-        'peripheral/display',
-        'peripheral/audio',
-        'peripheral/button',
-        {
-          type: 'category',
-          label: 'Peripheral Tutorials',
-          collapsed: true,
-          items: [
-            'peripheral/tutorials/gpio-interrupt-tutorial',
-            'peripheral/tutorials/i2c-guide',
-            'peripheral/tutorials/adc-guide',
-            'peripheral/tutorials/display-driver-guide',
-            'peripheral/tutorials/audio-codec-guide',
-            'peripheral/tutorials/writing-sensor-driver',
-            'peripheral/tutorials/migrating-sensor-driver',
-          ],
-        },
-      ],
-    },
-    // ------------------------------------------------------------------
-    {
-      type: 'category',
-      label: 'Networking & System',
-      collapsed: true,
-      items: [
-        'peripheral/tutorials/wifi-station-tutorial',
-        'peripheral/tutorials/thread-timer-patterns',
-        {
-          type: 'category',
-          label: 'Protocol Tutorials',
-          collapsed: true,
-          items: [
-            'peripheral/tutorials/http-client-tutorial',
-            'peripheral/tutorials/mqtt-client-tutorial',
-            'peripheral/tutorials/tcp-socket-tutorial',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'BLE Tutorials',
-          collapsed: true,
-          items: ['peripheral/tutorials/ble-central-tutorial', 'peripheral/tutorials/ble-peripheral-tutorial'],
-        },
-        {
-          type: 'category',
-          label: 'TAL API Reference',
-          collapsed: true,
-          items: [
-            'peripheral/tutorials/tal-wifi-api',
-            'peripheral/tutorials/tal-system-api',
-            'peripheral/tutorials/tal-network-api',
-            'peripheral/tutorials/tal-kv-guide',
-            'peripheral/tutorials/tal-bluetooth-api',
-          ],
-        },
-      ],
-    },
-    // ------------------------------------------------------------------
     {
       type: 'category',
       label: 'New Project',
@@ -296,7 +407,6 @@ module.exports = {
       ],
     },
     // ------------------------------------------------------------------
-
     {
       type: 'html',
       value:
@@ -368,115 +478,6 @@ module.exports = {
         },
       ],
     },
-    // ------------------------------------------------------------------
-
-    {
-      type: 'html',
-      value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">👨🏻‍💻 TuyaOpen SDKs</span><span class="sidebar-divider-zh">👨🏻‍💻 TuyaOpen SDK 套件</span></div>',
-      defaultStyle: false,
-    },
-    {
-      type: 'category',
-      label: 'AI App SDKs',
-      collapsed: true,
-      items: [
-        'applications/tuya.ai/ai-components/ai-components',
-        'applications/tuya.ai/ai-components/ai-main',
-        'applications/tuya.ai/ai-components/ai-agent',
-        'applications/tuya.ai/ai-components/ai-skill',
-        'applications/tuya.ai/ai-components/ai-audio-input',
-        'applications/tuya.ai/ai-components/ai-audio-player',
-        'applications/tuya.ai/ai-components/ai-video-input',
-        {
-          type: 'category',
-          label: 'Chat Mode Management',
-          collapsed: false,
-          link: {
-            type: 'doc',
-            id: 'applications/tuya.ai/ai-components/ai-mode-manage',
-          },
-          items: [
-            'applications/tuya.ai/ai-components/ai-mode-hold',
-            'applications/tuya.ai/ai-components/ai-mode-oneshot',
-            'applications/tuya.ai/ai-components/ai-mode-wakeup',
-            'applications/tuya.ai/ai-components/ai-mode-free',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'GUI',
-          collapsed: false,
-          link: {
-            type: 'doc',
-            id: 'applications/tuya.ai/ai-components/ai-ui-manage',
-          },
-          items: [
-            'applications/tuya.ai/ai-components/ai-ui-chat-wechat',
-            'applications/tuya.ai/ai-components/ai-ui-chat-chatbot',
-            'applications/tuya.ai/ai-components/ai-ui-chat-oled',
-          ],
-        },
-        'applications/tuya.ai/ai-components/ai-mcp-server',
-        'applications/tuya.ai/ai-components/ai-mcp-tools',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'System APIs',
-      collapsed: true,
-      items: [
-        {
-          type: 'category',
-          label: 'OS APIs',
-          collapsed: false,
-          items: [
-            'tkl-api/tkl_mutex',
-            'tkl-api/tkl_semaphore',
-            'tkl-api/tkl_system',
-            'tkl-api/tkl_timer',
-            'tkl-api/tkl_thread',
-            'tkl-api/tkl_wakeup',
-            'tkl-api/tkl_ota',
-            'tkl-api/tkl_output',
-          ],
-        },
-
-        {
-          type: 'category',
-          label: 'Networking',
-          collapsed: false,
-          items: [
-            'tkl-api/tkl_wifi',
-            'tkl-api/tkl_bluetooth',
-            'tkl-api/tkl_lwip',
-            'tkl-api/tkl_network',
-            'tkl-api/tkl_wired',
-          ],
-        },
-      ],
-    },
-
-    {
-      type: 'category',
-      label: 'Hardware Interface APIs',
-      collapsed: true,
-      items: [
-        'tkl-api/tkl_adc',
-        'tkl-api/tkl_dac',
-        'tkl-api/tkl_flash',
-        'tkl-api/tkl_gpio',
-        'tkl-api/tkl_i2c',
-        'tkl-api/tkl_i2s',
-        'tkl-api/tkl_pinmux',
-        'tkl-api/tkl_pwm',
-        'tkl-api/tkl_register',
-        'tkl-api/tkl_rtc',
-        'tkl-api/tkl_spi',
-        'tkl-api/tkl_uart',
-      ],
-    },
-
     {
       type: 'html',
       value:

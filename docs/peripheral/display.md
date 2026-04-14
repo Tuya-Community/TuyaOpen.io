@@ -157,6 +157,8 @@ If you enable a feature that depends on the display driver, such as LVGL, the di
 
    ![](/img/peripheral/display/choose_lvgl.png)
 
+   For building and running LVGL UIs (init, `lv_vendor_*`, examples), see the [LVGL Application Guide](tutorials/lvgl-application-guide).
+
 3. Verify that the display driver's enable macro is activated.
 
    ![](/img/peripheral/display/display_enable.png)

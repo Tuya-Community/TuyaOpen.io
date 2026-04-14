@@ -156,6 +156,8 @@ title: 显示屏驱动
 
     ![](/img/peripheral/display/choose_lvgl.png)
 
+    构建与运行 LVGL 界面（初始化、`lv_vendor_*`、示例流程）见 [LVGL 应用指南](tutorials/lvgl-application-guide)。
+
 3. 查看显示驱动的使能宏是否被打开。
 
     ![](/img/peripheral/display/display_enable.png)

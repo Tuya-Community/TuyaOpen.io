@@ -46,6 +46,7 @@ config ENABLE_ESP_DISPLAY
 
 ## 参考资料
 
+- [LVGL 应用指南](lvgl-application-guide)
 - [TDD/TDL 驱动架构](../driver-architecture)
 - [显示驱动参考](../display)
 - [外设支持列表](../support_peripheral_list)

@@ -106,6 +106,7 @@ config DISPLAY_NAME
 
 ## References
 
+- [LVGL Application Guide](lvgl-application-guide)
 - [TDD/TDL Driver Architecture](../driver-architecture)
 - [Display Driver Reference](../display)
 - [Peripheral Support List](../support_peripheral_list)
