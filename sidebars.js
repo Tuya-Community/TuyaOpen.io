@@ -65,6 +65,120 @@ module.exports = {
     {
       type: 'html',
       value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">🛠️ Hardware</span><span class="sidebar-divider-zh">🛠️ 硬件指南</span></div>',
+      defaultStyle: false,
+    },
+    // ------------------------------------------------------------------
+    {
+      type: 'category',
+      label: 'Hardware Guides',
+      link: {
+        type: 'doc',
+        id: 'hardware-specific/index',
+      },
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: 'Tuya T5',
+          collapsed: true,
+          items: [
+            'hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+            {
+              type: 'category',
+              label: 'T5-AI Board DevKit',
+              collapsed: true,
+              items: ['hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board'],
+            },
+            {
+              type: 'category',
+              label: 'T5-AI Core DevKit',
+              collapsed: true,
+              items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Tuya T2',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/tuya-t2/overview-t2',
+          },
+          items: ['hardware-specific/tuya-t2/overview-t2'],
+        },
+        {
+          type: 'category',
+          label: 'Tuya T3',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/tuya-t3/overview-t3',
+          },
+          items: ['hardware-specific/tuya-t3/overview-t3'],
+        },
+        {
+          type: 'category',
+          label: 'Espressif ESP32',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/espressif/overview-esp32',
+          },
+          items: [
+            'hardware-specific/espressif/esp32-quick-start',
+            'hardware-specific/espressif/esp32-supported-features',
+            {
+              type: 'category',
+              label: 'Pin Mapping',
+              collapsed: true,
+              link: {
+                type: 'doc',
+                id: 'hardware-specific/espressif/esp32-pin-mapping',
+              },
+              items: [
+                'hardware-specific/espressif/pinmux/esp32-classic',
+                'hardware-specific/espressif/pinmux/esp32-s3',
+                'hardware-specific/espressif/pinmux/esp32-c3',
+                'hardware-specific/espressif/pinmux/esp32-c6',
+              ],
+            },
+            'hardware-specific/espressif/esp32-migration-guide',
+            'hardware-specific/espressif/esp32-new-board',
+            'hardware-specific/espressif/esp32-production-guide',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Linux',
+          collapsed: true,
+          items: [
+            {
+              type: 'category',
+              label: 'DshanPi A1',
+              collapsed: true,
+              items: ['hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1'],
+            },
+            {
+              type: 'category',
+              label: 'Raspberry Pi',
+              collapsed: true,
+              items: [
+                'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
+                'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      type: 'html',
+      value:
         '<div class="sidebar-divider"><span class="sidebar-divider-en">Embedded Programming</span><span class="sidebar-divider-zh">嵌入式编程</span></div>',
       defaultStyle: false,
     },
@@ -235,131 +349,18 @@ module.exports = {
           label: 'Hardware Interfaces',
           collapsed: true,
           items: [
-            {
-              type: 'category',
-              label: 'Board Guides',
-              collapsed: true,
-              link: {
-                type: 'doc',
-                id: 'hardware-specific/index',
-              },
-              items: [
-                {
-                  type: 'category',
-                  label: 'Tuya T5',
-                  collapsed: true,
-                  items: [
-                    'hardware-specific/tuya-t5/t5ai-peripheral-mapping',
-                    {
-                      type: 'category',
-                      label: 'T5-AI Board DevKit',
-                      collapsed: true,
-                      items: ['hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board'],
-                    },
-                    {
-                      type: 'category',
-                      label: 'T5-AI Core DevKit',
-                      collapsed: true,
-                      items: ['hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core'],
-                    },
-                  ],
-                },
-                {
-                  type: 'category',
-                  label: 'Tuya T2',
-                  collapsed: true,
-                  link: {
-                    type: 'doc',
-                    id: 'hardware-specific/tuya-t2/overview-t2',
-                  },
-                  items: ['hardware-specific/tuya-t2/overview-t2'],
-                },
-                {
-                  type: 'category',
-                  label: 'Tuya T3',
-                  collapsed: true,
-                  link: {
-                    type: 'doc',
-                    id: 'hardware-specific/tuya-t3/overview-t3',
-                  },
-                  items: ['hardware-specific/tuya-t3/overview-t3'],
-                },
-                {
-                  type: 'category',
-                  label: 'Espressif ESP32',
-                  collapsed: true,
-                  link: {
-                    type: 'doc',
-                    id: 'hardware-specific/espressif/overview-esp32',
-                  },
-                  items: [
-                    'hardware-specific/espressif/esp32-quick-start',
-                    'hardware-specific/espressif/esp32-supported-features',
-                    {
-                      type: 'category',
-                      label: 'Pin Mapping',
-                      collapsed: true,
-                      link: {
-                        type: 'doc',
-                        id: 'hardware-specific/espressif/esp32-pin-mapping',
-                      },
-                      items: [
-                        'hardware-specific/espressif/pinmux/esp32-classic',
-                        'hardware-specific/espressif/pinmux/esp32-s3',
-                        'hardware-specific/espressif/pinmux/esp32-c3',
-                        'hardware-specific/espressif/pinmux/esp32-c6',
-                      ],
-                    },
-                    'hardware-specific/espressif/esp32-migration-guide',
-                    'hardware-specific/espressif/esp32-new-board',
-                    'hardware-specific/espressif/esp32-production-guide',
-                  ],
-                },
-                {
-                  type: 'category',
-                  label: 'Linux',
-                  collapsed: true,
-                  items: [
-                    {
-                      type: 'category',
-                      label: 'DshanPi A1',
-                      collapsed: true,
-                      items: ['hardware-specific/Linux/DshanPi-A1/Applications/your-chat-bot-on-dshanpi-a1'],
-                    },
-                    {
-                      type: 'category',
-                      label: 'Raspberry Pi',
-                      collapsed: true,
-                      items: [
-                        'hardware-specific/Linux/raspberry-pi/Applications/your-chat-bot-on-raspberry-pi',
-                        'hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
-                        'hardware-specific/Linux/raspberry-pi/Examples/peripherals-raspberry-pi',
-                        'hardware-specific/Linux/raspberry-pi/Troubleshooting/wifi-bluetooth',
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              type: 'category',
-              label: 'TKL Peripheral APIs',
-              collapsed: true,
-              items: [
-                'tkl-api/tkl_adc',
-                'tkl-api/tkl_dac',
-                'tkl-api/tkl_flash',
-                'tkl-api/tkl_gpio',
-                'tkl-api/tkl_i2c',
-                'tkl-api/tkl_i2s',
-                'tkl-api/tkl_pinmux',
-                'tkl-api/tkl_pwm',
-                'tkl-api/tkl_register',
-                'tkl-api/tkl_rtc',
-                'tkl-api/tkl_spi',
-                'tkl-api/tkl_uart',
-              ],
-            },
+            'tkl-api/tkl_adc',
+            'tkl-api/tkl_dac',
+            'tkl-api/tkl_flash',
+            'tkl-api/tkl_gpio',
+            'tkl-api/tkl_i2c',
+            'tkl-api/tkl_i2s',
+            'tkl-api/tkl_pinmux',
+            'tkl-api/tkl_pwm',
+            'tkl-api/tkl_register',
+            'tkl-api/tkl_rtc',
+            'tkl-api/tkl_spi',
+            'tkl-api/tkl_uart',
           ],
         },
       ],
