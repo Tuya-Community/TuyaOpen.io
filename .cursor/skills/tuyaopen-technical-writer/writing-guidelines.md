@@ -54,6 +54,11 @@ The device connects to Tuya Cloud and appears in the Tuya Smart app as a switch.
 - [T5AI-Core hardware guide](hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core)
 ```
 
+## License / 授权码 in Requirements (documentation scope)
+
+- **Include** a license key / 授权码 item (and link to [equipment authorization](quick-start/equipment-authorization) when helpful) only when the doc’s main job is to run or extend a **Tuya Cloud–dependent** app (e.g. switch demo, AI chat demo, project page, cloud quick start).
+- **Do not** add standalone “if you use the cloud, get a license” bullets to **Embedded Programming** content: peripheral tutorials, Memory & storage, TKL/TAL API references, Kconfig/build guides, driver architecture, or generic protocol clients. Those topics stay platform-agnostic; the **application or demo** doc lists cloud credentials.
+
 ## API Reference Example (Developer Audience)
 
 ```markdown

@@ -21,7 +21,6 @@ This page has two parts:
 ## Requirements
 
 - Shell in the **project directory** (for example `TuyaOpen/apps/tuya_cloud/switch_demo` or `TuyaOpen/examples/peripherals/gpio`).
-- No Tuya Cloud license is required for configuration alone; building cloud demos may still need authorization as described in their docs.
 
 ## Everyday use
 

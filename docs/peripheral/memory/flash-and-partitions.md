@@ -15,7 +15,6 @@ On **MCU** targets, firmware, **OTA**, **authorization**, and **application pers
 
 ## Requirements
 
-- For **Tuya Cloud** or activation-related storage, follow product **license / authorization** docs where applicable.
 - Raw **`tkl_flash_*`** offsets must respect the **partition plan** for your board; wrong ranges brick OTA or corrupt KV.
 
 ## TKL flash API (reference layer)

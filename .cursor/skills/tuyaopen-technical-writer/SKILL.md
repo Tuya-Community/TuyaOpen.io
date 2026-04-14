@@ -58,7 +58,7 @@ TuyaOpen docs serve four reader profiles. Every doc implicitly targets one or tw
 1. **Title** (frontmatter `title:`)
 2. **Overview** (1-3 sentences)
 3. **Prerequisites** (if applicable -- link, do not repeat)
-4. **Requirements** (hardware/software list -- include license key only for cloud-dependent features)
+4. **Requirements** (hardware/software list -- include license key / 授权码 only for **cloud-dependent application or demo** docs; omit from Embedded Programming guides such as peripherals, memory, TKL/TAL references, Kconfig, and generic protocol tutorials unless the page is explicitly cloud onboarding)
 5. **Body** (steps, API tables, concept explanation)
 6. **Expected outcome** (for task docs: one sentence stating what happens after the steps)
 7. **References / See also** (2-3 links minimum)
