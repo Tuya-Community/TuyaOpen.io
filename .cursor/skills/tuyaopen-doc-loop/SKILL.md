@@ -46,7 +46,7 @@ Each cycle follows six phases. Execute them in order.
 2. For each doc task:
    a. Create/edit the English doc under `docs/`.
    b. Create/edit the Chinese mirror under `i18n/zh/docusaurus-plugin-content-docs/current/`.
-   c. Update `sidebars.js` if adding new docs.
+   c. Update `sidebars.js` if adding new docs. If any sidebar **`label`** is new or renamed, add or update **`i18n/zh/docusaurus-plugin-content-docs/current.json`** (`tuyaopen-doc-planner` → **Sidebar label i18n (Chinese)**).
    d. Update `src/data/projects.js` if adding project pages.
    e. Add redirects in `docusaurus.config.js` if moving docs.
 3. Follow these conventions:
@@ -87,6 +87,7 @@ Each cycle follows six phases. Execute them in order.
    - Add GPIO and UART peripheral example guides
    - Create zh mirrors for all new docs
    - Update sidebars.js with new entries
+   - Update zh sidebar labels in i18n/zh/docusaurus-plugin-content-docs/current.json when labels change
    EOF
    )"
    ```

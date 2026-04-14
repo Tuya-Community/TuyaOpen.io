@@ -97,6 +97,37 @@ The sidebar is defined in `sidebars.js` (root of repo). It has 12 major sections
    ```
 5. For top-level section dividers, use the HTML pattern with en/zh spans.
 
+### Sidebar label i18n (Chinese) — required
+
+Category and link labels in `sidebars.js` are **English only**. The Chinese site reads translated labels from **`i18n/zh/docusaurus-plugin-content-docs/current.json`**. Whenever you **add, rename, or remove** a sidebar `label` (or a custom doc sidebar label), update that file in the **same change set**.
+
+**Translation key rules** (Docusaurus `docs` sidebar id):
+
+| Sidebar item | JSON key pattern | Notes |
+|--------------|------------------|--------|
+| `type: 'category'`, `label: 'X'` | `sidebar.docs.category.X` | `X` must match the label string **exactly** (including `&`, commas, parentheses). |
+| `type: 'link'`, `label: 'X'` | `sidebar.docs.link.X` | Same; use `link.key` in the sidebar if you need a stable key when labels collide. |
+| `type: 'doc'` with **`label: 'X'`** (custom sidebar text) | `sidebar.docs.doc.X` | If the item has `key: 'my-key'`, use `sidebar.docs.doc.my-key` instead. |
+| HTML divider with `sidebar-divider-en` / `sidebar-divider-zh` spans | *(none)* | Chinese text lives in `sidebars.js` inside the zh span; `src/styles/custom.css` toggles by `html[lang]`. |
+
+Each entry uses this shape:
+
+```json
+"sidebar.docs.category.My Category": {
+  "message": "我的分类",
+  "description": "The label for category My Category in sidebar docs"
+}
+```
+
+**Checklist when editing `sidebars.js`:**
+
+1. List every new or changed **`label`** on categories, links, and custom-labeled doc items.
+2. Add or update the matching `sidebar.docs.category.*`, `sidebar.docs.link.*`, or `sidebar.docs.doc.*` keys in `current.json`.
+3. Remove or replace keys for **old** labels you renamed (avoid dead entries).
+4. Follow workspace terminology (`docs/advanced-use/terminologies.md`); keep **do-not-translate** terms (TuyaOpen, TKL, TAL, MCP, OpenAPI, etc.) as-is.
+
+Reuse tone and patterns from existing keys in the same file.
+
 ## URI Preservation Protocol
 
 **Before any rename or move:**
@@ -137,7 +168,7 @@ When creating a new doc:
 
 When moving/renaming:
 - Move both the en and zh files.
-- Update `i18n/zh/docusaurus-plugin-content-docs/current.json` if sidebar labels changed.
+- Update `i18n/zh/docusaurus-plugin-content-docs/current.json` if sidebar labels changed (see **Sidebar label i18n (Chinese)** under Sidebar Integration).
 
 ## File Naming Conventions
 

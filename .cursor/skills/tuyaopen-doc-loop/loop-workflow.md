@@ -36,6 +36,7 @@ Step-by-step reference for each cycle of the documentation automation loop.
   - [ ] File path (use tuyaopen-doc-planner decision rules)
   - [ ] Whether zh mirror is needed (yes for all new docs)
   - [ ] Whether sidebars.js needs updating
+  - [ ] Whether `i18n/zh/docusaurus-plugin-content-docs/current.json` needs new sidebar label keys (when any sidebar `label` is added or renamed; see `tuyaopen-doc-planner` → Sidebar label i18n)
   - [ ] Whether redirects are needed (only if moving existing docs)
 - [ ] Write plan to TODOS.md
 - [ ] Create feature branch: git checkout -b docs/{topic}-{YYYY-MM}
@@ -61,6 +62,7 @@ For each doc in the plan:
   - [ ] Use terminology mapping from workspace rule
   - [ ] Translate frontmatter title
 - [ ] Update sidebars.js (if new doc)
+- [ ] Update `i18n/zh/docusaurus-plugin-content-docs/current.json` for any new or renamed category/link/custom-doc `label` (see `tuyaopen-doc-planner` → Sidebar label i18n)
 - [ ] Update src/data/projects.js (if project page)
 - [ ] Add redirect (if moving existing doc)
 ```
@@ -73,6 +75,7 @@ For each doc in the plan:
   - [ ] No broken link warnings?
   - [ ] No MDX syntax errors?
 - [ ] If zh files changed: npm run build -- --locale zh
+- [ ] If sidebars.js labels changed: spot-check zh sidebar (`npm run start -- --locale zh`) or confirm `current.json` keys match (`tuyaopen-build-check` / `tuyaopen-doc-planner`)
 - [ ] Use ReadLints on all edited .md files
 - [ ] Fix any issues and re-build
 ```
@@ -142,7 +145,7 @@ docs: reorganize hardware-specific guides by platform family
 docs(i18n): add missing Chinese translations for cloud agent docs
 
 - Translate 6 AI Agent development guides to zh
-- Add zh sidebar labels in current.json
+- Add zh sidebar label keys in `i18n/zh/docusaurus-plugin-content-docs/current.json` (`sidebar.docs.category.*` / `.link.*` / `.doc.*`)
 - Align terminology with official glossary
 ```
 

@@ -104,9 +104,10 @@ Use only when a visual flow or architecture genuinely aids understanding. Rules:
 1. **Write English first.** English is the source of truth.
 2. **Name everything in English.** File names, doc IDs, sidebar labels, frontmatter titles -- all English-first.
 3. **Create zh mirror** under `i18n/zh/docusaurus-plugin-content-docs/current/` with the same relative path.
-4. **Use the terminology table** from the workspace rule and `docs/advanced-use/terminologies.md`. Do not invent translations.
-5. **Do not translate** terms in the "Do not translate" list (TuyaOpen, TKL, TAL, SDK, API, GPIO, UART, etc.).
-6. Match tone in zh: professional, clear, no casual internet slang.
+4. **Sidebar labels (zh):** Changing `sidebars.js` category/link/custom-doc **`label`** strings requires matching entries in **`i18n/zh/docusaurus-plugin-content-docs/current.json`** (`sidebar.docs.category.*`, `sidebar.docs.link.*`, `sidebar.docs.doc.*`). HTML section dividers use en/zh spans in `sidebars.js` + CSS, not `current.json`. Full rules: `tuyaopen-doc-planner` skill → **Sidebar label i18n (Chinese)**.
+5. **Use the terminology table** from the workspace rule and `docs/advanced-use/terminologies.md`. Do not invent translations.
+6. **Do not translate** terms in the "Do not translate" list (TuyaOpen, TKL, TAL, SDK, API, GPIO, UART, etc.).
+7. Match tone in zh: professional, clear, no casual internet slang.
 
 ## Terminology Consistency
 

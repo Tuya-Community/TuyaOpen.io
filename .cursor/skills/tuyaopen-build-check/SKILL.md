@@ -59,8 +59,10 @@ npm run build -- --locale zh
 
 Common i18n issues:
 - Missing zh mirror file: create it under `i18n/zh/docusaurus-plugin-content-docs/current/`
-- Untranslated sidebar labels: update `i18n/zh/docusaurus-plugin-content-docs/current.json`
+- **Untranslated sidebar labels** (zh UI still shows English): add keys in `i18n/zh/docusaurus-plugin-content-docs/current.json` for every new or renamed `label` in `sidebars.js`. Key patterns: `sidebar.docs.category.*`, `sidebar.docs.link.*`, `sidebar.docs.doc.*`. See `tuyaopen-doc-planner` → **Sidebar label i18n (Chinese)**.
 - MDX syntax that works in en but breaks in zh (e.g., different component imports)
+
+After sidebar edits, spot-check zh: `npm run start -- --locale zh` and open the docs sidebar, or run `npm run build` (all locales).
 
 ## Common Components
 
@@ -82,6 +84,7 @@ After adding or moving docs, verify sidebar references:
 1. Every doc ID in `sidebars.js` must have a corresponding `.md` file under `docs/`.
 2. The doc ID is the file path relative to `docs/` without the `.md` extension.
 3. Example: `'quick-start/unboxing'` -> file at `docs/quick-start/unboxing.md`.
+4. If you changed any **`label`** (category, link, or custom doc label), confirm **`i18n/zh/docusaurus-plugin-content-docs/current.json`** includes the new keys (`tuyaopen-doc-planner` → Sidebar label i18n).
 
 To find orphaned sidebar entries (IDs with no file):
 
@@ -107,8 +110,9 @@ Run these checks in order before committing doc changes:
 1. **Lint edited files**: Use ReadLints on changed `.md` files
 2. **Full build**: `npm run build` exits 0
 3. **Warnings review**: Check build output for broken link warnings
-4. **i18n build** (if zh files changed): `npm run build -- --locale zh`
-5. **Visual spot-check**: `npm run start`, navigate to changed pages
+4. **Sidebar zh labels** (if `sidebars.js` changed): confirm `i18n/zh/docusaurus-plugin-content-docs/current.json` has keys for every category/link/custom-doc label (`tuyaopen-doc-planner` → Sidebar label i18n)
+5. **i18n build** (if zh files changed): `npm run build -- --locale zh`
+6. **Visual spot-check**: `npm run start`, navigate to changed pages (use `--locale zh` if sidebar labels were edited)
 
 ## Troubleshooting
 
