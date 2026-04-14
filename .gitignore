@@ -27,3 +27,6 @@ package-lock.json
 
 # Agent planning workspace (persistent, not committed)
 agent-plan-workspace/
+
+# TuyaOpen SDK (clone separately; see README — AI-assisted documentation and TuyaOpen SDK)
+TuyaOpen/
