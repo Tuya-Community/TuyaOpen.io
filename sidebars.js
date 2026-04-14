@@ -284,6 +284,7 @@ module.exports = {
                 'peripheral/tutorials/thread-timer-patterns',
                 'peripheral/tutorials/tal-system-api',
                 'peripheral/tutorials/tal-kv-guide',
+                'peripheral/tutorials/kconfig-and-project-configuration',
                 {
                   type: 'category',
                   label: 'TKL OS APIs',
@@ -531,7 +532,7 @@ module.exports = {
       type: 'category',
       label: 'Build System',
       collapsed: true,
-      items: ['build-system/compilation-guide'],
+      items: ['build-system/compilation-guide', 'build-system/cmake-kconfig-and-components'],
     },
     {
       type: 'html',
