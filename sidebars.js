@@ -340,27 +340,26 @@ module.exports = {
         },
       ],
     },
-
     {
-      type: 'html',
-      value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya AI (device)</span><span class="sidebar-divider-zh">Tuya AI（设备端）</span></div>',
-      defaultStyle: false,
+      type: 'category',
+      label: 'Tuya Cloud IoT',
+      collapsed: true,
+      items: ['applications/tuya_cloud/tuya-iot-client-reference'],
     },
     {
       type: 'category',
-      label: 'Tuya AI (device)',
+      label: 'Tuya AI (Device-Cloud Integration)',
       collapsed: false,
       items: [
         {
           type: 'category',
           label: 'Build AI+IoT firmware',
           collapsed: true,
-          items: ['applications/tuya.ai/application-development-guide'],
+          items: ['applications/tuya.ai/application-development-guide', 'cloud/tuya-cloud/creating-new-product'],
         },
         {
           type: 'category',
-          label: 'Wire up runtime, agent & skills',
+          label: 'Runtime, agent & skills',
           collapsed: true,
           items: [
             'applications/tuya.ai/ai-components/ai-components',
@@ -374,7 +373,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Tune chat interaction modes',
+          label: 'Voice Chat Modes',
           collapsed: true,
           link: {
             type: 'doc',
@@ -412,7 +411,17 @@ module.exports = {
         },
       ],
     },
-
+    {
+      type: 'category',
+      label: 'New Project',
+      collapsed: true,
+      items: [
+        'new-hardware/porting-platform',
+        'new-hardware/new-platform',
+        'new-hardware/new-board',
+        'new-hardware/new-project',
+      ],
+    },
     {
       type: 'html',
       value:
@@ -430,7 +439,7 @@ module.exports = {
       items: [
         {
           type: 'category',
-          label: 'Set up agent workspace',
+          label: 'Agent Development',
           collapsed: true,
           items: [
             'cloud/tuya-cloud/ai-agent/index',
@@ -443,7 +452,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Command devices & products',
+          label: 'AI Control Hardware',
           collapsed: true,
           items: ['cloud/tuya-cloud/ai-agent/self-control-commands', 'cloud/tuya-cloud/ai-agent/ai-product-commands'],
         },
@@ -478,35 +487,6 @@ module.exports = {
           collapsed: true,
           items: ['cloud/tuya-cloud/ai-agent/agent-openapis', 'cloud/tuya-cloud/ai-agent/14.1-chat-with-agent'],
         },
-      ],
-    },
-
-    {
-      type: 'html',
-      value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya Cloud</span><span class="sidebar-divider-zh">Tuya 云平台</span></div>',
-      defaultStyle: false,
-    },
-    {
-      type: 'category',
-      label: 'Tuya Cloud',
-      collapsed: false,
-      link: {
-        type: 'doc',
-        id: 'cloud/tuya-cloud/creating-new-product',
-      },
-      items: ['cloud/tuya-cloud/creating-new-product', 'applications/tuya_cloud/tuya-iot-client-reference'],
-    },
-
-    {
-      type: 'category',
-      label: 'New Project',
-      collapsed: true,
-      items: [
-        'new-hardware/porting-platform',
-        'new-hardware/new-platform',
-        'new-hardware/new-board',
-        'new-hardware/new-project',
       ],
     },
     // ------------------------------------------------------------------
