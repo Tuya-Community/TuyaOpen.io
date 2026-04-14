@@ -220,6 +220,8 @@ POST over HTTPS uses the same `method`, `path`, `body`, and `body_length` as pla
 
 ## Parse JSON from the response
 
+For a structured introduction to cJSON on TuyaOpen (hooks, ownership, building objects), see [cJSON crash course](cjson-tutorial).
+
 Responses may not be null-terminated. Prefer `cJSON_ParseWithLength` with `http_response.body` and `http_response.body_length`.
 
 For a POST to `httpbin.org/post`, the JSON body of the HTTP response includes a `json` object that mirrors your submitted fields:
@@ -255,6 +257,6 @@ To build JSON for a request body, you can use `cJSON_CreateObject`, `cJSON_AddSt
 - HTTP source: `examples/protocols/http_client/src/example_http_client.c`
 - HTTPS source: `examples/protocols/https_client/src/example_https_client.c`
 - Headers: `src/libhttp/include/http_client_interface.h`
-- cJSON: `src/libcjson/cJSON/cJSON.h`
+- cJSON: `src/libcjson/cJSON/cJSON.h`; [cJSON crash course](cjson-tutorial)
 - [Examples index](../../examples/demo-generic-examples)
 - [TAL Network API reference](tal-network-api)

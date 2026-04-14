@@ -204,6 +204,7 @@ module.exports = {
                   collapsed: true,
                   items: [
                     'peripheral/tutorials/http-client-tutorial',
+                    'peripheral/tutorials/cjson-tutorial',
                     'peripheral/tutorials/mqtt-client-tutorial',
                     'peripheral/tutorials/tcp-socket-tutorial',
                   ],

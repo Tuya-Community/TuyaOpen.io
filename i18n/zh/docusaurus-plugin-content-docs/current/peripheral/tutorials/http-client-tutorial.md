@@ -213,6 +213,8 @@ http_client_free(&http_response);
 
 ## 解析响应中的 JSON
 
+在 TuyaOpen 上系统学习 cJSON（钩子、所有权、构造对象）可参考 [cJSON 快速入门](cjson-tutorial)。
+
 响应正文可能没有 `\0` 结尾。请使用 `cJSON_ParseWithLength`，长度为 `http_response.body_length`。对 `httpbin.org/post` 的 POST，响应 JSON 中会包含 `json` 字段：
 
 ```c
@@ -246,6 +248,6 @@ if (HTTP_CLIENT_SUCCESS == http_status && http_response.body && http_response.bo
 - HTTP 源码：`examples/protocols/http_client/src/example_http_client.c`
 - HTTPS 源码：`examples/protocols/https_client/src/example_https_client.c`
 - 头文件：`src/libhttp/include/http_client_interface.h`
-- cJSON：`src/libcjson/cJSON/cJSON.h`
+- cJSON：`src/libcjson/cJSON/cJSON.h`；[cJSON 快速入门](cjson-tutorial)
 - [示例索引](../../examples/demo-generic-examples)
 - [TAL Network API 参考](tal-network-api)
