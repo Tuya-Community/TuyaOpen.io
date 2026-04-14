@@ -96,7 +96,7 @@ tos.py config save
 
 执行 `config` 或 `build` 后，工程下的 **`.build/cache/`**（在工程目录内，非 SDK 根）通常会有生成的配置中间结果。具体文件名可能随工具版本变化；该目录视为**生成物** — 应改 `app_default.config` 或用 `menu`，不要手改缓存文件。
 
-配置如何接到 CMake，见 [编译指南](../../build-system/compilation-guide) 中对 **`using.config`** 等步骤的说明，以及 [CMake、Kconfig 与组件模型](../../build-system/cmake-kconfig-and-components)。
+Kconfig 解析完成后，构建会读取 **`<project>/.build/cache/using.config`** 并继续平台拉取与 CMake；见 [编译指南](../../build-system/compilation-guide)。**`libtuyaos.a`**、**`tuyaapp`** 与板级 `CMakeLists.txt` 的关系见 [CMake、Kconfig 与组件模型](../../build-system/cmake-kconfig-and-components)。
 
 ### C 代码中的 `CONFIG_*` 宏
 
@@ -114,6 +114,6 @@ tos.py config save
 
 - [tos.py 工具指南](../../tos-tools/tos-guide)（config choice、menu、save）
 - [TuyaOpen 目录说明 — `app_default.config`](../../project-walkthrough#app_defaultconfig)
-- [编译指南](../../build-system/compilation-guide)（配置阶段、CMake）
+- [编译指南](../../build-system/compilation-guide)（配置完成后的 `tos.py build` 流水线）
 - [CMake、Kconfig 与组件模型](../../build-system/cmake-kconfig-and-components)
 - [Display](../display)（文内「Kconfig 配置」小节为显示相关选项示例）

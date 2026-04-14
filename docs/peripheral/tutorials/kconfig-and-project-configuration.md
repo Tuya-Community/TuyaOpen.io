@@ -98,7 +98,7 @@ Configuration options are spread across the SDK and the project:
 
 After `config` or `build`, the project **`.build/cache/`** directory (under the project, not the SDK root) typically holds generated configuration artifacts, including a merged view of selected symbols and metadata the build needs. The exact names can vary by tool version; treat this directory as **generated** — edit `app_default.config` or use `menu`, not these cache files by hand.
 
-The [compilation guide](../../build-system/compilation-guide) describes how **`using.config`** and related steps connect configuration to CMake; see also [CMake, Kconfig, and the component model](../../build-system/cmake-kconfig-and-components).
+After Kconfig resolves, the build reads **`<project>/.build/cache/using.config`** and continues with platform fetch and CMake; see [Compilation guide](../../build-system/compilation-guide). For how **`libtuyaos.a`**, **`tuyaapp`**, and board `CMakeLists.txt` fit together, see [CMake, Kconfig, and the component model](../../build-system/cmake-kconfig-and-components).
 
 ### `CONFIG_*` symbols in C code
 
@@ -116,6 +116,6 @@ After `choice` or `menu`, `app_default.config` reflects your board and features,
 
 - [tos.py tool guide](../../tos-tools/tos-guide) (config choice, menu, save)
 - [TuyaOpen directory walkthrough — `app_default.config`](../../project-walkthrough#app_defaultconfig)
-- [Compilation guide](../../build-system/compilation-guide) (config phase, CMake)
+- [Compilation guide](../../build-system/compilation-guide) (`tos.py build` after configuration)
 - [CMake, Kconfig, and the component model](../../build-system/cmake-kconfig-and-components)
 - [Display](../display) (see the Kconfig configuration section for display options)

@@ -6,12 +6,12 @@ title: CMake、Kconfig 与组件模型
 
 TuyaOpen 用 **CMake** 与 **Ninja** 执行实际编译，用 **Kconfig**（经 `tos.py config`）决定**编译哪些内容**。本文说明各层如何衔接：库从哪里来、SDK 根 `CMakeLists.txt` 与工程 `CMakeLists.txt` 的关系，以及扩展板级或组件时应改哪里。
 
-**读者：** 移植板卡、增加组件或排查链接问题的开发者；请先浏览 [编译指南](compilation-guide) 中 `tos.py build` 的流程说明。
+**读者：** 移植板卡、增加组件或排查链接问题的开发者。
 
 ## 前置条件
 
-- [编译指南](compilation-guide) — 尤其「Config 命令执行」「CMake 配置」「CMake 构建系统」几节。
-- [Kconfig 与工程配置](../peripheral/tutorials/kconfig-and-project-configuration) — 从使用者角度理解 `app_default.config` 与 `tos.py config`。
+- [编译指南](compilation-guide) — 有序的 **`tos.py build`** 流水线（环境检查 → 平台 → CMake/Ninja → 输出）。
+- [Kconfig 与工程配置](../peripheral/tutorials/kconfig-and-project-configuration) — `app_default.config`、`tos.py config choice` / `menu`，以及 `.build/cache/` 下生成物。
 
 ## 要求
 
@@ -25,7 +25,7 @@ TuyaOpen 用 **CMake** 与 **Ninja** 执行实际编译，用 **Kconfig**（经 
 3. **CMake** 携带工程名、平台、板卡、芯片等变量，选用对应工具链、BSP 与组件集合。
 4. **Kconfig 输出** 由 CMake 侧消费（例如通过生成头文件），使 `CONFIG_*` 与参与编译的源文件、宏一致。
 
-命令级细节与 Python 入口仍以 [编译指南](compilation-guide) 为准；本文侧重**结构与职责划分**。
+本文侧重**结构与职责**；[编译指南](compilation-guide) 列出构建步骤与脚本入口。
 
 ## 顶层 CMake 结构（SDK）
 
@@ -36,7 +36,7 @@ SDK 根目录 **`TuyaOpen/CMakeLists.txt`** 负责：
 - **`TuyaOpen/boards/<platform>/<board>/`** 下存在 `CMakeLists.txt` 时的板级支持。
 - **你的应用** — 工程根目录的 **`CMakeLists.txt`**（与 `app_default.config` 同级）构建应用静态库，并链接到聚合后的 SDK 库。
 
-编译指南中摘录了典型模式：遍历 `src` 组件、条件加入板级子目录、生成 **`libtuyaos.a`**，再包含 **`${TOS_PROJECT_ROOT}/CMakeLists.txt`** 构建应用，并将 **`tuyaapp`** 链接到组件库。详见 [编译指南](compilation-guide) 中的 **CMake 构建系统（CMakeLists.txt）** 一节。
+简要归纳：遍历 **`src/`** 各组件（各有 `CMakeLists.txt`），可选加入 **`boards/<platform>/<board>/`**，生成 **`libtuyaos.a`**，再 **`include(${TOS_PROJECT_ROOT}/CMakeLists.txt)`** 并将目标 **`tuyaapp`** 链接到该库（与 [编译指南](compilation-guide) 中 CMake/Ninja 一步一致）。
 
 ## 链接产物
 
@@ -46,7 +46,7 @@ SDK 根目录 **`TuyaOpen/CMakeLists.txt`** 负责：
 | **`libtuyaapp.a`**（目标 `tuyaapp`） | 工程 `CMakeLists.txt` 中的应用源码。 |
 | **平台脚本** | 若存在 `platform/<platform>/build_example.py`，在 CMake/Ninja 之后执行平台相关的打包或分区等逻辑。 |
 
-具体目标名与选项可能因平台略有差异，以编译指南与对应平台 CMake 为准。
+具体目标名与选项可能因平台略有差异，以对应平台 CMake 与 [编译指南](compilation-guide) 构建阶段为准。
 
 ## 工程目录与 SDK 根
 

@@ -22,7 +22,7 @@ Before adapting a new chipset, it is helpful to understand the TuyaOpen build fl
    | app_name_UA_1.0.0 | User area firmware |
    | app_name_UG_1.0.0 | Update firmware |
 
-For a more detailed flow, refer to the [TuyaOpen Compilation Flow Detailed Guide](../build-system/compilation-guide.md).
+For a more detailed flow, refer to the [Compilation guide](../build-system/compilation-guide).
 
 
 Generally, adapting a new chipset on TuyaOpen involves the following steps:

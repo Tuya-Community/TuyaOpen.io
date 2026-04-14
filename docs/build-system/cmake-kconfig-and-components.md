@@ -6,12 +6,12 @@ title: CMake, Kconfig, and the component model
 
 TuyaOpen uses **CMake** plus **Ninja** for the actual compile, and **Kconfig** (via `tos.py config`) to decide **what** gets built. This page explains how those layers connect: where libraries come from, how the SDK root and your project `CMakeLists.txt` relate, and where to look when you extend a board or component.
 
-**Audience:** Developers porting boards, adding components, or debugging link errors; read [Compilation guide](compilation-guide) first for the step-by-step `tos.py build` pipeline.
+**Audience:** Developers porting boards, adding components, or debugging link errors.
 
 ## Prerequisites
 
-- [Compilation guide](compilation-guide) — especially “Config command execution”, “CMake configuration”, and “CMake build system”.
-- [Kconfig and project configuration](../peripheral/tutorials/kconfig-and-project-configuration) — how `app_default.config` and `tos.py config` work from a user perspective.
+- [Compilation guide](compilation-guide) — ordered **`tos.py build`** pipeline (env check → platform → CMake/Ninja → output).
+- [Kconfig and project configuration](../peripheral/tutorials/kconfig-and-project-configuration) — `app_default.config`, `tos.py config choice` / `menu`, and generated cache under `.build/cache/`.
 
 ## Requirements
 
@@ -21,11 +21,11 @@ TuyaOpen uses **CMake** plus **Ninja** for the actual compile, and **Kconfig** (
 ## Configuration to CMake (conceptual flow)
 
 1. **`app_default.config`** in the project records your Kconfig choices (minimal diff).
-2. **`tos.py config`** / **`tos.py build`** merges those choices with the Kconfig trees under `TuyaOpen/src`, `TuyaOpen/boards`, and the project’s own `Kconfig`, producing generated data under **`<project>/.build/cache/`** (see [compilation guide](compilation-guide)).
+2. **`tos.py config`** / **`tos.py build`** merges those choices with the Kconfig trees under `TuyaOpen/src`, `TuyaOpen/boards`, and the project’s own `Kconfig`, producing data under **`<project>/.build/cache/`** (see [compilation guide](compilation-guide)).
 3. **CMake** is invoked with variables such as project name, platform, board, and chip so the correct toolchain, board BSP, and component set are selected.
 4. **Kconfig output** is consumed by the CMake layer (for example via generated includes) so that `CONFIG_*` options match compiled sources and defines.
 
-For command-level detail and Python entry points, rely on [compilation guide](compilation-guide); this page focuses on **structure and responsibility**.
+This page focuses on **structure and responsibility**; the [compilation guide](compilation-guide) lists the build steps and script entry points.
 
 ## Top-level CMake layout (SDK)
 
@@ -36,7 +36,7 @@ The SDK root **`TuyaOpen/CMakeLists.txt`** orchestrates:
 - **Board support** under `TuyaOpen/boards/<platform>/<board>/` when a board `CMakeLists.txt` exists.
 - **Your application** — the project’s **`CMakeLists.txt`** (next to `app_default.config`) builds the app static library and links it against the aggregated SDK library.
 
-The compilation guide excerpts the pattern: walk all `src` components, add board subdirectory when present, build **`libtuyaos.a`**, then include **`${TOS_PROJECT_ROOT}/CMakeLists.txt`** for the app and link **`tuyaapp`** against the components library. See the **CMake build system** section in the [compilation guide](compilation-guide).
+In short: iterate **`src/`** components (each with `CMakeLists.txt`), optionally add **`boards/<platform>/<board>/`**, produce **`libtuyaos.a`**, then **`include(${TOS_PROJECT_ROOT}/CMakeLists.txt)`** and link target **`tuyaapp`** to that library (summarized in the [compilation guide](compilation-guide) CMake/Ninja step).
 
 ## What gets linked
 
@@ -46,7 +46,7 @@ The compilation guide excerpts the pattern: walk all `src` components, add board
 | **`libtuyaapp.a`** (target `tuyaapp`) | Your application sources from the project `CMakeLists.txt`. |
 | **Platform script** | `platform/<platform>/build_example.py` (when present) runs platform-specific packaging or flash layout steps after CMake/Ninja. |
 
-Exact target names and flags can vary slightly by platform; treat the compilation guide and your platform’s CMake as authoritative.
+Exact target names and flags can vary slightly by platform; treat your platform’s CMake and the [compilation guide](compilation-guide) build phase as authoritative.
 
 ## Project directory vs SDK root
 
