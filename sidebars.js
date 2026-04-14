@@ -355,7 +355,7 @@ module.exports = {
           type: 'category',
           label: 'Build AI+IoT firmware',
           collapsed: true,
-          items: ['applications/tuya.ai/application-development-guide', 'cloud/tuya-cloud/creating-new-product'],
+          items: ['cloud/tuya-cloud/creating-new-product'],
         },
         {
           type: 'category',
