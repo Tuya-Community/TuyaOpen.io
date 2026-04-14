@@ -344,12 +344,12 @@ module.exports = {
     {
       type: 'html',
       value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya AI (device & cloud)</span><span class="sidebar-divider-zh">Tuya AI（设备与云端）</span></div>',
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya AI (device)</span><span class="sidebar-divider-zh">Tuya AI（设备端）</span></div>',
       defaultStyle: false,
     },
     {
       type: 'category',
-      label: 'Tuya AI (device & cloud)',
+      label: 'Tuya AI (device)',
       collapsed: false,
       items: [
         {
@@ -410,74 +410,92 @@ module.exports = {
             'applications/tuya.ai/ai-components/ai-mcp-tools',
           ],
         },
+      ],
+    },
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya Cloud AI</span><span class="sidebar-divider-zh">Tuya 云端 AI</span></div>',
+      defaultStyle: false,
+    },
+    {
+      type: 'category',
+      label: 'Tuya Cloud AI',
+      collapsed: false,
+      link: {
+        type: 'doc',
+        id: 'cloud/tuya-cloud/ai-agent/index',
+      },
+      items: [
         {
           type: 'category',
-          label: 'Connect firmware to Tuya Cloud',
-          collapsed: true,
-          items: ['applications/tuya_cloud/tuya-iot-client-reference'],
-        },
-        {
-          type: 'category',
-          label: 'Run cloud AI agents',
+          label: 'Set up agent workspace',
           collapsed: true,
           items: [
-            'cloud/tuya-cloud/creating-new-product',
-            {
-              type: 'category',
-              label: 'Set up agent workspace',
-              collapsed: true,
-              items: [
-                'cloud/tuya-cloud/ai-agent/index',
-                'cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
-                'cloud/tuya-cloud/ai-agent/workflow-management',
-                'cloud/tuya-cloud/ai-agent/variables-management',
-                'cloud/tuya-cloud/ai-agent/role-management',
-                'cloud/tuya-cloud/ai-agent/agent-evaluation',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Command devices & products',
-              collapsed: true,
-              items: [
-                'cloud/tuya-cloud/ai-agent/self-control-commands',
-                'cloud/tuya-cloud/ai-agent/ai-product-commands',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Add voice & language',
-              collapsed: true,
-              items: [
-                'cloud/tuya-cloud/ai-agent/supported-languages-and-voice-variants',
-                'cloud/tuya-cloud/ai-agent/10.1-add-custom-voice',
-              ],
-            },
-            'cloud/tuya-cloud/ai-agent/database',
-            {
-              type: 'category',
-              label: 'Automate with triggers',
-              collapsed: true,
-              items: [
-                'cloud/tuya-cloud/ai-agent/agent-trigger-index',
-                'cloud/tuya-cloud/ai-agent/12.1-how-to-write-promts',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Manage cloud MCP',
-              collapsed: true,
-              items: ['cloud/tuya-cloud/ai-agent/mcp-management', 'cloud/tuya-cloud/ai-agent/13.1-custom-mcp-services'],
-            },
-            {
-              type: 'category',
-              label: 'Integrate via OpenAPI & chat',
-              collapsed: true,
-              items: ['cloud/tuya-cloud/ai-agent/agent-openapis', 'cloud/tuya-cloud/ai-agent/14.1-chat-with-agent'],
-            },
+            'cloud/tuya-cloud/ai-agent/index',
+            'cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
+            'cloud/tuya-cloud/ai-agent/workflow-management',
+            'cloud/tuya-cloud/ai-agent/variables-management',
+            'cloud/tuya-cloud/ai-agent/role-management',
+            'cloud/tuya-cloud/ai-agent/agent-evaluation',
           ],
         },
+        {
+          type: 'category',
+          label: 'Command devices & products',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/ai-agent/self-control-commands', 'cloud/tuya-cloud/ai-agent/ai-product-commands'],
+        },
+        {
+          type: 'category',
+          label: 'Add voice & language',
+          collapsed: true,
+          items: [
+            'cloud/tuya-cloud/ai-agent/supported-languages-and-voice-variants',
+            'cloud/tuya-cloud/ai-agent/10.1-add-custom-voice',
+          ],
+        },
+        'cloud/tuya-cloud/ai-agent/database',
+        {
+          type: 'category',
+          label: 'Automate with triggers',
+          collapsed: true,
+          items: [
+            'cloud/tuya-cloud/ai-agent/agent-trigger-index',
+            'cloud/tuya-cloud/ai-agent/12.1-how-to-write-promts',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Manage cloud MCP',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/ai-agent/mcp-management', 'cloud/tuya-cloud/ai-agent/13.1-custom-mcp-services'],
+        },
+        {
+          type: 'category',
+          label: 'Integrate via OpenAPI & chat',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/ai-agent/agent-openapis', 'cloud/tuya-cloud/ai-agent/14.1-chat-with-agent'],
+        },
       ],
+    },
+
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya Cloud</span><span class="sidebar-divider-zh">Tuya 云平台</span></div>',
+      defaultStyle: false,
+    },
+    {
+      type: 'category',
+      label: 'Tuya Cloud',
+      collapsed: false,
+      link: {
+        type: 'doc',
+        id: 'cloud/tuya-cloud/creating-new-product',
+      },
+      items: ['cloud/tuya-cloud/creating-new-product', 'applications/tuya_cloud/tuya-iot-client-reference'],
     },
 
     {
