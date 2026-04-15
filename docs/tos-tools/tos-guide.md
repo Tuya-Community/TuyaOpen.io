@@ -1,14 +1,12 @@
 ---
-title: tos.py Guide
+title: CLI - tos.py Development Tool
 ---
 
 ## Overview
 
-Introduces the working principle and usage methods of `tos.py`
+`tos.py` is the command-line interface (CLI) development tool for TuyaOpen, used for project configuration, compilation, firmware flashing, and debugging.
 
-Explains the behavior of various subcommands
-
-Provides answers and solutions for common problems
+This page introduces the working principle and usage methods of `tos.py`, explains the behavior of various subcommands, and provides answers and solutions for common problems.
 
 After completing the activation of `TuyaOpen`, you can also view help information using the command `tos.py --help`
 

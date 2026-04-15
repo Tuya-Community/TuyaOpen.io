@@ -20,7 +20,7 @@ title: "概述"
 - <span style={{color: 'red'}}><strong>建议</strong>以提供的 Config 初始配置文件作为板级配置基础</span>，在此基础上进行二次开发和功能扩展。
 :::
 
-#### 怎么使能板级 Config? 请参阅：[TOS 工具指南 - 配置选择](/docs/tos-tools/tos-guide#config-choice)。
+#### 怎么使能板级 Config? 请参阅：[CLI - tos.py 开发工具 - 配置选择](/docs/tos-tools/tos-guide#config-choice)。
 
 <table class="hw-config-flag-table">
   <tbody>

@@ -79,7 +79,7 @@ Select serial port: 1
 
 ### 烧录失败
 
-请参考 [安装对应驱动](../tos-tools/tools-tyutool.md#烧录过程中总是在write时失败)。 
+请参考 [安装对应驱动](../tos-tools/tools-tyutool.md#烧录过程中总是在write时失败)（GUI - tyutool 图形化工具指南）。 
 
 ### T5系列映射虚拟机有延时
 

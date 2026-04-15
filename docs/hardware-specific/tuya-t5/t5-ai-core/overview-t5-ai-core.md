@@ -20,7 +20,7 @@ The board-level configuration file defines key functional components, such as pe
 - <span style={{color: 'red'}}><strong>It is recommended</strong> to make board-level configurations on top of the provided initial configuration file</span>, and perform custom development and functional extensions.
 :::
 
-How to enable board-level configurations? Refer to [tos.py User Guide > config choice](/docs/tos-tools/tos-guide#config-choice).
+How to enable board-level configurations? Refer to [CLI - tos.py Development Tool > config choice](/docs/tos-tools/tos-guide#config-choice).
 
 <table class="hw-config-flag-table">
   <tbody>

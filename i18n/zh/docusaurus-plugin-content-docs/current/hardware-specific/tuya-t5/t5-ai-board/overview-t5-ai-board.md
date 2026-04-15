@@ -21,7 +21,7 @@ title: 概述
 - **建议** 以初始配置文件作为 **板级基础模板**，在此基础上进行二次开发和功能扩展。
 :::
 
-#### 怎么使能 Config? 请参阅：[TOS 工具指南 - 配置选择](/docs/tos-tools/tos-guide#config-choice)
+#### 怎么使能 Config? 请参阅：[CLI - tos.py 开发工具 - 配置选择](/docs/tos-tools/tos-guide#config-choice)
 
 <table class="hw-config-flag-table">
   <tbody>

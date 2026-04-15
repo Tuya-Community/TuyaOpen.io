@@ -25,7 +25,7 @@ import ChipRow from '@site/src/components/ChipRow';
 
 ## 固件烧录
 
-可以通过 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) 图形化工具 `tyutool_gui` 进行固件烧录，具体使用说明请参考 [tyutool_gui 使用说明](../tos-tools/tools-tyutool.md#固件烧录)。
+可以通过 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) 图形化工具 `tyutool_gui` 进行固件烧录，具体使用说明请参考 [GUI - tyutool 图形化工具](../tos-tools/tools-tyutool.md#固件烧录)。
 
 ## 设备授权
 

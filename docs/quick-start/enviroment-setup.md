@@ -205,7 +205,7 @@ Run the following command to deactivate `tos.py`:
   </SyncedTabItem>
 </SyncedTabs>
 
-You can run the command `tos.py --help` to view a more detailed description of `tos.py`, or refer to the [tos.py Guide](../tos-tools/tos-guide.md).
+You can run the command `tos.py --help` to view a more detailed description of `tos.py`, or refer to [CLI - tos.py Development Tool](../tos-tools/tos-guide.md).
 
 
 ## FAQs
