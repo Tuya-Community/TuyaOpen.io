@@ -138,7 +138,7 @@ The `boards` folder primarily stores configuration files and support code relate
 
 ## `tos.py` and `export.sh`
 
-- `tos.py` is a core command-line tool designed to streamline development workflows, manage project configurations, and execute compilation and deployment operations. For more information, see [tos.py Guide](./tos-tools/tos-guide.md).
+- `tos.py` is a core command-line tool designed to streamline development workflows, manage project configurations, and execute compilation and deployment operations. For more information, see [CLI - tos.py Development Tool](./tos-tools/tos-guide.md).
 
 - `export.sh` and `export.bat` are used to activate the command-line functionality of `tos.py`.
 

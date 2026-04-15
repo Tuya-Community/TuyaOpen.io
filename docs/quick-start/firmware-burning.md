@@ -85,7 +85,7 @@ To exit log viewing, press `Ctrl + C` and press the Enter key.
 
 ### Flashing failed
 
-For more information, see [Install drivers](../tos-tools/tools-tyutool.md#always-fails-during-write-in-the-burning-process).
+For more information, see [Install drivers](../tos-tools/tools-tyutool.md#always-fails-during-write-in-the-burning-process) in the GUI - tyutool Graphical Tool guide.
 
 ### T5 series virtual machine mapping has delay
 

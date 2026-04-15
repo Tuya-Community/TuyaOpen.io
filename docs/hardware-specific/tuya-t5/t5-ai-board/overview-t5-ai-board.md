@@ -20,7 +20,7 @@ The board-level configuration file defines key functional components, such as pe
 - It is **recommended** to use the initial config file as the **base template for board-level configuration** and extend or modify it as needed for your project.
 :::
 
-How to enable configurations? Refer to [tos.py User Guide > config choice](/docs/tos-tools/tos-guide#config-choice).
+How to enable configurations? Refer to [CLI - tos.py Development Tool > config choice](/docs/tos-tools/tos-guide#config-choice).
 
 <table class="hw-config-flag-table">
   <tbody>

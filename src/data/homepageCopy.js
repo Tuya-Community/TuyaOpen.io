@@ -1,5 +1,5 @@
 /**
- * Homepage copy for root `/` — aligned with docs (about-tuyaopen, quick-start, applications, tos-guide).
+ * Homepage copy for root `/` — aligned with docs (about-tuyaopen, quick-start, applications, tos-tools).
  * Keys: en | zh
  */
 
@@ -30,7 +30,7 @@ tos.py flash`,
       applications: 'Applications',
       github: 'GitHub',
       learnMore: 'Learn more',
-      tosGuide: 'tos.py guide',
+      tosGuide: 'CLI - tos.py Development Tool',
       envSetup: 'Environment setup',
     },
     benefits: {
@@ -871,7 +871,7 @@ tos.py flash`,
       applications: '应用',
       github: 'GitHub',
       learnMore: '了解更多',
-      tosGuide: 'tos.py 指南',
+      tosGuide: 'CLI - tos.py 开发工具',
       envSetup: '环境搭建',
     },
     benefits: {

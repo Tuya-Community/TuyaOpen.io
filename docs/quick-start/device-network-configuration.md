@@ -98,4 +98,4 @@ When pairing failed because the device's authorization information was not writt
 
 If both `UUID` and `AuthKey` display as `xxxxxxxxxxxxxxxx`, it indicates the authorization information was not properly written.
 
-For more information, see the section **Write device authorization information** in the [tyutool_gui User Guide](../tos-tools/tools-tyutool.md#device-authorization-information-writing).
+For more information, see the section **Write device authorization information** in [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#device-authorization-information-writing).

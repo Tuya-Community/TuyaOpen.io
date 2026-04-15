@@ -76,8 +76,8 @@ const enContent = {
   documentation: {
     title: '📚 Documentation',
     content: 'Need help getting started? Check out our comprehensive usage guide.',
-    link: 'https://www.tuyaopen.ai/docs/advanced_use/tools-tyutool',
-    linkText: 'View Usage Guide'
+    link: '/docs/tos-tools/tools-tyutool',
+    linkText: 'GUI - tyutool Graphical Tool'
   }
 };
 
@@ -152,8 +152,8 @@ const zhContent = {
   documentation: {
     title: '📚 使用说明',
     content: '需要帮助开始使用吗？查看我们的详细使用指南。',
-    link: 'https://www.tuyaopen.ai/zh/docs/advanced_use/tools-tyutool',
-    linkText: '查看使用指南'
+    link: '/zh/docs/tos-tools/tools-tyutool',
+    linkText: 'GUI - tyutool 图形化工具'
   }
 };
 
@@ -283,14 +283,12 @@ export default function TyutoolPage() {
             <h2>{content.documentation.title}</h2>
             <p>{content.documentation.content}</p>
             <div className={styles.documentationCenter}>
-              <a 
-                href={content.documentation.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <Link 
+                to={content.documentation.link} 
                 className={styles.documentationLink}
               >
                 📚 {content.documentation.linkText}
-              </a>
+              </Link>
             </div>
           </section>
 
