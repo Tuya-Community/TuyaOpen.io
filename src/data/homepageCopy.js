@@ -90,8 +90,13 @@ tos.py flash`,
       bodyAfter:
         ' with deep know-how for real hardware—optimized for VibeCoding. It guides you from new project setup and device authentication through build, flash, debug, and injected event testing, with a hardware-in-the-loop mindset so shipping connected AI device hardware is faster and easier.',
       consoleTitle: 'VibeCoding agent',
-      vibeCodingCtaLabel: 'Start hardware VibeCoding',
-      vibeCodingCtaHref: 'https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsCopyText: 'Install the TuyaOpen Dev Skills from https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsToolsHint:
+        'Paste into the chat or agent sidebar in: Cursor, Claude Code, Amazon Kiro, and other vibe-coding tools that load skills.',
+      devSkillsCopyButton: 'Copy install prompt',
+      devSkillsCopyButtonAria: 'Copy TuyaOpen Dev Skills install prompt to clipboard',
+      devSkillsCopiedLabel: 'Copied',
+      devSkillsPasteHint: 'Paste it into your coding agent or chat.',
       consoleStatus: '● LIVE',
       consoleChannels: [
         { id: 'VibeCoding', tone: 'teal' },
@@ -930,8 +935,13 @@ tos.py flash`,
       bodyAfter:
         '：沉淀硬件开发最佳实践，面向 VibeCoding 优化——从新建工程、设备认证、编译烧录，到调试与事件注入测试，全程遵循硬件在环思路，让联网 AI 设备硬件落地更快、更省力。',
       consoleTitle: 'VibeCoding agent',
-      vibeCodingCtaLabel: '开始硬件 VibeCoding',
-      vibeCodingCtaHref: 'https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsCopyText: '安装 TuyaOpen 开发者 专家工作流 Skill: https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsToolsHint:
+        '粘贴到对话或智能体侧栏，例如：Cursor、Claude Code、Amazon Kiro，以及其他支持加载 Skills 的 vibe coding 工具。',
+      devSkillsCopyButton: '复制安装提示词',
+      devSkillsCopyButtonAria: '复制 TuyaOpen Dev Skills 安装提示词到剪贴板',
+      devSkillsCopiedLabel: '已复制',
+      devSkillsPasteHint: '请粘贴到智能体或对话输入框。',
       consoleStatus: '● 运行中',
       consoleChannels: [
         { id: 'VibeCoding', tone: 'teal' },
