@@ -514,7 +514,7 @@
   background: #0a0a0c;
   color: #e5e7eb;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-family: var(--ifm-font-family-base), system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .hilSectionNewBadge {
@@ -579,8 +579,45 @@
 }
 
 .hilHeader {
-  max-width: 44rem;
   margin-bottom: 2rem;
+}
+
+.hilTopLayout {
+  display: grid;
+  gap: 1.35rem 1.75rem;
+  align-items: start;
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 960px) {
+  .hilTopLayout {
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 1.08fr);
+    gap: 1.5rem 2.25rem;
+  }
+}
+
+.hilIntroColumn {
+  min-width: 0;
+  max-width: 38rem;
+}
+
+.hilDevSkillsPanel {
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 22, 28, 0.75);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38);
+}
+
+@media (min-width: 960px) {
+  .hilDevSkillsPanel {
+    justify-self: end;
+    width: 100%;
+    max-width: min(32rem, 100%);
+  }
 }
 
 .hilEyebrow {
@@ -599,6 +636,7 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.12;
+  font-family: inherit;
 }
 
 .hilTitleBase {
@@ -612,10 +650,11 @@
 
 .hilBody {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.65;
   color: rgba(226, 232, 240, 0.62);
   font-weight: 400;
+  font-family: inherit;
 }
 
 .hilBodyHighlight {
@@ -674,33 +713,22 @@
   }
 }
 
-.hilHeaderCta {
-  margin-top: 1.35rem;
-  pointer-events: auto;
-  max-width: 52rem;
-}
-
-.hilDevSkillsBlurb {
-  margin: 0 0 0.85rem;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: rgba(245, 245, 247, 0.82);
-}
-
 .hilDevSkillsCopyRow {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: stretch;
   gap: 0.65rem;
+  pointer-events: auto;
 }
 
 .hilDevSkillsPre {
-  flex: 1 1 16rem;
+  flex: none;
+  width: 100%;
   margin: 0;
   padding: 0.65rem 0.85rem;
   border-radius: 8px;
-  font-family: var(--ifm-font-family-monospace), ui-monospace, monospace;
-  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.78rem;
   line-height: 1.45;
   color: #e2e8f0;
   background: rgba(8, 10, 14, 0.92);
@@ -712,14 +740,13 @@
 }
 
 .hilDevSkillsCopyBtn {
-  flex: 0 0 auto;
-  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   padding: 0.55rem 1rem;
   border-radius: 8px;
-  font-family: var(--ifm-font-family-base), system-ui, sans-serif;
+  font-family: inherit;
   font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: 0.02em;
@@ -745,16 +772,22 @@
   outline-offset: 2px;
 }
 
+.hilDevSkillsPasteHint {
+  margin: 0;
+  padding: 0.35rem 0.15rem 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  font-weight: 600;
+  color: rgba(94, 234, 212, 0.92);
+  text-align: center;
+}
+
 .hilDevSkillsTools {
   margin: 0.75rem 0 0;
   font-size: 0.8125rem;
   line-height: 1.55;
   color: rgba(203, 213, 225, 0.88);
-}
-
-.hilDevSkillsToolsIntro {
-  font-weight: 600;
-  color: rgba(226, 232, 240, 0.95);
+  font-family: inherit;
 }
 
 .hilSplit {
@@ -785,6 +818,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
   /* Fixed viewport: inner body scrolls; card does not grow with log lines or stretch to diagram height. */
   height: clamp(17rem, 52vh, 26rem);
 }

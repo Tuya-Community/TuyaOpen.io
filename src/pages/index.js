@@ -478,69 +478,72 @@ function Home() {
             <span className={styles.hilSectionNewBadge}>{copy.realWorldValidation.newBadgeLabel}</span>
             <div className={styles.container}>
               <div className={styles.hilHeader}>
-                <span className={styles.hilEyebrow}>{copy.realWorldValidation.sectionTag}</span>
-                <h2 id="tuyaopen-vibe-coding" className={styles.hilTitle}>
-                  <span className={styles.hilTitleBase}>{copy.realWorldValidation.titleBase}</span>{' '}
-                  <span className={styles.hilTitleAccent}>{copy.realWorldValidation.titleAccent}</span>
-                </h2>
-                <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
-                  {copy.realWorldValidation.bodyBefore}
-                  <span className={styles.hilBodyHighlight} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
-                    {copy.realWorldValidation.bodyHighlight}
-                  </span>
-                  {copy.realWorldValidation.bodyAfter}
-                </p>
-                <div className={styles.hilHeaderCta}>
-                  <p className={styles.hilDevSkillsBlurb}>{copy.realWorldValidation.devSkillsBlurb}</p>
-                  <div className={styles.hilDevSkillsCopyRow}>
-                    <pre className={styles.hilDevSkillsPre} id="tuyaopen-dev-skills-install-prompt" tabIndex={0}>
-                      {copy.realWorldValidation.devSkillsCopyText}
-                    </pre>
-                    <button
-                      type="button"
-                      className={styles.hilDevSkillsCopyBtn}
-                      aria-describedby="tuyaopen-dev-skills-install-prompt"
-                      aria-label={copy.realWorldValidation.devSkillsCopyButtonAria}
-                      onClick={async () => {
-                        const text = copy.realWorldValidation.devSkillsCopyText
-                        try {
-                          if (navigator.clipboard?.writeText) {
-                            await navigator.clipboard.writeText(text)
-                          } else {
-                            const ta = document.createElement('textarea')
-                            ta.value = text
-                            ta.setAttribute('readonly', '')
-                            ta.style.position = 'fixed'
-                            ta.style.left = '-9999px'
-                            document.body.appendChild(ta)
-                            ta.select()
-                            document.execCommand('copy')
-                            document.body.removeChild(ta)
-                          }
-                          setDevSkillsCopied(true)
-                          if (devSkillsCopiedTimeoutRef.current) {
-                            window.clearTimeout(devSkillsCopiedTimeoutRef.current)
-                          }
-                          devSkillsCopiedTimeoutRef.current = window.setTimeout(() => {
-                            setDevSkillsCopied(false)
-                            devSkillsCopiedTimeoutRef.current = null
-                          }, 2000)
-                        } catch {
-                          setDevSkillsCopied(false)
-                        }
-                      }}
-                    >
-                      {devSkillsCopied
-                        ? copy.realWorldValidation.devSkillsCopiedLabel
-                        : copy.realWorldValidation.devSkillsCopyButton}
-                    </button>
+                <div className={styles.hilTopLayout}>
+                  <div className={styles.hilIntroColumn}>
+                    <span className={styles.hilEyebrow}>{copy.realWorldValidation.sectionTag}</span>
+                    <h2 id="tuyaopen-vibe-coding" className={styles.hilTitle}>
+                      <span className={styles.hilTitleBase}>{copy.realWorldValidation.titleBase}</span>{' '}
+                      <span className={styles.hilTitleAccent}>{copy.realWorldValidation.titleAccent}</span>
+                    </h2>
+                    <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                      {copy.realWorldValidation.bodyBefore}
+                      <span className={styles.hilBodyHighlight} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                        {copy.realWorldValidation.bodyHighlight}
+                      </span>
+                      {copy.realWorldValidation.bodyAfter}
+                    </p>
                   </div>
-                  <p className={styles.hilDevSkillsTools}>
-                    <span className={styles.hilDevSkillsToolsIntro}>
-                      {copy.realWorldValidation.devSkillsToolsIntro}
-                    </span>{' '}
-                    {copy.realWorldValidation.devSkillsTools}
-                  </p>
+                  <aside className={styles.hilDevSkillsPanel}>
+                    <div className={styles.hilDevSkillsCopyRow}>
+                      <pre className={styles.hilDevSkillsPre} id="tuyaopen-dev-skills-install-prompt" tabIndex={0}>
+                        {copy.realWorldValidation.devSkillsCopyText}
+                      </pre>
+                      <button
+                        type="button"
+                        className={styles.hilDevSkillsCopyBtn}
+                        aria-describedby="tuyaopen-dev-skills-install-prompt"
+                        aria-label={copy.realWorldValidation.devSkillsCopyButtonAria}
+                        onClick={async () => {
+                          const text = copy.realWorldValidation.devSkillsCopyText
+                          try {
+                            if (navigator.clipboard?.writeText) {
+                              await navigator.clipboard.writeText(text)
+                            } else {
+                              const ta = document.createElement('textarea')
+                              ta.value = text
+                              ta.setAttribute('readonly', '')
+                              ta.style.position = 'fixed'
+                              ta.style.left = '-9999px'
+                              document.body.appendChild(ta)
+                              ta.select()
+                              document.execCommand('copy')
+                              document.body.removeChild(ta)
+                            }
+                            setDevSkillsCopied(true)
+                            if (devSkillsCopiedTimeoutRef.current) {
+                              window.clearTimeout(devSkillsCopiedTimeoutRef.current)
+                            }
+                            devSkillsCopiedTimeoutRef.current = window.setTimeout(() => {
+                              setDevSkillsCopied(false)
+                              devSkillsCopiedTimeoutRef.current = null
+                            }, 4500)
+                          } catch {
+                            setDevSkillsCopied(false)
+                          }
+                        }}
+                      >
+                        {devSkillsCopied
+                          ? copy.realWorldValidation.devSkillsCopiedLabel
+                          : copy.realWorldValidation.devSkillsCopyButton}
+                      </button>
+                      {devSkillsCopied ? (
+                        <p className={styles.hilDevSkillsPasteHint} role="status" aria-live="polite">
+                          {copy.realWorldValidation.devSkillsPasteHint}
+                        </p>
+                      ) : null}
+                    </div>
+                    <p className={styles.hilDevSkillsTools}>{copy.realWorldValidation.devSkillsToolsHint}</p>
+                  </aside>
                 </div>
               </div>
               <div className={styles.hilSplit}>
