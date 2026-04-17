@@ -37,8 +37,8 @@ const SKILLS_LIST = [
     purposeZh: '在设备端持久化存储关键对话信息与每日事件日志，实现跨会话的长期记忆能力',
   },
   {
-    nameEn: 'CORN (local cron)',
-    nameZh: 'CORN（本地定时）',
+    nameEn: 'CRON (local cron)',
+    nameZh: 'CRON（本地定时）',
     emoji: '⏰',
     categoryEn: 'Task scheduling',
     categoryZh: '任务调度',

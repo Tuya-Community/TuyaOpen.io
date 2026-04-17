@@ -1,5 +1,5 @@
 ---
-title: Introduction to tyutool Tool
+title: GUI - tyutool Graphical Tool
 ---
 
 import Tabs from '@theme/Tabs';

@@ -7,7 +7,7 @@ title: 适配新 Platform
 通过本文，您可以了解在 TuyaOpen 上新增芯片时需要阅读哪些文档、如何操作以及如何验证适配是否成功。
 
 
-如果您首次接触 TuyaOpen，建议先阅读 [快速上手](../quick-start/index.md)，按照教程搭建并体验 `switch_demo` 应用（推荐使用 Ubuntu 环境），以便了解和熟悉 Tuya IoT 的配网及操作逻辑。同时，还需阅读 [tos.py 使用指南](../tos-tools/tos-guide.md)，了解 `tos.py` 的使用方法及各命令的功能说明。
+如果您首次接触 TuyaOpen，建议先阅读 [快速上手](../quick-start/index.md)，按照教程搭建并体验 `switch_demo` 应用（推荐使用 Ubuntu 环境），以便了解和熟悉 Tuya IoT 的配网及操作逻辑。同时，还需阅读 [CLI - tos.py 开发工具](../tos-tools/tos-guide.md)，了解 `tos.py` 的使用方法及各命令的功能说明。
 
 ### 编译流程
 

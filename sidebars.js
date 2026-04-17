@@ -534,7 +534,7 @@ module.exports = {
 
     {
       type: 'category',
-      label: 'tos.py Tool (Flash/Debug)',
+      label: 'tos.py & tyutool',
       collapsed: true,
       items: ['tos-tools/tos-guide', 'tos-tools/tos-idf-reference', 'tos-tools/tools-tyutool'],
     },

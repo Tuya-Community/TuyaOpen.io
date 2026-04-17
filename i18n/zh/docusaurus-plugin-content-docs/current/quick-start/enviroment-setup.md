@@ -206,7 +206,7 @@ git submodule update --init
   </SyncedTabItem>
 </SyncedTabs>
 
-关于 `tos.py` 更详细的说明方法，可使用命令 `tos.py --help` 进行查看，或参考 [tos.py 工具使用](../tos-tools/tos-guide.md)。
+关于 `tos.py` 更详细的说明方法，可使用命令 `tos.py --help` 进行查看，或参考 [CLI - tos.py 开发工具](../tos-tools/tos-guide.md)。
 
 ## 常见问题
 
