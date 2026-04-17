@@ -677,34 +677,84 @@
 .hilHeaderCta {
   margin-top: 1.35rem;
   pointer-events: auto;
+  max-width: 52rem;
 }
 
-.hilVibeCodingBtn {
+.hilDevSkillsBlurb {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(245, 245, 247, 0.82);
+}
+
+.hilDevSkillsCopyRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.65rem;
+}
+
+.hilDevSkillsPre {
+  flex: 1 1 16rem;
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-family: var(--ifm-font-family-monospace), ui-monospace, monospace;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #e2e8f0;
+  background: rgba(8, 10, 14, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.hilDevSkillsCopyBtn {
+  flex: 0 0 auto;
+  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 1.2rem;
+  padding: 0.55rem 1rem;
   border-radius: 8px;
   font-family: var(--ifm-font-family-base), system-ui, sans-serif;
   font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.03em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  color: #0a0a0c;
   background: linear-gradient(135deg, #2dd4bf 0%, #34d399 100%);
-  color: #0a0a0c !important;
-  text-decoration: none !important;
   border: 1px solid rgba(167, 243, 208, 0.45);
-  box-shadow: 0 0 28px rgba(94, 234, 212, 0.35);
+  box-shadow: 0 0 24px rgba(94, 234, 212, 0.32);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
     filter 0.2s ease;
 }
 
-.hilVibeCodingBtn:hover {
+.hilDevSkillsCopyBtn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 36px rgba(94, 234, 212, 0.48);
+  box-shadow: 0 0 32px rgba(94, 234, 212, 0.45);
   filter: brightness(1.05);
-  color: #030303 !important;
+}
+
+.hilDevSkillsCopyBtn:focus-visible {
+  outline: 2px solid rgba(94, 234, 212, 0.85);
+  outline-offset: 2px;
+}
+
+.hilDevSkillsTools {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(203, 213, 225, 0.88);
+}
+
+.hilDevSkillsToolsIntro {
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.95);
 }
 
 .hilSplit {

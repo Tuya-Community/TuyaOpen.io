@@ -51,6 +51,8 @@ function Home() {
   const [hilPrefersReducedMotion, setHilPrefersReducedMotion] = useState(false)
   const [hilTerminalLines, setHilTerminalLines] = useState([])
   const [hilDiagramActiveIndex, setHilDiagramActiveIndex] = useState(null)
+  const [devSkillsCopied, setDevSkillsCopied] = useState(false)
+  const devSkillsCopiedTimeoutRef = useRef(null)
 
   const hilHighlightedStepNum = useMemo(() => {
     for (let i = hilTerminalLines.length - 1; i >= 0; i -= 1) {
@@ -87,6 +89,14 @@ function Home() {
     )
     io.observe(el)
     return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (devSkillsCopiedTimeoutRef.current) {
+        window.clearTimeout(devSkillsCopiedTimeoutRef.current)
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -481,20 +491,56 @@ function Home() {
                   {copy.realWorldValidation.bodyAfter}
                 </p>
                 <div className={styles.hilHeaderCta}>
-                  {copy.realWorldValidation.vibeCodingCtaHref.startsWith('http') ? (
-                    <a
-                      href={copy.realWorldValidation.vibeCodingCtaHref}
-                      className={styles.hilVibeCodingBtn}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <p className={styles.hilDevSkillsBlurb}>{copy.realWorldValidation.devSkillsBlurb}</p>
+                  <div className={styles.hilDevSkillsCopyRow}>
+                    <pre className={styles.hilDevSkillsPre} id="tuyaopen-dev-skills-install-prompt" tabIndex={0}>
+                      {copy.realWorldValidation.devSkillsCopyText}
+                    </pre>
+                    <button
+                      type="button"
+                      className={styles.hilDevSkillsCopyBtn}
+                      aria-describedby="tuyaopen-dev-skills-install-prompt"
+                      aria-label={copy.realWorldValidation.devSkillsCopyButtonAria}
+                      onClick={async () => {
+                        const text = copy.realWorldValidation.devSkillsCopyText
+                        try {
+                          if (navigator.clipboard?.writeText) {
+                            await navigator.clipboard.writeText(text)
+                          } else {
+                            const ta = document.createElement('textarea')
+                            ta.value = text
+                            ta.setAttribute('readonly', '')
+                            ta.style.position = 'fixed'
+                            ta.style.left = '-9999px'
+                            document.body.appendChild(ta)
+                            ta.select()
+                            document.execCommand('copy')
+                            document.body.removeChild(ta)
+                          }
+                          setDevSkillsCopied(true)
+                          if (devSkillsCopiedTimeoutRef.current) {
+                            window.clearTimeout(devSkillsCopiedTimeoutRef.current)
+                          }
+                          devSkillsCopiedTimeoutRef.current = window.setTimeout(() => {
+                            setDevSkillsCopied(false)
+                            devSkillsCopiedTimeoutRef.current = null
+                          }, 2000)
+                        } catch {
+                          setDevSkillsCopied(false)
+                        }
+                      }}
                     >
-                      {copy.realWorldValidation.vibeCodingCtaLabel} →
-                    </a>
-                  ) : (
-                    <Link to={copy.realWorldValidation.vibeCodingCtaHref} className={styles.hilVibeCodingBtn}>
-                      {copy.realWorldValidation.vibeCodingCtaLabel} →
-                    </Link>
-                  )}
+                      {devSkillsCopied
+                        ? copy.realWorldValidation.devSkillsCopiedLabel
+                        : copy.realWorldValidation.devSkillsCopyButton}
+                    </button>
+                  </div>
+                  <p className={styles.hilDevSkillsTools}>
+                    <span className={styles.hilDevSkillsToolsIntro}>
+                      {copy.realWorldValidation.devSkillsToolsIntro}
+                    </span>{' '}
+                    {copy.realWorldValidation.devSkillsTools}
+                  </p>
                 </div>
               </div>
               <div className={styles.hilSplit}>

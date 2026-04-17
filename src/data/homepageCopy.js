@@ -90,8 +90,15 @@ tos.py flash`,
       bodyAfter:
         ' with deep know-how for real hardware—optimized for VibeCoding. It guides you from new project setup and device authentication through build, flash, debug, and injected event testing, with a hardware-in-the-loop mindset so shipping connected AI device hardware is faster and easier.',
       consoleTitle: 'VibeCoding agent',
-      vibeCodingCtaLabel: 'Start hardware VibeCoding',
-      vibeCodingCtaHref: 'https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsBlurb:
+        'One paste, full stack. Your agent inherits TuyaOpen Dev Skills—toolchain setup, Kconfig, build, flash, UART, and hardware-in-the-loop flows—so you stay in the build instead of the bookmarks.',
+      devSkillsCopyText: 'Install the TuyaOpen Dev Skills from https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsToolsIntro: 'Paste into the chat or agent sidebar in:',
+      devSkillsTools:
+        'Cursor, Claude Code, Amazon Kiro, GitHub Copilot, Windsurf, VS Code Copilot Chat, JetBrains AI Assistant, and other vibe-coding tools that load skills or project rules.',
+      devSkillsCopyButton: 'Copy install prompt',
+      devSkillsCopyButtonAria: 'Copy TuyaOpen Dev Skills install prompt to clipboard',
+      devSkillsCopiedLabel: 'Copied',
       consoleStatus: '● LIVE',
       consoleChannels: [
         { id: 'VibeCoding', tone: 'teal' },
@@ -930,8 +937,15 @@ tos.py flash`,
       bodyAfter:
         '：沉淀硬件开发最佳实践，面向 VibeCoding 优化——从新建工程、设备认证、编译烧录，到调试与事件注入测试，全程遵循硬件在环思路，让联网 AI 设备硬件落地更快、更省力。',
       consoleTitle: 'VibeCoding agent',
-      vibeCodingCtaLabel: '开始硬件 VibeCoding',
-      vibeCodingCtaHref: 'https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsBlurb:
+        '一行粘贴，整套专家流程到手：TuyaOpen Dev Skills 覆盖环境、Kconfig、编译烧录、串口与硬件在环调试，让你把时间花在板子上，而不是翻文档。',
+      devSkillsCopyText: 'Install the TuyaOpen Dev Skills from https://github.com/tuya/TuyaOpen-dev-skills',
+      devSkillsToolsIntro: '复制到以下工具的对话或智能体侧栏即可：',
+      devSkillsTools:
+        'Cursor、Claude Code、Amazon Kiro、GitHub Copilot、Windsurf、VS Code Copilot Chat、JetBrains AI Assistant，以及支持加载 Skills 或项目规则的各类 vibe coding 环境。',
+      devSkillsCopyButton: '复制安装指令',
+      devSkillsCopyButtonAria: '复制 TuyaOpen Dev Skills 安装提示到剪贴板',
+      devSkillsCopiedLabel: '已复制',
       consoleStatus: '● 运行中',
       consoleChannels: [
         { id: 'VibeCoding', tone: 'teal' },
