@@ -39,40 +39,6 @@ flowchart TD
 
 You can still use `tos.py idf` to access ESP-IDF commands directly (e.g., `menuconfig`, `monitor`) when you need low-level control.
 
-## Supported Chips and Boards
-
-### Chip Variants
-
-| Chip | Wi-Fi | Bluetooth | Audio/AI | Notes |
-|------|-------|-----------|----------|-------|
-| ESP32 | Yes | Yes | Limited | Classic Bluetooth + BLE |
-| ESP32-C3 | Yes | BLE 5.0 | No | RISC-V core, cost-optimized |
-| ESP32-C6 | Yes | BLE 5.0 | No | Wi-Fi 6, Thread/Zigbee |
-| ESP32-S3 | Yes | BLE 5.0 | Yes | Dual-core, PSRAM, AI/audio capable |
-| ESP32-S2 | Yes | No | No | Bluetooth **not supported** in TuyaOpen |
-
-:::warning ESP32-S2 Limitation
-ESP32-S2 does not have Bluetooth hardware. The TuyaOpen BLE adapter (`tkl_bt.c`) is excluded for this variant. If your application requires BLE provisioning or Bluetooth connectivity, use ESP32, ESP32-S3, or ESP32-C3/C6 instead.
-:::
-
-### Pre-configured Boards
-
-TuyaOpen ships board support packages (BSP) for these ESP32 boards:
-
-| Board | Chip | Display | Audio | Config File |
-|-------|------|---------|-------|-------------|
-| ESP32 (generic) | ESP32 | Yes | No | `ESP32.config` |
-| ESP32-S3 (generic) | ESP32-S3 | No | No | `ESP32-S3.config` |
-| ESP32-C3 (generic) | ESP32-C3 | No | No | `ESP32-C3.config` |
-| ESP32-C6 (generic) | ESP32-C6 | No | No | `ESP32-C6.config` |
-| DNESP32S3 | ESP32-S3 | Yes | Yes | `DNESP32S3.config` |
-| DNESP32S3-BOX | ESP32-S3 | Yes | Yes | `DNESP32S3_BOX.config` |
-| DNESP32S3-BOX2 | ESP32-S3 | Yes | Yes | `DNESP32S3_BOX2_WIFI.config` |
-| ESP32S3 Bread Compact | ESP32-S3 | No | Yes | `ESP32S3_BREAD_COMPACT_WIFI.config` |
-| Waveshare S3 AMOLED 1.8" | ESP32-S3 | Yes (touch) | Yes | `WAVESHARE_ESP32S3_Touch_AMOLED_1.8.config` |
-| XingZhi ESP32S3 Cube OLED | ESP32-S3 | Yes (OLED) | Yes | `XINGZHI_ESP32S3_Cube_0_96OLED_WIFI.config` |
-| Waveshare ESP32-C6 DevKit | ESP32-C6 | No (LED) | No | `WAVESHARE_ESP32C6_DEV_KIT_N16.config` |
-
 ## When to Use ESP-IDF Libraries vs TuyaOpen Libraries
 
 | Need | Use | Why |
@@ -86,32 +52,9 @@ TuyaOpen ships board support packages (BSP) for these ESP32 boards:
 | Vendor-specific IDF APIs (NVS, ESP-NOW, ULP) | ESP-IDF directly via `tos.py idf` | Not abstracted by TuyaOpen |
 | Third-party IDF components | ESP-IDF component manager | Add to `idf_component.yml` in your project |
 
-:::tip Rule of Thumb
+:::tip[Rule of Thumb]
 Use TuyaOpen APIs for anything you want portable across platforms. Use ESP-IDF directly only for ESP32-specific features that TuyaOpen does not abstract (e.g., ULP coprocessor, ESP-NOW, ESP-MESH).
 :::
-
-## ESP32 TKL Feature Support
-
-The TKL adapter layer for ESP32 implements these interfaces:
-
-| TKL Module | Status | Source |
-|-----------|--------|--------|
-| `tkl_wifi` | Supported | `tuyaos_adapter/src/drivers/tkl_wifi.c` |
-| `tkl_bt` (BLE) | Supported (except ESP32-S2) | `tuyaos_adapter/src/drivers/tkl_bt.c` |
-| `tkl_pin` (GPIO) | Supported | `tuyaos_adapter/src/drivers/tkl_pin.c` |
-| `tkl_uart` | Supported | `tuyaos_adapter/src/drivers/tkl_uart.c` |
-| `tkl_pwm` | Supported | `tuyaos_adapter/src/drivers/tkl_pwm.c` |
-| `tkl_adc` | Supported | `tuyaos_adapter/src/drivers/tkl_adc.c` |
-| `tkl_i2c` | Supported | `tuyaos_adapter/src/drivers/tkl_i2c.c` |
-| `tkl_i2s` | Supported (audio enabled) | `tuyaos_adapter/src/drivers/tkl_i2s.c` |
-| `tkl_spi` | **Not implemented** | No `tkl_spi.c` in adapter; use board BSP or ESP-IDF `spi_bus_*` directly |
-| `tkl_flash` | Supported | `tuyaos_adapter/src/drivers/tkl_flash.c` |
-| `tkl_timer` | Supported | `tuyaos_adapter/src/drivers/tkl_timer.c` |
-| `tkl_watchdog` | Supported | `tuyaos_adapter/src/drivers/tkl_watchdog.c` |
-| `tkl_rtc` | Supported | `tuyaos_adapter/src/drivers/tkl_rtc.c` |
-| `tkl_ota` | Supported | `tuyaos_adapter/src/drivers/tkl_ota.c` |
-| `tkl_network` | Supported | `tuyaos_adapter/src/drivers/tkl_network.c` |
-| `tkl_pinmux` | Supported | `tuyaos_adapter/src/drivers/tkl_pinmux.c` |
 
 ## ESP32 Wi-Fi Implementation Notes
 
@@ -126,11 +69,10 @@ The TKL Wi-Fi adapter (`tkl_wifi.c`) has ESP32-specific behaviors developers sho
 ## Next Steps
 
 - [Quick Start with ESP32](esp32-quick-start) -- Build and flash your first TuyaOpen project on ESP32
-- [Migrating from ESP-IDF to TuyaOpen](esp32-migration-guide) -- Port existing ESP-IDF projects
-- [Adding a New ESP32 Board](esp32-new-board) -- Create BSP for custom hardware
-- [ESP32 Pin Mapping](esp32-pin-mapping) -- GPIO, UART, I2C, SPI, PWM pin assignments per board
 - [ESP32 Supported Features](esp32-supported-features) -- Detailed feature matrix by chip variant
-- [ESP32 Production and OTA Guide](esp32-production-guide) -- Authorization, OTA, security for production
+- [ESP32 Pin Mapping](esp32-pin-mapping) -- GPIO, UART, I2C, SPI, PWM pin assignments per board
+- [Adding a New ESP32 Board](esp32-new-board) -- Create BSP for custom hardware
+- [ESP32 OTA Updates](esp32-ota) -- Over-the-air firmware updates
 
 ## References
 

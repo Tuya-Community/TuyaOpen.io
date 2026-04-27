@@ -8,83 +8,37 @@ Detailed feature matrix across ESP32 chip variants in TuyaOpen.
 
 ## Chip Comparison Matrix
 
-| Feature | ESP32 | ESP32-S2 | ESP32-S3 | ESP32-C3 | ESP32-C6 |
-|---------|-------|----------|----------|----------|----------|
-| **CPU** | Dual Xtensa LX6 | Single Xtensa LX7 | Dual Xtensa LX7 | Single RISC-V | Single RISC-V |
-| **Wi-Fi** | 802.11 b/g/n | 802.11 b/g/n | 802.11 b/g/n | 802.11 b/g/n | 802.11 ax (Wi-Fi 6) |
-| **Bluetooth** | Classic + BLE 4.2 | None | BLE 5.0 | BLE 5.0 | BLE 5.0 |
-| **TuyaOpen BLE** | Yes | **No** | Yes | Yes | Yes |
-| **PSRAM** | Optional | Optional | Optional (8-16 MB) | No | No |
-| **USB** | No | Yes (OTG) | Yes (OTG) | No | No |
-| **AI/Audio** | Limited | No | Yes | No | No |
-| **Thread/Zigbee** | No | No | No | No | Yes |
+### Chip Features
+| Feature | ESP32 | ESP32-S3 | ESP32-C3 | ESP32-C6 |
+|---------|-------|----------|----------|----------|
+| **CPU** | Dual Xtensa LX6 | Dual Xtensa LX7 | Single RISC-V | Single RISC-V |
+| **Wi-Fi** | 802.11 b/g/n | 802.11 b/g/n | 802.11 b/g/n | 802.11 ax (Wi-Fi 6) |
+| **Bluetooth** | Classic + BLE 4.2 | BLE 5.0 | BLE 5.0 | BLE 5.0 |
+| **USB** | No | Yes (OTG) | No | No |
 
-## TKL Adapter Support by Chip
+### Peripheral Support by Chip
 
-All TKL adapters are available for all ESP32 variants unless noted.
+The following table lists peripherals adapted in TuyaOpen for each chip.
 
-| TKL Module | ESP32 | ESP32-S2 | ESP32-S3 | ESP32-C3 | ESP32-C6 |
-|-----------|-------|----------|----------|----------|----------|
-| `tkl_wifi` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_bt` (BLE) | Yes | **No** | Yes | Yes | Yes |
-| `tkl_pin` (GPIO) | Yes | Yes | Yes | Yes | Yes |
-| `tkl_uart` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_pwm` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_adc` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_i2c` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_spi` | **No** | **No** | **No** | **No** | **No** |
-| `tkl_i2s` | Yes | Yes | Yes | N/A | N/A |
-| `tkl_flash` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_timer` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_watchdog` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_rtc` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_ota` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_network` | Yes | Yes | Yes | Yes | Yes |
-| `tkl_pinmux` | Yes | Yes | Yes | Yes | Yes |
+| Peripheral | ESP32 | ESP32-S3 | ESP32-C3 | ESP32-C6 |
+|------------|-------|----------|----------|----------|
+| Wi-Fi | Yes | Yes | Yes | Yes |
+| BLE | Yes | Yes | Yes | Yes |
+| GPIO | Yes | Yes | Yes | Yes |
+| UART | Yes | Yes | Yes | Yes |
+| PWM | Yes | Yes | Yes | Yes |
+| ADC | Yes | Yes | Yes | Yes |
+| I2C | Yes | Yes | Yes | Yes |
+| SPI | No | No | No | No |
+| I2S | Yes | Yes | N/A | N/A |
+| Flash storage | Yes | Yes | Yes | Yes |
+| Hardware timer | Yes | Yes | Yes | Yes |
+| Watchdog | Yes | Yes | Yes | Yes |
+| RTC | Yes | Yes | Yes | Yes |
 
-## Kconfig Feature Toggles
+## Supported On-Board Peripherals
 
-The ESP32 board Kconfig (`boards/ESP32/TKL_Kconfig`) provides these feature toggles:
-
-| Config | Default | Description |
-|--------|---------|-------------|
-| `ENABLE_WIFI` | y | Wi-Fi support |
-| `ENABLE_BLUETOOTH` | y | BLE support |
-| `ENABLE_ADC` | y | ADC peripheral |
-| `ENABLE_GPIO` | y | GPIO peripheral |
-| `ENABLE_UART` | y | UART peripheral |
-| `ENABLE_PWM` | y | PWM peripheral |
-| `ENABLE_I2C` | y | I2C peripheral |
-| `ENABLE_I2S` | y | I2S audio bus |
-| `ENABLE_SPI` | y | SPI peripheral |
-| `ENABLE_TIMER` | y | Hardware timer |
-| `ENABLE_WATCHDOG` | y | Watchdog timer |
-| `ENABLE_AUDIO` | n | Audio codec support (board-specific) |
-| `ENABLE_VIDEO` | n | Video/camera support (board-specific) |
-| `ENABLE_ESP_DISPLAY` | n | Display/LCD support (board-specific) |
-
-## Board-Level BSP Modules
-
-Boards under `boards/ESP32/common/` provide shared ESP32 BSP drivers:
-
-### Display (`common/display/`)
-
-LVGL display port for ESP32. Provides `lv_port_disp_init()` and `lv_port_indev_init()`.
-
-:::note
-ESP32 uses its own LVGL integration (via ESP-IDF LVGL component), not the TuyaOpen generic LVGL port. UI code under `boards/ESP32/common/display/ui/` is ESP32-specific.
-:::
-
-### LCD Drivers (`common/lcd/`)
-
-| Driver | Display | Interface |
-|--------|---------|-----------|
-| `lcd_st7789_spi` | ST7789 via SPI | SPI |
-| `lcd_st7789_80` | ST7789 via 8080 | Parallel 8-bit |
-| `oled_ssd1306` | SSD1306 OLED | I2C |
-| `lcd_sh8601` | SH8601 AMOLED | QSPI |
-
-### Audio Codecs (`common/audio/`)
+### Audio Codecs
 
 | Driver | Codec | Notes |
 |--------|-------|-------|
@@ -94,61 +48,117 @@ ESP32 uses its own LVGL integration (via ESP-IDF LVGL component), not the TuyaOp
 | `tdd_audio_no_codec` | None (DAC) | Direct DAC output |
 | `tdd_audio_atk_no_codec` | ATK (no codec) | Alternate no-codec path |
 
-### Touch (`common/touch/`)
+:::note
+Audio driver unified spec: 16000 Hz sample rate, I2S interface, 6 DMA descriptors, frame size 240.
+:::
+
+### LCD Drivers
+
+| Driver | Display | Interface |
+|--------|---------|-----------|
+| `lcd_st7789_spi` | ST7789 via SPI | SPI |
+| `lcd_st7789_80` | ST7789 via 8080 | Parallel 8-bit |
+| `oled_ssd1306` | SSD1306 OLED | I2C |
+| `lcd_sh8601` | SH8601 AMOLED | QSPI |
+
+:::note
+ESP32 uses its own LVGL integration (via ESP-IDF LVGL component), not the TuyaOpen generic LVGL port.
+:::
+
+### Touch
 
 | Driver | Controller |
 |--------|-----------|
 | `touch_ft5x06` | FT5x06 capacitive touch |
 
-### IO Expander (`common/io_expander/`)
+### IO Expander
 
 | Driver | Chip |
 |--------|------|
 | `xl9555` | XL9555 I2C GPIO expander |
 | `tca9554` | TCA9554 I2C GPIO expander |
 
-### LED (`common/led/`)
+### LED
 
 | Driver | Type |
 |--------|------|
 | `tdd_led_esp_ws1280` | WS2812-compatible addressable LEDs via RMT |
 
-## Audio and Voice Architecture (ESP32-S3)
+## Supported Boards
 
-ESP32-S3 boards support TuyaOpen's AI voice pipeline through the ESP-SR (Speech Recognition) framework:
+All boards currently supported under `boards/ESP32/`:
 
-| Component | Implementation | Source |
-|-----------|---------------|--------|
-| **KWS (Wake Word)** | ESP-SR WakeNet via AFE | `tuyaos_adapter/src/audio/audio_afe.c`, `tkl_kws.c` |
-| **VAD (Voice Activity)** | ESP-SR AFE VAD module | `tuyaos_adapter/src/audio/tkl_vad.c` |
-| **Audio Front-End** | ESP-SR AFE (noise suppression, AEC off, AGC off) | `audio_afe.c` |
-| **ASR (Speech-to-Text)** | **Cloud only** (Tuya AI Agent) | No local ASR adapter in ESP32 TKL |
-| **TTS (Text-to-Speech)** | **Cloud only** (Tuya AI Agent) | No local TTS adapter in ESP32 TKL |
+| Board | Chip | Description |
+|-------|------|-------------|
+| `ESP32` | ESP32 | Base ESP32 module |
+| `ESP32-C3` | ESP32-C3 | Base ESP32-C3 module |
+| `ESP32-C6` | ESP32-C6 | Base ESP32-C6 module |
+| `ESP32-S3` | ESP32-S3 | Base ESP32-S3 module |
+| `ESP32S3_BREAD_COMPACT_WIFI` | ESP32-S3 | Espressif ESP32-S3 breadboard |
+| `XINGZHI_ESP32S3_CUDE_0.96_OLED_WIFI` | ESP32-S3 | XingZhi ESP32-S3 board with 0.96" OLED |
+| `WAVESHARE_ESP32S3_Touch_AMOLED_1.8` | ESP32-S3 | Waveshare ESP32-S3 board with 1.8" touch AMOLED |
+| `DNESP32S3` | ESP32-S3 | Zhengdian ESP32-S3 base board |
+| `DNESP32S3_BOX` | ESP32-S3 | Zhengdian ESP32-S3 BOX board |
+| `DNESP32S3_BOX2_WIFI` | ESP32-S3 | Zhengdian ESP32-S3 BOX2 (with 4G/charging) |
+| `WAVESHARE_ESP32C6_DEV_KIT_N16` | ESP32-C6 | Waveshare ESP32-C6 dev kit |
 
-The AFE runs wake word detection locally on the ESP32-S3 (pinned to core 1, detect task; core 0, feed task). Once a wake word is detected, audio streams to Tuya Cloud for ASR/TTS processing.
+## Board-to-Peripheral Mapping
 
-:::note
-KWS requires the `model` partition with ESP-SR model resources. The model is loaded via `esp_srmodel_init("model")` at startup. Boards must have sufficient PSRAM (8 MB recommended) for AFE operation (`AFE_MEMORY_ALLOC_MORE_PSRAM`).
-:::
-
-ESP32, ESP32-C3, and ESP32-C6 do not have pre-configured audio BSPs in TuyaOpen and cannot run the voice pipeline.
+| Board | Display | Touch | Audio Codec | IO Expander | Button | LED | Other |
+|-------|---------|-------|-------------|-------------|--------|-----|-------|
+| `ESP32` | ST7789 SPI 320×240 | — | ES8388 | XL9555 | — | — | Speaker enable |
+| `ESP32-C3` | — | — | — | — | — | — | UART only |
+| `ESP32-C6` | — | — | — | — | — | — | UART only |
+| `ESP32-S3` | — | — | — | — | — | — | UART only |
+| `ESP32S3_BREAD_COMPACT_WIFI` | SSD1306 I2C 128×32 | — | — | — | GPIO0 | — | I2C/I2S |
+| `XINGZHI_ESP32S3_CUDE_0.96_OLED_WIFI` | SSD1306 I2C 128×64 | — | — | — | GPIO0 | — | I2C/I2S |
+| `WAVESHARE_ESP32S3_Touch_AMOLED_1.8` | SH8601 SPI 368×448 | FT5X06 I2C | ES8311 (0x30) | TCA9554 | — | — | — |
+| `DNESP32S3` | ST7789 SPI 320×240 | — | ES8388 (0x20) | XL9555 | — | — | Speaker enable |
+| `DNESP32S3_BOX` | ST7789 I80 320×240 | — | ES8311/NS4168 (0x30) | XL9555 | XL9555 key | Red LED | Buzzer |
+| `DNESP32S3_BOX2_WIFI` | ST7789 I80 320×240 | — | ES8389 (0x20) | XL9555 | — | — | 4G module, USB switch, charging |
+| `WAVESHARE_ESP32C6_DEV_KIT_N16` | — | — | — | — | GPIO9 | WS1280 GPIO8 | — |
 
 ## Applications Tested on ESP32
 
 These TuyaOpen applications have pre-built ESP32 configs:
 
-| Application | ESP32 Boards | Config Files |
-|-------------|-------------|--------------|
-| `your_chat_bot` (AI chatbot) | DNESP32S3, DNESP32S3-BOX, BOX2, Bread Compact, Waveshare S3, XingZhi S3 | Multiple `.config` per board |
-| `your_serial_chat_bot` | Waveshare S3, XingZhi S3 | 2 configs |
-| `switch_demo` (cloud switch) | ESP32-S3 (default) | `app_default.config` |
-| LVGL demo (graphics) | ESP32 Bread Board, DNESP32S3-BOX | 2 configs |
-| LED example | Waveshare ESP32-C6 | 1 config |
+:::tip[Note]
+Applications fall into two categories:
+- **Board-specific**: Has a `config/` subdirectory with one config per board, targeting boards with specific peripherals such as a display or audio codec.
+- **Generic**: No `config/` subdirectory — works on any base ESP32 module (`ESP32` / `ESP32-C3` / `ESP32-S3` / `ESP32-C6`) without requiring board-specific hardware.
+:::
+
+### Board-Specific Applications
+
+#### your_chat_bot (AI Chatbot)
+
+| Board | Config File |
+|-------|-------------|
+| `DNESP32S3` | `DNESP32S3.config` |
+| `DNESP32S3_BOX` | `DNESP32S3_BOX.config` |
+| `DNESP32S3_BOX2_WIFI` | `DNESP32S3_BOX2_WIFI.config` |
+| `ESP32S3_BREAD_COMPACT_WIFI` | `ESP32S3_BREAD_COMPACT_WIFI.config` |
+| `WAVESHARE_ESP32S3_Touch_AMOLED_1.8` | `WAVESHARE_ESP32S3_TOUCH_AMOLED_1_8.config` |
+| `XINGZHI_ESP32S3_CUDE_0.96_OLED_WIFI` | `XINGZHI_ESP32S3_Cube_0_96OLED_WIFI.config` |
+
+#### your_serial_chat_bot (Serial AI Chatbot)
+
+| Board | Config File |
+|-------|-------------|
+| `WAVESHARE_ESP32S3_Touch_AMOLED_1.8` | `WAVESHARE_ESP32S3_TOUCH_AMOLED_1_8.config` |
+| `XINGZHI_ESP32S3_CUDE_0.96_OLED_WIFI` | `XINGZHI_ESP32S3_Cube_0_96OLED_WIFI.config` |
+
+### Generic Applications
+
+The following apps support all base ESP32 modules and require no board-specific peripherals:
+
+| Application | Description |
+|-------------|-------------|
+| `tuya_cloud/switch_demo` | Tuya cloud-connected switch demo |
+| `tuya_cloud/weather_get_demo` | Weather data fetch demo |
 
 ## References
 
 - [ESP32 on TuyaOpen -- Overview](overview-esp32)
 - [Adding a New ESP32 Board](esp32-new-board)
-- [TKL GPIO API](../../tkl-api/tkl_gpio)
-- [Peripheral Support List](../../peripheral/support_peripheral_list)
 - [TuyaOpen-esp32 Repository](https://github.com/tuya/TuyaOpen-esp32)

@@ -59,6 +59,8 @@ module.exports = {
         'quick-start/equipment-authorization',
         'quick-start/device-network-configuration',
         'quick-start/device-debug',
+        'quick-start/tuya-product-development',
+        'quick-start/firmware-ota',
       ],
     },
 
@@ -144,9 +146,8 @@ module.exports = {
                 'hardware-specific/espressif/pinmux/esp32-c6',
               ],
             },
-            'hardware-specific/espressif/esp32-migration-guide',
             'hardware-specific/espressif/esp32-new-board',
-            'hardware-specific/espressif/esp32-production-guide',
+            'hardware-specific/espressif/esp32-ota',
           ],
         },
         {

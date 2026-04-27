@@ -223,7 +223,7 @@
     "description": "The label for category Peripheral Tutorials in sidebar docs"
   },
   "sidebar.docs.category.Pin Mapping": {
-    "message": "引脚映射",
+    "message": "ESP32 引脚映射",
     "description": "The label for category Pin Mapping in sidebar docs"
   },
   "sidebar.docs.category.Protocol Tutorials": {
