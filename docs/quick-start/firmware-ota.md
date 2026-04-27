@@ -18,7 +18,7 @@ A firmware key uniquely identifies a firmware on the platform. A single product 
 1. Log in to the [Tuya IoT Platform](https://iot.tuya.com) and go to your product's **Product Development > Hardware Development** page.
 2. Select the cloud connection type and hardware module.
 
-![Select cloud connection type and hardware module](/img/quick-start/hardware_develop_en.png)
+![Select cloud connection type and hardware module](https://images.tuyacn.com/fe-static/docs/img/b67f5e64-7976-4e44-8843-6ce4ecd321a1.png)
 
    - **Cloud connection type**: Select **TuyaOS** or **TuyaOS AI**.
    - **Hardware module**: If you are using a Tuya module, select the corresponding module solution from the hardware list. If you are using a custom module, this field can be left unselected.
@@ -30,7 +30,7 @@ A firmware key uniquely identifies a firmware on the platform. A single product 
 
 4. Fill in the firmware basic information and click **Confirm**. The platform generates a **firmware key**.
 
-![Fill in firmware information to generate firmware key](/img/quick-start/edit_firmware_en.png)
+![Fill in firmware information to generate firmware key](https://images.tuyacn.com/fe-static/docs/img/df14b972-b7f6-45dc-a07e-f52a1023b309.png)
 
    - **Firmware name**: Can be customized.
    - **Firmware type**: Select **Module Firmware (Direct Connect)**.

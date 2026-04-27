@@ -18,7 +18,7 @@ title: "固件升级"
 1. 登录 [涂鸦 IoT 平台](https://iot.tuya.com)，进入对应产品的 **产品开发 > 硬件开发** 页面。
 2. 选择云端接入方式和接入硬件模组。
 
-![选择云端接入方式和硬件模组](/img/quick-start/hardware_develop_zh.png)
+![选择云端接入方式和硬件模组](https://images.tuyacn.com/fe-static/docs/img/20125351-2c46-4fd5-820e-7445f66a6684.png)
 
    - **云端接入方式**：选择 **TuyaOS** 或 **TuyaOS AI**。
    - **接入硬件**：若使用涂鸦模组，从硬件列表中选择对应的模组方案；若使用自定义模组，可不选。
@@ -30,7 +30,7 @@ title: "固件升级"
 
 4. 填写固件基本信息，单击 **确认**，平台自动生成一个 **固件 key**。
 
-![填写固件信息生成固件 key](/img/quick-start/edit_firmware_zh.png)
+![填写固件信息生成固件 key](https://images.tuyacn.com/fe-static/docs/img/e97d5834-0570-4de4-af3e-83007b5fc8f8.png)
 
    - **固件名称**：可自定义。
    - **固件类型**：选择 **模组固件（直连）**。
