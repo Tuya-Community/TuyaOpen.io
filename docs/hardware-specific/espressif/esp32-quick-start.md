@@ -18,7 +18,7 @@ Build, flash, and run your first TuyaOpen application on an ESP32 board.
 - Computer running Linux, macOS, or Windows (WSL recommended)
 - Wi-Fi network (2.4 GHz)
 
-:::note
+:::info
 If your application uses Tuya Cloud features (remote control, AI Agent, OTA), you also need a [Tuya Cloud license key](../../quick-start/equipment-authorization). Local-only projects (GPIO, UART, display demos) do not require a license.
 :::
 
@@ -104,7 +104,7 @@ If the serial port is not detected automatically, specify it:
 tos.py flash --port /dev/ttyUSB0
 ```
 
-:::tip Linux serial permissions
+:::tip[Linux serial permissions]
 If you get a "permission denied" error on Linux:
 ```bash
 sudo usermod -aG dialout $USER

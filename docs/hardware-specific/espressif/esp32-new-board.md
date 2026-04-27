@@ -4,214 +4,232 @@ title: "Adding a New ESP32 Board"
 
 # Adding a New ESP32 Board
 
-Create a TuyaOpen Board Support Package (BSP) for custom ESP32 hardware. This enables your board to be selected via `tos.py config choice` and built alongside any TuyaOpen application.
+Create a TuyaOpen Board Support Package (BSP) for your custom ESP32 hardware. The process differs depending on whether your target chip is already supported by the ESP32 platform.
 
-## Prerequisites
+## Target Chip Is Supported
 
-- Completed [ESP32 Quick Start](esp32-quick-start)
-- Understanding of your board's hardware (chip variant, pin assignments, peripherals)
-- Familiarity with Kconfig and CMake basics
+The ESP32 platform currently supports the following chips:
 
-## Requirements
+| Chip | Platform ID |
+|------|-------------|
+| ESP32 (Classic) | ESP32 |
+| ESP32-C3 | ESP32-C3 |
+| ESP32-C6 | ESP32-C6 |
+| ESP32-S3 | ESP32-S3 |
 
-- TuyaOpen SDK cloned and environment set up
-- Your custom ESP32 board (physical hardware for testing)
-- Schematic or pinout reference for your board
-
-## Board File Structure
-
-Each board lives under `boards/ESP32/{BOARD_NAME}/`:
-
-```
-boards/ESP32/MY_CUSTOM_BOARD/
-├── Kconfig                 # Board-specific Kconfig (chip, pins, features)
-├── CMakeLists.txt          # Build configuration
-├── my_custom_board.c       # Board initialization and hardware registration
-├── board_config.h          # Pin definitions and hardware constants
-└── board_com_api.h         # Board common API declarations
-```
-
-## Steps
-
-### 1. Copy an existing board as a template
-
-Choose the closest existing board to your hardware:
+If your board uses one of the chips above, run the following command to create a new board:
 
 ```bash
-cd TuyaOpen/boards/ESP32
-cp -r ESP32-S3 MY_CUSTOM_BOARD
+tos.py new board
 ```
 
-### 2. Edit Kconfig
+Follow the prompts:
 
-Update `MY_CUSTOM_BOARD/Kconfig`:
+1. **Select platform**: Choose `ESP32` from the list
+2. **Enter board name**: Enter a name for your board
+
+:::tip[Naming convention]
+Use all-uppercase letters and underscores, following the pattern `{VENDOR}_{CHIP}_{MODEL}` — for example, `WAVESHARE_ESP32S3_TOUCH_AMOLED`. The name is used as both the directory name and the `BOARD_CHOICE` value in Kconfig; they must match exactly (case-sensitive). For more details, see [Create Board](../../new-hardware/new-board).
+:::
+
+The tool automatically:
+
+- Creates a directory template under `boards/ESP32/{BOARD_NAME}/`:
+  ```
+  boards/ESP32/MY_CUSTOM_BOARD/
+  ├── Kconfig           # Board-level Kconfig (chip selection, pin config)
+  ├── CMakeLists.txt    # Build configuration
+  ├── board_com_api.h   # Board common API declarations
+  └── board_com_api.c   # Board common API implementation
+  ```
+- Inserts a new board entry into the `choice` block in `boards/ESP32/Kconfig`
+
+### Edit the Generated Kconfig
+
+The generated `Kconfig` looks like this:
 
 ```kconfig
-config BOARD_CHOICE_MY_CUSTOM_BOARD
-    bool "MY_CUSTOM_BOARD"
-    select ENABLE_WIFI
-    select ENABLE_BLUETOOTH
-    select ENABLE_GPIO
-    select ENABLE_UART
-
 config CHIP_CHOICE
     string
-    default "esp32s3"
+    default "esp32s3"   # adjust to match your actual chip
 
 config BOARD_CHOICE
     string
     default "MY_CUSTOM_BOARD"
 
-config UART_NUM_0_TXD_PIN
-    int
-    default 43
-
-config UART_NUM_0_RXD_PIN
-    int
-    default 44
+config BOARD_CONFIG
+    bool
+    default y
 ```
 
-Adjust `CHIP_CHOICE` to match your chip (`esp32`, `esp32s3`, `esp32c3`, `esp32c6`). Set UART pins to match your board's serial output.
+Valid `CHIP_CHOICE` values correspond to the supported chip platforms. Currently: `esp32`, `esp32c3`, `esp32c6`, `esp32s3`. Additional values become available as new chip platforms are ported.
 
-Enable additional features as needed:
+Based on your board's peripheral hardware, use `select` in `BOARD_CONFIG` to enable the required feature modules, and append board-specific parameter options. For example, an ESP32-S3 board with a touchscreen and audio codec might extend the config like this:
 
 ```kconfig
-select ENABLE_AUDIO           # If board has audio codec
-select ENABLE_ESP_DISPLAY     # If board has display
-select ENABLE_LED             # If board has addressable LEDs
-select ENABLE_BUTTON          # If board has buttons
+config BOARD_CONFIG
+    bool
+    default y
+    select ENABLE_AUDIO
+    select ENABLE_ESP_DISPLAY
+    select ENABLE_AUDIO_CODECS
+
+config LVGL_ENABLE_TOUCH
+    bool "Enable LVGL Touch Support"
+    default y
+
+config BOARD_LCD_DEFAULT_BRIGHTNESS
+    int "Default LCD backlight (0-100)"
+    range 0 100
+    default 80
+    depends on ENABLE_ESP_DISPLAY
 ```
 
-### 3. Register the board in the parent Kconfig
+### Implement Board Hardware Code
 
-Edit `boards/ESP32/Kconfig` and add your board to the `choice` block:
+After editing the Kconfig, implement the board hardware initialization in `board_com_api.c`.
 
-```kconfig
-config BOARD_CHOICE_MY_CUSTOM_BOARD
-    bool "MY_CUSTOM_BOARD"
-    depends on BOARD_ENABLE_ESP32
-```
-
-Add the `rsource` directive to load your board's Kconfig when selected:
-
-```kconfig
-if BOARD_CHOICE_MY_CUSTOM_BOARD
-rsource "./MY_CUSTOM_BOARD/Kconfig"
-endif
-```
-
-### 4. Configure pin mappings in board_config.h
-
-Define your board's hardware connections:
+The template generates an empty `board_register_hardware()` function. Fill it in to register your audio codec, buttons, LEDs, and other peripherals:
 
 ```c
-#ifndef __BOARD_CONFIG_H__
-#define __BOARD_CONFIG_H__
-
-/* UART */
-#define BOARD_UART0_TX_PIN      43
-#define BOARD_UART0_RX_PIN      44
-
-/* I2C (if used) */
-#define BOARD_I2C_SDA_PIN       8
-#define BOARD_I2C_SCL_PIN       9
-
-/* SPI Display (if used) */
-#define BOARD_LCD_SPI_HOST      SPI2_HOST
-#define BOARD_LCD_PIN_CS        10
-#define BOARD_LCD_PIN_DC        11
-#define BOARD_LCD_PIN_RST       12
-#define BOARD_LCD_PIN_BL        13
-
-/* Audio (if used) */
-#define BOARD_I2S_BCK_PIN       15
-#define BOARD_I2S_WS_PIN        16
-#define BOARD_I2S_DOUT_PIN      17
-#define BOARD_I2S_DIN_PIN       18
-
-#endif /* __BOARD_CONFIG_H__ */
-```
-
-### 5. Implement board initialization
-
-Edit `my_custom_board.c`:
-
-```c
-#include "board_config.h"
-#include "board_com_api.h"
-#include "tkl_gpio.h"
-
-void board_register_hardware(void)
+OPERATE_RET board_register_hardware(void)
 {
-    /* Register display, audio, or other board-specific hardware.
-       See boards/ESP32/common/ for shared ESP32 BSP drivers
-       (LCD, audio codecs, touch, IO expander, LED). */
+    OPERATE_RET rt = OPRT_OK;
+
+    // register audio codec
+    TUYA_CALL_ERR_LOG(__board_register_audio());
+
+    return rt;
 }
 ```
 
-If your board uses a display, audio codec, or other common ESP32 peripheral, use the shared drivers from `boards/ESP32/common/`:
+For boards with a display, also implement these three functions required by LVGL initialization:
 
 ```c
-#include "lcd_st7789_spi.h"    /* SPI display */
-#include "tdd_audio_8311_codec.h"  /* ES8311 codec */
+int board_display_init(void);
+void *board_display_get_panel_io_handle(void);
+void *board_display_get_panel_handle(void);
 ```
 
-### 6. Update CMakeLists.txt
+Pin numbers, I2C addresses, I2S channel IDs, and other hardware parameters should be defined as macros in `board_config.h` and referenced from `board_com_api.c`. Use an existing board (e.g., `boards/ESP32/WAVESHARE_ESP32S3_Touch_AMOLED_1.8/`) as a starting point.
 
-```cmake
-aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} MODULE_SRC)
-set(MODULE_NAME my_custom_board)
-add_library(${MODULE_NAME} ${MODULE_SRC})
-target_include_directories(${MODULE_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+### Verify
 
-set(COMPONENT_LIBS ${COMPONENT_LIBS} ${MODULE_NAME} PARENT_SCOPE)
-set(COMPONENT_PUBINC ${COMPONENT_PUBINC} ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
-```
+**Step 1: Verify basic compilation and execution**
 
-### 7. Create a config preset
-
-Create a config file for your board in your application:
+Use the GPIO example to confirm the board BSP is working correctly:
 
 ```bash
-mkdir -p apps/my_app/config
+cd examples/peripherals/gpio
 ```
 
-Write `apps/my_app/config/MY_CUSTOM_BOARD.config`:
-
-```
-CONFIG_BOARD_CHOICE_ESP32=y
-CONFIG_BOARD_CHOICE_MY_CUSTOM_BOARD=y
-CONFIG_ENABLE_WIFI=y
-CONFIG_ENABLE_GPIO=y
-```
-
-### 8. Build and test
+Load the ESP32 platform default config:
 
 ```bash
-cd apps/my_app
-tos.py config choice        # Select MY_CUSTOM_BOARD
+tos.py config choice
+```
+
+Open the config menu, select your board under **Choice a board**, then save and exit:
+
+```bash
+tos.py config menu
+```
+
+Build and flash:
+
+```bash
 tos.py build
 tos.py flash
-tos.py monitor
 ```
 
-## Architecture Rules
+After flashing, check the serial output to confirm the firmware boots and runs as expected.
 
-Follow these dependency rules when writing board code:
+**Step 2: Verify Tuya Cloud connectivity**
 
-| Layer | Can call | Cannot call |
-|-------|---------|-------------|
-| `boards/ESP32/MY_BOARD/` | TKL APIs, `boards/ESP32/common/`, ESP-IDF vendor APIs | TuyaOpen `src/` directly |
-| `boards/ESP32/common/` | TKL APIs, ESP-IDF vendor APIs | App code |
-| Your app code | TAL/TKL APIs, TuyaOpen `src/` | ESP-IDF vendor APIs (not portable) |
+Use the Switch Demo to verify network and Tuya Cloud communication:
 
-:::warning
-If your board code calls ESP-IDF APIs directly (e.g., `esp_lcd_*`, `i2s_channel_*`), that code is ESP32-specific. Place it in `boards/ESP32/` only, not in your application `src/`.
-:::
+```bash
+cd apps/tuya_cloud/switch_demo
+```
+
+Load the ESP32 platform default config:
+
+```bash
+tos.py config choice
+```
+
+Open the config menu, select your board under **Choice a board**, then save and exit:
+
+```bash
+tos.py config menu
+```
+
+Fill in the device credentials from the Tuya IoT Platform in `src/tuya_config.h` (see [Authorize Devices](../../quick-start/equipment-authorization)):
+
+```c
+#define TUYA_OPENSDK_UUID    "your_uuid"
+#define TUYA_OPENSDK_AUTHKEY "your_authkey"
+```
+
+Build and flash:
+
+```bash
+tos.py build
+tos.py flash
+```
+
+After flashing, provision the device using the Tuya app (see [Device Pairing w/ Smartphone](../../quick-start/device-network-configuration)). Once the device appears online in the app, the board adaptation is complete.
+
+---
+
+## Target Chip Is Not Yet Supported
+
+If your target chip is not in the supported list, you do not need to create a new platform — the ESP32 platform itself is already integrated. You only need to add support for the new chip within the existing platform.
+
+### Add Chip Support
+
+**Register the chip name**
+
+Add the new chip name to the `SUPPORT_CHIPS` list in `platform/ESP32/build_setup.py`, matching the `idf_target` identifier used by ESP-IDF:
+
+```python
+SUPPORT_CHIPS = [
+    "esp32",
+    "esp32c3",
+    "esp32s3",
+    "esp32c6",
+    "esp32p4",   # new
+]
+```
+
+Once registered, the build system will automatically call `install.sh {target}` during `platform_prepare` to install the toolchain for the new chip.
+
+**Add chip-specific TKL driver support**
+
+TKL driver files under `platform/ESP32/tuya_open_sdk/tuyaos_adapter/src/drivers/` use chip-conditional compilation for default pin assignments and peripheral behavior. When adding a new chip, add the corresponding `#elif defined(CONFIG_IDF_TARGET_ESP32XXX)` branches in the relevant files (e.g., `tkl_pwm.c`, `tkl_uart.c`) to define default pins for that chip.
+
+**Create a base board**
+
+Use `tos.py new board` to create a base board named after the chip model (e.g., for chip `esp32p4`, name the board `ESP32-P4`). Set `CHIP_CHOICE` in the generated `Kconfig` to the new chip name. This board serves as the minimal reference implementation for the chip and does not need to include any peripheral logic. For the creation steps, follow the [Target Chip Is Supported](#target-chip-is-supported) workflow above.
+
+**Verify compilation**
+
+Select the newly created base board and run a build to confirm everything compiles cleanly:
+
+```bash
+cd examples/peripherals/gpio
+tos.py config choice
+tos.py config menu    # select the base board under "Choice a board"
+tos.py build
+```
+
+A successful build confirms the new chip is fully integrated into the ESP32 platform. You can then proceed to create your actual custom board.
+
+### Create the New Board
+
+Once chip support is in place, follow the complete [Target Chip Is Supported](#target-chip-is-supported) workflow to create and adapt your board. The boards you adapt here are typically complete hardware products equipped with peripherals such as an audio codec, display, or touch screen — not bare chips.
 
 ## References
 
-- [ESP32 on TuyaOpen -- Overview](overview-esp32)
-- [ESP32 Supported Features](esp32-supported-features)
-- [Porting a New Platform](../../new-hardware/porting-platform)
-- [boards/add_new_board.md in the SDK](https://github.com/tuya/TuyaOpen/blob/master/boards/add_new_board.md)
+- [ESP32 Quick Start](esp32-quick-start)
+- [Create Board](../../new-hardware/new-board)

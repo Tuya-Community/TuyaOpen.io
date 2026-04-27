@@ -6,19 +6,14 @@ title: "ESP32 快速开始"
 
 在 ESP32 开发板上构建、烧录并运行你的第一个 TuyaOpen 应用。
 
-## 前提条件
-
-- 已完成[环境搭建](../../quick-start/enviroment-setup)
-- 具备 C 语言开发和串口终端的基本知识
-
-## 需求
+## 准备环境
 
 - ESP32 开发板（ESP32、ESP32-S3、ESP32-C3 或 ESP32-C6）
 - USB 数据线（USB-C 或 Micro-USB，取决于开发板）
 - 运行 Linux、macOS 或 Windows（推荐 WSL）的电脑
 - Wi-Fi 网络（2.4 GHz）
 
-:::note
+:::info
 如果你的应用使用 Tuya Cloud 功能（远程控制、AI Agent、OTA），还需要 [Tuya Cloud 授权码](../../quick-start/equipment-authorization)。仅本地运行的项目（GPIO、UART、显示示例）不需要授权码。
 :::
 
@@ -26,24 +21,7 @@ title: "ESP32 快速开始"
 
 ### 1. 克隆 TuyaOpen 并配置环境
 
-```bash
-git clone https://github.com/tuya/TuyaOpen.git
-cd TuyaOpen
-git submodule update --init
-```
-
-激活 TuyaOpen 环境：
-
-```bash
-source export.sh
-```
-
-验证工具是否正常：
-
-```bash
-tos.py version
-tos.py check
-```
+参考[环境搭建](../../quick-start/enviroment-setup)，在对应的系统内下载 TuyaOpen 并配置。
 
 ### 2. 选择要构建的项目
 
@@ -84,7 +62,11 @@ tos.py config choice
 tos.py build
 ```
 
-构建过程编译 TuyaOpen SDK、应用代码和 ESP-IDF 平台层。首次构建需要数分钟，因为需要下载 ESP-IDF 工具链和依赖。
+构建过程: 编译 TuyaOpen SDK、应用代码和 ESP-IDF 平台层。
+
+:::info
+首次构建需要数分钟，因为需要下载 ESP-IDF 工具链和依赖。
+:::
 
 ### 5. 烧录固件
 
@@ -100,15 +82,16 @@ tos.py flash
 tos.py flash --port /dev/ttyUSB0
 ```
 
-:::tip Linux 串口权限
-如果在 Linux 上遇到"permission denied"错误：
+:::tip[Linux 串口权限] 
+如果在 Linux 上遇到"permission denied"错误,
+请执行以下指令: 
 ```bash
 sudo usermod -aG dialout $USER
 ```
 注销后重新登录使更改生效。
 :::
 
-### 6. 查看串口输出
+### 6. 查看设备日志
 
 ```bash
 tos.py monitor
@@ -120,11 +103,11 @@ tos.py monitor
 tos.py idf monitor
 ```
 
-按 `Ctrl+]` 退出。
+如果直接使用 ESP-IDF moniotr, 是按 `Ctrl+]` 退出。
 
-### 7.（仅云端项目）配网
+### 7.设备配网
 
-对于使用 Tuya Cloud 的项目（如 switch_demo）：
+对于使用需要连接涂鸦云的项目（如 switch_demo），需要该步骤：
 
 1. 在手机上打开 **涂鸦智能** 或 **Smart Life** App。
 2. 点击 **添加设备** > **自动扫描**。
@@ -159,11 +142,11 @@ tos.py idf fullclean
 
 | 问题 | 解决方案 |
 |------|---------|
-| `tos.py check` 失败 | 重新运行 `source export.sh`。确保安装了 Python 3.8+。 |
+| `tos.py check` 失败 | 重新运行 `tos.py`。确保安装了 Python 3.8+。 |
 | 构建错误 "IDF not found" | ESP-IDF 工具链在首次构建时下载，确保网络连接正常。 |
 | 烧录失败 "port not found" | 检查 USB 连接。在 Linux 上验证 `/dev/ttyUSB*` 或 `/dev/ttyACM*` 是否存在。 |
-| 设备无法配网 | 确认使用 2.4 GHz Wi-Fi。检查 `tuya_app_config.h` 中的授权码。 |
-| 串口输出 "auth error" | 烧录授权码。参见[设备授权](../../quick-start/equipment-authorization)。 |
+| 设备无法配网 | 确认使用 2.4 GHz Wi-Fi。检查设备是否已写入正确的授权码，参见[设备授权](../../quick-start/equipment-authorization)。 |
+| 串口输出 "auth error" | 设备没有授权，需要给设备授权，参见[设备授权](../../quick-start/equipment-authorization)。 |
 
 ## 参考资料
 
