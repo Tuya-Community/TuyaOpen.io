@@ -601,10 +601,10 @@ sudo usermod -aG dialout $USER
 ---
 
 <details>
-<summary><strong>Q3: `apps/` 和 `example/` 目录有什么区别？</strong></summary>
+<summary><strong>Q3: `apps/` 和 `examples/` 目录有什么区别？</strong></summary>
 
 - **`apps/`：** 包含功能完整的应用程序和演示（例如，`tuya_cloud/switch_demo`、`tuya.ai/your_chat_bot`）
-- **`example/`：** 包含较小的代码示例，演示特定功能或 API
+- **`examples/`：** 包含较小的代码示例，演示特定功能或 API
 - 选择开发板配置后，两者都可以使用 `tos.py build` 编译
 - 根据您的学习或开发需求选择
 

@@ -59,6 +59,8 @@ module.exports = {
         'quick-start/equipment-authorization',
         'quick-start/device-network-configuration',
         'quick-start/device-debug',
+        'quick-start/tuya-product-development',
+        'quick-start/firmware-ota',
       ],
     },
 
@@ -100,6 +102,56 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Tuya T2',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/tuya-t2/overview-t2',
+          },
+          items: ['hardware-specific/tuya-t2/overview-t2'],
+        },
+        {
+          type: 'category',
+          label: 'Tuya T3',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/tuya-t3/overview-t3',
+          },
+          items: ['hardware-specific/tuya-t3/overview-t3'],
+        },
+        {
+          type: 'category',
+          label: 'Espressif ESP32',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'hardware-specific/espressif/overview-esp32',
+          },
+          items: [
+            'hardware-specific/espressif/esp32-quick-start',
+            'hardware-specific/espressif/esp32-supported-features',
+            {
+              type: 'category',
+              label: 'Pin Mapping',
+              collapsed: true,
+              link: {
+                type: 'doc',
+                id: 'hardware-specific/espressif/esp32-pin-mapping',
+              },
+              items: [
+                'hardware-specific/espressif/pinmux/esp32-classic',
+                'hardware-specific/espressif/pinmux/esp32-s3',
+                'hardware-specific/espressif/pinmux/esp32-c3',
+                'hardware-specific/espressif/pinmux/esp32-c6',
+              ],
+            },
+            'hardware-specific/espressif/esp32-new-board',
+            'hardware-specific/espressif/esp32-ota',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Linux',
           collapsed: true,
           items: [
@@ -128,161 +180,214 @@ module.exports = {
     {
       type: 'html',
       value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">💡 Apps & Examples</span><span class="sidebar-divider-zh">💡 应用与示例</span></div>',
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">Embedded Programming</span><span class="sidebar-divider-zh">嵌入式编程</span></div>',
       defaultStyle: false,
     },
-
-    // ------------------------------------------------------------------
     {
       type: 'category',
-      label: 'Applications',
-      collapsed: true,
-      link: {
-        type: 'doc',
-        id: 'applications/index',
-      },
-      items: [
-        {
-          type: 'category',
-          label: 'Tuya Cloud',
-          collapsed: true,
-          items: ['applications/tuya_cloud/demo-tuya-iot-light'],
-        },
-        {
-          type: 'category',
-          label: 'Tuya.AI',
-          collapsed: false,
-          items: [
-            'applications/tuya.ai/application-development-guide',
-            'applications/tuya.ai/demo-your-chat-bot',
-            'applications/tuya.ai/demo-duo-eyes-mood',
-          ],
-        },
-      ],
-    },
-    // ------------------------------------------------------------------
-    {
-      type: 'category',
-      label: 'Examples',
-      collapsed: true,
-      items: ['examples/demo-generic-examples'],
-    },
-    // ------------------------------------------------------------------
-    {
-      type: 'category',
-      label: 'Peripherals',
-      collapsed: true,
-      items: ['peripheral/support_peripheral_list', 'peripheral/display', 'peripheral/audio', 'peripheral/button'],
-    },
-    // ------------------------------------------------------------------
-    {
-      type: 'category',
-      label: 'New Project',
-      collapsed: true,
-      items: [
-        'new-hardware/porting-platform',
-        'new-hardware/new-platform',
-        'new-hardware/new-board',
-        'new-hardware/new-project',
-      ],
-    },
-    // ------------------------------------------------------------------
-
-    {
-      type: 'html',
-      value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">☁️ Cloud Agent Docs</span><span class="sidebar-divider-zh">☁️ 云端智能体文档</span></div>',
-      defaultStyle: false,
-    },
-
-    {
-      type: 'category',
-      label: 'Cloud Services',
+      label: 'Embedded Programming',
       collapsed: false,
       items: [
         {
           type: 'category',
-          label: 'Tuya Cloud Platform',
-          collapsed: false,
+          label: 'Guides & platform APIs',
+          collapsed: true,
           items: [
-            'cloud/tuya-cloud/creating-new-product',
             {
               type: 'category',
-              label: 'AI Agent Development',
+              label: 'Networking',
               collapsed: true,
               items: [
-                'cloud/tuya-cloud/ai-agent/index',
-                'cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
-                'cloud/tuya-cloud/ai-agent/workflow-management',
-                'cloud/tuya-cloud/ai-agent/variables-management',
-                'cloud/tuya-cloud/ai-agent/role-management',
-                'cloud/tuya-cloud/ai-agent/agent-evaluation',
-                'cloud/tuya-cloud/ai-agent/self-control-commands',
-                'cloud/tuya-cloud/ai-agent/ai-product-commands',
+                'peripheral/tutorials/wifi-station-tutorial',
                 {
                   type: 'category',
-                  label: 'Voice & Language',
+                  label: 'Protocol Tutorials',
                   collapsed: true,
                   items: [
-                    'cloud/tuya-cloud/ai-agent/supported-languages-and-voice-variants',
-                    'cloud/tuya-cloud/ai-agent/10.1-add-custom-voice',
-                  ],
-                },
-                'cloud/tuya-cloud/ai-agent/database',
-                {
-                  type: 'category',
-                  label: 'Triggers',
-                  collapsed: true,
-                  items: [
-                    'cloud/tuya-cloud/ai-agent/agent-trigger-index',
-                    'cloud/tuya-cloud/ai-agent/12.1-how-to-write-promts',
+                    'peripheral/tutorials/http-client-tutorial',
+                    'peripheral/tutorials/cjson-tutorial',
+                    'peripheral/tutorials/mqtt-client-tutorial',
+                    'peripheral/tutorials/tcp-socket-tutorial',
                   ],
                 },
                 {
                   type: 'category',
-                  label: 'MCP Services',
+                  label: 'BLE Tutorials',
+                  collapsed: true,
+                  items: ['peripheral/tutorials/ble-central-tutorial', 'peripheral/tutorials/ble-peripheral-tutorial'],
+                },
+                {
+                  type: 'category',
+                  label: 'TAL API Reference',
                   collapsed: true,
                   items: [
-                    'cloud/tuya-cloud/ai-agent/mcp-management',
-                    'cloud/tuya-cloud/ai-agent/13.1-custom-mcp-services',
+                    'peripheral/tutorials/tal-wifi-api',
+                    'peripheral/tutorials/tal-network-api',
+                    'peripheral/tutorials/tal-bluetooth-api',
                   ],
                 },
                 {
                   type: 'category',
-                  label: 'Agent OpenAPIs & Chat',
+                  label: 'TKL Networking',
                   collapsed: true,
-                  items: ['cloud/tuya-cloud/ai-agent/agent-openapis', 'cloud/tuya-cloud/ai-agent/14.1-chat-with-agent'],
+                  items: [
+                    'tkl-api/tkl_wifi',
+                    'tkl-api/tkl_bluetooth',
+                    'tkl-api/tkl_lwip',
+                    'tkl-api/tkl_network',
+                    'tkl-api/tkl_wired',
+                  ],
                 },
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Graphics',
+              collapsed: true,
+              items: [
+                'peripheral/tutorials/lvgl-application-guide',
+                'peripheral/display',
+                'peripheral/tutorials/display-driver-guide',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Audio',
+              collapsed: true,
+              items: ['peripheral/audio', 'peripheral/tutorials/audio-codec-guide'],
+            },
+            {
+              type: 'category',
+              label: 'Peripherals',
+              collapsed: true,
+              items: [
+                'peripheral/support_peripheral_list',
+                'peripheral/driver-architecture',
+                'peripheral/button',
+                {
+                  type: 'category',
+                  label: 'Peripheral Tutorials',
+                  collapsed: true,
+                  items: [
+                    'peripheral/tutorials/gpio-interrupt-tutorial',
+                    'peripheral/tutorials/i2c-guide',
+                    'peripheral/tutorials/adc-guide',
+                    'peripheral/tutorials/writing-sensor-driver',
+                    'peripheral/tutorials/migrating-sensor-driver',
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'category',
+              label: 'System Programming',
+              collapsed: true,
+              items: [
+                'peripheral/tutorials/thread-timer-patterns',
+                'peripheral/tutorials/tal-system-api',
+                'peripheral/tutorials/tal-kv-guide',
+                'peripheral/tutorials/kconfig-and-project-configuration',
+                {
+                  type: 'category',
+                  label: 'TKL OS APIs',
+                  collapsed: true,
+                  items: [
+                    'tkl-api/tkl_mutex',
+                    'tkl-api/tkl_semaphore',
+                    'tkl-api/tkl_system',
+                    'tkl-api/tkl_timer',
+                    'tkl-api/tkl_thread',
+                    'tkl-api/tkl_wakeup',
+                    'tkl-api/tkl_ota',
+                    'tkl-api/tkl_output',
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Memory & storage',
+              collapsed: true,
+              items: [
+                'peripheral/memory/overview',
+                'peripheral/memory/heap-allocation-and-psram',
+                'peripheral/memory/flash-and-partitions',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Hardware Interfaces',
+              collapsed: true,
+              items: [
+                'tkl-api/tkl_adc',
+                'tkl-api/tkl_dac',
+                'tkl-api/tkl_flash',
+                'tkl-api/tkl_gpio',
+                'tkl-api/tkl_i2c',
+                'tkl-api/tkl_i2s',
+                'tkl-api/tkl_pinmux',
+                'tkl-api/tkl_pwm',
+                'tkl-api/tkl_register',
+                'tkl-api/tkl_rtc',
+                'tkl-api/tkl_spi',
+                'tkl-api/tkl_uart',
               ],
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Examples',
+          collapsed: true,
+          items: ['examples/demo-generic-examples'],
+        },
+        {
+          type: 'category',
+          label: 'Application demos',
+          collapsed: true,
+          items: [
+            { type: 'doc', id: 'applications/tuya.ai/demo-your-chat-bot', label: 'your_chat_bot' },
+            { type: 'doc', id: 'applications/tuya.ai/demo-duo-eyes-mood', label: 'duo_eye_mood' },
+            { type: 'doc', id: 'applications/tuya_cloud/demo-tuya-iot-light', label: 'switch_demo' },
+          ],
+        },
       ],
-    },
-    // ------------------------------------------------------------------
-
-    {
-      type: 'html',
-      value:
-        '<div class="sidebar-divider"><span class="sidebar-divider-en">👨🏻‍💻 TuyaOpen SDKs</span><span class="sidebar-divider-zh">👨🏻‍💻 TuyaOpen SDK 套件</span></div>',
-      defaultStyle: false,
     },
     {
       type: 'category',
-      label: 'AI App SDKs',
+      label: 'Tuya Cloud IoT',
       collapsed: true,
+      items: ['applications/tuya_cloud/tuya-iot-client-reference'],
+    },
+    {
+      type: 'category',
+      label: 'Tuya AI (Device-Cloud Integration)',
+      collapsed: false,
       items: [
-        'applications/tuya.ai/ai-components/ai-components',
-        'applications/tuya.ai/ai-components/ai-main',
-        'applications/tuya.ai/ai-components/ai-agent',
-        'applications/tuya.ai/ai-components/ai-skill',
-        'applications/tuya.ai/ai-components/ai-audio-input',
-        'applications/tuya.ai/ai-components/ai-audio-player',
-        'applications/tuya.ai/ai-components/ai-video-input',
         {
           type: 'category',
-          label: 'Chat Mode Management',
-          collapsed: false,
+          label: 'Build AI+IoT firmware',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/creating-new-product'],
+        },
+        {
+          type: 'category',
+          label: 'Runtime, agent & skills',
+          collapsed: true,
+          items: [
+            'applications/tuya.ai/ai-components/ai-components',
+            'applications/tuya.ai/ai-components/ai-main',
+            'applications/tuya.ai/ai-components/ai-agent',
+            'applications/tuya.ai/ai-components/ai-skill',
+            'applications/tuya.ai/ai-components/ai-audio-input',
+            'applications/tuya.ai/ai-components/ai-audio-player',
+            'applications/tuya.ai/ai-components/ai-video-input',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Voice Chat Modes',
+          collapsed: true,
           link: {
             type: 'doc',
             id: 'applications/tuya.ai/ai-components/ai-mode-manage',
@@ -296,8 +401,8 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'GUI',
-          collapsed: false,
+          label: 'Design on-device AI UIs',
+          collapsed: true,
           link: {
             type: 'doc',
             id: 'applications/tuya.ai/ai-components/ai-ui-manage',
@@ -308,66 +413,96 @@ module.exports = {
             'applications/tuya.ai/ai-components/ai-ui-chat-oled',
           ],
         },
-        'applications/tuya.ai/ai-components/ai-mcp-server',
-        'applications/tuya.ai/ai-components/ai-mcp-tools',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'System APIs',
-      collapsed: true,
-      items: [
         {
           type: 'category',
-          label: 'OS APIs',
-          collapsed: false,
+          label: 'Expose MCP on the device',
+          collapsed: true,
           items: [
-            'tkl-api/tkl_mutex',
-            'tkl-api/tkl_semaphore',
-            'tkl-api/tkl_system',
-            'tkl-api/tkl_timer',
-            'tkl-api/tkl_thread',
-            'tkl-api/tkl_wakeup',
-            'tkl-api/tkl_ota',
-            'tkl-api/tkl_output',
-          ],
-        },
-
-        {
-          type: 'category',
-          label: 'Networking',
-          collapsed: false,
-          items: [
-            'tkl-api/tkl_wifi',
-            'tkl-api/tkl_bluetooth',
-            'tkl-api/tkl_lwip',
-            'tkl-api/tkl_network',
-            'tkl-api/tkl_wired',
+            'applications/tuya.ai/ai-components/ai-mcp-server',
+            'applications/tuya.ai/ai-components/ai-mcp-tools',
           ],
         },
       ],
     },
-
     {
       type: 'category',
-      label: 'Hardware Interface APIs',
+      label: 'New Project',
       collapsed: true,
       items: [
-        'tkl-api/tkl_adc',
-        'tkl-api/tkl_dac',
-        'tkl-api/tkl_flash',
-        'tkl-api/tkl_gpio',
-        'tkl-api/tkl_i2c',
-        'tkl-api/tkl_i2s',
-        'tkl-api/tkl_pinmux',
-        'tkl-api/tkl_pwm',
-        'tkl-api/tkl_register',
-        'tkl-api/tkl_rtc',
-        'tkl-api/tkl_spi',
-        'tkl-api/tkl_uart',
+        'new-hardware/porting-platform',
+        'new-hardware/new-platform',
+        'new-hardware/new-board',
+        'new-hardware/new-project',
       ],
     },
-
+    {
+      type: 'html',
+      value:
+        '<div class="sidebar-divider"><span class="sidebar-divider-en">Tuya Cloud AI</span><span class="sidebar-divider-zh">Tuya 云端 AI</span></div>',
+      defaultStyle: false,
+    },
+    {
+      type: 'category',
+      label: 'Tuya Cloud AI',
+      collapsed: false,
+      link: {
+        type: 'doc',
+        id: 'cloud/tuya-cloud/ai-agent/index',
+      },
+      items: [
+        {
+          type: 'category',
+          label: 'Agent Development',
+          collapsed: true,
+          items: [
+            'cloud/tuya-cloud/ai-agent/index',
+            'cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
+            'cloud/tuya-cloud/ai-agent/workflow-management',
+            'cloud/tuya-cloud/ai-agent/variables-management',
+            'cloud/tuya-cloud/ai-agent/role-management',
+            'cloud/tuya-cloud/ai-agent/agent-evaluation',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'AI Control Hardware',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/ai-agent/self-control-commands', 'cloud/tuya-cloud/ai-agent/ai-product-commands'],
+        },
+        {
+          type: 'category',
+          label: 'Add voice & language',
+          collapsed: true,
+          items: [
+            'cloud/tuya-cloud/ai-agent/supported-languages-and-voice-variants',
+            'cloud/tuya-cloud/ai-agent/10.1-add-custom-voice',
+          ],
+        },
+        'cloud/tuya-cloud/ai-agent/database',
+        {
+          type: 'category',
+          label: 'Automate with triggers',
+          collapsed: true,
+          items: [
+            'cloud/tuya-cloud/ai-agent/agent-trigger-index',
+            'cloud/tuya-cloud/ai-agent/12.1-how-to-write-promts',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Manage cloud MCP',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/ai-agent/mcp-management', 'cloud/tuya-cloud/ai-agent/13.1-custom-mcp-services'],
+        },
+        {
+          type: 'category',
+          label: 'Integrate via OpenAPI & chat',
+          collapsed: true,
+          items: ['cloud/tuya-cloud/ai-agent/agent-openapis', 'cloud/tuya-cloud/ai-agent/14.1-chat-with-agent'],
+        },
+      ],
+    },
+    // ------------------------------------------------------------------
     {
       type: 'html',
       value:
@@ -402,14 +537,14 @@ module.exports = {
       type: 'category',
       label: 'tos.py & tyutool',
       collapsed: true,
-      items: ['tos-tools/tos-guide', 'tos-tools/tools-tyutool'],
+      items: ['tos-tools/tos-guide', 'tos-tools/tos-idf-reference', 'tos-tools/tools-tyutool'],
     },
     // ------------------------------------------------------------------
     {
       type: 'category',
       label: 'Build System',
       collapsed: true,
-      items: ['build-system/compilation-guide'],
+      items: ['build-system/compilation-guide', 'build-system/cmake-kconfig-and-components'],
     },
     {
       type: 'html',

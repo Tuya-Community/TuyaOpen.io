@@ -275,7 +275,7 @@ Connect to the serial console to view logs:
 ```bash
 tos.py monitor
 ```
-du
+
 **Expected outcome:** The firmware builds without errors, flashes to the ESP32-S3, and the device boots. Use the serial monitor to confirm startup and, if configured, cloud connectivity.
 
 ### 7. Device activation and network setup

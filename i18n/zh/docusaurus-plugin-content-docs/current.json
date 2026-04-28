@@ -145,5 +145,165 @@
   },
   "sidebar.docs.category.tos.py Tool (Flash/Debug)": {
     "message": "tos.py 工具（烧录/调试）"
+  },
+  "sidebar.docs.category.Add voice & language": {
+    "message": "添加语音与语言",
+    "description": "The label for category Add voice & language in sidebar docs"
+  },
+  "sidebar.docs.category.Agent Development": {
+    "message": "智能体开发",
+    "description": "The label for category Agent Development in sidebar docs"
+  },
+  "sidebar.docs.category.AI Control Hardware": {
+    "message": "智能体控制硬件",
+    "description": "The label for category AI Control Hardware in sidebar docs"
+  },
+  "sidebar.docs.category.Application demos": {
+    "message": "应用演示",
+    "description": "The label for category Application demos in sidebar docs"
+  },
+  "sidebar.docs.category.Audio": {
+    "message": "音频",
+    "description": "The label for category Audio in sidebar docs"
+  },
+  "sidebar.docs.category.Automate with triggers": {
+    "message": "使用触发器自动化",
+    "description": "The label for category Automate with triggers in sidebar docs"
+  },
+  "sidebar.docs.category.BLE Tutorials": {
+    "message": "蓝牙 LE 教程",
+    "description": "The label for category BLE Tutorials in sidebar docs"
+  },
+  "sidebar.docs.category.Build AI+IoT firmware": {
+    "message": "构建 AI+物联网固件",
+    "description": "The label for category Build AI+IoT firmware in sidebar docs"
+  },
+  "sidebar.docs.category.Design on-device AI UIs": {
+    "message": "设备端 AI 界面设计",
+    "description": "The label for category Design on-device AI UIs in sidebar docs"
+  },
+  "sidebar.docs.category.DshanPi A1": {
+    "message": "DshanPi A1",
+    "description": "The label for category DshanPi A1 in sidebar docs"
+  },
+  "sidebar.docs.category.Embedded Programming": {
+    "message": "嵌入式编程",
+    "description": "The label for category Embedded Programming in sidebar docs"
+  },
+  "sidebar.docs.category.Espressif ESP32": {
+    "message": "乐鑫 ESP32",
+    "description": "The label for category Espressif ESP32 in sidebar docs"
+  },
+  "sidebar.docs.category.Expose MCP on the device": {
+    "message": "在设备上暴露 MCP",
+    "description": "The label for category Expose MCP on the device in sidebar docs"
+  },
+  "sidebar.docs.category.Graphics": {
+    "message": "图形与显示",
+    "description": "The label for category Graphics in sidebar docs"
+  },
+  "sidebar.docs.category.Guides & platform APIs": {
+    "message": "指南与平台 API",
+    "description": "The label for category Guides & platform APIs in sidebar docs"
+  },
+  "sidebar.docs.category.Integrate via OpenAPI & chat": {
+    "message": "通过 OpenAPI 与对话集成",
+    "description": "The label for category Integrate via OpenAPI & chat in sidebar docs"
+  },
+  "sidebar.docs.category.Linux": {
+    "message": "Linux",
+    "description": "The label for category Linux in sidebar docs"
+  },
+  "sidebar.docs.category.Manage cloud MCP": {
+    "message": "管理云端 MCP",
+    "description": "The label for category Manage cloud MCP in sidebar docs"
+  },
+  "sidebar.docs.category.Peripheral Tutorials": {
+    "message": "外设教程",
+    "description": "The label for category Peripheral Tutorials in sidebar docs"
+  },
+  "sidebar.docs.category.Pin Mapping": {
+    "message": "ESP32 引脚映射",
+    "description": "The label for category Pin Mapping in sidebar docs"
+  },
+  "sidebar.docs.category.Protocol Tutorials": {
+    "message": "协议教程",
+    "description": "The label for category Protocol Tutorials in sidebar docs"
+  },
+  "sidebar.docs.category.Quick Start": {
+    "message": "快速开始",
+    "description": "The label for category Quick Start in sidebar docs"
+  },
+  "sidebar.docs.category.Raspberry Pi": {
+    "message": "树莓派",
+    "description": "The label for category Raspberry Pi in sidebar docs"
+  },
+  "sidebar.docs.category.Runtime, agent & skills": {
+    "message": "运行时、智能体与技能",
+    "description": "The label for category Runtime, agent & skills in sidebar docs"
+  },
+  "sidebar.docs.category.System Programming": {
+    "message": "系统编程",
+    "description": "The label for category System Programming in sidebar docs"
+  },
+  "sidebar.docs.category.Memory & storage": {
+    "message": "内存与存储",
+    "description": "The label for category Memory & storage in sidebar docs"
+  },
+  "sidebar.docs.category.T5 + Arduino IDE": {
+    "message": "T5 + Arduino IDE",
+    "description": "The label for category T5 + Arduino IDE in sidebar docs"
+  },
+  "sidebar.docs.category.TAL API Reference": {
+    "message": "TAL API 参考",
+    "description": "The label for category TAL API Reference in sidebar docs"
+  },
+  "sidebar.docs.category.TKL Networking": {
+    "message": "TKL 网络",
+    "description": "The label for category TKL Networking in sidebar docs"
+  },
+  "sidebar.docs.category.TKL OS APIs": {
+    "message": "TKL 操作系统 API",
+    "description": "The label for category TKL OS APIs in sidebar docs"
+  },
+  "sidebar.docs.category.Tuya AI (Device-Cloud Integration)": {
+    "message": "Tuya AI（端云一体）",
+    "description": "The label for category Tuya AI (Device-Cloud Integration) in sidebar docs"
+  },
+  "sidebar.docs.category.Tuya Cloud AI": {
+    "message": "Tuya 云端 AI",
+    "description": "The label for category Tuya Cloud AI in sidebar docs"
+  },
+  "sidebar.docs.category.Tuya Cloud IoT": {
+    "message": "Tuya 云端物联网",
+    "description": "The label for category Tuya Cloud IoT in sidebar docs"
+  },
+  "sidebar.docs.category.Tuya T2": {
+    "message": "Tuya T2",
+    "description": "The label for category Tuya T2 in sidebar docs"
+  },
+  "sidebar.docs.category.Tuya T3": {
+    "message": "Tuya T3",
+    "description": "The label for category Tuya T3 in sidebar docs"
+  },
+  "sidebar.docs.category.Tuya T5": {
+    "message": "Tuya T5",
+    "description": "The label for category Tuya T5 in sidebar docs"
+  },
+  "sidebar.docs.category.Voice Chat Modes": {
+    "message": "语音对话模式",
+    "description": "The label for category Voice Chat Modes in sidebar docs"
+  },
+  "sidebar.docs.doc.duo_eye_mood": {
+    "message": "双眼情绪（duo_eye_mood）",
+    "description": "The label for the doc item 'duo_eye_mood' in sidebar docs"
+  },
+  "sidebar.docs.doc.switch_demo": {
+    "message": "开关演示（switch_demo）",
+    "description": "The label for the doc item 'switch_demo' in sidebar docs"
+  },
+  "sidebar.docs.doc.your_chat_bot": {
+    "message": "聊天机器人（your_chat_bot）",
+    "description": "The label for the doc item 'your_chat_bot' in sidebar docs"
   }
 }

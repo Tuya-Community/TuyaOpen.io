@@ -350,7 +350,13 @@ OPERATE_RET tdd_audio_register(char *name, TDD_AUDIO_T5AI_T cfg)
     intfs.config = __tdd_audio_config;
     intfs.close = __tdd_audio_close;
 
-    tdl_audio_driver_register(name, &intfs, (TDD_AUDIO_HANDLE_T)_hdl);
+    TDD_AUDIO_INFO_T info = {0};
+    info.sample_rate   = cfg.sample_rate;
+    info.sample_ch_num = cfg.channel;
+    info.sample_bits   = cfg.data_bits;
+    info.sample_tm_ms  = 20;
+
+    tdl_audio_driver_register(name, (TDD_AUDIO_HANDLE_T)_hdl, &intfs, &info);
     return rt;
 }
 ```
@@ -473,80 +479,69 @@ OPERATE_RET tdd_audio_register(const char *name, TDD_AUDIO_T5AI_T cfg);
 
 ### 音频驱动注册接口
 
-将底层音频驱动接口注册到抽象层管理系统中，创建设备节点并维护设备列表。
+将底层音频驱动接口注册到 TDL 管理系统，创建设备节点并维护设备列表。
 
 ```c
 /**
- * @brief Registers audio device driver interfaces to the abstract layer management system.
- * 
- * This function registers audio device driver interface functions to the audio abstract 
- * layer management system, creates device nodes and adds them to the device management list 
- * for upper layer application calls.
- * 
- * @param name Audio device name
- * @param intfs Audio driver interface structure containing various operation function pointers
- * 
- * @return Returns OPRT_OK on successful registration, or an appropriate error code on failure.
+ * @brief 向抽象层管理系统注册音频设备驱动接口。
+ *
+ * @param name 音频设备名称
+ * @param tdd_hdl TDD 设备句柄（由 TDD 驱动分配的私有上下文）
+ * @param intfs 音频驱动接口结构体（各操作函数指针）
+ * @param info 音频设备信息（采样率、声道数、位宽、帧时长等）
+ *
+ * @return 成功返回 OPRT_OK，失败返回相应错误码。
  */
-OPERATE_RET tdl_audio_driver_register(const char *name, TDD_AUDIO_INTFS_T *intfs);
+OPERATE_RET tdl_audio_driver_register(char *name, TDD_AUDIO_HANDLE_T tdd_hdl,
+                                      TDD_AUDIO_INTFS_T *intfs, TDD_AUDIO_INFO_T *info);
 
 ```
 
 ### 设备查找与管理接口
 
-根据设备名称在已注册的音频设备列表中查找对应的设备句柄，是获取设备控制权的关键接口。
+根据设备名称在已注册列表中查找句柄，用于后续打开、播放等操作。
 
 ```c
 /**
- * @brief Finds an audio device by device name.
- * 
- * This function searches for the corresponding audio device node in the registered 
- * audio device list based on the device name, and returns a device handle for 
- * subsequent operations.
- * 
- * @param name Name of the audio device to find
- * 
- * @return Returns audio device handle, or NULL if not found.
+ * @brief 按名称查找音频设备。
+ *
+ * @param name 设备名
+ * @param handle 输出设备句柄
+ *
+ * @return 成功返回 OPRT_OK，未找到返回相应错误码。
  */
-TDL_AUDIO_HANDLE_T tdl_audio_find(const char *name);
+OPERATE_RET tdl_audio_find(char *name, TDL_AUDIO_HANDLE_T *handle);
 
 ```
 
 ### 设备开启接口
 
-用于打开并初始化音频设备，包括硬件初始化、引脚配置等操作，使设备进入可用状态。
+打开并初始化音频设备（ADC/DAC、I2S、扬声器使能引脚等）。
 
 ```c
 /**
- * @brief Opens and initializes an audio device.
- * 
- * This function opens the specified audio device and initializes audio hardware 
- * including ADC/DAC, I2S interface, speaker enable pins, etc. After successful 
- * opening, the device enters a usable state.
- * 
- * @param audio_hdl Audio device handle
- * 
- * @return Returns OPRT_OK on successful opening, or an appropriate error code on failure.
+ * @brief 打开并初始化音频设备。
+ *
+ * @param handle 音频设备句柄
+ * @param mic_cb 麦克风数据回调（不需要采集时可传 NULL）
+ *
+ * @return 成功返回 OPRT_OK，失败返回相应错误码。
  */
-OPERATE_RET tdl_audio_open(TDL_AUDIO_HANDLE_T audio_hdl);
+OPERATE_RET tdl_audio_open(TDL_AUDIO_HANDLE_T handle, TDL_AUDIO_MIC_CB mic_cb);
 
 ```
 
 ### 设备关闭接口
 
-用于关闭音频设备并释放相关资源，包括去初始化硬件、禁用引脚等清理工作。
+关闭设备并释放资源。
 
 ```c
 /**
- * @brief Closes and deinitializes an audio device.
- * 
- * This function closes the specified audio device and deinitializes audio hardware 
- * including releasing I2S resources, disabling speaker pins, closing ADC/DAC, etc. 
- * After closing, the device becomes unavailable and needs to be reopened for use.
- * 
- * @param audio_hdl Audio device handle
- * 
- * @return Returns OPRT_OK on successful closing, or an appropriate error code on failure.
+ * @brief 关闭并去初始化音频设备。
+ *
+ * @param audio_hdl 音频设备句柄
+ *
+ * @return 成功返回 OPRT_OK，失败返回相应错误码。
  */
 OPERATE_RET tdl_audio_close(TDL_AUDIO_HANDLE_T audio_hdl);
 
@@ -554,19 +549,16 @@ OPERATE_RET tdl_audio_close(TDL_AUDIO_HANDLE_T audio_hdl);
 
 ### 音量调节接口
 
-用于动态调节音频输出音量，控制扬声器功放增益。
+动态调节播放音量（通常 0–100）。
 
 ```c
 /**
- * @brief Sets audio output volume.
- * 
- * This function adjusts the output volume of the audio device, controls the gain 
- * of the speaker amplifier, and implements dynamic volume adjustment functionality.
- * 
- * @param audio_hdl Audio device handle
- * @param volume Volume value, typically ranging from 0-100
- * 
- * @return Returns OPRT_OK on successful setting, or an appropriate error code on failure.
+ * @brief 设置播放音量。
+ *
+ * @param audio_hdl 音频设备句柄
+ * @param volume 音量值
+ *
+ * @return 成功返回 OPRT_OK，失败返回相应错误码。
  */
 OPERATE_RET tdl_audio_volume_set(TDL_AUDIO_HANDLE_T audio_hdl, uint8_t volume);
 
@@ -574,42 +566,33 @@ OPERATE_RET tdl_audio_volume_set(TDL_AUDIO_HANDLE_T audio_hdl, uint8_t volume);
 
 ### 音频播放控制接口
 
-用于播放音频数据，将音频帧通过硬件接口输出到扬声器。
+将 PCM 等数据送往硬件播放。
 
 ```c
 /**
- * @brief Plays audio data.
- * 
- * This function sends audio frame data to the audio device for playback. Data is 
- * output to the speaker through DAC or I2S interface. Supports different audio 
- * frame formats.
- * 
- * @param audio_hdl Audio device handle
- * @param frame_data Audio frame data pointer
- * @param frame_size Audio frame data size
- * @param format Audio frame format
- * 
- * @return Returns OPRT_OK on successful playback, or an appropriate error code on failure.
+ * @brief 播放音频数据。
+ *
+ * @param handle 音频设备句柄
+ * @param data PCM 数据指针
+ * @param len 数据长度（字节）
+ *
+ * @return 成功返回 OPRT_OK，失败返回相应错误码。
  */
-OPERATE_RET tdl_audio_play(TDL_AUDIO_HANDLE_T audio_hdl, void *frame_data, uint32_t frame_size,
-                           TDL_AUDIO_FRAME_FORMAT_E format);
+OPERATE_RET tdl_audio_play(TDL_AUDIO_HANDLE_T handle, uint8_t *data, uint32_t len);
 
 ```
 
 ### 音频停止播放接口
 
-用于停止当前音频播放，关闭音频输出并使设备进入静音状态。
+停止当前播放并静音输出。
 
 ```c
 /**
- * @brief Stops audio playback.
- * 
- * This function stops the currently ongoing audio playback, closes audio output, 
- * disables speaker amplifier, and puts the device into a mute state.
- * 
- * @param audio_hdl Audio device handle
- * 
- * @return Returns OPRT_OK on successful stopping, or an appropriate error code on failure.
+ * @brief 停止音频播放。
+ *
+ * @param audio_hdl 音频设备句柄
+ *
+ * @return 成功返回 OPRT_OK，失败返回相应错误码。
  */
 OPERATE_RET tdl_audio_play_stop(TDL_AUDIO_HANDLE_T audio_hdl);
 

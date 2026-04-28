@@ -6,7 +6,7 @@ title: "Step 1: Build Project"
 
 ## Select project
 
-In TuyaOpen, you can choose compilable projects from the `apps` and `example` directories.
+In TuyaOpen, you can choose compilable projects from the `apps` and `examples` directories.
 
 Take `switch_demo` as an example. Go to the project directory.
 

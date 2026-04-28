@@ -24,6 +24,8 @@ The TuyaOpen project currently supports WiFi & BLE dual-mode chips, including th
   imgHeight={150}
 />
 
+For TuyaOpen-oriented notes on T2 and T3 modules and BSP paths, see [T2 module overview](tuya-t2/overview-t2) and [T3 module overview](tuya-t3/overview-t3).
+
  - ESP32 Series
 
 <ChipRow 
@@ -58,11 +60,26 @@ The TuyaOpen project currently supports WiFi & BLE dual-mode chips, including th
 
 The TuyaOpen project currently supports the following development boards:
 
+ - Tuya Series
+
 <ChipRow 
    chipData={[
       { name: 'T2-U Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/en/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0' },
       { name: 'T5AI-Board Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/docs/hardware-specific/t5-ai-board/overview-t5-ai-board' },
       { name: 'T5AI-Core Development Board', img: 'https://images.tuyacn.com/fe-static/docs/img/aa9cceee-b0ee-4bb3-8b93-8e6e2e0013a3.png', link: 'https://tuyaopen.ai/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core' }
+   ]}
+   imgWidth={280}
+   imgHeight={200}
+/>
+
+ - ESP32 Series Development Boards
+
+<ChipRow 
+   chipData={[
+      { name: 'DNESP32S3-BOX', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/docs/hardware-specific/espressif/overview-esp32' },
+      { name: 'ESP32S3 Bread Compact', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/docs/hardware-specific/espressif/overview-esp32' },
+      { name: 'Waveshare ESP32-S3 AMOLED', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/docs/hardware-specific/espressif/overview-esp32' },
+      { name: 'Waveshare ESP32-C6 DevKit', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/docs/hardware-specific/espressif/overview-esp32' }
    ]}
    imgWidth={280}
    imgHeight={200}
