@@ -34,12 +34,12 @@ title: Chatbot
 | Board | Configuration file | UI | PID |
 | ------------------------------------------------------------ | ----------------------------------------- | ---------- | ---------------- |
 | T5AI_BOARD development board + 3.5-inch RGB565 LCD square screen (with touchscreen, LCD model: ILI9488, touch panel: GT115) | TUYA_T5AI_BOARD_LCD_3.5.config | WeChat-style interface | alon7qgyjj8yus74 |
-| DNESP32S3 development board (with built-in 320 × 340 SPI ST7789 LCD square screen) | DNESP32S3.config | WeChat-style interface | scig7pauzzid3w4b |
+| DNESP32S3 development board (with built-in 320 × 240 SPI ST7789 LCD square screen) | DNESP32S3.config | WeChat-style interface | scig7pauzzid3w4b |
 | Waveshare ESP32S3 development board (with built-in 364 × 448 SPI sh8601 LCD square screen) | WAVESHARE_ESP32S3_TOUCH_AMOLED_1_8.config | WeChat-style interface | lased5audtah8wcp |
 | T5AI_EVB development board (small white box with built-in 2.4-inch SPI565 ST7789 square screen) | TUYA_T5AI_EVB.config | Chatbot interface | r3ulobrs5nwreguj |
 | T5AI_MOJI_1_28 development board (with built-in 1.28-inch SPI565 GC9a01 round screen) | T5AI_MOJI_1.28.config | Chatbot interface | kf8wauubey0doaiz |
 | T5AI_MINI development board + 1.3-inch SPI565 ST7789 LCD square screen | TUYA_T5AI_MINI_LCD_1.3.config | Chatbot interface | 8btswykdiium7t8k |
-| DNESP32S3_BOX development board (with built-in 320 × 340 MCU8080 ST7789 LCD square screen) | DNESP32S3_BOX.config | Chatbot interface | znw8prbujidtzavd |
+| DNESP32S3_BOX development board (with built-in 320 × 240 MCU8080 ST7789 LCD square screen) | DNESP32S3_BOX.config | Chatbot interface | znw8prbujidtzavd |
 | ESP32S3 breadboard (with built-in 128 × 32 I2C SSD1306 OLED screen) | ESP32S3_BREAD_COMPACT_WIFI.config | Scrolling subtitles | j1y437proohznfbs |
 | XINGXZHI_ESP32S3_CUBE development board (with built-in 128 × 64 I2C SSD1306 OLED screen) | XINGZHI_ESP32S3_CUBE_0_96OLED_WIFI.config | Scrolling subtitles | uyidyzglm2m1bpcl |
 
