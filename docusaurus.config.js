@@ -149,6 +149,10 @@ const config = {
               to: '/get-hardware',
             },
             {
+              label: 'T5 × TuyaOpen',
+              to: '/t5-tuyaopen',
+            },
+            {
               label: 'Get Code',
               href: 'https://github.com/tuya/TuyaOpen',
               target: '_blank',

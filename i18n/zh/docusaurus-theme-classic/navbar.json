@@ -27,6 +27,10 @@
     "message": "获取代码",
     "description": "Navbar item with label Get Yours"
   },
+  "item.label.T5 × TuyaOpen": {
+    "message": "T5 × TuyaOpen",
+    "description": "Navbar link to T5 and TuyaOpen marketing landing page"
+  },
   "item.label.Blog": {
     "message": "博客",
     "description": "Navbar item with label Blog"
