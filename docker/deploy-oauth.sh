@@ -63,3 +63,4 @@ fi
 
 echo -e "${GREEN}🔐 OAuth server ready at: http://127.0.0.1:$PORT/oauth/auth${NC}"
 echo -e "${YELLOW}📝 Make sure nginx proxies /oauth/ to port $PORT${NC}"
+
