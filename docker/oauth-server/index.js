@@ -10,6 +10,7 @@ const express = require('express')
 const crypto = require('crypto')
 
 const app = express()
+app.set('trust proxy', true)
 const PORT = process.env.OAUTH_PORT || 9060
 
 // GitHub OAuth App credentials
@@ -48,9 +49,16 @@ app.get('/oauth/auth', (req, res) => {
   const state = crypto.randomBytes(16).toString('hex')
   stateTokens.set(state, { created: Date.now() })
 
+  // Build redirect_uri from the incoming request (trust proxy must be enabled)
+  const protocol = req.protocol // 'https' when trust proxy is set and X-Forwarded-Proto is sent
+  const host = req.get('host')
+  const redirectUri = `${protocol}://${host}/oauth/callback`
+
+  console.log(`[OAuth] Auth request - redirecting to GitHub (redirect_uri: ${redirectUri})`)
+
   const params = new URLSearchParams({
     client_id: CLIENT_ID,
-    redirect_uri: `${req.protocol}://${req.get('host')}/oauth/callback`,
+    redirect_uri: redirectUri,
     scope: SCOPES,
     state: state,
   })
@@ -60,19 +68,27 @@ app.get('/oauth/auth', (req, res) => {
 
 /**
  * Step 2: Handle the callback from GitHub, exchange code for token
+ *
+ * Also handles the case where Decap CMS opens the popup directly to /oauth/callback
+ * with ?provider=github&site_id=...&scope=repo (no code/state). In that case,
+ * redirect to the proper auth flow.
  */
 app.get('/oauth/callback', async (req, res) => {
   const { code, state } = req.query
 
+  // If there's no code, this is likely Decap CMS opening the popup directly
+  // (old auth_endpoint config). Redirect to the proper auth flow.
+  if (!code) {
+    console.log('[OAuth] Callback hit without code - redirecting to /oauth/auth')
+    return res.redirect('/oauth/auth')
+  }
+
   // Validate state to prevent CSRF
   if (!state || !stateTokens.has(state)) {
+    console.log('[OAuth] Invalid state parameter received')
     return res.status(403).send('Invalid state parameter. Please try logging in again.')
   }
   stateTokens.delete(state)
-
-  if (!code) {
-    return res.status(400).send('Missing authorization code.')
-  }
 
   try {
     // Exchange code for access token
