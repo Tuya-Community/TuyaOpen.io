@@ -52,5 +52,8 @@ else
   exit 1
 fi
 
+echo -e "${YELLOW}Pruning unused Docker resources...${NC}"
+docker system prune -f
+
 echo -e "${GREEN}🌐 Your site should be available at: https://tuyaopen.io${NC}"
 echo -e "${YELLOW}📝 Note: Update nginx config if needed. See nginx-commands.md for help.${NC}" 
