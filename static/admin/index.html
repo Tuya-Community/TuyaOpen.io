@@ -35,7 +35,8 @@
     // Shared field definitions
     const blogFields = [
       { label: 'Title', name: 'title', widget: 'string' },
-      { label: 'Slug', name: 'slug', widget: 'string', required: false },
+      { label: 'Filename (slug)', name: 'slug', widget: 'string', required: false,
+        hint: 'Path: blog/YYYY-MM-DD-<filename>.md — Only edit the filename part. The date prefix is added automatically. ⚠️ EN and ZH versions MUST use the same filename for i18n linking to work.' },
       { label: 'Authors', name: 'authors', widget: 'list', default: ['tuya'], field: { label: 'Author', name: 'author', widget: 'string' } },
       { label: 'Date', name: 'date', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, required: false },
       { label: 'Image', name: 'image', widget: 'image', required: false, default: '/img/home/tuyaopen-logo-social-preview.png' },
@@ -47,6 +48,8 @@
 
     const projectFields = [
       { label: 'Title', name: 'title', widget: 'string' },
+      { label: 'Filename (slug)', name: 'slug', widget: 'string', required: false,
+        hint: 'Path: docs/projects/<filename>.md — This becomes the URL slug. ⚠️ EN and ZH versions MUST use the same filename for i18n linking to work.' },
       { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false },
       { label: 'Sidebar Position', name: 'sidebar_position', widget: 'number', required: false, value_type: 'int', min: 1 },
       { label: 'Description', name: 'description', widget: 'text', required: false },
@@ -83,7 +86,7 @@
         slug: {
           encoding: 'ascii',
           clean_accents: true,
-          sanitize_replacement: '-',
+          sanitize_replacement: '_',
         },
 
         collections: [
