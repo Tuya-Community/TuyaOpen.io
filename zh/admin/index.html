@@ -5,154 +5,6 @@
   <title>TuyaOpen CMS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/img/favicon.ico" />
-  <style>
-    body { margin: 0; }
-
-    /* ─── Custom Admin Styling ───────────────────────────────────── */
-    [data-testid="login-page"],
-    .notif__container,
-    #nc-root > div:first-child {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    /* Login button */
-    [data-testid="login-button"] {
-      background: linear-gradient(135deg, #FF6B35 0%, #FF4444 100%) !important;
-      border: none !important;
-      border-radius: 8px !important;
-      padding: 12px 32px !important;
-      font-weight: 600 !important;
-      font-size: 15px !important;
-      letter-spacing: 0.3px !important;
-      box-shadow: 0 4px 14px rgba(255, 107, 53, 0.35) !important;
-      transition: transform 0.15s, box-shadow 0.15s !important;
-    }
-    [data-testid="login-button"]:hover {
-      transform: translateY(-1px) !important;
-      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.45) !important;
-    }
-
-    /* Navbar accent */
-    header { border-bottom: 2px solid #FF6B35 !important; }
-
-    /* Sidebar polish */
-    [class*="SidebarNavList"] a:hover,
-    [class*="SidebarNavList"] a[class*="active"] {
-      border-left-color: #FF6B35 !important;
-    }
-
-    /* Editor toolbar accent */
-    [class*="ToolbarButton"][class*="active"] {
-      color: #FF6B35 !important;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #f8f9fa; }
-    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #999; }
-
-    /* ─── i18n Warning Badge ──────────────────────────────────────── */
-    .i18n-missing-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      background: #FEF3CD;
-      color: #856404;
-      border: 1px solid #FFC107;
-      margin-left: 8px;
-    }
-
-    /* ─── Entry Action Toolbar ────────────────────────────────────── */
-    .entry-actions-bar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: #f8f9fa;
-      border-bottom: 1px solid #e9ecef;
-      font-family: 'Inter', -apple-system, sans-serif;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .entry-actions-bar .action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 6px 12px;
-      border: 1px solid #dee2e6;
-      border-radius: 6px;
-      background: #fff;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-      color: #495057;
-    }
-    .entry-actions-bar .action-btn:hover {
-      background: #e9ecef;
-      border-color: #adb5bd;
-    }
-    .entry-actions-bar .action-btn.danger { color: #dc3545; border-color: #f5c6cb; }
-    .entry-actions-bar .action-btn.danger:hover { background: #f8d7da; }
-    .entry-actions-bar .action-btn.success { color: #28a745; border-color: #c3e6cb; }
-    .entry-actions-bar .action-btn.success:hover { background: #d4edda; }
-    .entry-actions-bar .action-btn.warning { color: #856404; border-color: #ffc107; }
-    .entry-actions-bar .action-btn.warning:hover { background: #fff3cd; }
-    .entry-actions-bar .action-btn.primary { color: #fff; background: #FF6B35; border-color: #FF6B35; }
-    .entry-actions-bar .action-btn.primary:hover { background: #e85d2c; }
-    .entry-actions-bar .separator {
-      width: 1px;
-      height: 24px;
-      background: #dee2e6;
-      margin: 0 4px;
-    }
-    .entry-actions-bar .btn-group {
-      display: inline-flex;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid #dee2e6;
-    }
-    .entry-actions-bar .btn-group button {
-      padding: 6px 14px;
-      border: none;
-      background: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s;
-      color: #495057;
-    }
-    .entry-actions-bar .btn-group button.active {
-      background: #FF6B35;
-      color: #fff;
-    }
-    .entry-actions-bar .btn-group button.active-reviewing {
-      background: #ffc107;
-      color: #664d03;
-    }
-    .entry-actions-bar .btn-group button.active-posted {
-      background: #28a745;
-      color: #fff;
-    }
-    .entry-actions-bar .btn-group button:hover:not(.active):not(.active-reviewing):not(.active-posted) {
-      background: #f1f3f5;
-    }
-    .entry-actions-bar .label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #868e96;
-      margin-right: 4px;
-    }
-  </style>
 </head>
 <body>
   <div id="nc-root"></div>
@@ -162,37 +14,42 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
 
   <script>
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-    // ─── Field Definitions ─────────────────────────────────────────────
-    // No i18n field-level properties needed since we use paired collections
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Decap CMS Configuration for TuyaOpen.io
+    //
+    // Docusaurus i18n layout:
+    //   EN blog     → blog/<file>.md
+    //   ZH blog     → i18n/zh/docusaurus-plugin-content-blog/<file>.md
+    //   EN projects → docs/projects/<file>.md
+    //   ZH projects → i18n/zh/docusaurus-plugin-content-docs/current/projects/<file>.md
+    //
+    // Separate collections per language (Decap's i18n toggle doesn't support
+    // Docusaurus's different directory trees per locale).
+    // ─────────────────────────────────────────────────────────────────────────────
 
-    const docFields = [
-      { label: 'Title', name: 'title', widget: 'string', hint: 'Page title shown in browser tab and sidebar' },
-      { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false, hint: 'Override sidebar display name' },
-      { label: 'Sidebar Position', name: 'sidebar_position', widget: 'number', required: false, value_type: 'int', min: 1, hint: 'Order in sidebar (lower = higher)' },
-      { label: 'Description', name: 'description', widget: 'text', required: false, hint: 'SEO description' },
-      { label: 'Tags', name: 'tags', widget: 'list', required: false, field: { label: 'Tag', name: 'tag', widget: 'string' } },
-      { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false, hint: 'Draft entries are hidden from the live site' },
-      { label: 'Body', name: 'body', widget: 'markdown' },
-    ];
-
+    // Shared field definitions
     const blogFields = [
       { label: 'Title', name: 'title', widget: 'string' },
-      { label: 'Slug', name: 'slug', widget: 'string', required: false, hint: 'URL slug (auto from title if empty)' },
-      { label: 'Authors', name: 'authors', widget: 'list', default: ['tuya'], field: { label: 'Author', name: 'author', widget: 'string' }, hint: 'Must match blog/authors.yml key' },
+      { label: 'Filename (slug)', name: 'slug', widget: 'string', required: false,
+        hint: 'Path: blog/YYYY-MM-DD-<filename>.md — Only edit the filename part. The date prefix is added automatically. ⚠️ EN and ZH versions MUST use the same filename for i18n linking to work.' },
+      { label: 'Authors', name: 'authors', widget: 'list', default: ['tuya'], field: { label: 'Author', name: 'author', widget: 'string' } },
       { label: 'Date', name: 'date', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, required: false },
       { label: 'Image', name: 'image', widget: 'image', required: false, default: '/img/home/tuyaopen-logo-social-preview.png' },
       { label: 'Tags', name: 'tags', widget: 'list', default: ['TuyaOpen'], field: { label: 'Tag', name: 'tag', widget: 'string' } },
       { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false },
-      { label: 'Unlisted', name: 'unlisted', widget: 'boolean', default: false, required: false, hint: 'Hide from blog index but still accessible via URL' },
+      { label: 'Unlisted', name: 'unlisted', widget: 'boolean', default: false, required: false },
       { label: 'Body', name: 'body', widget: 'markdown' },
     ];
 
     const projectFields = [
       { label: 'Title', name: 'title', widget: 'string' },
+      { label: 'Filename (slug)', name: 'slug', widget: 'string', required: false,
+        hint: 'Path: docs/projects/<filename>.md — This becomes the URL slug. ⚠️ EN and ZH versions MUST use the same filename for i18n linking to work.' },
       { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false },
       { label: 'Sidebar Position', name: 'sidebar_position', widget: 'number', required: false, value_type: 'int', min: 1 },
       { label: 'Description', name: 'description', widget: 'text', required: false },
@@ -202,18 +59,6 @@
       { label: 'Body', name: 'body', widget: 'markdown' },
     ];
 
-    // ─── Collection Pair Mapping ───────────────────────────────────────
-    // Maps EN collection names to ZH collection names and vice versa
-    const COLLECTION_PAIRS = {
-      'docs':        'docs_zh',
-      'docs_zh':     'docs',
-      'blog':        'blog_zh',
-      'blog_zh':     'blog',
-      'projects':    'projects_zh',
-      'projects_zh': 'projects',
-    };
-
-    // ─── CMS Init ──────────────────────────────────────────────────────
     window.CMS.init({
       config: {
         load_config_file: false,
@@ -222,746 +67,179 @@
           : {
               name: 'github',
               repo: 'Tuya-Community/TuyaOpen.io',
-              branch: 'main',
+              branch: 'master',
               base_url: 'https://tuyaopen.ai',
-              auth_endpoint: '/oauth/callback',
+              auth_endpoint: '/oauth/auth',
               app_id: 'Ov23li0MAyFEPdgrMMwm',
               squash_merges: true,
             },
         local_backend: isLocal,
-
-        // Editorial Workflow — enables Draft → In Review → Ready → Published
-        // Creates a branch + PR for each unpublished entry. Changes are merged on publish.
-        // With squash_merges, all edits are consolidated into one clean commit.
         publish_mode: isLocal ? undefined : 'editorial_workflow',
-        show_preview_links: true,
 
-        // Commit messages
-        commit_messages: {
-          create: '✨ Create {{collection}} "{{slug}}"',
-          update: '📝 Update {{collection}} "{{slug}}"',
-          delete: '🗑️ Delete {{collection}} "{{slug}}"',
-          uploadMedia: '🖼️ Upload "{{path}}"',
-          deleteMedia: '🗑️ Delete media "{{path}}"',
-        },
-
-        // Site
         site_url: 'https://tuyaopen.ai',
         display_url: 'https://tuyaopen.ai',
         logo_url: '/img/home/tuyaopen-logo-dark.png',
 
-        // Media
         media_folder: 'static/img',
         public_folder: '/img',
 
-        // Slug
         slug: {
           encoding: 'ascii',
           clean_accents: true,
-          sanitize_replacement: '-',
+          sanitize_replacement: '_',
         },
 
-        // Editor
-        editor: { preview: true },
-        search: true,
-
-        // ─── NO global i18n block ──────────────────────────────────
-        // We use paired collections instead of Decap's native i18n
-        // because Docusaurus uses different folder structures for EN/ZH
-        // EN docs: docs/
-        // ZH docs: i18n/zh/docusaurus-plugin-content-docs/current/
-        // EN blog: blog/
-        // ZH blog: i18n/zh/docusaurus-plugin-content-blog/
-
-        // ─── Collections ─────────────────────────────────────────────
         collections: [
-          // ═══ DOCUMENTATION (EN) ════════════════════════════════════
+          // ═══════════════════════════════════════════════════════════════
+          //  BLOG (English) → blog/
+          // ═══════════════════════════════════════════════════════════════
           {
-            name: 'docs',
-            label: '📄 Docs (EN)',
-            label_singular: 'Doc Page',
-            folder: 'docs',
-            create: true,
-            delete: true,
-            nested: { depth: 100, summary: '{{title}}' },
-            slug: '{{slug}}',
-            summary: '{{title}}',
-            description: 'English documentation. Use the Lang toggle in toolbar to switch to Chinese version.',
-            meta: { path: { widget: 'string', label: 'Path', index_file: 'index' } },
-            sortable_fields: ['title', 'sidebar_position'],
-            view_filters: [
-              { label: 'Drafts', field: 'draft', pattern: true },
-            ],
-            fields: docFields,
-          },
-
-          // ═══ DOCUMENTATION (ZH) ════════════════════════════════════
-          {
-            name: 'docs_zh',
-            label: '📄 文档 (ZH)',
-            label_singular: 'Doc Page',
-            folder: 'i18n/zh/docusaurus-plugin-content-docs/current',
-            create: true,
-            delete: true,
-            nested: { depth: 100, summary: '{{title}}' },
-            slug: '{{slug}}',
-            summary: '{{title}}',
-            description: '中文文档。使用工具栏的 Lang 切换按钮可跳转到英文版本。',
-            meta: { path: { widget: 'string', label: 'Path', index_file: 'index' } },
-            sortable_fields: ['title', 'sidebar_position'],
-            view_filters: [
-              { label: 'Drafts', field: 'draft', pattern: true },
-            ],
-            fields: docFields,
-          },
-
-          // ═══ BLOG (EN) ═════════════════════════════════════════════
-          {
-            name: 'blog',
-            label: '✏️ Blog (EN)',
+            name: 'blog-en',
+            label: '📝 Blog (EN)',
             label_singular: 'Blog Post',
             folder: 'blog',
             create: true,
             delete: true,
             slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
             summary: '{{title}} — {{year}}/{{month}}/{{day}}',
-            description: 'English blog posts. Use Lang toggle to switch to Chinese version.',
             sortable_fields: ['title', 'date'],
             view_filters: [
               { label: 'Drafts', field: 'draft', pattern: true },
             ],
             fields: blogFields,
+            extension: 'md',
           },
-
-          // ═══ BLOG (ZH) ═════════════════════════════════════════════
+          // ═══════════════════════════════════════════════════════════════
+          //  BLOG (Chinese) → i18n/zh/docusaurus-plugin-content-blog/
+          // ═══════════════════════════════════════════════════════════════
           {
-            name: 'blog_zh',
-            label: '✏️ 博客 (ZH)',
+            name: 'blog-zh',
+            label: '📝 Blog (ZH)',
             label_singular: 'Blog Post',
             folder: 'i18n/zh/docusaurus-plugin-content-blog',
             create: true,
             delete: true,
             slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
             summary: '{{title}} — {{year}}/{{month}}/{{day}}',
-            description: '中文博客。使用 Lang 切换按钮可跳转到英文版本。',
             sortable_fields: ['title', 'date'],
             view_filters: [
               { label: 'Drafts', field: 'draft', pattern: true },
             ],
             fields: blogFields,
+            extension: 'md',
           },
-
-          // ═══ PROJECTS (EN) ═════════════════════════════════════════
+          // ═══════════════════════════════════════════════════════════════
+          //  PROJECTS (English) → docs/projects/
+          // ═══════════════════════════════════════════════════════════════
           {
-            name: 'projects',
+            name: 'projects-en',
             label: '🚀 Projects (EN)',
             label_singular: 'Project',
             folder: 'docs/projects',
             create: true,
             delete: true,
-            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-            summary: '{{title}} — {{year}}/{{month}}/{{day}}',
-            description: 'Community project showcases (English).',
-            sortable_fields: ['title'],
+            slug: '{{slug}}',
+            summary: '{{title}}',
+            sortable_fields: ['title', 'sidebar_position'],
             fields: projectFields,
+            extension: 'md',
           },
-
-          // ═══ PROJECTS (ZH) ═════════════════════════════════════════
+          // ═══════════════════════════════════════════════════════════════
+          //  PROJECTS (Chinese) → i18n/zh/.../current/projects/
+          // ═══════════════════════════════════════════════════════════════
           {
-            name: 'projects_zh',
-            label: '🚀 项目 (ZH)',
+            name: 'projects-zh',
+            label: '🚀 Projects (ZH)',
             label_singular: 'Project',
             folder: 'i18n/zh/docusaurus-plugin-content-docs/current/projects',
             create: true,
             delete: true,
-            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-            summary: '{{title}} — {{year}}/{{month}}/{{day}}',
-            description: '社区项目展示（中文）。',
-            sortable_fields: ['title'],
+            slug: '{{slug}}',
+            summary: '{{title}}',
+            sortable_fields: ['title', 'sidebar_position'],
             fields: projectFields,
+            extension: 'md',
           },
         ],
       },
     });
 
-    // ─── Custom Preview Styles ─────────────────────────────────────────
-    CMS.registerPreviewStyle(`
-      body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        padding: 24px 32px;
-        max-width: 820px;
-        margin: 0 auto;
-        line-height: 1.7;
-        color: #1a1a2e;
-      }
-      h1 { font-size: 2em; font-weight: 700; border-bottom: 2px solid #FF6B35; padding-bottom: 8px; }
-      h2 { font-size: 1.5em; font-weight: 600; margin-top: 1.5em; }
-      h3 { font-size: 1.25em; font-weight: 600; }
-      a { color: #FF6B35; text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      code { background: #f4f4f5; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
-      pre { background: #1e1e2e; color: #cdd6f4; padding: 16px; border-radius: 8px; overflow-x: auto; }
-      pre code { background: none; padding: 0; color: inherit; }
-      blockquote { border-left: 4px solid #FF6B35; margin: 1em 0; padding: 0.5em 1em; background: #fff7f3; }
-      img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
-      table { border-collapse: collapse; width: 100%; }
-      th, td { border: 1px solid #e0e0e0; padding: 8px 12px; text-align: left; }
-      th { background: #f8f9fa; font-weight: 600; }
-    `, { raw: true });
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Preview Styling & Custom Template
+    // ─────────────────────────────────────────────────────────────────────────────
 
-    // ═══════════════════════════════════════════════════════════════════
-    // Custom Editor Toolbar
-    // Injects: Language toggle (navigates between paired collections),
-    //          Online/Offline, Review status, Duplicate, Delete
-    // ═══════════════════════════════════════════════════════════════════
-    (function enhanceEditor() {
-      let toolbarInjected = false;
+    // Inject Docusaurus-like CSS into the preview iframe
+    CMS.registerPreviewStyle('/admin/preview.css');
 
-      // ─── Route Parsing Helpers ──────────────────────────────────────
-      // Decap hash routes look like:
-      //   #/collections/docs/entries/quick-start/unboxing
-      //   #/collections/blog/entries/2025-06-27-developer-contest
-      //   #/collections/docs/new
-      function parseRoute() {
-        const hash = window.location.hash || '';
-        const match = hash.match(/#\/collections\/([^/]+)\/(entries\/(.+)|new)/);
-        if (!match) return null;
-        return {
-          collection: match[1],
-          isNew: !match[3],
-          slug: match[3] || '',
-        };
-      }
+    // Custom preview component that renders markdown via markdown-it
+    // and handles Docusaurus-specific syntax (admonitions, imports, JSX)
+    var TuyaPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var title = entry.getIn(['data', 'title']) || '';
+        var date = entry.getIn(['data', 'date']) || '';
+        var authors = entry.getIn(['data', 'authors']);
+        var tags = entry.getIn(['data', 'tags']);
+        var image = entry.getIn(['data', 'image']) || '';
+        var body = entry.getIn(['data', 'body']) || '';
 
-      function getCurrentLocale() {
-        const route = parseRoute();
-        if (!route) return 'en';
-        return route.collection.endsWith('_zh') ? 'zh' : 'en';
-      }
+        // Preprocess Docusaurus-specific syntax before markdown rendering
+        var processed = body
+          // Remove ES import statements
+          .replace(/^import\s+.*$/gm, '')
+          // Remove JSX comments {/* ... */}
+          .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
+          // Remove self-closing JSX tags like <Component ... />
+          .replace(/<[A-Z][A-Za-z]*\s[^>]*\/>/g, '')
+          // Remove opening+closing JSX wrapper tags (keep inner content)
+          .replace(/<[A-Z][A-Za-z]*[^>]*>([\s\S]*?)<\/[A-Z][A-Za-z]*>/g, '$1')
+          // Transform admonitions :::type[title] ... ::: into HTML divs
+          .replace(/^:::(note|tip|info|warning|caution|danger|important)(?:\s*\[(.+?)\])?\s*\n([\s\S]*?)^:::\s*$/gm,
+            function(match, type, customTitle, content) {
+              var heading = customTitle || type.charAt(0).toUpperCase() + type.slice(1);
+              return '<div class="admonition admonition-' + type + '">' +
+                '<div class="admonition-heading">' + heading + '</div>' +
+                '<div class="admonition-content">\n\n' + content.trim() + '\n\n</div></div>';
+            });
 
-      function getPairedCollection(collectionName) {
-        return COLLECTION_PAIRS[collectionName] || null;
-      }
+        // Render markdown with markdown-it
+        var md = window.markdownit({ html: true, linkify: true, typographer: true });
+        var rendered = md.render(processed);
 
-      // Navigate to the same entry slug in the paired (other language) collection
-      function switchToLocale(targetLocale) {
-        const route = parseRoute();
-        if (!route) return;
-
-        const currentLocale = getCurrentLocale();
-        if (currentLocale === targetLocale) return;
-
-        const pairedCollection = getPairedCollection(route.collection);
-        if (!pairedCollection) return;
-
-        if (route.isNew) {
-          window.location.hash = `#/collections/${pairedCollection}/new`;
-        } else {
-          window.location.hash = `#/collections/${pairedCollection}/entries/${route.slug}`;
+        // Build the header section
+        var headerParts = [];
+        if (title) {
+          headerParts.push(h('h1', { className: 'preview-title' }, title));
         }
-      }
-
-      // Watch for route changes and editor appearance
-      function startWatching() {
-        const observer = new MutationObserver(debounce(() => {
-          const isEditorView = isInEditor();
-          if (isEditorView && !document.querySelector('.entry-actions-bar')) {
-            injectToolbar();
-          } else if (!isEditorView && document.querySelector('.entry-actions-bar')) {
-            document.querySelector('.entry-actions-bar').remove();
-            toolbarInjected = false;
-          }
-        }, 300));
-
-        observer.observe(document.getElementById('nc-root'), {
-          childList: true,
-          subtree: true,
-        });
-
-        // Also listen for hash changes to update toolbar state
-        window.addEventListener('hashchange', debounce(() => {
-          const bar = document.querySelector('.entry-actions-bar');
-          if (bar) {
-            updateToolbarLocaleState(bar);
-          }
-        }, 200));
-      }
-
-      function debounce(fn, ms) {
-        let timer;
-        return function() {
-          clearTimeout(timer);
-          timer = setTimeout(fn, ms);
-        };
-      }
-
-      function isInEditor() {
-        const hash = window.location.hash || '';
-        return hash.includes('/entries/') || hash.includes('/new');
-      }
-
-      function injectToolbar() {
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const editorWrapper = ncRoot.querySelector('[class*="AppMainContainer"]')
-          || ncRoot.querySelector('main')
-          || ncRoot.querySelector('[class*="Main"]');
-
-        if (!editorWrapper) {
-          setTimeout(() => {
-            const ew = ncRoot.querySelector('[class*="AppMainContainer"]')
-              || ncRoot.querySelector('main')
-              || ncRoot.querySelector('[class*="Main"]');
-            if (ew && !document.querySelector('.entry-actions-bar')) {
-              buildAndInsertToolbar(ew);
-            }
-          }, 800);
-          return;
+        if (date || (authors && authors.size)) {
+          var metaParts = [];
+          if (authors && authors.size) metaParts.push('By ' + authors.toJS().join(', '));
+          if (date) metaParts.push(new Date(date).toLocaleDateString());
+          headerParts.push(h('p', { className: 'preview-meta' }, metaParts.join(' · ')));
+        }
+        if (tags && tags.size) {
+          headerParts.push(h('div', { className: 'preview-tags' },
+            tags.toJS().map(function(tag) {
+              return h('span', { className: 'preview-tag', key: tag }, tag);
+            })
+          ));
+        }
+        if (image) {
+          headerParts.push(h('img', { src: image, className: 'preview-hero', alt: title }));
         }
 
-        buildAndInsertToolbar(editorWrapper);
-      }
-
-      function buildAndInsertToolbar(container) {
-        if (document.querySelector('.entry-actions-bar')) return;
-
-        const bar = document.createElement('div');
-        bar.className = 'entry-actions-bar';
-
-        const currentLocale = getCurrentLocale();
-
-        // ─── Language Toggle ─────────────────────────────────────────
-        const langLabel = createLabel('Lang');
-        bar.appendChild(langLabel);
-
-        const langGroup = document.createElement('div');
-        langGroup.className = 'btn-group';
-        langGroup.id = 'lang-toggle-group';
-
-        const btnEN = document.createElement('button');
-        btnEN.textContent = 'EN';
-        btnEN.className = currentLocale === 'en' ? 'active' : '';
-        btnEN.dataset.locale = 'en';
-
-        const btnZH = document.createElement('button');
-        btnZH.textContent = 'ZH';
-        btnZH.className = currentLocale === 'zh' ? 'active' : '';
-        btnZH.dataset.locale = 'zh';
-
-        btnEN.onclick = () => {
-          switchToLocale('en');
-        };
-
-        btnZH.onclick = () => {
-          switchToLocale('zh');
-        };
-
-        langGroup.appendChild(btnEN);
-        langGroup.appendChild(btnZH);
-        bar.appendChild(langGroup);
-
-        bar.appendChild(createSeparator());
-
-        // ─── Online / Offline (Draft) ────────────────────────────────
-        const statusBtn = document.createElement('button');
-        statusBtn.className = 'action-btn success';
-        statusBtn.textContent = '● Online';
-        statusBtn.title = 'Toggle draft/published status';
-        statusBtn.onclick = () => toggleDraftField(statusBtn);
-        bar.appendChild(statusBtn);
-
-        bar.appendChild(createSeparator());
-
-        // ─── Review Status ───────────────────────────────────────────
-        const reviewLabel = createLabel('Status');
-        bar.appendChild(reviewLabel);
-
-        const reviewGroup = document.createElement('div');
-        reviewGroup.className = 'btn-group';
-
-        const btnReviewing = document.createElement('button');
-        btnReviewing.textContent = '👀 Reviewing';
-
-        const btnPosted = document.createElement('button');
-        btnPosted.textContent = '✅ Posted';
-
-        btnReviewing.onclick = () => {
-          const wasActive = btnReviewing.classList.contains('active-reviewing');
-          btnReviewing.classList.toggle('active-reviewing', !wasActive);
-          btnPosted.classList.remove('active-posted');
-          if (!wasActive) {
-            setWorkflowStatus('pending_review');
-          }
-        };
-
-        btnPosted.onclick = () => {
-          const wasActive = btnPosted.classList.contains('active-posted');
-          btnPosted.classList.toggle('active-posted', !wasActive);
-          btnReviewing.classList.remove('active-reviewing');
-          if (!wasActive) {
-            setWorkflowStatus('pending_publish');
-          }
-        };
-
-        reviewGroup.appendChild(btnReviewing);
-        reviewGroup.appendChild(btnPosted);
-        bar.appendChild(reviewGroup);
-
-        bar.appendChild(createSeparator());
-
-        // ─── Duplicate ───────────────────────────────────────────────
-        const dupBtn = document.createElement('button');
-        dupBtn.className = 'action-btn';
-        dupBtn.textContent = '📋 Duplicate';
-        dupBtn.title = 'Duplicate this entry';
-        dupBtn.onclick = () => triggerDecapAction('duplicate');
-        bar.appendChild(dupBtn);
-
-        // ─── Delete ──────────────────────────────────────────────────
-        const delBtn = document.createElement('button');
-        delBtn.className = 'action-btn danger';
-        delBtn.textContent = '🗑️ Delete';
-        delBtn.title = 'Delete this entry';
-        delBtn.onclick = () => {
-          if (confirm('⚠️ Delete this entry?\nThis removes this language version. Delete the other language separately if needed.')) {
-            triggerDecapAction('delete');
-          }
-        };
-        bar.appendChild(delBtn);
-
-        // Insert at the very top of the container
-        container.insertBefore(bar, container.firstChild);
-        toolbarInjected = true;
-
-        // Detect initial states after a brief delay
-        setTimeout(() => {
-          detectDraftState(statusBtn);
-          detectWorkflowState(btnReviewing, btnPosted);
-        }, 600);
-      }
-
-      function updateToolbarLocaleState(bar) {
-        const langGroup = bar.querySelector('#lang-toggle-group');
-        if (!langGroup) return;
-        const currentLocale = getCurrentLocale();
-        const buttons = langGroup.querySelectorAll('button');
-        buttons.forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.locale === currentLocale);
-        });
-      }
-
-      function createSeparator() {
-        const sep = document.createElement('div');
-        sep.className = 'separator';
-        return sep;
-      }
-
-      function createLabel(text) {
-        const lbl = document.createElement('span');
-        lbl.className = 'label';
-        lbl.textContent = text;
-        return lbl;
-      }
-
-      // ─── Draft Field Toggle ──────────────────────────────────────────
-      function toggleDraftField(statusBtn) {
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const allLabels = ncRoot.querySelectorAll('label, [class*="FieldLabel"]');
-        for (const label of allLabels) {
-          if (label.textContent.trim().toLowerCase() === 'draft') {
-            const parent = label.closest('[class*="Field"], [class*="Widget"], [class*="field"]') || label.parentElement;
-            if (!parent) continue;
-
-            const toggle = parent.querySelector('input[type="checkbox"], [role="switch"], [class*="Toggle"]');
-            if (toggle) {
-              toggle.click();
-              setTimeout(() => detectDraftState(statusBtn), 200);
-              return;
-            }
-
-            const btn = parent.querySelector('button');
-            if (btn) {
-              btn.click();
-              setTimeout(() => detectDraftState(statusBtn), 200);
-              return;
-            }
-          }
-        }
-      }
-
-      function detectDraftState(statusBtn) {
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const allLabels = ncRoot.querySelectorAll('label, [class*="FieldLabel"]');
-        for (const label of allLabels) {
-          if (label.textContent.trim().toLowerCase() === 'draft') {
-            const parent = label.closest('[class*="Field"], [class*="Widget"], [class*="field"]') || label.parentElement;
-            if (!parent) continue;
-
-            const toggle = parent.querySelector('input[type="checkbox"], [role="switch"]');
-            if (toggle) {
-              const isChecked = toggle.checked || toggle.getAttribute('aria-checked') === 'true';
-              if (isChecked) {
-                statusBtn.textContent = '● Offline';
-                statusBtn.className = 'action-btn warning';
-              } else {
-                statusBtn.textContent = '● Online';
-                statusBtn.className = 'action-btn success';
-              }
-              return;
-            }
-          }
-        }
-      }
-
-      // ─── Workflow Status ──────────────────────────────────────────────
-      function setWorkflowStatus(status) {
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const allBtns = ncRoot.querySelectorAll('button');
-        for (const btn of allBtns) {
-          const text = btn.textContent.toLowerCase().trim();
-          if (text.includes('set status') || text.includes('status:') || text.includes('change status')) {
-            btn.click();
-            setTimeout(() => {
-              const menuItems = document.querySelectorAll('[role="option"], [role="menuitem"], [class*="Option"], [class*="MenuItem"], li');
-              for (const item of menuItems) {
-                const itemText = item.textContent.toLowerCase();
-                if (status === 'pending_review' && (itemText.includes('review') || itemText.includes('in review'))) {
-                  item.click();
-                  return;
-                }
-                if (status === 'pending_publish' && (itemText.includes('ready') || itemText.includes('approved'))) {
-                  item.click();
-                  return;
-                }
-              }
-            }, 200);
-            return;
-          }
-        }
-
-        const selects = ncRoot.querySelectorAll('select');
-        for (const sel of selects) {
-          const options = sel.querySelectorAll('option');
-          for (const opt of options) {
-            const text = opt.textContent.toLowerCase();
-            if (status === 'pending_review' && text.includes('review')) {
-              sel.value = opt.value;
-              sel.dispatchEvent(new Event('change', { bubbles: true }));
-              return;
-            }
-            if (status === 'pending_publish' && (text.includes('ready') || text.includes('publish'))) {
-              sel.value = opt.value;
-              sel.dispatchEvent(new Event('change', { bubbles: true }));
-              return;
-            }
-          }
-        }
-      }
-
-      function detectWorkflowState(btnReviewing, btnPosted) {
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const allText = ncRoot.querySelectorAll('[class*="Status"], [class*="status"], [class*="Workflow"]');
-        for (const el of allText) {
-          const text = el.textContent.toLowerCase();
-          if (text.includes('in review') || text.includes('pending review')) {
-            btnReviewing.classList.add('active-reviewing');
-            btnPosted.classList.remove('active-posted');
-            return;
-          }
-          if (text.includes('ready') || text.includes('approved') || text.includes('published')) {
-            btnPosted.classList.add('active-posted');
-            btnReviewing.classList.remove('active-reviewing');
-            return;
-          }
-        }
-      }
-
-      // ─── Trigger Decap Built-in Actions ──────────────────────────────
-      function triggerDecapAction(action) {
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const moreButtons = ncRoot.querySelectorAll(
-          'button[title*="more" i], button[title*="options" i], button[title*="actions" i], ' +
-          'button[aria-label*="more" i], button[aria-label*="menu" i], ' +
-          '[class*="DropdownButton"] button, [class*="MoreButton"]'
+        return h('div', { className: 'preview-container' },
+          h('header', { className: 'preview-header' }, headerParts),
+          h('div', { className: 'preview-body', dangerouslySetInnerHTML: { __html: rendered } })
         );
-
-        if (action === 'delete' && moreButtons.length === 0) {
-          const deleteBtn = ncRoot.querySelector('button[class*="delete" i], button[title*="delete" i]');
-          if (deleteBtn) {
-            deleteBtn.click();
-            return;
-          }
-        }
-
-        for (const btn of moreButtons) {
-          btn.click();
-          setTimeout(() => {
-            const items = document.querySelectorAll('[role="menuitem"], [role="option"], [class*="MenuItem"], [class*="DropdownItem"]');
-            for (const item of items) {
-              if (item.textContent.toLowerCase().includes(action)) {
-                item.click();
-                return;
-              }
-            }
-          }, 200);
-          return;
-        }
       }
+    });
 
-      // ─── Start ─────────────────────────────────────────────────────
-      function waitForCMS() {
-        const ncRoot = document.getElementById('nc-root');
-        if (ncRoot && ncRoot.children.length > 0) {
-          startWatching();
-          setTimeout(() => {
-            if (isInEditor() && !document.querySelector('.entry-actions-bar')) {
-              injectToolbar();
-            }
-          }, 1000);
-        } else {
-          setTimeout(waitForCMS, 500);
-        }
-      }
-      waitForCMS();
-    })();
-
-    // ═══════════════════════════════════════════════════════════════════
-    // i18n Missing Translation Warning on Collection Lists
-    // Checks if the paired collection has the same entry slug
-    // ═══════════════════════════════════════════════════════════════════
-    (function i18nWarnings() {
-      // This runs on collection list views and adds a visual badge
-      // Note: Full cross-collection slug checking would need GitHub API calls.
-      // For now we just show a general reminder on ZH collections.
-      setInterval(() => {
-        const hash = window.location.hash || '';
-        if (hash.includes('/entries/') || hash.includes('/new')) return;
-
-        // Check if viewing a ZH collection — remind to check EN version exists
-        const isZhView = hash.includes('docs_zh') || hash.includes('blog_zh') || hash.includes('projects_zh');
-        const isEnView = hash.includes('/collections/docs') && !hash.includes('docs_zh')
-          || hash.includes('/collections/blog') && !hash.includes('blog_zh')
-          || hash.includes('/collections/projects') && !hash.includes('projects_zh');
-
-        if (!isZhView && !isEnView) return;
-
-        // Add a subtle info header if not already present
-        const existingInfo = document.querySelector('.i18n-collection-info');
-        if (existingInfo) return;
-
-        const ncRoot = document.getElementById('nc-root');
-        if (!ncRoot) return;
-
-        const collectionHeader = ncRoot.querySelector('[class*="CollectionTop"], [class*="ViewHeader"], [class*="collection"]');
-        if (!collectionHeader) return;
-
-        const info = document.createElement('div');
-        info.className = 'i18n-collection-info';
-        info.style.cssText = `
-          padding: 6px 16px;
-          background: ${isZhView ? '#e8f4fd' : '#f0fdf4'};
-          border-bottom: 1px solid ${isZhView ? '#bee3f8' : '#bbf7d0'};
-          font-size: 12px;
-          color: ${isZhView ? '#1e40af' : '#166534'};
-          font-family: 'Inter', -apple-system, sans-serif;
-        `;
-        info.textContent = isZhView
-          ? '🇨🇳 Chinese translations — switch to EN collection to see/edit English originals'
-          : '🇺🇸 English originals — switch to ZH collection to see/edit Chinese translations';
-
-        collectionHeader.parentElement.insertBefore(info, collectionHeader.nextSibling);
-      }, 2000);
-
-      // Clean up info banner on navigation
-      window.addEventListener('hashchange', () => {
-        const info = document.querySelector('.i18n-collection-info');
-        if (info) info.remove();
-      });
-    })();
-
-    // ═══════════════════════════════════════════════════════════════════
-    // GitHub Avatar in Top-Left Nav
-    // ═══════════════════════════════════════════════════════════════════
-    (function injectAvatar() {
-      let attempts = 0;
-      const MAX = 60;
-
-      const poll = setInterval(() => {
-        attempts++;
-        if (attempts > MAX) { clearInterval(poll); return; }
-
-        const stored = localStorage.getItem('netlify-cms-user');
-        if (!stored) return;
-
-        let user;
-        try { user = JSON.parse(stored); } catch(e) { clearInterval(poll); return; }
-
-        const token = user.token || user.access_token;
-        if (!token) { clearInterval(poll); return; }
-
-        clearInterval(poll);
-
-        fetch('https://api.github.com/user', {
-          headers: { Authorization: `token ${token}` }
-        })
-        .then(r => r.json())
-        .then(gh => {
-          if (!gh.login) return;
-          waitAndInject(gh);
-        })
-        .catch(() => {});
-      }, 500);
-
-      function waitAndInject(gh) {
-        const header = document.querySelector('header');
-        if (!header) { setTimeout(() => waitAndInject(gh), 500); return; }
-        if (document.getElementById('cms-user-avatar')) return;
-
-        const container = document.createElement('div');
-        container.id = 'cms-user-avatar';
-        container.style.cssText = `
-          display: flex; align-items: center; gap: 8px;
-          padding: 4px 12px 4px 4px; margin-left: 12px;
-          background: rgba(255,107,53,0.08); border-radius: 20px;
-          border: 1px solid rgba(255,107,53,0.2);
-          cursor: default; user-select: none;
-        `;
-
-        const avatar = document.createElement('img');
-        avatar.src = gh.avatar_url;
-        avatar.alt = gh.login;
-        avatar.style.cssText = `
-          width: 28px; height: 28px; border-radius: 50%;
-          border: 2px solid #FF6B35; object-fit: cover;
-        `;
-
-        const name = document.createElement('span');
-        name.textContent = gh.name || gh.login;
-        name.style.cssText = `
-          font-size: 13px; font-weight: 500; color: #333;
-          font-family: 'Inter', -apple-system, sans-serif;
-          max-width: 120px; overflow: hidden;
-          text-overflow: ellipsis; white-space: nowrap;
-        `;
-
-        container.appendChild(avatar);
-        container.appendChild(name);
-        header.style.display = 'flex';
-        header.style.alignItems = 'center';
-        header.insertBefore(container, header.firstChild);
-      }
-    })();
+    // Register the preview template for all collections
+    CMS.registerPreviewTemplate('blog-en', TuyaPreview);
+    CMS.registerPreviewTemplate('blog-zh', TuyaPreview);
+    CMS.registerPreviewTemplate('projects-en', TuyaPreview);
+    CMS.registerPreviewTemplate('projects-zh', TuyaPreview);
   </script>
 </body>
 </html>
