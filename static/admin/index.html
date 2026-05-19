@@ -14,41 +14,46 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
 
   <script>
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-    const docFields = [
-      { label: 'Title', name: 'title', widget: 'string', i18n: true },
-      { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false, i18n: true },
-      { label: 'Sidebar Position', name: 'sidebar_position', widget: 'number', required: false, value_type: 'int', min: 1, i18n: 'duplicate' },
-      { label: 'Description', name: 'description', widget: 'text', required: false, i18n: true },
-      { label: 'Tags', name: 'tags', widget: 'list', required: false, i18n: true, field: { label: 'Tag', name: 'tag', widget: 'string' } },
-      { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false, i18n: 'duplicate' },
-      { label: 'Body', name: 'body', widget: 'markdown', i18n: true },
-    ];
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Decap CMS Configuration for TuyaOpen.io
+    //
+    // Docusaurus i18n layout:
+    //   EN blog     → blog/<file>.md
+    //   ZH blog     → i18n/zh/docusaurus-plugin-content-blog/<file>.md
+    //   EN projects → docs/projects/<file>.md
+    //   ZH projects → i18n/zh/docusaurus-plugin-content-docs/current/projects/<file>.md
+    //
+    // Separate collections per language (Decap's i18n toggle doesn't support
+    // Docusaurus's different directory trees per locale).
+    // ─────────────────────────────────────────────────────────────────────────────
 
+    // Shared field definitions
     const blogFields = [
-      { label: 'Title', name: 'title', widget: 'string', i18n: true },
-      { label: 'Slug', name: 'slug', widget: 'string', required: false, i18n: 'duplicate' },
-      { label: 'Authors', name: 'authors', widget: 'list', default: ['tuya'], i18n: true, field: { label: 'Author', name: 'author', widget: 'string' } },
-      { label: 'Date', name: 'date', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, required: false, i18n: 'duplicate' },
-      { label: 'Image', name: 'image', widget: 'image', required: false, default: '/img/home/tuyaopen-logo-social-preview.png', i18n: 'duplicate' },
-      { label: 'Tags', name: 'tags', widget: 'list', default: ['TuyaOpen'], i18n: true, field: { label: 'Tag', name: 'tag', widget: 'string' } },
-      { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false, i18n: 'duplicate' },
-      { label: 'Unlisted', name: 'unlisted', widget: 'boolean', default: false, required: false, i18n: 'duplicate' },
-      { label: 'Body', name: 'body', widget: 'markdown', i18n: true },
+      { label: 'Title', name: 'title', widget: 'string' },
+      { label: 'Slug', name: 'slug', widget: 'string', required: false },
+      { label: 'Authors', name: 'authors', widget: 'list', default: ['tuya'], field: { label: 'Author', name: 'author', widget: 'string' } },
+      { label: 'Date', name: 'date', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, required: false },
+      { label: 'Image', name: 'image', widget: 'image', required: false, default: '/img/home/tuyaopen-logo-social-preview.png' },
+      { label: 'Tags', name: 'tags', widget: 'list', default: ['TuyaOpen'], field: { label: 'Tag', name: 'tag', widget: 'string' } },
+      { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false },
+      { label: 'Unlisted', name: 'unlisted', widget: 'boolean', default: false, required: false },
+      { label: 'Body', name: 'body', widget: 'markdown' },
     ];
 
     const projectFields = [
-      { label: 'Title', name: 'title', widget: 'string', i18n: true },
-      { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false, i18n: true },
-      { label: 'Sidebar Position', name: 'sidebar_position', widget: 'number', required: false, value_type: 'int', min: 1, i18n: 'duplicate' },
-      { label: 'Description', name: 'description', widget: 'text', required: false, i18n: true },
-      { label: 'Tags', name: 'tags', widget: 'list', required: false, i18n: true, field: { label: 'Tag', name: 'tag', widget: 'string' } },
-      { label: 'Image', name: 'image', widget: 'image', required: false, i18n: 'duplicate' },
-      { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false, i18n: 'duplicate' },
-      { label: 'Body', name: 'body', widget: 'markdown', i18n: true },
+      { label: 'Title', name: 'title', widget: 'string' },
+      { label: 'Sidebar Label', name: 'sidebar_label', widget: 'string', required: false },
+      { label: 'Sidebar Position', name: 'sidebar_position', widget: 'number', required: false, value_type: 'int', min: 1 },
+      { label: 'Description', name: 'description', widget: 'text', required: false },
+      { label: 'Tags', name: 'tags', widget: 'list', required: false, field: { label: 'Tag', name: 'tag', widget: 'string' } },
+      { label: 'Image', name: 'image', widget: 'image', required: false },
+      { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false },
+      { label: 'Body', name: 'body', widget: 'markdown' },
     ];
 
     window.CMS.init({
@@ -81,39 +86,17 @@
           sanitize_replacement: '-',
         },
 
-        i18n: {
-          structure: 'multiple_folders',
-          locales: ['en', 'zh'],
-          default_locale: 'en',
-        },
-
         collections: [
+          // ═══════════════════════════════════════════════════════════════
+          //  BLOG (English) → blog/
+          // ═══════════════════════════════════════════════════════════════
           {
-            name: 'docs',
-            label: 'Documentation',
-            label_singular: 'Doc Page',
-            folder: 'docs',
-            create: true,
-            delete: true,
-            i18n: true,
-            nested: { depth: 100, summary: '{{title}}' },
-            slug: '{{slug}}',
-            summary: '{{title}}',
-            meta: { path: { widget: 'string', label: 'Path', index_file: 'index' } },
-            sortable_fields: ['title', 'sidebar_position'],
-            view_filters: [
-              { label: 'Drafts', field: 'draft', pattern: true },
-            ],
-            fields: docFields,
-          },
-          {
-            name: 'blog',
-            label: 'Blog',
+            name: 'blog-en',
+            label: '📝 Blog (EN)',
             label_singular: 'Blog Post',
             folder: 'blog',
             create: true,
             delete: true,
-            i18n: true,
             slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
             summary: '{{title}} — {{year}}/{{month}}/{{day}}',
             sortable_fields: ['title', 'date'],
@@ -121,23 +104,139 @@
               { label: 'Drafts', field: 'draft', pattern: true },
             ],
             fields: blogFields,
+            extension: 'md',
           },
+          // ═══════════════════════════════════════════════════════════════
+          //  BLOG (Chinese) → i18n/zh/docusaurus-plugin-content-blog/
+          // ═══════════════════════════════════════════════════════════════
           {
-            name: 'projects',
-            label: 'Projects',
+            name: 'blog-zh',
+            label: '📝 Blog (ZH)',
+            label_singular: 'Blog Post',
+            folder: 'i18n/zh/docusaurus-plugin-content-blog',
+            create: true,
+            delete: true,
+            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+            summary: '{{title}} — {{year}}/{{month}}/{{day}}',
+            sortable_fields: ['title', 'date'],
+            view_filters: [
+              { label: 'Drafts', field: 'draft', pattern: true },
+            ],
+            fields: blogFields,
+            extension: 'md',
+          },
+          // ═══════════════════════════════════════════════════════════════
+          //  PROJECTS (English) → docs/projects/
+          // ═══════════════════════════════════════════════════════════════
+          {
+            name: 'projects-en',
+            label: '🚀 Projects (EN)',
             label_singular: 'Project',
             folder: 'docs/projects',
             create: true,
             delete: true,
-            i18n: true,
-            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-            summary: '{{title}} — {{year}}/{{month}}/{{day}}',
-            sortable_fields: ['title'],
+            slug: '{{slug}}',
+            summary: '{{title}}',
+            sortable_fields: ['title', 'sidebar_position'],
             fields: projectFields,
+            extension: 'md',
+          },
+          // ═══════════════════════════════════════════════════════════════
+          //  PROJECTS (Chinese) → i18n/zh/.../current/projects/
+          // ═══════════════════════════════════════════════════════════════
+          {
+            name: 'projects-zh',
+            label: '🚀 Projects (ZH)',
+            label_singular: 'Project',
+            folder: 'i18n/zh/docusaurus-plugin-content-docs/current/projects',
+            create: true,
+            delete: true,
+            slug: '{{slug}}',
+            summary: '{{title}}',
+            sortable_fields: ['title', 'sidebar_position'],
+            fields: projectFields,
+            extension: 'md',
           },
         ],
       },
     });
+
+    // ─────────────────────────────────────────────────────────────────────────────
+    // Preview Styling & Custom Template
+    // ─────────────────────────────────────────────────────────────────────────────
+
+    // Inject Docusaurus-like CSS into the preview iframe
+    CMS.registerPreviewStyle('/admin/preview.css');
+
+    // Custom preview component that renders markdown via markdown-it
+    // and handles Docusaurus-specific syntax (admonitions, imports, JSX)
+    var TuyaPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var title = entry.getIn(['data', 'title']) || '';
+        var date = entry.getIn(['data', 'date']) || '';
+        var authors = entry.getIn(['data', 'authors']);
+        var tags = entry.getIn(['data', 'tags']);
+        var image = entry.getIn(['data', 'image']) || '';
+        var body = entry.getIn(['data', 'body']) || '';
+
+        // Preprocess Docusaurus-specific syntax before markdown rendering
+        var processed = body
+          // Remove ES import statements
+          .replace(/^import\s+.*$/gm, '')
+          // Remove JSX comments {/* ... */}
+          .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
+          // Remove self-closing JSX tags like <Component ... />
+          .replace(/<[A-Z][A-Za-z]*\s[^>]*\/>/g, '')
+          // Remove opening+closing JSX wrapper tags (keep inner content)
+          .replace(/<[A-Z][A-Za-z]*[^>]*>([\s\S]*?)<\/[A-Z][A-Za-z]*>/g, '$1')
+          // Transform admonitions :::type[title] ... ::: into HTML divs
+          .replace(/^:::(note|tip|info|warning|caution|danger|important)(?:\s*\[(.+?)\])?\s*\n([\s\S]*?)^:::\s*$/gm,
+            function(match, type, customTitle, content) {
+              var heading = customTitle || type.charAt(0).toUpperCase() + type.slice(1);
+              return '<div class="admonition admonition-' + type + '">' +
+                '<div class="admonition-heading">' + heading + '</div>' +
+                '<div class="admonition-content">\n\n' + content.trim() + '\n\n</div></div>';
+            });
+
+        // Render markdown with markdown-it
+        var md = window.markdownit({ html: true, linkify: true, typographer: true });
+        var rendered = md.render(processed);
+
+        // Build the header section
+        var headerParts = [];
+        if (title) {
+          headerParts.push(h('h1', { className: 'preview-title' }, title));
+        }
+        if (date || (authors && authors.size)) {
+          var metaParts = [];
+          if (authors && authors.size) metaParts.push('By ' + authors.toJS().join(', '));
+          if (date) metaParts.push(new Date(date).toLocaleDateString());
+          headerParts.push(h('p', { className: 'preview-meta' }, metaParts.join(' · ')));
+        }
+        if (tags && tags.size) {
+          headerParts.push(h('div', { className: 'preview-tags' },
+            tags.toJS().map(function(tag) {
+              return h('span', { className: 'preview-tag', key: tag }, tag);
+            })
+          ));
+        }
+        if (image) {
+          headerParts.push(h('img', { src: image, className: 'preview-hero', alt: title }));
+        }
+
+        return h('div', { className: 'preview-container' },
+          h('header', { className: 'preview-header' }, headerParts),
+          h('div', { className: 'preview-body', dangerouslySetInnerHTML: { __html: rendered } })
+        );
+      }
+    });
+
+    // Register the preview template for all collections
+    CMS.registerPreviewTemplate('blog-en', TuyaPreview);
+    CMS.registerPreviewTemplate('blog-zh', TuyaPreview);
+    CMS.registerPreviewTemplate('projects-en', TuyaPreview);
+    CMS.registerPreviewTemplate('projects-zh', TuyaPreview);
   </script>
 </body>
 </html>
