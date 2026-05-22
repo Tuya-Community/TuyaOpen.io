@@ -15,10 +15,40 @@ tyutool 的授权功能仅适用于 TuyaOpen 项目，不支持 TuyaOS 项目。
 
 tyutool 工具支持 Windows、Linux 和 macOS 三大操作系统，开发者可以根据自己的操作系统选择对应的版本。
 
-| 平台 | 源码使用(推荐) | 产物使用 |
-| :------: | :------: | :--: |
-| Github | [github-source](https://github.com/tuya/tyutool) | [github-release](https://github.com/tuya/tyutool/releases) |
-| Gitee | [gitee-source](https://gitee.com/tuya-open/tyutool) | [gitee-release](https://gitee.com/tuya-open/tyutool/releases) |
+tyutool 目前分为 **V2** 和 **V3** 两个版本，主要差异如下：
+
+- **V3**（当前最新版本）：基于 **Rust（Tauri 2）+ Vue 3** 全新架构重写，跨平台兼容性更好，**推荐 Mac 用户使用**；暂不支持音频调试和批量烧录功能
+- **V2**：原有架构，功能更为完整，支持音频调试、批量烧录等高级功能
+
+:::note
+V3 版本暂不支持 V2 中的音频调试和批量烧录功能，如需使用这些功能请下载 V2 版本。
+:::
+
+| 平台 | 源码使用(推荐) |
+| :------: | :------: |
+| Github | [github-source](https://github.com/tuya/tyutool) |
+| Gitee | [gitee-source](https://gitee.com/tuya-open/tyutool) |
+
+各版本发布包下载地址：
+
+| 版本 | Github |
+| :--: | :--: |
+| V3（推荐 Mac） | [v3.0.8](https://github.com/tuya/tyutool/releases/tag/v3.0.8) |
+| V2 | [v2.3.2](https://github.com/tuya/tyutool/releases/tag/v2.3.2) |
+
+**V3 各平台推荐下载**（文件名中 `x.x.x` 为版本号，请从 [Releases](https://github.com/tuya/tyutool/releases/latest) 获取最新版本）
+
+| 平台 | 推荐文件 | 自动更新 | 说明 |
+| :-- | :-- | :--: | :-- |
+| Windows x86_64 | ★ `tyutool-gui_windows_x86_64_nsis_x.x.x.exe` | ✅ | NSIS 安装包 |
+| Windows x86_64 | `tyutool-gui_windows_x86_64_portable_x.x.x.zip` | ❌ | 免安装便携版 |
+| macOS Universal | ★ `tyutool-gui_macos_universal_dmg_x.x.x.dmg` | ✅ | DMG 安装包 |
+| macOS Universal | `tyutool-gui_macos_universal_portable_x.x.x.tar.gz` | ❌ | 解压即用 |
+| Linux x86_64 | ★ `tyutool-gui_linux_x86_64_appimage_x.x.x.AppImage` | ✅ | `chmod +x` 后运行，跨发行版 |
+| Linux aarch64 | ★ `tyutool-gui_linux_aarch64_appimage_x.x.x.AppImage` | ✅ | `chmod +x` 后运行，跨发行版 |
+| Linux x86_64 | `tyutool-gui_linux_x86_64_deb_x.x.x.deb` / `_rpm_x.x.x.rpm` | ❌ | Debian 系 / Fedora·RHEL 系 |
+| Linux aarch64 | `tyutool-gui_linux_aarch64_deb_x.x.x.deb` | ❌ | Debian 系 |
+| Linux x86_64 / aarch64 | `tyutool-gui_linux_*_portable_x.x.x.tar.gz` | ❌ | 解压即用 |
 
 :::note
 `tos.py flash` 命令最终调用的也是 tyutool_cli 工具，tyutool_gui 工具是基于 tyutool_cli 添加了图形化界面。

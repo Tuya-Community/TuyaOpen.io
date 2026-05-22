@@ -15,10 +15,40 @@ The authorization function of tyutool is only applicable to the TuyaOpen project
 
 the tyutool tool supports Windows, Linux, and macOS. Developers can choose the appropriate version according to their operating system.
 
-| Platform | Source(Recommend) | Release |
-| :------: | :------: | :--: |
-| Github | [github-source](https://github.com/tuya/tyutool) | [github-release](https://github.com/tuya/tyutool/releases) |
-| Gitee | [gitee-source](https://gitee.com/tuya-open/tyutool) | [gitee-release](https://gitee.com/tuya-open/tyutool/releases) |
+tyutool is currently available in two versions, **V2** and **V3**, with the following key differences:
+
+- **V3** (latest): Completely rewritten with a **Rust (Tauri 2) + Vue 3** architecture for better cross-platform compatibility. **Recommended for Mac users.** Audio debugging and batch flashing are not yet supported.
+- **V2**: Original architecture with full feature support, including audio debugging and batch flashing.
+
+:::note
+V3 does not yet support audio debugging and batch flashing from V2. If you need these features, please download V2.
+:::
+
+| Platform | Source (Recommended) |
+| :------: | :------: |
+| Github | [github-source](https://github.com/tuya/tyutool) |
+| Gitee | [gitee-source](https://gitee.com/tuya-open/tyutool) |
+
+Release download links by version:
+
+| Version | Github |
+| :--: | :--: |
+| V3 (Recommended for Mac) | [v3.0.8](https://github.com/tuya/tyutool/releases/tag/v3.0.8) |
+| V2 | [v2.3.2](https://github.com/tuya/tyutool/releases/tag/v2.3.2) |
+
+**V3 recommended downloads by platform** (`x.x.x` in filenames is the version number — check [Releases](https://github.com/tuya/tyutool/releases/latest) for the latest version)
+
+| Platform | Recommended File | Auto-update | Notes |
+| :-- | :-- | :--: | :-- |
+| Windows x86_64 | ★ `tyutool-gui_windows_x86_64_nsis_x.x.x.exe` | ✅ | NSIS installer |
+| Windows x86_64 | `tyutool-gui_windows_x86_64_portable_x.x.x.zip` | ❌ | Portable, no install needed |
+| macOS Universal | ★ `tyutool-gui_macos_universal_dmg_x.x.x.dmg` | ✅ | DMG installer |
+| macOS Universal | `tyutool-gui_macos_universal_portable_x.x.x.tar.gz` | ❌ | Extract and run |
+| Linux x86_64 | ★ `tyutool-gui_linux_x86_64_appimage_x.x.x.AppImage` | ✅ | Run after `chmod +x`, cross-distro |
+| Linux aarch64 | ★ `tyutool-gui_linux_aarch64_appimage_x.x.x.AppImage` | ✅ | Run after `chmod +x`, cross-distro |
+| Linux x86_64 | `tyutool-gui_linux_x86_64_deb_x.x.x.deb` / `_rpm_x.x.x.rpm` | ❌ | Debian / Fedora·RHEL |
+| Linux aarch64 | `tyutool-gui_linux_aarch64_deb_x.x.x.deb` | ❌ | Debian-based |
+| Linux x86_64 / aarch64 | `tyutool-gui_linux_*_portable_x.x.x.tar.gz` | ❌ | Extract and run |
 
 :::note
 The `tos.py flash` command ultimately calls the tyutool_cli tool. The tyutool_gui tool is a graphical interface built on top of tyutool_cli.
