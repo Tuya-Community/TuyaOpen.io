@@ -25,7 +25,7 @@ You can select the appropriate chip and application from the [TuyaOpen Applicati
 
 ## Flash Firmware
 
-You can use the graphical tool [Tuya Universal Serial Tool](https://www.tuyaopen.ai/tools/tyutool) `tyutool_gui` for firmware flashing. For detailed instructions, please refer to [tyutool_gui User Guide](../tos-tools/tools-tyutool.md#firmware-flashing).
+You can use the graphical tool [Tuya Universal Serial Tool](https://www.tuyaopen.ai/tools/tyutool) `tyutool_gui` for firmware flashing. For detailed instructions, please refer to [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#firmware-flashing).
 
 ## Device Authorization
 

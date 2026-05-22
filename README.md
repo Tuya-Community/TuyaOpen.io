@@ -18,6 +18,7 @@
   - [Documentation Path](#documentation-path)
   - [How to develop](#how-to-develop)
     - [Building and Serving Website Locally](#building-and-serving-website-locally)
+  - [AI-assisted documentation and TuyaOpen SDK](#ai-assisted-documentation-and-tuyaopen-sdk)
   - [Build](#build)
   - [Deploy to Production](#deploy-to-production)
 - [Release a new version](#release-a-new-version)
@@ -66,10 +67,69 @@ By default, the `start` command will only preview documents in English. If you w
 npm start -- --locale zh
 ```
 
+## AI-assisted documentation and TuyaOpen SDK
+
+If you write or review documentation (including with an AI coding assistant), treat the **TuyaOpen firmware/SDK repository** as the source of truth for APIs, example paths, app names, and behavior. **Clone it next to this site** so links and snippets stay accurate.
+
+### Clone TuyaOpen into this project
+
+From the root of **this** repository (`TuyaOpen.io`):
+
+```sh
+git clone https://github.com/tuya/TuyaOpen.git TuyaOpen
+```
+
+Expected layout:
+
+```text
+TuyaOpen.io/          # this documentation site
+  docs/
+  TuyaOpen/           # cloned SDK (separate git repo; not committed here)
+    apps/
+    examples/
+    src/
+    boards/
+```
+
+The `TuyaOpen/` directory is listed in `.gitignore` so it stays local-only and is not pushed with the website.
+
+### Cursor skills (`.cursor/skills/`)
+
+These skills guide AI assistants (e.g. in Cursor) through this repo. Open the linked `SKILL.md` for full checklists and rules.
+
+| Skill | Use it for |
+|-------|------------|
+| [`tuyaopen-doc-loop`](.cursor/skills/tuyaopen-doc-loop/SKILL.md) | End-to-end doc workflow: plan, write en/zh, sidebar + `current.json`, build, commit/push, and use of `agent-plan-workspace/`. |
+| [`tuyaopen-doc-planner`](.cursor/skills/tuyaopen-doc-planner/SKILL.md) | Where a doc should live, `sidebars.js` IDs, URI moves/redirects, and **sidebar label i18n** (`i18n/zh/.../current.json`). |
+| [`tuyaopen-code-analyzer`](.cursor/skills/tuyaopen-code-analyzer/SKILL.md) | Read-only exploration of the cloned **`TuyaOpen/`** tree to align docs with real APIs, examples, and apps. |
+| [`tuyaopen-technical-writer`](.cursor/skills/tuyaopen-technical-writer/SKILL.md) | Tone, structure, tutorial sections, terminology, and zh mirrors for prose. |
+| [`tuyaopen-build-check`](.cursor/skills/tuyaopen-build-check/SKILL.md) | `npm run build`, `npm start`, zh locale, broken links, and sidebar validation before you open a PR. |
+
+### Local planning workspace (`agent-plan-workspace/`)
+
+For longer doc efforts, this folder is a **local-only scratchpad** (it is in `.gitignore` and is **not** committed). The **doc loop** skill expects planning state to live here so you and an AI assistant share the same backlog without polluting git history.
+
+| File | Role |
+|------|------|
+| `PRD.md` | Goals, priorities, and scope for documentation work (what matters next and why). |
+| `TODOS.md` | Concrete tasks, done log, and optional branch/registry notes for in-flight PRs. |
+| `IMPROVEMENTS.md` | Gaps and recommendations spotted while writing or analyzing the SDK. |
+
+**You can create and edit these files yourself** to steer automation: set long-term goals in `PRD.md`, break work into `TODOS.md`, and capture follow-ups in `IMPROVEMENTS.md`. Agents following `tuyaopen-doc-loop` read and update them each cycle; tuning them gives you more control over what gets done first.
+
+If the folder is missing, add `agent-plan-workspace/` at the repo root and add the three files above (empty or with your outline). Do not add other paths under this folder if you want to stay aligned with the doc-loop skill.
+
+### Other practices
+
+- **Ground answers in `TuyaOpen/`**: confirm public headers (`include/*.h`), `README` files, `Kconfig`, and example paths before documenting an API or tutorial.
+- **Sidebar i18n**: any new or renamed sidebar `label` in `sidebars.js` needs a matching entry in `i18n/zh/docusaurus-plugin-content-docs/current.json` (see **Sidebar label i18n** in the doc-planner skill).
+- **Validate locally**: run `npm run build` before a PR; use `npm start -- --locale zh` to spot-check Chinese navigation and mirrored pages.
+- **Scope**: this repository is the **documentation site** only. Do not edit SDK sources under `TuyaOpen/` for doc fixes; contribute firmware changes in the [TuyaOpen](https://github.com/tuya/TuyaOpen) repository.
+
 ## Build
 
 ```sh
-npm build
+npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.

@@ -1,5 +1,5 @@
 ---
-title: tyutool 工具介绍
+title: GUI - tyutool 图形化工具
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,12 +1,12 @@
 ---
-title: 项目编译
+title: "Step 1: 项目编译"
 ---
 
 # 项目编译
 
 ## 选择项目
 
-TuyaOpen 中，可编译项目可在 `apps`、`example` 中进行选择。
+TuyaOpen 中，可编译项目可在 `apps`、`examples` 中进行选择。
 
 这里以 `switch_demo` 为例。首先，进入项目目录。
 

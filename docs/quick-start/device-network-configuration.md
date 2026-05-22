@@ -1,6 +1,7 @@
 ---
-title: Device Pairing
+title: "Step 4: Device Pairing w/ Smartphone"
 ---
+# Device Pairing w/ Smartphone
 
 ## Overview
 
@@ -64,6 +65,17 @@ Before adding a device via the app, make sure the device is in pairing mode. You
 Currently, TuyaOpen-supported modules can only connect to the 2.4 GHz band of routers. Attempting to pair with a 5 GHz band router will result in failure.
 :::
 
+### Scan to pair
+
+Some TuyaOpen devices support pairing by scanning a QR code in the **SmartLife** app. This method is commonly used on Linux devices (such as Raspberry Pi), where the device prints the QR code directly to the terminal.
+
+1. Make sure the device is in pairing mode and a QR code is shown in the terminal/logs.
+2. Open the **SmartLife** app and tap **+** in the top right corner.
+3. Select **Scan** and point the camera at the QR code displayed by the device.
+4. Follow the on-screen instructions to complete pairing.
+
+<img src="https://images.tuyacn.com/fe-static/docs/img/5971b072-a264-4324-ba3f-a90f8b899ddd.png" alt="smartlife_app" width="240" />
+
 ## FAQs
 
 ### Pairing failed due to incorrect authorization information
@@ -86,4 +98,4 @@ When pairing failed because the device's authorization information was not writt
 
 If both `UUID` and `AuthKey` display as `xxxxxxxxxxxxxxxx`, it indicates the authorization information was not properly written.
 
-For more information, see the section **Write device authorization information** in the [tyutool_gui User Guide](../tos-tools/tools-tyutool.md#device-authorization-information-writing).
+For more information, see the section **Write device authorization information** in [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#device-authorization-information-writing).

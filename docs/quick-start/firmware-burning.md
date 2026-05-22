@@ -1,5 +1,5 @@
 ---
-title: Flashing and Logging
+title: "Step 2: Flashing and Logging"
 ---
 
 # Flashing and Logging
@@ -88,7 +88,7 @@ To exit log viewing, press `Ctrl + C` and press the Enter key.
 If any of the following occur, it is usually caused by a missing serial port driver:
 
 - Flashing gets stuck or repeatedly fails at the `write` stage
-- Mac cannot detect the serial port (no device found when running `ls /dev/tty*`)
+- Mac cannot detect the serial port
 
 For more information, see [Install drivers](../tos-tools/tools-tyutool.md#always-fails-during-write-in-the-burning-process).
 

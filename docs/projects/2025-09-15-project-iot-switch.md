@@ -23,7 +23,7 @@ The IoT Switch project is a simple yet powerful demonstration of how to build a 
   />
 </p>
 
-<!-- Add screenshots or images of your project here -->
+{/* Add screenshots or images of your project here */}
 
 ## Features
 

@@ -12,3 +12,18 @@ Contest:
   label: Contest
   permalink: /Contest
   description: Developer contests and hackathons
+
+AI:
+  label: AI
+  permalink: /AI
+  description: AI-related tutorials, workflows, and product updates
+
+Development:
+  label: Development
+  permalink: /Development
+  description: Developer guides, implementation notes, and engineering practices
+
+Tutorial:
+  label: Tutorial
+  permalink: /Tutorial
+  description: Step-by-step tutorials and learning content

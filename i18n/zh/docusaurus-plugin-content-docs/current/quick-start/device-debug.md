@@ -52,13 +52,13 @@ title: 设备调试
 
 推荐使用涂鸦官方提供的图形化串口调试工具，其界面友好，功能完善。
 
-**详细使用说明**：请参考 [串口调试工具使用指南](../tos-tools/tools-tyutool.md)。
+**详细使用说明**：请参考 [GUI - tyutool 图形化工具](../tos-tools/tools-tyutool.md)。
 
 ### 方法二：使用 `tos` 命令行工具
 
 适合熟悉命令行的开发者，提供更灵活的调试选项。
 
-**详细使用说明**：请参考 [tos monitor 命令](../tos-tools/tos-guide#monitor)。
+**详细使用说明**：请参考 [tos monitor 命令](../tos-tools/tos-guide.md#monitor)。
 
 ### 方法三：使用第三方串口工具
 

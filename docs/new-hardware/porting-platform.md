@@ -6,7 +6,7 @@ title: Adapt to New Platforms
 
 This topic describes the required readings, operational steps, and verification procedures for adding support for a new chipset on the TuyaOpen platform.
 
-If you are new to TuyaOpen, it is recommended first to read [Get Started](../quick-start/index.md). Follow the tutorial to set up and test the `switch_demo` application (an Ubuntu environment is recommended) to understand and familiarize yourself with Tuya IoT's pairing and operational logic. Additionally, please read the [tos.py User Guide](../tos-tools/tos-guide.md) to learn about the usage and functionality of `tos.py` commands.
+If you are new to TuyaOpen, it is recommended first to read [Get Started](../quick-start/index.md). Follow the tutorial to set up and test the `switch_demo` application (an Ubuntu environment is recommended) to understand and familiarize yourself with Tuya IoT's pairing and operational logic. Additionally, please read [CLI - tos.py Development Tool](../tos-tools/tos-guide.md) to learn about the usage and functionality of `tos.py` commands.
 
 ### Build process
 
@@ -22,7 +22,7 @@ Before adapting a new chipset, it is helpful to understand the TuyaOpen build fl
    | app_name_UA_1.0.0 | User area firmware |
    | app_name_UG_1.0.0 | Update firmware |
 
-For a more detailed flow, refer to the [TuyaOpen Compilation Flow Detailed Guide](../build-system/compilation-guide.md).
+For a more detailed flow, refer to the [Compilation guide](../build-system/compilation-guide).
 
 
 Generally, adapting a new chipset on TuyaOpen involves the following steps:

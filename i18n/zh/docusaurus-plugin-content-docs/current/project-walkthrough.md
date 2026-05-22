@@ -136,7 +136,7 @@ src/
 
 ## `tos.py` 和 `export.sh`
 
-- `tos.py` 是一个核心命令行工具，用于简化开发流程、管理项目配置和执行编译部署等操作。详细使用说明可参考：[`tos.py` 使用](./tos-tools/tos-guide.md)。
+- `tos.py` 是一个核心命令行工具，用于简化开发流程、管理项目配置和执行编译部署等操作。详细使用说明可参考：[CLI - tos.py 开发工具](./tos-tools/tos-guide.md)。
 
 - `export.sh` 和 `export.bat` 用于激活 `tos.py` 的命令行功能。
 

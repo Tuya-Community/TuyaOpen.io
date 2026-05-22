@@ -53,13 +53,13 @@ Before starting debugging, look up the debugging parameters based on your chip m
 
 You are recommended to use the graphical serial port debugging tool provided by Tuya, which features a user-friendly interface and complete functionalities.
 
-For more information, see [Serial Debugging Tool User Guide](../tos-tools/tools-tyutool.md).
+For more information, see [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md).
 
 ### Method 2: Use the `tos` command-line tool
 
 This method is suitable for developers familiar with the command line, offering more flexible debugging options.
 
-For more information, see the [tos monitor command](../tos-tools/tos-guide#monitor).
+For more information, see the [tos monitor command](../tos-tools/tos-guide.md#monitor).
 
 ### Method 3: Use a third-party serial port tool
 

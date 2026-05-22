@@ -36,12 +36,12 @@ title: 聊天机器人
 | Board                                                        | 配置文件                                  | UI         | PID              |
 | ------------------------------------------------------------ | ----------------------------------------- | ---------- | ---------------- |
 | T5AI_BOARD 开发板 + 3.5 寸 RGB565 LCD 方屏（带触摸，LCD 型号：ILI9488，触摸面板：GT115） | TUYA_T5AI_BOARD_LCD_3.5.config            | 微信风格   | alon7qgyjj8yus74 |
-| DNESP32S3 开发板（自带 320*340 SPI ST7789 LCD 方屏）        | DNESP32S3.config                          | 微信风格   | scig7pauzzid3w4b |
+| DNESP32S3 开发板（自带 320*240 SPI ST7789 LCD 方屏）        | DNESP32S3.config                          | 微信风格   | scig7pauzzid3w4b |
 | 微雪 ESP32S3 开发板（自带 364*448 SPI sh8601 LCD 方屏）       | WAVESHARE_ESP32S3_TOUCH_AMOLED_1_8.config | 微信风格   | lased5audtah8wcp |
 | T5AI_EVB 开发板（小白盒，自带 2.4 寸 SPI565 ST7789 方屏）     | TUYA_T5AI_EVB.config                      | 聊天机器人 | r3ulobrs5nwreguj |
 | T5AI_MOJI_1_28 开发板（自带 1.28 寸 SPI565 GC9a01 圆屏）     | T5AI_MOJI_1.28.config                     | 聊天机器人 | kf8wauubey0doaiz |
 | T5AI_MINI 开发板 + 1.3 寸 SPI565 ST7789 LCD 方屏                | TUYA_T5AI_MINI_LCD_1.3.config             | 聊天机器人 | 8btswykdiium7t8k |
-| DNESP32S3_BOX 开发板（自带 320*340 MCU8080 ST7789 LCD 方屏） | DNESP32S3_BOX.config                      | 聊天机器人 | znw8prbujidtzavd |
+| DNESP32S3_BOX 开发板（自带 320*240 MCU8080 ST7789 LCD 方屏） | DNESP32S3_BOX.config                      | 聊天机器人 | znw8prbujidtzavd |
 | ESP32S3 面包板（自带 128*32 I2C SSD1306 OLED 屏）          | ESP32S3_BREAD_COMPACT_WIFI.config         | 滑动字幕   | j1y437proohznfbs |
 | XINGXZHI_ESP32S3_CUBE 开发板（自带 128*64 I2C SSD1306 OLED 屏） | XINGZHI_ESP32S3_CUBE_0_96OLED_WIFI.config | 滑动字幕   | uyidyzglm2m1bpcl |
 

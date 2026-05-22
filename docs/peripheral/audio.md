@@ -352,7 +352,13 @@ OPERATE_RET tdd_audio_register(char *name, TDD_AUDIO_T5AI_T cfg)
     intfs.config = __tdd_audio_config;
     intfs.close = __tdd_audio_close;
 
-    tdl_audio_driver_register(name, &intfs, (TDD_AUDIO_HANDLE_T)_hdl);
+    TDD_AUDIO_INFO_T info = {0};
+    info.sample_rate   = cfg.sample_rate;
+    info.sample_ch_num = cfg.channel;
+    info.sample_bits   = cfg.data_bits;
+    info.sample_tm_ms  = 20;
+
+    tdl_audio_driver_register(name, (TDD_AUDIO_HANDLE_T)_hdl, &intfs, &info);
     return rt;
 }
 ```
@@ -491,11 +497,14 @@ Register the underlying audio driver interface to the abstraction layer manageme
  * for upper layer application calls.
  *
  * @param name Audio device name
+ * @param tdd_hdl TDD device handle (private context allocated by the TDD driver)
  * @param intfs Audio driver interface structure containing various operation function pointers
+ * @param info Audio device information (sample rate, channels, width)
  *
  * @return Returns OPRT_OK on successful registration, or an appropriate error code on failure.
  */
-OPERATE_RET tdl_audio_driver_register(const char *name, TDD_AUDIO_INTFS_T *intfs);
+OPERATE_RET tdl_audio_driver_register(char *name, TDD_AUDIO_HANDLE_T tdd_hdl,
+                                      TDD_AUDIO_INTFS_T *intfs, TDD_AUDIO_INFO_T *info);
 
 ```
 
@@ -514,10 +523,11 @@ Based on the device name, locate the specified device handle in the list of regi
  * subsequent operations.
  *
  * @param name Name of the audio device to find
+ * @param handle Pointer to receive the device handle
  *
- * @return Returns audio device handle, or NULL if not found.
+ * @return Returns OPRT_OK on success, or an appropriate error code if not found.
  */
-TDL_AUDIO_HANDLE_T tdl_audio_find(const char *name);
+OPERATE_RET tdl_audio_find(char *name, TDL_AUDIO_HANDLE_T *handle);
 
 ```
 
@@ -535,11 +545,12 @@ Power on and initialize the audio device, including hardware initialization, pin
  * including ADC/DAC, I2S interface, speaker enable pins, etc. After successful
  * opening, the device enters a usable state.
  *
- * @param audio_hdl Audio device handle
+ * @param handle Audio device handle
+ * @param mic_cb Microphone data callback (receives audio input frames; NULL if mic not needed)
  *
  * @return Returns OPRT_OK on successful opening, or an appropriate error code on failure.
  */
-OPERATE_RET tdl_audio_open(TDL_AUDIO_HANDLE_T audio_hdl);
+OPERATE_RET tdl_audio_open(TDL_AUDIO_HANDLE_T handle, TDL_AUDIO_MIC_CB mic_cb);
 
 ```
 
@@ -598,18 +609,15 @@ Play audio data and output audio frames to the speaker through the hardware inte
  * @brief Plays audio data.
  *
  * This function sends audio frame data to the audio device for playback. Data is
- * output to the speaker through DAC or I2S interface. Supports different audio
- * frame formats.
+ * output to the speaker through DAC or I2S interface.
  *
- * @param audio_hdl Audio device handle
- * @param frame_data Audio frame data pointer
- * @param frame_size Audio frame data size
- * @param format Audio frame format
+ * @param handle Audio device handle
+ * @param data PCM audio data pointer
+ * @param len Audio data length in bytes
  *
  * @return Returns OPRT_OK on successful playback, or an appropriate error code on failure.
  */
-OPERATE_RET tdl_audio_play(TDL_AUDIO_HANDLE_T audio_hdl, void *frame_data, uint32_t frame_size,
-                           TDL_AUDIO_FRAME_FORMAT_E format);
+OPERATE_RET tdl_audio_play(TDL_AUDIO_HANDLE_T handle, uint8_t *data, uint32_t len);
 
 ```
 

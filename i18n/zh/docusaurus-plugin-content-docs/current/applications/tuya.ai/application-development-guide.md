@@ -58,7 +58,7 @@ if (OPRT_OK != tuya_iot_license_read(&license)) {
 3. 运行 `tos build` 命令，编译工程。
 4. 使用 `tos flash` 命令进行一键烧录。
 
-更多 tos 相关，请参考 [tos.py 使用指南](/docs/tos-tools/tos-guide)。
+更多 tos 相关，请参考 [CLI - tos.py 开发工具](/docs/tos-tools/tos-guide)。
 
 ## 配网激活
 

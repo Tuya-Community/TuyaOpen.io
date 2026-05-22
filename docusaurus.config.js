@@ -8,9 +8,11 @@ import { themes as prismThemes } from 'prism-react-renderer'
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   future: {
-    experimental_faster: true,
+    faster: true,
     v4: true,
   },
+
+  clientModules: ['./src/clientModules/gtag-shim.js'],
 
   title: 'TuyaOpen',
   tagline: 'A Powerful Open Source OS and Platform for IoTs Development',
@@ -81,22 +83,29 @@ const config = {
 
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
   themeConfig: {
+    zoom: {
+      // Markdown and HTML images: single-click to enlarge, click overlay to close (medium-zoom)
+      selector: '.theme-doc-markdown img, .markdown img',
+      background: {
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)',
+      },
+      // medium-zoom options: https://github.com/francoischalifour/medium-zoom#usage
+      config: {},
+    },
     mermaid: {
       theme: {
         light: 'neutral',
-        dark: 'forest',
+        dark: 'dark',
       },
       options: {
         fontFamily: 'Inter, Arial, sans-serif',
         fontSize: 16,
         themeVariables: {
           primaryColor: '#2e7dff',
-          primaryTextColor: '#222',
           primaryBorderColor: '#2e7dff',
           lineColor: '#2e7dff',
           fontFamily: 'Inter, Arial, sans-serif',
-          nodeTextColor: '#222',
-          background: '#f8fafc',
         },
       },
     },
@@ -119,8 +128,8 @@ const config = {
       title: 'TuyaOpen',
       logo: {
         alt: 'TuyaOpen',
-        src: 'img/home/tuyaopen-logo-simple-dark.png',
-        srcDark: 'img/home/tuyaopen-logo-simple-light.png',
+        src: '/img/home/tuyaopen-logo-simple-dark.png',
+        srcDark: '/img/home/tuyaopen-logo-simple-light.png',
       },
       items: [
         {
@@ -156,6 +165,10 @@ const config = {
           label: 'Projects',
         },
         {
+          to: '/duckyclaw',
+          label: 'DuckyClaw 🦞',
+        },
+        {
           label: 'Tools',
           position: 'left',
           items: [
@@ -172,25 +185,6 @@ const config = {
             },
           ],
         },
-        // ======Hardware List ========
-        // {
-        //   to: '/hardware_pages',
-        //   label: 'Supported Hardware',
-        //   position: 'left',
-        // },
-
-        // {
-        // type: 'docsVersionDropdown',
-        // dropdownItemsAfter: [
-        //     {
-        //       type: 'html',
-        //       value: '<hr style="margin: .5em 0;" />',
-        //     },
-        //     { to: '/versions', label: 'All Versions' },
-        //     { to: '/supported-releases', label: 'Supported Releases' },
-        //   ],
-        //   position: 'right',
-        // },
         {
           type: 'localeDropdown',
           position: 'right',
@@ -305,8 +299,9 @@ const config = {
 
   plugins: [
     './docusaurus-tailwind-v3',
+    'docusaurus-plugin-image-zoom',
+    './plugins/mermaid-panzoom',
     ['@gracefullight/docusaurus-plugin-microsoft-clarity', { projectId: 'lggqck9srz' }],
-    './src/plugins/hardwarePagesGenerator',
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -327,16 +322,6 @@ const config = {
         ],
       },
     ],
-    // [
-    //   '@docusaurus/plugin-content-docs',
-    //   {
-    //     id: 'hardware-content',
-    //     path: 'content/hardware',
-    //     routeBasePath: 'hardware-content',
-    //     include: ['*.md'],
-    //     sidebarPath: false,
-    //   },
-    // ],
   ],
   headTags: [
     {

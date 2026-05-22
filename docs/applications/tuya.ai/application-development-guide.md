@@ -56,7 +56,7 @@ If the `tuya_iot_license_read()` interface returns `OPRT_OK`, it indicates that 
 3. Run `tos build` to build the project.
 4. Run the `tos flash` command for flashing.
 
-For more information about tos, see the [tos.py User Guide](/docs/tos-tools/tos-guide).
+For more information about tos, see [CLI - tos.py Development Tool](/docs/tos-tools/tos-guide).
 
 ## Pair and activate the device
 

@@ -157,6 +157,8 @@ If you enable a feature that depends on the display driver, such as LVGL, the di
 
    ![](/img/peripheral/display/choose_lvgl.png)
 
+   For building and running LVGL UIs (init, `lv_vendor_*`, examples), see the [LVGL Application Guide](tutorials/lvgl-application-guide).
+
 3. Verify that the display driver's enable macro is activated.
 
    ![](/img/peripheral/display/display_enable.png)
@@ -246,13 +248,15 @@ typedef enum {
 
 // Device basic information
 typedef struct {
-    TUYA_DISPLAY_TYPE_E type;
-    uint16_t width;
-    uint16_t height;
-    TUYA_DISPLAY_PIXEL_FMT_E fmt;
-    TUYA_DISPLAY_ROTATION_E  rotation;
-    TUYA_DISPLAY_BL_CTRL_T   bl;
-    TUYA_DISPLAY_IO_CTRL_T   power;
+    TUYA_DISPLAY_TYPE_E       type;
+    uint16_t                  width;
+    uint16_t                  height;
+    bool                      is_swap;   // swap byte order for RGB565
+    bool                      has_vram;  // device has its own video RAM
+    TUYA_DISPLAY_PIXEL_FMT_E  fmt;
+    TUYA_DISPLAY_ROTATION_E   rotation;
+    TUYA_DISPLAY_BL_CTRL_T    bl;
+    TUYA_DISPLAY_IO_CTRL_T    power;
 } TDD_DISP_DEV_INFO_T;
 
 /**

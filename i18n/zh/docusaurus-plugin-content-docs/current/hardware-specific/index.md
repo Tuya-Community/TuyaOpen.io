@@ -24,6 +24,8 @@ TuyaOpen 项目目前支持的芯片都是 Wi-Fi & Bluetooth LE 双模芯片，�
   imgHeight={150}
 />
 
+关于 T2、T3 模组在 TuyaOpen 中的 BSP 路径与使用说明，见 [T2 模块概述](tuya-t2/overview-t2) 与 [T3 模块概述](tuya-t3/overview-t3)。
+
  - ESP32 系列
 
 <ChipRow 
@@ -58,9 +60,27 @@ TuyaOpen 项目目前支持的芯片都是 Wi-Fi & Bluetooth LE 双模芯片，�
 
 TuyaOpen 项目目前支持以下开发板：
 
+ - Tuya 系列
+
 <ChipRow 
    chipData={[
-      { name: 'T2-U 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/cn/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0', imgWidth: 200},
-      { name: 'T5AI-Board 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board', imgWidth: 200 }
+      { name: 'T2-U 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/568d9bd5-f702-44b2-83d2-35ea8f056f60.jpg', link: 'https://developer.tuya.com/cn/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0' },
+      { name: 'T5AI-Board 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/e8284567-2cde-43a7-b172-98c58f39ec25.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board' },
+      { name: 'T5AI-Core 开发板', img: 'https://images.tuyacn.com/fe-static/docs/img/aa9cceee-b0ee-4bb3-8b93-8e6e2e0013a3.png', link: 'https://tuyaopen.ai/zh/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core' }
    ]}
+   imgWidth={280}
+   imgHeight={200}
+/>
+
+ - ESP32 系列开发板
+
+<ChipRow 
+   chipData={[
+      { name: 'DNESP32S3-BOX', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/zh/docs/hardware-specific/espressif/overview-esp32' },
+      { name: 'ESP32S3 Bread Compact', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/zh/docs/hardware-specific/espressif/overview-esp32' },
+      { name: 'Waveshare ESP32-S3 AMOLED', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/zh/docs/hardware-specific/espressif/overview-esp32' },
+      { name: 'Waveshare ESP32-C6 DevKit', img: 'https://images.tuyacn.com/fe-static/docs/img/2672ca08-06ca-4f19-8679-785d6d3463e6.png', link: '/zh/docs/hardware-specific/espressif/overview-esp32' }
+   ]}
+   imgWidth={280}
+   imgHeight={200}
 />

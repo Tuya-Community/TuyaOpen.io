@@ -156,6 +156,8 @@ title: 显示屏驱动
 
     ![](/img/peripheral/display/choose_lvgl.png)
 
+    构建与运行 LVGL 界面（初始化、`lv_vendor_*`、示例流程）见 [LVGL 应用指南](tutorials/lvgl-application-guide)。
+
 3. 查看显示驱动的使能宏是否被打开。
 
     ![](/img/peripheral/display/display_enable.png)
@@ -248,6 +250,8 @@ typedef struct {
     TUYA_DISPLAY_TYPE_E type;
     uint16_t width;
     uint16_t height;
+    bool                      is_swap;   // RGB565 字节序交换
+    bool                      has_vram;  // 设备自带显存
     TUYA_DISPLAY_PIXEL_FMT_E fmt;
     TUYA_DISPLAY_ROTATION_E  rotation;
     TUYA_DISPLAY_BL_CTRL_T   bl;
