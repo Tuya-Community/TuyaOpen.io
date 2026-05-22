@@ -9,7 +9,7 @@ title: "Step 2: 固件烧录"
 将设备与 PC 连接，若使用虚拟机，请将串口映射到虚拟机中。
 
 :::tip
-对于 Linux/Mac 用户，需要执行命令 `sudo usermod -aG dialout $USER` 开启串口使用权限，并重启系统。
+对于 Linux 用户，需要执行命令 `sudo usermod -aG dialout $USER` 开启串口使用权限，并重启系统。
 :::
 
 使用命令 `tos.py flash` 烧录固件，并选择烧录口。若有多个串口可以依次尝试。
@@ -79,7 +79,12 @@ Select serial port: 1
 
 ### 烧录失败
 
-请参考 [安装对应驱动](../tos-tools/tools-tyutool.md#烧录过程中总是在write时失败)（GUI - tyutool 图形化工具指南）。 
+烧录过程中若出现以下情况，通常是缺少串口驱动导致的：
+
+- 烧录失败
+- Mac 系统中无法识别串口
+
+**请参考 [安装对应驱动](../tos-tools/tools-tyutool.md#烧录过程中总是在write时失败)。**
 
 ### T5系列映射虚拟机有延时
 
