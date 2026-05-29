@@ -208,6 +208,125 @@ function HeroMockupParallax({ children }) {
   return { heroRef, mockupRef }
 }
 
+function AiInputVisual({ aiVisual }) {
+  const [text, setText] = useState('')
+  const promptIdx = useRef(0)
+
+  useEffect(() => {
+    let cancelled = false
+    let timer
+
+    async function sleep(ms) {
+      return new Promise((r) => {
+        timer = setTimeout(r, ms)
+      })
+    }
+
+    async function run() {
+      while (!cancelled) {
+        const prompt = aiVisual.prompts[promptIdx.current % aiVisual.prompts.length]
+        promptIdx.current++
+
+        for (let i = 0; i <= prompt.length; i++) {
+          if (cancelled) return
+          setText(prompt.slice(0, i))
+          await sleep(80 + Math.random() * 60)
+        }
+
+        await sleep(2000)
+
+        for (let i = prompt.length; i >= 0; i--) {
+          if (cancelled) return
+          setText(prompt.slice(0, i))
+          await sleep(35)
+        }
+
+        await sleep(500)
+      }
+    }
+
+    run()
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+  }, [aiVisual.prompts])
+
+  return (
+    <div className={styles.aiInputVisual}>
+      <div className={styles.aiTagRow}>
+        <div className={clsx(styles.aiTagTrack, styles.aiTagTrackRight)}>
+          {[...aiVisual.tagRows[0], ...aiVisual.tagRows[0]].map((t, i) => (
+            <span key={i} className={styles.aiTag}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className={styles.aiTagRow}>
+        <div className={clsx(styles.aiTagTrack, styles.aiTagTrackLeft)}>
+          {[...aiVisual.tagRows[1], ...aiVisual.tagRows[1]].map((t, i) => (
+            <span key={i} className={styles.aiTag}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.aiInputBox}>
+        <svg className={styles.aiStarIcon} viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z"
+            fill="url(#starGrad)"
+          />
+          <defs>
+            <linearGradient id="starGrad" x1="4" y1="2" x2="20" y2="20">
+              <stop offset="0%" stopColor="#ff4d00" />
+              <stop offset="50%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span className={styles.aiInputTextWrap}>
+          <span className={styles.aiInputText}>{text}</span>
+          <span className={styles.aiCursor} />
+        </span>
+        <span className={styles.aiSendBtn}>
+          {aiVisual.sendBtn}
+          <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
+            <path
+              d="M3 10L17 10M17 10L11 4M17 10L11 16"
+              stroke="#fff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+
+      <div className={styles.aiTagRow}>
+        <div className={clsx(styles.aiTagTrack, styles.aiTagTrackRight)}>
+          {[...aiVisual.tagRows[2], ...aiVisual.tagRows[2]].map((t, i) => (
+            <span key={i} className={styles.aiTag}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className={styles.aiTagRow}>
+        <div className={clsx(styles.aiTagTrack, styles.aiTagTrackLeft)}>
+          {[...aiVisual.tagRows[3], ...aiVisual.tagRows[3]].map((t, i) => (
+            <span key={i} className={styles.aiTag}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function FeatureDetailSection({ copy }) {
   const [activeScene, setActiveScene] = useState(0)
 
@@ -215,18 +334,6 @@ function FeatureDetailSection({ copy }) {
     <section className={styles.featureDetail} id="detail">
       <div className={styles.featureDetailInner}>
         <div className={styles.fdLeft} data-animate data-animate-type="left">
-          <div className={styles.fdDescCard}>
-            <h3 className={styles.fdDescCardTitle}>{copy.featureDetail.title}</h3>
-            <p className={styles.fdDescCardText}>
-              {copy.featureDetail.desc}
-              <br />
-              <br />
-              <strong>{copy.featureDetail.mode1Label}</strong> {copy.featureDetail.mode1Desc}
-              <br />
-              <br />
-              <strong>{copy.featureDetail.mode2Label}</strong> {copy.featureDetail.mode2Desc}
-            </p>
-          </div>
           <div className={styles.fdPills}>
             {copy.featureDetail.pills.map((pill, i) => (
               <button
@@ -244,10 +351,26 @@ function FeatureDetailSection({ copy }) {
         </div>
         <div className={styles.fdRight} data-scene={activeScene} data-animate data-animate-type="right">
           <div className={styles.fdMainImage}>
-            <div className={styles.fdImagePlaceholder} />
+            {activeScene === 0 ? (
+              <AiInputVisual aiVisual={copy.featureDetail.aiVisual} />
+            ) : (
+              <div className={styles.fdImagePlaceholder}>
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M2 20h20M4 20V10l8-6 8 6v10M9 20v-6h6v6M9 14h6M12 8v2" />
+                </svg>
+                <span>Under Construction</span>
+              </div>
+            )}
           </div>
-          <div className={clsx(styles.fdFloatPanel, styles.fdFloat1)} />
-          <div className={clsx(styles.fdFloatPanel, styles.fdFloat2)} />
         </div>
       </div>
     </section>
@@ -317,13 +440,26 @@ const FEATURE_ICON_STYLES = [styles.featureIconOrange, styles.featureIconViolet,
 
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
-  const [locale, setLocale] = useState(i18n.currentLocale === 'zh' ? 'zh' : 'en')
+  const [locale, setLocale] = useState(() => {
+    if (i18n.currentLocale === 'zh') return 'zh'
+    if (typeof navigator !== 'undefined' && /^zh\b/i.test(navigator.language)) return 'zh'
+    return 'en'
+  })
   const copy = tuyaOpenIdeCopy[locale]
   const debuggerGifUrl = useBaseUrl('/img/ide/debugger.gif')
   const pinIoConfigUrl = useBaseUrl('/img/ide/pin-io-config.svg')
   const demoLibraryGifUrl = useBaseUrl('/img/ide/demo-library.gif')
   const skillCardGifUrl = useBaseUrl('/img/ide/skill-card.gif')
   const boardCatalogueGifUrl = useBaseUrl('/img/ide/board-catalogue.gif')
+  const vscodeIconUrl = useBaseUrl('/img/ide/vscode-icon.png')
+  const cursorIconUrl = useBaseUrl('/img/ide/cursor-icon.png')
+  const codingAgentUrl = useBaseUrl('/img/ide/coding-agent.png')
+  const threePlatUrl = useBaseUrl('/img/ide/3-plat-dev.png')
+
+  const featureImageMap = {
+    'coding-agent': codingAgentUrl,
+    '3-plat-dev': threePlatUrl,
+  }
 
   const capVisualImages = {
     0: { src: boardCatalogueGifUrl, alt: 'Board Catalogue' },
@@ -534,7 +670,7 @@ export default function TuyaOpenIdePage() {
         {/* Header */}
         <header className={styles.header}>
           <a href="/tuyaopen-ide" className={styles.headerLogo}>
-            <span className={styles.logoIcon}>T</span>
+            <img src="/img/home/tuyaopen-logo-simple-dark.png" alt="TuyaOpen" className={styles.logoIcon} />
             <span>TuyaOpen IDE</span>
           </a>
           <nav>
@@ -544,9 +680,6 @@ export default function TuyaOpenIdePage() {
               </li>
               <li>
                 <a href="#capabilities">{copy.nav.capabilities}</a>
-              </li>
-              <li>
-                <a href="#showcase">{copy.nav.showcase}</a>
               </li>
               <li>
                 <a href="#why">{copy.nav.why}</a>
@@ -565,7 +698,12 @@ export default function TuyaOpenIdePage() {
             >
               {locale === 'en' ? '中文' : 'EN'}
             </button>
-            <a href="#download" className={styles.btnCta}>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
+              className={styles.btnCta}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {copy.nav.cta}
             </a>
           </div>
@@ -589,8 +727,14 @@ export default function TuyaOpenIdePage() {
             {copy.hero.subtitle}
           </p>
           <div className={clsx(styles.heroButtons, styles.fadeIn)} data-animate>
-            <a href="#download" className={clsx(styles.btnCta, styles.btnCtaLg)}>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
+              className={clsx(styles.btnCta, styles.btnCtaLg)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {copy.hero.ctaPrimary}
+              <span className={styles.earlyPreviewTag}>Early Preview</span>
             </a>
             <a
               href="https://github.com/tuya/tuyaopen"
@@ -604,9 +748,12 @@ export default function TuyaOpenIdePage() {
 
           <div className={clsx(styles.heroMockup, styles.fadeIn)} data-animate>
             <div className={styles.mockupMain} ref={mockupRef}>
-              <img
-                src="https://images.tuyacn.com/fe-static/docs/img/a967ad23-91ec-49d6-998f-77a2d8a32d1e.gif"
-                alt={copy.hero.screenshotAlt}
+              <video
+                src="https://images.tuyacn.com/fe-static/docs/img/02c56028-2df3-45f8-8cfe-d51c48f8d3e5.gif"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className={styles.heroGif}
               />
             </div>
@@ -635,7 +782,27 @@ export default function TuyaOpenIdePage() {
           <div className={styles.featuresGrid}>
             {copy.features.items.map((item, i) => (
               <div key={i} className={clsx(styles.featureCard, styles.fadeIn)} data-animate>
-                <div className={clsx(styles.featureIcon, FEATURE_ICON_STYLES[i])}>{FEATURE_ICONS[i]}</div>
+                {item.icons ? (
+                  <div className={styles.featureIdeIcons}>
+                    {item.icons.map((icon) => (
+                      <img
+                        key={icon}
+                        src={icon === 'vscode' ? vscodeIconUrl : cursorIconUrl}
+                        alt={icon}
+                        className={styles.featureIdeIcon}
+                      />
+                    ))}
+                  </div>
+                ) : item.image ? (
+                  <img
+                    src={featureImageMap[item.image]}
+                    alt={item.title}
+                    className={styles.featureCardImg}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className={clsx(styles.featureIcon, FEATURE_ICON_STYLES[i])}>{FEATURE_ICONS[i]}</div>
+                )}
                 <h3 className={styles.featureCardTitle}>{item.title}</h3>
                 <p className={styles.featureCardDesc}>{item.desc}</p>
               </div>
@@ -839,32 +1006,10 @@ export default function TuyaOpenIdePage() {
                   )}
                 </div>
                 <h4 className={styles.capTitle}>{item.title}</h4>
+                {item.subtitle && <p className={styles.capSubtitle}>{item.subtitle}</p>}
                 <p className={styles.capDesc}>{item.desc}</p>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* Showcase */}
-        <section className={styles.showcaseSection} id="showcase">
-          <div className={clsx(styles.floatOrb, styles.showcaseOrb)}></div>
-          <div className={styles.showcaseInner}>
-            <div className={styles.fadeIn} data-animate>
-              <span className={styles.sectionLabel}>{copy.showcase.label}</span>
-              <h2 className={styles.sectionTitle}>{copy.showcase.title}</h2>
-              <p className={clsx(styles.sectionDesc, styles.showcaseDescCenter)}>{copy.showcase.desc}</p>
-            </div>
-            <div className={clsx(styles.showcaseStack, styles.fadeIn)} data-animate>
-              <div className={clsx(styles.showcaseCard, styles.scBack)}>
-                <span>{copy.showcase.back}</span>
-              </div>
-              <div className={clsx(styles.showcaseCard, styles.scMid)}>
-                <span>{copy.showcase.mid}</span>
-              </div>
-              <div className={clsx(styles.showcaseCard, styles.scFront)}>
-                <span>{copy.showcase.front}</span>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -903,17 +1048,15 @@ export default function TuyaOpenIdePage() {
             <h2 className={styles.downloadTitle}>{copy.download.title}</h2>
             <p className={styles.downloadDesc}>{copy.download.desc}</p>
             <div className={styles.downloadButtons}>
-              <a href="#" className={clsx(styles.btnCta, styles.btnCtaLg)}>
-                {copy.download.marketplace}
-              </a>
               <a
-                href="https://github.com/tuya/tuyaopen"
-                className={styles.btnSecondary}
+                href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
+                className={clsx(styles.btnCta, styles.btnCtaLg)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {copy.download.github}
+                {copy.download.marketplace}
               </a>
+              <span className={clsx(styles.btnSecondary, styles.btnDisabled)}>{copy.download.github}</span>
             </div>
             <p className={styles.platformInfo}>{copy.download.platforms}</p>
           </div>
