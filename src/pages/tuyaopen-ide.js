@@ -474,11 +474,11 @@ export default function TuyaOpenIdePage() {
     return 'en'
   })
   const copy = tuyaOpenIdeCopy[locale]
-  const debuggerGifUrl = useBaseUrl('/img/ide/debugger.gif')
+  const debuggerGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/bd92fba8-5833-4e09-a7fc-d6c3d7d31908.gif'
   const pinIoConfigUrl = useBaseUrl('/img/ide/pin-io-config.svg')
-  const demoLibraryGifUrl = useBaseUrl('/img/ide/demo-library.gif')
-  const skillCardGifUrl = useBaseUrl('/img/ide/skill-card.gif')
-  const boardCatalogueGifUrl = useBaseUrl('/img/ide/board-catalogue.gif')
+  const demoLibraryGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/43c354e0-0055-45ef-a4ae-a1a73a614cab.gif'
+  const skillCardGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/a0d0d2c7-5989-4829-9b59-da40ba49fdd1.gif'
+  const boardCatalogueGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/5a3c0d3a-3bd4-4cf1-8d46-ca99c3b6154a.gif'
   const vscodeIconUrl = useBaseUrl('/img/ide/vscode-icon.png')
   const cursorIconUrl = useBaseUrl('/img/ide/cursor-icon.png')
   const codingAgentUrl = useBaseUrl('/img/ide/coding-agent.png')
@@ -494,7 +494,10 @@ export default function TuyaOpenIdePage() {
     1: { src: pinIoConfigUrl, alt: 'AI Pin Mapping' },
     2: { src: demoLibraryGifUrl, alt: 'Demo Library' },
     3: { src: skillCardGifUrl, alt: 'Skills Registry' },
-    4: { src: useBaseUrl('/img/ide/sdk-management.gif'), alt: 'SDK Management' },
+    4: {
+      src: 'https://images.tuyacn.com/fe-static/docs/img/0f98ad07-7e5c-4a02-b5b7-01738bf20c22.gif',
+      alt: 'SDK Management',
+    },
     5: { src: debuggerGifUrl, alt: 'Device Tooling' },
   }
 
