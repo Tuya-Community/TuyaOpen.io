@@ -15,11 +15,12 @@ export const tuyaOpenIdeCopy = {
       subtitle:
         'The full-stack hardware development tool for the AI era — from project creation to device firmware, cloud Agent, and App development. Three in one. Vibe Coding Your Way.',
       ctaPrimary: 'Install Extension',
+      earlyPreview: '✨ Early Preview',
       ctaSecondary: 'View on GitHub',
       screenshotAlt: 'IDE Main Interface',
-      floatBuild: 'Build Successful',
-      floatFlash: 'Firmware Flashed',
-      floatConnected: 'Device Connected',
+      floatBuild: 'Vibe Coding Working',
+      floatFlash: 'Device IO Context Synced',
+      floatConnected: 'AI Build Passed',
     },
     features: {
       label: 'Seamless Integration',
@@ -449,11 +450,12 @@ export const tuyaOpenIdeCopy = {
       subtitle:
         '面向 AI 时代的全栈硬件开发工具——从项目创建到硬件 / 云端 Agent / App 开发，三端合一。Vibe Coding Your Way。',
       ctaPrimary: '安装插件',
+      earlyPreview: '✨ 抢先体验 - Preview 发布',
       ctaSecondary: '查看 GitHub',
       screenshotAlt: 'IDE 主界面',
-      floatBuild: '构建成功',
-      floatFlash: '固件已烧录',
-      floatConnected: '设备已连接',
+      floatBuild: 'Vibe Coding 进行中',
+      floatFlash: 'AI 自动读取日志调试',
+      floatConnected: 'AI 编译通过',
     },
     features: {
       label: '无缝集成',
@@ -589,8 +591,8 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: '立即开始构建',
-      desc: '从 VS Code 市场安装 TuyaOpen IDE，或从 GitHub Releases 直接下载 .vsix。',
-      marketplace: 'VS Code 市场',
+      desc: '从 VS Code / Cursor 市场安装 TuyaOpen IDE，或从 GitHub Releases 直接下载 .vsix。',
+      marketplace: 'VS Code / Cursor 市场',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
     },

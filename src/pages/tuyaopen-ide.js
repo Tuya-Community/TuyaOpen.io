@@ -755,23 +755,25 @@ export default function TuyaOpenIdePage() {
             {copy.hero.subtitle}
           </p>
           <div className={clsx(styles.heroButtons, styles.fadeIn)} data-animate>
-            <a
-              href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
-              className={clsx(styles.btnCta, styles.btnCtaLg)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {copy.hero.ctaPrimary}
-              <span className={styles.earlyPreviewTag}>Early Preview</span>
-            </a>
-            <a
-              href="https://github.com/tuya/tuyaopen"
-              className={styles.btnSecondary}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {copy.hero.ctaSecondary}
-            </a>
+            <span className={styles.earlyPreviewTag}>{copy.hero.earlyPreview}</span>
+            <div className={styles.heroCtaRow}>
+              <a
+                href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
+                className={clsx(styles.btnCta, styles.btnCtaLg)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.hero.ctaPrimary}
+              </a>
+              <a
+                href="https://github.com/tuya/tuyaopen"
+                className={styles.btnSecondary}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.hero.ctaSecondary}
+              </a>
+            </div>
           </div>
 
           <div className={clsx(styles.heroMockup, styles.fadeIn)} data-animate>
