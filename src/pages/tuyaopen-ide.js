@@ -353,6 +353,34 @@ function FeatureDetailSection({ copy }) {
           <div className={styles.fdMainImage}>
             {activeScene === 0 ? (
               <AiInputVisual aiVisual={copy.featureDetail.aiVisual} />
+            ) : activeScene === 1 ? (
+              <video
+                src="https://images.tuyacn.com/fe-static/docs/img/2df61a11-5587-42c7-ba0a-ffbc8b2c5c8f.gif"
+                autoPlay
+                muted
+                playsInline
+                className={styles.fdVideo}
+              />
+            ) : activeScene === 2 ? (
+              <img
+                src="https://images.tuyacn.com/fe-static/docs/img/472fd5df-67c9-4569-b1a0-26e2c03df2d8.jpg"
+                alt="Vibe Coding Across Three Platforms"
+                className={styles.fdVideo}
+              />
+            ) : activeScene === 3 ? (
+              <img
+                src="https://images.tuyacn.com/fe-static/docs/img/904e1b19-a0f0-4984-99e2-2ea97f96ae61.jpg"
+                alt="Vibe Coding Skills Library"
+                className={styles.fdVideo}
+              />
+            ) : activeScene === 4 ? (
+              <video
+                src="https://images.tuyacn.com/fe-static/docs/img/c0963042-ded4-4a78-8b3e-713b7c7f437c.gif"
+                autoPlay
+                muted
+                playsInline
+                className={styles.fdVideo}
+              />
             ) : (
               <div className={styles.fdImagePlaceholder}>
                 <svg
@@ -438,14 +466,6 @@ const FEATURE_ICONS = [
 
 const FEATURE_ICON_STYLES = [styles.featureIconOrange, styles.featureIconViolet, styles.featureIconGreen]
 
-const FLOAT_TAG_DOT_COLORS = {
-  teal: '#4ec9b0',
-  orange: 'var(--accent-from)',
-  violet: 'var(--violet-from)',
-  blue: '#3b82f6',
-  green: '#22c55e',
-}
-
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
   const [locale, setLocale] = useState(() => {
@@ -505,13 +525,6 @@ export default function TuyaOpenIdePage() {
     }
     return null
   }, [hilTerminalLines])
-
-  useEffect(() => {
-    document.documentElement.classList.add('ide-page-active')
-    return () => {
-      document.documentElement.classList.remove('ide-page-active')
-    }
-  }, [])
 
   useEffect(() => {
     const hero = heroRef.current
@@ -741,9 +754,6 @@ export default function TuyaOpenIdePage() {
           <p className={clsx(styles.heroSubtitle, styles.fadeIn)} data-animate>
             {copy.hero.subtitle}
           </p>
-          <div className={clsx(styles.heroEarlyPreview, styles.fadeIn)} data-animate>
-            <span className={styles.earlyPreviewTag}>{copy.hero.earlyPreview}</span>
-          </div>
           <div className={clsx(styles.heroButtons, styles.fadeIn)} data-animate>
             <a
               href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
@@ -752,6 +762,7 @@ export default function TuyaOpenIdePage() {
               rel="noopener noreferrer"
             >
               {copy.hero.ctaPrimary}
+              <span className={styles.earlyPreviewTag}>Early Preview</span>
             </a>
             <a
               href="https://github.com/tuya/tuyaopen"
@@ -774,12 +785,18 @@ export default function TuyaOpenIdePage() {
                 className={styles.heroGif}
               />
             </div>
-            {copy.hero.floatTags.map((tag, i) => (
-              <div key={`${tag.text}-${i}`} className={clsx(styles.floatingPanel, styles[`panel${i + 1}`])}>
-                <span className={styles.panelDot} style={{ background: FLOAT_TAG_DOT_COLORS[tag.tone] }} />
-                <span className={styles.panelText}>{tag.text}</span>
-              </div>
-            ))}
+            <div className={clsx(styles.floatingPanel, styles.panel1)}>
+              <span className={styles.panelDot} style={{ background: '#4ec9b0' }}></span>
+              <span>{copy.hero.floatBuild}</span>
+            </div>
+            <div className={clsx(styles.floatingPanel, styles.panel2)}>
+              <span className={styles.panelDot} style={{ background: 'var(--accent-from)' }}></span>
+              <span>{copy.hero.floatFlash}</span>
+            </div>
+            <div className={clsx(styles.floatingPanel, styles.panel3)}>
+              <span className={styles.panelDot} style={{ background: 'var(--violet-from)' }}></span>
+              <span>{copy.hero.floatConnected}</span>
+            </div>
           </div>
         </section>
 
