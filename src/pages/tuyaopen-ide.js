@@ -438,6 +438,14 @@ const FEATURE_ICONS = [
 
 const FEATURE_ICON_STYLES = [styles.featureIconOrange, styles.featureIconViolet, styles.featureIconGreen]
 
+const FLOAT_TAG_DOT_COLORS = {
+  teal: '#4ec9b0',
+  orange: 'var(--accent-from)',
+  violet: 'var(--violet-from)',
+  blue: '#3b82f6',
+  green: '#22c55e',
+}
+
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
   const [locale, setLocale] = useState(() => {
@@ -497,6 +505,13 @@ export default function TuyaOpenIdePage() {
     }
     return null
   }, [hilTerminalLines])
+
+  useEffect(() => {
+    document.documentElement.classList.add('ide-page-active')
+    return () => {
+      document.documentElement.classList.remove('ide-page-active')
+    }
+  }, [])
 
   useEffect(() => {
     const hero = heroRef.current
@@ -726,6 +741,9 @@ export default function TuyaOpenIdePage() {
           <p className={clsx(styles.heroSubtitle, styles.fadeIn)} data-animate>
             {copy.hero.subtitle}
           </p>
+          <div className={clsx(styles.heroEarlyPreview, styles.fadeIn)} data-animate>
+            <span className={styles.earlyPreviewTag}>{copy.hero.earlyPreview}</span>
+          </div>
           <div className={clsx(styles.heroButtons, styles.fadeIn)} data-animate>
             <a
               href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
@@ -734,7 +752,6 @@ export default function TuyaOpenIdePage() {
               rel="noopener noreferrer"
             >
               {copy.hero.ctaPrimary}
-              <span className={styles.earlyPreviewTag}>Early Preview</span>
             </a>
             <a
               href="https://github.com/tuya/tuyaopen"
@@ -757,18 +774,12 @@ export default function TuyaOpenIdePage() {
                 className={styles.heroGif}
               />
             </div>
-            <div className={clsx(styles.floatingPanel, styles.panel1)}>
-              <span className={styles.panelDot} style={{ background: '#4ec9b0' }}></span>
-              <span>{copy.hero.floatBuild}</span>
-            </div>
-            <div className={clsx(styles.floatingPanel, styles.panel2)}>
-              <span className={styles.panelDot} style={{ background: 'var(--accent-from)' }}></span>
-              <span>{copy.hero.floatFlash}</span>
-            </div>
-            <div className={clsx(styles.floatingPanel, styles.panel3)}>
-              <span className={styles.panelDot} style={{ background: 'var(--violet-from)' }}></span>
-              <span>{copy.hero.floatConnected}</span>
-            </div>
+            {copy.hero.floatTags.map((tag, i) => (
+              <div key={`${tag.text}-${i}`} className={clsx(styles.floatingPanel, styles[`panel${i + 1}`])}>
+                <span className={styles.panelDot} style={{ background: FLOAT_TAG_DOT_COLORS[tag.tone] }} />
+                <span className={styles.panelText}>{tag.text}</span>
+              </div>
+            ))}
           </div>
         </section>
 
