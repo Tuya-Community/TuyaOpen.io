@@ -60,25 +60,12 @@ The following will introduce the usage instructions for flashing and authorizati
 
 After opening tyutool_gui, the interface is displayed as follows:
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/2435baae-cdd9-4261-9d68-2813cea93105.png" alt="tyutools_flash" width="550" />
+<img src="https://images.tuyacn.com/fe-static/docs/img/ece486b6-25b1-4ab1-9de9-4cffb0867905.png" alt="tyutools_flash" width="550" />
 
- + ① Select the chip/module model to be flashed
- + ② Click Browse to select the firmware file to be flashed (the bin file containing `_QIO`)
- + ③ Click Rescan to scan device ports, then select the device port to be flashed
- + ④ Click Start to begin flashing the firmware
-
-After the firmware is successfully flashed, the following log output will appear:
-
-```
-[INFO]: Write Start.
-[INFO]: Waiting Reset ...
-[INFO]: unprotect flash OK.
-[INFO]: sync baudrate 921600 success
-[INFO]: Erase flash success
-[INFO]: Write flash success
-[INFO]: CRC check success
-[INFO]: Reboot done
-```
+ + ① Select the chip
+ + ② Click `Browse` to select the firmware file to be flashed (the bin file containing `_QIO`)
+ + ③ Select the device port for flashing (for Tuya official development boards and some partner development boards, hovering over the serial port will indicate whether it is a flashing/authorization serial port or a log serial port)
+ + ④ Click `Start flash` to begin flashing the firmware
 
 :::tip
 The default baud rate for flashing is 921600. If you find the flashing speed too slow, you can increase the baud rate appropriately. However, increasing the baud rate may cause the firmware flashing to fail.
@@ -88,34 +75,23 @@ The default baud rate for flashing is 921600. If you find the flashing speed too
 
 When you need to use the functions of the Tuya IoT platform, you must first authorize the device. You can use the tyutool_gui tool for device authorization. The following are the specific operation steps.
 
-After opening the tyutool_gui tool, click the `Serial` tab. The interface is as follows:
+After opening the tyutool_gui tool, click the `Authorize` tab. The interface is as follows:
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/563acc7d-28b2-495c-9dcb-4dfefa1e6c39.png" alt="tyutools_serial" width="550" />
+<img src="https://images.tuyacn.com/fe-static/docs/img/ed6ebf86-4c52-4b3b-b4dd-27f50daf4013.png" alt="tyutools_auth" width="550" />
 
- + ① Click the `Serial` tab
- + ② Click `COM` to scan device ports
- + ③ Select the device port to be authorized
- + ④ Click `Start` to connect the device
+ + ① Click the `Authorize` tab
+ + ② Select the authorization serial port
+ + ③ Select the authorization baud rate
+ + ④ Enter the `UUID` and `AuthKey`
+ + ⑤ Click `Start Authorization`
 
 :::tip
 The authorization UART and the flashing UART are the same. Keep the UART default configuration (baud rate: 115200, data bits: 8, stop bits: 1, parity: none).
 :::
 
-After the device serial port is successfully connected, the `Authorize` button will become available. Click the `Authorize` button to pop up the following interface:
-
-<img src="https://images.tuyacn.com/fe-static/docs/img/f1f18bee-808e-4368-97ff-9564eed0c4bc.png" alt="tyutools_authorize" width="550" />
-
- + ② Enter the `UUID` in the authorization information
- + ③ Enter the `AuthKey` in the authorization information
- + ④ Click the `Authorize` button to authorize the device
-
 :::info
 The TuyaOpen `UUID` and `AuthKey` can be obtained from the [Tuya IoT Platform](https://platform.tuya.com/purchase/index?type=6) or purchased from [Tuya's official Taobao store](https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP).
 :::
-
-After successful authorization, you can use the `auth-read` command to verify:
-
-![auth-read](/img/tyutool/auth-read.png)
 
 ## Frequently Asked Questions
 
