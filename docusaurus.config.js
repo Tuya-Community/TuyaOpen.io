@@ -133,6 +133,10 @@ const config = {
       },
       items: [
         {
+          type: 'custom-productsMenu',
+          position: 'left',
+        },
+        {
           to: 'docs/about-tuyaopen',
           label: 'Documentation',
         },
@@ -165,27 +169,6 @@ const config = {
           label: 'Projects',
         },
         {
-          to: '/duckyclaw',
-          label: 'DuckyClaw 🦞',
-        },
-        {
-          label: 'Tools',
-          position: 'left',
-          items: [
-            {
-              label: 'Universal Serial Port Tools',
-              to: '/tools/tyutool',
-            },
-
-            {
-              label: 'Web Serial/Flashing Tools',
-              href: 'https://tuyaopen.ai/tools',
-              target: '_blank',
-              rel: 'noopener noreferrer',
-            },
-          ],
-        },
-        {
           type: 'localeDropdown',
           position: 'right',
         },
@@ -200,15 +183,40 @@ const config = {
     footer: {
       links: [
         {
-          title: 'Docs',
+          title: 'Products',
           items: [
             {
-              label: 'Tutorial',
+              label: 'TuyaOpen IDE',
+              to: '/tuyaopen-ide',
+            },
+            {
+              label: 'TuyaOpen SDK',
+              href: 'https://github.com/tuya/TuyaOpen',
+            },
+            {
+              label: 'TuyaOpen on Arduino',
+              href: 'https://github.com/tuya/arduino-TuyaOpen',
+            },
+            {
+              label: 'DuckyClaw 🦞',
+              to: '/duckyclaw',
+            },
+            {
+              label: 'Get Hardware',
+              to: '/get-hardware',
+            },
+          ],
+        },
+        {
+          title: 'Documentation',
+          items: [
+            {
+              label: 'Quick Start',
               to: '/docs/quick-start/unboxing',
             },
             {
-              label: 'Service',
-              to: '/pricing',
+              label: 'About TuyaOpen',
+              to: '/docs/about-tuyaopen',
             },
             {
               label: 'Hardware List',
@@ -218,11 +226,19 @@ const config = {
               label: 'Tuya T5AI Dev Kit',
               to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
             },
+            {
+              label: 'License Key',
+              to: '/pricing',
+            },
           ],
         },
         {
           title: 'Tools',
           items: [
+            {
+              label: 'TyuTools GUI/CLI',
+              to: '/tools/tyutool',
+            },
             {
               label: 'Web Serial Tool',
               href: 'https://tuyaopen.ai/tools',
@@ -235,6 +251,10 @@ const config = {
           title: 'Community',
           items: [
             {
+              label: 'Blog',
+              to: '/blog',
+            },
+            {
               label: 'Discord',
               href: 'https://discord.com/invite/yPPShSTttG',
             },
@@ -243,11 +263,11 @@ const config = {
               href: 'https://x.com/tuyasmart',
             },
             {
-              label: 'Youtube',
+              label: 'YouTube',
               href: 'https://www.youtube.com/@tuya2023',
             },
             {
-              label: 'Linkedin',
+              label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/tuya-smart',
             },
           ],
@@ -260,17 +280,12 @@ const config = {
               href: 'https://github.com/tuya/TuyaOpen',
             },
             {
-              label: 'Gitee(Mirror)',
+              label: 'Gitee (Mirror)',
               href: 'https://gitee.com/tuya-open/TuyaOpen',
             },
-          ],
-        },
-        {
-          title: 'Acknowledgements',
-          items: [
             {
-              label: 'Thanks for the technology illustrations by Storyset',
-              href: 'https://storyset.com/technology',
+              label: 'Projects',
+              to: '/projects',
             },
           ],
         },

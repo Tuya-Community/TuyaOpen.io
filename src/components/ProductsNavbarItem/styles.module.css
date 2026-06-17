@@ -1,0 +1,199 @@
+/* Products mega-menu — global navbar. Themed to match the main landing page
+   (brand blue → orange) and adaptive to Docusaurus light/dark via Infima vars. */
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: var(--ifm-navbar-link-font-weight, 500);
+}
+
+.trigger:hover,
+.triggerOpen {
+  color: var(--ifm-navbar-link-hover-color);
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+  opacity: 0.7;
+}
+
+.triggerOpen .chevron {
+  transform: rotate(180deg);
+}
+
+.mega {
+  position: fixed;
+  top: var(--ifm-navbar-height, 60px);
+  left: 50%;
+  width: min(1180px, calc(100vw - 24px));
+  padding-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
+  z-index: var(--ifm-z-index-dropdown, 100);
+}
+
+.megaOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.megaInner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 32px;
+  background: var(--ifm-background-surface-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 16px;
+  box-shadow: 0 24px 56px rgba(15, 23, 42, 0.18);
+}
+
+[data-theme='dark'] .megaInner {
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.groupHeading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-500);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.groupItems {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 24px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.16s;
+}
+
+.item:hover {
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none;
+}
+
+.itemIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ifm-font-color-base);
+}
+
+.itemIcon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.itemText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.itemTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itemTitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ifm-heading-color);
+}
+
+.itemBadge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #ff4d00);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.itemSub {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* ===== Mobile sidebar ===== */
+.mobileLabel {
+  padding: 0 0 4px;
+  font-weight: 700;
+  color: var(--ifm-navbar-link-color);
+}
+
+.mobileGroup {
+  margin: 6px 0;
+}
+
+.mobileGroupHeading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-500);
+  padding: 6px 12px 2px;
+}
+
+/* Reflow columns on narrower desktop/tablet widths before the navbar
+   collapses to the mobile hamburger sidebar at 996px. */
+@media (max-width: 1100px) {
+  .groupItems {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* On mobile the navbar collapses to the hamburger sidebar, where this item
+   renders via the mobile branch. Hide the desktop trigger so it isn't
+   duplicated in the top bar. */
+@media (max-width: 996px) {
+  .navItem {
+    display: none;
+  }
+}

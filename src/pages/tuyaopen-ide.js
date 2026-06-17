@@ -466,6 +466,251 @@ const FEATURE_ICONS = [
 
 const FEATURE_ICON_STYLES = [styles.featureIconOrange, styles.featureIconViolet, styles.featureIconGreen]
 
+const PRODUCT_MENU_ICONS = {
+  ide: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="m8 9-2 2 2 2M13 9l2 2-2 2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </svg>
+  ),
+  sdk: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 2 2 7l10 5 10-5-10-5z" />
+      <path d="M2 17l10 5 10-5" />
+      <path d="M2 12l10 5 10-5" />
+    </svg>
+  ),
+  arduino: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="4" y="8" width="16" height="8" rx="4" />
+      <path d="M8 12h2M14 12h2M15 11v2" />
+      <path d="M2 12h2M20 12h2" />
+    </svg>
+  ),
+  ducky: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="4" y="8" width="16" height="11" rx="3" />
+      <circle cx="9" cy="13" r="1" />
+      <circle cx="15" cy="13" r="1" />
+      <path d="M12 3v3M9 19v2M15 19v2" />
+    </svg>
+  ),
+  chip: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="6" y="6" width="12" height="12" rx="2" />
+      <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+    </svg>
+  ),
+  wifi: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+      <line x1="12" y1="20" x2="12.01" y2="20" />
+      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+    </svg>
+  ),
+  pi: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <circle cx="8" cy="12" r="2" />
+      <path d="M14 10h4M14 14h4" />
+    </svg>
+  ),
+  terminal: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m6 9 3 3-3 3M13 15h4" />
+    </svg>
+  ),
+  web: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  ),
+}
+
+function ProductsMenu({ menu }) {
+  const [open, setOpen] = useState(false)
+  const closeTimer = useRef(null)
+  const wrapRef = useRef(null)
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+  }, [])
+
+  const openMenu = useCallback(() => {
+    cancelClose()
+    setOpen(true)
+  }, [cancelClose])
+
+  const scheduleClose = useCallback(() => {
+    cancelClose()
+    closeTimer.current = setTimeout(() => setOpen(false), 140)
+  }, [cancelClose])
+
+  useEffect(() => () => cancelClose(), [cancelClose])
+
+  const handleBlur = useCallback((e) => {
+    if (!wrapRef.current?.contains(e.relatedTarget)) setOpen(false)
+  }, [])
+
+  return (
+    <li
+      ref={wrapRef}
+      className={styles.navDropdown}
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
+      onBlur={handleBlur}
+    >
+      <button
+        type="button"
+        className={clsx(styles.navDropdownTrigger, open && styles.navDropdownTriggerOpen)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+        onFocus={openMenu}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') setOpen(false)
+        }}
+      >
+        {menu.label}
+        <svg
+          className={styles.navChevron}
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div className={clsx(styles.megaMenu, open && styles.megaMenuOpen)}>
+        <div className={styles.megaMenuInner} role="menu">
+          {menu.groups.map((group) => (
+            <div key={group.heading} className={styles.megaGroup}>
+              <span className={styles.megaGroupHeading}>{group.heading}</span>
+              <div className={styles.megaGroupItems}>
+                {group.items.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className={styles.megaItem}
+                    role="menuitem"
+                    tabIndex={open ? 0 : -1}
+                    {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
+                    <span className={styles.megaItemIcon}>{PRODUCT_MENU_ICONS[item.icon]}</span>
+                    <span className={styles.megaItemText}>
+                      <span className={styles.megaItemTitleRow}>
+                        <span className={styles.megaItemTitle}>{item.title}</span>
+                        {item.badge && <span className={styles.megaItemBadge}>{item.badge}</span>}
+                      </span>
+                      <span className={styles.megaItemSub}>{item.subtitle}</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </li>
+  )
+}
+
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
   const [locale, setLocale] = useState(() => {
@@ -706,6 +951,7 @@ export default function TuyaOpenIdePage() {
           </a>
           <nav>
             <ul className={styles.headerNav}>
+              <ProductsMenu menu={copy.productsMenu} />
               <li>
                 <a href="#features">{copy.nav.features}</a>
               </li>
