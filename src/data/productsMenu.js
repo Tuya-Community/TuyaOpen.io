@@ -39,13 +39,13 @@ export const productsMenu = {
             href: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
           },
           {
-            icon: 'wifi',
+            icon: 'chip',
             title: 'ESP32',
             subtitle: 'Full Espressif platform support',
             href: '/docs/hardware-specific/espressif/overview-esp32',
           },
           {
-            icon: 'pi',
+            icon: 'chip',
             title: 'Linux / Raspberry Pi',
             subtitle: 'Run TuyaOpen on Raspberry Pi & Linux',
             href: '/docs/hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
@@ -117,13 +117,13 @@ export const productsMenu = {
             href: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
           },
           {
-            icon: 'wifi',
+            icon: 'chip',
             title: 'ESP32',
             subtitle: '完整的乐鑫平台支持',
             href: '/docs/hardware-specific/espressif/overview-esp32',
           },
           {
-            icon: 'pi',
+            icon: 'chip',
             title: 'Linux / 树莓派',
             subtitle: '在树莓派与 Linux 上运行 TuyaOpen',
             href: '/docs/hardware-specific/Linux/raspberry-pi/Examples/raspberry-pi',
