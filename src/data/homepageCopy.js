@@ -36,7 +36,7 @@ tos.py flash`,
     ideLaunch: {
       badge: 'New Release',
       title: 'Meet TuyaOpen IDE',
-      subtitle: 'The all-in-one, AI-native development tool for embedded IoT.',
+      subtitle: 'The all-in-one, AI Coding development tool for AI hardware.',
       body: 'From project creation to device firmware, cloud Agent, and App development — three platforms unified in one workflow. Vibe-code your next device with the AI coding agent you already love.',
       highlights: [
         'AI coding-agent extension for VS Code & Cursor',
@@ -899,7 +899,7 @@ tos.py flash`,
     ideLaunch: {
       badge: '全新发布',
       title: '隆重推出 TuyaOpen IDE',
-      subtitle: '面向嵌入式 IoT 的 AI 原生一体化开发工具。',
+      subtitle: '面向 AI 硬件的 AI Coding 一体化开发工具。',
       body: '从项目创建到设备固件、云端 Agent 与 App 开发 —— 三端合一的工作流。用你熟悉的 AI Coding Agent，Vibe Coding 你的下一个硬件产品。',
       highlights: [
         '面向 VS Code 与 Cursor 的 AI Coding Agent 插件',
