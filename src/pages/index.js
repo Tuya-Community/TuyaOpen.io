@@ -419,6 +419,60 @@ function Home() {
             </div>
           </section>
 
+          {/* IDE launch banner */}
+          <section className={styles.ideLaunch} aria-labelledby="ide-launch-heading">
+            <div className={styles.ideLaunchGlow} aria-hidden />
+            <div className={styles.ideLaunchInner}>
+              <div className={styles.ideLaunchCopy}>
+                <span className={styles.ideLaunchBadge}>
+                  <span className={styles.ideLaunchBadgeDot} aria-hidden />
+                  {copy.ideLaunch.badge}
+                </span>
+                <h2 id="ide-launch-heading" className={styles.ideLaunchTitle}>
+                  {copy.ideLaunch.title}
+                </h2>
+                <p className={styles.ideLaunchSubtitle}>{copy.ideLaunch.subtitle}</p>
+                <p className={styles.ideLaunchBody}>{copy.ideLaunch.body}</p>
+                <ul className={styles.ideLaunchList}>
+                  {copy.ideLaunch.highlights.map((h) => (
+                    <li key={h} className={styles.ideLaunchListItem}>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+                <div className={styles.ideLaunchButtons}>
+                  <Link to={copy.ideLaunch.primaryPath} className={styles.ideLaunchBtnPrimary}>
+                    {copy.ideLaunch.primaryCta} →
+                  </Link>
+                  <Link to={copy.ideLaunch.secondaryUrl} className={styles.ideLaunchBtnOutline}>
+                    {copy.ideLaunch.secondaryCta}
+                  </Link>
+                </div>
+              </div>
+              <Link
+                to={copy.ideLaunch.primaryPath}
+                className={styles.ideLaunchVisual}
+                aria-label={copy.ideLaunch.primaryCta}
+              >
+                <div className={styles.macDisplay}>
+                  <div className={styles.macDisplayScreen}>
+                    <div className={styles.macDisplayInner}>
+                      <img
+                        src={copy.ideLaunch.image}
+                        alt={copy.ideLaunch.imageAlt}
+                        className={styles.macDisplayImg}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.macDisplayNeck} aria-hidden />
+                  <div className={styles.macDisplayFoot} aria-hidden />
+                </div>
+              </Link>
+            </div>
+          </section>
+
           {/* Social proof strip */}
           <section className={styles.socialProof}>
             <div className={styles.socialProofGrid}>

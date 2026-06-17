@@ -514,7 +514,12 @@
   background: #0a0a0c;
   color: #e5e7eb;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-family: var(--ifm-font-family-base), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    var(--ifm-font-family-base),
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
 }
 
 .hilSectionNewBadge {
@@ -539,7 +544,9 @@
     0 4px 18px rgba(168, 85, 247, 0.45),
     0 0 24px rgba(56, 189, 248, 0.25);
   transform: rotate(-10deg);
-  animation: hilNewBadgeGradient 5s ease infinite, hilNewBadgeFloat 3.2s ease-in-out infinite;
+  animation:
+    hilNewBadgeGradient 5s ease infinite,
+    hilNewBadgeFloat 3.2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1421,7 +1428,9 @@
 .hilStepCardActive {
   border-color: rgba(96, 165, 250, 0.65);
   background: rgba(96, 165, 250, 0.08);
-  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.2),
+    0 0 20px rgba(96, 165, 250, 0.12);
 }
 
 .hilStepNum {
@@ -1484,7 +1493,9 @@
   .hilStepCardActive {
     border-color: rgba(96, 165, 250, 0.65);
     background: rgba(96, 165, 250, 0.08);
-    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(96, 165, 250, 0.2),
+      0 0 20px rgba(96, 165, 250, 0.12);
   }
 }
 
@@ -1760,7 +1771,9 @@
   cursor: zoom-in;
   border-radius: 16px;
   line-height: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .cloudOnePagerImgButton:hover .cloudOnePagerImg {
@@ -3270,13 +3283,7 @@ video.customerStoriesMedia {
   overflow: hidden;
   margin: 0;
   padding: 0.25rem 0;
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    #000 6%,
-    #000 94%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 
 /* When one row fits in the viewport (no overflow), center and skip scroll */
@@ -3358,7 +3365,9 @@ video.customerStoriesMedia {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 @media (hover: hover) {
@@ -3630,4 +3639,246 @@ video.customerStoriesMedia {
     border: 2px solid oklch(var(--bc) / 1.6);
     box-shadow: 75px 75px 75px -25px rgba(255, 255, 255, 0.1);
   }
+}
+
+/* ===== IDE LAUNCH BANNER ===== */
+.ideLaunch {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1330 0%, #0f2a6b 45%, #0066ff 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4rem 1.25rem;
+}
+
+.ideLaunchGlow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 50%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, transparent 65%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.ideLaunchInner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .ideLaunchInner {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.ideLaunchCopy {
+  color: #fff;
+}
+
+.ideLaunchBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #ff4d00);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(255, 77, 0, 0.4);
+}
+
+.ideLaunchBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  animation: ideLaunchPulse 2s infinite;
+}
+
+@keyframes ideLaunchPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.ideLaunchTitle {
+  margin: 1rem 0 0.5rem;
+  font-size: clamp(1.9rem, 4vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.ideLaunchSubtitle {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #cfe0ff;
+}
+
+.ideLaunchBody {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 38rem;
+}
+
+.ideLaunchList {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ideLaunchListItem {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ideLaunchListItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.ideLaunchListItem::after {
+  content: '';
+  position: absolute;
+  left: 0.36rem;
+  top: 0.38rem;
+  width: 0.3rem;
+  height: 0.55rem;
+  border: solid #ff8a3d;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.ideLaunchButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.ideLaunchBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9px;
+  font-weight: 700;
+  background: #fff;
+  color: #0f2a6b !important;
+  text-decoration: none !important;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.ideLaunchBtnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.ideLaunchBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff !important;
+  text-decoration: none !important;
+  background: transparent;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.ideLaunchBtnOutline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ideLaunchVisual {
+  display: block;
+  text-decoration: none !important;
+}
+
+/* ----- Mac display (Studio Display–style) mockup ----- */
+.macDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.35s ease;
+}
+
+.ideLaunchVisual:hover .macDisplay {
+  transform: translateY(-4px);
+}
+
+.macDisplayScreen {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #2a2c30 0%, #141518 60%, #0c0d10 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 34px 80px rgba(0, 0, 0, 0.55);
+}
+
+.macDisplayInner {
+  border-radius: 9px;
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+}
+
+.macDisplayImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.macDisplayNeck {
+  width: 16%;
+  height: 30px;
+  background: linear-gradient(90deg, #8b9097 0%, #d6d9de 50%, #8b9097 100%);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.macDisplayFoot {
+  width: 34%;
+  height: 11px;
+  background: linear-gradient(180deg, #c7cbd1 0%, #9a9fa7 100%);
+  border-radius: 3px 3px 9px 9px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
