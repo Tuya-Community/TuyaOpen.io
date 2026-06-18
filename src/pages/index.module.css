@@ -3882,3 +3882,227 @@ video.customerStoriesMedia {
   border-radius: 3px 3px 9px 9px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
+
+/* ===== IDE LAUNCH MODAL (first-visit popup) ===== */
+.ideModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(8, 12, 30, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: ideModalFade 0.25s ease both;
+}
+
+@keyframes ideModalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ideModalCard {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: calc(100vh - 2.5rem);
+  overflow: hidden auto;
+  background: var(--ifm-background-surface-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 20px;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+  animation: ideModalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ideModalPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* static firework vectors */
+.ideModalFw {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ideModalFwA {
+  top: -14px;
+  left: -10px;
+  width: 96px;
+  height: 96px;
+  color: #ff6b35;
+}
+
+.ideModalFwB {
+  top: 18px;
+  right: -8px;
+  width: 70px;
+  height: 70px;
+  color: #0066ff;
+  opacity: 0.4;
+}
+
+.ideModalFwC {
+  top: 150px;
+  left: 6px;
+  width: 54px;
+  height: 54px;
+  color: #ff9d00;
+  opacity: 0.32;
+}
+
+.ideModalClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-color-emphasis-100);
+  transition:
+    background 0.18s,
+    transform 0.18s;
+}
+
+.ideModalClose:hover {
+  background: var(--ifm-color-emphasis-200);
+  transform: rotate(90deg);
+}
+
+.ideModalContent {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.75rem 1.75rem;
+  text-align: center;
+}
+
+.ideModalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #ff4d00);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(255, 77, 0, 0.4);
+}
+
+.ideModalBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  animation: ideLaunchPulse 2s infinite;
+}
+
+.ideModalTitle {
+  margin: 0.9rem 0 0.4rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ifm-heading-color);
+}
+
+.ideModalSubtitle {
+  margin: 0 0 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--brand-primary, #0066ff);
+}
+
+.ideModalShot {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+  line-height: 0;
+}
+
+.ideModalShot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ideModalBody {
+  margin: 1.1rem 0 1.4rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.ideModalButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ideModalBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9px;
+  font-weight: 700;
+  background: var(--brand-primary, #0066ff);
+  color: #fff !important;
+  text-decoration: none !important;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.ideModalBtnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 102, 255, 0.35);
+}
+
+.ideModalBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9px;
+  font-weight: 600;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-font-color-base) !important;
+  text-decoration: none !important;
+  background: transparent;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.ideModalBtnOutline:hover {
+  border-color: var(--brand-primary, #0066ff);
+  color: var(--brand-primary, #0066ff) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ideModalOverlay,
+  .ideModalCard {
+    animation: none;
+  }
+}

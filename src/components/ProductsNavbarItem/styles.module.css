@@ -33,15 +33,15 @@
 }
 
 .mega {
-  position: fixed;
-  top: var(--ifm-navbar-height, 60px);
-  left: 50%;
-  width: min(1180px, calc(100vw - 24px));
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: min(1040px, calc(100vw - 2rem));
   padding-top: 10px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%) translateY(8px);
+  transform: translateY(8px);
   transition:
     opacity 0.2s ease,
     transform 0.2s ease,
@@ -53,7 +53,7 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .megaInner {

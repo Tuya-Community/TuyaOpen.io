@@ -32,10 +32,61 @@ function hilToneTagClass(tone) {
   )
 }
 
+function FireworkBurst({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+        <line x1="60" y1="42" x2="60" y2="15" />
+        <line x1="60" y1="78" x2="60" y2="105" />
+        <line x1="42" y1="60" x2="15" y2="60" />
+        <line x1="78" y1="60" x2="105" y2="60" />
+        <line x1="47" y1="47" x2="26" y2="26" />
+        <line x1="73" y1="47" x2="94" y2="26" />
+        <line x1="47" y1="73" x2="26" y2="94" />
+        <line x1="73" y1="73" x2="94" y2="94" />
+      </g>
+      <g fill="currentColor">
+        <circle cx="60" cy="10" r="2.6" />
+        <circle cx="60" cy="110" r="2.6" />
+        <circle cx="10" cy="60" r="2.6" />
+        <circle cx="110" cy="60" r="2.6" />
+        <circle cx="21" cy="21" r="2.6" />
+        <circle cx="99" cy="21" r="2.6" />
+        <circle cx="21" cy="99" r="2.6" />
+        <circle cx="99" cy="99" r="2.6" />
+      </g>
+    </svg>
+  )
+}
+
 function Home() {
   const { siteConfig, i18n } = useDocusaurusContext()
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
   const copy = homepageCopy[locale]
+  const [ideLaunchModalOpen, setIdeLaunchModalOpen] = useState(false)
+
+  const closeIdeLaunchModal = () => {
+    setIdeLaunchModalOpen(false)
+    try {
+      window.localStorage.setItem('tuyaopen-ide-launch-dismissed', '1')
+    } catch (e) {
+      /* localStorage unavailable */
+    }
+  }
+
+  // Show the IDE launch modal once per visitor (first visit only).
+  useEffect(() => {
+    let timer
+    try {
+      if (typeof window !== 'undefined' && !window.localStorage.getItem('tuyaopen-ide-launch-dismissed')) {
+        timer = window.setTimeout(() => setIdeLaunchModalOpen(true), 700)
+      }
+    } catch (e) {
+      /* localStorage unavailable */
+    }
+    return () => window.clearTimeout(timer)
+  }, [])
+
   const [cloudDiagramLightboxOpen, setCloudDiagramLightboxOpen] = useState(false)
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0)
   const tuyaAiSectionRef = useRef(null)
@@ -1384,6 +1435,67 @@ function Home() {
           </div>
         ) : null}
       </div>
+
+      {ideLaunchModalOpen ? (
+        <div
+          className={styles.ideModalOverlay}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="ide-launch-modal-title"
+        >
+          <div className={styles.ideModalCard}>
+            <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwA)} />
+            <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwB)} />
+            <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwC)} />
+
+            <button type="button" className={styles.ideModalClose} onClick={closeIdeLaunchModal} aria-label="Close">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              >
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </svg>
+            </button>
+
+            <div className={styles.ideModalContent}>
+              <span className={styles.ideModalBadge}>
+                <span className={styles.ideModalBadgeDot} aria-hidden />
+                {copy.ideLaunch.badge}
+              </span>
+              <h2 id="ide-launch-modal-title" className={styles.ideModalTitle}>
+                {copy.ideLaunch.title}
+              </h2>
+              <p className={styles.ideModalSubtitle}>{copy.ideLaunch.subtitle}</p>
+              <div className={styles.ideModalShot}>
+                <img src={copy.ideLaunch.image} alt={copy.ideLaunch.imageAlt} loading="lazy" decoding="async" />
+              </div>
+              <p className={styles.ideModalBody}>{copy.ideLaunch.body}</p>
+              <div className={styles.ideModalButtons}>
+                <Link
+                  to={copy.ideLaunch.primaryPath}
+                  className={styles.ideModalBtnPrimary}
+                  onClick={closeIdeLaunchModal}
+                >
+                  {copy.ideLaunch.primaryCta} →
+                </Link>
+                <Link
+                  to={copy.ideLaunch.secondaryUrl}
+                  className={styles.ideModalBtnOutline}
+                  onClick={closeIdeLaunchModal}
+                >
+                  {copy.ideLaunch.secondaryCta}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </Layout>
   )
 }
