@@ -2788,3 +2788,220 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== INSTALL DIALOG ===== */
+.installOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 5, 8, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: installOverlayIn 0.2s ease;
+}
+
+@keyframes installOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.installDialog {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+  padding: 32px;
+  outline: none;
+  animation: installDialogIn 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes installDialogIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.installClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--fg-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.installClose:hover {
+  background: var(--bg-card-hover);
+  color: var(--fg-primary);
+  border-color: var(--border-hover);
+}
+
+.installTitle {
+  margin: 4px 0 8px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--fg-primary);
+  line-height: 1.2;
+}
+
+.installNotice {
+  margin: 0 0 24px;
+  font-size: 14.5px;
+  color: var(--fg-secondary);
+  line-height: 1.6;
+}
+
+.installOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.installCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.installEditorLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 5px 12px 5px 8px;
+  align-self: flex-start;
+  border-radius: 999px;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-color);
+  color: var(--fg-primary);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.installEditorIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.installCardTitle {
+  margin: 4px 0 6px;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--fg-primary);
+}
+
+.installCardDesc {
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  color: var(--fg-secondary);
+  line-height: 1.55;
+}
+
+.installDownloadBtn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 20px;
+}
+
+.installMarketBtn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+.installGuide {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.installGuideTitle {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+
+.installSteps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.installStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: 13.5px;
+  color: var(--fg-secondary);
+  line-height: 1.5;
+}
+
+.installStepNum {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-color);
+  color: var(--fg-primary);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+@media (max-width: 680px) {
+  .installDialog {
+    padding: 24px 20px;
+  }
+  .installOptions {
+    grid-template-columns: 1fr;
+  }
+  .installTitle {
+    font-size: 22px;
+  }
+}

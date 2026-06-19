@@ -711,6 +711,120 @@ function ProductsMenu({ menu }) {
   )
 }
 
+function InstallEditorLabel({ icon, name }) {
+  return (
+    <div className={styles.installEditorLabel}>
+      {icon ? <img src={icon} alt="" className={styles.installEditorIcon} aria-hidden="true" /> : null}
+      <span>{name}</span>
+    </div>
+  )
+}
+
+function InstallSteps({ steps }) {
+  return (
+    <ol className={styles.installSteps}>
+      {steps.map((step, i) => (
+        <li key={i} className={styles.installStep}>
+          <span className={styles.installStepNum}>{i + 1}</span>
+          <span>{step}</span>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
+  const dialogRef = useRef(null)
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    dialogRef.current?.focus()
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [onClose])
+
+  return (
+    <div className={styles.installOverlay} onClick={onClose} role="presentation">
+      <div
+        className={styles.installDialog}
+        role="dialog"
+        aria-modal="true"
+        aria-label={copy.title}
+        tabIndex={-1}
+        ref={dialogRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" className={styles.installClose} onClick={onClose} aria-label={copy.close}>
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          >
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </button>
+
+        <h3 className={styles.installTitle}>{copy.title}</h3>
+        <p className={styles.installNotice}>{copy.subtitle}</p>
+
+        <div className={styles.installOptions}>
+          {/* VS Code — manual .vsix install */}
+          <div className={styles.installCard}>
+            <InstallEditorLabel icon={vscodeIcon} name={copy.vscode.label} />
+            <h4 className={styles.installCardTitle}>{copy.vscode.title}</h4>
+            <p className={styles.installCardDesc}>{copy.vscode.desc}</p>
+            <a href={copy.vscode.downloadUrl} className={clsx(styles.btnCta, styles.installDownloadBtn)} download>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3v12" />
+                <path d="M7 10l5 5 5-5" />
+                <path d="M5 21h14" />
+              </svg>
+              {copy.vscode.downloadCta}
+            </a>
+            <div className={styles.installGuide}>
+              <span className={styles.installGuideTitle}>{copy.vscode.guideTitle}</span>
+              <InstallSteps steps={copy.vscode.steps} />
+            </div>
+          </div>
+
+          {/* Cursor — marketplace search */}
+          <div className={styles.installCard}>
+            <InstallEditorLabel icon={cursorIcon} name={copy.cursor.label} />
+            <h4 className={styles.installCardTitle}>{copy.cursor.title}</h4>
+            <p className={styles.installCardDesc}>{copy.cursor.desc}</p>
+            <div className={styles.installGuide}>
+              <span className={styles.installGuideTitle}>{copy.cursor.guideTitle}</span>
+              <InstallSteps steps={copy.cursor.steps} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
   const [locale, setLocale] = useState(() => {
@@ -762,6 +876,9 @@ export default function TuyaOpenIdePage() {
   const [hilDiagramActiveIndex, setHilDiagramActiveIndex] = useState(null)
   const [devSkillsCopied, setDevSkillsCopied] = useState(false)
   const devSkillsCopiedTimeoutRef = useRef(null)
+  const [installOpen, setInstallOpen] = useState(false)
+  const openInstall = useCallback(() => setInstallOpen(true), [])
+  const closeInstall = useCallback(() => setInstallOpen(false), [])
 
   const hilHighlightedStepNum = useMemo(() => {
     for (let i = hilTerminalLines.length - 1; i >= 0; i -= 1) {
@@ -975,14 +1092,9 @@ export default function TuyaOpenIdePage() {
             >
               {locale === 'en' ? '中文' : 'EN'}
             </button>
-            <a
-              href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
-              className={styles.btnCta}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <button type="button" className={styles.btnCta} onClick={openInstall}>
               {copy.nav.cta}
-            </a>
+            </button>
           </div>
         </header>
 
@@ -1006,14 +1118,9 @@ export default function TuyaOpenIdePage() {
           <div className={clsx(styles.heroButtons, styles.fadeIn)} data-animate>
             <span className={styles.earlyPreviewTag}>{copy.hero.earlyPreview}</span>
             <div className={styles.heroCtaRow}>
-              <a
-                href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
-                className={clsx(styles.btnCta, styles.btnCtaLg)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <button type="button" className={clsx(styles.btnCta, styles.btnCtaLg)} onClick={openInstall}>
                 {copy.hero.ctaPrimary}
-              </a>
+              </button>
               <a
                 href="https://github.com/tuya/tuyaopen"
                 className={styles.btnSecondary}
@@ -1327,19 +1434,22 @@ export default function TuyaOpenIdePage() {
             <h2 className={styles.downloadTitle}>{copy.download.title}</h2>
             <p className={styles.downloadDesc}>{copy.download.desc}</p>
             <div className={styles.downloadButtons}>
-              <a
-                href="https://marketplace.visualstudio.com/items?itemName=TuyaOpen.TuyaOpenIDE"
-                className={clsx(styles.btnCta, styles.btnCtaLg)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <button type="button" className={clsx(styles.btnCta, styles.btnCtaLg)} onClick={openInstall}>
                 {copy.download.marketplace}
-              </a>
+              </button>
               <span className={clsx(styles.btnSecondary, styles.btnDisabled)}>{copy.download.github}</span>
             </div>
             <p className={styles.platformInfo}>{copy.download.platforms}</p>
           </div>
         </section>
+        {installOpen && (
+          <InstallDialog
+            copy={copy.installDialog}
+            vscodeIcon={vscodeIconUrl}
+            cursorIcon={cursorIconUrl}
+            onClose={closeInstall}
+          />
+        )}
       </div>
     </Layout>
   )
