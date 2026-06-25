@@ -64,7 +64,7 @@ CMake 生成 **Ninja** 工程。构建树位于 **`<project>/.build/`**（二进
 ## 扩展方式
 
 - **新增 SDK 组件** — 在 `TuyaOpen/src/<name>/` 增加目录与 `CMakeLists.txt`，并在 Kconfig 中可被选；可参照现有小组件。
-- **新板或定制板** — BSP 放在 `TuyaOpen/boards/<platform>/<board>/`，含 CMake 与 Kconfig；见 [新建开发板](../new-hardware/new-board) 与 [编译指南](compilation-guide)。
+- **新板或定制板** — BSP 放在 `TuyaOpen/boards/<platform>/<board>/`，含 CMake 与 Kconfig；见 [新建开发板](../hardware/porting/new-board) 与 [编译指南](compilation-guide)。
 - **仅改应用** — 通常只动工程 `CMakeLists.txt` 与 `app_default.config` / 工程侧 `Kconfig`；勿手改 `.build/cache/` 下生成文件。
 
 ## 预期结果
@@ -75,5 +75,5 @@ CMake 生成 **Ninja** 工程。构建树位于 **`<project>/.build/`**（二进
 
 - [编译指南](compilation-guide)
 - [Kconfig 与工程配置](../peripheral/tutorials/kconfig-and-project-configuration)
-- [新建平台](../new-hardware/new-platform)、[新建开发板](../new-hardware/new-board)
+- [新建平台](../hardware/porting/new-platform)、[新建开发板](../hardware/porting/new-board)
 - [tos.py 工具指南](../tos-tools/tos-guide)

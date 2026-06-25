@@ -64,7 +64,7 @@ CMake is configured with **Ninja**. The build tree lives under **`<project>/.bui
 ## Extending the system
 
 - **New SDK component** — add a directory under `TuyaOpen/src/<name>/` with `CMakeLists.txt` and Kconfig wiring so it can be selected from menuconfig; follow an existing small component as a template.
-- **New or custom board** — BSP under `TuyaOpen/boards/<platform>/<board>/` with CMake and Kconfig; see [New board](../new-hardware/new-board) and [Compilation guide](compilation-guide).
+- **New or custom board** — BSP under `TuyaOpen/boards/<platform>/<board>/` with CMake and Kconfig; see [New board](../hardware/porting/new-board) and [Compilation guide](compilation-guide).
 - **App-only changes** — usually only the project `CMakeLists.txt` and `app_default.config` / Kconfig in the app tree; avoid editing generated files under `.build/cache/`.
 
 ## Expected outcome
@@ -75,5 +75,5 @@ You can trace a feature from **Kconfig symbol** → **included sources** → **C
 
 - [Compilation guide](compilation-guide)
 - [Kconfig and project configuration](../peripheral/tutorials/kconfig-and-project-configuration)
-- [New platform](../new-hardware/new-platform), [New board](../new-hardware/new-board)
+- [New platform](../hardware/porting/new-platform), [New board](../hardware/porting/new-board)
 - [tos.py tool guide](../tos-tools/tos-guide)

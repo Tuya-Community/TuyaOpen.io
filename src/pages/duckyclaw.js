@@ -717,7 +717,7 @@ export default function DuckyClaw() {
                   {t('Purchase', '购买', isZh)}
                 </Link>
                 <Link
-                  to="/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board"
+                  to="/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board"
                   className={styles.hardwareCardBtnSecondary}
                 >
                   {t('HW Docs', '硬件文档', isZh)}
@@ -743,7 +743,7 @@ export default function DuckyClaw() {
                   {t('Purchase', '购买', isZh)}
                 </Link>
                 <Link
-                  to="/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core"
+                  to="/docs/hardware/tuya-t5/t5-ai-core/overview-t5-ai-core"
                   className={styles.hardwareCardBtnSecondary}
                 >
                   {t('HW Docs', '硬件文档', isZh)}

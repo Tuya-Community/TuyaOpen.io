@@ -9,7 +9,7 @@ title: "Build AI Chatbot with T5AI-Core"
 
 ## Overview
 
-This article introduces how to quickly build an AI chatbot using T5AI-Core. First, please refer to [T5AI-Core Development Kit](https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-core/overview-t5-ai-core) to understand the detailed information about T5AI-Core.
+This article introduces how to quickly build an AI chatbot using T5AI-Core. First, please refer to [T5AI-Core Development Kit](https://tuyaopen.ai/zh/docs/hardware/t5-ai-core/overview-t5-ai-core) to understand the detailed information about T5AI-Core.
 
 The pin connection definitions between T5AI-Core and ST7789 screen are as follows (same as EVB):
 

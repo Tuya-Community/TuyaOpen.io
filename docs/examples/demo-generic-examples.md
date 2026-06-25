@@ -107,7 +107,7 @@ tos.py config choice
 ```
 
 :::note
-Most examples default to T5AI. For ESP32, you may need to select an ESP32 config from the list, or create one in the example's `config/` directory. See the [ESP32 Quick Start](/docs/hardware-specific/espressif/esp32-quick-start) for details.
+Most examples default to T5AI. For ESP32, you may need to select an ESP32 config from the list, or create one in the example's `config/` directory. See the [ESP32 Quick Start](/docs/hardware/espressif/esp32-quick-start) for details.
 :::
 
 ## Build the example
@@ -121,5 +121,5 @@ tos.py monitor
 ## References
 
 - [TDD/TDL Driver Architecture](/docs/peripheral/driver-architecture)
-- [ESP32 Quick Start](/docs/hardware-specific/espressif/esp32-quick-start)
+- [ESP32 Quick Start](/docs/hardware/espressif/esp32-quick-start)
 - [Project Compilation Guide](/docs/build-system/compilation-guide)

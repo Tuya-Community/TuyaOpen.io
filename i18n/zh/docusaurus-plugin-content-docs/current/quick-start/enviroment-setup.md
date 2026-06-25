@@ -13,7 +13,7 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 ## 硬件准备
 
 开始前，请准备以下资源：
- - TuyaOpen [支持的开发板或模组](../hardware-specific/index.md#硬件平台)
+ - TuyaOpen [支持的开发板或模组](../hardware/index.md#硬件平台)
  - USB 数据线
  - 电脑（支持 Windows/Linux/macOS 系统）
 

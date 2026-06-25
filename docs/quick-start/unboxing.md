@@ -13,7 +13,7 @@ If you need to develop and compile [TuyaOpen](https://github.com/tuya/TuyaOpen) 
 ## Preparation
 
 Before you start, please prepare the following resources:
- - [TuyaOpen supported development board or module](../hardware-specific/index.md#hardware-platforms)
+ - [TuyaOpen supported development board or module](../hardware/index.md#hardware-platforms)
  - USB data cable
  - Computer (supports Windows/Linux/macOS)
 
@@ -21,7 +21,7 @@ Before you start, please prepare the following resources:
 
 Download the firmware for flashing and testing from the **[TuyaOpen Release Page](https://github.com/tuya/TuyaOpen/releases)**.
 
-You can select the appropriate chip and application from the [TuyaOpen Application List](../applications/index.md#tuyaopen-application-list) and download the pre-compiled bin file.
+You can select the appropriate chip and application from the [TuyaOpen Application List](../cloud/overview#tuyaopen-application-list) and download the pre-compiled bin file.
 
 ## Flash Firmware
 

@@ -16,7 +16,7 @@ title: LVGL 应用指南
 
 - 具备支持的显示屏的开发板（见下文示例）。
 - 可通过 `tos.py` / Kconfig 打开 LVGL 与显示驱动。
-- **T5AI 类**目标：LVGL 位于 `src/liblvgl/`，使用 `lv_vendor` 衔接。**ESP32** 通常使用 **ESP-IDF 的 LVGL 组件** 及板级移植（`boards/ESP32/common/display/`），行为以 [ESP32 功能支持](../../hardware-specific/espressif/esp32-supported-features) 为准，而非 T5 的 `lv_vendor` 单一路径。
+- **T5AI 类**目标：LVGL 位于 `src/liblvgl/`，使用 `lv_vendor` 衔接。**ESP32** 通常使用 **ESP-IDF 的 LVGL 组件** 及板级移植（`boards/ESP32/common/display/`），行为以 [ESP32 功能支持](../../hardware/espressif/esp32-supported-features) 为准，而非 T5 的 `lv_vendor` 单一路径。
 
 ## 步骤
 

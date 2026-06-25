@@ -57,5 +57,5 @@ TuyaOpen 在 ESP32 上未提供 `tkl_spi` 适配器。两个选项：
 
 - [TDD/TDL 驱动架构](../driver-architecture)
 - [编写新的传感器驱动](writing-sensor-driver)
-- [ESP32 迁移指南](../../hardware-specific/espressif/esp32-migration-guide)
+- [ESP32 迁移指南](../../hardware/espressif/esp32-migration-guide)
 - [TKL I2C API](/docs/tkl-api/tkl_i2c)

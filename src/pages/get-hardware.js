@@ -317,7 +317,7 @@ export default function Hardware() {
               {i18n.currentLocale === 'zh' ? '查看我们的支持列表' : 'See our support list'}
             </p>
             <div className={styles.moreHardwareLink}>
-              <Link to="/docs/hardware-specific" className={styles.moreHardwareButton}>
+              <Link to="/docs/hardware" className={styles.moreHardwareButton}>
                 {i18n.currentLocale === 'zh' ? '查看支持列表' : 'View Support List'}
               </Link>
             </div>

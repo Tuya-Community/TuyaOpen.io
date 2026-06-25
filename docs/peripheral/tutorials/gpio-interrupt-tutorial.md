@@ -151,4 +151,4 @@ tkl_gpio_deinit(BUTTON_PIN);
 - [TKL GPIO API](/docs/tkl-api/tkl_gpio)
 - [Button Driver](../button)
 - [GPIO example](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/gpio)
-- [ESP32 Pin Mapping](../../hardware-specific/espressif/esp32-pin-mapping)
+- [ESP32 Pin Mapping](../../hardware/espressif/esp32-pin-mapping)
