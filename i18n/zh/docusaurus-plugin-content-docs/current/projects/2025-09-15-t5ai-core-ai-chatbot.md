@@ -9,7 +9,7 @@ title: "使用 T5AI-Core 快速搭建 AI 聊天机器人"
 
 ## 概述
 
-本文为您介绍如何使用 T5AI-Core 快速搭建 AI 聊天机器人。首先，请参考 [T5AI-Core 开发套件](https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-core/overview-t5-ai-core) 了解  T5AI-Core 的详细信息。
+本文为您介绍如何使用 T5AI-Core 快速搭建 AI 聊天机器人。首先，请参考 [T5AI-Core 开发套件](https://tuyaopen.ai/zh/docs/hardware/t5-ai-core/overview-t5-ai-core) 了解  T5AI-Core 的详细信息。
 
 其中，T5AI-Core 和 ST7789 屏幕的引脚接线定义如下（和 EVB 相同）：
 

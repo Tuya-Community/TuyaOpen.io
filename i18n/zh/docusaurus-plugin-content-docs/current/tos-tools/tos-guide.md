@@ -293,7 +293,7 @@ tos.py idf fullclean
 tos.py idf --idf-flags="-v" build
 ```
 
-`--idf-flags` 中的选项会插在 `idf.py` 与子命令之间（例如开启详细日志或传递 CMake 宏）。更完整的说明见 [tos.py idf 参考](tos-idf-reference) 与 [ESP32 快速开始](../hardware-specific/espressif/esp32-quick-start)。
+`--idf-flags` 中的选项会插在 `idf.py` 与子命令之间（例如开启详细日志或传递 CMake 宏）。更完整的说明见 [tos.py idf 参考](tos-idf-reference) 与 [ESP32 快速开始](../hardware/espressif/esp32-quick-start)。
 
 ## dev
 
@@ -327,7 +327,7 @@ tos.py dev bac --help
 
 ### new platform
 
-该命令的具体使用方法，请参考 **[new platform](/docs/new-hardware/new-platform)**。
+该命令的具体使用方法，请参考 **[new platform](/docs/hardware/porting/new-platform)**。
 
 ## 常见问题
 

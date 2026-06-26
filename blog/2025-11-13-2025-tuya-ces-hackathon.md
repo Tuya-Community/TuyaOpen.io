@@ -222,7 +222,7 @@ https://tuyaopen.ai/docs/project-walkthrough
 4. Get Started  
 https://tuyaopen.ai/docs/quick-start  
 5. Hardware Guides  
-https://tuyaopen.ai/docs/hardware-specific  
+https://tuyaopen.ai/docs/hardware  
 6. Application  
 https://tuyaopen.ai/docs/applications  
 7. Examples-Generic Demos  
@@ -230,7 +230,7 @@ https://tuyaopen.ai/docs/examples/demo-generic-examples
 8. Peripheral  
 https://tuyaopen.ai/docs/peripheral/support_peripheral_list  
 9. New Project-Porting platform  
-https://tuyaopen.ai/docs/new-hardware/porting-platform  
+https://tuyaopen.ai/docs/hardware/porting/porting-platform  
 10. Cloud Services-Create Product  
 https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product  
 11. TKL APIs-OS APIs-tkl_mutex | Mutex Lock  

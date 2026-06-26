@@ -46,6 +46,6 @@ tos.py idf flash
 
 ## 参见
 
-- [ESP32 快速开始](../hardware-specific/espressif/esp32-quick-start)
-- [ESP32 概述](../hardware-specific/espressif/overview-esp32)
+- [ESP32 快速开始](../hardware/espressif/esp32-quick-start)
+- [ESP32 概述](../hardware/espressif/overview-esp32)
 - [tos.py 使用指南](tos-guide)

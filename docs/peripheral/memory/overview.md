@@ -68,4 +68,4 @@ You can name which **memory class** and **persistence layer** your feature uses 
 - [TAL KV guide](../tutorials/tal-kv-guide)
 - [TKL flash](../../tkl-api/tkl_flash)
 - [Kconfig and project configuration](../tutorials/kconfig-and-project-configuration)
-- [Porting platform](../../new-hardware/porting-platform) (`ENABLE_FLASH`, filesystem notes)
+- [Porting platform](../../hardware/porting/porting-platform) (`ENABLE_FLASH`, filesystem notes)

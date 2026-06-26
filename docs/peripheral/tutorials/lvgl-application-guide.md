@@ -16,7 +16,7 @@ This guide explains how to build **LVGL** (Light and Versatile Graphics Library)
 
 - Board with a supported display (see examples below).
 - `tos.py` / Kconfig access to enable LVGL and display drivers.
-- On **T5AI-class targets**, TuyaOpen ships LVGL under `src/liblvgl/` with `lv_vendor` glue. On **ESP32**, LVGL usually comes from the **ESP-IDF component** and a board-specific port (`boards/ESP32/common/display/`); behavior matches the [ESP32 supported features](../../hardware-specific/espressif/esp32-supported-features) notes, not the T5 `lv_vendor` path.
+- On **T5AI-class targets**, TuyaOpen ships LVGL under `src/liblvgl/` with `lv_vendor` glue. On **ESP32**, LVGL usually comes from the **ESP-IDF component** and a board-specific port (`boards/ESP32/common/display/`); behavior matches the [ESP32 supported features](../../hardware/espressif/esp32-supported-features) notes, not the T5 `lv_vendor` path.
 
 ## Steps
 

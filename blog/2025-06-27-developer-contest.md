@@ -114,7 +114,7 @@ Tuya Wind IDE is a one-stop integrated development environment for developers us
 ### Tuya T5AI Board Development Board
 ![T5-AI Board Pinout](https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg)
 
-- Documentation Entry: [T5AI Board Overview](/docs/hardware-specific/t5-ai-board/overview-t5-ai-board)
+- Documentation Entry: [T5AI Board Overview](/docs/hardware/t5-ai-board/overview-t5-ai-board)
 - I/O Pin High-Resolution Download: [Pinout](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
 - How to Quickly Compile Project + Flash?: [Tutorial](/docs/quick-start/enviroment-setup)
 
@@ -144,7 +144,7 @@ Reference Documentation: [RDK X5 Documentation](https://developer.d-robotics.cc/
 For the quantity of hardware resources available on-site, please refer to the following:
 
 ### Development Boards
-- [Tuya T5-AI Development Board](/docs/hardware-specific/t5-ai-board/overview-t5-ai-board): 15
+- [Tuya T5-AI Development Board](/docs/hardware/t5-ai-board/overview-t5-ai-board): 15
 - Tuya T5 mini Development Board: 10
 {/* - Digua Robot RDK X5: 20 */}
 

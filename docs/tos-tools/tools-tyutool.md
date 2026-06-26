@@ -60,7 +60,7 @@ The following will introduce the usage instructions for flashing and authorizati
 
 After opening tyutool_gui, the interface is displayed as follows:
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/ece486b6-25b1-4ab1-9de9-4cffb0867905.png" alt="tyutools_flash" width="550" />
+<img src="https://images.tuyacn.com/fe-static/docs/img/273ba9fc-5077-47bd-94d2-275747ca7232.png" alt="tyutool flashing view" width="800" />
 
  + ① Select the chip
  + ② Click `Browse` to select the firmware file to be flashed (the bin file containing `_QIO`)
@@ -77,7 +77,7 @@ When you need to use the functions of the Tuya IoT platform, you must first auth
 
 After opening the tyutool_gui tool, click the `Authorize` tab. The interface is as follows:
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/ed6ebf86-4c52-4b3b-b4dd-27f50daf4013.png" alt="tyutools_auth" width="550" />
+<img src="https://images.tuyacn.com/fe-static/docs/img/aa0e7635-2952-4322-8696-3a866b01a6ec.png" alt="tyutool authorization view" width="800" />
 
  + ① Click the `Authorize` tab
  + ② Select the authorization serial port

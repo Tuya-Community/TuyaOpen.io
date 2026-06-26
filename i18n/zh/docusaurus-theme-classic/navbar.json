@@ -11,6 +11,26 @@
     "message": "文档",
     "description": "Navbar item with label Documentation"
   },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.TuyaOpen SDK": {
+    "message": "TuyaOpen SDK",
+    "description": "Docs dropdown item: SDK"
+  },
+  "item.label.Hardware": {
+    "message": "硬件",
+    "description": "Docs dropdown item: Hardware"
+  },
+  "item.label.Cloud & AI": {
+    "message": "云端与 AI",
+    "description": "Docs dropdown item: Cloud & AI"
+  },
+  "item.label.DuckyClaw": {
+    "message": "DuckyClaw",
+    "description": "Docs dropdown item: DuckyClaw"
+  },
   "item.label.Get Yours": {
     "message": "获取",
     "description": "Navbar item with label Get Yours"

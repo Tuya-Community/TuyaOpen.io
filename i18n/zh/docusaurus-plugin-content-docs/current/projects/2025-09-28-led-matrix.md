@@ -65,7 +65,7 @@ date: 2025-9-28
 - **音频功能**：2通道麦克风+1通道扬声器
 - **完美适用于**：LED项目、IoT原型、嵌入式开发
 
-**📚 硬件文档**：[T5AI-Core概述](https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-core/overview-t5-ai-core)
+**📚 硬件文档**：[T5AI-Core概述](https://tuyaopen.ai/zh/docs/hardware/t5-ai-core/overview-t5-ai-core)
 
 #### **T5AI-Board**（全功能选项）
 - **完整开发套件**：具有所有功能的完整开发板
@@ -74,7 +74,7 @@ date: 2025-9-28
 - **丰富的I/O**：56个GPIO引脚，多个接口
 - **完美适用于**：复杂项目、多媒体应用、AI开发
 
-**📚 硬件文档**：[T5AI-Board概述](https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board)
+**📚 硬件文档**：[T5AI-Board概述](https://tuyaopen.ai/zh/docs/hardware/t5-ai-board/overview-t5-ai-board)
 
 ### 🛒 **获取硬件**
 

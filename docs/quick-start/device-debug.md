@@ -16,7 +16,7 @@ Before you begin debugging, make sure you have the following resources ready:
 
 ### Hardware devices
 
-- [TuyaOpen-compatible development boards or modules](../hardware-specific/index.md#hardware-platforms)
+- [TuyaOpen-compatible development boards or modules](../hardware/index.md#hardware-platforms)
 - USB data line or USB-to-TTL converter
 
 ### Debugging tools

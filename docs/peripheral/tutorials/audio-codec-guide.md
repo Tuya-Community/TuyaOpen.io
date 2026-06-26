@@ -120,4 +120,4 @@ To add support for a new codec (e.g., WM8960):
 
 - [TDD/TDL Driver Architecture](../driver-architecture)
 - [Audio Driver Reference](../audio)
-- [ESP32 Supported Features](../../hardware-specific/espressif/esp32-supported-features)
+- [ESP32 Supported Features](../../hardware/espressif/esp32-supported-features)

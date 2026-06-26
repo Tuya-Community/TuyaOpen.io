@@ -54,4 +54,4 @@ flowchart TD
 
 - [TDD/TDL 驱动架构](../driver-architecture)
 - [音频驱动参考](../audio)
-- [ESP32 支持功能](../../hardware-specific/espressif/esp32-supported-features)
+- [ESP32 支持功能](../../hardware/espressif/esp32-supported-features)

@@ -993,7 +993,7 @@ function Home() {
                     </h2>
                     <p className={styles.experimentalArduinoBody}>{copy.t5.body}</p>
                     <Link
-                      to="/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board"
+                      to="/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board"
                       className={clsx(styles.btnSolidPrimary, 'tw-mt-4 tw-inline-flex')}
                     >
                       {copy.cta.learnMore} →

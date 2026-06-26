@@ -244,11 +244,11 @@ https://tuyaopen.ai/zh/docs/about-tuyaopen
 | Roadmap & Releases | https://tuyaopen.ai/docs/maintenance-and-releases |
 | Directory Structure | https://tuyaopen.ai/docs/project-walkthrough |
 | Get Started | https://tuyaopen.ai/docs/quick-start |
-| Hardware Guides | https://tuyaopen.ai/docs/hardware-specific |
+| Hardware Guides | https://tuyaopen.ai/docs/hardware |
 | Application  | https://tuyaopen.ai/docs/applications |
 | Examples-Generic Demos | https://tuyaopen.ai/docs/examples/demo-generic-examples |
 | Peripheral | https://tuyaopen.ai/docs/peripheral/support_peripheral_list |
-| New Project-Porting platform | https://tuyaopen.ai/docs/new-hardware/porting-platform |
+| New Project-Porting platform | https://tuyaopen.ai/docs/hardware/porting/porting-platform |
 | Cloud Services-Create Product | https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product |
 | TKL APIs-OS APIs-tkl_mutex | Mutex Lock | https://tuyaopen.ai/docs/tkl-api/tkl_mutex |
 | Tos Tools | https://tuyaopen.ai/docs/tos-tools/tos-guide |

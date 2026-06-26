@@ -90,11 +90,11 @@ Channel-to-GPIO mapping depends on the chip. See the per-chip pinmux docs for co
 
 | Platform | ADC1 Port | ADC2 Port | Pinmux Doc |
 |----------|-----------|-----------|-----------|
-| ESP32 | `TUYA_ADC_NUM_0` (GPIO 32-39) | `TUYA_ADC_NUM_1` (GPIO 0-27) | [ESP32 Classic Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-classic) |
-| ESP32-S3 | `TUYA_ADC_NUM_0` (GPIO 1-10) | `TUYA_ADC_NUM_1` (GPIO 11-20) | [ESP32-S3 Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-s3) |
-| ESP32-C3 | `TUYA_ADC_NUM_0` (GPIO 0-4) | `TUYA_ADC_NUM_1` (GPIO 5) | [ESP32-C3 Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-c3) |
-| ESP32-C6 | `TUYA_ADC_NUM_0` (GPIO 0-6) | N/A | [ESP32-C6 Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-c6) |
-| T5AI | `TUYA_ADC_NUM_0` (P0-P28) | N/A | [T5AI Peripheral Mapping](/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping) |
+| ESP32 | `TUYA_ADC_NUM_0` (GPIO 32-39) | `TUYA_ADC_NUM_1` (GPIO 0-27) | [ESP32 Classic Pinmux](/docs/hardware/espressif/pinmux/esp32-classic) |
+| ESP32-S3 | `TUYA_ADC_NUM_0` (GPIO 1-10) | `TUYA_ADC_NUM_1` (GPIO 11-20) | [ESP32-S3 Pinmux](/docs/hardware/espressif/pinmux/esp32-s3) |
+| ESP32-C3 | `TUYA_ADC_NUM_0` (GPIO 0-4) | `TUYA_ADC_NUM_1` (GPIO 5) | [ESP32-C3 Pinmux](/docs/hardware/espressif/pinmux/esp32-c3) |
+| ESP32-C6 | `TUYA_ADC_NUM_0` (GPIO 0-6) | N/A | [ESP32-C6 Pinmux](/docs/hardware/espressif/pinmux/esp32-c6) |
+| T5AI | `TUYA_ADC_NUM_0` (P0-P28) | N/A | [T5AI Peripheral Mapping](/docs/hardware/tuya-t5/t5ai-peripheral-mapping) |
 
 ## ESP32 ADC2 and Wi-Fi Conflict
 
@@ -154,4 +154,4 @@ float get_battery_voltage_mv(void)
 
 - [TKL ADC API](/docs/tkl-api/tkl_adc)
 - [ADC example in SDK](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/adc)
-- [ESP32 Pin Mapping](/docs/hardware-specific/espressif/esp32-pin-mapping)
+- [ESP32 Pin Mapping](/docs/hardware/espressif/esp32-pin-mapping)

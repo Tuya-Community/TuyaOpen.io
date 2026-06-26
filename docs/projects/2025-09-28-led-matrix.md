@@ -71,7 +71,7 @@ This demo is designed for the **T5AI-Core** development board, but all T5 Series
 - **Audio Capabilities**: 2-channel microphone + 1-channel speaker
 - **Perfect for**: LED projects, IoT prototypes, embedded development
 
-**📚 Hardware Documentation**: [T5AI-Core Overview](https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-core/overview-t5-ai-core)
+**📚 Hardware Documentation**: [T5AI-Core Overview](https://tuyaopen.ai/zh/docs/hardware/t5-ai-core/overview-t5-ai-core)
 
 #### **T5AI-Board** (Full-featured option)
 - **Complete DevKit**: Full development board with all features
@@ -80,7 +80,7 @@ This demo is designed for the **T5AI-Core** development board, but all T5 Series
 - **Rich I/O**: 56 GPIO pins, multiple interfaces
 - **Perfect for**: Complex projects, multimedia applications, AI development
 
-**📚 Hardware Documentation**: [T5AI-Board Overview](https://tuyaopen.ai/zh/docs/hardware-specific/t5-ai-board/overview-t5-ai-board)
+**📚 Hardware Documentation**: [T5AI-Board Overview](https://tuyaopen.ai/zh/docs/hardware/t5-ai-board/overview-t5-ai-board)
 
 ### 🛒 **Where to Get Hardware**
 

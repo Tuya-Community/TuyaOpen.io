@@ -307,7 +307,7 @@ tos.py idf fullclean
 tos.py idf --idf-flags="-v" build
 ```
 
-Use `--idf-flags` for extra flags that must appear before the subcommand (for example verbosity or CMake defines). For a full command reference and workflow, see [tos.py idf reference](tos-idf-reference) and [ESP32 quick start](../hardware-specific/espressif/esp32-quick-start).
+Use `--idf-flags` for extra flags that must appear before the subcommand (for example verbosity or CMake defines). For a full command reference and workflow, see [tos.py idf reference](tos-idf-reference) and [ESP32 quick start](../hardware/espressif/esp32-quick-start).
 
 ## dev
 
@@ -341,7 +341,7 @@ Execution process:
 
 ### new platform
 
-For the specific usage of this command, please refer to **[new platform](/docs/new-hardware/new-platform)**
+For the specific usage of this command, please refer to **[new platform](/docs/hardware/porting/new-platform)**
 
 ## Common Issues
 

@@ -168,5 +168,5 @@ apps/my_bme280_app/
 
 - [TDD/TDL Driver Architecture](../driver-architecture)
 - [Writing a New Sensor Driver](writing-sensor-driver)
-- [ESP32 Migration Guide](../../hardware-specific/espressif/esp32-migration-guide)
+- [ESP32 Migration Guide](../../hardware/espressif/esp32-migration-guide)
 - [TKL I2C API](/docs/tkl-api/tkl_i2c)

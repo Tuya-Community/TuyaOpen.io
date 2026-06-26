@@ -16,7 +16,7 @@ title: 设备调试
 
 ### 硬件设备
 
-- [TuyaOpen 支持的开发板或模组](../hardware-specific/index.md#硬件平台)
+- [TuyaOpen 支持的开发板或模组](../hardware/index.md#硬件平台)
 - USB 数据线或 USB-TTL 转接器
 
 ### 调试工具

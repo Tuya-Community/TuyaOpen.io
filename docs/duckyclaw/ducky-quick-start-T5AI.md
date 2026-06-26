@@ -6,12 +6,12 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 # DuckyClaw Quick Start (T5-AI Board)
 
-This guide walks you through building, flashing, and activating the DuckyClaw firmware on the [T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board) development kit. It is for developers who want to run DuckyClaw on Tuya T5-AI hardware and connect the device to Tuya Cloud via the Smart Life app.
+This guide walks you through building, flashing, and activating the DuckyClaw firmware on the [T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board) development kit. It is for developers who want to run DuckyClaw on Tuya T5-AI hardware and connect the device to Tuya Cloud via the Smart Life app.
 
 
 ## Requirements
 
-- **[T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)** development board (carries the T5 module).
+- **[T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)** development board (carries the T5 module).
 - **USB data cable** to connect the board to your computer.
 - **Computer** running Windows 10/11, Linux (e.g. Ubuntu 20/22/24 LTS), or macOS.
 - **Tuya Cloud**: This demo uses Tuya Cloud services. You need a valid [license key (authorization code)](/docs/quick-start/equipment-authorization) and correct PID, UUID, and AuthKey in `tuya_app_config.h` for cloud and LLM features.
@@ -328,7 +328,7 @@ If `productkey` (PID) appears as placeholders, the product ID was not set. Copy 
 ## References
 
 - [DuckyClaw Overview](/duckyclaw)
-- [T5-AI Board overview](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)
+- [T5-AI Board overview](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)
 - [Quick Start – Environment setup](/docs/quick-start/enviroment-setup)
 - [Quick Start – Equipment authorization](/docs/quick-start/equipment-authorization)
 - [Custom Device MCP (hardware skills)](/docs/duckyclaw/custom-device-mcp)

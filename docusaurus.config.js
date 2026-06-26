@@ -137,8 +137,15 @@ const config = {
           position: 'left',
         },
         {
-          to: 'docs/about-tuyaopen',
-          label: 'Documentation',
+          type: 'dropdown',
+          label: 'Docs',
+          position: 'left',
+          items: [
+            { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
+            { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
+            { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
+            { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'DuckyClaw' },
+          ],
         },
         {
           label: 'Get Yours',
@@ -220,11 +227,11 @@ const config = {
             },
             {
               label: 'Hardware List',
-              to: '/docs/hardware-specific',
+              to: '/docs/hardware',
             },
             {
               label: 'Tuya T5AI Dev Kit',
-              to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
+              to: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
             },
             {
               label: 'License Key',
@@ -320,21 +327,49 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        // Legacy aliases that predate the per-product docs split.
         redirects: [
-          // Redirect old T5 paths to new Tuya T5 folder structure (English)
           {
             from: '/docs/hardware-specific/t5ai-peripheral-mapping',
-            to: '/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+            to: '/docs/hardware/tuya-t5/t5ai-peripheral-mapping',
           },
           {
             from: '/docs/hardware-specific/t5-ai-board/overview-t5-ai-board',
-            to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
+            to: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
           },
           {
             from: '/docs/hardware-specific/t5-ai-core/overview-t5-ai-core',
-            to: '/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core',
+            to: '/docs/hardware/tuya-t5/t5-ai-core/overview-t5-ai-core',
           },
         ],
+        // Map every page moved by the docs re-categorization back to its old URL.
+        // `existingPath` is the NEW path; we return the OLD path(s) to redirect from.
+        // Substring (not startsWith) so locale-prefixed paths like /zh/docs/... also map.
+        createRedirects(existingPath) {
+          // [newPrefix, oldPrefix] — order matters: more specific prefixes first.
+          const moves = [
+            ['/docs/hardware/porting/', '/docs/new-hardware/'],
+            ['/docs/hardware/', '/docs/hardware-specific/'],
+            ['/docs/cloud/device-ai/', '/docs/applications/tuya.ai/'],
+            ['/docs/cloud/iot-client/', '/docs/applications/tuya_cloud/'],
+          ]
+          for (const [neu, old] of moves) {
+            const i = existingPath.indexOf(neu)
+            if (i !== -1) {
+              return existingPath.slice(0, i) + old + existingPath.slice(i + neu.length)
+            }
+          }
+          // Folder index pages: /docs/hardware -> /docs/hardware-specific
+          if (existingPath.endsWith('/docs/hardware')) {
+            return existingPath.slice(0, -'/docs/hardware'.length) + '/docs/hardware-specific'
+          }
+          // Old applications hub -> new cloud overview
+          if (existingPath.endsWith('/docs/cloud/overview')) {
+            const base = existingPath.slice(0, -'/docs/cloud/overview'.length)
+            return [base + '/docs/applications', base + '/docs/applications/index']
+          }
+          return undefined
+        },
       },
     ],
   ],

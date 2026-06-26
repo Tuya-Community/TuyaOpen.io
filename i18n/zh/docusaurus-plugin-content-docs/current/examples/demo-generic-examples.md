@@ -107,7 +107,7 @@ tos.py config choice
 ```
 
 :::note
-大多数示例默认为 T5AI。对于 ESP32，你可能需要从列表中选择 ESP32 配置，或在示例的 `config/` 目录中创建一个。详见 [ESP32 快速开始](/zh/docs/hardware-specific/espressif/esp32-quick-start)。
+大多数示例默认为 T5AI。对于 ESP32，你可能需要从列表中选择 ESP32 配置，或在示例的 `config/` 目录中创建一个。详见 [ESP32 快速开始](/zh/docs/hardware/espressif/esp32-quick-start)。
 :::
 
 ## 构建示例
@@ -121,5 +121,5 @@ tos.py monitor
 ## 参考资料
 
 - [TDD/TDL 驱动架构](/zh/docs/peripheral/driver-architecture)
-- [ESP32 快速开始](/zh/docs/hardware-specific/espressif/esp32-quick-start)
+- [ESP32 快速开始](/zh/docs/hardware/espressif/esp32-quick-start)
 - [编译指南](/zh/docs/build-system/compilation-guide)

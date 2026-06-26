@@ -28,7 +28,7 @@ Use these from drivers and low-level migration; application **key–value** pers
 
 ## Reserved flash and `ENABLE_FLASH`
 
-When **porting** a new board, you must reserve a **dedicated flash region** for TuyaOpen (authorization, pairing data, filesystem). See [Porting platform](../../new-hardware/porting-platform):
+When **porting** a new board, you must reserve a **dedicated flash region** for TuyaOpen (authorization, pairing data, filesystem). See [Porting platform](../../hardware/porting/porting-platform):
 
 - **`ENABLE_FLASH`** — must be enabled; pick an unused range that does not overlap the main firmware image and respects **erase granularity**.
 - **`ENABLE_FILE_SYSTEM`** — if disabled, TuyaOpen may use internal **LittleFS** whose base/size are supplied by **`tkl_flash.c`** in the adaptation.
@@ -65,5 +65,5 @@ You know which **API layer** (TKL raw flash vs TAL KV), which **Kconfig / partit
 - [TKL flash](../../tkl-api/tkl_flash)
 - [TKL OTA](../../tkl-api/tkl_ota)
 - [TAL KV guide](../tutorials/tal-kv-guide)
-- [Porting platform](../../new-hardware/porting-platform)
+- [Porting platform](../../hardware/porting/porting-platform)
 - [Heap allocation and PSRAM](heap-allocation-and-psram)

@@ -13,7 +13,7 @@ import ChipRow from '@site/src/components/ChipRow';
 ## 准备工作
 
 开始前，请准备以下资源：
- - [TuyaOpen 支持的开发板或模组](../hardware-specific/index.md#硬件平台)
+ - [TuyaOpen 支持的开发板或模组](../hardware/index.md#硬件平台)
  - USB 数据线
  - 电脑（支持 Windows/Linux/macOS 系统）
 
@@ -21,7 +21,7 @@ import ChipRow from '@site/src/components/ChipRow';
 
 从 TuyaOpen 的 **[发布页面](https://github.com/tuya/TuyaOpen/releases)** 下载固件进行烧录和测试。
 
-可通过 [TuyaOpen 应用列表](../applications/index.md#tuyaopen-应用列表) 选择适合当前芯片和应用，下载已预编译的 bin 文件。
+可通过 [TuyaOpen 应用列表](../cloud/overview#tuyaopen-应用列表) 选择适合当前芯片和应用，下载已预编译的 bin 文件。
 
 ## 固件烧录
 
