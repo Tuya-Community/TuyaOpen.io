@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([["5889"],{8488(e,t,s){s.d(t,{createArchitectureServices:()=>c.S});var c=s(89221);s(51400)}}]);

@@ -227,7 +227,7 @@ Follow Tuya’s official YouTube channel: <a href="https://www.youtube.com/@tuya
 <li class="">Get Started<br>
 <a href="https://tuyaopen.ai/docs/quick-start" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/quick-start</a></li>
 <li class="">Hardware Guides<br>
-<a href="https://tuyaopen.ai/docs/hardware-specific" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/hardware-specific</a></li>
+<a href="https://tuyaopen.ai/docs/hardware" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/hardware</a></li>
 <li class="">Application<br>
 <a href="https://tuyaopen.ai/docs/applications" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/applications</a></li>
 <li class="">Examples-Generic Demos<br>
@@ -235,7 +235,7 @@ Follow Tuya’s official YouTube channel: <a href="https://www.youtube.com/@tuya
 <li class="">Peripheral<br>
 <a href="https://tuyaopen.ai/docs/peripheral/support_peripheral_list" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/peripheral/support_peripheral_list</a></li>
 <li class="">New Project-Porting platform<br>
-<a href="https://tuyaopen.ai/docs/new-hardware/porting-platform" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/new-hardware/porting-platform</a></li>
+<a href="https://tuyaopen.ai/docs/hardware/porting/porting-platform" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/hardware/porting/porting-platform</a></li>
 <li class="">Cloud Services-Create Product<br>
 <a href="https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product" target="_blank" rel="noopener noreferrer" class="">https://tuyaopen.ai/docs/cloud/tuya-cloud/creating-new-product</a></li>
 <li class="">TKL APIs-OS APIs-tkl_mutex | Mutex Lock<br>
@@ -757,7 +757,7 @@ etc....</li>
 <h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="tuya-t5ai-board-development-board">Tuya T5AI Board Development Board<a href="https://tuyaopen.io/blog/72h-with-tuyaopen#tuya-t5ai-board-development-board" class="hash-link" aria-label="Direct link to Tuya T5AI Board Development Board" title="Direct link to Tuya T5AI Board Development Board" translate="no">​</a></h3>
 <p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/fe-static/docs/img/6b7ab959-0635-4293-991b-b8dda293614b.jpg" alt="T5-AI Board Pinout" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">T5-AI Board Pinout</figcaption></figure><p></p>
 <ul>
-<li class="">Documentation Entry: <a class="" href="https://tuyaopen.io/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
+<li class="">Documentation Entry: <a class="" href="https://tuyaopen.io/docs/hardware/t5-ai-board/overview-t5-ai-board">T5AI Board Overview</a></li>
 <li class="">I/O Pin High-Resolution Download: <a href="https://tuyaopen.io/assets/files/T5-AI-Board-Pinout-v102-a97dc489a34f7b0001bb86d9f1ebaad5.pdf" target="_blank" class="">Pinout</a></li>
 <li class="">How to Quickly Compile Project + Flash?: <a class="" href="https://tuyaopen.io/docs/quick-start/enviroment-setup">Tutorial</a></li>
 </ul>
@@ -771,7 +771,7 @@ etc....</li>
 <p>For the quantity of hardware resources available on-site, please refer to the following:</p>
 <h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="development-boards-1">Development Boards<a href="https://tuyaopen.io/blog/72h-with-tuyaopen#development-boards-1" class="hash-link" aria-label="Direct link to Development Boards" title="Direct link to Development Boards" translate="no">​</a></h3>
 <ul>
-<li class=""><a class="" href="https://tuyaopen.io/docs/hardware-specific/t5-ai-board/overview-t5-ai-board">Tuya T5-AI Development Board</a>: 15</li>
+<li class=""><a class="" href="https://tuyaopen.io/docs/hardware/t5-ai-board/overview-t5-ai-board">Tuya T5-AI Development Board</a>: 15</li>
 <li class="">Tuya T5 mini Development Board: 10</li>
 </ul>
 <!-- -->
