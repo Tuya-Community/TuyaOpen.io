@@ -148,10 +148,6 @@ const config = {
           ],
         },
         {
-          to: '/t5-tuyaopen',
-          label: 'T5 × TuyaOpen',
-        },
-        {
           to: 'blog',
           label: 'Blog',
         },
