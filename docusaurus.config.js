@@ -12,7 +12,7 @@ const config = {
     v4: true,
   },
 
-  clientModules: ['./src/clientModules/gtag-shim.js'],
+  clientModules: ['./src/clientModules/gtag-shim.js', './src/clientModules/toc-reading-progress.js'],
 
   title: 'TuyaOpen',
   tagline: 'A Powerful Open Source OS and Platform for IoTs Development',
@@ -133,32 +133,23 @@ const config = {
       },
       items: [
         {
-          to: 'docs/about-tuyaopen',
-          label: 'Documentation',
+          type: 'custom-productsMenu',
+          position: 'left',
         },
         {
-          label: 'Get Yours',
+          type: 'dropdown',
+          label: 'Docs',
           position: 'left',
           items: [
-            {
-              label: 'Get License Key',
-              to: '/pricing',
-            },
-            {
-              label: 'Get Hardware',
-              to: '/get-hardware',
-            },
-            {
-              label: 'T5 × TuyaOpen',
-              to: '/t5-tuyaopen',
-            },
-            {
-              label: 'Get Code',
-              href: 'https://github.com/tuya/TuyaOpen',
-              target: '_blank',
-              rel: 'noopener noreferrer',
-            },
+            { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
+            { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
+            { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
+            { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'TuyaOpenClaw' },
           ],
+        },
+        {
+          to: '/t5-tuyaopen',
+          label: 'T5 × TuyaOpen',
         },
         {
           to: 'blog',
@@ -167,27 +158,6 @@ const config = {
         {
           to: '/projects',
           label: 'Projects',
-        },
-        {
-          to: '/duckyclaw',
-          label: 'DuckyClaw 🦞',
-        },
-        {
-          label: 'Tools',
-          position: 'left',
-          items: [
-            {
-              label: 'Universal Serial Port Tools',
-              to: '/tools/tyutool',
-            },
-
-            {
-              label: 'Web Serial/Flashing Tools',
-              href: 'https://tuyaopen.ai/tools',
-              target: '_blank',
-              rel: 'noopener noreferrer',
-            },
-          ],
         },
         {
           type: 'localeDropdown',
@@ -204,29 +174,63 @@ const config = {
     footer: {
       links: [
         {
-          title: 'Docs',
+          title: 'Products',
           items: [
             {
-              label: 'Tutorial',
+              label: 'TuyaOpen IDE',
+              to: '/tuyaopen-ide',
+            },
+            {
+              label: 'TuyaOpen SDK',
+              href: 'https://github.com/tuya/TuyaOpen',
+            },
+            {
+              label: 'TuyaOpen on Arduino',
+              href: 'https://github.com/tuya/arduino-TuyaOpen',
+            },
+            {
+              label: 'TuyaOpenClaw 🦞',
+              to: '/duckyclaw',
+            },
+            // Hidden per request — re-enable to show "Get Hardware" in the footer.
+            // {
+            //   label: 'Get Hardware',
+            //   to: '/get-hardware',
+            // },
+          ],
+        },
+        {
+          title: 'Documentation',
+          items: [
+            {
+              label: 'Quick Start',
               to: '/docs/quick-start/unboxing',
             },
             {
-              label: 'Service',
-              to: '/pricing',
+              label: 'About TuyaOpen',
+              to: '/docs/about-tuyaopen',
             },
             {
               label: 'Hardware List',
-              to: '/docs/hardware-specific',
+              to: '/docs/hardware',
             },
             {
               label: 'Tuya T5AI Dev Kit',
-              to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
+              to: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
+            },
+            {
+              label: 'License Key',
+              to: '/pricing',
             },
           ],
         },
         {
           title: 'Tools',
           items: [
+            {
+              label: 'TyuTools GUI/CLI',
+              to: '/tools/tyutool',
+            },
             {
               label: 'Web Serial Tool',
               href: 'https://tuyaopen.ai/tools',
@@ -239,6 +243,10 @@ const config = {
           title: 'Community',
           items: [
             {
+              label: 'Blog',
+              to: '/blog',
+            },
+            {
               label: 'Discord',
               href: 'https://discord.com/invite/yPPShSTttG',
             },
@@ -247,11 +255,11 @@ const config = {
               href: 'https://x.com/tuyasmart',
             },
             {
-              label: 'Youtube',
+              label: 'YouTube',
               href: 'https://www.youtube.com/@tuya2023',
             },
             {
-              label: 'Linkedin',
+              label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/tuya-smart',
             },
           ],
@@ -264,17 +272,12 @@ const config = {
               href: 'https://github.com/tuya/TuyaOpen',
             },
             {
-              label: 'Gitee(Mirror)',
+              label: 'Gitee (Mirror)',
               href: 'https://gitee.com/tuya-open/TuyaOpen',
             },
-          ],
-        },
-        {
-          title: 'Acknowledgements',
-          items: [
             {
-              label: 'Thanks for the technology illustrations by Storyset',
-              href: 'https://storyset.com/technology',
+              label: 'Projects',
+              to: '/projects',
             },
           ],
         },
@@ -309,21 +312,49 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        // Legacy aliases that predate the per-product docs split.
         redirects: [
-          // Redirect old T5 paths to new Tuya T5 folder structure (English)
           {
             from: '/docs/hardware-specific/t5ai-peripheral-mapping',
-            to: '/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping',
+            to: '/docs/hardware/tuya-t5/t5ai-peripheral-mapping',
           },
           {
             from: '/docs/hardware-specific/t5-ai-board/overview-t5-ai-board',
-            to: '/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board',
+            to: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
           },
           {
             from: '/docs/hardware-specific/t5-ai-core/overview-t5-ai-core',
-            to: '/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core',
+            to: '/docs/hardware/tuya-t5/t5-ai-core/overview-t5-ai-core',
           },
         ],
+        // Map every page moved by the docs re-categorization back to its old URL.
+        // `existingPath` is the NEW path; we return the OLD path(s) to redirect from.
+        // Substring (not startsWith) so locale-prefixed paths like /zh/docs/... also map.
+        createRedirects(existingPath) {
+          // [newPrefix, oldPrefix] — order matters: more specific prefixes first.
+          const moves = [
+            ['/docs/hardware/porting/', '/docs/new-hardware/'],
+            ['/docs/hardware/', '/docs/hardware-specific/'],
+            ['/docs/cloud/device-ai/', '/docs/applications/tuya.ai/'],
+            ['/docs/cloud/iot-client/', '/docs/applications/tuya_cloud/'],
+          ]
+          for (const [neu, old] of moves) {
+            const i = existingPath.indexOf(neu)
+            if (i !== -1) {
+              return existingPath.slice(0, i) + old + existingPath.slice(i + neu.length)
+            }
+          }
+          // Folder index pages: /docs/hardware -> /docs/hardware-specific
+          if (existingPath.endsWith('/docs/hardware')) {
+            return existingPath.slice(0, -'/docs/hardware'.length) + '/docs/hardware-specific'
+          }
+          // Old applications hub -> new cloud overview
+          if (existingPath.endsWith('/docs/cloud/overview')) {
+            const base = existingPath.slice(0, -'/docs/cloud/overview'.length)
+            return [base + '/docs/applications', base + '/docs/applications/index']
+          }
+          return undefined
+        },
       },
     ],
   ],

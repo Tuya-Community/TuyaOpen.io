@@ -17,60 +17,18 @@ title: 显示屏驱动
 
 ## 支持驱动列表
 
-
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-0pky">驱动接口</th>
-    <th class="tg-0pky">芯片</th>
-    <th class="tg-0pky">像素格式</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">RGB</td>
-    <td class="tg-0pky">ILI9488</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" rowspan="5">SPI</td>
-    <td class="tg-0pky">GC9A01</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ILI9341</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7789</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7305</td>
-    <td class="tg-0pky">单色</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7306</td>
-    <td class="tg-0pky">2 位深度的灰度格式</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">QSPI</td>
-    <td class="tg-0pky">ST7735S</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" rowspan="2">MCU8080</td>
-    <td class="tg-0pky">ST7796</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7789</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">I2C</td>
-    <td class="tg-0pky">SSD1306</td>
-    <td class="tg-0pky">单色</td>
-  </tr>
-</tbody></table>
+| 驱动接口 | 芯片 | 像素格式 |
+| --- | --- | --- |
+| RGB | ILI9488 | RGB565 |
+| SPI | GC9A01 | RGB565 |
+| SPI | ILI9341 | RGB565 |
+| SPI | ST7789 | RGB565 |
+| SPI | ST7305 | 单色 |
+| SPI | ST7306 | 2 位深度的灰度格式 |
+| QSPI | ST7735S | RGB565 |
+| MCU8080 | ST7796 | RGB565 |
+| MCU8080 | ST7789 | RGB565 |
+| I2C | SSD1306 | 单色 |
 
 
 ## 功能模块
@@ -87,7 +45,7 @@ title: 显示屏驱动
 
 ## 工作流程
 
-![](/img/peripheral/display/display_work_zh.png)
+![显示驱动工作流程：查找设备、创建帧缓存、打开设备、写入像素、刷新到屏幕](/img/peripheral/display/display_work_zh.png)
 
 ## Kconfig 配置
 
@@ -137,11 +95,11 @@ title: 显示屏驱动
 
 2. 选择目标 Board，以 TUYA_T5AI_EVB 为例。
 
-    ![](/img/peripheral/display/choos_board.png)
+    ![已选中目标开发板的 Kconfig 菜单](/img/peripheral/display/choos_board.png)
 
 3. 查看显示驱动的使能宏是否被打开。
 
-    ![](/img/peripheral/display/display_enable.png)
+    ![已打开显示使能宏的 Kconfig 菜单](/img/peripheral/display/display_enable.png)
 
 #### 已开启需要屏幕驱动的功能
 
@@ -154,13 +112,13 @@ title: 显示屏驱动
     ```
 2. 打开 LVGL 功能。
 
-    ![](/img/peripheral/display/choose_lvgl.png)
+    ![已选中 LVGL 功能的 Kconfig 菜单](/img/peripheral/display/choose_lvgl.png)
 
     构建与运行 LVGL 界面（初始化、`lv_vendor_*`、示例流程）见 [LVGL 应用指南](tutorials/lvgl-application-guide)。
 
 3. 查看显示驱动的使能宏是否被打开。
 
-    ![](/img/peripheral/display/display_enable.png)
+    ![已打开显示使能宏的 Kconfig 菜单](/img/peripheral/display/display_enable.png)
 
 #### 手动打开使能宏
 
@@ -172,7 +130,7 @@ title: 显示屏驱动
 
 2. 打开驱动使能宏。
 
-    ![](/img/peripheral/display/open_display.png)
+    ![突出显示显示使能宏的 Kconfig 菜单](/img/peripheral/display/open_display.png)
 
 ### 使用方法
 

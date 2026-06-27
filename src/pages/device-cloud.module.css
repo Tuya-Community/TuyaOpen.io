@@ -1,0 +1,330 @@
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 5rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 1rem 0 2.5rem;
+}
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.heroSub {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+.heroImg {
+  width: 100%;
+  max-width: 920px;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 12px 40px rgba(99, 60, 255, 0.08);
+}
+
+/* ---------- Section scaffolding ---------- */
+.sectionTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.sectionLead {
+  color: var(--ifm-color-emphasis-700);
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.demo,
+.caps,
+.learn {
+  margin-top: 3.5rem;
+}
+
+/* ---------- Recipe picker ---------- */
+.recipeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.recipeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.recipeBtn:hover {
+  border-color: var(--ifm-color-primary);
+}
+.recipeBtnActive {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+.recipeEmoji {
+  font-size: 1.1rem;
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.runBtn {
+  padding: 0.55rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.runBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.ctrlBtn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-weight: 600;
+  cursor: pointer;
+}
+.ctrlBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.statusMsg {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.95rem;
+}
+
+/* ---------- Lanes (cloud vs device) ---------- */
+.lanes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.lane {
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+}
+.laneHead {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+.laneCloud {
+  background: linear-gradient(180deg, rgba(99, 60, 255, 0.04), transparent);
+}
+
+/* ---------- Steps ---------- */
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  opacity: 0.45;
+  transform: translateY(2px);
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid transparent;
+}
+.stepDone {
+  opacity: 1;
+}
+.stepActive {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 6px 18px rgba(99, 60, 255, 0.18);
+}
+.stepCloud {
+  background: var(--ifm-color-emphasis-100);
+}
+.stepDevice {
+  background: var(--ifm-color-emphasis-100);
+}
+.stepBadge {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+.stepDevice .stepBadge {
+  background: #2bb673;
+}
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.stepTool {
+  font-size: 0.85rem;
+  background: var(--ifm-color-emphasis-200);
+  padding: 0.05rem 0.4rem;
+  border-radius: 5px;
+  width: fit-content;
+}
+.stepLabel {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ---------- Capability split ---------- */
+.capGrid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 1rem;
+}
+.capCard {
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+}
+.capDevice {
+  border-top: 4px solid #2bb673;
+}
+.capCloud {
+  border-top: 4px solid var(--ifm-color-primary);
+}
+.capIcon {
+  font-size: 1.5rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--ifm-color-emphasis-100);
+  margin-bottom: 0.75rem;
+}
+.capTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+.capSub {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 1rem;
+}
+.capList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.capList li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.45;
+  font-size: 0.96rem;
+}
+.capList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+.capDevice .capList li::before {
+  color: #2bb673;
+}
+.bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+.bridgeLabel {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary);
+  letter-spacing: 0.08em;
+}
+.bridgeArrow {
+  font-size: 1.6rem;
+  color: var(--ifm-color-emphasis-500);
+}
+.principle {
+  margin-top: 1.75rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
+/* ---------- Learn more ---------- */
+.linkRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+.linkCard {
+  display: block;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.linkCard:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .lanes {
+    grid-template-columns: 1fr;
+  }
+  .capGrid {
+    grid-template-columns: 1fr;
+  }
+  .bridge {
+    flex-direction: row;
+    padding: 0.5rem 0;
+  }
+  .bridgeArrow {
+    transform: rotate(90deg);
+  }
+}

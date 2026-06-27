@@ -11,21 +11,41 @@
     "message": "文档",
     "description": "Navbar item with label Documentation"
   },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.TuyaOpen SDK": {
+    "message": "TuyaOpen SDK",
+    "description": "Navbar item with label TuyaOpen SDK"
+  },
+  "item.label.Hardware": {
+    "message": "硬件",
+    "description": "Navbar item with label Hardware"
+  },
+  "item.label.Cloud & AI": {
+    "message": "云端与 AI",
+    "description": "Navbar item with label Cloud & AI"
+  },
+  "item.label.TuyaOpenClaw": {
+    "message": "TuyaOpenClaw",
+    "description": "Navbar item with label TuyaOpenClaw"
+  },
   "item.label.Get Yours": {
     "message": "获取",
     "description": "Navbar item with label Get Yours"
   },
   "item.label.Get License Key": {
     "message": "服务授权码",
-    "description": "Navbar item with label Get Yours"
+    "description": "Navbar item with label Get License Key"
   },
   "item.label.Get Hardware": {
     "message": "获取硬件",
-    "description": "Navbar item with label Get Yours"
+    "description": "Navbar item with label Get Hardware"
   },
   "item.label.Get Code": {
     "message": "获取代码",
-    "description": "Navbar item with label Get Yours"
+    "description": "Navbar item with label Get Code"
   },
   "item.label.T5 × TuyaOpen": {
     "message": "T5 × TuyaOpen",

@@ -5,8 +5,6 @@ date: 2025-08-01
 
 <BackToProjects />
 
-# CyberPlant
-
 ## Project Overview
 
 A blockchain-based plant NFT project including frontend interface, backend API and smart contracts. This project demonstrates TuyaOpen's versatility in enabling diverse AI applications beyond traditional IoT, showcasing how the framework can be adapted for blockchain and Web3 applications while maintaining its core AI capabilities.

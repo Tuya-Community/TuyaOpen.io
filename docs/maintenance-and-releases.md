@@ -3,8 +3,6 @@ title: Technical Roadmap & Releases
 description: Comprehensive information about TuyaOpen maintenance frequency, SDK releases, platform support, roadmap, and release notes.
 ---
 
-# Technical Roadmap & Releases
-
 This topic walks you through the TuyaOpen maintenance plan, release cycle, platform support, and development roadmap.
 
 ## Maintenance plan
@@ -53,7 +51,9 @@ Tuya chip platforms are regularly updated and maintained.
 
 
 ## Development roadmap
-## To-dos
+
+### To-dos
+
 - Enable SMP CPU architecture support for the T5 series chip.
 - Extend support to popular SoC platforms (such as Raspberry Pi, Rockchip, and Allwinner).
 - Optimize video modality capabilities for TuyaOpen DVP cameras.
@@ -73,7 +73,7 @@ Tuya chip platforms are regularly updated and maintained.
 
 ## TuyaOpen release notes
 
-#### **2025**
+### 2025
 
 <details>
 <summary><strong>v1.5.0 (September 22, 2025) [Latest stable release]</strong></summary>
@@ -240,7 +240,7 @@ Tuya chip platforms are regularly updated and maintained.
 
 </details>
 
-#### **2024**
+### 2024
 
 <details>
 <summary><strong>v1.1.0 (October 22, 2024)</strong></summary>

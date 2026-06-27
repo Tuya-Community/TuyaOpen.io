@@ -70,7 +70,14 @@ export default function NavbarContent() {
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
           <NavbarLogo />
           <NavbarItems items={leftItems} />
-          {showEventRegistration && <NavbarItem to="/event-registration" label="活动报名" />}
+          {showEventRegistration && (
+            <NavbarItem
+              href="https://images.tuyacn.com/rms-static/fe11d250-54e9-11f1-8d53-258e63d3fe0e-1779349939189.html?tyName=event-registration.html"
+              label="活动报名"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          )}
         </>
       }
       right={

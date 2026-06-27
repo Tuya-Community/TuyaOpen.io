@@ -53,23 +53,15 @@ The version number information output by `tos.py version` is as follows
 [INFO]: v1.3.0-23-g6bcb5aa
 ```
 
-The displayed content is actually the current `tag-commit` of the `TuyaOpen` repository
+The displayed content is the current `tag-commit` of the `TuyaOpen` repository, consistent with the output of `git describe --tags`, where:
 
-Consistent with the output of the command `git describe --tags`, where
+- `v1.3.0` — the most recent release version number.
+- `23` — there are 23 new commits on top of v1.3.0.
+- `g6bcb5aa` — `g` is a fixed prefix, and `6bcb5aa` is the abbreviated hash of the current commit.
 
-> v1.3.0 - The most recent release version number
->
-> 23 - There are 23 new commit submissions based on v1.3.0
->
-> g6bcb5aa - g is a fixed prefix, `6bcb5aa` is the abbreviated hash of the current commit
->
-
-<details>
-<summary>If [Unknown version] appears</summary>
-
-    It means the current repository has no tags, commonly seen in forked repositories
-
-</details>
+:::note
+If `[Unknown version]` appears, the current repository has no tags. This is common in forked repositories.
+:::
 
 ## check
 
@@ -85,20 +77,15 @@ Consistent with the output of the command `git describe --tags`, where
 [INFO]: Download submoudules successfully.
 ```
 
-The `check` command will complete 2 steps of operations
+The `check` command completes two steps:
 
-    1. Check if the environment tools required by `TuyaOpen` exist and validate version numbers;
+1. Check whether the environment tools required by `TuyaOpen` exist and validate their version numbers.
+2. Download the required `submodules`.
 
-    2. Download the required `submodules`;
+If an `[Error]` appears during the check:
 
-<details>
-<summary>If there are [Error] during check process</summary>
-
-    1. Tools are not installed or version is too low, you can install or upgrade corresponding tools;
-
-    2. `submodules` download fails, you can try executing `git submodule update --init` in the `TuyaOpen` root directory;
-
-</details>
+- A tool is not installed or its version is too low. Install or upgrade the corresponding tool.
+- `submodules` download fails. Run `git submodule update --init` in the `TuyaOpen` root directory.
 
 ## config
 
@@ -143,9 +130,8 @@ Choice config file:
 
 There are two sources for solidified configurations:
 
-    1. Priority is given to configuration files in the `config` directory under the project path (such as `your_chat_bot`);
-
-    2. If source 1 doesn't exist, use configuration files provided in `TuyaOpen/boards` (such as `switch_demo`);
+1. Configuration files in the `config` directory under the project path (such as `your_chat_bot`) take priority.
+2. If the first source does not exist, the configuration files provided in `TuyaOpen/boards` (such as `switch_demo`) are used.
 
 :::note
 This operation may change the toolchain being used, so the `config` operation will first perform a deep clean
@@ -204,17 +190,13 @@ Compile the project and generate executable files
 
 ```
 
-The specific process will complete the following steps:
+The build completes the following steps:
 
-    1. Download the toolchain repository selected by the project to the `platform` directory;
-
-    2. Execute the `prepare` operation of the toolchain;
-
-    3. Create the compilation directory `.build` and parse the `CMakeLists.txt` file;
-
-    4. Execute the compilation command `ninja example`;
-
-    5. Place the artifacts in the path `.build/bin`;
+1. Download the toolchain repository selected by the project to the `platform` directory.
+2. Execute the `prepare` operation of the toolchain.
+3. Create the compilation directory `.build` and parse the `CMakeLists.txt` file.
+4. Execute the compilation command `ninja example`.
+5. Place the artifacts in `.build/bin`.
 
 If you want to see more detailed compilation logs, you can use the command flag `build -v`
 
@@ -307,7 +289,7 @@ tos.py idf fullclean
 tos.py idf --idf-flags="-v" build
 ```
 
-Use `--idf-flags` for extra flags that must appear before the subcommand (for example verbosity or CMake defines). For a full command reference and workflow, see [tos.py idf reference](tos-idf-reference) and [ESP32 quick start](../hardware-specific/espressif/esp32-quick-start).
+Use `--idf-flags` for extra flags that must appear before the subcommand (for example verbosity or CMake defines). For a full command reference and workflow, see [tos.py idf reference](tos-idf-reference) and [ESP32 quick start](../hardware/espressif/esp32-quick-start).
 
 ## dev
 
@@ -327,39 +309,33 @@ Options for `bac`:
 
 ### new project
 
-This command is used to quickly create a new user application project
+This command quickly creates a new user application project.
 
 Execution process:
 
-   1. Ask for project name: Prompts you to enter the name of the new project (e.g., `my_app`)
-
-   1. Select framework: You can choose a project template through the --framework parameter. From the code, it currently supports base (basic template) and arduino two types. The default is base
-
-   1. Copy template:
-       * It will find the corresponding framework template from the `tools/app_template/` directory
-       * Then copy the entire template directory completely to the current directory and rename it to the project name you entered
+1. Ask for project name: prompts you to enter the name of the new project (for example, `my_app`).
+2. Select framework: choose a project template through the `--framework` parameter. It currently supports `base` (basic template) and `arduino`. The default is `base`.
+3. Copy template:
+   - Find the corresponding framework template from the `tools/app_template/` directory.
+   - Copy the entire template directory to the current directory and rename it to the project name you entered.
 
 ### new platform
 
-For the specific usage of this command, please refer to **[new platform](/docs/new-hardware/new-platform)**
+For the specific usage of this command, please refer to **[new platform](/docs/hardware/porting/new-platform)**
 
 ## Common Issues
 
-### When executing the `config menu` command in Windows, the arrow keys may fail
+### Arrow keys fail when running `config menu` on Windows
 
-This is caused by compatibility issues with the terminal emulator. You can try to select the available terminal in `cmd` and `powershell`
+This is caused by terminal emulator compatibility. Try the following:
 
-Or use the keys **h[⬅️] j[⬇️] k[⬆️] l[➡️]** to operate
+- Select an available terminal in `cmd` or `powershell`.
+- Use the keys `h` (left), `j` (down), `k` (up), and `l` (right) to navigate.
 
 ### check errors
 
-1. Dependent tools are not installed or version is too low
-
-    - Please install or upgrade the corresponding tools
-
-2. submodules download fails
-
-    - Please try executing `git submodule update --init` in the `TuyaOpen` root directory
+- Dependent tools are not installed or the version is too low. Install or upgrade the corresponding tools.
+- `submodules` download fails. Run `git submodule update --init` in the `TuyaOpen` root directory.
 
 ### could not lock config file
 

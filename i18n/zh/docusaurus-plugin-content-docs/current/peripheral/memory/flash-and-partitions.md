@@ -28,7 +28,7 @@ title: Flash、分区与容量
 
 ## 保留 Flash 与 `ENABLE_FLASH`
 
-**移植**新板时，须为 TuyaOpen 预留 **独立 Flash 区域**（授权、配对数据、文件系统等）。参见 [移植平台](../../new-hardware/porting-platform)：
+**移植**新板时，须为 TuyaOpen 预留 **独立 Flash 区域**（授权、配对数据、文件系统等）。参见 [移植平台](../../hardware/porting/porting-platform)：
 
 - **`ENABLE_FLASH`** — 必须打开；选取不与主固件镜像重叠、且满足 **擦除粒度** 的未使用区间。
 - **`ENABLE_FILE_SYSTEM`** — 若关闭，TuyaOpen 可能使用片内 **LittleFS**，其基址与大小由适配中的 **`tkl_flash.c`** 提供。
@@ -65,5 +65,5 @@ title: Flash、分区与容量
 - [TKL flash](../../tkl-api/tkl_flash)
 - [TKL OTA](../../tkl-api/tkl_ota)
 - [TAL KV 指南](../tutorials/tal-kv-guide)
-- [移植平台](../../new-hardware/porting-platform)
+- [移植平台](../../hardware/porting/porting-platform)
 - [堆分配与 PSRAM](heap-allocation-and-psram)

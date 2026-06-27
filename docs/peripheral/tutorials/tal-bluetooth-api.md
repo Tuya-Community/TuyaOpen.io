@@ -42,7 +42,7 @@ Functions return `OPERATE_RET` (`OPRT_OK` on success). Several APIs note that RS
 
 | Function | Description |
 |----------|-------------|
-| `tal_ble_connect_and_discovery` | Start connection; completion via `TAL_BLE_EVT_CENTRAL_CONNECT`. |
+| `tal_ble_connect_and_discovery` | Start connection; completion via `TAL_BLE_EVT_CENTRAL_CONNECT_DISCOVERY`. |
 | `tal_ble_disconnect` | Disconnect; works for central or peripheral (fill handle and address per role). |
 | `tal_ble_conn_param_update` | Request connection parameter update; result via `TAL_BLE_EVT_CONN_PARAM_UPDATE`. |
 | `tal_ble_rssi_get` | Request RSSI; sample delivered via `TAL_BLE_EVT_LINK_RSSI`. |

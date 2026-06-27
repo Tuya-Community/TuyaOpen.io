@@ -1,28 +1,24 @@
 ---
 title: "Step 4: Device Pairing w/ Smartphone"
 ---
-# Device Pairing w/ Smartphone
 
-## Overview
+Device pairing connects and registers your device to the Tuya IoT Cloud, so you can control it remotely from a mobile app. This page pairs a flashed, authorized device using the **SmartLife** app.
 
-The device pairing process connects and registers IoT devices to the cloud, enabling remote communication capabilities. After paired, smart devices can be remotely controlled via mobile apps or other methods.
+## Prerequisites
 
-This topic describes how to pair devices using the **SmartLife** app.
+Before pairing, make sure you have:
 
-## Preparation
+- The **SmartLife** app installed on your phone. To install it, see [Download the app](#download-the-app).
+- A device that has been flashed with firmware and authorized.
+- The device in pairing mode.
 
-Before pairing, ensure the following:
-- The **SmartLife** app is installed on your phone. For more information, see **Download app**.
-- The device has been successfully flashed with firmware and authorized.
-- The device is in pairing mode.
+:::tip
+For the `switch_demo` and `your_chat_bot` demos, restart the device 3 times within 5 seconds to enter pairing mode.
+:::
 
-   :::tip
-   For the `switch_demo` and `your_chat_bot` demos, you can restart the device 3 times within 5 seconds to put the device in pairing mode.
-   :::
+## Pair the device
 
-## Procedure
-
-### Download app
+### Download the app
 
 Search for **SmartLife** in Apple's App Store and other major app stores, or scan the following QR code to download the app.
 
@@ -32,10 +28,9 @@ After successful registration and login, you can proceed with device pairing.
 
 ### Add device
 
-Before adding a device via the app, make sure the device is in pairing mode. You can check the device logs to see if it is in pairing mode (the following log is only applicable to TuyaOpen):
+Before adding a device through the app, confirm the device is in pairing mode. Check the device logs for the following output (applies to TuyaOpen):
 
-
-```
+```text
 ...
 [01-01 00:00:01 ty D][tuya_iot.c:774] STATE_START
 [01-01 00:00:01 ty I][tuya_iot.c:792] Activation data read fail, go activation mode...
@@ -80,10 +75,9 @@ Some TuyaOpen devices support pairing by scanning a QR code in the **SmartLife**
 
 ### Pairing failed due to incorrect authorization information
 
-When pairing failed because the device's authorization information was not written correctly, the device will output the following logs:
+When pairing fails because the device's authorization information was not written correctly, the device outputs the following logs:
 
-
-```
+```text
 [01-01 00:00:00 ty E][tal_kv.c:269] lfs open UUID_TUYAOPEN -2 err
 [01-01 00:00:00 ty E][tuya_authorize.c:107] Authorization read failure.
 [01-01 00:00:00 ty W][tuya_main.c:288] Replace the TUYA_OPENSDK_UUID and TUYA_OPENSDK_AUTHKEY contents, otherwise the demo cannot work.

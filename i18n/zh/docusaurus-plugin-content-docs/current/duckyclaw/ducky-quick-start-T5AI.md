@@ -1,16 +1,16 @@
 ---
-title: DuckyClaw 与 T5-AI
+title: TuyaOpenClaw 与 T5-AI
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# DuckyClaw 快速开始（T5-AI Board）
+# TuyaOpenClaw 快速开始（T5-AI Board）
 
-本文介绍如何在 [T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board) 开发板上构建、烧录并激活 DuckyClaw 固件，面向希望在 Tuya T5-AI 硬件上运行 DuckyClaw 并通过智能生活 App 连接 Tuya Cloud 的开发者。
+本文介绍如何在 [T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board) 开发板上构建、烧录并激活 TuyaOpenClaw（原名 DuckyClaw）固件，面向希望在 Tuya T5-AI 硬件上运行 TuyaOpenClaw 并通过智能生活 App 连接 Tuya Cloud 的开发者。
 
 ## 硬件与软件要求
 
-- **[T5-AI Board](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)** 开发板（搭载 T5 模组）。
+- **[T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)** 开发板（搭载 T5 模组）。
 - **USB 数据线**：用于连接开发板与电脑。
 - **电脑**：Windows 10/11、Linux（如 Ubuntu 20/22/24 LTS）或 macOS。
 - **Tuya Cloud**：本示例使用 Tuya 云服务。需具备有效的[授权码](/docs/quick-start/equipment-authorization)，并在 `tuya_app_config.h` 中填写正确的 PID、UUID、AuthKey，以使用云与 LLM 功能。
@@ -228,7 +228,7 @@ Choice config file: 5
 - **PID**：[Tuya 产品 / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2)。
 - **UUID 与 AuthKey**：[Tuya IoT 平台 – Open SDK 采购](https://platform.tuya.com/purchase/index?type=6)。
 
-**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、`feishu`、`telegram` 或 `discord`，并填写对应凭证：
+**IM 配置**（可选）：若需通过即时通讯应用接收 TuyaOpenClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、`feishu`、`telegram` 或 `discord`，并填写对应凭证：
 
 ```c
 // IM configuration
@@ -326,9 +326,9 @@ tos.py monitor
 
 ## 参考资料
 
-- [DuckyClaw 概述](/duckyclaw)
-- [T5-AI Board 概述](/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board)
+- [TuyaOpenClaw 概述](/duckyclaw)
+- [T5-AI Board 概述](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)
 - [快速开始 – 环境搭建](/docs/quick-start/enviroment-setup)
 - [快速开始 – 设备授权](/docs/quick-start/equipment-authorization)
 - [自定义设备 MCP（硬件技能）](/docs/duckyclaw/custom-device-mcp)
-- [DuckyClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）
+- [TuyaOpenClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）

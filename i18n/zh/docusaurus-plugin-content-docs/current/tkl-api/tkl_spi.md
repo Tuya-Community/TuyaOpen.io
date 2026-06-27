@@ -1,267 +1,303 @@
-# tkl_spi | SPI 驱动
+---
+title: "tkl_spi | SPI 驱动"
+---
 
-## 简要说明
+TKL SPI 接口以主机或从机模式驱动 SPI 总线，用于显示屏、Flash、传感器等高速外设。你为一条总线（`TUYA_SPI_NUM_E`）配置角色、时钟模式、数据位宽和位序，然后发送、接收或全双工传输数据，并可选用中断驱动的事件回调。
 
-SPI（Serial Peripheral Interface）是一种高速、全双工、同步的通信总线。SPI 以主从方式工作，通常有一个主设备和一个或多个从设备。
+SPI 是一种高速、全双工、同步总线，由一个主机和一个或多个从机通过四根线连接：MISO（从机输出）、MOSI（主机输出）、SCK（主机产生的时钟）和 CS（从机片选）。时钟模式由时钟极性（CPOL）和时钟相位（CPHA）组合而成：
 
-SPI 控制器的信号线描述如下：
+| 模式 | CPOL / CPHA | 空闲时钟 | 采样边沿 |
+| --- | --- | --- | --- |
+| `TUYA_SPI_MODE0` | 0 / 0 | 低 | 上升沿 |
+| `TUYA_SPI_MODE1` | 0 / 1 | 低 | 下降沿 |
+| `TUYA_SPI_MODE2` | 1 / 0 | 高 | 下降沿 |
+| `TUYA_SPI_MODE3` | 1 / 1 | 高 | 上升沿 |
 
-- MISO：主设备数据输入，从设备数据输出；
-- MOSI：主设备数据输出，从设备数据输入；
-- SCK： 时钟信号，由主设备产生；
-- CS：从设备使能信号，由主设备控制。这个信号可以是 SPI 外设的一部分，也可用GPIO引脚实现。
+主机与外设必须使用相同的时钟模式。
 
-SPI 典型接线方式如下：
-
-![image-20220411140500420](https://images.tuyacn.com/fe-static/docs/img/fd2d8ee2-cef2-44a0-ae58-7039833d1e0c.png)
-
-SPI 总线支持的四种工作方式，取决于串行同步时钟极性 CPOL 和串行同步时钟相位 CPHA 的组合。
-
-CPOL 是用来决定 SCLK 时钟信号空闲时的电平，CPOL=0，空闲电平为低电平，CPOL=1 时，空闲电平为高电平。CPHA 是用来决定采样时刻的，CPHA=0，在每个周期的第一个时钟沿采样，第二个时钟沿数据输出；CPHA=1，在每个周期的第二个时钟沿采样，第一个时钟沿数据输出。SPI 主模块和与之通信的外设时钟相位和极性应该一致。
-
-四种工作方式时序描述如下：
-
-- 模式0：CPOL= 0，CPHA=0。SCK 串行时钟线空闲是为低电平，数据在 SCK 时钟的上升沿被采样，数据在 SCK 时钟的下降沿切换
-
-- 模式1：CPOL= 0，CPHA=1。SCK 串行时钟线空闲是为低电平，数据在 SCK 时钟的下降沿被采样，数据在 SCK 时钟的上升沿切换
-
-- 模式2：CPOL= 1，CPHA=0。SCK 串行时钟线空闲是为高电平，数据在 SCK 时钟的下降沿被采样，数据在 SCK 时钟的上升沿切换
-
-- 模式3：CPOL= 1，CPHA=1。SCK 串行时钟线空闲是为高电平，数据在 SCK 时钟的上升沿被采样，数据在 SCK 时钟的下降沿切换
-
-## API 描述
-
-### tkl_spi_init
+## tkl_spi_init
 
 ```c
 OPERATE_RET tkl_spi_init(TUYA_SPI_NUM_E port, const TUYA_SPI_BASE_CFG_T *cfg);
 ```
 
-- 功能描述:
+按给定的角色、时钟模式、数据位宽和位序初始化一条 SPI 总线。
 
-  - 通过端口号和基础配置初始化对应的 SPI 实例，返回初始化结果 。
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引，从 `TUYA_SPI_NUM_0` 开始。 |
+| `cfg` | `const TUYA_SPI_BASE_CFG_T *` | 总线配置。 |
 
-- 参数:
+配置结构体如下：
 
-  - `port`: 端口号。
-  - `cfg`: SPI 基础配置 。
+```c
+typedef struct {
+    TUYA_SPI_ROLE_E      role;
+    TUYA_SPI_MODE_E      mode;
+    TUYA_SPI_TYPE_E      type;
+    TUYA_SPI_DATABITS_E  databits;
+    TUYA_SPI_BIT_ORDER_E bitorder;
+    uint32_t             freq_hz;
+    uint32_t             spi_dma_flags; // 1 = 使用 DMA
+} TUYA_SPI_BASE_CFG_T;
+```
 
-  ```c
-  typedef struct {
-      TUYA_SPI_ROLE_E      role;
-      TUYA_SPI_MODE_E      mode;
-      TUYA_SPI_TYPE_E      type;
-      TUYA_SPI_DATABITS_E  databits;
-      TUYA_SPI_BIT_ORDER_E bitorder;
-      uint32_t               freq_hz;
-      uint32_t               spi_dma_flags; /*!< SPI dma format , 1 use dma */
-  } TUYA_SPI_BASE_CFG_T;
-  ```
+`role` 选择总线角色：
 
-  #### TUYA_SPI_ROLE_E:
+| 取值 | 说明 |
+| --- | --- |
+| `TUYA_SPI_ROLE_INACTIVE` | 未激活 |
+| `TUYA_SPI_ROLE_MASTER` | 全双工主机 |
+| `TUYA_SPI_ROLE_SLAVE` | 全双工从机 |
+| `TUYA_SPI_ROLE_MASTER_SIMPLEX` | 半双工主机 |
+| `TUYA_SPI_ROLE_SLAVE_SIMPLEX` | 半双工从机 |
 
-  | 名字                         | 定义            | 备注 |
-  | :--------------------------- | :-------------- | :--- |
-  | TUYA_SPI_ROLE_INACTIVE       | spi闲置         |      |
-  | TUYA_SPI_ROLE_MASTER         | spi全双工主模式 |      |
-  | TUYA_SPI_ROLE_SLAVE          | spi全双工从模式 |      |
-  | TUYA_SPI_ROLE_MASTER_SIMPLEX | spi半双工主模式 |      |
-  | TUYA_SPI_ROLE_SLAVE_SIMPLEX  | spi半双工从模式 |      |
+`mode` 选择上文所述四种时钟模式之一（`TUYA_SPI_MODE0` 至 `TUYA_SPI_MODE3`）。`type` 选择片选处理方式：
 
-  #### TUYA_SPI_MODE_E:
+| 取值 | 说明 |
+| --- | --- |
+| `TUYA_SPI_AUTO_TYPE` | 硬件管理 SS（CS）引脚 |
+| `TUYA_SPI_SOFT_TYPE` | 软件管理 SS 引脚 |
+| `TUYA_SPI_SOFT_ONE_WIRE_TYPE` | 三线模式，MISO/MOSI 复用 |
 
-  | 名字           | 定义               | 备注 |
-  | :------------- | :----------------- | :--- |
-  | TUYA_SPI_MODE0 | CPOL = 0, CPHA = 0 |      |
-  | TUYA_SPI_MODE1 | CPOL = 0, CPHA = 1 |      |
-  | TUYA_SPI_MODE2 | CPOL = 1, CPHA = 0 |      |
-  | TUYA_SPI_MODE3 | CPOL = 1, CPHA = 1 |      |
+`databits` 选择数据位宽：
 
-  #### TUYA_SPI_TYPE_E:
+| 取值 | 说明 |
+| --- | --- |
+| `TUYA_SPI_DATA_BIT8` | 8 位数据 |
+| `TUYA_SPI_DATA_BIT16` | 16 位数据 |
 
-  | 名字                        | 定义                     | 备注                             |
-  | --------------------------- | :----------------------- | :------------------------------- |
-  | TUYA_SPI_AUTO_TYPE          | SS管脚模式，硬件自动配置 | SS：slave select，对应CS片选管脚 |
-  | TUYA_SPI_SOFT_TYPE          | SS管脚模式，软件手动配置 |                                  |
-  | TUYA_SPI_SOFT_ONE_WIRE_TYPE | 三线模式，SS管脚无效     |                                  |
+`bitorder` 选择位序：
 
-  #### TUYA_SPI_DATABITS_E：
+| 取值 | 说明 |
+| --- | --- |
+| `TUYA_SPI_ORDER_MSB2LSB` | 高位（MSB）在前 |
+| `TUYA_SPI_ORDER_LSB2MSB` | 低位（LSB）在前 |
 
-  | 名字                | 定义           | 备注 |
-  | ------------------- | :------------- | :--- |
-  | TUYA_SPI_DATA_BIT8  | 8位数据位模式  |      |
-  | TUYA_SPI_DATA_BIT16 | 16位数据位模式 |      |
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
 
-  #### TUYA_SPI_BIT_ORDER_E:
-
-  | 名字                   | 定义                             | 备注 |
-  | ---------------------- | :------------------------------- | :--- |
-  | TUYA_SPI_ORDER_MSB2LSB | 高位（MSB）在前，低位（LSB）在后 |      |
-  | TUYA_SPI_ORDER_LSB2MSB | 低位（LSB）在前，高位（MSB）在后 |      |
-
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件tuya_error_code.h，OS_ADAPTER_SPI定义部分。
-
-### tkl_spi_deinit
+## tkl_spi_deinit
 
 ```c
 OPERATE_RET tkl_spi_deinit(TUYA_SPI_NUM_E port);
 ```
 
-- 功能描述:
-  - SPI 实例反初始化。该接口会停止 SPI
-  - 实例正在进行的传输（如果有），并且释放相关的软硬件资源。
-- 参数:
-  - `port`: 端口号。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+反初始化一条 SPI 总线，停止该总线并释放其软硬件资源。
 
-### tkl_spi_send
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
 
-```c
-OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, void *data, uint16_t size);
-```
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
 
-- 功能描述:
-  - SPI 启动数据发送。
-- 参数:
-  - `port`: 端口号。
-  - `data`: 待发送数据的缓冲区地址。
-  - `size`: 待发送数据的长度。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
-
-### tkl_spi_recv
+## tkl_spi_send
 
 ```c
-OPERATE_RET tkl_spi_recv(TUYA_SPI_NUM_E port, void *data, uint16_t size);
+OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, void *data, uint32_t size);
 ```
 
-- 功能描述:
-  - SPI 启动数据接收。
-- 参数:
-  - `port`: 端口号。
-  - `data`: 待接收数据的缓冲区地址。
-  - `size`: 待接收数据的长度。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+在 SPI 总线上发送数据。
 
-### tkl_spi_transfer
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `data` | `void *` | 要发送的数据。 |
+| `size` | `uint32_t` | 要发送的字节数。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_recv
 
 ```c
-OPERATE_RET tkl_spi_transfer(TUYA_SPI_NUM_E port, void* send_buf, void* receive_buf, uint32_t length);
+OPERATE_RET tkl_spi_recv(TUYA_SPI_NUM_E port, void *data, uint32_t size);
 ```
 
-- 功能描述:
-  - SPI 启动数据传输。
-- 参数:
-  - `port`: 端口号。
-  - `send_buf`: 待发送数据的缓冲区地址。
-  - `receive_buf`: 待接收数据的缓冲区地址。
-  - length：长度。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+在 SPI 总线上接收数据。
 
-### tkl_spi_abort_transfer
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `data` | `void *` | 输出：接收数据的缓冲区。 |
+| `size` | `uint32_t` | 要接收的字节数。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_transfer
+
+```c
+OPERATE_RET tkl_spi_transfer(TUYA_SPI_NUM_E port, void *send_buf, void *receive_buf, uint32_t length);
+```
+
+执行全双工传输，一次收发相同字节数。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `send_buf` | `void *` | 要发送的数据。 |
+| `receive_buf` | `void *` | 输出：接收数据的缓冲区。 |
+| `length` | `uint32_t` | 要传输的字节数。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_transfer_with_length
+
+```c
+OPERATE_RET tkl_spi_transfer_with_length(TUYA_SPI_NUM_E port, void *send_buf, uint32_t send_len, void *receive_buf, uint32_t receive_len);
+```
+
+以相互独立的发送和接收长度执行传输。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `send_buf` | `void *` | 要发送的数据。 |
+| `send_len` | `uint32_t` | 要发送的字节数。 |
+| `receive_buf` | `void *` | 输出：接收数据的缓冲区。 |
+| `receive_len` | `uint32_t` | 要接收的字节数。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_abort_transfer
 
 ```c
 OPERATE_RET tkl_spi_abort_transfer(TUYA_SPI_NUM_E port);
 ```
 
-- 功能描述:
-  - SPI 终止数据传输，或者终止数据发送(接收)。
-- 参数:
-  - `port`: 端口号。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+中止正在进行的传输、发送或接收。
 
-### tkl_spi_get_status
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_get_status
 
 ```c
 OPERATE_RET tkl_spi_get_status(TUYA_SPI_NUM_E port, TUYA_SPI_STATUS_T *status);
 ```
 
-- 功能描述:
-  - 获取当前时刻 SPI 的状态。
-- 参数:
-  - `port`: 端口号。
-- 返回值:
-  - SPI 状态的结构体，SPI 的状态定义见 `TUYA_SPI_STATUS_T` 的定义。
+读取 SPI 总线的当前状态。
 
-#### TUYA_SPI_STATUS_T:
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `status` | `TUYA_SPI_STATUS_T *` | 输出：总线状态。 |
 
-| 名字           | 定义              | 备注  |
-| :------------- | :---------------- | :---- |
-| busy : 1       | 传输/收发忙状态位 | 1有效 |
-| data_lost : 1  | 数据丢失          | 1有效 |
-| mode_fault : 1 | 模式错误          | 1有效 |
+状态结构体如下：
 
-### tkl_spi_irq_init
+```c
+typedef struct {
+    uint32_t busy       : 1; // 收发忙标志（1 = 忙）
+    uint32_t data_lost  : 1; // 接收溢出 / 发送欠载
+    uint32_t mode_fault : 1; // 检测到模式错误
+} TUYA_SPI_STATUS_T;
+```
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_irq_init
 
 ```c
 OPERATE_RET tkl_spi_irq_init(TUYA_SPI_NUM_E port, TUYA_SPI_IRQ_CB cb);
 ```
 
-- 功能描述:
-  - SPI 的中断初始化。
-- 参数:
-  - `port`:端口号。
-  - `cb`:中断回调函数。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+注册 SPI 中断回调。此调用不会使能中断，需随后调用 `tkl_spi_irq_enable`。
 
-### tkl_spi_irq_enable
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `cb` | `TUYA_SPI_IRQ_CB` | 中断回调。 |
+
+回调类型如下：
+
+```c
+typedef void (*TUYA_SPI_IRQ_CB)(TUYA_SPI_NUM_E port, TUYA_SPI_IRQ_EVT_E event);
+```
+
+`event` 为 `TUYA_SPI_EVENT_TRANSFER_COMPLETE`、`TUYA_SPI_EVENT_TX_COMPLETE`、`TUYA_SPI_EVENT_RX_COMPLETE`、`TUYA_SPI_EVENT_DATA_LOST` 或 `TUYA_SPI_EVENT_MODE_FAULT` 之一。
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_irq_enable
 
 ```c
 OPERATE_RET tkl_spi_irq_enable(TUYA_SPI_NUM_E port);
 ```
 
-- 功能描述:
-  - 使能 SPI 的中断。
-- 参数:
-  - `port`:端口号。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+使能通过 `tkl_spi_irq_init` 注册的 SPI 中断。
 
-### tkl_spi_irq_disable
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_irq_disable
 
 ```c
 OPERATE_RET tkl_spi_irq_disable(TUYA_SPI_NUM_E port);
 ```
 
-- 功能描述:
-  - 关闭 SPI 的中断。
-- 参数:
-  - `port`:端口号。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h`，`OS_ADAPTER_SPI` 定义部分。
+失能 SPI 中断。
 
-### tkl_spi_get_data_count
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_get_data_count
 
 ```c
 int32_t tkl_spi_get_data_count(TUYA_SPI_NUM_E port);
 ```
 
-- 功能描述:
-  - 获取 SPI 传输字节长度。
-- 参数:
-  - `port`: 端口号。
-- 返回值:
-  - 返回值 < 0 表示错误。返回值 >= 0 表示最后一次传输的字节长度。可以是 `tkl_spi_send`、`tkl_spi_recv` 或 `tkl_spi_transfer` 任一操作的字节长度。
+返回最近一次 `tkl_spi_send`、`tkl_spi_recv` 或 `tkl_spi_transfer` 操作传输的数据项数量。
 
-# 示例
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
 
-## 1. spi 示例一
+**返回值**：成功返回 `>= 0` 的计数，出错返回负值。
+
+## tkl_spi_ioctl
+
+```c
+OPERATE_RET tkl_spi_ioctl(TUYA_SPI_NUM_E port, uint32_t cmd, void *args);
+```
+
+执行设备相关的控制操作。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port` | `TUYA_SPI_NUM_E` | SPI 总线索引。 |
+| `cmd` | `uint32_t` | 控制命令。 |
+| `args` | `void *` | 命令对应的参数。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_SPI` 定义部分。
+
+## tkl_spi_get_max_dma_data_length
+
+```c
+uint32_t tkl_spi_get_max_dma_data_length(void);
+```
+
+返回 `tkl_spi_send`、`tkl_spi_recv` 和 `tkl_spi_transfer` 所支持的最大 DMA 数据长度。
+
+**返回值**：支持的最大 DMA 长度。
+
+## 示例
+
+主机模式，在操作之间轮询状态：
 
 ```c
 void tuya_spi_test1(void)
 {
     OPERATE_RET ret;
     TUYA_SPI_BASE_CFG_T cfg;
-    TUYA_SPI_STATUS_T status；
-    //receive buffer
+    TUYA_SPI_STATUS_T status;
     char rcv_buf[8];
-    //data to send
     char send_buf[8] = {0,1,2,3,4,5,6,7};
 
     tkl_io_pinmux_config(TUYA_IO_PIN_0, TUYA_SPI0_MISO);
@@ -272,73 +308,55 @@ void tuya_spi_test1(void)
     cfg.role = TUYA_SPI_ROLE_MASTER;
     cfg.mode = TUYA_SPI_MODE0;
     cfg.type = TUYA_SPI_AUTO_TYPE;
-    cfg.databits = TUYA_SPI_DATA_BIT8；
-    cfg.bitorder = TUYA_SPI_ORDER_MSB2LSB；
-    cfg.freq_hz = 1000000；
+    cfg.databits = TUYA_SPI_DATA_BIT8;
+    cfg.bitorder = TUYA_SPI_ORDER_MSB2LSB;
+    cfg.freq_hz = 1000000;
 
     ret = tkl_spi_init(TUYA_SPI_NUM_0, &cfg);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
 
-    ret = tkl_spi_send(TUYA_SPI_NUM_0, send_buf, 8);
-    if (ret < 0) {
-        //failed
-    }
-
+    tkl_spi_send(TUYA_SPI_NUM_0, send_buf, 8);
     tkl_spi_get_status(TUYA_SPI_NUM_0, &status);
     while (status.busy) {
         tkl_spi_get_status(TUYA_SPI_NUM_0, &status);
         tkl_system_sleep(2);
     }
 
-    ret = tkl_spi_recv(TUYA_SPI_NUM_0, rcv_buf, 8);
-    if (ret < 0) {
-        //failed
-    }
-
+    tkl_spi_recv(TUYA_SPI_NUM_0, rcv_buf, 8);
     tkl_spi_get_status(TUYA_SPI_NUM_0, &status);
     while (status.busy) {
         tkl_spi_get_status(TUYA_SPI_NUM_0, &status);
         tkl_system_sleep(2);
     }
-    ret = tkl_spi_transfer(TUYA_SPI_NUM_0, send_buf,rcv_buf, 6);
-    if (ret < 0) {
-        //failed
-    }
 
+    tkl_spi_transfer(TUYA_SPI_NUM_0, send_buf, rcv_buf, 6);
     tkl_spi_get_status(TUYA_SPI_NUM_0, &status);
     while (status.busy) {
         tkl_spi_get_status(TUYA_SPI_NUM_0, &status);
         tkl_system_sleep(2);
     }
-    //uninitialize iic
-    ret = tkl_spi_deinit(TUYA_SPI_NUM_0);
-    if (ret != 0) {
-       //failed
-    }
+
+    tkl_spi_deinit(TUYA_SPI_NUM_0);
 }
 ```
 
-## 2. SPI 使用中断示例二
+主机模式，使用中断驱动的事件处理：
 
 ```c
-int event_flag = -1;
+static int event_flag = -1;
+
 static void spi_event_cb(TUYA_SPI_NUM_E port, TUYA_SPI_IRQ_EVT_E event)
 {
-    //printf("\nspi_event_cb_fun:%d\n",event);
-    event_flag = event；
+    event_flag = event;
 }
 
 void tuya_spi_test2(void)
 {
     OPERATE_RET ret;
     TUYA_SPI_BASE_CFG_T cfg;
-    TUYA_SPI_STATUS_T status；
-    //receive buffer
     char rcv_buf[6];
-    //data to send
     char send_buf[6] = {0x90,0x0,0x0,0x0,0x0,0x0};
 
     tkl_io_pinmux_config(TUYA_IO_PIN_0, TUYA_SPI0_MISO);
@@ -349,53 +367,37 @@ void tuya_spi_test2(void)
     cfg.role = TUYA_SPI_ROLE_MASTER;
     cfg.mode = TUYA_SPI_MODE0;
     cfg.type = TUYA_SPI_AUTO_TYPE;
-    cfg.databits = TUYA_SPI_DATA_BIT8；
-    cfg.bitorder = TUYA_SPI_ORDER_MSB2LSB；
-    cfg.freq_hz = 1000000；
+    cfg.databits = TUYA_SPI_DATA_BIT8;
+    cfg.bitorder = TUYA_SPI_ORDER_MSB2LSB;
+    cfg.freq_hz = 1000000;
 
     ret = tkl_spi_init(TUYA_SPI_NUM_0, &cfg);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
 
-    tkl_spi_irq_init(TUYA_SPI_NUM_0 , spi_event_cb);
+    tkl_spi_irq_init(TUYA_SPI_NUM_0, spi_event_cb);
     tkl_spi_irq_enable(TUYA_SPI_NUM_0);
 
     event_flag = -1;
-    ret = tkl_spi_transfer(TUYA_SPI_NUM_0, send_buf,rcv_buf, 6);
-    if (ret < 0) {
-        //failed
-    }
-
+    tkl_spi_transfer(TUYA_SPI_NUM_0, send_buf, rcv_buf, 6);
     while (TUYA_SPI_EVENT_TRANSFER_COMPLETE != event_flag) {
         tkl_system_sleep(2);
     }
-    //up Transfer Complete
+
     event_flag = -1;
-    ret = tkl_spi_send(TUYA_SPI_NUM_0, send_buf, 6);
-    if (ret < 0) {
-        //failed
-    }
+    tkl_spi_send(TUYA_SPI_NUM_0, send_buf, 6);
     while (TUYA_SPI_EVENT_TX_COMPLETE != event_flag) {
         tkl_system_sleep(2);
     }
-    // up send Complete,
 
     event_flag = -1;
-    ret = tkl_spi_recv(TUYA_SPI_NUM_0, rcv_buf, 6);
-    if (ret < 0) {
-        //failed
-    }
+    tkl_spi_recv(TUYA_SPI_NUM_0, rcv_buf, 6);
     while (TUYA_SPI_EVENT_RX_COMPLETE != event_flag) {
         tkl_system_sleep(2);
     }
-    // up recv Complete,
+
     tkl_spi_irq_disable(TUYA_SPI_NUM_0);
-    //uninitialize iic
-    ret = tkl_spi_deinit(TUYA_SPI_NUM_0);
-    if (ret != 0) {
-       //failed
-    }
+    tkl_spi_deinit(TUYA_SPI_NUM_0);
 }
 ```

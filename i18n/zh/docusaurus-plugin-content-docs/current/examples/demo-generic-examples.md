@@ -2,9 +2,7 @@
 title: 基础参考示例
 ---
 
-# 通用基础组件 Demo
-
-TuyaOpen 提供了丰富的示例工程，可帮助开发者快速熟悉并掌握 TuyaOpen 的使用方法，降低上手门槛。
+`examples/` 目录按主题（外设、Wi-Fi、BLE、协议、图形、多媒体、系统等）收录了一批可直接编译的示例工程。每个示例都是完整的 TuyaOpen 工程，可配置、编译、烧录并运行，用于单独学习某个 API 或功能。
 
 ```bash
 $ examples
@@ -13,8 +11,8 @@ $ examples
 │   └── ble_peripher
 ├── e-Paper
 │   ├── 1.54inch_e-Paper
-│   ├── 2.13inch_e-Paper
-│   └── 2.9inch_e-Paper
+│   ├── 2.13inch_e-Paper_Touch
+│   └── 4.26inch_e-Paper
 ├── get-started
 │   ├── cxx
 │   └── sample_project
@@ -88,7 +86,7 @@ $ examples
 | **protocols/** | HTTP/HTTPS 客户端、MQTT 客户端、TCP 客户端/服务器 | [HTTP 与 HTTPS（GET/POST、JSON）](../peripheral/tutorials/http-client-tutorial)、[MQTT 客户端](../peripheral/tutorials/mqtt-client-tutorial)、[TCP 与 UDP 套接字](../peripheral/tutorials/tcp-socket-tutorial) |
 | **graphics/** | LVGL 演示、u8g2 I2C/SPI 显示 | [LVGL 应用指南](../peripheral/tutorials/lvgl-application-guide)、[显示驱动指南](../peripheral/tutorials/display-driver-guide) |
 | **multimedia/** | 关键词识别 (KWS)、音频播放器、录音、VAD | [音频编解码器指南](/zh/docs/peripheral/tutorials/audio-codec-guide) |
-| **e-Paper/** | 电子墨水屏演示（1.54"、2.13"、2.9"） | |
+| **e-Paper/** | 电子墨水屏演示（1.54"、2.13" 触摸、4.26"） | |
 | **tflite/** | TensorFlow Lite Micro hello-world 推理 | |
 | **get-started/** | 最小项目模板和 C++ 示例 | |
 
@@ -107,7 +105,7 @@ tos.py config choice
 ```
 
 :::note
-大多数示例默认为 T5AI。对于 ESP32，你可能需要从列表中选择 ESP32 配置，或在示例的 `config/` 目录中创建一个。详见 [ESP32 快速开始](/zh/docs/hardware-specific/espressif/esp32-quick-start)。
+大多数示例默认为 T5AI。对于 ESP32，你可能需要从列表中选择 ESP32 配置，或在示例的 `config/` 目录中创建一个。详见 [ESP32 快速开始](/zh/docs/hardware/espressif/esp32-quick-start)。
 :::
 
 ## 构建示例
@@ -121,5 +119,5 @@ tos.py monitor
 ## 参考资料
 
 - [TDD/TDL 驱动架构](/zh/docs/peripheral/driver-architecture)
-- [ESP32 快速开始](/zh/docs/hardware-specific/espressif/esp32-quick-start)
+- [ESP32 快速开始](/zh/docs/hardware/espressif/esp32-quick-start)
 - [编译指南](/zh/docs/build-system/compilation-guide)

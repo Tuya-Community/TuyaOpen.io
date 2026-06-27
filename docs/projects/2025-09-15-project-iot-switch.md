@@ -5,8 +5,6 @@ date: 2024-9-15
 
 <BackToProjects />
 
-# Simple Tuya IoT Switch
-
 ## Project Overview
 
 The IoT Switch project is a simple yet powerful demonstration of how to build a cloud-connected device using Tuya's platform. This example showcases a basic switch that can be controlled via a mobile app, highlighting essential concepts such as DP (Data Point) control and minimal code implementation for a connected device. The project includes secure device authentication using PID, UUID, and Auth Key, and is compatible with a wide range of hardware platforms, including Tuya T series MCUs, ESP32, and Linux-based MCUs.

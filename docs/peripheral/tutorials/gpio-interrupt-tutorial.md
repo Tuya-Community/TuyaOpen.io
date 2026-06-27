@@ -2,9 +2,7 @@
 title: "GPIO and Interrupt Tutorial"
 ---
 
-# GPIO and Interrupt Tutorial
-
-Configure GPIO pins for digital input, output, and interrupt-driven event handling in TuyaOpen.
+The TKL GPIO interface configures a pin for digital input, output, or interrupt-driven event handling. You set a pin's mode and direction, read or write its level, and optionally attach an interrupt callback for edge or level events.
 
 ## Prerequisites
 
@@ -151,4 +149,4 @@ tkl_gpio_deinit(BUTTON_PIN);
 - [TKL GPIO API](/docs/tkl-api/tkl_gpio)
 - [Button Driver](../button)
 - [GPIO example](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/gpio)
-- [ESP32 Pin Mapping](../../hardware-specific/espressif/esp32-pin-mapping)
+- [ESP32 Pin Mapping](../../hardware/espressif/esp32-pin-mapping)

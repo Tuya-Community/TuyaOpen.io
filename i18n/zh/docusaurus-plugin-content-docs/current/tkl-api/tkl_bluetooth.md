@@ -1,8 +1,19 @@
-# tkl_bluetooth | 蓝牙驱动
+---
+title: tkl_bluetooth | 蓝牙驱动
+---
 
-# API 描述
+`tkl_bluetooth` 将平台的 BLE 协议栈适配到 TuyaOS，对外提供：BLE 协议栈生命周期管理、GAP 操作（广播、扫描、连接、地址、发射功率、RSSI）、GATT 服务端（服务、属性值、通知与指示、MTU）、GATT 客户端（服务与特征值发现、读写、MTU）以及厂商自定义控制。其实现位于 `tkl_bluetooth.c`，相关类型在 `tkl_bluetooth_def.h` 中声明。
 
-### tkl_ble_stack_init
+除非另有说明，每个函数成功时返回 `OPRT_OK`，失败时返回其他值。
+
+协议栈按角色配置：
+
+| 角色 | 取值 | 描述 |
+| --- | --- | --- |
+| `TKL_BLE_ROLE_SERVER` | 1 | BLE 外设（服务端）。 |
+| `TKL_BLE_ROLE_CLIENT` | 2 | BLE 中心（客户端）。 |
+
+## tkl_ble_stack_init
 
 ```c
 OPERATE_RET tkl_ble_stack_init(uint8_t role);
@@ -28,7 +39,7 @@ OPERATE_RET tkl_ble_stack_init(uint8_t role);
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_stack_deinit
+## tkl_ble_stack_deinit
 
 ```c
 OPERATE_RET tkl_ble_stack_deinit(uint8_t role);
@@ -54,7 +65,28 @@ OPERATE_RET tkl_ble_stack_deinit(uint8_t role);
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gap_callback_register
+## tkl_ble_stack_gatt_link
+
+```c
+OPERATE_RET tkl_ble_stack_gatt_link(uint16_t *p_link);
+```
+
+- 功能描述:
+
+  查询协议栈是否支持 GATT link。
+
+- 参数：
+
+  | 输入/输出 | 参数名 | 描述        |
+  | --------- | ------ | ----------- |
+  | [out]     | p_link | GATT link。 |
+
+- 返回值:
+
+  - OPRT_OK : 支持 GATT link。
+  - Others ：仅支持 Beacon 或 Mesh Beacon，不支持 GATT link。
+
+## tkl_ble_gap_callback_register
 
 ```c
 OPERATE_RET tkl_ble_gap_callback_register(const TKL_BLE_GAP_EVT_FUNC_CB gap_evt);
@@ -98,7 +130,7 @@ OPERATE_RET tkl_ble_gap_callback_register(const TKL_BLE_GAP_EVT_FUNC_CB gap_evt)
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gatt_callback_register
+## tkl_ble_gatt_callback_register
 
 ```c
 OPERATE_RET tkl_ble_gatt_callback_register(const TKL_BLE_GATT_EVT_FUNC_CB gatt_evt);
@@ -148,7 +180,7 @@ OPERATE_RET tkl_ble_gatt_callback_register(const TKL_BLE_GATT_EVT_FUNC_CB gatt_e
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gap_addr_set
+## tkl_ble_gap_addr_set
 
 ```c
 OPERATE_RET tkl_ble_gap_addr_set(TKL_BLE_GAP_ADDR_T const *p_peer_addr);
@@ -173,7 +205,7 @@ OPERATE_RET tkl_ble_gap_addr_set(TKL_BLE_GAP_ADDR_T const *p_peer_addr);
 
   一般模组经过生产已带有 mac 地址，无需配置。
 
-### tkl_ble_gap_address_get
+## tkl_ble_gap_address_get
 
 ```c
 OPERATE_RET tkl_ble_gap_address_get(TKL_BLE_GAP_ADDR_T *p_peer_addr);
@@ -198,7 +230,7 @@ OPERATE_RET tkl_ble_gap_address_get(TKL_BLE_GAP_ADDR_T *p_peer_addr);
 
   很少使用
 
-### tkl_ble_gap_adv_start
+## tkl_ble_gap_adv_start
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_start(TKL_BLE_GAP_ADV_PARAMS_T const *p_adv_params);
@@ -233,7 +265,7 @@ OPERATE_RET tkl_ble_gap_adv_start(TKL_BLE_GAP_ADV_PARAMS_T const *p_adv_params);
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gap_adv_stop
+## tkl_ble_gap_adv_stop
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_stop(void);
@@ -252,7 +284,7 @@ OPERATE_RET tkl_ble_gap_adv_stop(void);
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gap_adv_rsp_data_set
+## tkl_ble_gap_adv_rsp_data_set
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_rsp_data_set(TKL_BLE_DATA_T const *p_adv, TKL_BLE_DATA_T const *p_scan_rsp);
@@ -274,7 +306,7 @@ OPERATE_RET tkl_ble_gap_adv_rsp_data_set(TKL_BLE_DATA_T const *p_adv, TKL_BLE_DA
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gap_adv_rsp_data_update
+## tkl_ble_gap_adv_rsp_data_update
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_rsp_data_update(TKL_BLE_DATA_T const *p_adv, TKL_BLE_DATA_T const *p_scan_rsp);
@@ -296,7 +328,7 @@ OPERATE_RET tkl_ble_gap_adv_rsp_data_update(TKL_BLE_DATA_T const *p_adv, TKL_BLE
   - OPRT_OK : 成功
   - Others ：失败
 
-## **tkl_ble_gap_scan_start**
+## tkl_ble_gap_scan_start
 
 ```c
 OPERATE_RET tkl_ble_gap_scan_start(TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_params)
@@ -339,7 +371,7 @@ OPERATE_RET tkl_ble_gap_scan_start(TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_param
 
   tkl_ble_gap_scan_start 在开启遥控器或支持 central 模式时使用。
 
-### tkl_ble_gap_scan_stop
+## tkl_ble_gap_scan_stop
 
 ```c
 OPERATE_RET tkl_ble_gap_scan_stop(void)
@@ -358,7 +390,7 @@ OPERATE_RET tkl_ble_gap_scan_stop(void)
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gap_connect
+## tkl_ble_gap_connect
 
 ```c
 OPERATE_RET tkl_ble_gap_connect(TKL_BLE_GAP_ADDR_T const *p_peer_addr, TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_params, TKL_BLE_GAP_CONN_PARAMS_T const *p_conn_params)
@@ -385,7 +417,7 @@ OPERATE_RET tkl_ble_gap_connect(TKL_BLE_GAP_ADDR_T const *p_peer_addr, TKL_BLE_G
 
   只有作为 central 需要适配。
 
-### tkl_ble_gap_disconnect
+## tkl_ble_gap_disconnect
 
 ```c
 OPERATE_RET tkl_ble_gap_disconnect(uint16_t conn_handle, uint8_t hci_reason);
@@ -400,7 +432,7 @@ OPERATE_RET tkl_ble_gap_disconnect(uint16_t conn_handle, uint8_t hci_reason);
   | 输入/输出 | 参数名        | 描述                                        |
   | --------- | ------------- | ------------------------------------------- |
   | [in]      | conn_handle   | 连接 handle                                 |
-  | [in]      | p_conn_params | 断连原因，非异常情况下，主动断连使用 0x13。 |
+  | [in]      | hci_reason    | 断连原因，非异常情况下，主动断连使用 0x13。 |
 
 - 返回值:
 
@@ -411,7 +443,7 @@ OPERATE_RET tkl_ble_gap_disconnect(uint16_t conn_handle, uint8_t hci_reason);
 
   client 和 server 均会用到
 
-### tkl_ble_gap_conn_param_update
+## tkl_ble_gap_conn_param_update
 
 ```c
 OPERATE_RET tkl_ble_gap_conn_param_update(uint16_t conn_handle, TKL_BLE_GAP_CONN_PARAMS_T const *p_conn_params);
@@ -433,7 +465,71 @@ OPERATE_RET tkl_ble_gap_conn_param_update(uint16_t conn_handle, TKL_BLE_GAP_CONN
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gatts_service_add
+## tkl_ble_gap_tx_power_set
+
+```c
+OPERATE_RET tkl_ble_gap_tx_power_set(uint8_t role, int tx_power);
+```
+
+- 功能描述:
+
+  设置射频发射功率。
+
+- 参数：
+
+  | 输入/输出 | 参数名   | 描述                                                       |
+  | --------- | -------- | ---------------------------------------------------------- |
+  | [in]      | role     | 0：广播发射功率；1：扫描发射功率；2：连接发射功率。         |
+  | [in]      | tx_power | 发射功率，放大 10 倍（例如 -75 表示 -7.5 dB，40 表示 4 dB）。 |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gap_rssi_get
+
+```c
+OPERATE_RET tkl_ble_gap_rssi_get(uint16_t conn_handle);
+```
+
+- 功能描述:
+
+  获取最后一次连接事件的接收信号强度。
+
+- 参数：
+
+  | 输入/输出 | 参数名      | 描述        |
+  | --------- | ----------- | ----------- |
+  | [in]      | conn_handle | 连接 handle |
+
+- 返回值:
+
+  - OPRT_OK : 成功读取 RSSI。
+  - Others ：无可用采样。
+
+## tkl_ble_gap_name_set
+
+```c
+OPERATE_RET tkl_ble_gap_name_set(char *p_name);
+```
+
+- 功能描述:
+
+  设置蓝牙的 GAP 设备名称。
+
+- 参数：
+
+  | 输入/输出 | 参数名 | 描述         |
+  | --------- | ------ | ------------ |
+  | [in]      | p_name | GAP 名称字符串 |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gatts_service_add
 
 ```c
 OPERATE_RET tkl_ble_gatts_service_add(TKL_BLE_GATTS_PARAMS_T *p_service);
@@ -479,7 +575,30 @@ OPERATE_RET tkl_ble_gatts_service_add(TKL_BLE_GATTS_PARAMS_T *p_service);
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gatts_value_set
+## tkl_ble_gatts_service_change
+
+```c
+OPERATE_RET tkl_ble_gatts_service_change(uint16_t conn_handle, uint16_t start_handle, uint16_t end_handle);
+```
+
+- 功能描述:
+
+  向已订阅的对端指示属性分配发生变化。可选。
+
+- 参数：
+
+  | 输入/输出 | 参数名       | 描述                  |
+  | --------- | ------------ | --------------------- |
+  | [in]      | conn_handle  | 连接 handle           |
+  | [in]      | start_handle | 受影响 handle 范围起始 |
+  | [in]      | end_handle   | 受影响 handle 范围结束 |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gatts_value_set
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_set(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -500,9 +619,10 @@ OPERATE_RET tkl_ble_gatts_value_set(uint16_t conn_handle, uint16_t char_handle, 
 
 - 返回值:
 
-  OPRT_OK : 成功 Others ：失败
+  - OPRT_OK : 成功
+  - Others ：失败
 
-### tkl_ble_gatts_value_get
+## tkl_ble_gatts_value_get
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_get(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -526,7 +646,7 @@ OPERATE_RET tkl_ble_gatts_value_get(uint16_t conn_handle, uint16_t char_handle, 
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gatts_value_notify
+## tkl_ble_gatts_value_notify
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_notify(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -550,7 +670,7 @@ OPERATE_RET tkl_ble_gatts_value_notify(uint16_t conn_handle, uint16_t char_handl
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gatts_value_indicate
+## tkl_ble_gatts_value_indicate
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_indicate(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -574,7 +694,7 @@ OPERATE_RET tkl_ble_gatts_value_indicate(uint16_t conn_handle, uint16_t char_han
   - OPRT_OK : 成功
   - Others ：失败
 
-### tkl_ble_gatts_exchange_mtu_reply
+## tkl_ble_gatts_exchange_mtu_reply
 
 ```c
 OPERATE_RET tkl_ble_gatts_exchange_mtu_reply(uint16_t conn_handle, uint16_t server_rx_mtu);
@@ -590,6 +710,210 @@ OPERATE_RET tkl_ble_gatts_exchange_mtu_reply(uint16_t conn_handle, uint16_t serv
   | --------- | ------------- | --------------------- |
   | [in]      | conn_handle   | 连接 handle           |
   | [in]      | server_rx_mtu | server侧接收 mtu 大小 |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_all_service_discovery
+
+```c
+OPERATE_RET tkl_ble_gattc_all_service_discovery(uint16_t conn_handle);
+```
+
+- 功能描述:
+
+  作为 central，发现对端的所有服务。
+
+- 参数：
+
+  | 输入/输出 | 参数名      | 描述        |
+  | --------- | ----------- | ----------- |
+  | [in]      | conn_handle | 连接 handle |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_all_char_discovery
+
+```c
+OPERATE_RET tkl_ble_gattc_all_char_discovery(uint16_t conn_handle, uint16_t start_handle, uint16_t end_handle);
+```
+
+- 功能描述:
+
+  作为 central，发现给定 handle 范围内的所有特征值。
+
+- 参数：
+
+  | 输入/输出 | 参数名       | 描述         |
+  | --------- | ------------ | ------------ |
+  | [in]      | conn_handle  | 连接 handle  |
+  | [in]      | start_handle | 起始 handle  |
+  | [in]      | end_handle   | 结束 handle  |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_char_desc_discovery
+
+```c
+OPERATE_RET tkl_ble_gattc_char_desc_discovery(uint16_t conn_handle, uint16_t start_handle, uint16_t end_handle);
+```
+
+- 功能描述:
+
+  作为 central，发现给定 handle 范围内某特征值的所有描述符。
+
+- 参数：
+
+  | 输入/输出 | 参数名       | 描述         |
+  | --------- | ------------ | ------------ |
+  | [in]      | conn_handle  | 连接 handle  |
+  | [in]      | start_handle | 起始 handle  |
+  | [in]      | end_handle   | 结束 handle  |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_write_without_rsp
+
+```c
+OPERATE_RET tkl_ble_gattc_write_without_rsp(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
+```
+
+- 功能描述:
+
+  作为 central，向特征值写入数据，不需要响应。
+
+- 参数：
+
+  | 输入/输出 | 参数名      | 描述          |
+  | --------- | ----------- | ------------- |
+  | [in]      | conn_handle | 连接 handle   |
+  | [in]      | char_handle | 特征值 handle |
+  | [in]      | p_data      | 写入数据      |
+  | [in]      | length      | 数据长度      |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_write
+
+```c
+OPERATE_RET tkl_ble_gattc_write(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
+```
+
+- 功能描述:
+
+  作为 central，向特征值写入数据，需要响应。
+
+- 参数：
+
+  | 输入/输出 | 参数名      | 描述          |
+  | --------- | ----------- | ------------- |
+  | [in]      | conn_handle | 连接 handle   |
+  | [in]      | char_handle | 特征值 handle |
+  | [in]      | p_data      | 写入数据      |
+  | [in]      | length      | 数据长度      |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_read
+
+```c
+OPERATE_RET tkl_ble_gattc_read(uint16_t conn_handle, uint16_t char_handle);
+```
+
+- 功能描述:
+
+  作为 central，读取特征值的数据。
+
+- 参数：
+
+  | 输入/输出 | 参数名      | 描述          |
+  | --------- | ----------- | ------------- |
+  | [in]      | conn_handle | 连接 handle   |
+  | [in]      | char_handle | 特征值 handle |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_gattc_exchange_mtu_request
+
+```c
+OPERATE_RET tkl_ble_gattc_exchange_mtu_request(uint16_t conn_handle, uint16_t client_rx_mtu);
+```
+
+- 功能描述:
+
+  通过向服务器发送交换 MTU 请求，发起 MTU 交换。
+
+- 参数：
+
+  | 输入/输出 | 参数名        | 描述                  |
+  | --------- | ------------- | --------------------- |
+  | [in]      | conn_handle   | 连接 handle           |
+  | [in]      | client_rx_mtu | client 侧接收 mtu 大小 |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_vendor_command_control
+
+```c
+OPERATE_RET tkl_ble_vendor_command_control(uint16_t opcode, void *user_data, uint16_t data_len);
+```
+
+- 功能描述:
+
+  执行厂商自定义命令，通过蓝牙交换信息。
+
+- 参数：
+
+  | 输入/输出 | 参数名    | 描述         |
+  | --------- | --------- | ------------ |
+  | [in]      | opcode    | 操作码       |
+  | [in]      | user_data | 命令数据     |
+  | [in]      | data_len  | 命令数据长度 |
+
+- 返回值:
+
+  - OPRT_OK : 成功
+  - Others ：失败
+
+## tkl_ble_set_mode
+
+```c
+OPERATE_RET tkl_ble_set_mode(const BOOL_T enable, const uint8_t mode);
+```
+
+- 功能描述:
+
+  设置 BLE 模式，用于 Wi-Fi/BLE 共存模式。
+
+- 参数：
+
+  | 输入/输出 | 参数名 | 描述               |
+  | --------- | ------ | ------------------ |
+  | [in]      | enable | `TRUE` 开启该模式  |
+  | [in]      | mode   | BLE 模式           |
 
 - 返回值:
 

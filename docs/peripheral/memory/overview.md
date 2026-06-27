@@ -60,7 +60,7 @@ Frame buffers may be allocated from **SRAM or PSRAM** depending on display drive
 
 You can name which **memory class** and **persistence layer** your feature uses on your **target**, and open the correct guide (`heap…` vs `flash…`) or [TAL KV](../tutorials/tal-kv-guide) / [TKL flash](../../tkl-api/tkl_flash) reference next.
 
-## References
+## See also
 
 - [Heap allocation and PSRAM](heap-allocation-and-psram)
 - [Flash, partitions, and capacity](flash-and-partitions)
@@ -68,4 +68,4 @@ You can name which **memory class** and **persistence layer** your feature uses 
 - [TAL KV guide](../tutorials/tal-kv-guide)
 - [TKL flash](../../tkl-api/tkl_flash)
 - [Kconfig and project configuration](../tutorials/kconfig-and-project-configuration)
-- [Porting platform](../../new-hardware/porting-platform) (`ENABLE_FLASH`, filesystem notes)
+- [Porting platform](../../hardware/porting/porting-platform) (`ENABLE_FLASH`, filesystem notes)

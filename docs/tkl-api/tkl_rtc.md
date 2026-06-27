@@ -1,95 +1,101 @@
-# tkl_rtc | RTC Driver
+---
+title: tkl_rtc | RTC Driver
+---
 
-## Brief Description
+## Overview
 
-​ A Real-Time Clock (RTC) is a timer dedicated to maintaining a one-second time base. Additionally, RTCs are typically used to track clock time and calendar dates in software or hardware. Many functions of RTCs are highly specialized and necessary for maintaining high precision and very reliable operations.
+`tkl_rtc` is the TKL real-time clock (RTC) interface. An RTC keeps a one-second time base and tracks wall-clock time as a UTC timestamp in seconds, independent of the main program flow.
 
-​ General SOCs have an internal RTC hardware unit that can be directly manipulated to set and read RTC time. Some SOCs can also expand RTC peripherals via IIC or SPI interfaces.
+Most SoCs include an internal RTC hardware unit whose registers you set and read directly. Some SoCs extend the RTC through an external peripheral over I2C or SPI.
 
-## API Description
+This driver exposes four functions: initialize and deinitialize the RTC, and set and get the current time.
 
-### 1. tkl_rtc_init
+## tkl_rtc_init
 
 ```c
 OPERATE_RET tkl_rtc_init(void);
 ```
 
-- Function Description:
-  - Initializes the RTC and returns the initialization result.
-- Parameters:
-  - void
-- Return Value:
-  - OPRT_OK for success, others please refer to the definitions in the file `tuya_error_code.h`.
+Initializes the RTC and returns the result.
 
-### 2. tkl_rtc_deinit
+Parameters:
+
+- None.
+
+Returns:
+
+- `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_rtc_deinit
 
 ```c
 OPERATE_RET tkl_rtc_deinit(void);
 ```
 
-- Function Description:
-  - Deinitializes the RTC, stops the RTC.
-- Parameters:
-  - void
-- Return Value:
-  - OPRT_OK for success, others please refer to the definitions in the file `tuya_error_code.h`.
+Deinitializes the RTC and stops it.
 
-### 3. tkl_rtc_time_set
+Parameters:
+
+- None.
+
+Returns:
+
+- `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_rtc_time_set
 
 ```c
 OPERATE_RET tkl_rtc_time_set(TIME_T time_sec);
 ```
 
-- Function Description:
+Sets the RTC time.
 
-  - Sets the time of the RTC.
+Parameters:
 
-- Parameters:
-  - time_sec: A UTC time.
+- `time_sec`: A UTC time in seconds. `TIME_T` is defined as:
 
-```c
-typedef unsigned int TIME_T;
-```
+  ```c
+  typedef unsigned int TIME_T;
+  ```
 
-- Return Value:
-  - OPRT_OK for success, others please refer to the definitions in the file `tuya_error_code.h`.
+Returns:
 
-### 4. tkl_rtc_time_get
+- `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_rtc_time_get
 
 ```c
 OPERATE_RET tkl_rtc_time_get(TIME_T *time_sec);
 ```
 
-- Function Description:
-  - Gets the time of the RTC.
-- Parameters:
+Gets the current RTC time.
 
-  - time_sec: UTC time
+Parameters:
 
-    ```c
-    typedef unsigned int TIME_T;
-    ```
+- `time_sec`: Pointer that receives the UTC time in seconds. `TIME_T` is defined as:
 
-- Return Value:
-  - OPRT_OK for success, others please refer to the definitions in the file `tuya_error_code.h`.
+  ```c
+  typedef unsigned int TIME_T;
+  ```
 
-# Example
+Returns:
 
-## RTC Example
+- `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## Example
 
 ```c
-/* Initialize RTC */
-tkl_rtc_init(void);
+/* Initialize the RTC */
+tkl_rtc_init();
 
-/* Set RTC time */
+/* Set the RTC time */
 TIME_T time_sec_set = 0x1000000;
-tkl_rtc_time_set(&time_sec_set);
+tkl_rtc_time_set(time_sec_set);
 
-/* Get RTC time */
-TIME_T time_sec_get;
+/* Get the RTC time */
+TIME_T time_sec_get = 0;
 tkl_rtc_time_get(&time_sec_get);
 
-/* Deinitialize RTC */
-tkl_rtc_deinit(void);
-
+/* Deinitialize the RTC */
+tkl_rtc_deinit();
 ```

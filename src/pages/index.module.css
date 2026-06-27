@@ -420,6 +420,29 @@
   font-weight: 800;
 }
 
+.featureMedia {
+  width: 100%;
+  max-width: 276px;
+  margin: 0 auto 1.25rem;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: rgba(0, 102, 255, 0.06);
+  border: 1px solid rgba(0, 102, 255, 0.12);
+}
+
+.featureMedia img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-theme='dark'] .featureMedia {
+  background: rgba(0, 102, 255, 0.14);
+  border-color: rgba(51, 147, 255, 0.22);
+}
+
 .featureCard h3 {
   font-size: 1.2rem;
   font-weight: 700;
@@ -461,11 +484,19 @@
 
 .audienceCard {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
   border-radius: 16px;
   border: 1px solid rgba(0, 102, 255, 0.18);
   background: linear-gradient(145deg, rgba(0, 102, 255, 0.07) 0%, rgba(255, 107, 53, 0.06) 100%);
-  padding: 1.2rem 1.2rem 1.1rem;
+  padding: 1.2rem;
   overflow: hidden;
+}
+
+.audienceText {
+  flex: 1;
+  min-width: 0;
 }
 
 .audienceCard::before {
@@ -478,6 +509,31 @@
   border-radius: 9999px;
   background: radial-gradient(circle at center, rgba(0, 102, 255, 0.2) 0%, rgba(0, 102, 255, 0) 70%);
   pointer-events: none;
+}
+
+.audienceMedia {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: clamp(104px, 30%, 148px);
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: rgba(0, 102, 255, 0.06);
+  border: 1px solid rgba(0, 102, 255, 0.12);
+}
+
+.audienceMedia img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-theme='dark'] .audienceMedia {
+  background: rgba(0, 102, 255, 0.14);
+  border-color: rgba(51, 147, 255, 0.22);
 }
 
 .audienceCard h3 {
@@ -514,7 +570,12 @@
   background: #0a0a0c;
   color: #e5e7eb;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-family: var(--ifm-font-family-base), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    var(--ifm-font-family-base),
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
 }
 
 .hilSectionNewBadge {
@@ -539,7 +600,9 @@
     0 4px 18px rgba(168, 85, 247, 0.45),
     0 0 24px rgba(56, 189, 248, 0.25);
   transform: rotate(-10deg);
-  animation: hilNewBadgeGradient 5s ease infinite, hilNewBadgeFloat 3.2s ease-in-out infinite;
+  animation:
+    hilNewBadgeGradient 5s ease infinite,
+    hilNewBadgeFloat 3.2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1421,7 +1484,9 @@
 .hilStepCardActive {
   border-color: rgba(96, 165, 250, 0.65);
   background: rgba(96, 165, 250, 0.08);
-  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.2),
+    0 0 20px rgba(96, 165, 250, 0.12);
 }
 
 .hilStepNum {
@@ -1484,7 +1549,9 @@
   .hilStepCardActive {
     border-color: rgba(96, 165, 250, 0.65);
     background: rgba(96, 165, 250, 0.08);
-    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(96, 165, 250, 0.2),
+      0 0 20px rgba(96, 165, 250, 0.12);
   }
 }
 
@@ -1760,7 +1827,9 @@
   cursor: zoom-in;
   border-radius: 16px;
   line-height: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .cloudOnePagerImgButton:hover .cloudOnePagerImg {
@@ -3270,13 +3339,7 @@ video.customerStoriesMedia {
   overflow: hidden;
   margin: 0;
   padding: 0.25rem 0;
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    #000 6%,
-    #000 94%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 
 /* When one row fits in the viewport (no overflow), center and skip scroll */
@@ -3358,7 +3421,9 @@ video.customerStoriesMedia {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 @media (hover: hover) {
@@ -3629,5 +3694,471 @@ video.customerStoriesMedia {
     background-image: url(/img/home/tuyaopen-arduino-ide-dark.jpg);
     border: 2px solid oklch(var(--bc) / 1.6);
     box-shadow: 75px 75px 75px -25px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ===== IDE LAUNCH BANNER ===== */
+.ideLaunch {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1330 0%, #0f2a6b 45%, #0066ff 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4rem 1.25rem;
+}
+
+.ideLaunchGlow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 50%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, transparent 65%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.ideLaunchInner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .ideLaunchInner {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.ideLaunchCopy {
+  color: #fff;
+}
+
+.ideLaunchBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #ff4d00);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(255, 77, 0, 0.4);
+}
+
+.ideLaunchBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  animation: ideLaunchPulse 2s infinite;
+}
+
+@keyframes ideLaunchPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.ideLaunchTitle {
+  margin: 1rem 0 0.5rem;
+  font-size: clamp(1.9rem, 4vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.ideLaunchSubtitle {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #cfe0ff;
+}
+
+.ideLaunchBody {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 38rem;
+}
+
+.ideLaunchList {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ideLaunchListItem {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ideLaunchListItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.ideLaunchListItem::after {
+  content: '';
+  position: absolute;
+  left: 0.36rem;
+  top: 0.38rem;
+  width: 0.3rem;
+  height: 0.55rem;
+  border: solid #ff8a3d;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.ideLaunchButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.ideLaunchBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9px;
+  font-weight: 700;
+  background: #fff;
+  color: #0f2a6b !important;
+  text-decoration: none !important;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.ideLaunchBtnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.ideLaunchBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff !important;
+  text-decoration: none !important;
+  background: transparent;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.ideLaunchBtnOutline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ideLaunchVisual {
+  display: block;
+  text-decoration: none !important;
+}
+
+/* ----- Mac display (Studio Display–style) mockup ----- */
+.macDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.35s ease;
+}
+
+.ideLaunchVisual:hover .macDisplay {
+  transform: translateY(-4px);
+}
+
+.macDisplayScreen {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #2a2c30 0%, #141518 60%, #0c0d10 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 34px 80px rgba(0, 0, 0, 0.55);
+}
+
+.macDisplayInner {
+  border-radius: 9px;
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+}
+
+.macDisplayImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.macDisplayNeck {
+  width: 16%;
+  height: 30px;
+  background: linear-gradient(90deg, #8b9097 0%, #d6d9de 50%, #8b9097 100%);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.macDisplayFoot {
+  width: 34%;
+  height: 11px;
+  background: linear-gradient(180deg, #c7cbd1 0%, #9a9fa7 100%);
+  border-radius: 3px 3px 9px 9px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== IDE LAUNCH MODAL (first-visit popup) ===== */
+.ideModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(8, 12, 30, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: ideModalFade 0.25s ease both;
+}
+
+@keyframes ideModalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ideModalCard {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: calc(100vh - 2.5rem);
+  overflow: hidden auto;
+  background: var(--ifm-background-surface-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 20px;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+  animation: ideModalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ideModalPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* static firework vectors */
+.ideModalFw {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ideModalFwA {
+  top: -14px;
+  left: -10px;
+  width: 96px;
+  height: 96px;
+  color: #ff6b35;
+}
+
+.ideModalFwB {
+  top: 18px;
+  right: -8px;
+  width: 70px;
+  height: 70px;
+  color: #0066ff;
+  opacity: 0.4;
+}
+
+.ideModalFwC {
+  top: 150px;
+  left: 6px;
+  width: 54px;
+  height: 54px;
+  color: #ff9d00;
+  opacity: 0.32;
+}
+
+.ideModalClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-color-emphasis-100);
+  transition:
+    background 0.18s,
+    transform 0.18s;
+}
+
+.ideModalClose:hover {
+  background: var(--ifm-color-emphasis-200);
+  transform: rotate(90deg);
+}
+
+.ideModalContent {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.75rem 1.75rem;
+  text-align: center;
+}
+
+.ideModalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #ff4d00);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(255, 77, 0, 0.4);
+}
+
+.ideModalBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  animation: ideLaunchPulse 2s infinite;
+}
+
+.ideModalTitle {
+  margin: 0.9rem 0 0.4rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ifm-heading-color);
+}
+
+.ideModalSubtitle {
+  margin: 0 0 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--brand-primary, #0066ff);
+}
+
+.ideModalShot {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+  line-height: 0;
+}
+
+.ideModalShot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ideModalBody {
+  margin: 1.1rem 0 1.4rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.ideModalButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ideModalBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9px;
+  font-weight: 700;
+  background: var(--brand-primary, #0066ff);
+  color: #fff !important;
+  text-decoration: none !important;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.ideModalBtnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 102, 255, 0.35);
+}
+
+.ideModalBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9px;
+  font-weight: 600;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-font-color-base) !important;
+  text-decoration: none !important;
+  background: transparent;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.ideModalBtnOutline:hover {
+  border-color: var(--brand-primary, #0066ff);
+  color: var(--brand-primary, #0066ff) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ideModalOverlay,
+  .ideModalCard {
+    animation: none;
   }
 }

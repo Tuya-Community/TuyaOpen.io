@@ -2,129 +2,135 @@
 title: AI Agent Dev Platform
 ---
 
-# **AI Agent Dev Platform**
+The AI Agent Dev Platform integrates multiple language models and gives you one place to build, configure, and run AI agents. You deploy and debug agent applications through configuration on the platform, without writing the orchestration yourself.
 
-This AI agent development platform integrates multiple language models, aiming to provide users with efficient and flexible AI agent management features. Users can easily deploy and run AI agent-related applications through configuration and debugging.
+## Create an agent
 
-# **Create agent**
+1. Log in to the [Tuya Developer Platform](https://platform.tuya.com/).
+2. On the homepage, click **Enter AI Agent Development** under **Developer Console** > **AI Agent**, or choose **AI Agent** > **Agent Dev** > **My Agent** in the left navigation menu. Either path opens the [AI Agent Dev Platform](https://platform.tuya.com/exp/ai).
 
-1. First, log in to the [Tuya Developer Platform](https://platform.tuya.com/).
-2. On the homepage, click **Enter AI Agent Development** under **Developer Console** > **AI Agent**, or click **AI Agent** > **Agent Dev** > **My Agent** on the left navigation menu, and enter the [AI Agent Dev Platform](https://platform.tuya.com/exp/ai).
-    
-    ![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/1748342890a8b8be58abb.png)
-    
-    ![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/174834291029509b68bd4.png)
-    
-3. Click **Create Agent** in the upper-right corner of the page, and then complete the configuration in the **Create My AI Project** window as shown in the figure below. Once the configuration is complete, click **OK**.
-    
-    ![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/1744264784100afa2969d.png)
-    
-4. Then, enter the development page of the agent, and configure model capabilities, prompts, etc. For detailed instructions, please refer to the sections below.
-    
-    ![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/1744265039409b61af6dd.png)
-    
+    ![AI Agent Dev Platform homepage entry](https://images.tuyacn.com/content-platform/hestia/1748342890a8b8be58abb.png)
 
-# **Model capability configuration**
+    ![AI Agent Dev Platform My Agent list](https://images.tuyacn.com/content-platform/hestia/174834291029509b68bd4.png)
 
-### Basic configuration
+3. Click **Create Agent** in the upper-right corner. Complete the configuration in the **Create My AI Project** window as shown below, then click **OK**.
 
-![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/173338351439345743089.png)
+    ![Create My AI Project window](https://images.tuyacn.com/content-platform/hestia/1744264784100afa2969d.png)
 
-### LLM model used
+4. The agent's development page opens. Configure its model capabilities, prompts, and other settings as described in the sections below.
 
-Here, you can select the large language model used by the AI agent. Due to compliance reasons, the available language models differ by data center, and different language models incur varying token costs.
+    ![Agent development page](https://images.tuyacn.com/content-platform/hestia/1744265039409b61af6dd.png)
+
+## Configure model capabilities
+
+![Model capability basic configuration](https://images.tuyacn.com/content-platform/hestia/173338351439345743089.png)
+
+### LLM model
+
+Select the large language model the agent uses. The available models differ by data center for compliance reasons, and each model carries a different token cost.
 
 ### Max context messages
 
-Here, you can configure the number of previous conversations or interactions that the AI agent can remember and process. These historical messages help the AI agent maintain contextual continuity, thereby providing more relevant and accurate responses. Naturally, the more historical messages there are, the greater the computational power consumed in each conversation. You can configure the max context messages based on the requirements of scenarios.
+Set how many previous turns the agent remembers and processes. More history keeps the conversation contextually consistent and improves responses, but it also raises the compute cost of each turn. Tune this value to your scenario.
 
 ### Skills configuration
 
-![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/1733383542a33fb6a2061.png)
+![Skills configuration](https://images.tuyacn.com/content-platform/hestia/1733383542a33fb6a2061.png)
 
-### Plugin
+#### Plugin
 
-Plugins refer to independent functions that can be added to the AI agent. The plugin functionality allows the AI agent to call various tools or APIs, such as device queries, device control, and scene control. This expands the capabilities of the AI agent, enabling it to perform more diverse and complex tasks.
+Plugins are independent functions you add to the agent. Through a plugin, the agent can call tools or APIs — for example, device queries, device control, and scene control — which extends the agent to handle more varied and complex tasks.
 
-### Knowledge base
+#### Knowledge base
 
-The knowledge base refers to a system used to store and manage information, data, and knowledge, from which the AI agent can obtain answers or guidance to better respond to user inquiries or perform tasks. The knowledge base can store various forms of information, such as text, documents, images, and videos.
+A knowledge base stores and manages information, data, and knowledge that the agent draws on to answer questions or complete tasks. It can hold text, documents, images, and videos.
 
-The knowledge base employs retrieval-augmented generation (RAG) technology to enhance the quality of the AI agent’s responses. The working principle of RAG is as follows:
+The knowledge base uses retrieval-augmented generation (RAG) to improve answer quality. RAG works in two steps:
 
-1. Information retrieval. First, using retrieval models or algorithms, the AI agent retrieves documents or information snippets related to the user query from the knowledge base.
-2. Answer generation. After obtaining relevant documents, the AI agent generates natural and coherent responses based on the context and user query.
+1. **Information retrieval** — using a retrieval model or algorithm, the agent finds documents or snippets in the knowledge base that relate to the user query.
+2. **Answer generation** — from those documents, the user query, and the context, the agent generates a natural, coherent response.
 
-### Workflow
+#### Workflow
 
-If a specific scenario arises, in order for the agent to perform relevant tasks or respond to users based on specified logic, it is necessary to have the agent run based on the established workflow.
+When a scenario needs the agent to follow specific logic to complete a task or reply, configure a workflow and have the agent run on it.
 
-# **Prompt development**
+## Develop the prompt
 
-![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/1733383701fdfe72e0ada.png)
+![Prompt development](https://images.tuyacn.com/content-platform/hestia/1733383701fdfe72e0ada.png)
 
-You can enter prompts in the **Prompt** box to guide the language model in generating dialogue or performing tasks. Before entering prompts, it is recommended to review the [**Prompt document**](https://www.tuyaos.com/viewtopic.php?t=3725) to understand the principles of prompts. Prompts can also be optimized to help the AI agent more effectively implement business operations.
+Enter prompts in the **Prompt** box to guide the model in generating dialogue or performing tasks. You can also refine a prompt to help the agent carry out business operations more reliably.
 
-# **Debugging and release**
+:::tip
+Before you write prompts, read the [prompt document](https://www.tuyaos.com/viewtopic.php?t=3725) to understand the prompting principles.
+:::
 
-### Debugging
+## Debug and release
 
-![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/1742353613e7158505d05.png)
+### Debug
 
-1. After the configuration is saved, click **Get QR Code**.
-2. You can use the **SmartLife** app to scan the QR code for testing to ensure that the configuration is correct and the function is running properly.
+![Debug with QR code](https://images.tuyacn.com/content-platform/hestia/1742353613e7158505d05.png)
 
-Before going live, it is recommended to conduct thorough testing to ensure the normal operation of system functions.
+1. Save the configuration, then click **Get QR Code**.
+2. Scan the QR code with the **SmartLife** app to test the agent and confirm the configuration is correct and the features work.
+
+:::note
+Test thoroughly before going live to make sure the agent's features work as expected.
+:::
 
 ### Release
 
-After debugging is completed, click **Release** to release the configuration to the online environment, making it effective.
+When debugging is done, click **Release** to push the configuration to the online environment and make it effective.
 
-Then, the release records will show all version information of previous releases, making it easier for users to track and manage configuration history.
+The release records then list every previous release version, so you can track and manage the configuration history.
 
-# **Application configuration**
+## Configure the application
 
-1. Click **Application Management** in the top right corner of the page.
-    
-    ![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/174235372113c8558a10b.png)
-    
-2. On the page that appears, configure the interaction form of the AI agent on the application.
-    
-    ![AI Agent Dev Platform](https://images.tuyacn.com/content-platform/hestia/172629526303ca7a3210b.png)
-    
+1. Click **Application Management** in the top-right corner.
+
+    ![Application Management entry](https://images.tuyacn.com/content-platform/hestia/174235372113c8558a10b.png)
+
+2. On the page that opens, configure how the agent appears and interacts in the application.
+
+    ![Application configuration page](https://images.tuyacn.com/content-platform/hestia/172629526303ca7a3210b.png)
 
 ### Select application
 
-Users can select the type of application, including app, cloud integration, speaker, SaaS, and control panel.
+Choose the application type: app, cloud integration, speaker, SaaS, or control panel.
 
 ### AI agent name
 
-Users can set the display name of the AI agent in the application.
+Set the display name of the agent in the application.
 
 ### Welcome message
 
-Users can enter a custom welcome message to be displayed when the user opens the application.
+Enter a custom welcome message to show when the user opens the application.
 
 ### Light mode
 
-- Theme color: Users can select the theme color for light mode.
-- Background color: Users can select the background color for light mode.
-- Conversation box background color: Users can select the background color for the conversation box in light mode.
+- **Theme color** — the theme color for light mode.
+- **Background color** — the background color for light mode.
+- **Conversation box background color** — the conversation box background in light mode.
 
 ### Dark mode
 
-- Dark theme color: Users can select the theme color for dark mode.
-- Dark background color: Users can select the background color for dark mode.
-- Dark conversation box background color: Users can select the background color for the conversation box in dark mode.
+- **Dark theme color** — the theme color for dark mode.
+- **Dark background color** — the background color for dark mode.
+- **Dark conversation box background color** — the conversation box background in dark mode.
 
 ### Background image
 
-Upload background image: Users can upload a custom background image in formats such as jpg, jpeg, png, with a size not exceeding 3 MB.
+Upload a custom background image in JPG, JPEG, or PNG format, no larger than 3 MB.
 
 ### Save
 
-When the application carrier is an app, after saving, an AI agent dialogue miniapp will be automatically generated in the specified app based on the above configuration. The debugging by QR code scanning will also display interactions according to the configuration information.
+When the application carrier is an app, saving generates an AI agent dialogue mini-app in that app from the configuration above. QR-code debugging also reflects the configured interactions.
 
-# **Associate with agent and product**
+## Associate an agent with a product
 
-To further develop the AI features of products, you can associate products with agents. For more details, please refer to [AI Capabilities Development](https://developer.tuya.com/en/docs/iot/AI-feature?id=Keapy1et1fc63)。
+To develop a product's AI features further, associate the product with an agent. For details, see [AI Capabilities Development](https://developer.tuya.com/en/docs/iot/AI-feature?id=Keapy1et1fc63).
+
+## See also
+
+- [Workflow Management](workflow-management) — orchestrate agent logic on a visual workbench
+- [Variables Management](variables-management) — give an agent memory and personalization
+- [Role Management](role-management) — define agent roles for panel scenarios

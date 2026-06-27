@@ -1,4 +1,6 @@
-# tkl_network | Networking APIs
+---
+title: tkl_network | Networking APIs
+---
 
 The `tkl_network.c` file provides a series of APIs required for network communication processes to adapt to different network interfaces. These APIs include creating sockets, connecting, binding, listening, sending data, receiving data, setting and getting socket options, and other network operations. The file defines common handling of network APIs and allows for cross-platform network communication through these encapsulated functions.
 
@@ -507,6 +509,24 @@ Converts an IP string to an address.
 #### Return Value
 
 Returns the converted IP address.
+
+### tkl_net_addr2str
+
+```c
+char *tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr);
+```
+
+#### Function
+
+Converts an IP address (in host byte order) to a string in IPv4 dotted-decimal notation (`xx.xx.xx.xx`).
+
+#### Parameters
+
+- `ipaddr`: The IP address.
+
+#### Return Value
+
+Returns the resulting IP string.
 
 ### tkl_net_setsockopt
 

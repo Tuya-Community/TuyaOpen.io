@@ -4,7 +4,7 @@ title: HTTP 与 HTTPS 客户端教程
 
 ## 概述
 
-本教程介绍如何使用 `http_client_interface.h` 中的 `http_client_request` 与 `http_client_free` 发送 HTTP 与 HTTPS 请求。文中说明**请求与响应结构体**各字段、**请求头**键值、`path` 上的**查询参数**，以及响应**状态码**与**原始响应头**块；并包含 GET、带 JSON 的 POST、HTTPS CA、以及用 cJSON 的 `cJSON_ParseWithLength` 解析正文。可运行示例位于 `examples/protocols/http_client` 与 `examples/protocols/https_client`。
+本教程介绍如何使用 `http_client_interface.h` 中的 `http_client_request` 与 `http_client_free` 发送 HTTP 与 HTTPS 请求。文中说明请求与响应结构体各字段、请求头键值、`path` 上的查询参数，以及响应状态码与原始响应头块；并包含 GET、带 JSON 的 POST、HTTPS CA、以及用 cJSON 的 `cJSON_ParseWithLength` 解析正文。可运行示例位于 `examples/protocols/http_client` 与 `examples/protocols/https_client`。
 
 ## 前置条件
 
@@ -90,7 +90,7 @@ http_client_header_t headers[] = {
 | `buffer` | `uint8_t *` | 存放响应数据的缓冲区（分配细节见头文件注释）。 |
 | `buffer_length` | `size_t` | `buffer` 总长度。 |
 
-若需**以文本查看响应头**，把 `headers` 与 `headers_length` 当作一段字节区间打印（通常为 ASCII）。示例：
+若需以文本查看响应头，把 `headers` 与 `headers_length` 当作一段字节区间打印（通常为 ASCII）。示例：
 
 ```c
 if (http_response.headers && http_response.headers_length > 0) {
@@ -103,7 +103,7 @@ if (http_response.headers && http_response.headers_length > 0) {
 
 若要按字段解析（例如读取 `Content-Type`），需自行解析该文本块；若业务 API 只关心 JSON 正文，通常使用 `status_code` 与 `body` 即可。
 
-用毕请调用 **`http_client_free`** 释放响应相关内存。
+用毕请调用 `http_client_free` 释放响应相关内存。
 
 ## GET 请求
 
@@ -174,7 +174,12 @@ http_client_free(&http_response);
 
 ## HTTPS 请求
 
-请使用 `examples/protocols/https_client`。与 HTTP 相比，`user_main` 中还会调用 `tuya_tls_init()`、`tuya_register_center_init()`，并在请求中提供 TLS 参数：使用 `tuya_iotdns_query_domain_certs(host, &cacert, &cacert_len)` 获取主机 CA，并设置 `.port = 443` 以及 `.cacert`、`.cacert_len`。
+请使用 `examples/protocols/https_client`。与 HTTP 相比，`user_main` 中还会调用 `tuya_tls_init()`、`tuya_register_center_init()`，并在请求中提供 TLS 参数：
+
+- 用 `tuya_iotdns_query_domain_certs(host, &cacert, &cacert_len)` 获取主机 CA。
+- 在 `http_client_request_t` 上设置 `.port = 443`、`.cacert`、`.cacert_len`。
+
+链路上线后的写法：
 
 ```c
 uint16_t cacert_len = 0;
@@ -239,7 +244,7 @@ if (HTTP_CLIENT_SUCCESS == http_status && http_response.body && http_response.bo
 
 ## 实现说明
 
-- 在 NETMGR_LINK_UP 之后再发请求（示例用 `__link_status_cb`）。
+- 在 `NETMGR_LINK_UP` 之后再发请求（示例用 `__link_status_cb`）。
 - `http_client_request` 后必须 `http_client_free`。
 - 套接字与 DNS 详见 [TAL Network API 参考](tal-network-api)。
 

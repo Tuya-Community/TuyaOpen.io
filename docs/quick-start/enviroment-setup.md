@@ -4,20 +4,19 @@ title: "Step 0: Environment Setup"
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# Set up Environment
-
-## Overview
-
-Prepare necessary tools on different systems, such as Linux, Windows, and macOS.
+Set up the toolchain TuyaOpen needs on your computer, download the repository, and activate `tos.py` — the command-line tool you use to configure, build, and flash every project.
 
 ## Prepare hardware
 
-Before getting started, prepare the following resources:
-- [TuyaOpen-compatible development boards or modules](../hardware-specific/index.md#hardware-platforms)
-- USB data cable
-- Computer (Windows, Linux, or macOS supported)
+Before you start, prepare the following:
 
-## Set up environment
+- A [TuyaOpen-compatible development board or module](../hardware/index.md#development-boards)
+- A USB data cable
+- A computer running Windows, Linux, or macOS
+
+## Install the toolchain
+
+Select your operating system and install the required tools.
 
 <SyncedTabs
   defaultValue="Linux"
@@ -94,17 +93,18 @@ Before getting started, prepare the following resources:
 
 ## Download and activate TuyaOpen
 
-Download the TuyaOpen repository:
+Clone the TuyaOpen repository.
 
-:::info
-You can adjust git configuration to improve performance:
+:::tip
+You can adjust the git configuration to improve clone performance:
+
 ```bash
 git config --global http.postBuffer 524288000
 ```
 :::
 
 :::warning
-When choosing a project path, do not use Chinese characters or special characters like spaces. On Windows, do not choose the C drive.
+Do not use Chinese characters or special characters such as spaces in the project path. On Windows, do not place the project on the C drive.
 :::
 
 ```bash
@@ -118,10 +118,10 @@ git clone https://gitee.com/tuya-open/TuyaOpen.git
 cd TuyaOpen
 ```
 
-Activate `tos.py`:
+Activate `tos.py`.
 
 :::warning
-Each time the terminal is reopened, 'tos.py' needs to be reactivated.
+You must reactivate `tos.py` each time you reopen the terminal.
 :::
 
 <SyncedTabs
@@ -151,7 +151,7 @@ Each time the terminal is reopened, 'tos.py' needs to be reactivated.
   </SyncedTabItem>
 </SyncedTabs>
 
-Run the commands `tos.py version` and `tos.py check` to verify. You will see the following information:
+Verify the activation by running `tos.py version` and `tos.py check`. You should see output similar to the following:
 
 ```bash
 ❯ tos.py version
@@ -178,7 +178,7 @@ git submodule update --init
 ```
 </details>
 
-Run the following command to deactivate `tos.py`:
+When you are done, deactivate `tos.py`.
 
 <SyncedTabs
   defaultValue="Linux"
@@ -205,17 +205,16 @@ Run the following command to deactivate `tos.py`:
   </SyncedTabItem>
 </SyncedTabs>
 
-You can run the command `tos.py --help` to view a more detailed description of `tos.py`, or refer to [CLI - tos.py Development Tool](../tos-tools/tos-guide.md).
-
+For a full description of `tos.py`, run `tos.py --help` or see [CLI - tos.py Development Tool](../tos-tools/tos-guide.md).
 
 ## FAQs
 
-### Failed to activate `tos.py`
+### Activation of `tos.py` fails
 
-- If activation failed, it may be because `python3-venv` is not installed. Install it and try again.
+- Activation can fail because `python3-venv` is not installed. Install it and try again.
 
   ```bash
   sudo apt-get install python3-venv
   ```
 
-- When `tos.py` is activated, the `./.venv` directory will be created automatically. If activation failed, you need to delete the `./.venv` directory and re-activate it.
+- Activating `tos.py` creates the `./.venv` directory automatically. If activation fails, delete the `./.venv` directory and activate again.

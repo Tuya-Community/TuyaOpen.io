@@ -1,64 +1,87 @@
-# tkl_mutex | Mutex 互斥锁
+---
+title: "tkl_mutex | 互斥锁"
+---
 
-文件 `tkl_mutex.c` 用于创建和管理互斥锁，在嵌入式系统或多任务操作系统中，能够确保资源的同步访问。文件中定义的函数能够创建互斥锁、加锁、尝试加锁、解锁以及销毁互斥锁。该文件是由涂鸦操作系统（TuyaOS）自动生成的，并且允许开发者在指定区域添加或修改代码实现。
+`tkl_mutex` 接口用于在多任务环境中创建和管理递归互斥锁，以实现对共享资源的同步访问。它是各平台在其 RTOS 之上实现的内核抽象层（TKL）适配。这些函数创建的互斥锁均为递归锁：持有线程可多次加锁，并须对应解锁相同次数。
 
-## API 说明
-
-### tkl_mutex_create_init
-
-```c
-OPERATE_RET tkl_mutex_create_init(TKL_MUTEX_HANDLE *handle);
-```
-- 功能：创建并初始化一个互斥锁。
-
-- 参数：`handle` 为输出参数，用于存储创建的互斥锁句柄。
-
-- 返回值：`OPRT_OK` 表示成功创建互斥锁，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
-
-### tkl_mutex_lock
+## 类型
 
 ```c
-OPERATE_RET tkl_mutex_lock(const TKL_MUTEX_HANDLE handle);
+typedef void *TKL_MUTEX_HANDLE;
 ```
 
-- 功能：锁定一个互斥锁。如果互斥锁已被其他任务锁定，调用此函数的任务会被挂起，直到互斥锁可用。
+`TKL_MUTEX_HANDLE` 是互斥锁的不透明句柄。
 
-- 参数：`handle` 为输入参数，互斥锁句柄。
+## tkl_mutex_create_init
 
-- 返回值：`OPRT_OK` 则表示成功锁定互斥锁，失败时返回相应的错误代码。详细错误代码请参考 `tuya_error_code.h`。
+```c
+OPERATE_RET tkl_mutex_create_init(TKL_MUTEX_HANDLE *pMutexHandle);
+```
 
-### tkl_mutex_trylock
+创建并初始化一个递归互斥锁。
+
+| 参数 | 说明 |
+| --- | --- |
+| `pMutexHandle` | 输出参数，接收创建的互斥锁句柄。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_mutex_lock
+
+```c
+OPERATE_RET tkl_mutex_lock(const TKL_MUTEX_HANDLE mutexHandle);
+```
+
+锁定一个递归互斥锁。若该互斥锁已被其他线程持有，调用线程将阻塞，直到其可用。
+
+| 参数 | 说明 |
+| --- | --- |
+| `mutexHandle` | 互斥锁句柄。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_mutex_trylock
 
 ```c
 OPERATE_RET tkl_mutex_trylock(const TKL_MUTEX_HANDLE mutexHandle);
 ```
 
-- 功能：尝试锁定一个互斥锁，但不会因互斥锁被占用而挂起调用任务。
+尝试锁定一个递归互斥锁，不会阻塞。无论是否获得锁都立即返回。
 
-- 参数：`mutexHandle` 为输入参数，互斥锁句柄。
+| 参数 | 说明 |
+| --- | --- |
+| `mutexHandle` | 互斥锁句柄。 |
 
-- 返回值：`OPRT_OK` 则表示成功尝试锁定互斥锁，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_mutex_unlock
-
-```c
-OPERATE_RET tkl_mutex_unlock(const TKL_MUTEX_HANDLE handle);
-```
-
-- 功能：解锁一个已锁定的互斥锁。
-
-- 参数：`handle` 为输入参数，互斥锁句柄。
-
-- 返回值：`OPRT_OK` 表示成功解锁互斥锁，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
-
-### tkl_mutex_release
+## tkl_mutex_unlock
 
 ```c
-OPERATE_RET tkl_mutex_release(const TKL_MUTEX_HANDLE handle);
+OPERATE_RET tkl_mutex_unlock(const TKL_MUTEX_HANDLE mutexHandle);
 ```
 
-- 功能：释放并删除一个互斥锁。
+解锁调用线程先前锁定的递归互斥锁。
 
-- 参数：`handle` 为输入参数，互斥锁句柄。
+| 参数 | 说明 |
+| --- | --- |
+| `mutexHandle` | 互斥锁句柄。 |
 
-- 返回值：`OPRT_OK` 表示成功释放资源，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_mutex_release
+
+```c
+OPERATE_RET tkl_mutex_release(const TKL_MUTEX_HANDLE mutexHandle);
+```
+
+释放并删除一个递归互斥锁。
+
+| 参数 | 说明 |
+| --- | --- |
+| `mutexHandle` | 互斥锁句柄。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## 相关文档
+
+- [线程与定时器模式](../peripheral/tutorials/thread-timer-patterns)

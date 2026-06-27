@@ -2,9 +2,7 @@
 title: "ADC Peripheral Guide"
 ---
 
-# ADC Peripheral Guide
-
-Read analog voltages from sensors, potentiometers, and other analog sources using the TuyaOpen TKL ADC interface.
+The TKL ADC interface reads analog voltages from sensors, potentiometers, and other analog sources. You configure an ADC unit, enable channels with a bitmask, then read raw counts and convert them to millivolts.
 
 ## Prerequisites
 
@@ -18,7 +16,7 @@ TuyaOpen's ADC uses a **port + channel bitmask** model:
 - **Port** selects the ADC unit: `TUYA_ADC_NUM_0` = ADC1, `TUYA_ADC_NUM_1` = ADC2
 - **Channel bitmask** (`cfg->ch_list.data`) enables specific channels: bit N enables `ADC_CHANNEL_N`
 - **Attenuation** is fixed at `ADC_ATTEN_DB_12` (0-3.3 V full range)
-- **Reference voltage** is 3300 mV (`tkl_adc_ref_voltage_get()`)
+- **Reference voltage** is 3300 mV, returned by `tkl_adc_ref_voltage_get()`
 
 ## Basic ADC Read
 
@@ -57,8 +55,7 @@ static OPERATE_RET read_adc(uint32_t *raw_value)
 uint32_t raw;
 read_adc(&raw);
 
-uint32_t ref_mv;
-tkl_adc_ref_voltage_get(ADC_PORT, &ref_mv);
+uint32_t ref_mv = tkl_adc_ref_voltage_get(ADC_PORT);
 
 float voltage = (float)raw * ref_mv / ((1 << 12) - 1);
 TAL_PR_INFO("voltage: %.2f mV", voltage);
@@ -90,11 +87,11 @@ Channel-to-GPIO mapping depends on the chip. See the per-chip pinmux docs for co
 
 | Platform | ADC1 Port | ADC2 Port | Pinmux Doc |
 |----------|-----------|-----------|-----------|
-| ESP32 | `TUYA_ADC_NUM_0` (GPIO 32-39) | `TUYA_ADC_NUM_1` (GPIO 0-27) | [ESP32 Classic Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-classic) |
-| ESP32-S3 | `TUYA_ADC_NUM_0` (GPIO 1-10) | `TUYA_ADC_NUM_1` (GPIO 11-20) | [ESP32-S3 Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-s3) |
-| ESP32-C3 | `TUYA_ADC_NUM_0` (GPIO 0-4) | `TUYA_ADC_NUM_1` (GPIO 5) | [ESP32-C3 Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-c3) |
-| ESP32-C6 | `TUYA_ADC_NUM_0` (GPIO 0-6) | N/A | [ESP32-C6 Pinmux](/docs/hardware-specific/espressif/pinmux/esp32-c6) |
-| T5AI | `TUYA_ADC_NUM_0` (P0-P28) | N/A | [T5AI Peripheral Mapping](/docs/hardware-specific/tuya-t5/t5ai-peripheral-mapping) |
+| ESP32 | `TUYA_ADC_NUM_0` (GPIO 32-39) | `TUYA_ADC_NUM_1` (GPIO 0-27) | [ESP32 Classic Pinmux](/docs/hardware/espressif/pinmux/esp32-classic) |
+| ESP32-S3 | `TUYA_ADC_NUM_0` (GPIO 1-10) | `TUYA_ADC_NUM_1` (GPIO 11-20) | [ESP32-S3 Pinmux](/docs/hardware/espressif/pinmux/esp32-s3) |
+| ESP32-C3 | `TUYA_ADC_NUM_0` (GPIO 0-4) | `TUYA_ADC_NUM_1` (GPIO 5) | [ESP32-C3 Pinmux](/docs/hardware/espressif/pinmux/esp32-c3) |
+| ESP32-C6 | `TUYA_ADC_NUM_0` (GPIO 0-6) | N/A | [ESP32-C6 Pinmux](/docs/hardware/espressif/pinmux/esp32-c6) |
+| T5AI | `TUYA_ADC_NUM_0` (P0-P28) | N/A | [T5AI Peripheral Mapping](/docs/hardware/tuya-t5/t5ai-peripheral-mapping) |
 
 ## ESP32 ADC2 and Wi-Fi Conflict
 
@@ -142,8 +139,7 @@ float get_battery_voltage_mv(void)
     tkl_adc_read_single_channel(BATTERY_ADC_PORT, BATTERY_ADC_CHANNEL, &raw);
     tkl_adc_deinit(BATTERY_ADC_PORT);
 
-    uint32_t ref_mv;
-    tkl_adc_ref_voltage_get(BATTERY_ADC_PORT, &ref_mv);
+    uint32_t ref_mv = tkl_adc_ref_voltage_get(BATTERY_ADC_PORT);
 
     float measured_mv = (float)raw * ref_mv / 4095.0f;
     return measured_mv * DIVIDER_RATIO;
@@ -154,4 +150,4 @@ float get_battery_voltage_mv(void)
 
 - [TKL ADC API](/docs/tkl-api/tkl_adc)
 - [ADC example in SDK](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/adc)
-- [ESP32 Pin Mapping](/docs/hardware-specific/espressif/esp32-pin-mapping)
+- [ESP32 Pin Mapping](/docs/hardware/espressif/esp32-pin-mapping)

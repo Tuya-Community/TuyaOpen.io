@@ -2,9 +2,7 @@
 title: "Migrating a Sensor Library to TuyaOpen"
 ---
 
-# Migrating a Sensor Library to TuyaOpen
-
-Port an existing Arduino or ESP-IDF sensor library to TuyaOpen so it works across all supported platforms.
+Migrating a sensor library means swapping its bus layer for TuyaOpen's TKL APIs while keeping its register and application logic intact, so the driver runs across every supported platform. This guide ports an existing Arduino or ESP-IDF library.
 
 ## Prerequisites
 
@@ -168,5 +166,5 @@ apps/my_bme280_app/
 
 - [TDD/TDL Driver Architecture](../driver-architecture)
 - [Writing a New Sensor Driver](writing-sensor-driver)
-- [ESP32 Migration Guide](../../hardware-specific/espressif/esp32-migration-guide)
+- [ESP32 Migration Guide](../../hardware/espressif/esp32-migration-guide)
 - [TKL I2C API](/docs/tkl-api/tkl_i2c)

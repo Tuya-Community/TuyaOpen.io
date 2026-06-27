@@ -4,7 +4,7 @@ title: Hardware Peripheral Skills
 
 # Hardware Peripheral Skills (Hardware MCP Tools)
 
-This guide describes the hardware peripheral MCP tools built into DuckyClaw. It is aimed at developers who want to control GPIO, ADC, I2C, UART, PWM, and servo peripherals directly through natural-language AI voice commands.
+This guide describes the hardware peripheral MCP tools built into TuyaOpenClaw (formerly DuckyClaw). It is aimed at developers who want to control GPIO, ADC, I2C, UART, PWM, and servo peripherals directly through natural-language AI voice commands.
 
 ## Overview
 
@@ -225,5 +225,5 @@ The servo tool converts the angle to the corresponding PWM pulse width automatic
 ## References
 
 - [Custom Device MCP (Hardware Skills Development Guide)](custom-device-mcp)
-- [DuckyClaw Quick Start (T5-AI)](ducky-quick-start-T5AI)
+- [TuyaOpenClaw Quick Start (T5-AI)](ducky-quick-start-T5AI)
 - TuyaOpen peripheral examples: `TuyaOpen/examples/peripherals/`

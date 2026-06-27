@@ -2,32 +2,29 @@
 title: Workflow Management
 ---
 
-# **Workflow Management**
-# **Overview**
+A workflow is a visual workbench for simplifying and automating an agent's business logic. You create, manage, and optimize workflows on a drag-and-drop interface to improve an agent's efficiency and reduce hallucinations.
 
-A workflow tool is an efficient workbench for simplifying and automating business processes. On a visual interface, you can easily create, manage, and optimize workflows to improve the efficiency of AI agents and reduce hallucinations.
+## Create a workflow
 
-# **Create workflow**
+On the [Workflow](https://platform.tuya.com/exp/workflow) page, click **Create Workflow** in the top-right corner, enter a **Workflow Name** and **Workflow Description**, and the workflow project is created.
 
-On the page of [Process Management](https://platform.tuya.com/exp/workflow), click **Create Workflow** in the top right corner and enter the **Workflow Name** and **Workflow Description** to quickly create a workflow project.
+![Create workflow dialog](https://images.tuyacn.com/content-platform/hestia/1738741167d3cf2421e0a.png)
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/1738741167d3cf2421e0a.png)
-
-# **Configure workflow**
+## Configure the workflow
 
 ### Visual workbench
 
-You can create the desired workflows through drag-and-drop operations. Each node defines distinct tasks and decisions, making it easier to clearly show the entire process.
+Build the workflow by dragging and dropping nodes. Each node defines a distinct task or decision, which makes the whole process easy to read.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/175551024951299d2e04e.png)
+![Visual workbench](https://images.tuyacn.com/content-platform/hestia/175551024951299d2e04e.png)
 
 ### Start node
 
-The start node defines the information required to initiate the workflow, with `USER_TEXT` as the default input variable.
+The start node defines the information needed to launch the workflow. Its default input variable is `USER_TEXT`.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/175550791955841ddd280.png)
+![Start node](https://images.tuyacn.com/content-platform/hestia/175550791955841ddd280.png)
 
-You can click **Add Node** to add the following nodes and build your workflow:
+Click **Add Node** to add the following nodes and build out the workflow:
 
 - [Intent recognition node](https://developer.tuya.com/en/docs/iot/ai-agent-workflow?id=Keak4gh7rdhd2#recognition)
 - [Large language model node](https://developer.tuya.com/en/docs/iot/ai-agent-workflow?id=Keak4gh7rdhd2#llm)
@@ -35,66 +32,71 @@ You can click **Add Node** to add the following nodes and build your workflow:
 
 ### Intent recognition node
 
-The intent recognition node is used to identify and manage the user’s intent from input quickly. After an intent recognition model is set up, the system can accurately understand the user’s input and classify the intent accordingly.
+The intent recognition node identifies and classifies the intent behind user input. Once you set up an intent recognition model, the system reads the user's input and classifies it accordingly.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/1755508032eeeceece2a7.png)
+![Intent recognition node](https://images.tuyacn.com/content-platform/hestia/1755508032eeeceece2a7.png)
 
-You can choose either **simple mode** or **full mode**.
+Choose **simple mode** or **full mode**.
 
 **Simple mode**:
 
-- **Model**: Select an appropriate model.
-- **Input**: Set parameters for intent determination. Common input: `USER_TEXT`.
-- **Intent Recognition**: Set the intent to be recognized and the options to match with user input.
-- **Exception handling**: Customize timeout duration, retry logic, and exception handling methods.
+- **Model** — select a suitable model.
+- **Input** — set the parameters used to determine intent. A common input is `USER_TEXT`.
+- **Intent Recognition** — set the intents to recognize and the options to match against user input.
+- **Exception handling** — set the timeout, retry logic, and exception-handling method.
 
-**Full mode**:
-
-On top of simple mode, the full mode adds **System Prompt** functionality with variable support. This enables inputs to be interpreted by system prompts for deeper user intent understanding.
+**Full mode** adds a **System Prompt** with variable support on top of simple mode. The system prompt interprets the input for a deeper read of user intent.
 
 ### Large language model node
 
-The large language model node is a smart dialogue system based on large-scale language models. It can generate high-quality responses through configurable variables and prompts.
+The large language model node is a dialogue node built on a large model. It generates high-quality responses from the variables and prompts you configure.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/17555093599e33ff38d9a.png)
+![Large language model node](https://images.tuyacn.com/content-platform/hestia/17555093599e33ff38d9a.png)
 
-- **Session history**: When enabled, this feature automatically sends session context to the model, ensuring that user input remains contextually consistent.
-- **Input**: Define information to be added to prompts. Support dynamic variable references.
-- **Model**: Select your desired model.
-- **System prompt**: Set basic model behaviors, such as role descriptions, examples, and output constraints. Support syntax for referencing variables.
-- **User prompt**: The model processes user instructions, such as queries or text-based requests. The model typically references the user input variable `USER_TEXT` as part of the prompt.
-- **Output**: Store the large language model’s generated content as variable values for downstream use.
-- **Exception handling**: Customize timeout duration, retry logic, and exception handling methods.
+- **Session history** — when enabled, the node sends the session context to the model so user input stays contextually consistent.
+- **Input** — the information to add to the prompts. Supports dynamic variable references.
+- **Model** — select the model you want.
+- **System prompt** — set the model's base behavior, such as role descriptions, examples, and output constraints. Supports variable-reference syntax.
+- **User prompt** — the user instruction the model processes, such as a query or text request. The prompt typically references the user input variable `USER_TEXT`.
+- **Output** — store the model's generated content as a variable value for downstream nodes.
+- **Exception handling** — set the timeout, retry logic, and exception-handling method.
 
 ### Output node
 
-The output node is a functional component that supports intermediate processes and message output. Two output modes, streaming and non-streaming, provide flexible data output solutions.
+The output node supports intermediate processing and message output. It offers two output modes, streaming and non-streaming, for flexible data output.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/17555081638b32d07d729.png)
+![Output node](https://images.tuyacn.com/content-platform/hestia/17555081638b32d07d729.png)
 
-- **Input variable**: Support dynamic variable references in prompts.
-- **Output content**: Support syntax for referencing variables. **Streamed output**: When enabled, the large language model generates content word-by-word in real-time.
+- **Input variable** — supports dynamic variable references in prompts.
+- **Output content** — supports variable-reference syntax. With **streamed output** enabled, the model generates content word by word in real time.
 
 ### End node
 
-This node is used to end logic and is configured in the same way as an output node.
+The end node closes a logic branch. You configure it the same way as an output node.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/1755508207ac49aeb4ca7.png)
+![End node](https://images.tuyacn.com/content-platform/hestia/1755508207ac49aeb4ca7.png)
 
-Constraint: The workflow will fail to run if any logical branch does not converge to an end node.
+:::warning
+The workflow fails to run if any logic branch does not converge on an end node.
+:::
 
-# **Test run**
+## Test run
 
-Select a data center that matches the large model set in the workflow and simulate user input in `USER_TEXT` to start a trial run and get the output results.
+Select a data center that matches the large model set in the workflow, enter sample input in `USER_TEXT`, and start the trial run to get the output.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/1755509087d0b8bd57ed9.png)
+![Test run](https://images.tuyacn.com/content-platform/hestia/1755509087d0b8bd57ed9.png)
 
-# **Publish workflow**
+## Publish the workflow
 
-After the configuration is completed, click **Publish** in the top right corner of the workbench to publish the created workflow. To ensure logical integrity, Tuya will perform a logic verification on the workflow. Once the logic is verified, the workflow is published.
+When configuration is complete, click **Publish** in the top-right corner of the workbench. Tuya runs a logic check on the workflow to ensure it is complete; once the check passes, the workflow is published.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/17387367985ed6a35665b.png)
+![Publish workflow](https://images.tuyacn.com/content-platform/hestia/17387367985ed6a35665b.png)
 
-After the workflow is published, you can select the created workflow in the agent and click **Add Workflow** to add this workflow.
+After publishing, select the workflow in the agent and click **Add Workflow** to attach it.
 
-![Workflow Management](https://images.tuyacn.com/content-platform/hestia/1755508599f5290cbef54.png)
+![Add workflow to agent](https://images.tuyacn.com/content-platform/hestia/1755508599f5290cbef54.png)
+
+## See also
+
+- [AI Agent Dev Platform](ai-agent-dev-platform) — create an agent and attach a workflow to it
+- [Variables Management](variables-management) — the variables a workflow reads and writes

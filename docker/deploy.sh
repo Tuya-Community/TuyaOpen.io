@@ -101,6 +101,9 @@ fi
 echo -e "${YELLOW}Cleaning up local files...${NC}"
 rm $IMAGE_NAME.tar.gz
 
+echo -e "${YELLOW}Pruning unused Docker resources...${NC}"
+docker system prune -f
+
 echo -e "${GREEN}✅ Deployment completed successfully!${NC}"
 echo -e "${GREEN}🌐 Your site should be available at: https://$DOMAIN${NC}"
 echo -e "${YELLOW}📝 Note: Make sure to update nginx config on the server if needed${NC}"

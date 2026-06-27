@@ -5,11 +5,25 @@ import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
+import audienceAi from '../../static/img/home/audience/ai.png'
+import audienceCommercial from '../../static/img/home/audience/commercial.png'
+import audienceMakers from '../../static/img/home/audience/makers.png'
+import audienceStudents from '../../static/img/home/audience/students.png'
+import benefitAi from '../../static/img/home/benefits/ai.png'
+import benefitArch from '../../static/img/home/benefits/arch.png'
+import benefitCloud from '../../static/img/home/benefits/cloud.png'
+import benefitProduction from '../../static/img/home/benefits/production.png'
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
+
+/** Audience persona illustrations, in the order of copy.audience.items. Imported so the bundler serves them reliably (dev + prod). */
+const AUDIENCE_IMGS = [audienceStudents, audienceMakers, audienceAi, audienceCommercial]
+
+/** Benefit illustrations, in the order of copy.benefits.items (layered SDK / edge AI / cloud+security / prototype→production). */
+const BENEFIT_IMGS = [benefitArch, benefitAi, benefitCloud, benefitProduction]
 
 /** Terminal log `tag` → bottom step card id (see `realWorldValidation.steps` in homepageCopy). */
 const HIL_LOG_TAG_TO_STEP_NUM = {
@@ -32,10 +46,61 @@ function hilToneTagClass(tone) {
   )
 }
 
+function FireworkBurst({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+        <line x1="60" y1="42" x2="60" y2="15" />
+        <line x1="60" y1="78" x2="60" y2="105" />
+        <line x1="42" y1="60" x2="15" y2="60" />
+        <line x1="78" y1="60" x2="105" y2="60" />
+        <line x1="47" y1="47" x2="26" y2="26" />
+        <line x1="73" y1="47" x2="94" y2="26" />
+        <line x1="47" y1="73" x2="26" y2="94" />
+        <line x1="73" y1="73" x2="94" y2="94" />
+      </g>
+      <g fill="currentColor">
+        <circle cx="60" cy="10" r="2.6" />
+        <circle cx="60" cy="110" r="2.6" />
+        <circle cx="10" cy="60" r="2.6" />
+        <circle cx="110" cy="60" r="2.6" />
+        <circle cx="21" cy="21" r="2.6" />
+        <circle cx="99" cy="21" r="2.6" />
+        <circle cx="21" cy="99" r="2.6" />
+        <circle cx="99" cy="99" r="2.6" />
+      </g>
+    </svg>
+  )
+}
+
 function Home() {
   const { siteConfig, i18n } = useDocusaurusContext()
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
   const copy = homepageCopy[locale]
+  const [ideLaunchModalOpen, setIdeLaunchModalOpen] = useState(false)
+
+  const closeIdeLaunchModal = () => {
+    setIdeLaunchModalOpen(false)
+    try {
+      window.localStorage.setItem('tuyaopen-ide-launch-dismissed', '1')
+    } catch (e) {
+      /* localStorage unavailable */
+    }
+  }
+
+  // Show the IDE launch modal once per visitor (first visit only).
+  useEffect(() => {
+    let timer
+    try {
+      if (typeof window !== 'undefined' && !window.localStorage.getItem('tuyaopen-ide-launch-dismissed')) {
+        timer = window.setTimeout(() => setIdeLaunchModalOpen(true), 700)
+      }
+    } catch (e) {
+      /* localStorage unavailable */
+    }
+    return () => window.clearTimeout(timer)
+  }, [])
+
   const [cloudDiagramLightboxOpen, setCloudDiagramLightboxOpen] = useState(false)
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0)
   const tuyaAiSectionRef = useRef(null)
@@ -419,6 +484,60 @@ function Home() {
             </div>
           </section>
 
+          {/* IDE launch banner */}
+          <section className={styles.ideLaunch} aria-labelledby="ide-launch-heading">
+            <div className={styles.ideLaunchGlow} aria-hidden />
+            <div className={styles.ideLaunchInner}>
+              <div className={styles.ideLaunchCopy}>
+                <span className={styles.ideLaunchBadge}>
+                  <span className={styles.ideLaunchBadgeDot} aria-hidden />
+                  {copy.ideLaunch.badge}
+                </span>
+                <h2 id="ide-launch-heading" className={styles.ideLaunchTitle}>
+                  {copy.ideLaunch.title}
+                </h2>
+                <p className={styles.ideLaunchSubtitle}>{copy.ideLaunch.subtitle}</p>
+                <p className={styles.ideLaunchBody}>{copy.ideLaunch.body}</p>
+                <ul className={styles.ideLaunchList}>
+                  {copy.ideLaunch.highlights.map((h) => (
+                    <li key={h} className={styles.ideLaunchListItem}>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+                <div className={styles.ideLaunchButtons}>
+                  <Link to={copy.ideLaunch.primaryPath} className={styles.ideLaunchBtnPrimary}>
+                    {copy.ideLaunch.primaryCta} →
+                  </Link>
+                  <Link to={copy.ideLaunch.secondaryUrl} className={styles.ideLaunchBtnOutline}>
+                    {copy.ideLaunch.secondaryCta}
+                  </Link>
+                </div>
+              </div>
+              <Link
+                to={copy.ideLaunch.primaryPath}
+                className={styles.ideLaunchVisual}
+                aria-label={copy.ideLaunch.primaryCta}
+              >
+                <div className={styles.macDisplay}>
+                  <div className={styles.macDisplayScreen}>
+                    <div className={styles.macDisplayInner}>
+                      <img
+                        src={copy.ideLaunch.image}
+                        alt={copy.ideLaunch.imageAlt}
+                        className={styles.macDisplayImg}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.macDisplayNeck} aria-hidden />
+                  <div className={styles.macDisplayFoot} aria-hidden />
+                </div>
+              </Link>
+            </div>
+          </section>
+
           {/* Social proof strip */}
           <section className={styles.socialProof}>
             <div className={styles.socialProofGrid}>
@@ -441,7 +560,13 @@ function Home() {
             <div className={styles.featuresGrid}>
               {copy.benefits.items.map((item, i) => (
                 <div key={item.title} className={clsx(styles.featureCard, 'scroll-to-display')}>
-                  <div className={styles.featureIcon}>{i + 1}</div>
+                  {BENEFIT_IMGS[i] ? (
+                    <div className={styles.featureMedia}>
+                      <img src={BENEFIT_IMGS[i]} alt="" loading="lazy" />
+                    </div>
+                  ) : (
+                    <div className={styles.featureIcon}>{i + 1}</div>
+                  )}
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>
                 </div>
@@ -458,10 +583,17 @@ function Home() {
                 <p className={styles.sectionSubtitle}>{copy.audience.subtitle}</p>
               </div>
               <div className={styles.audienceGrid}>
-                {copy.audience.items.map((item) => (
+                {copy.audience.items.map((item, i) => (
                   <article key={item.title} className={clsx(styles.audienceCard, 'scroll-to-display')}>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
+                    {AUDIENCE_IMGS[i] && (
+                      <div className={styles.audienceMedia}>
+                        <img src={AUDIENCE_IMGS[i]} alt="" loading="lazy" />
+                      </div>
+                    )}
+                    <div className={styles.audienceText}>
+                      <h3>{item.title}</h3>
+                      <p>{item.body}</p>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -888,7 +1020,7 @@ function Home() {
                     </h2>
                     <p className={styles.experimentalArduinoBody}>{copy.t5.body}</p>
                     <Link
-                      to="/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board"
+                      to="/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board"
                       className={clsx(styles.btnSolidPrimary, 'tw-mt-4 tw-inline-flex')}
                     >
                       {copy.cta.learnMore} →
@@ -1330,6 +1462,67 @@ function Home() {
           </div>
         ) : null}
       </div>
+
+      {ideLaunchModalOpen ? (
+        <div
+          className={styles.ideModalOverlay}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="ide-launch-modal-title"
+        >
+          <div className={styles.ideModalCard}>
+            <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwA)} />
+            <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwB)} />
+            <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwC)} />
+
+            <button type="button" className={styles.ideModalClose} onClick={closeIdeLaunchModal} aria-label="Close">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              >
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </svg>
+            </button>
+
+            <div className={styles.ideModalContent}>
+              <span className={styles.ideModalBadge}>
+                <span className={styles.ideModalBadgeDot} aria-hidden />
+                {copy.ideLaunch.badge}
+              </span>
+              <h2 id="ide-launch-modal-title" className={styles.ideModalTitle}>
+                {copy.ideLaunch.title}
+              </h2>
+              <p className={styles.ideModalSubtitle}>{copy.ideLaunch.subtitle}</p>
+              <div className={styles.ideModalShot}>
+                <img src={copy.ideLaunch.image} alt={copy.ideLaunch.imageAlt} loading="lazy" decoding="async" />
+              </div>
+              <p className={styles.ideModalBody}>{copy.ideLaunch.body}</p>
+              <div className={styles.ideModalButtons}>
+                <Link
+                  to={copy.ideLaunch.primaryPath}
+                  className={styles.ideModalBtnPrimary}
+                  onClick={closeIdeLaunchModal}
+                >
+                  {copy.ideLaunch.primaryCta} →
+                </Link>
+                <Link
+                  to={copy.ideLaunch.secondaryUrl}
+                  className={styles.ideModalBtnOutline}
+                  onClick={closeIdeLaunchModal}
+                >
+                  {copy.ideLaunch.secondaryCta}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </Layout>
   )
 }

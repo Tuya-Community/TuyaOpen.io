@@ -2,9 +2,7 @@
 title: "Audio Codec Driver Guide"
 ---
 
-# Audio Codec Driver Guide
-
-Integrate an audio codec into TuyaOpen for voice interaction, audio playback, and AI applications.
+A codec driver in TuyaOpen connects an audio codec IC to the `tdl_audio_*` application interface, so an app can play and capture PCM without touching the I2S or I2C buses directly. This guide integrates a codec for voice interaction, audio playback, and AI applications.
 
 ## Prerequisites
 
@@ -120,4 +118,4 @@ To add support for a new codec (e.g., WM8960):
 
 - [TDD/TDL Driver Architecture](../driver-architecture)
 - [Audio Driver Reference](../audio)
-- [ESP32 Supported Features](../../hardware-specific/espressif/esp32-supported-features)
+- [ESP32 Supported Features](../../hardware/espressif/esp32-supported-features)

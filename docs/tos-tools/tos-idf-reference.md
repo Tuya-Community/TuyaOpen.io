@@ -12,10 +12,10 @@ title: tos.py idf Command Reference
 
 ## Behavior
 
-1. Reads the active `app_default.config` and verifies the platform is ESP32.
+1. Reads the resolved config (`.build/cache/using.config`) and verifies `CONFIG_PLATFORM_CHOICE` is `ESP32`.
 2. Resolves the ESP32 platform directory under `TuyaOpen/platform/ESP32/`.
-3. Builds a shell command: `idf.py` plus optional `--idf-flags` plus your subcommand and arguments.
-4. Runs the command with working directory `platform/ESP32/tuya_open_sdk/` (where the ESP-IDF project lives).
+3. Builds the command `idf.py`, plus any `--idf-flags`, plus your subcommand and arguments.
+4. Runs the command with working directory `platform/ESP32/tuya_open_sdk/`, where the ESP-IDF project lives.
 
 This is a **passthrough**: any valid `idf.py` subcommand and options that your installed ESP-IDF supports can be used.
 
@@ -46,6 +46,6 @@ tos.py idf flash
 
 ## See also
 
-- [ESP32 quick start](../hardware-specific/espressif/esp32-quick-start)
-- [ESP32 overview](../hardware-specific/espressif/overview-esp32)
+- [ESP32 quick start](../hardware/espressif/esp32-quick-start)
+- [ESP32 overview](../hardware/espressif/overview-esp32)
 - [tos.py guide](tos-guide)

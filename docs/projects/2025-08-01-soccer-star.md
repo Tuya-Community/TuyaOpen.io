@@ -5,8 +5,6 @@ date: 2025-08-01
 
 <BackToProjects />
 
-# Soccer Star
-
 ## Project Overview
 
 A spherical robot that looks exactly like a soccer ball. It can run independently and walk to the opposite goal. This project demonstrates TuyaOpen's ability to enable creative and entertaining AI applications, showcasing how the framework makes it possible for developers to build fun, innovative devices that combine robotics with AI intelligence.

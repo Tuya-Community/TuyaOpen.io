@@ -23,7 +23,7 @@ const DEMO_VIDEO_EMBED_URL_EN = 'https://www.youtube.com/embed/kC36AVT3CHI?si=mD
 
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
-/** DuckyClaw skills list: name, category, deployment, purpose (en/zh) */
+/** TuyaOpenClaw skills list: name, category, deployment, purpose (en/zh) */
 const SKILLS_LIST = [
   {
     nameEn: 'Long-term memory',
@@ -360,7 +360,7 @@ export default function DuckyClaw() {
 
   return (
     <Layout
-      title={t('DuckyClaw Project', 'DuckyClaw 项目', isZh)}
+      title={t('TuyaOpenClaw Project', 'TuyaOpenClaw 项目', isZh)}
       description={t(
         'AI Agent in the physical world. Deploy OpenClaw-style agents to MCUs, SoCs, and PCs with one codebase.',
         '端侧 AI Agent 框架：一套代码，横跨 MCU、SoC、PC 部署。',
@@ -369,12 +369,12 @@ export default function DuckyClaw() {
       wrapperClassName={clsx(styles.page, styles.duckyclawTheme)}
     >
       <Head>
-        <title>DuckyClaw — {siteConfig.title}</title>
+        <title>TuyaOpenClaw — {siteConfig.title}</title>
         <meta
           name="description"
           content={t(
-            'Hardware-oriented OpenClaw. One TuyaOpen key. Deploy to T5AI, ESP32, Raspberry Pi, Linux.',
-            '面向硬件的 OpenClaw。一个 TuyaOpen 密钥，部署到 T5AI、ESP32、树莓派、Linux。',
+            'TuyaOpenClaw (formerly DuckyClaw): hardware-oriented OpenClaw. One TuyaOpen key. Deploy to T5AI, ESP32, Raspberry Pi, Linux.',
+            'TuyaOpenClaw（原名 DuckyClaw）：面向硬件的 OpenClaw。一个 TuyaOpen 密钥，部署到 T5AI、ESP32、树莓派、Linux。',
             isZh,
           )}
         />
@@ -420,11 +420,12 @@ export default function DuckyClaw() {
 
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>{t('Open source · TuyaOpen', '开源 · TuyaOpen', isZh)}</span>
-          <h1 className={styles.heroTitle}>DuckyClaw 🐣🦞</h1>
+          <h1 className={styles.heroTitle}>TuyaOpenClaw</h1>
+          <p className={styles.heroFormerly}>{t('formerly DuckyClaw', '原名 DuckyClaw', isZh)}</p>
           <p className={styles.heroTagline}>
             {t(
-              'Your autonomous AI companion. Deploy agent brains to real hardware—MCUs, SoCs, PCs. One codebase.',
-              '你的自主 AI 伙伴。将 Agent 大脑部署到真实硬件：MCU、SoC、PC，一套代码。',
+              "Your autonomous AI companion — Ducky, TuyaOpen's mascot, brought to life on real hardware. Deploy agent brains to MCUs, SoCs, and PCs. One codebase.",
+              '你的自主 AI 伙伴——Ducky，涂鸦的吉祥物，化身在真实硬件上的智能体。将 Agent 大脑部署到 MCU、SoC、PC，一套代码。',
               isZh,
             )}
           </p>
@@ -447,7 +448,7 @@ export default function DuckyClaw() {
 
           {/* Banner image inside main page section */}
           <div className={styles.heroBannerWrap}>
-            <img src={BANNER_IMG} alt={t('DuckyClaw project banner', 'DuckyClaw 项目横幅', isZh)} />
+            <img src={BANNER_IMG} alt={t('TuyaOpenClaw project banner', 'TuyaOpenClaw 项目横幅', isZh)} />
           </div>
         </div>
       </section>
@@ -494,7 +495,7 @@ export default function DuckyClaw() {
       {/* Intro */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="intro">
         <div className={styles.sectionInner}>
-          <h2 className={styles.sectionTitle}>{t('What is DuckyClaw?', '什么是 DuckyClaw？', isZh)}</h2>
+          <h2 className={styles.sectionTitle}>{t('What is TuyaOpenClaw?', '什么是 TuyaOpenClaw？', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
               'A hardware-oriented AI Agent framework. Not just a dev board—a full deployment stack for the physical world.',
@@ -504,8 +505,8 @@ export default function DuckyClaw() {
           </p>
           <p className={styles.introLead}>
             {t(
-              'When your AI Agent needs to perceive, decide, and control real devices, DuckyClaw is the stack. Built on TuyaOpen C SDK—no Node.js on MCU. One codebase from ARM Cortex-M to x64.',
-              '当 AI Agent 需要感知、决策并控制真实设备时，DuckyClaw 就是这套技术栈。基于 TuyaOpen C SDK 构建，MCU 上无需 Node.js。从 ARM Cortex-M 到 x64，一套代码。',
+              'When your AI Agent needs to perceive, decide, and control real devices, TuyaOpenClaw is the stack. Built on TuyaOpen C SDK—no Node.js on MCU. One codebase from ARM Cortex-M to x64.',
+              '当 AI Agent 需要感知、决策并控制真实设备时，TuyaOpenClaw 就是这套技术栈。基于 TuyaOpen C SDK 构建，MCU 上无需 Node.js。从 ARM Cortex-M 到 x64，一套代码。',
               isZh,
             )}
           </p>
@@ -694,8 +695,8 @@ export default function DuckyClaw() {
           <div className={styles.quickstartCtaWrap}>
             <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.quickstartBtn}>
               {t(
-                'DuckyClaw quick start: T5-AI Board · ESP32-S3 · Raspberry Pi 5',
-                'DuckyClaw 快速开始：T5-AI Board · ESP32-S3 · Raspberry Pi 5',
+                'TuyaOpenClaw quick start: T5-AI Board · ESP32-S3 · Raspberry Pi 5',
+                'TuyaOpenClaw 快速开始：T5-AI Board · ESP32-S3 · Raspberry Pi 5',
                 isZh,
               )}
             </Link>
@@ -717,7 +718,7 @@ export default function DuckyClaw() {
                   {t('Purchase', '购买', isZh)}
                 </Link>
                 <Link
-                  to="/docs/hardware-specific/tuya-t5/t5-ai-board/overview-t5-ai-board"
+                  to="/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board"
                   className={styles.hardwareCardBtnSecondary}
                 >
                   {t('HW Docs', '硬件文档', isZh)}
@@ -743,7 +744,7 @@ export default function DuckyClaw() {
                   {t('Purchase', '购买', isZh)}
                 </Link>
                 <Link
-                  to="/docs/hardware-specific/tuya-t5/t5-ai-core/overview-t5-ai-core"
+                  to="/docs/hardware/tuya-t5/t5-ai-core/overview-t5-ai-core"
                   className={styles.hardwareCardBtnSecondary}
                 >
                   {t('HW Docs', '硬件文档', isZh)}
@@ -935,8 +936,8 @@ export default function DuckyClaw() {
           </p>
           <p className={styles.introLead}>
             {t(
-              'Developers can build custom hardware skills on top of DuckyClaw: add cameras for vision, sensors for environment data, displays, audio, and more. These skills plug into the same agentic framework—the agent can reason over sensor data, trigger actions on hardware, and combine device inputs with cloud AI. Deep integration means your hardware is a first-class part of the agent loop, not a side script.',
-              '开发者可在 DuckyClaw 上构建自定义硬件技能：接入摄像头做视觉、传感器做环境数据、显示屏、音频等。这些技能接入同一套 Agent 框架——Agent 可基于传感器数据推理、在硬件上触发动作，并将设备输入与云端 AI 结合。深度集成意味着你的硬件是 Agent 循环的一等公民，而非旁路脚本。',
+              'Developers can build custom hardware skills on top of TuyaOpenClaw: add cameras for vision, sensors for environment data, displays, audio, and more. These skills plug into the same agentic framework—the agent can reason over sensor data, trigger actions on hardware, and combine device inputs with cloud AI. Deep integration means your hardware is a first-class part of the agent loop, not a side script.',
+              '开发者可在 TuyaOpenClaw 上构建自定义硬件技能：接入摄像头做视觉、传感器做环境数据、显示屏、音频等。这些技能接入同一套 Agent 框架——Agent 可基于传感器数据推理、在硬件上触发动作，并将设备输入与云端 AI 结合。深度集成意味着你的硬件是 Agent 循环的一等公民，而非旁路脚本。',
               isZh,
             )}
           </p>
@@ -979,15 +980,15 @@ export default function DuckyClaw() {
         </a>
       </section>
 
-      {/* DuckyClaw Skills list */}
+      {/* TuyaOpenClaw Skills list */}
       <section className={`${styles.section} ${styles.sectionSkillsList}`} id="skills-list">
         <div className={styles.sectionInner}>
           <img
             src="https://images.tuyacn.com/fe-static/docs/img/d8c2dc8a-3b70-41a4-b0d0-be3d07e2bde0.png"
-            alt={t('DuckyClaw skills list illustration', 'DuckyClaw 技能清单示意图', isZh)}
+            alt={t('TuyaOpenClaw skills list illustration', 'TuyaOpenClaw 技能清单示意图', isZh)}
             className={styles.skillsListImage}
           />
-          <h2 className={styles.sectionTitle}>{t('DuckyClaw Skills list', 'DuckyClaw 技能清单', isZh)}</h2>
+          <h2 className={styles.sectionTitle}>{t('TuyaOpenClaw Skills list', 'TuyaOpenClaw 技能清单', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
               'Skills by category, capability scope, and core purpose.',
@@ -1144,7 +1145,7 @@ export default function DuckyClaw() {
             >
               <img
                 src={workflowImageSrc}
-                alt={t('DuckyClaw agent and workflow diagram', 'DuckyClaw Agent 与工作流示意', isZh)}
+                alt={t('TuyaOpenClaw agent and workflow diagram', 'TuyaOpenClaw Agent 与工作流示意', isZh)}
                 className={styles.agentWorkflowImage}
               />
             </div>
@@ -1170,7 +1171,7 @@ export default function DuckyClaw() {
                 </button>
                 <img
                   src={workflowImageSrc}
-                  alt={t('DuckyClaw agent and workflow diagram', 'DuckyClaw Agent 与工作流示意', isZh)}
+                  alt={t('TuyaOpenClaw agent and workflow diagram', 'TuyaOpenClaw Agent 与工作流示意', isZh)}
                   className={styles.archLightboxImage}
                   onClick={(e) => e.stopPropagation()}
                 />
@@ -1201,7 +1202,7 @@ export default function DuckyClaw() {
           >
             <img
               src={isZh ? ARCH_IMG_ZH : ARCH_IMG_EN}
-              alt={t('DuckyClaw architecture diagram', 'DuckyClaw 架构图', isZh)}
+              alt={t('TuyaOpenClaw architecture diagram', 'TuyaOpenClaw 架构图', isZh)}
               className={styles.archImage}
             />
           </div>
@@ -1227,7 +1228,7 @@ export default function DuckyClaw() {
               </button>
               <img
                 src={isZh ? ARCH_IMG_ZH : ARCH_IMG_EN}
-                alt={t('DuckyClaw architecture diagram', 'DuckyClaw 架构图', isZh)}
+                alt={t('TuyaOpenClaw architecture diagram', 'TuyaOpenClaw 架构图', isZh)}
                 className={styles.archLightboxImage}
                 onClick={(e) => e.stopPropagation()}
               />
@@ -1260,8 +1261,8 @@ export default function DuckyClaw() {
           <h2 className={styles.sectionTitle}>{t('Platform Overview', '平台总览', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
-              'Where DuckyClaw runs, its architecture layers, and quick comparison with similar solutions.',
-              'DuckyClaw 部署方式、架构层次及对比其他方案。',
+              'Where TuyaOpenClaw runs, its architecture layers, and quick comparison with similar solutions.',
+              'TuyaOpenClaw 部署方式、架构层次及对比其他方案。',
               isZh,
             )}
           </p>
@@ -1299,14 +1300,14 @@ export default function DuckyClaw() {
 
           {/* Comparison */}
           <h3 className={styles.specsSubtitle}>
-            {t('DuckyClaw vs others (at a glance)', 'DuckyClaw 与其它方案概览', isZh)}
+            {t('TuyaOpenClaw vs others (at a glance)', 'TuyaOpenClaw 与其它方案概览', isZh)}
           </h3>
           <div className={styles.specsTableWrap}>
             <table className={styles.specsTable}>
               <thead>
                 <tr>
                   <th>{t('Aspect', '方面', isZh)}</th>
-                  <th>DuckyClaw</th>
+                  <th>TuyaOpenClaw</th>
                   <th>{t('OpenClaw / MimiClaw / others', 'OpenClaw / MimiClaw / 其它', isZh)}</th>
                 </tr>
               </thead>
@@ -1469,7 +1470,7 @@ export default function DuckyClaw() {
             >
               <img
                 src="https://contrib.rocks/image?repo=tuya/DuckyClaw"
-                alt={t('DuckyClaw contributors', 'DuckyClaw 贡献者', isZh)}
+                alt={t('TuyaOpenClaw contributors', 'TuyaOpenClaw 贡献者', isZh)}
               />
             </a>
           </div>
@@ -1482,8 +1483,8 @@ export default function DuckyClaw() {
           <h2 className={styles.sectionTitle}>{t('See it in action', '效果展示', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
-              'Experience DuckyClaw in action — watch highlight videos, see live demos, and explore real-world deployments below.',
-              '体验 DuckyClaw — 观看高光视频、实机演示与实际应用案例。',
+              'Experience TuyaOpenClaw in action — watch highlight videos, see live demos, and explore real-world deployments below.',
+              '体验 TuyaOpenClaw — 观看高光视频、实机演示与实际应用案例。',
               isZh,
             )}
           </p>
@@ -1495,7 +1496,7 @@ export default function DuckyClaw() {
                     <div className={styles.demoVideoEmbedWrap}>
                       <iframe
                         src={DEMO_VIDEO_EMBED_URL_EN}
-                        title="DuckyClaw demo video"
+                        title="TuyaOpenClaw demo video"
                         className={styles.demoVideoEmbed}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1516,7 +1517,7 @@ export default function DuckyClaw() {
                   <div className={styles.demoVideoEmbedWrap}>
                     <iframe
                       src={DEMO_VIDEO_EMBED_URL.replace(/([&?])autoplay=1/, '$1autoplay=0')}
-                      title={t('DuckyClaw demo video', 'DuckyClaw 演示视频', isZh)}
+                      title={t('TuyaOpenClaw demo video', 'TuyaOpenClaw 演示视频', isZh)}
                       className={styles.demoVideoEmbed}
                       scrolling="no"
                       frameBorder="0"

@@ -1,6 +1,8 @@
-# Coding Style Guide
+---
+title: Coding Style Guide
+---
 
-This style guide aims to encourage TuyaOpen developers to adopt unified coding conventions, improving code readability and maintainability.
+This style guide encourages TuyaOpen developers to adopt unified coding conventions, improving code readability and maintainability.
 
 TuyaOpen's coding style is based on the [Linux kernel coding style](https://www.kernel.org/doc/html/latest/process/coding-style.html) with some modifications and simplifications.
 
@@ -286,4 +288,4 @@ Where `<file>` is the file to be formatted.
 
 The TuyaOpen directory `tools/hooks/pre-commit` file will be automatically copied to the `.git/hooks` directory during compilation.
 
-The pre-commit command will automatically call clang-format to format the files that have already been added with the `git add` command when committing code with the `git commit` command. 
+The pre-commit command will automatically call clang-format to format the files that have already been added with the `git add` command when committing code with the `git commit` command.

@@ -2,14 +2,14 @@
 title: "Step 2: Flashing and Logging"
 ---
 
-# Flashing and Logging
+Flashing writes the firmware bin you built onto the device; logging streams the device's serial output so you can watch it boot and run. Both run from `tos.py` in the application project directory.
 
 ## Flash firmware
 
-Connect the device to your PC. If using a virtual machine, map the serial port to the virtual machine.
+Connect the device to your PC. If you use a virtual machine, map the serial port to the virtual machine.
 
 :::tip
-For Linux and Mac users, run the command `sudo usermod -aG dialout $USER` to grant serial port permissions, and then reboot the system.
+For Linux users, run the command `sudo usermod -aG dialout $USER` to grant serial port permissions, and then reboot the system.
 :::
 
 Run the command `tos.py flash` to flash the firmware, and select the correct flashing port. If multiple ports exist, try them sequentially.
@@ -85,7 +85,12 @@ To exit log viewing, press `Ctrl + C` and press the Enter key.
 
 ### Flashing failed
 
-For more information, see [Install drivers](../tos-tools/tools-tyutool.md#always-fails-during-write-in-the-burning-process) in the GUI - tyutool Graphical Tool guide.
+If any of the following occur, it is usually caused by a missing serial port driver:
+
+- Flashing gets stuck or repeatedly fails at the `write` stage
+- Mac cannot detect the serial port
+
+For more information, see [Install drivers](../tos-tools/tools-tyutool.md#always-fails-during-write-in-the-burning-process).
 
 ### T5 series virtual machine mapping has delay
 

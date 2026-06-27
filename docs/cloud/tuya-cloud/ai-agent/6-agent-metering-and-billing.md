@@ -2,33 +2,29 @@
 title: Agent Metering and Billing
 ---
 
-# **Agent Metering and Billing**
+An AI agent bills for two things: the language model it runs and the smart voice it uses. This page lists each billing item, how it is calculated, and the current unit prices.
 
-# **Overview**
+## Billing items
 
-This topic describes the various billing items and related costs of the AI agent.
+The agent's billing items are **model fees** and **smart voice fees**.
 
-# **Billing items**
+## Billing cycle
 
-The agent’s billing items currently include **model fees** and **smart voice fees**.
+Each item is metered daily and settled by actual usage. Bills are usually generated one day after the billing cycle ends. The exact timing is set by the system.
 
-# **Billing cycle**
-
-Each billing item is charged daily, and the fees are settled based on actual usage. Bills are typically generated one day after the current billing cycle ends, with the exact timing determined by the system.
-
-# **Model fees**
+## Model fees
 
 ### Available model types
 
-For more information about how to differentiate model types, see [Available Models](https://platform.tuya.com/exp/model).
+To compare model types, see [Available Models](https://platform.tuya.com/exp/model).
 
 ### Billing formula
 
-Model services are charged based on the model’s token usage. The billing formula is as follows:
+Model services are charged by token usage:
 
-**Model fees = Token usage × Unit price of tokens**
+**Model fees = Token usage × Unit price per token**
 
-In a large language model, a token is the basic unit of text processing. The model usually breaks down the input text into a series of tokens and then processes and analyzes these tokens. Tokens can be words, characters, subword fragments, or other text segments. The specific segmentation is determined by the model’s tokenization algorithm. Therefore, token calculation and processing methods might vary depending on the model’s architecture and design.
+A token is the basic unit of text a language model processes. The model breaks input text into a series of tokens, then processes and analyzes them. A token can be a word, a character, a subword fragment, or another text segment. How text is split depends on the model's tokenization algorithm, so token counts and processing vary by model architecture and design.
 
 ### Unit price
 
@@ -57,16 +53,16 @@ In a large language model, a token is the basic unit of text processing. The mod
 | Nova | Nova Pro input | - |
 |  | Nova Pro output | - |
 
-# **Smart voice fees**
+## Smart voice fees
 
 ### Billing formula
 
-Smart voice service consists of voice input (ASR) and voice output (TTS). The billing formula is as follows:
+Smart voice covers voice input (ASR) and voice output (TTS):
 
-**Smart voice fee = ASR unit price × input audio duration + TTS unit price × output audio character count**
+**Smart voice fee = ASR unit price × input audio duration + TTS unit price × output character count**
 
-- **Automatic speech recognition (ASR)**: A technology that can recognize and understand natural human audio language input, converting audio into text by analyzing and processing speech signals.
-- **Text to speech (TTS)**: A technology that converts text into speech output, simulating human reading aloud to transform written information into audio.
+- **Automatic speech recognition (ASR)**: Recognizes human speech and converts audio into text by analyzing speech signals.
+- **Text to speech (TTS)**: Converts text into spoken audio, simulating human reading aloud.
 
 ### Unit price
 

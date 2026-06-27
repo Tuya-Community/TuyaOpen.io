@@ -1,91 +1,87 @@
-# tkl_watchdog | Watchdog 驱动
+---
+title: tkl_watchdog | Watchdog 驱动
+---
 
-# 简要说明
+## 概述
 
-看门狗是一个定时器电路，负责在程序跑飞或硬件停滞的情况下对处理器进行复位操作，使程序能从头执行。
+看门狗是一个倒计时定时器，当程序跑飞或硬件停滞时复位处理器，使程序从头开始执行。
 
-工作原理：看门狗是一个定时器电路，这个电路有一个输入和一个输出，输入就是喂狗操作（至于什么是喂狗，见下文），所谓喂狗，就是通过外部输入重装载看门狗计数器的值，输出接到另一个电路的复位端。当看门狗的计数器由初始值递减至0时，输出一个信号到另一个电路的复位端，程序执行复位操作。
+看门狗计数器从重装载值开始递减。程序正常运行时，会定期重装载计数器，这一操作称为喂狗（`tkl_watchdog_refresh`）。如果程序停止喂狗，计数器递减到 0，看门狗便触发复位。喂狗间隔应明显短于看门狗间隔，避免正常运行的程序触发误复位。
 
-使用方法：为监测程序是否跑飞，在程序中隔一段时间执行一次喂狗操作，即在一个完整的程序段中，间隔性的放入多个喂狗操作，如果程序在某个点出错开始跑飞，那下一次的喂狗操作就得不到执行，这样的话，当看门狗的计数器由初始值递减至0时，程序执行复位操作。要注意的是，要注意喂狗的时间间隔，不能太晚，太晚的话，超过了计数器的溢出时间，程序就执行复位操作了，就相当于错误的判断成程序跑飞了。
+本驱动提供三个函数：按指定间隔初始化看门狗、喂狗，以及反初始化看门狗。
 
-## API 描述
-
-### tkl_watchdog_init
+## tkl_watchdog_init
 
 ```c
 uint32_t tkl_watchdog_init(TUYA_WDOG_BASE_CFG_T *cfg);
 ```
 
-- 功能描述:
+根据配置初始化看门狗，并返回硬件实际应用的间隔。
 
-  - 根据配置初始化看门狗，返回初始化结果。
+参数：
 
-- 参数:
+- `cfg`：看门狗配置。
 
-  - cfg：看门狗的基本配置
+  ```c
+  typedef struct {
+      uint32_t interval_ms; // 看门狗间隔，单位毫秒
+  } TUYA_WDOG_BASE_CFG_T;
+  ```
 
-    ```c
-    typedef struct {
-        uint32_t interval_ms; //看门狗时间
-    } TUYA_WDOG_BASE_CFG_T;
-    ```
+返回值：
 
-- 返回值:
+- 返回 `0` 表示出错。大于 `0` 的值为硬件实际应用的看门狗间隔，可能与请求的 `interval_ms` 不同。
 
-  - OPRT_OK 成功，如果大于 0，则为实际的看门狗时间。
-
-### tkl_watchdog_deinit
+## tkl_watchdog_deinit
 
 ```c
 OPERATE_RET tkl_watchdog_deinit(void);
 ```
 
-- 功能描述:
-  - watchdog反初始化，停止watchdog
-- 参数:
-  - void
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+反初始化看门狗并停止看门狗。
 
-### tkl_watchdog_refresh
+参数：
+
+- 无。
+
+返回值：
+
+- 成功返回 `OPRT_OK`，其他值请参考 `tuya_error_code.h`。
+
+## tkl_watchdog_refresh
 
 ```c
 OPERATE_RET tkl_watchdog_refresh(void);
 ```
 
-- 功能描述:
+喂狗，重装载看门狗计数器。
 
-  - 喂看门狗
+参数：
 
-- 参数:
+- 无。
 
-  - void。
+返回值：
 
-- 返回值:
+- 成功返回 `OPRT_OK`，其他值请参考 `tuya_error_code.h`。
 
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
-
-# 示例
-
-## WATCHDOG 示例
+## 示例
 
 ```c
-/*初始化看门狗*/
+/* 初始化看门狗 */
 TUYA_WDOG_BASE_CFG_T cfg;
-uint32_t  actual_interval_ms = 0;
+uint32_t actual_interval_ms = 0;
 cfg.interval_ms = 100;
 actual_interval_ms = tkl_watchdog_init(&cfg);
 
-if (actual_interval_m) {
-	/*最终的实际的看门狗时间为 actual_interval_ms*/
+if (actual_interval_ms) {
+    /* 硬件实际应用的看门狗间隔为 actual_interval_ms */
 } else {
-  	/*最终的实际的看门狗时间为 cfg.interval_ms*/
+    /* 初始化失败 */
 }
 
-/*喂狗*/
+/* 喂狗 */
 tkl_watchdog_refresh();
 
-/*反初始化看门狗*/
+/* 反初始化看门狗 */
 tkl_watchdog_deinit();
-
 ```

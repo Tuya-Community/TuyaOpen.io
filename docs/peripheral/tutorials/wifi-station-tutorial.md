@@ -2,9 +2,7 @@
 title: "Wi-Fi Station Tutorial"
 ---
 
-# Wi-Fi Station Tutorial
-
-Connect your TuyaOpen device to a Wi-Fi network, handle disconnections, and monitor connection status.
+A Wi-Fi station connects to an access point so your device can reach the network. This tutorial shows how to connect a TuyaOpen device to a Wi-Fi network, scan for access points, read connection info, and reconnect after a drop, using the `tal_wifi.h` API.
 
 ## Prerequisites
 
@@ -16,40 +14,47 @@ Connect your TuyaOpen device to a Wi-Fi network, handle disconnections, and moni
 - TuyaOpen development board (any Wi-Fi-capable platform)
 - 2.4 GHz Wi-Fi access point with known SSID and password
 
-## Basic Connection
+## Basic connection
+
+Initialize the Wi-Fi subsystem with `tal_wifi_init`, then connect with `tal_wifi_station_connect`. The event callback receives a `WF_EVENT_E` event code; track the station state from there.
 
 ```c
 #include "tal_wifi.h"
 #include "tal_log.h"
 
-static void wifi_event_cb(void *arg)
+static void wifi_event_cb(WF_EVENT_E event, void *arg)
 {
-    TAL_PR_INFO("Wi-Fi event received");
+    TAL_PR_INFO("Wi-Fi event: %d", event);
 }
 
 void connect_wifi(void)
 {
-    tal_wifi_init(TUYA_WIFI_WORK_MODE_STATION, wifi_event_cb);
+    tal_wifi_init(wifi_event_cb);
 
-    NW_IP_S ip = {0};
-    OPERATE_RET rt = tal_wifi_station_connect("MySSID", "MyPassword", &ip);
+    OPERATE_RET rt = tal_wifi_station_connect((int8_t *)"MySSID", (int8_t *)"MyPassword");
     if (rt == OPRT_OK) {
-        TAL_PR_INFO("connected, IP: %s", ip.ip);
+        TAL_PR_INFO("connect request accepted");
     } else {
-        TAL_PR_ERR("connection failed: %d", rt);
+        TAL_PR_ERR("connect failed: %d", rt);
     }
 }
 ```
 
-## Scanning for Networks
+:::note
+`tal_wifi_station_connect` starts the connection; it does not block until an IP is assigned. Wait for the station state to reach `WSS_GOT_IP` (see below) before using the network.
+:::
+
+## Scanning for networks
+
+`tal_wifi_all_ap_scan` allocates an array of `AP_IF_S` entries. Free it with `tal_wifi_release_ap` when you are done.
 
 ```c
 AP_IF_S *ap_list = NULL;
-UINT32_T ap_count = 0;
+uint32_t ap_count = 0;
 
 tal_wifi_all_ap_scan(&ap_list, &ap_count);
 
-for (UINT32_T i = 0; i < ap_count; i++) {
+for (uint32_t i = 0; i < ap_count; i++) {
     TAL_PR_INFO("SSID: %s, RSSI: %d, Channel: %d",
                 ap_list[i].ssid, ap_list[i].rssi, ap_list[i].channel);
 }
@@ -57,14 +62,16 @@ for (UINT32_T i = 0; i < ap_count; i++) {
 tal_wifi_release_ap(ap_list);
 ```
 
-## Getting Connection Info
+## Getting connection info
+
+Read the IP configuration with `tal_wifi_get_ip`, the signal strength with `tal_wifi_station_get_conn_ap_rssi`, and the MAC with `tal_wifi_get_mac`.
 
 ```c
 NW_IP_S ip;
 tal_wifi_get_ip(WF_STATION, &ip);
 TAL_PR_INFO("IP: %s, mask: %s, gw: %s", ip.ip, ip.mask, ip.gw);
 
-SCHAR_T rssi;
+int8_t rssi;
 tal_wifi_station_get_conn_ap_rssi(&rssi);
 TAL_PR_INFO("signal: %d dBm", rssi);
 
@@ -72,21 +79,20 @@ NW_MAC_S mac;
 tal_wifi_get_mac(WF_STATION, &mac);
 ```
 
-## Reconnection Pattern
+## Reconnection pattern
 
-TuyaOpen's cloud service handles reconnection automatically for cloud-connected devices. For standalone Wi-Fi applications, implement a retry loop:
+TuyaOpen's cloud service handles reconnection automatically for cloud-connected devices. For standalone Wi-Fi applications, poll the station status and reconnect when it is not `WSS_GOT_IP`:
 
 ```c
 static void wifi_monitor_task(void *arg)
 {
     while (1) {
-        TUYA_WIFI_STATION_STAT_E stat;
+        WF_STATION_STAT_E stat;
         tal_wifi_station_get_status(&stat);
 
         if (stat != WSS_GOT_IP) {
             TAL_PR_WARN("Wi-Fi disconnected, reconnecting...");
-            NW_IP_S ip;
-            tal_wifi_station_connect("MySSID", "MyPassword", &ip);
+            tal_wifi_station_connect((int8_t *)"MySSID", (int8_t *)"MyPassword");
         }
 
         tal_system_sleep(10000);
@@ -94,14 +100,16 @@ static void wifi_monitor_task(void *arg)
 }
 ```
 
-## Platform-Specific Notes
+## Platform-specific notes
 
 - **ESP32:** Power save mode (`WIFI_PS_MIN_MODEM`) is enabled automatically after connection. This saves power but adds latency.
 - **ESP32:** ADC2 channels are unavailable while Wi-Fi is active (classic ESP32 only).
-- **All platforms:** `tal_wifi_station_disconnect()` to cleanly disconnect before switching modes.
+- **All platforms:** Call `tal_wifi_station_disconnect()` to cleanly disconnect before switching modes.
 
-## References
+## See also
 
+- [TAL Wi-Fi API reference](tal-wifi-api)
+- [TAL Network API reference](tal-network-api)
 - [TKL Wi-Fi API](/docs/tkl-api/tkl_wifi)
 - [Wi-Fi STA example](https://github.com/tuya/TuyaOpen/tree/master/examples/wifi/sta)
 - [Device Network Configuration](../../quick-start/device-network-configuration)
