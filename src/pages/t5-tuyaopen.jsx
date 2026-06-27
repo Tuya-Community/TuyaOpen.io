@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { T5_CHIPSET_DATASHEET_URL, T5_FEATURE_COLUMNS } from '../data/t5-tuyaopen-features-data'
+import t5ModuleImg from '../../static/img/t5/t5-module.png'
 import styles from './t5-tuyaopen.module.css'
 
 const PARTICLE_LAYOUT = [
@@ -574,7 +575,12 @@ export default function T5TuyaOpenLanding() {
               </div>
             </div>
             <div className={styles.heroVisual}>
-              <HeroChipVisual stack={c.chip.stack} moduleBadge={c.chip.moduleBadge} line2={c.chip.line2} />
+              <img
+                className={styles.heroModuleImg}
+                src={t5ModuleImg}
+                alt={locale === 'zh' ? 'Tuya T5-E1 模组' : 'Tuya T5-E1 module'}
+                loading="eager"
+              />
             </div>
           </div>
         </header>

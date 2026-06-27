@@ -267,6 +267,30 @@
   overflow: visible;
 }
 
+.heroModuleImg {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.55));
+  animation: heroModuleFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroModuleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroModuleImg {
+    animation: none;
+  }
+}
+
 /* Hero chip: shallow 3D for depth; strong angles hurt glyph readability */
 .heroChipShell {
   position: relative;
