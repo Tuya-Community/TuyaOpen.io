@@ -148,26 +148,6 @@ const config = {
           ],
         },
         {
-          label: 'Get Yours',
-          position: 'left',
-          items: [
-            {
-              label: 'Get License Key',
-              to: '/pricing',
-            },
-            {
-              label: 'Get Hardware',
-              to: '/get-hardware',
-            },
-            {
-              label: 'Get Code',
-              href: 'https://github.com/tuya/TuyaOpen',
-              target: '_blank',
-              rel: 'noopener noreferrer',
-            },
-          ],
-        },
-        {
           to: 'blog',
           label: 'Blog',
         },
@@ -208,10 +188,11 @@ const config = {
               label: 'TuyaOpenClaw 🦞',
               to: '/duckyclaw',
             },
-            {
-              label: 'Get Hardware',
-              to: '/get-hardware',
-            },
+            // Hidden per request — re-enable to show "Get Hardware" in the footer.
+            // {
+            //   label: 'Get Hardware',
+            //   to: '/get-hardware',
+            // },
           ],
         },
         {

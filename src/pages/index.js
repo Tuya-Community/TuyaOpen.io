@@ -5,11 +5,25 @@ import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
+import audienceAi from '../../static/img/home/audience/ai.png'
+import audienceCommercial from '../../static/img/home/audience/commercial.png'
+import audienceMakers from '../../static/img/home/audience/makers.png'
+import audienceStudents from '../../static/img/home/audience/students.png'
+import benefitAi from '../../static/img/home/benefits/ai.png'
+import benefitArch from '../../static/img/home/benefits/arch.png'
+import benefitCloud from '../../static/img/home/benefits/cloud.png'
+import benefitProduction from '../../static/img/home/benefits/production.png'
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
+
+/** Audience persona illustrations, in the order of copy.audience.items. Imported so the bundler serves them reliably (dev + prod). */
+const AUDIENCE_IMGS = [audienceStudents, audienceMakers, audienceAi, audienceCommercial]
+
+/** Benefit illustrations, in the order of copy.benefits.items (layered SDK / edge AI / cloud+security / prototype→production). */
+const BENEFIT_IMGS = [benefitArch, benefitAi, benefitCloud, benefitProduction]
 
 /** Terminal log `tag` → bottom step card id (see `realWorldValidation.steps` in homepageCopy). */
 const HIL_LOG_TAG_TO_STEP_NUM = {
@@ -546,7 +560,13 @@ function Home() {
             <div className={styles.featuresGrid}>
               {copy.benefits.items.map((item, i) => (
                 <div key={item.title} className={clsx(styles.featureCard, 'scroll-to-display')}>
-                  <div className={styles.featureIcon}>{i + 1}</div>
+                  {BENEFIT_IMGS[i] ? (
+                    <div className={styles.featureMedia}>
+                      <img src={BENEFIT_IMGS[i]} alt="" loading="lazy" />
+                    </div>
+                  ) : (
+                    <div className={styles.featureIcon}>{i + 1}</div>
+                  )}
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>
                 </div>
@@ -563,10 +583,17 @@ function Home() {
                 <p className={styles.sectionSubtitle}>{copy.audience.subtitle}</p>
               </div>
               <div className={styles.audienceGrid}>
-                {copy.audience.items.map((item) => (
+                {copy.audience.items.map((item, i) => (
                   <article key={item.title} className={clsx(styles.audienceCard, 'scroll-to-display')}>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
+                    {AUDIENCE_IMGS[i] && (
+                      <div className={styles.audienceMedia}>
+                        <img src={AUDIENCE_IMGS[i]} alt="" loading="lazy" />
+                      </div>
+                    )}
+                    <div className={styles.audienceText}>
+                      <h3>{item.title}</h3>
+                      <p>{item.body}</p>
+                    </div>
                   </article>
                 ))}
               </div>
