@@ -4,7 +4,7 @@ import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import React, { useEffect, useRef, useState } from 'react'
 
-import { T5_CHIPSET_DATASHEET_URL, T5_FEATURE_GROUPS_LEFT, T5_FEATURE_GROUPS_RIGHT } from './t5-tuyaopen-features-data'
+import { T5_CHIPSET_DATASHEET_URL, T5_FEATURE_GROUPS_LEFT, T5_FEATURE_GROUPS_RIGHT } from '../data/t5-tuyaopen-features-data'
 import styles from './t5-tuyaopen.module.css'
 
 const PARTICLE_LAYOUT = [
