@@ -17,60 +17,18 @@ The [display](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/displ
 
 ## Supported driver list
 
-
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-0pky">Driver interface</th>
-    <th class="tg-0pky">Chip</th>
-    <th class="tg-0pky">Pixel format</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">RGB</td>
-    <td class="tg-0pky">ILI9488</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" rowspan="5">SPI</td>
-    <td class="tg-0pky">GC9A01</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ILI9341</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7789</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7305</td>
-    <td class="tg-0pky">Monochrome</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7306</td>
-    <td class="tg-0pky">2-bit depth grayscale</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">QSPI</td>
-    <td class="tg-0pky">ST7735S</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" rowspan="2">MCU8080</td>
-    <td class="tg-0pky">ST7796</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ST7789</td>
-    <td class="tg-0pky">RGB565</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">I2C</td>
-    <td class="tg-0pky">SSD1306</td>
-    <td class="tg-0pky">Monochrome</td>
-  </tr>
-</tbody></table>
+| Driver interface | Chip | Pixel format |
+| --- | --- | --- |
+| RGB | ILI9488 | RGB565 |
+| SPI | GC9A01 | RGB565 |
+| SPI | ILI9341 | RGB565 |
+| SPI | ST7789 | RGB565 |
+| SPI | ST7305 | Monochrome |
+| SPI | ST7306 | 2-bit depth grayscale |
+| QSPI | ST7735S | RGB565 |
+| MCU8080 | ST7796 | RGB565 |
+| MCU8080 | ST7789 | RGB565 |
+| I2C | SSD1306 | Monochrome |
 
 
 ## Functional modules
@@ -85,9 +43,9 @@ The display component primarily consists of the abstract management module and t
    - Handles the instantiation of screen drivers. Dozens of driver chips have been integrated to date, with support continuously extending.
    - Provides the registration interface for mounting a screen onto the abstract management module.
 
-## Process
+## Workflow
 
-![](/img/peripheral/display/display_work_en.png)
+![Display driver workflow: find the device, create a frame buffer, open the device, write pixels, and flush to the screen](/img/peripheral/display/display_work_en.png)
 
 ## Kconfig configuration
 
@@ -137,11 +95,11 @@ The driver will be enabled automatically whenever this target board is selected.
 
 2. Select your target board, taking TUYA_T5AI_EVB for example.
 
-   ![](/img/peripheral/display/choos_board.png)
+   ![Kconfig menu with the target board selected](/img/peripheral/display/choos_board.png)
 
 3. Verify that the display driver's enable macro is activated.
 
-   ![](/img/peripheral/display/display_enable.png)
+   ![Kconfig menu showing the display enable macro turned on](/img/peripheral/display/display_enable.png)
 
 #### Scenario 2: Enabled as a dependency by another feature that requires the display driver
 
@@ -155,13 +113,13 @@ If you enable a feature that depends on the display driver, such as LVGL, the di
 
 2. Navigate to and enable the LVGL feature.
 
-   ![](/img/peripheral/display/choose_lvgl.png)
+   ![Kconfig menu with the LVGL feature selected](/img/peripheral/display/choose_lvgl.png)
 
    For building and running LVGL UIs (init, `lv_vendor_*`, examples), see the [LVGL Application Guide](tutorials/lvgl-application-guide).
 
 3. Verify that the display driver's enable macro is activated.
 
-   ![](/img/peripheral/display/display_enable.png)
+   ![Kconfig menu showing the display enable macro turned on](/img/peripheral/display/display_enable.png)
 
 #### Scenario 3: Manually enable the macro
 
@@ -173,7 +131,7 @@ If you enable a feature that depends on the display driver, such as LVGL, the di
 
 2. Manually locate and enable the macro.
 
-   ![](/img/peripheral/display/open_display.png)
+   ![Kconfig menu with the display enable macro highlighted](/img/peripheral/display/open_display.png)
 
 ### How to use
 

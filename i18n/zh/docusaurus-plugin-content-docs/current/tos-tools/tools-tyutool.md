@@ -7,13 +7,13 @@ import TabItem from '@theme/TabItem';
 
 ## 概述
 
-tyutool 是为 TuyaOpen 项目提供的一个烧录授权工具。tyutool 工具分为 GUI 和 CLI 两种版本，GUI 版本提供了图形化界面，CLI 版本提供了命令行界面。
+tyutool 是 TuyaOpen 的烧录与设备授权工具。它通过串口将固件写入设备，并写入设备授权信息（`UUID` 与 `AuthKey`）。tyutool 分为 GUI（图形界面）和 CLI（命令行）两个版本，本文介绍 GUI 版本。
 
 :::danger
 tyutool 的授权功能仅适用于 TuyaOpen 项目，不支持 TuyaOS 项目。TuyaOpen 项目的授权码仅适用于 TuyaOpen 项目，TuyaOS 项目的授权码仅适用于 TuyaOS 项目，两者不可混用。
 :::
 
-tyutool 工具支持 Windows、Linux 和 macOS 三大操作系统，开发者可以根据自己的操作系统选择对应的版本。
+tyutool 支持 Windows、Linux 和 macOS，请根据自己的操作系统选择对应版本。
 
 tyutool 目前分为 **V2** 和 **V3** 两个版本，主要差异如下：
 
@@ -62,10 +62,10 @@ tyutool_gui 打开后界面如下显示：
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/273ba9fc-5077-47bd-94d2-275747ca7232.png" alt="tyutool 烧录界面" width="800" />
 
- + ① 选择要烧录的芯片
- + ② 点击 `浏览` 选择要烧录的固件文件（包含 `_QIO` 字样的 bin 文件）
- + ③ 选择设备烧录端口（涂鸦官方开发板和部分生态伙伴开发板鼠标放到串口上可以给出烧录授权串口或者日志串口的提示）
- + ④ 点击 `开始烧录`
+- ① 选择要烧录的芯片。
+- ② 点击 `浏览` 选择要烧录的固件文件（包含 `_QIO` 字样的 bin 文件）。
+- ③ 选择设备烧录端口。涂鸦官方开发板和部分生态伙伴开发板，将鼠标悬停在串口上会提示该串口为烧录授权串口还是日志串口。
+- ④ 点击 `开始烧录`。
 
 :::tip
 烧录波特率默认使用 921600，如果您感觉烧录速度过慢，可以适当调高波特率，但是调高波特率可能会导致固件烧录失败。
@@ -73,17 +73,17 @@ tyutool_gui 打开后界面如下显示：
 
 ## 设备授权信息写入
 
-当需要使用到 Tuya IoT 平台的功能时，需要先对设备进行授权。可以通过 tyutool_gui 工具进行设备授权，接下来将为大家介绍具体操作步骤。
+使用 Tuya IoT 平台功能前，需要先对设备进行授权。可通过 tyutool_gui 工具写入授权信息，具体步骤如下。
 
-打开 tyutool_gui 工具后，点击 授权 选项卡，界面如下所示：
+打开 tyutool_gui 工具后，点击 `授权` 选项卡，界面如下所示：
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/aa0e7635-2952-4322-8696-3a866b01a6ec.png" alt="tyutool 授权界面" width="800" />
 
- + ① 点击 `授权` 选项卡
- + ② 选择授权串口
- + ③ 选择授权波特率
- + ④ 填入 `UUID` 和 `AuthKey`
- + ⑤ 点击 `开始授权`
+- ① 点击 `授权` 选项卡。
+- ② 选择授权串口。
+- ③ 选择授权波特率。
+- ④ 填入 `UUID` 和 `AuthKey`。
+- ⑤ 点击 `开始授权`。
 
 :::tip
 授权 UART 和烧录 UART 为同一个，UART 保持默认配置即可（波特率：115200，数据位：8，停止位：1，校验位：无）。
@@ -95,17 +95,16 @@ TuyaOpen `UUID` 和 `AuthKey` 可以在 [Tuya IoT 平台](https://platform.tuya.
 
 ## 常见问题
 
-### 烧录过程中总是在`write`时失败
+### 烧录过程中总是在 `write` 阶段失败
 
-对于 CH34x 系列可以尝试安装或更新驱动
+对于 CH34x 系列，可尝试安装或更新驱动：
 
-**Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
+- **Windows**：https://www.wch.cn/downloads/ch343ser_exe.html
+- **Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
 
-**Mac**：https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
+在 Mac 中安装驱动后，需要在**安全设置**中允许驱动加载。
 
-在`Mac`中安装驱动后，需要在**安全设置**中`允许驱动加载`
-
-若驱动安装成功，CH34x 被识别到的名称会以 `cu.wchusb` 开头，否则驱动未安装成功
+若驱动安装成功，CH34x 被识别到的名称会以 `cu.wchusb` 开头；否则说明驱动未安装成功。
 
 <Tabs>
   <TabItem value="13" label="MacOS 13" default>

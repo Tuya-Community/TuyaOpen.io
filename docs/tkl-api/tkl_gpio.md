@@ -1,206 +1,179 @@
-# tkl_gipo | GPIO Driver
+---
+title: "tkl_gpio | GPIO Driver"
+---
 
-## Brief Description
+The TKL GPIO interface configures a chip pin as a general-purpose input or output, reads or writes its logic level, and attaches an interrupt handler for edge or level events. Pins are addressed by the Tuya-assigned index `TUYA_GPIO_NUM_E` (starting at 0), which is independent of the chip's physical pin numbering.
 
-GPIO (General Purpose Input/Output Ports) are pins that can output high or low levels or read the state of the pin (high or low level).
+The available pin modes depend on the chip. The table below is the full set the API can express; a given platform may support only a subset.
 
-### GPIO Modes
+| Mode | Enumeration |
+| --- | --- |
+| Pull-up input | `TUYA_GPIO_PULLUP` |
+| Pull-down input | `TUYA_GPIO_PULLDOWN` |
+| High-impedance input | `TUYA_GPIO_HIGH_IMPEDANCE` |
+| Floating input | `TUYA_GPIO_FLOATING` |
+| Push-pull output | `TUYA_GPIO_PUSH_PULL` |
+| Open-drain output | `TUYA_GPIO_OPENDRAIN` |
+| Open-drain with pull-up output | `TUYA_GPIO_OPENDRAIN_PULLUP` |
 
-| Mode                           | Enumeration                |
-| ------------------------------ | -------------------------- |
-| Pull-up Input                  | TUYA_GPIO_PULLUP           |
-| Pull-down Input                | TUYA_GPIO_PULLDOWN         |
-| High-impedance Input           | TUYA_GPIO_HIGH_IMPEDANCE   |
-| Floating Input                 | TUYA_GPIO_FLOATING         |
-| Push-pull Output               | TUYA_GPIO_PUSH_PULL        |
-| Open-drain Output              | TUYA_GPIO_OPENDRAIN        |
-| Open-drain with Pull-up Output | TUYA_GPIO_OPENDRAIN_PULLUP |
-
-The above modes depend on whether the chip itself supports them. This is just the maximum set of modes.
-
-## API Description
-
-### tkl_gpio_init
+## tkl_gpio_init
 
 ```c
 OPERATE_RET tkl_gpio_init(TUYA_GPIO_NUM_E pin_id, const TUYA_GPIO_BASE_CFG_T *cfg);
 ```
 
-- Function Description:
-  - GPIO Initialization
-- Parameters:
+Configures one GPIO pin with the given mode, direction, and initial level.
 
-  - `pin_id`: GPIO pin number, this number is different from the original chip pin number, it is numbered sequentially by Tuya according to the number of pins on the chip's PA, PB ... PN:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index, starting at `TUYA_GPIO_NUM_0`. |
+| `cfg` | `const TUYA_GPIO_BASE_CFG_T *` | Pin configuration. |
 
-    | Name             | Definition | Remarks         |
-    | :--------------- | :--------- | :-------------- |
-    | TUYA_GPIO_NUM_0  | Pin 0      | Starting number |
-    | TUYA_GPIO_NUM_1  | Pin 1      |                 |
-    | TUYA_GPIO_NUM_3  | Pin 2      |                 |
-    | ...              | Pin n      |                 |
-    | TUYA_GPIO_NUM_60 | Pin 60     | Maximum number  |
-
-  - `cfg`: GPIO base configuration, values as follows:
-
-    ```c
-    typedef struct {
-        TUYA_GPIO_MODE_E  mode;    // GPIO mode
-        TUYA_GPIO_DRCT_E  direct;  // GPIO input/output direction
-        TUYA_GPIO_LEVEL_E level;   // GPIO initial level
-    } TUYA_GPIO_BASE_CFG_T;
-    ```
-
-    `mode` is defined as:
-
-    | Name                        | Definition             | Remarks |
-    | :------------------------- | :--------------------- | :------ |
-    | TUYA_GPIO_PULLUP          | Pull-up Input         |         |
-    | TUYA_GPIO_PULLDOWN        | Pull-down Input       |         |
-    | TUYA_GPIO_HIGH_IMPEDANCE  | High-impedance Input  |         |
-    | TUYA_GPIO_FLOATING        | Floating Input        |         |
-    | TUYA_GPIO_PUSH_PULL       | Push-pull Output      |         |
-    | TUYA_GPIO_OPENDRAIN       | Open-drain Output     |         |
-    | TUYA_GPIO_OPENDRAIN_PULLUP| Open-drain with Pull-up Output | |
-
-    `direct` is defined as:
-
-    | Name                | Definition     | Remarks |
-    | :----------------- | :------------- | :------ |
-    | TUYA_GPIO_INPUT   | Input Mode     |         |
-    | TUYA_GPIO_OUTPUT  | Output Mode    |         |
-
-    `level` is defined as:
-
-    | Name                 | Definition | Remarks |
-    | :------------------- | :--------- | :------ |
-    | TUYA_GPIO_LEVEL_LOW  | Low Level  |         |
-    | TUYA_GPIO_LEVEL_HIGH | High Level |         |
-
-- Return Value:
-
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
-
-### tkl_gpio_deinit
+The configuration structure is:
 
 ```c
-OPERATE_RET tkl_gpio_deinit(TUYA_GPIO_NUM_E pin_id)
+typedef struct {
+    TUYA_GPIO_MODE_E  mode;   // pin mode
+    TUYA_GPIO_DRCT_E  direct; // input/output direction
+    TUYA_GPIO_LEVEL_E level;  // initial level
+} TUYA_GPIO_BASE_CFG_T;
 ```
 
-- Function Description:
-  - Restore GPIO to initial state
-- Parameters:
-  - `pin_id`: GPIO pin number
-- Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
+`mode` accepts the values listed in the table above. `direct` selects the direction:
 
-### tkl_gpio_write
+| Value | Description |
+| --- | --- |
+| `TUYA_GPIO_INPUT` | Input mode |
+| `TUYA_GPIO_OUTPUT` | Output mode |
+
+`level` sets the initial output level:
+
+| Value | Description |
+| --- | --- |
+| `TUYA_GPIO_LEVEL_LOW` | Low level |
+| `TUYA_GPIO_LEVEL_HIGH` | High level |
+| `TUYA_GPIO_LEVEL_NONE` | No level (unset) |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
+
+## tkl_gpio_deinit
+
+```c
+OPERATE_RET tkl_gpio_deinit(TUYA_GPIO_NUM_E pin_id);
+```
+
+Restores a GPIO pin to its initial state and releases its resources.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
+
+## tkl_gpio_write
 
 ```c
 OPERATE_RET tkl_gpio_write(TUYA_GPIO_NUM_E pin_id, TUYA_GPIO_LEVEL_E level);
 ```
 
-- Function Description:
-  - GPIO output level
-- Parameters:
-  - `pin_id`: GPIO pin number
-  - `level`: GPIO output level
-- Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
+Drives an output pin to the given level.
 
-### tkl_gpio_read
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index. |
+| `level` | `TUYA_GPIO_LEVEL_E` | Output level to drive. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
+
+## tkl_gpio_read
 
 ```c
 OPERATE_RET tkl_gpio_read(TUYA_GPIO_NUM_E pin_id, TUYA_GPIO_LEVEL_E *level);
 ```
 
-- Function Description:
-  - GPIO read level
-- Parameters:
-  - `pin_id`: GPIO pin number
-  - `*level`: GPIO read level return value
-- Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
+Reads the current level of a pin.
 
-### tkl_gpio_irq_init
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index. |
+| `level` | `TUYA_GPIO_LEVEL_E *` | Output: the level read from the pin. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
+
+## tkl_gpio_irq_init
 
 ```c
 OPERATE_RET tkl_gpio_irq_init(TUYA_GPIO_NUM_E pin_id, const TUYA_GPIO_IRQ_T *cfg);
 ```
 
-- Function Description:
-  - GPIO interrupt initialization
-- Parameters:
+Registers an interrupt handler for a pin. This call does not enable the interrupt; call `tkl_gpio_irq_enable` afterward.
 
-  - `pin_id`: GPIO pin number
-  - `*cfg`: GPIO interrupt configuration
-  - `cfg`: GPIO base configuration, values as follows:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index. |
+| `cfg` | `const TUYA_GPIO_IRQ_T *` | Interrupt configuration. |
 
-    ```c
-    typedef struct {
-        TUYA_GPIO_IRQ_E      mode;  // Interrupt mode
-        TUYA_GPIO_IRQ_CB     cb;    // Interrupt callback function
-        void              *arg;   // Callback function argument
-    } TUYA_GPIO_IRQ_T;
-    ```
+The interrupt configuration structure is:
 
-    `mode` is defined as:
+```c
+typedef struct {
+    TUYA_GPIO_IRQ_E  mode; // trigger mode
+    TUYA_GPIO_IRQ_CB cb;   // callback function
+    void            *arg;  // argument passed to the callback
+} TUYA_GPIO_IRQ_T;
+```
 
-    | Name                    | Definition        | Remarks |
-    | :---------------------- | :---------------- | :------ |
-    | TUYA_GPIO_IRQ_RISE      | Rising Edge Mode  |         |
-    | TUYA_GPIO_IRQ_FALL      | Falling Edge Mode |         |
-    | TUYA_GPIO_IRQ_RISE_FALL | Both Edges Mode   |         |
-    | TUYA_GPIO_IRQ_LOW       | Low Level Mode    |         |
-    | TUYA_GPIO_IRQ_HIGH      | High Level Mode   |         |
+`mode` selects the trigger condition:
 
-    `cb` is defined as:
+| Value | Description |
+| --- | --- |
+| `TUYA_GPIO_IRQ_RISE` | Rising edge |
+| `TUYA_GPIO_IRQ_FALL` | Falling edge |
+| `TUYA_GPIO_IRQ_RISE_FALL` | Both edges |
+| `TUYA_GPIO_IRQ_LOW` | Low level |
+| `TUYA_GPIO_IRQ_HIGH` | High level |
 
-    ```c
-    typedef void (*TUYA_GPIO_IRQ_CB)(void *args);
-    ```
+`cb` is the callback invoked on the interrupt:
 
-- Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
+```c
+typedef void (*TUYA_GPIO_IRQ_CB)(void *args);
+```
 
-### tkl_gpio_irq_enable
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
+
+## tkl_gpio_irq_enable
 
 ```c
 OPERATE_RET tkl_gpio_irq_enable(TUYA_GPIO_NUM_E pin_id);
 ```
 
-- Function Description:
-  - Enable GPIO interrupt
-- Parameters:
-  - `pin_id`: GPIO pin number
-- Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
+Enables the interrupt registered with `tkl_gpio_irq_init`.
 
-### tkl_gpio_irq_disable
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
+
+## tkl_gpio_irq_disable
 
 ```c
 OPERATE_RET tkl_gpio_irq_disable(TUYA_GPIO_NUM_E pin_id);
 ```
 
-- Function Description:
-  - Disable GPIO interrupt
-- Parameters:
-  - `pin_id`: GPIO pin number
-- Return Value:
-  - OPRT_OK - Success
-  - Others, please refer to the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section in the file `tuya_error_code.h`
+Disables the interrupt for a pin.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `pin_id` | `TUYA_GPIO_NUM_E` | GPIO pin index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OPRT_OS_ADAPTER_GPIO_ERRCODE` section of `tuya_error_code.h`.
 
 ## Examples
 
-### Example 1
+Configure two pins as push-pull outputs and drive them high:
 
 ```c
-// GPIO Initialization
 void tuya_gpio_test(void)
 {
     TUYA_GPIO_BASE_CFG_T cfg = {
@@ -208,29 +181,27 @@ void tuya_gpio_test(void)
         .direct = TUYA_GPIO_OUTPUT,
         .level = TUYA_GPIO_LEVEL_LOW,
     };
-    tkl_gpio_init(GPIO_NUM_3, &cfg);
-    tkl_gpio_init(GPIO_NUM_4, &cfg);
+    tkl_gpio_init(TUYA_GPIO_NUM_3, &cfg);
+    tkl_gpio_init(TUYA_GPIO_NUM_4, &cfg);
 
-    // GPIO Output
-    tkl_gpio_write(GPIO_NUM_3, TUYA_GPIO_LEVEL_HIGH);
-    tkl_gpio_write(GPIO_NUM_4, TUYA_GPIO_LEVEL_HIGH);
+    tkl_gpio_write(TUYA_GPIO_NUM_3, TUYA_GPIO_LEVEL_HIGH);
+    tkl_gpio_write(TUYA_GPIO_NUM_4, TUYA_GPIO_LEVEL_HIGH);
 }
 ```
 
-### Example 2
+Register and enable a rising-edge interrupt on two pins:
 
 ```c
-// Interrupt Callback Function
 static void __gpio_irq_callback7(void *args)
 {
-    //to do
+    // handle interrupt on pin 7
 }
 
 static void __gpio_irq_callback8(void *args)
 {
-     //to do
+    // handle interrupt on pin 8
 }
-// GPIO Interrupt Initialization
+
 void tuya_gpio_irq_test(void)
 {
     TUYA_GPIO_IRQ_T irq_cfg_7 = {
@@ -243,9 +214,13 @@ void tuya_gpio_irq_test(void)
         .cb = __gpio_irq_callback8,
         .arg = NULL,
     };
-    tkl_gpio_irq_init(GPIO_NUM_7, &irq_cfg_7);
-    tkl_gpio_irq_init(GPIO_NUM_8, &irq_cfg_8);
-    tKl_gpio_irq_enable(GPIO_NUM_7);
-    tKl_gpio_irq_enable(GPIO_NUM_8);
+    tkl_gpio_irq_init(TUYA_GPIO_NUM_7, &irq_cfg_7);
+    tkl_gpio_irq_init(TUYA_GPIO_NUM_8, &irq_cfg_8);
+    tkl_gpio_irq_enable(TUYA_GPIO_NUM_7);
+    tkl_gpio_irq_enable(TUYA_GPIO_NUM_8);
 }
 ```
+
+## See also
+
+- [GPIO and Interrupt Tutorial](../peripheral/tutorials/gpio-interrupt-tutorial)

@@ -1,183 +1,36 @@
 ---
-title: Chatbot GUI
+title: Chatbot UI
 ---
 
-## Glossary
+`ai_ui_chat_chatbot` is a simple chatbot UI for the TuyaOpen AI framework. It shows one message at a time, centered on the screen — the current AI reply or status — rather than a scrolling history. It implements the [`ai_ui_manage`](ai-ui-manage) interface, so once registered it renders the chat messages, emotions, and status the framework dispatches.
 
-| Term | Description |
-| ---- | ------------------------------------------------------------ |
-| LVGL | Light and Versatile Graphics Library, a free and open source graphics library for creating embedded graphical user interfaces. |
+## When to choose it
 
-## Overview
+Choose the Chatbot UI when you want a clean, focused display that shows only the latest message — a kiosk, a toy, or any product where one centered line of text is clearer than a full chat thread. For a scrolling bubble conversation on a color LCD use the [WeChat-style UI](ai-ui-chat-wechat); for a small monochrome screen use the [OLED UI](ai-ui-chat-oled).
 
-`ai_ui_chat_chatbot` is a chatbot-style UI implementation in the TuyaOpen AI application framework, built on the LVGL graphics library. This module implements all UI interfaces defined by `ai_ui_manage` and provides simple chat UI features, including message display, emotion display, and status display.
+## Enable it
 
-- **Chatbot style interface**: Messages are displayed in the center. User messages use a green background, AI messages use white, and system messages use gray.
-- **Theme support**: Supports light themes and can be extended to dark themes
-- **Emotion display**: Supports displaying emotion icons in the center of the content area
-
-## Workflow
-
-### Initialization process
-
-When the module is initialized, the LVGL graphics library is initialized, interface elements are created, theme colors and fonts are set, and registered to the UI management module.
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Chatbot as ai_ui_chat_chatbot
-participant LVGL as LVGL graphics library
-    participant Manage as ai_ui_manage
-    
-    App->>Chatbot: ai_ui_chat_chatbot_register()
-Chatbot->>LVGL: Initialize LVGL
-Chatbot->>Chatbot: Initialize theme color
-Chatbot->>Chatbot: Create interface elements
-Chatbot->>Chatbot: Set font
-Chatbot->>Manage: Register UI interface
-Manage-->>App: Registration completed
-```
-
-### Message display process
-
-After user messages or AI messages are sent through the UI management module, the message content and background color are updated in the center of the chat interface.
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Manage as ai_ui_manage
-    participant Chatbot as ai_ui_chat_chatbot
-participant LVGL as LVGL interface
-    
-    App->>Manage: ai_ui_disp_msg(USER_MSG/AI_MSG)
-Manage->>Chatbot: Call the display callback
-Chatbot->>Chatbot: Set message text
-Chatbot->>Chatbot: Set background color
-Chatbot->>LVGL: Update interface display
-```
-
-### Streaming text display process
-
-After the AI ​​message flow is processed by the streaming text module, the text content in the chat interface is updated in real time.
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Manage as ai_ui_manage
-participant Stream as streaming text module
-    participant Chatbot as ai_ui_chat_chatbot
-    
-App->>Manage: STREAM_START message
-Manage->>Chatbot: Call stream_start callback
-Chatbot->>Chatbot: Clear message tags
-    
-loop streaming data
-App->>Manage: STREAM_DATA message
-Manage->>Stream: Write text data
-Stream->>Chatbot: Call stream_data callback
-Chatbot->>Chatbot: Append text content
-    end
-    
-App->>Manage: STREAM_END message
-Manage->>Chatbot: Call stream_end callback
-```
-
-## Configuration instructions
-
-### Configuration file path
-
-```
-ai_components/ai_ui/Kconfig
-```
-
-### Function enable
-
-```
-menuconfig ENABLE_COMP_AI_DISPLAY
-    bool "enable ai chat display ui"
-    default y
-
-config ENABLE_AI_CHAT_GUI_CHATBOT
-    select ENABLE_LIBLVGL
-    bool "Use Chatbot ui"
-# To enable chatbot style UI, you need to rely on the LVGL graphics library
-
-config ENABLE_CIRCLE_UI_STYLE
-    depends on ENABLE_AI_CHAT_GUI_CHATBOT
-    bool "Enable circle ui style"
-    default n
-# Enable circular UI style (leave blank on the left and right sides of the status bar)
-```
-
-### Dependent components
-
-- **LVGL graphics library** (`ENABLE_LIBLVGL`): required, used for graphical interface rendering
-
-## Development process
-
-### Interface description
-
-#### Register chatbot style UI
-
-Register the chatbot style UI implementation into the UI management module.
-
-```c
-/**
- * @brief Register chatbot-style chat UI implementation
- * @return OPERATE_RET Operation result code
- */
-OPERATE_RET ai_ui_chat_chatbot_register(void);
-```
-
-### Development steps
-
-1. **Make sure dependent components are initialized**: Make sure the LVGL graphics library and display device are initialized correctly
-2. **Registration UI implementation**: called when the application starts`ai_ui_chat_chatbot_register()`Register chatbot style UI
-3. **Initialize UI management module**: call`ai_ui_init()`Initialize the UI management module (the registered initialization callback will be automatically called)
-4. **Send display message**: Pass`ai_ui_disp_msg()`Send various types of display messages
-
-### Reference example
-
-#### Registration and initialization
+Register the style, then initialize the UI module. Registration runs first because `ai_ui_init()` invokes the style's `disp_init` callback:
 
 ```c
 #include "ai_ui_chat_chatbot.h"
 #include "ai_ui_manage.h"
 
-//Register chatbot style UI
-OPERATE_RET init_chatbot_ui(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-//Register chatbot style UI implementation
-    TUYA_CALL_ERR_RETURN(ai_ui_chat_chatbot_register());
-    
-// Initialize the UI management module (the registered initialization callback will be automatically called)
-    TUYA_CALL_ERR_RETURN(ai_ui_init());
-    
-    return rt;
-}
+// Register the Chatbot UI, then initialize the UI module.
+ai_ui_chat_chatbot_register();
+ai_ui_init();
 ```
 
-#### Show message
+`ai_ui_chat_chatbot_register()` returns `OPERATE_RET` (`OPRT_OK` on success). It is the only function this style exposes — after it runs, you drive the screen entirely through `ai_ui_manage`.
 
-```c
-//Display user messages
-void display_user_message(const char *msg)
-{
-    ai_ui_disp_msg(AI_UI_DISP_USER_MSG, (uint8_t *)msg, strlen(msg));
-}
+:::note
+Register exactly one UI style before calling `ai_ui_init()`. After initialization, send messages with `ai_ui_disp_msg()` — see [UI Management](ai-ui-manage).
+:::
 
-//Display AI message
-void display_ai_message(const char *msg)
-{
-    ai_ui_disp_msg(AI_UI_DISP_AI_MSG, (uint8_t *)msg, strlen(msg));
-}
+## See also
 
-//Display system messages
-void display_system_message(const char *msg)
-{
-    ai_ui_disp_msg(AI_UI_DISP_SYSTEM_MSG, (uint8_t *)msg, strlen(msg));
-}
-```
-
+- [UI Management](ai-ui-manage) — the dispatch layer this style registers with
+- [WeChat-style UI](ai-ui-chat-wechat) — bubble chat for color LCDs
+- [OLED UI](ai-ui-chat-oled) — for small monochrome screens
+- [AI Agent](ai-agent) — the cloud bridge that produces the messages
+- [Component Framework](ai-components.md) — how `ai_ui` fits the wider AI framework

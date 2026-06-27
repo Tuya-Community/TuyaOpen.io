@@ -1,8 +1,19 @@
-# tkl_bluetooth | Bluetooth Driver
+---
+title: tkl_bluetooth | Bluetooth Driver
+---
 
-# API Description
+`tkl_bluetooth` adapts a platform's BLE stack to TuyaOS. It exposes the BLE stack lifecycle, GAP operations (advertising, scanning, connection, address, power, RSSI), the GATT server (services, attribute values, notify and indicate, MTU), the GATT client (service and characteristic discovery, read and write, MTU), and vendor-specific control. The implementation lives in `tkl_bluetooth.c`, and the supporting types are declared in `tkl_bluetooth_def.h`.
 
-### tkl_ble_stack_init
+Unless noted otherwise, every function returns `OPRT_OK` on success and another value on error.
+
+The stack is configured per role:
+
+| Role | Value | Description |
+| --- | --- | --- |
+| `TKL_BLE_ROLE_SERVER` | 1 | BLE peripheral (server). |
+| `TKL_BLE_ROLE_CLIENT` | 2 | BLE central (client). |
+
+## tkl_ble_stack_init
 
 ```c
 OPERATE_RET tkl_ble_stack_init(uint8_t role);
@@ -28,7 +39,7 @@ OPERATE_RET tkl_ble_stack_init(uint8_t role);
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_stack_deinit
+## tkl_ble_stack_deinit
 
 ```c
 OPERATE_RET tkl_ble_stack_deinit(uint8_t role);
@@ -54,7 +65,28 @@ OPERATE_RET tkl_ble_stack_deinit(uint8_t role);
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_callback_register
+## tkl_ble_stack_gatt_link
+
+```c
+OPERATE_RET tkl_ble_stack_gatt_link(uint16_t *p_link);
+```
+
+- Function Description:
+
+  Query whether the stack supports a GATT link.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description       |
+  | ------------ | -------------- | ----------------- |
+  | [out]        | p_link         | The GATT link.    |
+
+- Return Value:
+
+  - OPRT_OK : GATT link supported.
+  - Others : Beacon or Mesh Beacon only; GATT link not supported.
+
+## tkl_ble_gap_callback_register
 
 ```c
 OPERATE_RET tkl_ble_gap_callback_register(const TKL_BLE_GAP_EVT_FUNC_CB gap_evt);
@@ -98,7 +130,7 @@ OPERATE_RET tkl_ble_gap_callback_register(const TKL_BLE_GAP_EVT_FUNC_CB gap_evt)
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatt_callback_register
+## tkl_ble_gatt_callback_register
 
 ```c
 OPERATE_RET tkl_ble_gatt_callback_register(const TKL_BLE_GATT_EVT_FUNC_CB gatt_evt);
@@ -148,7 +180,7 @@ OPERATE_RET tkl_ble_gatt_callback_register(const TKL_BLE_GATT_EVT_FUNC_CB gatt_e
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_addr_set
+## tkl_ble_gap_addr_set
 
 ```c
 OPERATE_RET tkl_ble_gap_addr_set(TKL_BLE_GAP_ADDR_T const *p_peer_addr);
@@ -173,7 +205,7 @@ OPERATE_RET tkl_ble_gap_addr_set(TKL_BLE_GAP_ADDR_T const *p_peer_addr);
 
   Generally, the module has a MAC address after production and does not need to be configured.
 
-### tkl_ble_gap_address_get
+## tkl_ble_gap_address_get
 
 ```c
 OPERATE_RET tkl_ble_gap_address_get(TKL_BLE_GAP_ADDR_T *p_peer_addr);
@@ -198,7 +230,7 @@ OPERATE_RET tkl_ble_gap_address_get(TKL_BLE_GAP_ADDR_T *p_peer_addr);
 
   Rarely used
 
-### tkl_ble_gap_adv_start
+## tkl_ble_gap_adv_start
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_start(TKL_BLE_GAP_ADV_PARAMS_T const *p_adv_params);
@@ -233,7 +265,7 @@ OPERATE_RET tkl_ble_gap_adv_start(TKL_BLE_GAP_ADV_PARAMS_T const *p_adv_params);
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_adv_stop
+## tkl_ble_gap_adv_stop
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_stop(void);
@@ -252,7 +284,7 @@ OPERATE_RET tkl_ble_gap_adv_stop(void);
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_adv_rsp_data_set
+## tkl_ble_gap_adv_rsp_data_set
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_rsp_data_set(TKL_BLE_DATA_T const *p_adv, TKL_BLE_DATA_T const *p_scan_rsp);
@@ -274,7 +306,7 @@ OPERATE_RET tkl_ble_gap_adv_rsp_data_set(TKL_BLE_DATA_T const *p_adv, TKL_BLE_DA
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_adv_rsp_data_update
+## tkl_ble_gap_adv_rsp_data_update
 
 ```c
 OPERATE_RET tkl_ble_gap_adv_rsp_data_update(TKL_BLE_DATA_T const *p_adv, TKL_BLE_DATA_T const *p_scan_rsp);
@@ -296,7 +328,7 @@ OPERATE_RET tkl_ble_gap_adv_rsp_data_update(TKL_BLE_DATA_T const *p_adv, TKL_BLE
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_scan_start
+## tkl_ble_gap_scan_start
 
 ```c
 OPERATE_RET tkl_ble_gap_scan_start(TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_params);
@@ -339,7 +371,7 @@ OPERATE_RET tkl_ble_gap_scan_start(TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_param
 
   tkl_ble_gap_scan_start is used when enabling the controller or supporting the central mode.
 
-### tkl_ble_gap_scan_stop
+## tkl_ble_gap_scan_stop
 
 ```c
 OPERATE_RET tkl_ble_gap_scan_stop(void);
@@ -358,7 +390,7 @@ OPERATE_RET tkl_ble_gap_scan_stop(void);
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gap_connect
+## tkl_ble_gap_connect
 
 ```c
 OPERATE_RET tkl_ble_gap_connect(TKL_BLE_GAP_ADDR_T const *p_peer_addr, TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_params, TKL_BLE_GAP_CONN_PARAMS_T const *p_conn_params);
@@ -385,7 +417,7 @@ OPERATE_RET tkl_ble_gap_connect(TKL_BLE_GAP_ADDR_T const *p_peer_addr, TKL_BLE_G
 
   Only needed when adapting as a central.
 
-### tkl_ble_gap_disconnect
+## tkl_ble_gap_disconnect
 
 ```c
 OPERATE_RET tkl_ble_gap_disconnect(uint16_t conn_handle, uint8_t hci_reason);
@@ -400,7 +432,7 @@ OPERATE_RET tkl_ble_gap_disconnect(uint16_t conn_handle, uint8_t hci_reason);
   | Input/Output | Parameter Name | Description                                                           |
   | ------------ | -------------- | --------------------------------------------------------------------- |
   | [in]         | conn_handle    | Connection handle                                                     |
-  | [in]         | p_conn_params  | Disconnect reason, use 0x13 for active disconnection in normal cases. |
+  | [in]         | hci_reason     | Disconnect reason; use 0x13 for an active disconnection in normal cases. |
 
 - Return Value:
 
@@ -411,7 +443,7 @@ OPERATE_RET tkl_ble_gap_disconnect(uint16_t conn_handle, uint8_t hci_reason);
 
   Used by both client and server.
 
-### tkl_ble_gap_conn_param_update
+## tkl_ble_gap_conn_param_update
 
 ```c
 OPERATE_RET tkl_ble_gap_conn_param_update(uint16_t conn_handle, TKL_BLE_GAP_CONN_PARAMS_T const *p_conn_params);
@@ -433,7 +465,71 @@ OPERATE_RET tkl_ble_gap_conn_param_update(uint16_t conn_handle, TKL_BLE_GAP_CONN
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatts_service_add
+## tkl_ble_gap_tx_power_set
+
+```c
+OPERATE_RET tkl_ble_gap_tx_power_set(uint8_t role, int tx_power);
+```
+
+- Function Description:
+
+  Set the radio transmit power.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description                                                                 |
+  | ------------ | -------------- | --------------------------------------------------------------------------- |
+  | [in]         | role           | 0: advertising Tx power; 1: scan Tx power; 2: connection Tx power.           |
+  | [in]         | tx_power       | Tx power, magnified 10 times (for example, -75 means -7.5 dB, 40 means 4 dB). |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gap_rssi_get
+
+```c
+OPERATE_RET tkl_ble_gap_rssi_get(uint16_t conn_handle);
+```
+
+- Function Description:
+
+  Get the received signal strength of the last connection event.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description       |
+  | ------------ | -------------- | ----------------- |
+  | [in]         | conn_handle    | Connection handle |
+
+- Return Value:
+
+  - OPRT_OK : RSSI read successfully.
+  - Others : No sample available.
+
+## tkl_ble_gap_name_set
+
+```c
+OPERATE_RET tkl_ble_gap_name_set(char *p_name);
+```
+
+- Function Description:
+
+  Set the GAP device name for Bluetooth.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description    |
+  | ------------ | -------------- | -------------- |
+  | [in]         | p_name         | GAP name string |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gatts_service_add
 
 ```c
 OPERATE_RET tkl_ble_gatts_service_add(TKL_BLE_GATTS_PARAMS_T *p_service);
@@ -479,7 +575,30 @@ OPERATE_RET tkl_ble_gatts_service_add(TKL_BLE_GATTS_PARAMS_T *p_service);
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatts_value_set
+## tkl_ble_gatts_service_change
+
+```c
+OPERATE_RET tkl_ble_gatts_service_change(uint16_t conn_handle, uint16_t start_handle, uint16_t end_handle);
+```
+
+- Function Description:
+
+  Indicate a change in attribute assignment to a subscribed peer. Optional.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description                              |
+  | ------------ | -------------- | ---------------------------------------- |
+  | [in]         | conn_handle    | Connection handle                        |
+  | [in]         | start_handle   | Start of the affected handle range       |
+  | [in]         | end_handle     | End of the affected handle range         |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gatts_value_set
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_set(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -503,7 +622,7 @@ OPERATE_RET tkl_ble_gatts_value_set(uint16_t conn_handle, uint16_t char_handle, 
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatts_value_get
+## tkl_ble_gatts_value_get
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_get(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -527,7 +646,7 @@ OPERATE_RET tkl_ble_gatts_value_get(uint16_t conn_handle, uint16_t char_handle, 
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatts_value_notify
+## tkl_ble_gatts_value_notify
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_notify(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -551,7 +670,7 @@ OPERATE_RET tkl_ble_gatts_value_notify(uint16_t conn_handle, uint16_t char_handl
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatts_value_indicate
+## tkl_ble_gatts_value_indicate
 
 ```c
 OPERATE_RET tkl_ble_gatts_value_indicate(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
@@ -575,7 +694,7 @@ OPERATE_RET tkl_ble_gatts_value_indicate(uint16_t conn_handle, uint16_t char_han
   - OPRT_OK : Success
   - Others : Failure
 
-### tkl_ble_gatts_exchange_mtu_reply
+## tkl_ble_gatts_exchange_mtu_reply
 
 ```c
 OPERATE_RET tkl_ble_gatts_exchange_mtu_reply(uint16_t conn_handle, uint16_t server_rx_mtu);
@@ -591,6 +710,210 @@ OPERATE_RET tkl_ble_gatts_exchange_mtu_reply(uint16_t conn_handle, uint16_t serv
   | ------------ | -------------- | ---------------------------- |
   | [in]         | conn_handle    | Connection handle            |
   | [in]         | server_rx_mtu  | Server-side receive MTU size |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_all_service_discovery
+
+```c
+OPERATE_RET tkl_ble_gattc_all_service_discovery(uint16_t conn_handle);
+```
+
+- Function Description:
+
+  As a central, discover all services on the peer.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description       |
+  | ------------ | -------------- | ----------------- |
+  | [in]         | conn_handle    | Connection handle |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_all_char_discovery
+
+```c
+OPERATE_RET tkl_ble_gattc_all_char_discovery(uint16_t conn_handle, uint16_t start_handle, uint16_t end_handle);
+```
+
+- Function Description:
+
+  As a central, discover all characteristics in the given handle range.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description           |
+  | ------------ | -------------- | --------------------- |
+  | [in]         | conn_handle    | Connection handle     |
+  | [in]         | start_handle   | Start handle          |
+  | [in]         | end_handle     | End handle            |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_char_desc_discovery
+
+```c
+OPERATE_RET tkl_ble_gattc_char_desc_discovery(uint16_t conn_handle, uint16_t start_handle, uint16_t end_handle);
+```
+
+- Function Description:
+
+  As a central, discover all descriptors of a characteristic in the given handle range.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description           |
+  | ------------ | -------------- | --------------------- |
+  | [in]         | conn_handle    | Connection handle     |
+  | [in]         | start_handle   | Start handle          |
+  | [in]         | end_handle     | End handle            |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_write_without_rsp
+
+```c
+OPERATE_RET tkl_ble_gattc_write_without_rsp(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
+```
+
+- Function Description:
+
+  As a central, write data to a characteristic without a response.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description           |
+  | ------------ | -------------- | --------------------- |
+  | [in]         | conn_handle    | Connection handle     |
+  | [in]         | char_handle    | Characteristic handle |
+  | [in]         | p_data         | Data to write         |
+  | [in]         | length         | Data length           |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_write
+
+```c
+OPERATE_RET tkl_ble_gattc_write(uint16_t conn_handle, uint16_t char_handle, uint8_t *p_data, uint16_t length);
+```
+
+- Function Description:
+
+  As a central, write data to a characteristic with a response.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description           |
+  | ------------ | -------------- | --------------------- |
+  | [in]         | conn_handle    | Connection handle     |
+  | [in]         | char_handle    | Characteristic handle |
+  | [in]         | p_data         | Data to write         |
+  | [in]         | length         | Data length           |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_read
+
+```c
+OPERATE_RET tkl_ble_gattc_read(uint16_t conn_handle, uint16_t char_handle);
+```
+
+- Function Description:
+
+  As a central, read the value of a characteristic.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description           |
+  | ------------ | -------------- | --------------------- |
+  | [in]         | conn_handle    | Connection handle     |
+  | [in]         | char_handle    | Characteristic handle |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_gattc_exchange_mtu_request
+
+```c
+OPERATE_RET tkl_ble_gattc_exchange_mtu_request(uint16_t conn_handle, uint16_t client_rx_mtu);
+```
+
+- Function Description:
+
+  Start an MTU exchange by sending an Exchange MTU Request to the server.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description           |
+  | ------------ | -------------- | --------------------- |
+  | [in]         | conn_handle    | Connection handle     |
+  | [in]         | client_rx_mtu  | Client-side receive MTU size |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_vendor_command_control
+
+```c
+OPERATE_RET tkl_ble_vendor_command_control(uint16_t opcode, void *user_data, uint16_t data_len);
+```
+
+- Function Description:
+
+  Run a vendor-specific command to exchange information over Bluetooth.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description              |
+  | ------------ | -------------- | ------------------------ |
+  | [in]         | opcode         | Operation opcode         |
+  | [in]         | user_data      | Command data             |
+  | [in]         | data_len       | Length of the command data |
+
+- Return Value:
+
+  - OPRT_OK : Success
+  - Others : Failure
+
+## tkl_ble_set_mode
+
+```c
+OPERATE_RET tkl_ble_set_mode(const BOOL_T enable, const uint8_t mode);
+```
+
+- Function Description:
+
+  Set the BLE mode, used in Wi-Fi/BLE coexistence.
+
+- Parameters:
+
+  | Input/Output | Parameter Name | Description                   |
+  | ------------ | -------------- | ----------------------------- |
+  | [in]         | enable         | `TRUE` to enable the mode     |
+  | [in]         | mode           | The BLE mode                  |
 
 - Return Value:
 

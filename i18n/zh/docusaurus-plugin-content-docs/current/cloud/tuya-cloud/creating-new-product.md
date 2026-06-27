@@ -1,174 +1,138 @@
 ---
-title: "创建新产品"
+title: 创建产品与智能体
 ---
 
-# Tuya 云
+创建产品是 [设备与云端绑定](device-cloud-binding) 的云端侧环节：你在涂鸦平台上定义设备型号——包括其功能、AI 智能体和一条固件条目——并获得设备激活时所需的 `PID`。本指南将带你走完从一个空产品到烧录并完成绑定的开发板的全过程。
 
-## 环境搭建及 SDK 下载
-
-首先，您需要搭建开发环境并下载 TuyaOpen SDK，详细教程请前往 [TuyaOpen 文档中心](https://tuyaopen.ai/zh/docs/about-tuyaopen) 查看。
-
-## 创建产品
-
-前往登录 [涂鸦开发者平台 > **产品开发**](https://platform.tuya.com/pmg/list) 页面，单击 **创建产品**，根据您的产品形态选择品类，并参考 [创建产品](https://developer.tuya.com/cn/docs/iot/create-product?id=K914jp1ijtsfe) 完成产品的创建。
-
-![创建产品.png](https://images.tuyacn.com/content-platform/hestia/175577153664954543874.png)
-
-进入产品开发流程后，请重点关注下文介绍的添加产品功能、AI 能力和新增固件相关配置。
-
-### 添加产品功能
-
-在 **01 功能定义** > **产品功能** 下，单击 **添加功能** 来为产品添加标准/自定义功能，或开启高级功能。
-
-了解产品功能，请参考 [产品功能](https://developer.tuya.com/cn/docs/iot/define-product-features?id=K97vug7wgxpoq)。
-
-![添加产品功能.png](https://images.tuyacn.com/content-platform/hestia/17557717576bbf113ed8f.png)
-
-### 添加 AI 能力
-
-在 **01 功能定义** > **产品 AI 功能** 下，单击 **新增智能体** 来为产品添加 AI 能力。
-
-进入智能体开发流程后，参考 [产品 AI 功能开发](https://developer.tuya.com/cn/docs/iot/AI-feature?id=Keapy1et1fc63) 完成智能体的开发。其中，重点关注以下配置：
-
-![添加智能体.png](https://images.tuyacn.com/content-platform/hestia/1757318291e68cc87672c.png)
-
-
-#### 添加工具集：
-1. 在 **01 模型能力配置** > **技能配置** 下选择 **工具集**，单击右侧添加（**+**）按钮进入 **添加工具** 页面。
-2. 在 **设备控制** > **设备自控 - 仅控制与 Agent 关联的设备** 下，选择添加 **控制智能体绑定的设备**。
-
-![添加工具.png](https://images.tuyacn.com/content-platform/hestia/1755773751f7b81957a77.png)
-
-![添加工具.png](https://images.tuyacn.com/content-platform/hestia/17557738127051a6780ef.png)
-
-#### 开发提示词
-
-在 **02 提示词开发** 下，参考 [Prompt 入门教程](https://www.tuyaos.com/viewtopic.php?t=3724) 完成提示词的开发。
-
-![开发提示词.png](https://images.tuyacn.com/content-platform/hestia/175577395562cc51ae786.png)
-
-### 新增自定义固件
-
-为了后续 OTA 升级和模组批量下单，需要新增自定义固件。
-
-进入产品开发流程后，在 **03 硬件开发** 下，选择 **云端接入开发方式** 为 **TuyaOS AI**，选择 **云端接入硬件** 为 T5 模组，然后单击 **新建自定义固件** 并完成相关配置。
-
-![新增固件.png](https://images.tuyacn.com/content-platform/hestia/1757318532460587f4648.png)
-
-
-## AI 控制指令配置
-
-:::info
-如您在产品开发过程中添加的产品功能均为标准功能（Data Point，DP；标准功能即 DP ID 小于 100 的功能点），则默认已配置自控指令，可以跳过本步骤；如您增加了自定义功能点，则需要完成本步骤修改指令方案。
+:::note
+本流程需要使用涂鸦云端，因此需要一个授权码（license key）。对涉及的各个环节还不熟悉？请先阅读 [设备与云端绑定原理](device-cloud-binding)。
 :::
 
-前往 [**AI 产品指令配置**](https://platform.tuya.com/exp/voice/ai) 页面，在 **自控指令** 下单击 **修改指令方案**，并参考 [设备自控指令](https://developer.tuya.com/cn/docs/iot/Self-control?id=Kep3yhifdrvah) 完成相关配置。 
+## 前提条件
 
-![AI 产品指令配置.png](https://images.tuyacn.com/content-platform/hestia/1757320122af584c90f10.png)
+- 一个已安装 TuyaOpen SDK 的开发环境——参见 [TuyaOpen 文档中心](https://tuyaopen.ai/docs/about-tuyaopen)。
+- 一个涂鸦开发者平台账号。
+- 一组用于开发板的授权码（`UUID` + `AuthKey`）——参见 [设备授权](../../quick-start/equipment-authorization)。
 
+## 1. 创建产品
 
-## 实现产品功能
+登录 **涂鸦开发者平台**，打开 [AI 产品 > 开发](https://platform.tuya.com/pmg/list) 页面。点击 **创建**，选择与你的产品匹配的品类，并按照 [创建产品](https://developer.tuya.com/en/docs/iot/create-product?id=K914jp1ijtsfe) 指南完成创建。这一步会生成固件将要使用的 `PID`。
 
-DP（Data Point）是涂鸦对产品功能定义的数据模型，用于描述产品的功能。为了实现对海量且多样的设备进行规模化和数字化管理，需要使用一种抽象语言来描述设备。关于 DP 模型的详细说明，请参考 [DP 模型与控制协议](https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr)。
+![创建产品](https://images.tuyacn.com/content-platform/hestia/1757320259ee8123626b5.png)
 
-以 TuyaOpen 中的 `your_chat_bot` Demo 为例，当 App 或者 AI 下发控制指令时，会进入 `user_event_handler_on` 接口。其中，Object 类型（Boolean、Value、Enum、Bitmap、String）进入 `TUYA_EVENT_DP_RECEIVE_OBJ` 分支，Raw 类型进入 `TUYA_EVENT_DP_RECEIVE_RAW` 分支。
+## 2. 添加产品功能（DP）
+
+在 **功能定义** 标签页的 **产品功能** 下，点击 **添加** 以添加标准功能和自定义功能，或启用高级功能。每个功能都会成为一个数据点（DP）——App 和智能体用来控制设备的最小单元。参见 [产品功能](https://developer.tuya.com/en/docs/iot/define-product-features?id=K97vug7wgxpoq)。
+
+![添加功能](https://images.tuyacn.com/content-platform/hestia/17573218285953b9bc340.png)
+
+## 3. 添加 AI 能力
+
+在 **功能定义** 标签页的 **产品 AI 能力** 下，点击 **添加智能体**。完整的智能体配置流程参见 [AI 能力开发](https://developer.tuya.com/en/docs/iot/AI-feature?id=Keapy1et1fc63)；这里重点介绍下面两个步骤。
+
+![添加智能体](https://images.tuyacn.com/content-platform/hestia/1757320405d1df1428baa.png)
+
+### 添加插件
+
+1. 在 **01 模型配置** > **技能配置** 中，选择 **插件** 并点击 **+**，打开 **添加工具** 页面。
+
+   ![添加工具](https://images.tuyacn.com/content-platform/hestia/1757320476afd9b9187e0.png)
+
+2. 在 **设备控制** 标签页中，点击 **设备控制 · 仅限已绑定**，找到 **控制设备本身**，并点击 **添加**。
+
+   ![设备控制](https://images.tuyacn.com/content-platform/hestia/1757320567346a0cffce4.png)
+
+### 编写提示词
+
+在 **02 提示词开发** 中，按照 [提示词指南](https://www.tuyaos.com/viewtopic.php?t=3725) 编写你的提示词。
+
+![编写提示词](https://images.tuyacn.com/content-platform/hestia/1757321381a528942f97c.png)
+
+## 4. 添加自定义固件
+
+为了支持 OTA 升级和模组批量下单，需要创建一条自定义固件。在 **硬件开发** 中，将 **云端接入方式** 设置为 **TuyaOS AI**，选择一款 T5 模组作为 **云端接入硬件**，点击 **添加自定义固件**，并完成相关配置。
+
+![添加固件](https://images.tuyacn.com/content-platform/hestia/17573208516655d5cc41f.png)
+
+## 5. 配置 AI 控制指令
+
+:::info
+添加到产品的功能即为数据点（DP）；标准功能是 DP ID 小于 100 的功能点。如果你添加的功能全部为标准功能，则自控指令默认已配置好，可以跳过本步骤。如果你添加了自定义功能，请完成本步骤以更新指令方案。
+:::
+
+打开 [AI 产品指令](https://platform.tuya.com/exp/voice/ai) 页面，找到 **自控指令**，点击 **修改指令方案**，并参照 [设备自控指令](https://developer.tuya.com/en/docs/iot/Self-control?id=Kep3yhifdrvah)。
+
+![AI 产品指令](https://images.tuyacn.com/content-platform/hestia/17573209519b80058e8dd.png)
+
+## 在设备端处理控制
+
+DP 是涂鸦用于描述单个设备功能的数据模型。当 App 或智能体下发指令时，固件的事件处理函数会被触发：对象 DP（布尔、数值、枚举、位图、字符串）以 `TUYA_EVENT_DP_RECEIVE_OBJ` 到达，裸数据 DP 则以 `TUYA_EVENT_DP_RECEIVE_RAW` 到达。以 `your_chat_bot` 示例为例：
 
 ```c
 void user_event_handler_on(tuya_iot_client_t *client, tuya_event_msg_t *event)
 {
-    PR_DEBUG("Tuya Event ID:%d(%s)", event->id, EVENT_ID2STR(event->id));
-    PR_INFO("Device Free heap %d", tal_system_get_free_heap_size());
-
     switch (event->id) {
-    /*
-    ******Omit the intermediate process here******
-    */
-        /* RECV OBJ DP */
+    /* Object DP (boolean / value / enum / bitmap / string) */
     case TUYA_EVENT_DP_RECEIVE_OBJ: {
         dp_obj_recv_t *dpobj = event->value.dpobj;
-        PR_DEBUG("SOC Rev DP Cmd t1:%d t2:%d CNT:%u", dpobj->cmd_tp, dpobj->dtt_tp, dpobj->dpscnt);
-        if (dpobj->devid != NULL) {
-            PR_DEBUG("devid.%s", dpobj->devid);
-        }
-
         audio_dp_obj_proc(dpobj);
-
         tuya_iot_dp_obj_report(client, dpobj->devid, dpobj->dps, dpobj->dpscnt, 0);
-
     } break;
 
-    /* RECV RAW DP */
+    /* Raw DP */
     case TUYA_EVENT_DP_RECEIVE_RAW: {
         dp_raw_recv_t *dpraw = event->value.dpraw;
-        PR_DEBUG("SOC Rev DP Cmd t1:%d t2:%d", dpraw->cmd_tp, dpraw->dtt_tp);
-        if (dpraw->devid != NULL) {
-            PR_DEBUG("devid.%s", dpraw->devid);
-        }
-
-        uint32_t index = 0;
-        dp_raw_t *dp = &dpraw->dp;
-        PR_DEBUG("dpid:%d type:RAW len:%d data:", dp->id, dp->len);
-        for (index = 0; index < dp->len; index++) {
-            PR_DEBUG_RAW("%02x", dp->data[index]);
-        }
-
         tuya_iot_dp_raw_report(client, dpraw->devid, &dpraw->dp, 3);
-
     } break;
 
     default:
         break;
     }
 }
-
 ```
 
+关于 DP 模型本身，参见 [DP 模型与控制协议](https://developer.tuya.com/en/docs/iot-device-dev/TuyaOS-iot_abi_dp_ctrl?id=Kcoglhn5r7ajr) 以及 [涂鸦 IoT 客户端 API](../iot-client/tuya-iot-client-reference)。
 
-## 授权开发板
+## 6. 授权开发板
 
-### 方式一：代码授权
+授权码将这块开发板与你的产品绑定。下面两种方法任选其一。
 
-修改头文件。详细流程，请参考 [设备授权](https://tuyaopen.ai/zh/docs/quick-start/equipment-authorization)。
+### 通过代码
 
-例如，打开 `your_chat_bot` 项目，找到 `tuya_config.h` 文件，路径为：`apps/tuya.ai/your_chat_bot/include/tuya_config.h`，并修改以下三个参数：
-- `TUYA_PRODUCT_ID`：产品创建时生成的 Product ID（PID）。
-- `TUYA_OPENSDK_UUID`：UUID 可免费获取，请联系涂鸦工作人员领取。
-- `TUYA_OPENSDK_AUTHKEY`：Authkey 可免费获取，请联系涂鸦工作人员领取。
+打开 `apps/tuya.ai/your_chat_bot/include/tuya_config.h`，设置三个字段（完整步骤参见 [设备授权](https://tuyaopen.ai/docs/quick-start/equipment-authorization)）：
 
-![获取 PID.png](https://images.tuyacn.com/content-platform/hestia/175577227898c13ebfae5.png)
+- `TUYA_PRODUCT_ID` —— 产品创建时获得的 `PID`。
+- `TUYA_OPENSDK_UUID` —— 你的设备 UUID（可向涂鸦技术支持免费领取）。
+- `TUYA_OPENSDK_AUTHKEY` —— 你的设备 AuthKey（可向涂鸦技术支持免费领取）。
 
-示例如下：
-
-```
-#ifndef TUYA_PRODUCT_ID
-#define TUYA_PRODUCT_ID "p320pepzvmm1ghse"//PID
-#endif
-
-#define TUYA_OPENSDK_UUID    "uuidxxxxxxxxxxxxxxxx"             // Please change to the correct UUID.
-#define TUYA_OPENSDK_AUTHKEY "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" // Please change to the correct authkey.
-
+```c
+#define TUYA_PRODUCT_ID      "p320pepzvmm1ghse"
+#define TUYA_OPENSDK_UUID    "uuidxxxxxxxxxxxxxxxx"
+#define TUYA_OPENSDK_AUTHKEY "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-### 方式二：工具授权
+![获取 PID](https://images.tuyacn.com/content-platform/hestia/17573217004faaa23cc52.png)
 
-在 **Tuya Uart Tool** 中，选择烧录串口和 **BaudRate**（波特率），单击 **Start** 打开串口，然后单击 **Authorize** 进行授权。
+### 通过工具
 
-<img alt="工具授权" src="https://images.tuyacn.com/content-platform/hestia/1757310278591d8030b54.png" width="600"  />
+在 **Tuya Uart Tool** 中，选择串口和波特率，点击 **Start** 打开串口，然后点击 **Authorize**。
 
-## 编译和烧录
+<img alt="Authorize with the tool" src="https://images.tuyacn.com/content-platform/hestia/1757310278591d8030b54.png" width="500" />
 
-在终端输入以下：
+## 7. 编译并烧录
 
+```bash
+tos.py build && tos.py flash
 ```
-tos.py build && tos.py flash 
-```
 
-![示例图.png](https://images.tuyacn.com/content-platform/hestia/17557741754d231019d50.png)
-
-如果使用 T5AI-Board 开发板，板本身配置有两路串口，一路用于烧录，另一路用于日志输出。如果烧录失败，可以切换端口号并重试。
+T5AI-Board 提供两个串口——一个用于烧录，一个用于日志。如果烧录失败，请切换到另一个串口重试。设备首次启动时会进行配网，并向你的产品发起激活，从而完成绑定。
 
 ## 常见问题
 
-### 烧录总是在 Write 时失败，如何解决？
+**烧录在 Write 阶段失败。** [安装驱动](https://tuyaopen.ai/docs/tos-tools/tools-tyutool) 后重试。
 
-请参考 [安装对应驱动](https://tuyaopen.ai/zh/docs/tos-tools/tools-tyutool#%E7%83%A7%E5%BD%95%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%80%BB%E6%98%AF%E5%9C%A8write%E6%97%B6%E5%A4%B1%E8%B4%A5) 尝试解决。
+## 参见
+
+- [设备与云端绑定原理](device-cloud-binding) —— 这些步骤背后的原理模型
+- [涂鸦 IoT 客户端 API](../iot-client/tuya-iot-client-reference) —— 设备侧的云端客户端
+- [switch_demo](../iot-client/demo-tuya-iot-light) —— 一个最小的已绑定设备示例

@@ -2,11 +2,9 @@
 title: "Adding a New ESP32 Board"
 ---
 
-# Adding a New ESP32 Board
-
 Create a TuyaOpen Board Support Package (BSP) for your custom ESP32 hardware. The process differs depending on whether your target chip is already supported by the ESP32 platform.
 
-## Target Chip Is Supported
+## Target chip is supported
 
 The ESP32 platform currently supports the following chips:
 
@@ -44,7 +42,7 @@ The tool automatically:
   ```
 - Inserts a new board entry into the `choice` block in `boards/ESP32/Kconfig`
 
-### Edit the Generated Kconfig
+### Edit the generated Kconfig
 
 The generated `Kconfig` looks like this:
 
@@ -85,7 +83,7 @@ config BOARD_LCD_DEFAULT_BRIGHTNESS
     depends on ENABLE_ESP_DISPLAY
 ```
 
-### Implement Board Hardware Code
+### Implement board hardware code
 
 After editing the Kconfig, implement the board hardware initialization in `board_com_api.c`.
 
@@ -182,11 +180,11 @@ After flashing, provision the device using the Tuya app (see [Device Pairing w/ 
 
 ---
 
-## Target Chip Is Not Yet Supported
+## Target chip is not yet supported
 
 If your target chip is not in the supported list, you do not need to create a new platform — the ESP32 platform itself is already integrated. You only need to add support for the new chip within the existing platform.
 
-### Add Chip Support
+### Add chip support
 
 **Register the chip name**
 
@@ -210,7 +208,7 @@ TKL driver files under `platform/ESP32/tuya_open_sdk/tuyaos_adapter/src/drivers/
 
 **Create a base board**
 
-Use `tos.py new board` to create a base board named after the chip model (e.g., for chip `esp32p4`, name the board `ESP32-P4`). Set `CHIP_CHOICE` in the generated `Kconfig` to the new chip name. This board serves as the minimal reference implementation for the chip and does not need to include any peripheral logic. For the creation steps, follow the [Target Chip Is Supported](#target-chip-is-supported) workflow above.
+Use `tos.py new board` to create a base board named after the chip model (e.g., for chip `esp32p4`, name the board `ESP32-P4`). Set `CHIP_CHOICE` in the generated `Kconfig` to the new chip name. This board serves as the minimal reference implementation for the chip and does not need to include any peripheral logic. For the creation steps, follow the [Target chip is supported](#target-chip-is-supported) workflow above.
 
 **Verify compilation**
 
@@ -225,11 +223,11 @@ tos.py build
 
 A successful build confirms the new chip is fully integrated into the ESP32 platform. You can then proceed to create your actual custom board.
 
-### Create the New Board
+### Create the new board
 
-Once chip support is in place, follow the complete [Target Chip Is Supported](#target-chip-is-supported) workflow to create and adapt your board. The boards you adapt here are typically complete hardware products equipped with peripherals such as an audio codec, display, or touch screen — not bare chips.
+Once chip support is in place, follow the complete [Target chip is supported](#target-chip-is-supported) workflow to create and adapt your board. The boards you adapt here are typically complete hardware products equipped with peripherals such as an audio codec, display, or touch screen — not bare chips.
 
-## References
+## See also
 
 - [ESP32 Quick Start](esp32-quick-start)
 - [Create Board](../../hardware/porting/new-board)

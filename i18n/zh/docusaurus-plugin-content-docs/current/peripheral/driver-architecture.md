@@ -2,9 +2,7 @@
 title: "TDD/TDL 驱动架构"
 ---
 
-# TDD/TDL 驱动架构
-
-TuyaOpen 使用两层外设驱动框架：**TDL**（Tuya Driver Layer）管理设备生命周期并提供应用 API，而 **TDD**（Tuya Device Driver）实现芯片特定的硬件访问。这种分离让你可以在不修改应用代码的情况下添加新硬件。
+TuyaOpen 使用两层外设驱动框架：**TDL**（Tuya Driver Layer）管理设备生命周期并提供应用 API，而 **TDD**（Tuya Device Driver）实现芯片特定的硬件访问。这种分层让你无需修改应用代码即可添加新硬件。
 
 ## 层次概览
 
@@ -133,7 +131,7 @@ config BOARD_CONFIG
 
 构建系统仅编译已启用的 TDD 驱动。
 
-## 参考资料
+## 相关文档
 
 - [编写新的传感器驱动](tutorials/writing-sensor-driver)
 - [将传感器库迁移到 TuyaOpen](tutorials/migrating-sensor-driver)

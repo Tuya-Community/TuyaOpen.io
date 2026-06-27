@@ -12,7 +12,7 @@ const config = {
     v4: true,
   },
 
-  clientModules: ['./src/clientModules/gtag-shim.js'],
+  clientModules: ['./src/clientModules/gtag-shim.js', './src/clientModules/toc-reading-progress.js'],
 
   title: 'TuyaOpen',
   tagline: 'A Powerful Open Source OS and Platform for IoTs Development',
@@ -144,7 +144,7 @@ const config = {
             { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
-            { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'DuckyClaw' },
+            { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'TuyaOpenClaw' },
           ],
         },
         {
@@ -205,7 +205,7 @@ const config = {
               href: 'https://github.com/tuya/arduino-TuyaOpen',
             },
             {
-              label: 'DuckyClaw 🦞',
+              label: 'TuyaOpenClaw 🦞',
               to: '/duckyclaw',
             },
             {

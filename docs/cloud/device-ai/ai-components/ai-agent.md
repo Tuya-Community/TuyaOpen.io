@@ -1,335 +1,137 @@
 ---
-title: Agent
+title: AI Agent
 ---
 
-## Glossary
+`ai_agent` is the bridge between your device and the Tuya AI cloud. It uploads voice, text, image, and file input, receives the AI's streamed reply, and reports progress to your application through events — so the rest of your firmware never talks to the cloud directly.
 
-| Term | Description |
-| ----- | ------------------------------------------------------------ |
-| Agent | An AI entity that can perceive, think, make decisions, and act independently.             |
-| ASR | Automatic Speech Recognition (Automatic Speech Recognition) is a technology that converts the user's voice input into text. |
-| NLG | Natural Language Generation (Natural Language Generation) is a technology that converts structured data or intentions into natural language text. |
-| Skill | Skill/ability module, an independent, pluggable, AI functional unit that specializes in doing something. |
+It sits between the **chat modes** (which decide *when* to listen) and the **cloud** (which decides *what* to say).
 
-## Overview
+## Terms
 
-`ai_agent` is a core component in the TuyaOpen AI application framework. It communicates with Tuya AI cloud services. As a middleware layer, it connects local applications to cloud AI services for intelligent dialogue, speech recognition, and natural language understanding.
+| Term | Meaning |
+|-------|---------|
+| Agent | An AI entity that perceives, reasons, decides, and acts on its own. |
+| ASR | Automatic Speech Recognition — converts the user's speech into text. |
+| NLG | Natural Language Generation — converts intent or structured data into natural-language text. |
+| Skill | A self-contained, pluggable AI capability that does one thing (play music, show an emotion, run a cloud event). |
 
-### Multimodal data input
+## What it does
 
-- **Audio input**: Supports a variety of audio codec formats
-- PCM: Uncompressed raw audio format, suitable for local processing
-- OPUS: efficient audio codec format, suitable for network transmission, supports low latency
-- SPEEX: Speech-optimized codec format, suitable for voice communications
+### Input: multimodal
 
-- **Text Input**: Supports sending text commands or queries directly to the cloud
+The agent accepts four kinds of input and uploads them to the cloud:
 
-- **Image input**: Supports uploading image data to the cloud for image recognition and analysis, suitable for visual question answering, image understanding and other scenarios
-- **File Input**: Supports uploading file data to the cloud, suitable for document processing, file analysis and other scenarios
+- **Audio** — `PCM` (uncompressed, for local processing), `OPUS` (compact and low-latency, for network transport), or `SPEEX` (speech-tuned).
+- **Text** — send a command or query as a string.
+- **Image** — upload a frame for visual Q&A or image understanding.
+- **File** — upload a document for analysis.
 
-### Output processing
+### Output: callbacks
 
-- **Text callback**: Processes text payloads such as ASR, NLG, and skill data.
+The cloud's reply comes back through callbacks:
 
-- **Media data callback**: Processes media streams such as audio, video, image, and file data.
+- **Text** — ASR results, the NLG text stream, and skill payloads.
+- **Media** — audio, video, image, and file streams.
+- **Media properties** — metadata such as the audio codec in use.
 
-- **Media property callback**: Provides metadata such as audio codec type.
+### Session events
 
-### AI session event management
+The agent tracks the full conversation lifecycle and reports each stage to your app through the user-event callback (`AI_USER_EVENT_NOTIFY`):
 
-The module manages the full AI dialogue lifecycle and notifies the application layer through the event callback mechanism:
+- **Start** — the cloud begins replying. Start the TTS player and prepare to receive audio.
+- **End** — the cloud finished sending. Stop the player and complete playback.
+- **Break** — the cloud interrupted the turn (user barge-in, cloud timeout). Stop playback and clear buffers immediately.
+- **Exit** — the conversation closed. Release all related resources.
+- **Server VAD** — cloud-side voice-activity status, forwarded to your app.
 
-- **Session Start Event**: Triggered when the cloud starts returning data, usually used to start the TTS player and prepare to receive audio stream data.
-- **Session end event**: Triggered when the cloud data transmission is completed, used to stop the TTS player and complete the playback process.
-- **Session Interruption Event**: Triggered when the cloud actively interrupts the conversation, and the current playback needs to be stopped immediately and resources cleared. Common scenarios include user interruption, cloud timeout, etc.
-- **Session Exit Event**: Triggered when the conversation exits completely, used to clean up all related resources.
-- **Server VAD event**: Cloud voice activity detection event, used to notify the application layer of the detected voice activity status in the cloud.
+### Cloud prompt tones
 
-### Cloud prompt tone management
+`ai_agent_cloud_alert(type)` asks the cloud for a short spoken prompt. It maps the alert type to a token (`cmd:0`–`cmd:5`) and sends that token as text; the cloud returns the matching audio.
 
-- **Request cloud prompt sound**: Generates the corresponding prompt token (`cmd:0` to `cmd:5`) based on the prompt type. The AI then returns the corresponding prompt audio. ***This requires agent configuration on the platform and explicit Prompt responses for `cmd:0` to `cmd:5`.***
+:::note
+The tokens only work if you configure them on the AI agent platform. In the agent's prompt, define what the AI should return for `cmd:0` through `cmd:5`. Without that configuration, no tone plays.
+:::
 
-- **Play cloud prompts**: After receiving the audio data returned by the cloud, call the player interface to play.
+Only the six alert types below are mapped today. Any other `AI_ALERT_TYPE_E` value returns `OPRT_NOT_SUPPORTED`:
 
-- **Beep tone mapping table**:
+| Alert type | Token | Meaning |
+|------------|-------|---------|
+| `AT_NETWORK_CONNECTED` | `cmd:0` | Network connected |
+| `AT_WAKEUP` | `cmd:1` | Wake-up response |
+| `AT_LONG_KEY_TALK` | `cmd:2` | Press and hold to talk |
+| `AT_KEY_TALK` | `cmd:3` | Press key to talk |
+| `AT_WAKEUP_TALK` | `cmd:4` | Talk after wake |
+| `AT_RANDOM_TALK` | `cmd:5` | Random chat |
 
-| Alarm type | Prompt word | Description |
-  | -------------------- | ------ | ------------ |
-| AT_NETWORK_CONNECTED | cmd:0 | Network connection successful |
-| AT_WAKEUP | cmd:1 | Wake up response |
-| AT_LONG_KEY_TALK | cmd:2 | Long press key to talk |
-| AT_KEY_TALK | cmd:3 | Key to talk |
-| AT_WAKEUP_TALK | cmd:4 | Wake Up Talk |
-| AT_RANDOM_TALK | cmd:5 | Random conversation |
+### Role switching
 
-### Agent role switching
+`ai_agent_role_switch(role)` changes the active agent role at runtime. Different roles can carry different conversation styles, knowledge bases, and skill sets — useful for multi-scenario products.
 
-The module supports dynamic switching of AI Agent roles. Different roles can have different conversation styles, knowledge bases and skill sets, suitable for multi-scenario applications.
+## API reference
 
-## Workflow
-
-### Initialization
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Agent as ai_agent
-participant Cloud as cloud service
-    
-    App->>Agent: ai_agent_init()
-Agent->>Agent: Configure audio parameters and callback functions
-Agent->>Cloud: Establish connection
-Cloud-->>Agent: Connection successful
-Agent-->>App: Initialization completed
-```
-
-### Input processing
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Agent as ai_agent
-participant Cloud as Tuya AI Cloud
-    
-alt text input
-        App->>Agent: ai_agent_send_text()
-else file input
-        App->>Agent: ai_agent_send_file()
-else image input
-        App->>Agent: ai_agent_send_image()
-else role switch
-        App->>Agent: ai_agent_role_switch()
-    end
-    
-Agent->>Cloud: Send data
-Cloud-->>Agent: Receive confirmation
-Agent-->>App: Send completed
-```
-
-### Output processing
-
-```mermaid
-sequenceDiagram
-participant Cloud as Tuya AI Cloud
-    participant Agent as ai_agent
-participant App as application layer
-    
-alt ASR text output
-Cloud->>Agent: Returns ASR recognition results
-Agent->>App: text callback
-else NLG text stream output
-Cloud->>Agent: Return NLG text stream
-Agent->>App: text stream callback
-else skill output
-Cloud->>Agent: Return skill data
-Agent->>App: Skill processing
-else audio stream output
-Cloud->>Agent: Return audio stream
-Agent->>App: Audio playback
-    end
-```
-
-### Session event management
-
-```mermaid
-sequenceDiagram
-participant Cloud as Tuya AI Cloud
-    participant Agent as ai_agent
-participant App as application layer
-    
-alt conversation interruption event
-Cloud->>Agent: Interruption event
-Agent->>App: Stop playing and notify
-else server VAD event
-Cloud->>Agent: VAD event
-Agent->>App: Notify VAD status
-else dialog exit event
-Cloud->>Agent: exit event
-Agent->>App: Clean up resources
-    end
-```
-
-### Cloud notification sound
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Agent as ai_agent
-participant Cloud as Tuya AI Cloud
-    
-    App->>Agent: ai_agent_cloud_alert(type)
-Agent->>Agent: Generate prompt words (cmd:0-5)
-Agent->>Cloud: Request tone
-    
-Cloud->>Agent: Return prompt tone data
-Agent->>App: Play prompt sound
-```
-
-### Callback function diagram
-
-```mermaid
-graph LR
-Cloud[Cloud Service] --> TextCB[Text Callback]
-Cloud --> MediaCB[Media callback]
-Cloud --> EventCB[event handler callback]
-Cloud --> AlertCB[Beep callback]
-    
-TextCB --> TextProcess[text processing]
-    TextProcess --> ASR[ASR]
-    TextProcess --> NLG[NLG]
-TextProcess --> Skill[skill]
-    
-MediaCB --> AudioPlay[audio play]
-    
-EventCB --> UserEvent[user event]
-    AlertCB --> UserEvent
-    
-    ASR --> UserEvent
-    NLG --> UserEvent
-    Skill --> UserEvent
-    
-UserEvent --> App[application layer]
-    
-    style Cloud fill:#FFD700
-    style UserEvent fill:#87CEEB
-    style App fill:#FFB6C1
-```
-
-## Development process
-
-### Interface description
-
-#### Initialization
-
-Initialize the AI Agent module. If `ENABLE_AI_MONITOR` is enabled, the monitoring module is also initialized for debugging with tyutool.
-
-**This initialization must be called after the MQTT connection is successful**
+Header: `ai_agent.h`. Every function returns `OPERATE_RET` (`OPRT_OK` on success).
 
 ```c
-/**
-@brief Initialize the AI agent module
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_init(void);
-```
-
-#### Deinitialization
-
-Release the resources occupied by the AI ​​Agent module
-
-```c
-/**
-@brief Deinitialize the AI agent module
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_deinit(void);
-```
-
-#### Enter text
-
-Send text data to AI
-
-```c
-/**
-@brief Send text input to AI agent
-@param content Text content to send
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_send_text(char *content);
-```
-
-#### Input file
-
-Send file data to AI
-
-```c
-/**
-@brief Send file data to AI agent
-@param data Pointer to file data
-@param len File data length
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_send_file(uint8_t *data, uint32_t len);
-```
-
-#### Enter image
-
-Send image data to AI
-
-```c
-/**
-@brief Send image data to AI agent
-@param data Pointer to image data
-@param len Image data length
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_send_image(uint8_t *data, uint32_t len);
-```
-
-#### Play cloud prompt sound
-
-Generate prompt tokens based on prompt sound type, then use those tokens to request AI-generated prompt audio for playback.
-
-```c
-/**
-@brief Request cloud alert from AI agent
-@param type Alert type
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_cloud_alert(AI_ALERT_TYPE_E type);
-```
-
-#### Switch agent roles
-
-```c
-/**
-@brief Switch AI agent role
-@param role Role name to switch to
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_agent_role_switch(char *role);
 ```
 
-### Development steps
+| Function | Parameters | Purpose |
+|----------|------------|---------|
+| `ai_agent_init` | — | Initialize the agent. Also starts the monitor module when `ENABLE_AI_MONITOR` is set (for `tyutool` debugging). |
+| `ai_agent_deinit` | — | Release the agent's resources. |
+| `ai_agent_send_text` | `content` — text to send | Send a text query. |
+| `ai_agent_send_file` | `data`, `len` — buffer and length | Upload a file. |
+| `ai_agent_send_image` | `data`, `len` — buffer and length | Upload an image. |
+| `ai_agent_cloud_alert` | `type` — an `AI_ALERT_TYPE_E` | Request a cloud prompt tone (see the table above). |
+| `ai_agent_role_switch` | `role` — role name | Switch the active agent role. |
+
+:::warning
+Call `ai_agent_init()` **only after the MQTT connection succeeds.** Subscribe to `EVENT_MQTT_CONNECTED` and initialize the agent from that handler.
+:::
+
+## How a turn flows
 
 ```mermaid
 sequenceDiagram
-participant App as application layer
+    participant App as Application
     participant Agent as ai_agent
-participant Cloud as cloud service
-
-App->>App: MQTT connection successful
+    participant Cloud as Tuya AI Cloud
+    App->>App: MQTT connected
     App->>Agent: ai_agent_init()
-Agent->>Cloud: Establish connection
-    
-Note over App,Agent: Runtime
-    
-App->>Agent: Send data
-Agent->>Cloud: Upload data
-Cloud->>Agent: Return results
-Agent->>App: callback notification
+    Agent->>Cloud: establish session
+    App->>Agent: send_text / send_image / send_file
+    Agent->>Cloud: upload input
+    Cloud-->>Agent: ASR + NLG stream + skills + audio
+    Agent-->>App: text / media / event callbacks
 ```
 
-### Reference code
+## Worked example
+
+Initialize audio, then initialize the agent from the MQTT-connected event:
 
 ```c
-// MQTT connection event callback
+// Initialize the AI agent once MQTT is connected.
+static bool sg_ai_agent_inited = false;
+
 int __ai_mqtt_connected_evt(void *data)
 {
     if (!sg_ai_agent_inited) {
-// Step 3: Initialize AI Agent module
         TUYA_CALL_ERR_LOG(ai_agent_init());
         sg_ai_agent_inited = true;
     }
     return OPRT_OK;
 }
 
-// initialization function
 OPERATE_RET example_init(void)
 {
     OPERATE_RET rt = OPRT_OK;
 
-//Initialize the audio input and playback module
 #if defined(ENABLE_COMP_AI_AUDIO) && (ENABLE_COMP_AI_AUDIO == 1)
     AI_AUDIO_INPUT_CFG_T input_cfg = {
         .vad_mode      = AI_AUDIO_VAD_MANUAL,
@@ -342,28 +144,19 @@ OPERATE_RET example_init(void)
     TUYA_CALL_ERR_RETURN(ai_audio_player_init());
 #endif
 
-// Subscribe to the MQTT connection event and initialize the AI ​​Agent after the connection is successful.
-    TUYA_CALL_ERR_RETURN(tal_event_subscribe(EVENT_MQTT_CONNECTED, "ai_agent_init", 
+    // Initialize the agent only after MQTT connects.
+    TUYA_CALL_ERR_RETURN(tal_event_subscribe(EVENT_MQTT_CONNECTED, "ai_agent_init",
                                              __ai_mqtt_connected_evt, SUBSCRIBE_TYPE_EMERGENCY));
-
     return OPRT_OK;
 }
 
-// Usage example: send text
-void send_text_to_ai(void)
-{
-ai_agent_send_text("How is the weather today?");
-}
-
-// Usage example: Request tone
-void request_alert(void)
-{
-    ai_agent_cloud_alert(AT_WAKEUP);
-}
-
-// Usage example: switch roles
-void switch_role(void)
-{
-    ai_agent_role_switch("");
-}
+void send_text_to_ai(void)   { ai_agent_send_text("How is the weather today?"); }
+void request_alert(void)     { ai_agent_cloud_alert(AT_WAKEUP); }
+void switch_role(void)       { ai_agent_role_switch("storyteller"); }
 ```
+
+## See also
+
+- [Component Framework](ai-components.md) — how `ai_agent` fits the wider AI framework
+- [Application development guide](../application-development-guide) — wire the agent into a full app
+- [AI Agent development platform](../../tuya-cloud/ai-agent/ai-agent-dev-platform) — configure roles, prompts, and the `cmd:` tones

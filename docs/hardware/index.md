@@ -4,13 +4,11 @@ title: Supported Hardware List
 
 import ChipRow from '@site/src/components/ChipRow';
 
-## Overview
+This page lists the chips and development boards that TuyaOpen supports, grouped by family. Click any image to open the corresponding chip datasheet. For board-specific specs, pinouts, and downloads, open a board overview below.
 
-This document is intended to help developers understand the hardware platforms supported by the TuyaOpen project. You can click the images to view the corresponding chip datasheets.
+## Supported chips
 
-## Hardware Platforms
-
-The TuyaOpen project currently supports WiFi & BLE dual-mode chips, including the following chips and development boards:
+TuyaOpen supports Wi-Fi and Bluetooth LE dual-mode chips across the following families.
 
  - T Series
 
@@ -58,7 +56,9 @@ For TuyaOpen-oriented notes on T2 and T3 modules and BSP paths, see [T2 module o
   imgHeight={150}
 />
 
-The TuyaOpen project currently supports the following development boards:
+## Development boards
+
+TuyaOpen currently supports the following development boards.
 
  - Tuya Series
 

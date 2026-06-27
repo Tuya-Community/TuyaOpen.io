@@ -2,9 +2,7 @@
 title: "ADC Peripheral Guide"
 ---
 
-# ADC Peripheral Guide
-
-Read analog voltages from sensors, potentiometers, and other analog sources using the TuyaOpen TKL ADC interface.
+The TKL ADC interface reads analog voltages from sensors, potentiometers, and other analog sources. You configure an ADC unit, enable channels with a bitmask, then read raw counts and convert them to millivolts.
 
 ## Prerequisites
 
@@ -18,7 +16,7 @@ TuyaOpen's ADC uses a **port + channel bitmask** model:
 - **Port** selects the ADC unit: `TUYA_ADC_NUM_0` = ADC1, `TUYA_ADC_NUM_1` = ADC2
 - **Channel bitmask** (`cfg->ch_list.data`) enables specific channels: bit N enables `ADC_CHANNEL_N`
 - **Attenuation** is fixed at `ADC_ATTEN_DB_12` (0-3.3 V full range)
-- **Reference voltage** is 3300 mV (`tkl_adc_ref_voltage_get()`)
+- **Reference voltage** is 3300 mV, returned by `tkl_adc_ref_voltage_get()`
 
 ## Basic ADC Read
 
@@ -57,8 +55,7 @@ static OPERATE_RET read_adc(uint32_t *raw_value)
 uint32_t raw;
 read_adc(&raw);
 
-uint32_t ref_mv;
-tkl_adc_ref_voltage_get(ADC_PORT, &ref_mv);
+uint32_t ref_mv = tkl_adc_ref_voltage_get(ADC_PORT);
 
 float voltage = (float)raw * ref_mv / ((1 << 12) - 1);
 TAL_PR_INFO("voltage: %.2f mV", voltage);
@@ -142,8 +139,7 @@ float get_battery_voltage_mv(void)
     tkl_adc_read_single_channel(BATTERY_ADC_PORT, BATTERY_ADC_CHANNEL, &raw);
     tkl_adc_deinit(BATTERY_ADC_PORT);
 
-    uint32_t ref_mv;
-    tkl_adc_ref_voltage_get(BATTERY_ADC_PORT, &ref_mv);
+    uint32_t ref_mv = tkl_adc_ref_voltage_get(BATTERY_ADC_PORT);
 
     float measured_mv = (float)raw * ref_mv / 4095.0f;
     return measured_mv * DIVIDER_RATIO;

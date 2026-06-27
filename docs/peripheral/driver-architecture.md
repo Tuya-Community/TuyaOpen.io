@@ -2,11 +2,9 @@
 title: "TDD/TDL Driver Architecture"
 ---
 
-# TDD/TDL Driver Architecture
-
 TuyaOpen uses a two-layer peripheral driver framework: **TDL** (Tuya Driver Layer) manages device lifecycle and provides the application API, while **TDD** (Tuya Device Driver) implements chip-specific hardware access. This separation lets you add new hardware without changing application code.
 
-## Layer Overview
+## Layer overview
 
 ```mermaid
 flowchart TD
@@ -27,7 +25,7 @@ flowchart TD
 | **TDD** | `tdd_*` | Hardware-specific driver implementing the TDL interface | You, when adding a new sensor/display/codec |
 | **TKL** | `tkl_*` | Platform abstraction (GPIO, I2C, SPI, UART) | Platform adapter (per chip) |
 
-## The Registration Pattern
+## The registration pattern
 
 Every peripheral category follows the same pattern:
 
@@ -80,7 +78,7 @@ tdl_button_create("power_btn", &cfg, &handle);
 tdl_button_event_register(handle, TDL_BUTTON_PRESS_DOWN, my_callback);
 ```
 
-## Peripheral Categories
+## Peripheral categories
 
 | Category | TDL Header | TDD Examples | Source Path |
 |----------|-----------|--------------|-------------|
@@ -95,7 +93,7 @@ tdl_button_event_register(handle, TDL_BUTTON_PRESS_DOWN, my_callback);
 | Joystick | `tdl_joystick_driver.h` | `tdd_joystick` | `src/peripherals/joystick/` |
 | Transport | `tdl_transport_driver.h` | `tdd_transport_uart` | `src/peripherals/transport/` |
 
-## Peripherals Without TDL/TDD
+## Peripherals without TDL/TDD
 
 Some peripherals use direct TKL calls without the registration framework:
 
@@ -108,7 +106,7 @@ Some peripherals use direct TKL calls without the registration framework:
 
 For simple sensors (temperature, humidity, pressure), you typically use TKL I2C directly rather than creating a TDL/TDD layer. See [Writing a New Sensor Driver](tutorials/writing-sensor-driver).
 
-## Kconfig Integration
+## Kconfig integration
 
 Each peripheral is gated by a Kconfig toggle in `boards/{platform}/TKL_Kconfig`:
 
@@ -133,7 +131,7 @@ config BOARD_CONFIG
 
 The build system compiles only the enabled TDD drivers.
 
-## References
+## See also
 
 - [Writing a New Sensor Driver](tutorials/writing-sensor-driver)
 - [Migrating a Sensor Library to TuyaOpen](tutorials/migrating-sensor-driver)

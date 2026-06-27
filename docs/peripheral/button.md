@@ -1,8 +1,8 @@
-# Button Driver
+---
+title: Button Driver
+---
 
-## Overview
-
-The [button driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/button) is a core component within TuyaOpen responsible for handling user input. It provides unified interfaces to manage different types of button devices and supports various button event detection and handling mechanisms. Through this driver, applications can easily implement button input detection, event handling, and state management without worrying about the specific implementation details of the underlying hardware.
+The [button driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/button) handles user input in TuyaOpen. It provides unified interfaces for managing button devices and detecting button events, so applications can implement input detection, event handling, and state management without managing the underlying hardware directly.
 
 ## Fundamental concepts
 
@@ -92,82 +92,32 @@ This is the driver's intermediate layer, containing the concrete implementations
 
 ## Workflow
 
-Taking GPIO buttons as an example, the following illustrates the operational workflow of the button driver framework.
+The button driver framework follows the same lifecycle on every platform. Using a GPIO button as an example, the board registers a driver, then the application creates a button instance, binds event callbacks, and deletes the instance when done.
 
 ```mermaid
 sequenceDiagram
-    participant app as App
-    participant TAL as Button Abstraction Layer
-    participant TDD as Button Device Driver
-    participant Bd as Board-level Configuration
-
-    Note over App, Bd: Register button device
-
-    Bd->>+TDD: Call tdd_gpio_button_register
-    Note right of Bd: Pass BUTTON_NAME<br/>Pass BUTTON_GPIO_CFG_T config parameters<br/>- pin: GPIO pin number<br/>- mode: Scan mode (Polling/Interrupt)<br/>- level: Active level<br/>- pin_type: Pin configuration (Pull-up/Pull-down/Interrupt edge)
-
-    TDD->>+TDL: Call tdl_button_register
-    Note right of TDD: Register device name<br/>Register button interface (TDL_BUTTON_CTRL_INFO)<br/>- __tdd_create_gpio_button<br/>- __tdd_delete_gpio_button<br/>- __tdd_read_gpio_value
-
-    Note over TDL: Create button node (TDL_BUTTON_LIST_NODE_T)<br/>Add node to button list (__tdl_button_add_node)
-
-    TDL-->>-TDD: Return registration results
-    TDD-->>-Bd: Return registration results
-
-    Note over App, Bd: Create button device instance
-
-    App->>+TDL: Call tdl_button_create
-    Note right of App: Pass device name<br/>Pass TDL_BUTTON_CFG_T config parameters<br/>- long_start_valid_time: Long-press start time<br/>- long_keep_timer: Long-press hold interval<br/>- button_debounce_time: Debounce time<br/>- button_repeat_valid_count: Multi-click count<br/>- button_repeat_valid_time: Multi-click time window
-
-    TDL->>+TDD: Call __tdd_create_gpio_button
-    Note right of TDD: Initialize GPIO hardware<br/>Configure pin mode (Input/Pull-up/Pull-down)<br/>Set interrupt (if in interrupt mode)<br/>Enable GPIO interrupt
-    TDD-->>-TDL: Return creation result
-
-    Note over TDL: Update button node user data<br/>Create button scanning task<br/>Start state machine processing
-
-    TDL-->>-App: Return button handle
-
-    Note over App, Bd: Register button event callback
-
-    App->>+TDL: Call tdl_button_event_register
-    Note right of App: Pass button handle<br/>Pass event type<br/>Pass callback function pointer
-
-    Note over TDL: Register callback function to event array<br/>list_cb[event_type] = callback
-
-    TDL-->>-App: Registration is completed
-
-    Note over App, Bd: Button state detection & event processing
-
-    loop Button scanning cycle
-        Note over TDL: Scanning task periodic execution<br/>Or interrupt-triggered detection
-
-        TDL->>+TDD: Call __tdd_read_gpio_value
-        Note right of TDD: Read GPIO pin state<br/>Process active level logic<br/>Return button state (0/1)
-        TDD-->>-TDL: Return button state
-
-        Note over TDL: State machine processing (__tdl_button_state_handle)<br/>- Debounce handling<br/>- Event detection<br/>- Time calculation
-
-        alt Button event detected
-            TDL->>App: Execute event callback
-            Note right of TDL: PUT_EVENT_CB(button, name, event, arg)<br/>Call application-registered callback function
-
-            App->>App: Handle button event
-            Note right of App: Execute business logic<br/>e.g., toggle state, send command
-        end
+    participant App as App
+    participant TDL as TDL (manage)
+    participant TDD as TDD driver
+    App->>TDL: tdl_button_create(name, cfg)
+    TDL->>TDD: __tdd_create_gpio_button
+    App->>TDL: tdl_button_event_register(handle, event, cb)
+    loop Scan cycle
+        TDL->>TDD: __tdd_read_gpio_value
+        TDD-->>TDL: button state
+        TDL->>App: event callback
     end
-
-    Note over App, Bd: Delete button device
-
-    App->>+TDL: Call tdl_button_delete
-    TDL->>+TDD: Call __tdd_delete_gpio_button
-    Note right of TDD: Disable GPIO interrupt<br/>Deinitialize GPIO<br/>Release hardware resources
-    TDD-->>-TDL: Return deletion result
-
-    Note over TDL: Remove node from button list<br/>Free memory resources<br/>Stop scanning task (if it is the last button)
-
-    TDL-->>-App: Return deletion result
-
+    App->>TDL: tdl_button_delete(handle)
+    TDL->>TDD: __tdd_delete_gpio_button
 ```
+
+The full lifecycle covers these steps:
+
+1. **Register** — the board calls `tdd_gpio_button_register` with `BUTTON_NAME` and the `BUTTON_GPIO_CFG_T` config (`pin`, `mode`, `level`, `pin_type`). The TDD driver calls `tdl_button_register` to register its `TDL_BUTTON_CTRL_INFO` interface and create a button node (`TDL_BUTTON_LIST_NODE_T`) in the device list.
+2. **Create** — `tdl_button_create` passes the `TDL_BUTTON_CFG_T` config (debounce, long-press, and multi-click timings) and invokes `__tdd_create_gpio_button`, which initializes the GPIO, configures the pin mode, and enables the interrupt in interrupt mode. The TDL layer then starts the scanning task and state machine and returns a handle.
+3. **Register callbacks** — `tdl_button_event_register` stores a callback for each event type in the event array.
+4. **Scan and dispatch** — the scanning task (or an interrupt) calls `__tdd_read_gpio_value` to read the pin state. The state machine (`__tdl_button_state_handle`) performs debounce and event detection, then runs the registered callback for any detected event.
+5. **Delete** — `tdl_button_delete` invokes `__tdd_delete_gpio_button` to disable the interrupt and release GPIO resources, removes the node, and stops the scanning task if it was the last button.
 
 ## Development guide
 

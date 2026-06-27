@@ -11,7 +11,7 @@ title: T2 模块概述
 ## 要求
 
 - T2-U 开发板或基于 T2 模组的产品硬件。
-- 已安装 TuyaOpen SDK 与 `tos.py` 环境，参见 [快速开始](../../quick-start/index)。
+- 已安装 TuyaOpen SDK 与 `tos.py` 环境，参见 [快速开始](../../quick-start/index.md)。
 
 ## TuyaOpen 中的板级支持
 
@@ -32,5 +32,5 @@ title: T2 模块概述
 
 - 模组数据手册：[T2-U 模组](https://developer.tuya.com/cn/docs/iot/T2-U-module-datasheet?id=Kce1tncb80ldq)
 - 开发板：[T2-U 开发板](https://developer.tuya.com/cn/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0)
-- [硬件支持列表](../index)
+- [硬件支持列表](../index.md)
 - [T5AI-Core 概述](../tuya-t5/t5-ai-core/overview-t5-ai-core)（T 系列更完整文档可参考此结构）

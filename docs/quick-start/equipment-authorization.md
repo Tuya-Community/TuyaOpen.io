@@ -2,29 +2,34 @@
 title: "Step 3: Authorize Devices"
 ---
 
-# Authorize Devices
+Device authorization writes a TuyaOpen license — a `UUID` and an `AuthKey` — into your device so it can connect to the Tuya IoT Cloud. Every device needs a unique license before it can pair and come online.
 
-## Overview
+For what a license is and how to obtain one, see [TuyaOpen dedicated license](index.md#tuyaopen-dedicated-license).
 
-For information about licenses, see [License](../quick-start/index.md#tuyaopen-dedicated-authorization-code).
+You can authorize a device in two ways:
 
-You can use either of the following authorization methods:
-- Run the authorization command
-- Modify header file
+- Run the authorization command over the serial monitor.
+- Modify the configuration header file.
+
+Use the command method when your firmware supports the `auth` CLI. Use the header-file method when it does not, or when you prefer to bake the license into the build.
 
 ## Run the authorization command
 
-1. Run the command `tos.py monitor -b 115200`.
+1. Start the serial monitor:
+
+   ```bash
+   tos.py monitor -b 115200
+   ```
 
    :::tip
-   Select the serial port number used for flashing.
+   Select the serial port used for flashing.
    :::
 
    :::tip
-   The prerequisite for using this command is that you must be in the application project path (where `tos.py build` is executed) and the project has been successfully compiled.
+   Run this command from the application project path (where you run `tos.py build`), and only after the project has compiled successfully.
    :::
 
-2. Enter the interactive command, use `auth,` and then press Enter. You will get the following information:
+2. Type `auth` and press Enter. The tool prints the expected usage:
 
    ```bash
    [INFO]: Run Tuya Uart Tool.
@@ -40,8 +45,7 @@ You can use either of the following authorization methods:
    tuya>
    ```
 
-
-3. Use `auth` as prompted to write `uuid` and `authkey`.
+3. Write the `uuid` and `authkey` with the `auth` command. A successful write prints `Authorization write succeeds.`:
 
    ```bash
    tuya>
@@ -50,9 +54,8 @@ You can use either of the following authorization methods:
    Authorization write succeeds.
    ```
 
-4. Use the `auth-read` command to verify if the authorization was successful.
+4. Verify the write with the `auth-read` command. The device echoes the stored `uuid` and `authkey`:
 
-   The following output indicates successful authorization:
    ```bash
    tuya>
    auth-read
@@ -61,20 +64,26 @@ You can use either of the following authorization methods:
    cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
    ```
 
-5. After successful operation, reboot the device for the authorization information to take effect.
+5. Reboot the device for the authorization to take effect.
 
-   If the device does not support authorization commands, refer to the section below to configure authorization information by modifying the header file.
+:::note
+If the device does not support the `auth` command, use the header-file method below instead.
+:::
 
-## Modify header file
+## Modify the header file
 
-1. Locate the `tuya_config.h` file in your project directory. The directory might vary by project (check either the `src` or `include` directory).
+1. Locate the `tuya_config.h` file in your project directory. The exact directory varies by project — check the `src` or `include` directory.
 
-2. Modify the configuration of the authorization information in the file as follows:
+2. Set the authorization fields:
 
-
-   ```c++
-   #define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"  // Change to the correct uuid
-   #define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" // Change to the correct authkey
+   ```c
+   #define TUYA_OPENSDK_UUID      "uuidxxxxxxxxxxxxxxxx"             // Change to the correct uuid
+   #define TUYA_OPENSDK_AUTHKEY   "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  // Change to the correct authkey
    ```
 
-3. Rebuild the firmware, flash it to the device, and then power on the device.
+3. Rebuild the firmware, flash it to the device, and power on the device.
+
+## See also
+
+- [TuyaOpen dedicated license](index.md#tuyaopen-dedicated-license)
+- [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#device-authorization-information-writing)

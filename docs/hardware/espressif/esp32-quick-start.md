@@ -2,8 +2,6 @@
 title: "ESP32 Quick Start"
 ---
 
-# Quick Start with ESP32
-
 Build, flash, and run your first TuyaOpen application on an ESP32 board.
 
 ## Prerequisites
@@ -142,9 +140,9 @@ The device should appear in the app and respond to remote commands.
 - **GPIO example**: The serial output shows GPIO toggling. You can verify with an LED or multimeter.
 - **Switch demo**: The device connects to Tuya Cloud and appears in the Tuya Smart app as a controllable switch.
 
-## Using ESP-IDF Commands
+## Using ESP-IDF commands
 
-`tos.py idf` is a **passthrough** to `idf.py` -- any argument you pass is forwarded directly. The project must be configured for ESP32 first (`tos.py config choice`).
+`tos.py idf` is a passthrough to `idf.py`: any argument you pass is forwarded directly. Configure the project for ESP32 first with `tos.py config choice`.
 
 ```bash
 # Any idf.py command works
@@ -171,11 +169,11 @@ This is useful for advanced configuration (partition tables, IDF component setti
 | Device does not pair | Confirm 2.4 GHz Wi-Fi. Check license key in `tuya_app_config.h`. |
 | Serial output shows "auth error" | Flash the license key. See [Equipment Authorization](../../quick-start/equipment-authorization). |
 
-## References
+## See also
 
 - [ESP32 on TuyaOpen -- Overview](overview-esp32)
 - [ESP32 Pin Mapping](esp32-pin-mapping)
-- [ESP32 Production and OTA Guide](esp32-production-guide)
+- [ESP32 OTA Updates](esp32-ota)
 - [Environment Setup](../../quick-start/enviroment-setup)
 - [Project Compilation Guide](../../build-system/compilation-guide)
 - [Equipment Authorization](../../quick-start/equipment-authorization)

@@ -1,197 +1,36 @@
 ---
-title: OLED GUI
+title: OLED UI
 ---
 
-## 名词解释
+`ai_ui_chat_oled` 是 TuyaOpen AI 框架中为小尺寸单色 OLED 屏优化的聊天 UI。它在典型 OLED 面板有限的空间与单一颜色下渲染对话，在图形化气泡布局放不下的场景里仍保持文字清晰可读。它实现了 [`ai_ui_manage`](ai-ui-manage) 接口，注册后即可渲染框架分发的聊天消息与状态。
 
-| 名词 | 解释                                                         |
-| ---- | ------------------------------------------------------------ |
-| LVGL | 轻量级图形库（Light and Versatile Graphics Library），一个免费的开源图形库，用于创建嵌入式图形用户界面。 |
-| OLED | 有机发光二极管（Organic Light-Emitting Diode）显示器，一种自发光显示技术，具有高对比度和低功耗的特点。 |
+## 何时选择
 
-## 功能简述
+当产品使用**小尺寸单色 OLED**（例如 0.96 英寸或 1.3 英寸的 SSD1306 类面板）时，选择 OLED UI——这类屏常见于紧凑、低成本的开发板。它针对有限的像素与内存预算做了优化。若需要彩色 LCD 上可滚动的气泡对话，请用 [微信风格 UI](ai-ui-chat-wechat)；若只需居中显示单条消息，请用 [Chatbot UI](ai-ui-chat-chatbot)。
 
-`ai_ui_chat_oled` 是 TuyaOpen AI 应用框架中的 OLED 显示器聊天 UI 实现，基于 LVGL 图形库开发。该模块实现了 `ai_ui_manage` 模块定义的所有 UI 显示接口，针对小尺寸 OLED 屏幕进行了优化，支持 128x64 和 128x32 两种分辨率。
+## 启用方式
 
-- **多分辨率支持**：支持 128x64 和 128x32 两种 OLED 分辨率，根据配置自动选择对应的布局
-- **紧凑布局**：针对小屏幕优化，合理利用有限的显示空间
-
-## 工作流程
-
-### 初始化流程
-
-模块初始化时，根据配置的 OLED 尺寸选择对应的初始化函数，创建界面元素并注册到 UI 管理模块。
-
-```mermaid
-sequenceDiagram
-    participant App as 应用层
-    participant OLED as ai_ui_chat_oled
-    participant LVGL as LVGL 图形库
-    participant Manage as ai_ui_manage
-    
-    App->>OLED: ai_ui_chat_oled_register()
-    OLED->>LVGL: 初始化 LVGL
-    OLED->>OLED: 根据尺寸选择布局
-    alt 128x64
-        OLED->>OLED: 初始化 128x64 布局
-    else 128x32
-        OLED->>OLED: 初始化 128x32 布局
-    end
-    OLED->>OLED: 设置字体
-    OLED->>Manage: 注册 UI 接口
-    Manage-->>App: 注册完成
-```
-
-### 消息显示流程
-
-用户消息或 AI 消息通过 UI 管理模块发送后，在 OLED 界面中更新消息内容，长文本会自动滚动显示。
-
-```mermaid
-sequenceDiagram
-    participant App as 应用层
-    participant Manage as ai_ui_manage
-    participant OLED as ai_ui_chat_oled
-    participant LVGL as LVGL 界面
-    
-    App->>Manage: ai_ui_disp_msg(USER_MSG/AI_MSG)
-    Manage->>OLED: 调用显示回调
-    OLED->>OLED: 设置消息文本
-    alt 文本超出显示区域
-        OLED->>LVGL: 启动滚动动画
-    end
-    OLED->>LVGL: 更新界面显示
-```
-
-### 流式文本显示流程
-
-AI 消息流通过流式文本模块处理后，实时更新 OLED 界面中的文本内容。
-
-```mermaid
-sequenceDiagram
-    participant App as 应用层
-    participant Manage as ai_ui_manage
-    participant Stream as 流式文本模块
-    participant OLED as ai_ui_chat_oled
-    
-    App->>Manage: STREAM_START 消息
-    Manage->>OLED: 调用 stream_start 回调
-    OLED->>OLED: 清空消息标签
-    
-    loop 流式数据
-        App->>Manage: STREAM_DATA 消息
-        Manage->>Stream: 写入文本数据
-        Stream->>OLED: 调用 stream_data 回调
-        OLED->>OLED: 更新文本内容
-    end
-    
-    App->>Manage: STREAM_END 消息
-    Manage->>OLED: 调用 stream_end 回调
-```
-
-## 配置说明
-
-### 配置文件路径
-
-```
-ai_components/ai_ui/Kconfig
-```
-
-### 功能使能
-
-```
-menuconfig ENABLE_COMP_AI_DISPLAY
-    bool "enable ai chat display ui"
-    default y
-
-config ENABLE_AI_CHAT_GUI_OLED
-    select ENABLE_LIBLVGL
-    bool "Use OLED ui"
-    # 启用 OLED UI，需要依赖 LVGL 图形库
-
-choice AI_CHAT_GUI_OLED_SIZE
-    prompt "choose oled ui size"
-    default AI_CHAT_GUI_OLED_SIZE_128_64
-    
-    config AI_CHAT_GUI_OLED_SIZE_128_64
-        bool "OLED size 128x64"
-        # 128x64 像素的 OLED 显示器
-    
-    config AI_CHAT_GUI_OLED_SIZE_128_32
-        bool "OLED size 128x32"
-        # 128x32 像素的 OLED 显示器
-endchoice
-```
-
-### 依赖组件
-
-- **LVGL 图形库**（`ENABLE_LIBLVGL`）：必需，用于图形界面渲染
-
-## 开发流程
-
-### 接口说明
-
-#### 注册 OLED UI
-
-将 OLED UI 实现注册到 UI 管理模块中。
-
-```c
-/**
- * @brief Register OLED chat UI implementation
- * @return OPERATE_RET Operation result code
- */
-OPERATE_RET ai_ui_chat_oled_register(void);
-```
-
-### 开发步骤
-
-1. **确保依赖组件已初始化**：确保 LVGL 图形库和 OLED 显示设备已正确初始化
-2. **配置 OLED 尺寸**：在 Kconfig 中选择对应的 OLED 尺寸（128x64 或 128x32）
-3. **注册 UI 实现**：在应用启动时调用 `ai_ui_chat_oled_register()` 注册 OLED UI
-4. **初始化 UI 管理模块**：调用 `ai_ui_init()` 初始化 UI 管理模块（会自动调用注册的初始化回调）
-5. **发送显示消息**：通过 `ai_ui_disp_msg()` 发送各种类型的显示消息
-
-### 参考示例
-
-#### 注册和初始化
+先注册风格，再初始化 UI 模块。注册必须在前，因为 `ai_ui_init()` 会调用风格的 `disp_init` 回调：
 
 ```c
 #include "ai_ui_chat_oled.h"
 #include "ai_ui_manage.h"
 
-// 注册 OLED UI
-OPERATE_RET init_oled_ui(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-    // 注册 OLED UI 实现
-    TUYA_CALL_ERR_RETURN(ai_ui_chat_oled_register());
-    
-    // 初始化 UI 管理模块（会自动调用注册的初始化回调）
-    TUYA_CALL_ERR_RETURN(ai_ui_init());
-    
-    return rt;
-}
+// 注册 OLED UI，再初始化 UI 模块。
+ai_ui_chat_oled_register();
+ai_ui_init();
 ```
 
-#### 显示消息
+`ai_ui_chat_oled_register()` 返回 `OPERATE_RET`（成功时为 `OPRT_OK`）。它是该风格暴露的唯一函数——注册完成后，你完全通过 `ai_ui_manage` 驱动屏幕。
 
-```c
-// 显示用户消息
-void display_user_message(const char *msg)
-{
-    ai_ui_disp_msg(AI_UI_DISP_USER_MSG, (uint8_t *)msg, strlen(msg));
-}
+:::note
+在调用 `ai_ui_init()` 之前只注册一种 UI 风格。初始化后，用 `ai_ui_disp_msg()` 发送消息——参见 [UI 管理](ai-ui-manage)。
+:::
 
-// 显示 AI 消息
-void display_ai_message(const char *msg)
-{
-    ai_ui_disp_msg(AI_UI_DISP_AI_MSG, (uint8_t *)msg, strlen(msg));
-}
+## 相关文档
 
-// 显示系统消息
-void display_system_message(const char *msg)
-{
-    ai_ui_disp_msg(AI_UI_DISP_SYSTEM_MSG, (uint8_t *)msg, strlen(msg));
-}
-```
-
+- [UI 管理](ai-ui-manage)——该风格注册到的调度层
+- [微信风格 UI](ai-ui-chat-wechat)——适用于彩色 LCD 的气泡聊天
+- [Chatbot UI](ai-ui-chat-chatbot)——居中的单条消息显示
+- [AI Agent](ai-agent)——产生消息的云端桥梁
+- [组件框架](ai-components.md)——`ai_ui` 在整个 AI 框架中的位置

@@ -2,36 +2,30 @@
 title: Unboxing Use
 ---
 
-import ChipRow from '@site/src/components/ChipRow';
-
-## Overview
-
-This document is intended to help developers quickly get started with the [TuyaOpen](https://github.com/tuya/TuyaOpen) project, using pre-compiled bin files to complete firmware download, flashing, device authorization, device network configuration, connect to Tuya Cloud, and quickly experience various services provided by Tuya Cloud.
-
-If you need to develop and compile [TuyaOpen](https://github.com/tuya/TuyaOpen) by yourself, you can skip this section and start directly from [Environment Setup](./enviroment-setup.md).
+Unboxing use flashes a pre-compiled firmware onto a supported board so you can connect it to the Tuya IoT Cloud and try Tuya Cloud services without building anything yourself. Use this path to evaluate a board quickly; if you want to build and compile [TuyaOpen](https://github.com/tuya/TuyaOpen) from source, skip this page and start at [Environment Setup](./enviroment-setup.md).
 
 ## Preparation
 
-Before you start, please prepare the following resources:
- - [TuyaOpen supported development board or module](../hardware/index.md#hardware-platforms)
- - USB data cable
- - Computer (supports Windows/Linux/macOS)
+Before you start, prepare the following:
 
-## Download Firmware
+- A [TuyaOpen-supported development board or module](../hardware/index.md#development-boards)
+- A USB data cable
+- A computer running Windows, Linux, or macOS
 
-Download the firmware for flashing and testing from the **[TuyaOpen Release Page](https://github.com/tuya/TuyaOpen/releases)**.
+## Download firmware
 
-You can select the appropriate chip and application from the [TuyaOpen Application List](../cloud/overview#tuyaopen-application-list) and download the pre-compiled bin file.
+Download a firmware to flash and test from the **[TuyaOpen release page](https://github.com/tuya/TuyaOpen/releases)**.
 
-## Flash Firmware
+Select the chip and application that match your board from the [TuyaOpen application list](../cloud/overview#tuyaopen-application-list), then download the matching pre-compiled bin file.
 
-You can use the graphical tool [Tuya Universal Serial Tool](https://www.tuyaopen.ai/tools/tyutool) `tyutool_gui` for firmware flashing. For detailed instructions, please refer to [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#firmware-flashing).
+## Flash firmware
 
-## Device Authorization
+Flash the firmware with the graphical [Tuya universal serial tool](https://www.tuyaopen.ai/tools/tyutool), `tyutool_gui`. For step-by-step instructions, see [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#firmware-flashing).
 
-If you need to connect the device to Tuya Cloud, you must authorize the device first. You can use the `tyutool_gui` tool for [device authorization](./equipment-authorization.md).
+## Authorize the device
 
-## Device Network Configuration
+To connect the device to the Tuya IoT Cloud, you must authorize it first. Use `tyutool_gui` to perform [device authorization](./equipment-authorization.md).
 
-Device network configuration refers to connecting the device to a Wi-Fi router, activating it on Tuya Cloud, and binding it to the user. This process requires the **Smart Life** App on your mobile phone. For detailed steps, please refer to [Device Network Configuration](./device-network-configuration.md).
+## Configure the network
 
+Network configuration connects the device to a Wi-Fi router, activates it on the Tuya IoT Cloud, and binds it to your account. This requires the **Smart Life** app on your phone. For the full procedure, see [Device Network Configuration](./device-network-configuration.md).

@@ -2,20 +2,21 @@
 title: Agent OpenAPIs
 ---
 
-# **Agent OpenAPIs**
+Agent OpenAPIs let you integrate a Tuya-powered AI agent into your own platform or software. If you built an agent on the Tuya Developer Platform and want to use it from your own product, you access the agent's data through Tuya's OpenAPI endpoints.
 
-# **Overview**
+The platform's open capabilities keep improving. See the platform documentation for the latest updates.
 
-Agent OpenAPIs enable third-party integration of Tuya-powered AI agents. Suppose you have developed an AI agent on the Tuya Developer Platform and want to integrate it with your own platform or software products. In that case, you can access the agent’s data through Tuya’s OpenAPI endpoints.
+## Usage
 
-The open capabilities of the agents on the platform are continuously being improved. You can refer to the platform documentation for the latest updates.
+You manage OpenAPI access on the Tuya Developer Platform. Create a cloud project in the [Cloud Development](https://platform.tuya.com/cloud) section and subscribe to the relevant services before making API calls. The agent APIs authenticate with the access keys issued by the cloud project.
 
-# **Usage**
+## Billing
 
-Access to the OpenAPIs is managed on the Tuya Developer Platform. You need to create a cloud project on the [Cloud Development](https://platform.tuya.com/cloud) section of the platform and subscribe to the relevant services to make API calls. The agent’s APIs use access keys issued by the cloud project for authentication.
+No functional fees apply today.
 
-# **Billing**
+The agent tokens consumed during API calls are metered and billed as usual. For the billing rules, see [Agent Metering and Billing](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d#title-3-Model%20fees).
 
-No functional fees are charged currently.
+## See also
 
-However, the agent tokens consumed during API calls are subject to standard metering and billing. For more information about billing rules, see [Agent Metering and Billing](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d#title-3-Model%20fees).
+- [Chat with Agent](14.1-chat-with-agent) — query an agent's chat history through the API.
+- [MCP Management](13-mcp-management) — extend an agent with external tools and services.

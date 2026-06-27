@@ -4,7 +4,7 @@ title: MQTT Client Tutorial
 
 ## Overview
 
-This tutorial covers the **MQTT client** example: connect to a public broker, subscribe, publish with QoS, then unsubscribe. The code uses `mqtt_client_interface.h` (init, connect, `mqtt_client_yield`, subscribe/publish/unsubscribe) on top of **netmgr** and Wi-Fi or wired networking.
+This tutorial covers the MQTT client example: connect to a public broker, subscribe, publish with QoS, then unsubscribe. The code uses `mqtt_client_interface.h` (init, connect, `mqtt_client_yield`, subscribe/publish/unsubscribe) on top of netmgr and Wi-Fi or wired networking.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ This tutorial covers the **MQTT client** example: connect to a public broker, su
 
 - Board config with MQTT client and network support for `examples/protocols/mqtt_client`.
 - Outbound access to the broker host and port (default sample uses `broker.emqx.io:1883`).
-- Broker credentials: the stock example uses EMQX demo username/password; **replace** for production or private brokers.
+- Broker credentials: the stock example uses EMQX demo username/password; replace them for production or private brokers.
 
 ## Steps
 
@@ -32,15 +32,15 @@ This tutorial covers the **MQTT client** example: connect to a public broker, su
    tos.py build
    ```
 
-4. After **link up**, the sample calls `mqtt_client_init`, `mqtt_client_connect`, then **`mqtt_client_yield`** so the stack processes incoming packets. The connected callback subscribes; the subscribe callback publishes a test message; the publish-ack path unsubscribes.
+4. After link up, the sample calls `mqtt_client_init`, `mqtt_client_connect`, then `mqtt_client_yield` so the stack processes incoming packets. The connected callback subscribes; the subscribe callback publishes a test message; the publish-ack path unsubscribes.
 
 **Expected outcome:** Serial log shows connect, subscribe, publish, and PUBACK, matching the callback order in the source.
 
 ## Implementation notes
 
-- You must call **`mqtt_client_yield`** (or an equivalent pump) regularly while connected, or the client will not process SUBACK/PUBLISH/PUBACK.
+- You must call `mqtt_client_yield` (or an equivalent pump) regularly while connected, or the client will not process SUBACK/PUBLISH/PUBACK.
 - Topic names and payload encoding must match your cloud or broker contract.
-- This example is **not** the same as Tuya Cloud MQTT inside `tuya_iot`; it is a generic MQTT client for custom brokers.
+- This example is not the same as Tuya Cloud MQTT inside `tuya_iot`; it is a generic MQTT client for custom brokers.
 
 ## References
 

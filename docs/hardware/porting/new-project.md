@@ -1,16 +1,12 @@
 ---
-title: Create Project
+title: Create a project
 ---
 
-# Create Project
+`tos.py new project` creates a new project in the TuyaOpen development environment. The command initializes the basic structure of a project from a predefined template.
 
-## Overview
+## Create the project
 
-This topic describes how to run the `tos.py new project` command to create a new project. The `tos.py new project` command is used to create a new project within the TuyaOpen development environment. This command quickly initializes the basic structure of a new project based on predefined templates.
-
-## Procedure
-
-Run the command `tos.py new project`. The system will prompt you to enter the new project's name and select a platform.
+Run `tos.py new project`. The command prompts you for the project name and the platform.
 
 ```bash
 ❯ tos.py new project
@@ -19,7 +15,7 @@ Run the command `tos.py new project`. The system will prompt you to enter the ne
 input: new-project
 ```
 
-After the command execution is completed, the system will create a folder named `new-project` in the current directory, containing the basic structure of the new project.
+The command creates a folder named `new-project` in the current directory, containing the basic project structure.
 
 ### Directory
 
@@ -33,52 +29,35 @@ new-project
 
 ### Parameters
 
-`-f, --framework [base|arduino]`: Specifies the framework type used by the project.
-- `base` (default): Creates a base framework project.
-- `arduino`: Creates an Arduino framework project.
+`-f, --framework [base|arduino]`: the framework type the project uses.
 
+- `base` (default): creates a base framework project.
+- `arduino`: creates an Arduino framework project.
 
-## Next step
+## Next steps
 
-Overview:
-
-    > 1. Build and verify.
-    >
-    > 2. Write code.
-    >
-    > 3. Modify configuration and verify functionality.
-    >
-    > 4. Save the default configuration file for use by other developers.
+After creating the project, build and verify it, write your code, adjust the configuration to verify functionality, and save the default configuration for other developers.
 
 ### Build and verify
 
-First, use the command `tos.py config choice` to select the desired chip platform configuration.
-
-Then, use the command `tos.py build` to perform compilation verification.
+1. Run `tos.py config choice` to select the chip platform configuration.
+2. Run `tos.py build` to verify the compilation.
 
 ### Write code
 
-1. Determine your code's directory structure and configure the source file and header file paths required for `add_library(${EXAMPLE_LIB})` in the `CMakeLists.txt` file.
+1. Determine your code's directory structure, then configure the source and header file paths required by `add_library(${EXAMPLE_LIB})` in `CMakeLists.txt`.
 
-   - `${EXAMPLE_LIB}`: This is the library name variable, defined by the main framework, and does not need to be modified manually.
+    - `${EXAMPLE_LIB}` is the library name variable. The main framework defines it, so you do not modify it manually.
+    - Configure the `APP_SRC` and `APP_INC` variables using standard `CMake` syntax.
 
-   - Configure the `APP_SRC` and `APP_INC` variables using standard `CMake` syntax.
+2. Develop your code. Use the interfaces provided in `${tuyaopen_root}/src` and `${tuyaopen_root}/platform/.../tuyaos_adapter`. Refer to the official sample code under `apps` and `examples`.
 
-2. Proceed with code development.
+3. Change the configuration. Run `tos.py config menu` to open the configuration interface, then adjust the TuyaOpen configuration options.
 
-   Develop using the interfaces provided in `${tuyaopen_root}/src` and `${tuyaopen_root}/platform/.../tuyaos_adapter`.
+### Verify functionality
 
-   You can refer to the official sample codes in `apps` and `examples`.
+Flash the firmware and verify the code's functionality.
 
-3. Change the configuration file.
+### Save the default configuration
 
-   Run the command `tos.py config menu` to enter the configuration interface, then adjust TuyaOpen's configuration options.
-
-
-### Verify functionalities
-
-Flash the firmware and verify the code's functionalities.
-
-### Save the default configuration file
-
-Run the command `tos.py config save` to save the current configuration as the default configuration file.
+Run `tos.py config save` to save the current configuration as the default configuration file.

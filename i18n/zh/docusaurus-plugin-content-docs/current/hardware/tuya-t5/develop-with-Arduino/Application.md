@@ -1,8 +1,10 @@
-# 应用开发 - AI 聊天机器人
+---
+title: 应用开发 - AI 聊天机器人
+---
 
-Arduino-TuyaOpen 提供了一个完整的 AI 聊天机器人应用实例。用户可以基于 `YourChatBot` 示例代码，配合 TUYA-T5AI 系列开发板，快速构建一个支持语音交互、文本对话、MCP 工具调用等功能的智能聊天机器人。
+Arduino-TuyaOpen 提供了一个完整的 AI 聊天机器人应用实例。基于 `YourChatBot` 示例代码，配合 TUYA-T5AI 系列开发板，你可以快速构建一个支持语音交互、文本对话、MCP 工具调用等功能的智能聊天机器人。
 
-### 项目文件结构
+## 项目文件结构
 
 ```
 YourChatBot/
@@ -16,75 +18,80 @@ YourChatBot/
 
 ## 代码烧录流程
 
-0. 确保已完成[快速开始](Quick_start.md)中开发环境的搭建。
+开始前，请先完成[快速开始](Quick_start.md)中开发环境的搭建。
 
 1. 连接 T5AI 开发板到电脑，打开 Arduino IDE，选择 `TUYA_T5AI` 开发板，并选择正确的烧录端口。
 
-> 注意：T5AI 系列开发板提供双串口通信，连接电脑后会检测到两个串口号，其中 UART0 用于固件烧录，请在 Arduino IDE 中选择正确的烧录口。
+    :::note
+    T5AI 系列开发板提供双串口通信，连接电脑后会检测到两个串口号，其中 UART0 用于固件烧录，请在 Arduino IDE 中选择正确的烧录口。
+    :::
 
 2. 在 Arduino IDE 中点击 `文件` -> `示例` -> `AI components` -> `YourChatBot`，打开示例代码。
 
-3. 将示例文件中的授权码信息和产品 PID 替换为自己的信息。
+3. 将示例文件中的授权码和产品 PID 替换为自己的信息。
+
     - [什么是授权码](https://tuyaopen.ai/zh/docs/quick-start#tuyaopen-%E4%B8%93%E7%94%A8%E6%8E%88%E6%9D%83%E7%A0%81)
     - [如何获取授权码](https://tuyaopen.ai/zh/docs/quick-start#tuyaopen-%E6%8E%88%E6%9D%83%E7%A0%81%E8%8E%B7%E5%8F%96)
 
-```cpp
-// 设备授权码（替换为自己的授权码）
-#define TUYA_DEVICE_UUID    "uuidxxxxxxxxxxxxxxxx"
-#define TUYA_DEVICE_AUTHKEY "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-// 产品 PID（替换为涂鸦 IoT 平台上创建的产品 PID）
-#define TUYA_PRODUCT_ID     "xxxxxxxxxxxxxxxx"
-```
+    ```cpp
+    // 设备授权码（替换为自己的授权码）
+    #define TUYA_DEVICE_UUID    "uuidxxxxxxxxxxxxxxxx"
+    #define TUYA_DEVICE_AUTHKEY "keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    // 产品 PID（替换为涂鸦 IoT 平台上创建的产品 PID）
+    #define TUYA_PRODUCT_ID     "xxxxxxxxxxxxxxxx"
+    ```
 
 4. （可选）如需启用音频录制功能（将 MIC 和 TTS 音频数据保存到 SD 卡），可将 `ENABLE_AUDIO_RECORDING` 设置为 `1`：
 
-```cpp
-#define ENABLE_AUDIO_RECORDING  1   // 默认为 0（关闭），设为 1 开启音频录制
-```
+    ```cpp
+    #define ENABLE_AUDIO_RECORDING  1   // 默认为 0（关闭），设为 1 开启音频录制
+    ```
 
-5. 点击 Arduino IDE 左上角按钮烧录代码，终端出现以下信息说明烧录成功。
+5. 点击 Arduino IDE 左上角的上传按钮烧录代码。终端出现以下信息说明烧录成功。
 
-```bash
-[INFO]: Write flash success
-[INFO]: CRC check success
-[INFO]: Reboot done
-[INFO]: Flash write success.
-```
+    ```bash
+    [INFO]: Write flash success
+    [INFO]: CRC check success
+    [INFO]: Reboot done
+    [INFO]: Flash write success.
+    ```
 
 ## 设备连接与交互
 
 ### 设备连接
 
-烧录固件后的开发板需要连接网络并注册到云端，使设备具备远程通信能力。配网后即可实现 `手机` - `涂鸦云` - `设备` 三方通信。
+烧录固件后，开发板需要连接网络并注册到云端，以具备远程通信能力。配网后即可实现 `手机`、`涂鸦云`、`设备` 三方通信。
 
-设备配网流程：[设备配网](https://tuyaopen.ai/zh/docs/quick-start/device-network-configuration)
+设备配网流程请参考[设备配网](https://tuyaopen.ai/zh/docs/quick-start/device-network-configuration)。
 
-> **快速重新配网**：短时间内连续按下 3 次复位键，设备将清除已保存的网络配置并重新进入配网状态。
+:::tip 快速重新配网
+短时间内连续按下 3 次复位键，设备将清除已保存的网络配置并重新进入配网状态。
+:::
 
 ### 设备交互
 
-手机 APP 配网成功后，可以通过以下两种方式与 AI Agent 进行交互。
+手机 App 配网成功后，可以通过以下两种方式与 AI Agent 交互。
 
 #### 文本交互
 
-打开 Arduino IDE 自带的串口监视器（波特率 115200），在输入框中键入文本后按回车发送，即可通过串口与 AI Agent 进行文字对话。示例代码中通过 `TuyaAI.sendText()` 将串口接收到的文本发送到云端大模型，AI 的回复会在串口监视器和屏幕上同步显示。
+打开 Arduino IDE 自带的串口监视器（波特率 115200），在输入框中键入文本后按回车发送，即可通过串口与 AI Agent 进行文字对话。示例代码通过 `TuyaAI.sendText()` 将串口接收到的文本发送到云端大模型，AI 的回复会在串口监视器和屏幕上同步显示。
 
 #### 语音交互
 
-语音交互支持四种对话模式，默认配置为 `唤醒对话` 模式。用户可通过**双击按键**在各模式间循环切换。
+语音交互支持四种对话模式，默认配置为 `唤醒对话` 模式。可通过**双击按键**在各模式间循环切换。
 
-**唤醒词**：你好涂鸦（hey tuya）
+**唤醒词**：你好涂鸦（Hey Tuya）
 
 | 模式编号 | 模式名称 | 说明 |
 | :---: | :---: | --- |
-| 0 | 长按对话（HOLD） | 用户需长按按键以启动语音输入，松开按键即结束语音输入 |
-| 1 | 按键对话（ONE_SHOT） | 设备上电默认进入待机状态，用户短按按键后设备进入聆听状态，可进行单次语音对话 |
-| 2 | 唤醒对话（WAKEUP） | 用户通过唤醒词将设备唤醒后，可进行单次对话，类似智能音箱交互 |
-| 3 | 自由对话（FREE） | 用户通过唤醒词唤醒设备后可进行连续对话；若唤醒后 30 秒无对话，设备将再次进入待机状态 |
+| 0 | 长按对话（HOLD） | 长按按键启动语音输入，松开按键即结束语音输入 |
+| 1 | 按键对话（ONE_SHOT） | 设备上电默认进入待机状态，短按按键后进入聆听状态，可进行单次语音对话 |
+| 2 | 唤醒对话（WAKEUP） | 通过唤醒词唤醒设备后，可进行单次对话，类似智能音箱交互 |
+| 3 | 自由对话（FREE） | 通过唤醒词唤醒设备后可进行连续对话；若唤醒后 30 秒无对话，设备将再次进入待机状态 |
 
-## 应用示例介绍
+## 应用示例详解
 
-本示例作为完整功能展示，开发者可以根据需要从更为简洁的 [AI example](AI_API_Development.md) 熟悉 AI 开发流程。
+本示例作为完整功能展示，你也可以从更简洁的 [AI 示例](AI_API_Development.md) 开始，熟悉 AI 开发流程。
 
 ### AI 开发
 
@@ -107,21 +114,21 @@ appDisplayInit(UI_TYPE);
 | 参数 | 说明 |
 | --- | --- |
 | `AI_CHAT_MODE_WAKEUP` | 初始对话模式，可选 `AI_CHAT_MODE_HOLD`(0) / `AI_CHAT_MODE_ONE_SHOT`(1) / `AI_CHAT_MODE_WAKEUP`(2) / `AI_CHAT_MODE_FREE`(3) |
-| `70` | 初始音量（范围 0 ~ 100） |
+| `70` | 初始音量（范围 0–100） |
 | `aiEventCallback` | AI 事件回调函数，用于接收 ASR、TTS、文本流等所有 AI 事件数据 |
 | `aiStateCallback` | AI 状态回调函数，用于接收设备状态变化通知 |
 | `NULL` | 用户自定义数据指针，一般传 `NULL` |
 
-`TuyaAI.Audio.begin()` 对设备的音频系统进行初始化，使能麦克风、扬声器以及音频的编解码功能。
+`TuyaAI.Audio.begin()` 对设备的音频系统进行初始化，使能麦克风、扬声器以及音频编解码功能。
 
-UI 初始化通过 `appDisplay.h` 中的 `UI_TYPE` 宏确定使用哪种 UI 方案：
+UI 初始化通过 `appDisplay.h` 中的 `UI_TYPE` 宏决定使用哪种 UI 方案：
 
 ```c
 #define UI_TYPE             BOT_UI_WECHAT   // 在 appDisplay.h 中修改
 ```
 
-- `BOT_UI_WECHAT` : 内置 WeChat 风格 UI，开箱即用
-- `BOT_UI_USER` : 仅初始化 LVGL，用户自行通过 LVGL 接口设计 UI 界面
+- `BOT_UI_WECHAT`：内置 WeChat 风格 UI，开箱即用。
+- `BOT_UI_USER`：仅初始化 LVGL，由你通过 LVGL 接口自行设计 UI 界面。
 
 #### AI 事件回调
 
@@ -158,7 +165,7 @@ AI 运行过程中会产生丰富的事件和数据，所有 AI 事件通过 `ai
 static void aiStateCallback(AI_MODE_STATE_E state);
 ```
 
-AI 设备在运行过程中会在不同状态间切换，`aiStateCallback` 负责接收状态变化通知，用户可据此更新 UI 或执行业务逻辑。状态列表如下：
+AI 设备在运行过程中会在不同状态间切换，`aiStateCallback` 负责接收状态变化通知，你可据此更新 UI 或执行业务逻辑。状态列表如下：
 
 | 状态 | 说明 |
 | --- | --- |
@@ -184,7 +191,7 @@ TuyaIoT.setLicense(TUYA_DEVICE_UUID, TUYA_DEVICE_AUTHKEY);
 TuyaIoT.begin(TUYA_PRODUCT_ID, PROJECT_VERSION);
 ```
 
-`TuyaIoT.resetNetcfg()` 使能"快速连按复位键重新配网"功能。当用户在短时间内连续按下 3 次复位键时，设备将清除已保存的网络配置并重新进入配网状态。
+`TuyaIoT.resetNetcfg()` 使能“快速连按复位键重新配网”功能。当你在短时间内连续按下 3 次复位键时，设备将清除已保存的网络配置并重新进入配网状态。
 
 #### IoT 事件处理
 
@@ -207,7 +214,7 @@ static void tuyaIoTEventCallback(tuya_event_msg_t *event);
 
 #### DP 数据交互
 
-本示例演示了通过 DP（Data Point）实现云端音量控制功能：
+本示例通过 DP（Data Point）实现云端音量控制：
 
 ```cpp
 #define DPID_VOLUME  3  // 音量 DP ID
@@ -219,7 +226,7 @@ case DPID_VOLUME:
     break;
 ```
 
-用户同样可以基于涂鸦云进行 IoT 开发，实现对 `powered by Tuya` 设备的控制。更多 DP 操作请参考 `00_IoT_SimpleExample` 示例。
+你同样可以基于涂鸦云进行 IoT 开发，控制 `powered by Tuya` 设备。更多 DP 操作请参考 `00_IoT_SimpleExample` 示例。
 
 ### 音频开发
 
@@ -228,7 +235,7 @@ case DPID_VOLUME:
 | 事件 | 数据格式 | 说明 |
 | --- | --- | --- |
 | `AI_USER_EVT_ASR_OK` | UTF-8 文本 | 云端 ASR 语音识别结果 |
-| `AI_USER_EVT_MIC_DATA` | PCM（16kHz, 16bit, mono） | 麦克风原始录音数据 |
+| `AI_USER_EVT_MIC_DATA` | PCM（16kHz, 16-bit, mono） | 麦克风原始录音数据 |
 | `AI_USER_EVT_TTS_DATA` | MP3 数据块 | 大模型下发的 TTS 音频数据流 |
 | `AI_USER_EVT_TTS_PRE/START/STOP` | 无 | TTS 播放生命周期事件 |
 | `AI_USER_EVT_TEXT_STREAM_START/DATA/STOP` | UTF-8 文本 | 大模型下发的文本数据流 |
@@ -236,15 +243,15 @@ case DPID_VOLUME:
 
 #### 音频录制到 SD 卡
 
-在 `appAudioRecord.cpp/.h` 文件中演示了如何将 MIC 和 TTS 音频数据保存到 SD 卡。使用前需将 `ENABLE_AUDIO_RECORDING` 宏设置为 `1`。
+`appAudioRecord.cpp/.h` 文件将 MIC 和 TTS 音频数据保存到 SD 卡。使用前需将 `ENABLE_AUDIO_RECORDING` 宏设置为 `1`。
 
-- **MIC 录音**：以 `.pcm` 格式保存，采用内存缓冲区（默认 16KB）减少 SD 卡写入次数。在 `AI_MODE_STATE_LISTEN` 状态时自动开始录制，离开聆听状态时自动停止。
+- **MIC 录音**：以 `.pcm` 格式保存，采用内存缓冲区（默认 16KB）减少 SD 卡写入次数。在进入 `AI_MODE_STATE_LISTEN` 状态时自动开始录制，离开聆听状态时自动停止。
 - **TTS 录音**：以 `.mp3` 格式保存，在 `AI_USER_EVT_TTS_START` 时开始，`AI_USER_EVT_TTS_STOP` 或 `AI_USER_EVT_TTS_ABORT` 时结束。
 - 录音文件保存在 SD 卡的 `/ai_recordings` 目录下，按序号自动递增命名（如 `mic_001.pcm`、`tts_001.mp3`）。
 
 ### 按键交互
 
-在 `appButton.cpp/.h` 文件中使用 `Button` 组件对按键功能进行了统一封装。默认使用 GPIO 12 引脚，低电平触发，内部上拉。
+`appButton.cpp/.h` 文件使用 `Button` 组件对按键功能进行了统一封装。默认使用 GPIO 12 引脚，低电平触发，内部上拉。
 
 支持以下按键事件：
 
@@ -267,19 +274,21 @@ if (event == BUTTON_EVENT_DOUBLE_CLICK) {
 }
 ```
 
-> 更多 Button 组件使用方法请参考 `Peripheral/Button` 目录下的示例。
+:::note
+更多 `Button` 组件用法请参考 `Peripheral/Button` 目录下的示例。
+:::
 
 ### UI 开发
 
-在 `appDisplay.cpp/.h` 文件中对设备的 UI 功能进行了统一封装。通过修改 `appDisplay.h` 中的 `UI_TYPE` 宏即可切换 UI 方案。
+`appDisplay.cpp/.h` 文件对设备的 UI 功能进行了统一封装。通过修改 `appDisplay.h` 中的 `UI_TYPE` 宏即可切换 UI 方案。
 
 #### BOT_UI_WECHAT
 
-系统内置的 WeChat 风格 UI 页面，开箱即用。用户可通过 `TuyaAI.UI` 类的接口获取字体（`getTextFont`）、图标（`getIconFont` / `getWifiIcon`）、emoji 等 UI 资源，并控制内置 UI 组件的显示内容。
+系统内置的 WeChat 风格 UI 页面，开箱即用。你可通过 `TuyaAI.UI` 类的接口获取字体（`getTextFont`）、图标（`getIconFont` / `getWifiIcon`）、emoji 等 UI 资源，并控制内置 UI 组件的显示内容。
 
 #### BOT_UI_USER
 
-该参数仅启动 LVGL 图形引擎，用户可完全自主设计 UI。在 `appDisplay.cpp` 文件的 `_createUI()` 函数中提供了一个极简暗色主题的 UI 参考实现，布局如下：
+该参数仅启动 LVGL 图形引擎，由你完全自主设计 UI。`appDisplay.cpp` 中的 `_createUI()` 函数提供了一个极简暗色主题的 UI 参考实现，布局如下：
 
 ```
 ┌──────────────────────────┐
@@ -309,9 +318,11 @@ if (event == BUTTON_EVENT_DOUBLE_CLICK) {
 
 #### Display 组件
 
-用户可通过该组件直接驱动 TUYA-T5AI-BOARD 开发板自带的屏幕，该组件提供基础的屏幕绘制能力以及**摄像头数据直显**功能。
+使用该组件可直接驱动 TUYA-T5AI-BOARD 开发板自带的屏幕。该组件提供基础的屏幕绘制能力以及**摄像头数据直显**功能。
 
-> 更多 Display 组件使用方法请参考 `Display` / `Camera` 目录下的示例。
+:::note
+更多 Display 组件用法请参考 `Display` / `Camera` 目录下的示例。
+:::
 
 ### AI 高级功能
 
@@ -319,42 +330,44 @@ if (event == BUTTON_EVENT_DOUBLE_CLICK) {
 
 [什么是 MCP](https://tuyaopen.ai/zh/docs/cloud/tuya-cloud/ai-agent/mcp-management)：MCP（Model Context Protocol）是一种让 AI Agent 调用设备端本地工具的通用协议接口。
 
-在 `appMCP.cpp/.h` 文件中演示了如何注册本地 MCP 工具供 AI Agent 调用。
+`appMCP.cpp/.h` 文件演示了如何注册本地 MCP 工具供 AI Agent 调用。
 
-> **注意**：MCP 工具必须在 MQTT 连接成功后注册。示例中通过订阅 `EVENT_MQTT_CONNECTED` 事件来确保注册时机正确。
+:::note
+MCP 工具必须在 MQTT 连接成功后注册。示例通过订阅 `EVENT_MQTT_CONNECTED` 事件来确保注册时机正确。
+:::
 
 **两种注册方式：**
 
-1. **简单注册**（无参数工具）：使用 `TUYA_MCP_TOOL_ADD_SIMPLE` 宏
+1. **简单注册**（无参数工具）：使用 `TUYA_MCP_TOOL_ADD_SIMPLE` 宏。
 
-```cpp
-// 注册无参数的工具
-TUYA_MCP_TOOL_ADD_SIMPLE(
-    "device_info_get",          // 工具名称
-    "Get device information.",  // 工具描述（供 AI 理解用途）
-    onGetDeviceInfo,            // 回调函数
-    nullptr                     // 用户数据
-);
-```
+    ```cpp
+    // 注册无参数的工具
+    TUYA_MCP_TOOL_ADD_SIMPLE(
+        "device_info_get",          // 工具名称
+        "Get device information.",  // 工具描述（供 AI 理解用途）
+        onGetDeviceInfo,            // 回调函数
+        nullptr                     // 用户数据
+    );
+    ```
 
-2. **带参数注册**：使用 `TUYA_MCP_TOOL_REGISTER` 宏 + 属性定义
+2. **带参数注册**：使用 `TUYA_MCP_TOOL_REGISTER` 宏加属性定义。
 
-```cpp
-// 定义工具参数
-TuyaMCPPropDef volumeProps[] = {
-    TuyaMCPPropIntRange("volume", "The volume level (0-100).", 0, 100)
-};
-// 注册带参数的工具
-TUYA_MCP_TOOL_REGISTER(
-    "device_audio_volume_set",  // 工具名称
-    "Sets the device volume.",  // 工具描述
-    onSetVolume,                // 回调函数
-    nullptr,                    // 用户数据
-    volumeProps, 1              // 参数定义和参数个数
-);
-```
+    ```cpp
+    // 定义工具参数
+    TuyaMCPPropDef volumeProps[] = {
+        TuyaMCPPropIntRange("volume", "The volume level (0-100).", 0, 100)
+    };
+    // 注册带参数的工具
+    TUYA_MCP_TOOL_REGISTER(
+        "device_audio_volume_set",  // 工具名称
+        "Sets the device volume.",  // 工具描述
+        onSetVolume,                // 回调函数
+        nullptr,                    // 用户数据
+        volumeProps, 1              // 参数定义和参数个数
+    );
+    ```
 
-**参数类型宏**：
+**参数类型宏：**
 
 | 宏 | 说明 |
 | --- | --- |
@@ -362,7 +375,7 @@ TUYA_MCP_TOOL_REGISTER(
 | `TuyaMCPPropIntRange(name, desc, min, max)` | 整数类型参数（带范围限制） |
 | `TuyaMCPPropIntDefRange(name, desc, def, min, max)` | 整数类型参数（带默认值和范围） |
 
-**回调函数中的常用方法**：
+**回调函数中的常用方法：**
 
 | 方法 | 说明 |
 | --- | --- |
@@ -375,10 +388,10 @@ TUYA_MCP_TOOL_REGISTER(
 
 | 工具名称 | 触发方式 | 功能说明 |
 | --- | --- | --- |
-| `device_info_get` | "获取设备信息" | 返回设备型号、序列号、固件版本等 JSON 信息 |
-| `device_camera_take_photo` | "帮我拍照" | 调用摄像头拍照并将 JPEG 图片返回给 AI 进行内容识别 |
-| `device_audio_volume_set` | "把音量调到 50" | 设置设备音量（0 ~ 100） |
-| `device_audio_mode_set` | "切换到自由对话模式" | 切换对话模式（0=长按，1=按键，2=唤醒，3=自由） |
+| `device_info_get` | “获取设备信息” | 返回设备型号、序列号、固件版本等 JSON 信息 |
+| `device_camera_take_photo` | “帮我拍照” | 调用摄像头拍照并将 JPEG 图片返回给 AI 进行内容识别 |
+| `device_audio_volume_set` | “把音量调到 50” | 设置设备音量（0–100） |
+| `device_audio_mode_set` | “切换到自由对话模式” | 切换对话模式（0=长按，1=按键，2=唤醒，3=自由） |
 
 #### Skill
 
@@ -410,8 +423,8 @@ case AI_USER_EVT_SKILL:
 
 AI 聊天过程中的情绪识别包含两种来源：
 
-- `AI_USER_EVT_EMOTION`：从文本标签中解析出的情绪信息
-- `AI_USER_EVT_LLM_EMOTION`：由大模型推理得出的用户情绪
+- `AI_USER_EVT_EMOTION`：从文本标签中解析出的情绪信息。
+- `AI_USER_EVT_LLM_EMOTION`：由大模型推理得出的用户情绪。
 
 两者都通过 `AI_AGENT_EMO_T` 结构体返回，包含**情绪名称**（`name`）和**对应的 emoji**（`emoji`，Unicode 编码）。可使用 `TuyaAI.Skill.unicodeToUtf8()` 将 emoji 的 Unicode 编码转换为 UTF-8 字符串用于显示。
 
@@ -429,14 +442,13 @@ case AI_USER_EVT_LLM_EMOTION:
 
 ### 状态监控
 
-在 `appStatus.cpp/.h` 文件中实现了设备运行状态的周期性监控，包括：
+`appStatus.cpp/.h` 文件实现了设备运行状态的周期性监控，包括：
 
-- **WiFi 信号状态**：每 1 秒检测一次 WiFi 连接状态，状态变化时自动更新屏幕上的 WiFi 图标
-- **堆内存监控**：每 5 秒输出一次空闲堆内存大小，便于开发调试
-- **对话模式显示**：实时在屏幕上显示当前的对话模式名称
+- **WiFi 信号状态**：每 1 秒检测一次 WiFi 连接状态，状态变化时自动更新屏幕上的 WiFi 图标。
+- **堆内存监控**：每 5 秒输出一次空闲堆内存大小，便于开发调试。
+- **对话模式显示**：实时在屏幕上显示当前的对话模式名称。
 
-## 更多示例
+## 相关文档
 
 - [AI API 开发](AI_API_Development.md)
 - [外设开发](Peripheral_Development.md)
-

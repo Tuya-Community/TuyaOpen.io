@@ -2,9 +2,7 @@
 title: "Tuya Product Development"
 ---
 
-# Tuya Product Development
-
-Every device that connects to the Tuya Cloud must have a **PID (Product ID)** — a globally unique identifier assigned by the Tuya IoT Platform. The PID binds your device to a specific set of capabilities: data point (DP) definitions, App control panels, OTA channels, and more.
+Every device that connects to the Tuya Cloud must have a **PID (Product ID)** — a globally unique identifier assigned by the Tuya IoT Platform. The PID binds your device to a specific set of capabilities: data point (DP) definitions, App control panels, OTA channels, and more. This page creates your own product, gets its PID, and writes that PID into your firmware.
 
 ## Why Create Your Own Product
 

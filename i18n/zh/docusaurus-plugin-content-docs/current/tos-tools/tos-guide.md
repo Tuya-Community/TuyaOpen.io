@@ -57,13 +57,9 @@ Commands:
 - `23`：在 v1.3.0 的基础上有 23 个新的 Commit 提交。
 - `g6bcb5aa`：`g` 为固定前缀，`6bcb5aa` 是当前 Commit 的缩写。
 
-
-<details>
-<summary>出现 [Unknow version]：</summary>
-
-    说明当前仓库没有任何 tag，常见于 fork 仓库的情况。
-
-</details>
+:::note
+若出现 `[Unknown version]`，说明当前仓库没有任何 tag，常见于 fork 仓库的情况。
+:::
 
 ## check
 
@@ -79,20 +75,15 @@ Commands:
 [INFO]: Download submoudules successfully.
 ```
 
-`check` 命令会完成以下两个步骤的操作：
+`check` 命令会完成以下两个步骤：
 
-    1. 检查 `TuyaOpen` 使用中所需的环境工具是否存在，并校验版本号。
+1. 检查 `TuyaOpen` 所需的环境工具是否存在，并校验版本号。
+2. 下载所需的 `submodules`。
 
-    2. 下载所需要的 `submodules`。
+若 check 过程中出现 `[Error]`：
 
-<details>
-<summary>Check 过程中出现 Error：</summary>
-
-    - 工具未安装或版本过低，可安装或升级对应工具。
-
-    - `submodules` 下载失败，可尝试在 `TuyaOpen` 根目录执行 `git submodule update --init`。
-
-</details>
+- 工具未安装或版本过低，请安装或升级对应工具。
+- `submodules` 下载失败，请在 `TuyaOpen` 根目录执行 `git submodule update --init`。
 
 ## config
 

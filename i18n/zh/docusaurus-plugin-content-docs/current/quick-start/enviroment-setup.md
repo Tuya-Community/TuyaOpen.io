@@ -4,20 +4,19 @@ title: "Step 0: 环境搭建"
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# 环境搭建
-
-## 概述
-
-完成在不同系统（Linux、Windows、macOS）中的必要工具准备。
+在你的电脑上搭建 TuyaOpen 所需的工具链、下载仓库，并激活 `tos.py`——后续配置、构建、烧录每个项目都要用到的命令行工具。
 
 ## 硬件准备
 
 开始前，请准备以下资源：
- - TuyaOpen [支持的开发板或模组](../hardware/index.md#硬件平台)
- - USB 数据线
- - 电脑（支持 Windows/Linux/macOS 系统）
 
-## 环境准备
+- 一块 [TuyaOpen 支持的开发板或模组](../hardware/index.md#硬件平台)
+- 一根 USB 数据线
+- 一台运行 Windows、Linux 或 macOS 的电脑
+
+## 安装工具链
+
+选择你的操作系统并安装所需工具。
 
 <SyncedTabs
   defaultValue="Linux"
@@ -94,17 +93,18 @@ import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
 ## 下载并激活 TuyaOpen
 
-下载 `TuyaOpen` 仓库：
+克隆 TuyaOpen 仓库。
 
-:::info
-可适当调整git配置以提高性能：
+:::tip
+可适当调整 git 配置以提高克隆性能：
+
 ```bash
 git config --global http.postBuffer 524288000
 ```
 :::
 
 :::warning
-选择项目路径的时候，不使用中文，也不要包含空格等特殊字符，Windows环境不要选择C盘。
+项目路径中不要使用中文或空格等特殊字符。在 Windows 上，不要将项目放在 C 盘。
 :::
 
 ```bash
@@ -118,10 +118,10 @@ git clone https://gitee.com/tuya-open/TuyaOpen.git
 cd TuyaOpen
 ```
 
-激活 `tos.py`：
+激活 `tos.py`。
 
 :::warning
-每次重新打开终端后，需要重新激活 `tos.py`。
+每次重新打开终端后，都需要重新激活 `tos.py`。
 :::
 
 <SyncedTabs
@@ -151,7 +151,7 @@ cd TuyaOpen
   </SyncedTabItem>
 </SyncedTabs>
 
-验证，使用命令 `tos.py version` 以及 `tos.py check`，会出现如下信息：
+运行 `tos.py version` 和 `tos.py check` 验证激活是否成功。你应看到类似如下的输出：
 
 ```bash
 ❯ tos.py version
@@ -164,9 +164,9 @@ cd TuyaOpen
 [INFO]: [cmake] (4.0.2 >= 3.28.0) is ok.
 [INFO]: [make] (4.3 >= 3.0.0) is ok.
 [INFO]: [ninja] (1.11.1 >= 1.6.0) is ok.
-[INFO]: Downloading submoudules ...
+[INFO]: Downloading submodules...
 [INFO]: [do subprocess]: cd /home/huatuo/work/open/TuyaOpen && git submodule update --init
-[INFO]: Download submoudules successfully.
+[INFO]: Download submodules successfully.
 ```
 
 <details>
@@ -179,7 +179,7 @@ git submodule update --init
 ```
 </details>
 
-使用如下命令退出激活 `tos.py`：
+完成后，退出激活 `tos.py`。
 
 <SyncedTabs
   defaultValue="Linux"

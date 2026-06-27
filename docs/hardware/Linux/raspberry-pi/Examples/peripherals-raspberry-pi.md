@@ -2,7 +2,7 @@
 title: "Raspberry Pi Peripherals"
 ---
 
-This document explains how to run TuyaOpen peripheral examples on Raspberry Pi (`examples/peripherals`), including GPIO, I2C, SPI, PWM, and UART.
+Run the TuyaOpen peripheral examples (`examples/peripherals`) on Raspberry Pi. This guide covers GPIO, I2C, SPI, PWM, UART, button input, and audio codecs: how to enable each peripheral, which TKL APIs the Linux adapter supports, and a minimal example per peripheral.
 
 ## Quick start
 
@@ -13,11 +13,13 @@ This document explains how to run TuyaOpen peripheral examples on Raspberry Pi (
   - Select the model: `Raspberry Pi Board Configuration → Choose Raspberry Pi model → Raspberry Pi 5` (choose according to your actual model)
 3. Enable the peripherals you need: go to `Choice a board → LINUX → TKL Board Configuration` and select `ENABLE_GPIO`/`ENABLE_I2C`/`ENABLE_SPI`/`ENABLE_PWM`/`ENABLE_UART`.
 
-![models_path_config](https://images.tuyacn.com/fe-static/docs/img/4b6127c5-ab9f-415a-b365-cb136467efed.png)
+![TKL Board Configuration menu with peripheral enable options selected](https://images.tuyacn.com/fe-static/docs/img/4b6127c5-ab9f-415a-b365-cb136467efed.png)
 
 4. Enter the corresponding example directory (for example `examples/peripherals/gpio`), run `tos.py build`, then run the generated `*.elf` with `sudo`.
 
-> **Note (build mode)**: Raspberry Pi supports both cross-compilation and native compilation; the build system will automatically pick a suitable mode based on the current platform.
+:::note
+Raspberry Pi supports both cross-compilation and native compilation. The build system picks a suitable mode automatically based on the current platform.
+:::
 
 ## General notes
 
@@ -43,7 +45,7 @@ This section shows how to use TuyaOpen to operate GPIO on Raspberry Pi.
 
 - Requires `/dev/gpiochip*` to be available (kernel must enable the GPIO character device interface, and the current user must have permission; typically run the examples with `sudo`).
 - On Linux, `TUYA_GPIO_NUM_E` is interpreted as the gpiochip line offset. On Raspberry Pi it usually matches BCM GPIO numbers, but this may vary by distro/kernel configuration. Verify with `gpioinfo`/`pinctrl`.
-- `TUYA_GPIO_IRQ_LOW/HIGH` is an “approximation”: the adapter listens for edge events and then reads the current level for filtering; it is not a true level-triggered hardware interrupt.
+- `TUYA_GPIO_IRQ_LOW/HIGH` is an "approximation": the adapter listens for edge events and then reads the current level for filtering; it is not a true level-triggered hardware interrupt.
 
 #### Reference
 
@@ -63,10 +65,11 @@ Start the configuration menu:
 tos.py config menu
 ```
 
-After selecting board and model as described in “Quick start”, go to `Choice a board → LINUX → TKL Board Configuration` and select `ENABLE_GPIO`.
+After selecting board and model as described in "Quick start", go to `Choice a board → LINUX → TKL Board Configuration` and select `ENABLE_GPIO`.
 
->
-> **Tip**: for GPIO pinout and the RP1 mux/function table, see [Raspberry Pi 5 GPIO Reference](https://tuyaopen.ai/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi.md).
+:::tip
+For the GPIO pinout and the RP1 mux/function table, see the [Raspberry Pi 5 GPIO Reference](/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi).
+:::
 
 In `Application config`, choose appropriate pins for:
 
@@ -97,7 +100,9 @@ The code below demonstrates:
 - Initializing an output pin and toggling it once per second
 - Initializing an input pin and reading its level
 
-> Note: this snippet only shows the core calls. For a complete buildable project, refer to `examples/peripherals/gpio`.
+:::note
+This snippet shows only the core calls. For a complete buildable project, see `examples/peripherals/gpio`.
+:::
 
 ```c
 #include "tal_api.h"
@@ -148,10 +153,10 @@ This section shows how to use TuyaOpen to operate I2C on Raspberry Pi.
 - Basic master send/receive
   - `tkl_i2c_master_send()`: write to a given device address (uses `/dev/i2c-X` + `I2C_SLAVE` + `write()`).
   - `tkl_i2c_master_receive()`: read from a given device address (uses `I2C_SLAVE` + `read()`).
-- Common “register read” combined transaction (Repeated Start)
-  - When `tkl_i2c_master_send(..., xfer_pending=true)` is immediately followed by `tkl_i2c_master_receive()`, they are merged into a single `I2C_RDWR` transaction, implementing “write register address/command, then repeated-start read data”.
+- Common "register read" combined transaction (Repeated Start)
+  - When `tkl_i2c_master_send(..., xfer_pending=true)` is immediately followed by `tkl_i2c_master_receive()`, they are merged into a single `I2C_RDWR` transaction, implementing "write register address/command, then repeated-start read data".
 - Address probe (scan)
-  - When `tkl_i2c_master_send()` is called with `size==0`, the adapter uses SMBus “quick” to probe whether the device ACKs (useful for simple address scans).
+  - When `tkl_i2c_master_send()` is called with `size==0`, the adapter uses SMBus "quick" to probe whether the device ACKs (useful for simple address scans).
 
 #### Not supported yet (API kept; current implementation returns `OPRT_NOT_SUPPORTED`)
 
@@ -176,7 +181,7 @@ In `raspi-config`, enable I2C via:
 
 - `3 Interface Options` → `I5 I2C` → `Enable`
 
-![models_path_config](https://images.tuyacn.com/fe-static/docs/img/c8daf0da-c625-472e-888f-090968719dc9.png)
+![raspi-config Interface Options menu with I2C enabled](https://images.tuyacn.com/fe-static/docs/img/c8daf0da-c625-472e-888f-090968719dc9.png)
 
 Verify the device node is created:
 
@@ -219,9 +224,11 @@ If a device is found, you will see logs like:
 
 ### Minimal example
 
-The code below demonstrates “scanning I2C 7-bit addresses” (on Linux, `size==0` triggers the quick probe path):
+The code below demonstrates scanning I2C 7-bit addresses (on Linux, `size==0` triggers the quick probe path):
 
-> Note: for a complete buildable project, see `examples/peripherals/i2c/i2c_scan`.
+:::note
+For a complete buildable project, see `examples/peripherals/i2c/i2c_scan`.
+:::
 
 ```c
 #include "tal_api.h"
@@ -274,7 +281,7 @@ This section shows how to use TuyaOpen to operate SPI (userspace spidev) on Rasp
   - `tkl_spi_recv()`: uses `read()`.
 - Transfers
   - `tkl_spi_transfer()`: full-duplex TX/RX via `SPI_IOC_MESSAGE(1)`.
-  - `tkl_spi_transfer_with_length()`: “send then receive” via `SPI_IOC_MESSAGE(2)`.
+  - `tkl_spi_transfer_with_length()`: "send then receive" via `SPI_IOC_MESSAGE(2)`.
 - Counters/status (compatibility APIs)
   - `tkl_spi_get_data_count()`: returns the byte count of the most recent transfer.
   - `tkl_spi_get_status()`: returns `OPRT_OK` and currently only zeros the struct (no real status).
@@ -320,17 +327,16 @@ Verify the device node is created:
 ls /dev | grep spidev
 ```
 
-> In TuyaOpen SPI examples, `Application config -> spi port` is a **port number**.
-> The Linux adapter maps the port number to a device node (see `platform/LINUX/tuyaos_adapter/src/tkl_spi.c` and `prv_spi_dev_path()`):
->
-> - `spi port = 0` → `/dev/spidev0.0`
-> - `spi port = 1` → `/dev/spidev0.1`
-> - `spi port = 2` → `/dev/spidev1.0`
-> - `spi port = 3` → `/dev/spidev1.1`
-> - `spi port = 4` → `/dev/spidev2.0`
-> - `spi port = 5` → `/dev/spidev2.1`
->
-> For example, for `spidev0.0 / spidev0.1`, set `spi port` to `0 / 1`.
+In TuyaOpen SPI examples, `Application config -> spi port` is a **port number**. The Linux adapter maps the port number to a device node (see `prv_spi_dev_path()` in `platform/LINUX/tuyaos_adapter/src/tkl_spi.c`):
+
+- `spi port = 0` → `/dev/spidev0.0`
+- `spi port = 1` → `/dev/spidev0.1`
+- `spi port = 2` → `/dev/spidev1.0`
+- `spi port = 3` → `/dev/spidev1.1`
+- `spi port = 4` → `/dev/spidev2.0`
+- `spi port = 5` → `/dev/spidev2.1`
+
+For example, for `spidev0.0` / `spidev0.1`, set `spi port` to `0` / `1`.
 
 ### Enter the example directory
 
@@ -354,7 +360,7 @@ Recommended `spi port`:
 - To use `/dev/spidev0.0`: set to `0`
 - To use `/dev/spidev0.1`: set to `1`
 
-For `spi baudrate` (Hz), it is recommended to start with `1000000` or `8000000` to validate loopback/communication, then increase gradually based on your peripheral’s capability.
+For `spi baudrate` (Hz), it is recommended to start with `1000000` or `8000000` to validate loopback/communication, then increase gradually based on your peripheral's capability.
 
 Build and run:
 
@@ -367,7 +373,9 @@ sudo ./spi_1.0.0.elf
 
 The code below demonstrates SPI master sending a fixed string (on Linux it goes through `/dev/spidevX.Y`):
 
-> Note: for a complete buildable project, see `examples/peripherals/spi`.
+:::note
+For a complete buildable project, see `examples/peripherals/spi`.
+:::
 
 ```c
 #include "tal_api.h"
@@ -489,7 +497,9 @@ sudo ./pwm_1.0.0.elf
 
 The code below demonstrates PWM output (init + start):
 
-> Note: for a complete buildable project, see `examples/peripherals/pwm`.
+:::note
+For a complete buildable project, see `examples/peripherals/pwm`.
+:::
 
 ```c
 #include "tal_api.h"
@@ -518,7 +528,9 @@ static void pwm_min_demo(void)
 
 To quickly verify the sysfs nodes match expectations, check whether the corresponding `pwm2` exists (or can be exported) under `/sys/class/pwm/pwmchip0/`.
 
-> **Tip**: PWM sysfs depends on kernel/overlay configuration. The path of `/boot/firmware/config.txt` may differ by OS image; use the actual path on your system.
+:::tip
+PWM sysfs depends on kernel and overlay configuration. The path `/boot/firmware/config.txt` may differ by OS image; use the actual path on your system.
+:::
 
 ## UART example
 
@@ -533,7 +545,7 @@ This section shows how to use TuyaOpen to operate UART on Raspberry Pi.
   - `tkl_uart_write()`: uses `write()`.
   - `tkl_uart_read()`: uses `read()`.
   - `tkl_uart_deinit()`: close fd and stop the RX thread.
-- RX callback notification (approx. “interrupt” semantics)
+- RX callback notification (approx. "interrupt" semantics)
   - `tkl_uart_rx_irq_cb_reg()`: register the RX callback.
   - On Linux, a thread `select()`s for fd readability and triggers the callback.
 
@@ -559,7 +571,7 @@ This section shows how to use TuyaOpen to operate UART on Raspberry Pi.
 
 ### Hardware wiring notes (physical UART)
 
-If you use a **physical UART** (for example, Raspberry Pi UART pins connected to a USB-TTL module or another board’s UART):
+If you use a **physical UART** (for example, Raspberry Pi UART pins connected to a USB-TTL module or another board's UART):
 
 - Make sure both sides share **a common ground (GND)**. Without common ground, typical symptoms include garbled RX data, missing bytes, or very unstable communication.
 
@@ -572,7 +584,7 @@ When redirection (Dummy UART) is enabled, the behavior in `tkl_uart.c` is roughl
 - `TUYA_UART_NUM_0` (port 0):
   - RX: read from the current process standard input `/dev/stdin` (your terminal keyboard input when running `*.elf`).
   - TX: write to `stdout` (printed directly in the terminal).
-  - Typical use: in SSH/local terminals, use “keyboard input → UART RX”, and see “UART TX” output on-screen, without relying on `/dev/ttyAMA*`.
+  - Typical use: in SSH/local terminals, use "keyboard input → UART RX", and see "UART TX" output on-screen, without relying on `/dev/ttyAMA*`.
 - `TUYA_UART_NUM_1` (port 1):
   - RX: receive via UDP socket and feed bytes to the upper-layer RX callback.
   - TX: send data to the peer via UDP socket.
@@ -581,7 +593,7 @@ When redirection (Dummy UART) is enabled, the behavior in `tkl_uart.c` is roughl
 Limitations/notes of Dummy mode:
 
 - Baud rate/parity/stop bits etc. are **not equivalent to real UART** in Dummy mode (for port 0, stdin is only switched to non-canonical mode for immediate reads; stdout has no real serial timing).
-- Dummy mode is mainly for “making the feature run / interactive demo”, and is not suitable for serious UART protocol timing verification.
+- Dummy mode is mainly for "making the feature run / interactive demo", and is not suitable for serious UART protocol timing verification.
 
 How to choose whether to use UART redirection:
 
@@ -661,13 +673,17 @@ Run:
 sudo ./uart_1.0.0.elf
 ```
 
-> Reminder: the example uses `TUYA_UART_NUM_0` (UART0) by default. On Raspberry Pi, UART0 may be occupied by the system console. If you see no echo or open failures, check serial-port usage and adjust the UART port used by the example or the adapter device-node mapping.
+:::note
+The example uses `TUYA_UART_NUM_0` (UART0) by default. On Raspberry Pi, UART0 may be occupied by the system console. If you see no echo or open failures, check serial-port usage and adjust the UART port used by the example or the adapter device-node mapping.
+:::
 
 ### Minimal example 1: interactive echo
 
-This example is best for quickly validating the UART path in **Dummy UART redirection** (stdin/stdout) mode: whatever you type in the terminal will be echoed back.
+This example is best for quickly validating the UART path in **Dummy UART redirection** (stdin/stdout) mode: whatever you type in the terminal is echoed back.
 
-> Note: this approach is consistent with `examples/peripherals/uart`.
+:::note
+This approach is consistent with `examples/peripherals/uart`.
+:::
 
 ```c
 #include "tal_api.h"
@@ -703,7 +719,7 @@ static void uart_echo_demo(void)
 
 ### Minimal example 2: hardware loopback self-test (short TX and RX)
 
-This example performs a self-test of “whether transmitted data can be read back unchanged” (validated by `memcmp`). It usually requires:
+This example performs a self-test of "whether transmitted data can be read back unchanged" (validated by `memcmp`). It usually requires:
 
 - Disable Dummy redirection (use physical UART device nodes)
 - Short **TX and RX** on the same UART (and ensure common GND)
@@ -777,20 +793,22 @@ static OPERATE_RET uart_loopback_test(TUYA_UART_NUM_E port)
 }
 ```
 
-## Button Example
+## Button example
 
-This example demonstrates how to handle button input on Raspberry Pi using TuyaOpen’s Button component (TDL Button management layer).
+This example demonstrates how to handle button input on Raspberry Pi using TuyaOpen's Button component (TDL Button management layer).
 
-### Adaptation Notes (Raspberry Pi: keyboard-simulated button)
+### Adapter notes (Raspberry Pi keyboard-simulated button)
 
 On Raspberry Pi, buttons are simulated via keyboard input by default: pressing a character in the terminal where you run `*.elf` triggers a button event.
 
 - Enabled by board Kconfig: `ENABLE_KEYBOARD_INPUT`
 - Trigger character is specified by `BUTTON_NAME` (default `s`)
 
-> Note: in the example project, the log for `TDL_BUTTON_PRESS_DOWN` is printed as `single click` (see `examples/peripherals/button/src/example_button.c`). It represents the “press down” event.
+:::note
+In the example project, the log for `TDL_BUTTON_PRESS_DOWN` is printed as `single click` (see `examples/peripherals/button/src/example_button.c`). It represents the press-down event.
+:::
 
-### Enter the Example Directory
+### Enter the example directory
 
 ```bash
 cd examples/peripherals/button
@@ -808,18 +826,18 @@ Select the number corresponding to `RaspberryPi.config` and press Enter.
 tos.py config menu
 ```
 
-After completing board/model selection per “Quick Start”, go to:
+After completing board/model selection per "Quick Start", go to:
 
 - `Choice a board → LINUX → Raspberry Pi Board Configuration`
   - Confirm `Enable keyboard input for Raspberry Pi` is checked.
   - Set `Keyboard button device value`, for example: `s`
 
-Note: `Keyboard button device value` corresponds to the board config item `BUTTON_NAME`, meaning “which keyboard character is used to simulate the button”.
+Note: `Keyboard button device value` corresponds to the board config item `BUTTON_NAME`, meaning "which keyboard character is used to simulate the button".
 
 - Set to `s`: pressing `s` in the terminal running `*.elf` triggers a button event named `s`.
 - It is recommended to use a **single character** (e.g., `s` / `a` / `d` / `1`). Avoid multi-character strings to prevent confusion if some implementations only take the first character.
 
-### Build and Run
+### Build and run
 
 Build:
 
@@ -833,23 +851,23 @@ Run:
 sudo ./button_1.0.0.elf
 ```
 
-### Expected Behavior
+### Expected behavior
 
 - Press the character corresponding to `BUTTON_NAME` (default `s`) in the terminal, and it prints `s: single click` once (press-down event).
 - Hold it for about 3 seconds (in the example, `long_start_valid_time=3000ms`), and it prints `s: long press` (long-press event).
 
 
-## Audio Codecs Example (audio_codecs)
+## Audio codecs example (`audio_codecs`)
 
-This example demonstrates **recording + playback** via ALSA on Raspberry Pi (PCM 16k/16bit/mono), and shows how to use TuyaOpen’s `TDL Audio` management-layer APIs.
+This example demonstrates **recording + playback** via ALSA on Raspberry Pi (PCM 16k/16bit/mono), and shows how to use TuyaOpen's `TDL Audio` management-layer APIs.
 
-### Adaptation Notes (Linux ALSA)
+### Adapter notes (Linux ALSA)
 
 - On Raspberry Pi (Linux), audio is accessed via ALSA `/dev/snd/*`.
 - This example depends on the `src/peripherals/audio_codecs` component and uses the ALSA driver implementation (`tdd_audio_alsa.c`).
 - It is recommended to run with `sudo`, or ensure the current user is in the `audio` group (otherwise opening sound card device nodes may fail).
 
-### Pre-check (Verify USB Sound Card Is Recognized)
+### Pre-check (verify the USB sound card is recognized)
 
 Using a USB audio module (e.g., YD1076/Y1076) as an example, run on Raspberry Pi:
 
@@ -861,7 +879,7 @@ ls -la /dev/snd/
 
 You should see a device like `card 2: Y1076 ...` in the list.
 
-### Enter the Example Directory
+### Enter the example directory
 
 ```bash
 cd examples/peripherals/audio_codecs
@@ -882,13 +900,13 @@ Select the number corresponding to `RaspberryPi.config` and press Enter.
 tos.py config menu
 ```
 
-After completing board selection per “Quick Start”, go to:
+After completing board selection per "Quick Start", go to:
 
 - `Choice a board → LINUX → Choice a board → RaspberryPi → Raspberry Pi Board Configuration`
   - Confirm `Enable keyboard input for Raspberry Pi` is checked.
   - Set `Keyboard button device value`, for example: `s`
 
-### Build and Run
+### Build and run
 
 Build:
 
@@ -904,7 +922,7 @@ sudo ./audio_codecs_1.0.0.elf
 
 Interaction: the example uses keyboard input to simulate a button by default (usually `s`). Press and hold to start recording, release to stop recording and play back (follow actual logs/behavior).
 
-### Common Troubleshooting
+### Common troubleshooting
 
 1) **Failed to open `default` device**
 

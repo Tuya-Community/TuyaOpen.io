@@ -2,13 +2,11 @@
 title: "ESP32 Supported Features"
 ---
 
-# ESP32 Supported Features
+This reference lists which chip features, on-board peripherals, boards, and applications TuyaOpen supports across the ESP32 chip variants.
 
-Detailed feature matrix across ESP32 chip variants in TuyaOpen.
+## Chip comparison matrix
 
-## Chip Comparison Matrix
-
-### Chip Features
+### Chip features
 | Feature | ESP32 | ESP32-S3 | ESP32-C3 | ESP32-C6 |
 |---------|-------|----------|----------|----------|
 | **CPU** | Dual Xtensa LX6 | Dual Xtensa LX7 | Single RISC-V | Single RISC-V |
@@ -16,7 +14,7 @@ Detailed feature matrix across ESP32 chip variants in TuyaOpen.
 | **Bluetooth** | Classic + BLE 4.2 | BLE 5.0 | BLE 5.0 | BLE 5.0 |
 | **USB** | No | Yes (OTG) | No | No |
 
-### Peripheral Support by Chip
+### Peripheral support by chip
 
 The following table lists peripherals adapted in TuyaOpen for each chip.
 
@@ -36,9 +34,9 @@ The following table lists peripherals adapted in TuyaOpen for each chip.
 | Watchdog | Yes | Yes | Yes | Yes |
 | RTC | Yes | Yes | Yes | Yes |
 
-## Supported On-Board Peripherals
+## Supported on-board peripherals
 
-### Audio Codecs
+### Audio codecs
 
 | Driver | Codec | Notes |
 |--------|-------|-------|
@@ -52,7 +50,7 @@ The following table lists peripherals adapted in TuyaOpen for each chip.
 Audio driver unified spec: 16000 Hz sample rate, I2S interface, 6 DMA descriptors, frame size 240.
 :::
 
-### LCD Drivers
+### LCD drivers
 
 | Driver | Display | Interface |
 |--------|---------|-----------|
@@ -71,7 +69,7 @@ ESP32 uses its own LVGL integration (via ESP-IDF LVGL component), not the TuyaOp
 |--------|-----------|
 | `touch_ft5x06` | FT5x06 capacitive touch |
 
-### IO Expander
+### IO expander
 
 | Driver | Chip |
 |--------|------|
@@ -84,7 +82,7 @@ ESP32 uses its own LVGL integration (via ESP-IDF LVGL component), not the TuyaOp
 |--------|------|
 | `tdd_led_esp_ws1280` | WS2812-compatible addressable LEDs via RMT |
 
-## Supported Boards
+## Supported boards
 
 All boards currently supported under `boards/ESP32/`:
 
@@ -102,7 +100,7 @@ All boards currently supported under `boards/ESP32/`:
 | `DNESP32S3_BOX2_WIFI` | ESP32-S3 | Zhengdian ESP32-S3 BOX2 (with 4G/charging) |
 | `WAVESHARE_ESP32C6_DEV_KIT_N16` | ESP32-C6 | Waveshare ESP32-C6 dev kit |
 
-## Board-to-Peripheral Mapping
+## Board-to-peripheral mapping
 
 | Board | Display | Touch | Audio Codec | IO Expander | Button | LED | Other |
 |-------|---------|-------|-------------|-------------|--------|-----|-------|
@@ -118,7 +116,7 @@ All boards currently supported under `boards/ESP32/`:
 | `DNESP32S3_BOX2_WIFI` | ST7789 I80 320×240 | — | ES8389 (0x20) | XL9555 | — | — | 4G module, USB switch, charging |
 | `WAVESHARE_ESP32C6_DEV_KIT_N16` | — | — | — | — | GPIO9 | WS1280 GPIO8 | — |
 
-## Applications Tested on ESP32
+## Applications tested on ESP32
 
 These TuyaOpen applications have pre-built ESP32 configs:
 
@@ -128,7 +126,7 @@ Applications fall into two categories:
 - **Generic**: No `config/` subdirectory — works on any base ESP32 module (`ESP32` / `ESP32-C3` / `ESP32-S3` / `ESP32-C6`) without requiring board-specific hardware.
 :::
 
-### Board-Specific Applications
+### Board-specific applications
 
 #### your_chat_bot (AI Chatbot)
 
@@ -148,7 +146,7 @@ Applications fall into two categories:
 | `WAVESHARE_ESP32S3_Touch_AMOLED_1.8` | `WAVESHARE_ESP32S3_TOUCH_AMOLED_1_8.config` |
 | `XINGZHI_ESP32S3_CUDE_0.96_OLED_WIFI` | `XINGZHI_ESP32S3_Cube_0_96OLED_WIFI.config` |
 
-### Generic Applications
+### Generic applications
 
 The following apps support all base ESP32 modules and require no board-specific peripherals:
 
@@ -157,7 +155,7 @@ The following apps support all base ESP32 modules and require no board-specific 
 | `tuya_cloud/switch_demo` | Tuya cloud-connected switch demo |
 | `tuya_cloud/weather_get_demo` | Weather data fetch demo |
 
-## References
+## See also
 
 - [ESP32 on TuyaOpen -- Overview](overview-esp32)
 - [Adding a New ESP32 Board](esp32-new-board)

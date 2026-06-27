@@ -1,63 +1,70 @@
-# tkl_lwip | lwIP 协议栈
+---
+title: tkl_lwip | lwIP 以太网接口
+---
 
-`tkl_lwip.c` 文件包含底层以太网接口的初始化和数据包的发送接收功能实现，依赖于 lwIP 网络协议栈。此文件是由涂鸦智能操作系统自动生成和维护的，开发者可以在用户定义的 "BEGIN" 和 "END" 注释之间添加自己的实现代码。此种设计能够在涂鸦智能操作系统的版本和验证工具执行时，保留用户的自定义更改，而其他部分则会被自动生成的更新覆盖。
+`tkl_lwip` 将 lwIP 网络协议栈适配到底层以太网硬件，负责初始化以太网接口并以 lwIP `pbuf` 形式收发数据包。其实现位于 `tkl_lwip.c`，由 TuyaOS 自动生成和维护；请将自定义代码写在 `BEGIN` 与 `END` 标记之间，以便在重新生成时得到保留。
 
-注意：该文件中的接口仅在 `ENABLE_LIBLWIP` 开启的时候需要适配。
+仅当启用 `ENABLE_LIBLWIP` 时，才需要适配这些接口。
 
-## API 说明
+接口使用两种不透明句柄类型：
 
-### tkl_ethernetif_init
+| 类型 | 描述 |
+| --- | --- |
+| `TKL_NETIF_HANDLE` | 网络接口句柄（`void *`）。 |
+| `TKL_PBUF_HANDLE` | lwIP `pbuf` 形式的数据包缓冲区句柄（`void *`）。 |
+
+## tkl_ethernetif_init
 
 ```c
 OPERATE_RET tkl_ethernetif_init(TKL_NETIF_HANDLE netif);
 ```
 
-#### 功能
-
 初始化以太网接口硬件。
 
-#### 参数
+参数：
 
-- `netif`：指向网络接口结构的指针，将用于发送数据包。
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `netif` | 要初始化的网络接口。 |
 
-#### 返回值
+返回值：
 
-- `err_t`：见 `err_enum_t` 在 `lwip/err.h` ，成功时返回 `ERR_OK`，失败时返回其他错误码。
+lwIP 错误码：成功时返回 `ERR_OK`，失败时返回其他值。参见 `lwip/err.h` 中的 `err_enum_t`。
 
-### tkl_ethernetif_output
+## tkl_ethernetif_output
 
 ```c
 OPERATE_RET tkl_ethernetif_output(TKL_NETIF_HANDLE netif, TKL_PBUF_HANDLE p);
 ```
 
-#### 功能
+通过以太网接口发送数据包。
 
-通过以太网接口发送 pbuf 格式的数据包。
+参数：
 
-#### 参数
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `netif` | 用于发送数据包的网络接口。 |
+| [in] | `p` | 以 `pbuf` 形式表示的待发送数据包。 |
 
-- `netif`：网络接口的指针，该接口将用于发送数据包。
-- `p`：以 pbuf 格式表示的待发送数据包。
+返回值：
 
-#### 返回值
+lwIP 错误码：成功时返回 `ERR_OK`，失败时返回其他值。参见 `lwip/err.h` 中的 `err_enum_t`。
 
-- `err_t`：见 `err_enum_t` 在 `lwip/err.h` ，成功时返回 `ERR_OK`，失败时返回其他错误码。
-
-### tkl_ethernetif_recv
+## tkl_ethernetif_recv
 
 ```c
 OPERATE_RET tkl_ethernetif_recv(TKL_NETIF_HANDLE netif, TKL_PBUF_HANDLE p);
 ```
 
-#### 功能
-
 接收来自以太网接口的数据包。
 
-#### 参数
+参数：
 
-- `netif`：网络接口的指针，用于接收数据包。
-- `p`：表示接收数据的pbuf结构。
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `netif` | 接收到数据包的网络接口。 |
+| [in] | `p` | 以 `pbuf` 形式表示的接收数据包。 |
 
-#### 返回值
+返回值：
 
-- `err_t`：见 `err_enum_t` 在 `lwip/err.h` ，成功时返回E RR_OK，失败时返回其他错误码。
+lwIP 错误码：成功时返回 `ERR_OK`，失败时返回其他值。参见 `lwip/err.h` 中的 `err_enum_t`。

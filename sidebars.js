@@ -6,7 +6,7 @@
 //   sdkSidebar       -> TuyaOpen SDK   (/docs root content)
 //   hardwareSidebar  -> Hardware       (/docs/hardware/*)
 //   cloudSidebar     -> Cloud & AI     (/docs/cloud/*)
-//   duckyclawSidebar -> DuckyClaw       (/docs/duckyclaw/*)
+//   duckyclawSidebar -> TuyaOpenClaw    (/docs/duckyclaw/*)  (brand formerly DuckyClaw; route kept)
 //
 // SHARED / UNIVERSAL DOCS
 // -----------------------
@@ -372,8 +372,21 @@ const hardwareSidebar = [
     label: 'Porting & New Project',
     collapsed: true,
     items: [
-      'hardware/porting/porting-platform',
+      'hardware/porting/bring-your-chip-to-tuyaopen',
       'hardware/porting/new-platform',
+      'hardware/porting/porting-platform',
+      {
+        type: 'category',
+        label: 'Bring-up stages',
+        collapsed: true,
+        items: [
+          'hardware/porting/bring-up/system-and-logs',
+          'hardware/porting/bring-up/flash-and-storage',
+          'hardware/porting/bring-up/wifi-and-network',
+          'hardware/porting/bring-up/cloud-connection',
+          'hardware/porting/bring-up/peripherals-and-ai',
+        ],
+      },
       'hardware/porting/new-board',
       'hardware/porting/new-project',
     ],
@@ -389,24 +402,36 @@ const cloudSidebar = [
   divider('🔌 Connect to Tuya Cloud', '🔌 接入涂鸦云'),
   {
     type: 'category',
-    label: 'Build AI + IoT firmware',
+    label: 'Bind a device to the cloud',
     collapsed: false,
-    items: ['cloud/tuya-cloud/creating-new-product'],
+    items: ['cloud/tuya-cloud/device-cloud-binding', 'cloud/tuya-cloud/creating-new-product'],
   },
   {
     type: 'category',
-    label: 'Tuya Cloud IoT',
+    label: 'IoT client & example',
     collapsed: true,
     items: ['cloud/iot-client/tuya-iot-client-reference', 'cloud/iot-client/demo-tuya-iot-light'],
   },
 
-  divider('🤖 On-device AI', '🤖 端侧 AI'),
+  divider('🤖 On-device AI Agent', '🤖 端侧 AI Agent'),
+  {
+    type: 'category',
+    label: 'Concepts & best practices',
+    collapsed: false,
+    items: [
+      'cloud/device-ai/concepts/agentic-first-hardware',
+      'cloud/device-ai/concepts/voice-first-design',
+      'cloud/device-ai/concepts/designing-device-mcp-tools',
+      'cloud/device-ai/concepts/real-world-use-cases',
+    ],
+  },
   {
     type: 'category',
     label: 'Runtime, agent & skills',
     collapsed: false,
     items: [
       'cloud/device-ai/ai-components/ai-components',
+      'cloud/device-ai/multimodal-data-flow',
       'cloud/device-ai/ai-components/ai-main',
       'cloud/device-ai/ai-components/ai-agent',
       'cloud/device-ai/ai-components/ai-skill',
@@ -513,7 +538,7 @@ const cloudSidebar = [
 ]
 
 // =============================================================================
-// DuckyClaw
+// TuyaOpenClaw (brand formerly DuckyClaw; doc ids / routes kept as duckyclaw/*)
 // =============================================================================
 const duckyclawSidebar = [
   { type: 'link', label: 'Overview', href: '/duckyclaw' },

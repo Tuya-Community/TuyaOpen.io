@@ -2,9 +2,7 @@
 title: "ESP32 支持功能"
 ---
 
-# ESP32 支持功能
-
-TuyaOpen 中各 ESP32 芯片型号的详细功能矩阵。
+本参考文档列出 TuyaOpen 在各 ESP32 芯片型号上支持的芯片特性、板载器件、开发板和应用。
 
 ## 芯片对比矩阵
 
@@ -32,7 +30,7 @@ TuyaOpen 中各 ESP32 芯片型号的详细功能矩阵。
 | SPI | 未实现 | 未实现 | 未实现 | 未实现 |
 | Flash | 支持 | 支持 | 支持 | 支持 |
 | Timer | 支持 | 支持 | 支持 | 支持 |
-| WathchDog | 支持 | 支持 | 支持 | 支持 |
+| Watchdog | 支持 | 支持 | 支持 | 支持 |
 | RTC | 支持 | 支持 | 支持 | 支持 |
 
 ## 支持的板载器件
@@ -48,7 +46,7 @@ TuyaOpen 中各 ESP32 芯片型号的详细功能矩阵。
 | `tdd_audio_atk_no_codec` | ATK（无编解码器） | 备选无编解码器方案 |
 
 :::info
-目前音频驱动统一规格：采样率 16000 Hz，I2S 接口，DMA 描述符 6 个，帧大小 240
+音频驱动统一规格：采样率 16000 Hz，I2S 接口，DMA 描述符 6 个，帧大小 240。
 :::
 
 ### LCD 驱动
@@ -119,7 +117,7 @@ ESP 平台目前在 TuyaOpen 内支持的开发板列表（`boards/ESP32/`）：
 | `DNESP32S3_BOX2_WIFI` | ST7789 I80 320×240 | — | ES8389 (0x20) | XL9555 | — | — | 4G模组、USB切换、充电管理 |
 | `WAVESHARE_ESP32C6_DEV_KIT_N16` | — | — | — | — | GPIO9 | WS1280 GPIO8 | — |
 
-## 已适配的 TuyaOpen 的应用
+## 已适配的 TuyaOpen 应用
 
 以下 TuyaOpen 应用已有预构建的 ESP32 配置：
 
@@ -158,8 +156,8 @@ ESP 平台目前在 TuyaOpen 内支持的开发板列表（`boards/ESP32/`）：
 | `tuya_cloud/switch_demo` | Tuya 云端开关示例 |
 | `tuya_cloud/weather_get_demo` | 天气数据获取示例 |
 
-## 参考资料
+## 相关文档
 
 - [ESP32 与 TuyaOpen -- 概述](overview-esp32)
-- [添加新的 ESP32 开发板](esp32-new-board)
+- [ESP32 适配新开发板](esp32-new-board)
 - [TuyaOpen-esp32 仓库](https://github.com/tuya/TuyaOpen-esp32)

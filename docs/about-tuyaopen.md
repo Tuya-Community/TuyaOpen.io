@@ -7,45 +7,46 @@ title: About TuyaOpen
 
 ## Overview
 
-TuyaOpen powers next-gen AI-agent hardware: it supports gear (Tuya T-Series WIFI/BT MCUs, Pi, ESP32s) via its flexible, cross-platform C/C++ SDK, pairs with Tuya Cloud’s low-latency multimodal AI (drag-and-drop workflows), integrates top models (ChatGPT, Gemini, Qwen, Doubao etc.), and streamlines open AI-IoT ecosystem building.
+TuyaOpen is a flexible, cross-platform C/C++ SDK for building next-gen AI-agent hardware. It supports Tuya T-Series WIFI/BT MCUs, Raspberry Pi, and ESP32s, pairs with Tuya Cloud's low-latency multimodal AI (drag-and-drop workflows), integrates top models (ChatGPT, Gemini, Qwen, Doubao, and others), and streamlines open AI-IoT ecosystem building.
 
 ![TuyaOpen One Pager](https://images.tuyacn.com/fe-static/docs/img/2eed8b23-0459-4db4-8f17-e7cce8b36b8a.png)
 
-### 🚀 With TuyaOpen, you can:
-- Develop hardware products featuring speech technologies such as `ASR` (Automatic Speech Recognition), `KWS` (Keyword Spotting), `TTS` (Text-to-Speech), and `STT` (Speech-to-Text)
+### What you can build
+
+With TuyaOpen, you can:
+
+- Develop hardware products featuring speech technologies such as `ASR` (Automatic Speech Recognition), `KWS` (Keyword Spotting), `TTS` (Text-to-Speech), and `STT` (Speech-to-Text).
 - Integrate with leading LLMs and AI platforms, including `Deepseek`, `ChatGPT`, `Claude`, `Gemini`, and more.
-- Build smart devices with `advanced multimodal AI capabilities`, including voice, vision, and sensor-based features
-- Create custom products and seamlessly connect them to Tuya Cloud for `remote control`, `monitoring`, and `OTA updates`
-- Develop devices compatible with `Google Home` and `Amazon Alexa`
-- Design custom `Powered by Tuya` hardware
-- Target a wide range of hardware applications using `Bluetooth`, `Wi-Fi`, `Ethernet`, and more
-- Benefit from robust built-in `security`, `device authentication`, and `data encryption`
+- Build smart devices with advanced multimodal AI capabilities, including voice, vision, and sensor-based features.
+- Create custom products and connect them to Tuya Cloud for remote control, monitoring, and OTA updates.
+- Develop devices compatible with `Google Home` and `Amazon Alexa`.
+- Design custom `Powered by Tuya` hardware.
+- Target a wide range of hardware applications using `Bluetooth`, `Wi-Fi`, `Ethernet`, and more.
+- Benefit from robust built-in security, device authentication, and data encryption.
 
-
-Whether you’re creating smart home products, industrial IoT solutions, or custom AI applications, TuyaOpen provides the tools and examples to get started quickly and scale your ideas across platforms.
+Whether you are creating smart home products, industrial IoT solutions, or custom AI applications, TuyaOpen provides the tools and examples to get started quickly and scale your ideas across platforms.
 
 ---
 
-### TuyaOpen SDK Framework
+### TuyaOpen SDK framework
+
 ![TuyaOpen SDK Framework](https://images.tuyacn.com/fe-static/docs/img/25713212-9840-4cf5-889c-6f55476a59f9.jpg)
 
+The TuyaOpen SDK uses a layered architecture, consisting of the following five main layers.
 
-The TuyaOpen SDK adopts a layered architecture, consisting of the following five main layers:
+#### 1. TKL Kernel Layer
 
----
-
-#### 1. **TKL Kernel Layer**
-
-- **Role**: This is the lowest layer of the architecture, responsible for basic hardware platform adaptation. It provides cross-hardware and cross-OS driver support for the upper layers, serving as the "hardware cornerstone" of the entire framework.
+- **Role**: The lowest layer of the architecture, responsible for basic hardware platform adaptation. It provides cross-hardware and cross-OS driver support for the upper layers, serving as the "hardware cornerstone" of the entire framework.
 - **Main Components**:
-  - **Hardware Platform SDKs**: Supports core SDKs for different chips/platforms, such as the Tuya T-Series MCU Core-SDK (Tuya’s self-developed MCU series), ESP32-Series IDF SDK (Espressif ESP32 series), and upcoming support for Raspberry Pi Pico.
+  - **Hardware Platform SDKs**: Supports core SDKs for different chips/platforms, such as the Tuya T-Series MCU Core-SDK (Tuya's self-developed MCU series), ESP32-Series IDF SDK (Espressif ESP32 series), and upcoming support for Raspberry Pi Pico.
   - **General Hardware Drivers**: Provides TKL drivers for common peripherals like PWM, ADC, DAC, GPIO, I2C, etc., abstracting hardware differences so upper layers do not need to handle hardware specifics.
   - **Heterogeneous Platform Adaptation**: Supports platforms requiring BSPs (Board Support Packages), such as ARM SoCs and Linux/Ubuntu, ensuring the architecture can run on various hardware types.
-> Developers usually do not need to pay attention to the implementation details of this layer. TKL mainly maps and connects chip capabilities.
 
----
+:::note
+Developers usually do not need to pay attention to the implementation details of this layer. TKL mainly maps and connects chip capabilities.
+:::
 
-#### 2. **TAL Abstract Layer**
+#### 2. TAL Abstract Layer
 
 - **Role**: Sits above TKL, abstracting hardware and system differences to provide unified interfaces and basic capabilities for upper layers. It acts as a "bridge" between "underlying hardware" and "upper-layer software."
 - **Main Components**:
@@ -53,9 +54,7 @@ The TuyaOpen SDK adopts a layered architecture, consisting of the following five
   - **Connectivity**: Responsible for device networking, supporting Wi-Fi, Ethernet, LTE Cat.1, Bluetooth, and more, enabling flexible network access.
   - **Security**: Ensures device and data security, providing security algorithms (encryption/decryption, etc.) and security engines (hardware/software-based).
 
----
-
-#### 3. **Libraries Layer**
+#### 3. Libraries Layer
 
 - **Role**: Based on the unified interfaces of TAL, this layer encapsulates various general-purpose libraries and protocols, providing "ready-to-use" capability components for the "Services" and "Applications" layers above.
 - **Main Components**:
@@ -64,9 +63,7 @@ The TuyaOpen SDK adopts a layered architecture, consisting of the following five
   - **Multimedia Protocols**: Supports P2P (peer-to-peer), RTSP/RTP (streaming media), and more, empowering audio and video applications.
   - **Miscellaneous Tools**: Provides LVGL GUI (embedded graphical interface), cJSON (JSON parsing), QR Code processing, etc., covering a wide range of scenarios.
 
----
-
-#### 4. **Services Layer**
+#### 4. Services Layer
 
 - **Role**: Builds on the capabilities of the Libraries layer, encapsulating higher-level services and development tools to reduce the complexity of application development. It is the direct support layer for "application innovation."
 - **Main Components**:
@@ -75,9 +72,7 @@ The TuyaOpen SDK adopts a layered architecture, consisting of the following five
   - **Peripherals Drivers**: Also known as Tuya Device Drivers (TDD), supporting buttons, LEDs, displays, audio codecs, ADC, SPI, and other hardware interfaces.
   - **Audio ASR**: Focused on speech processing, including VAD (voice activity detection), DOA (direction of arrival, planned), AEC (echo cancellation), Beam-forming (planned), Wake-Word detection, and more.
 
----
-
-#### 5. **Applications Layer (User Applications)**
+#### 5. Applications Layer (User Applications)
 
 - **Role**: The topmost layer of the architecture, directly targeting business scenarios and end applications. It integrates all lower-layer capabilities to support product implementation across multiple domains.
 - **Typical Scenarios**:
@@ -93,15 +88,13 @@ The TuyaOpen SDK adopts a layered architecture, consisting of the following five
   - Entertainment
   - Others
 
+:::tip Core advantage of the layered design
+The lower layers flexibly adapt to hardware, the middle layers provide reusable capabilities, and the upper layers rapidly develop standardized services. This enables "develop once, deploy everywhere" and accelerates the implementation of IoT and AI applications.
+:::
+
 ---
 
-> **Core Advantages of Layered Design**: The lower layers flexibly adapt to hardware, the middle layers provide reusable capabilities, and the upper layers can rapidly develop standardized services, enabling "develop once, deploy everywhere" and accelerating the implementation of IoT and AI applications.
----
-
----
-
-
-## Supported chipset platforms
+## Supported platforms
 
 | Platform | Windows | Linux | macOS |
 | :------: | :-----: | :---: | :---: |
@@ -136,22 +129,22 @@ If you are interested in TuyaOpen and wish to participate in its development as 
 - Luanode for TuyaOpen: [https://gitee.com/tuya-open/luanode-TuyaOpen](https://gitee.com/tuya-open/luanode-TuyaOpen)
 
 
-## Updates and Releases
+## Updates and releases
 
-TuyaOpen is currently in rapid development phase, and we follow the following release strategy:
+TuyaOpen is in a rapid development phase, and we follow this release strategy.
 
-### Version Branch Description
+### Version branches
 
 - **release**: Stable version, recommended for production environments
 - **master**: Beta version, suitable for early adopters
 - **dev**: Development version, contains latest features but may have instability
 
-### Release Cycle
+### Release cycle
 
-- **Stable Version**: Release a stable version every 1-2 months
-- **Beta Version**: Every Wednesday, after thorough testing, merge dev branch to master branch
+- **Stable version**: Release a stable version every 1-2 months
+- **Beta version**: Every Wednesday, after thorough testing, merge dev branch to master branch
 
-### Version Selection Recommendations
+### Version selection recommendations
 
 - **Production Environment**: Recommend using release version for stability
 - **Development Testing**: Can use master version to experience latest features

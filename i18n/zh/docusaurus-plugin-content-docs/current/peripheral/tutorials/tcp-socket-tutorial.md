@@ -4,7 +4,7 @@ title: TCP 与 UDP 套接字教程
 
 ## 概述
 
-本教程说明如何用 **TAL** 网络接口使用 **TCP** 与 **UDP**。**TCP 客户端**流程与 `examples/protocols/tcp_client` 一致（`PROTOCOL_TCP`、`tal_net_connect`、`tal_net_send`）。**UDP** 部分说明 `PROTOCOL_UDP`、`tal_net_bind`、**`tal_net_send_to`**、**`tal_net_recvfrom`**；仓库中 **UDP 广播** 的完整示例见 `examples/wifi/ap`。
+本教程说明如何用 TAL 网络接口使用 TCP 与 UDP。TCP 客户端流程与 `examples/protocols/tcp_client` 一致（`PROTOCOL_TCP`、`tal_net_connect`、`tal_net_send`）。UDP 部分说明 `PROTOCOL_UDP`、`tal_net_bind`、`tal_net_send_to`、`tal_net_recvfrom`；仓库中 UDP 广播的完整示例见 `examples/wifi/ap`。
 
 ## 前置条件
 
@@ -14,8 +14,8 @@ title: TCP 与 UDP 套接字教程
 ## 要求
 
 - 可构建 `examples/protocols/tcp_client`，且包含 `tal_network` 与（通常）Wi-Fi。
-- 可达的 **TCP** 服务。默认源码为 `127.0.0.1` 与端口 7；真实硬件请将 **`TCP_SERVER_IP`** 改为 PC 或服务器局域网 IP，并开放端口。
-- 做 **UDP** 实验时需对端 IP/端口，或可使用支持广播的局域网（见 Wi-Fi AP 示例）。
+- 可达的 TCP 服务。默认源码为 `127.0.0.1` 与端口 `7`；真实硬件请将 `TCP_SERVER_IP` 改为 PC 或服务器局域网 IP，并开放端口。
+- 做 UDP 实验时需对端 IP/端口，或可使用支持广播的局域网（见 Wi-Fi AP 示例）。
 
 ## 步骤（TCP 客户端）
 
@@ -33,7 +33,7 @@ title: TCP 与 UDP 套接字教程
    tos.py build
    ```
 
-5. 网络就绪后，任务创建 **`PROTOCOL_TCP`** 套接字，用 `tal_net_str2addr` 解析地址，`tal_net_connect` 连接，再多次 `tal_net_send`，最后 `tal_net_close`。
+5. 网络就绪后，任务创建 `PROTOCOL_TCP` 套接字，用 `tal_net_str2addr` 解析地址，`tal_net_connect` 连接，再多次 `tal_net_send`，最后 `tal_net_close`。
 
 **预期结果：** 服务端收到重复载荷；设备日志显示连接与发送成功。
 
@@ -56,11 +56,11 @@ tal_net_send(sock_fd, msg, strlen(msg));
 tal_net_close(sock_fd);
 ```
 
-**TCP 服务端**请参考 `examples/protocols/tcp_server`（`tal_net_bind`、`tal_net_listen`、`tal_net_accept`、`tal_net_recv`）。
+TCP 服务端请参考 `examples/protocols/tcp_server`（`tal_net_bind`、`tal_net_listen`、`tal_net_accept`、`tal_net_recv`）。
 
 ## UDP 发送与接收
 
-使用 **`PROTOCOL_UDP`** 创建套接字。下面是一个向已知主机发送并读取一次应答的 **单播** 客户端示例：
+使用 `PROTOCOL_UDP` 创建套接字。下面是一个向已知主机发送并读取一次应答的单播客户端示例：
 
 ```c
 #include "tal_network.h"
@@ -99,7 +99,7 @@ tal_net_close(udp_fd);
 
 ## UDP 广播参考
 
-**广播**（在 AP 网段周期性发送）见 **`examples/wifi/ap/src/example_wifi_ap.c`**：`tal_net_socket_create(PROTOCOL_UDP)`、`tal_net_bind`、**`tal_net_set_broadcast`**，以及用地址 **`0xFFFFFFFF`** 与指定端口调用 **`tal_net_send_to`**。
+广播（在 AP 网段周期性发送）见 `examples/wifi/ap/src/example_wifi_ap.c`：`tal_net_socket_create(PROTOCOL_UDP)`、`tal_net_bind`、`tal_net_set_broadcast`，以及用地址 `0xFFFFFFFF` 与指定端口调用 `tal_net_send_to`。
 
 ## 实现说明
 

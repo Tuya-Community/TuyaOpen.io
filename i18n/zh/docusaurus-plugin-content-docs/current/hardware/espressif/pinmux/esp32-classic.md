@@ -2,8 +2,6 @@
 title: "ESP32（经典款）外设映射"
 ---
 
-# ESP32（经典款）外设映射
-
 本文说明 ESP32（双核 Xtensa LX6）片上外设与 TuyaOpen TKL 层软件端口的映射关系。
 
 ## GPIO

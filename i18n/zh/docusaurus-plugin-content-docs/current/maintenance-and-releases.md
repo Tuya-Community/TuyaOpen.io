@@ -3,8 +3,6 @@ title: 技术 Roadmap 与发布
 description: 关于 TuyaOpen 维护频率、SDK 发布、平台支持、路线图和发布说明的综合信息
 ---
 
-# 技术 Roadmap 与发布
-
 本文介绍关于 TuyaOpen 维护计划、发布周期、平台支持和开发路线图 Roadmap 的综合信息。
 
 ## 维护计划
@@ -53,7 +51,9 @@ TuyaOpen 遵循结构化的维护计划，确保可靠性和持续改进：
 
 
 ## 开发路线图
-## Todos
+
+### 待办事项
+
 - T5 系列芯片 SMP CPU 架构支持。 
 - 支持更多主流 SoC 芯片平台（树莓派/瑞芯微/全智等）。
 - TuyaOpen DVP 摄像头和视频模态支持优化。
@@ -73,7 +73,7 @@ TuyaOpen 遵循结构化的维护计划，确保可靠性和持续改进：
 
 ## TuyaOpen 发布说明
 
-#### **2025**
+### 2025
 
 <details>
 <summary><strong>v1.5.0（2025 年 9 月 22 日）[最新发布版本]</strong></summary>
@@ -240,7 +240,7 @@ TuyaOpen 遵循结构化的维护计划，确保可靠性和持续改进：
 
 </details>
 
-#### **2024**
+### 2024
 
 <details>
 <summary><strong>v1.1.0（2024 年 10 月 22 日）</strong></summary>
@@ -284,8 +284,8 @@ TuyaOpen 遵循结构化的维护计划，确保可靠性和持续改进：
 
 
 ## TuyaAI 平台/Tuya 云服务发布说明
-如需了解 TuyaAI 平台能力更新及 Tuya Cloud Service 的最新版本发布公告和更新详情。  
-##### 请访问官方公告页面：[版本发布公告与更新说明](https://developer.tuya.com/cn/docs/iot/announcement-update?id=Ka5o4ytv9ihvq)。
+
+如需了解 TuyaAI 平台能力更新及 Tuya Cloud Service 的最新版本发布公告和更新详情，请访问官方公告页面：[版本发布公告与更新说明](https://developer.tuya.com/cn/docs/iot/announcement-update?id=Ka5o4ytv9ihvq)。
 
 ---
 

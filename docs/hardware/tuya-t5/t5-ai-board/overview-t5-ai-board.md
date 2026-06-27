@@ -1,11 +1,10 @@
 ---
-title: Overview
+title: T5AI-Board Development Kit
 ---
 
-# T5AI-Board Development Kit
+The T5AI-Board is a voice-and-screen development board built on the Tuya T5-E1-IPEX Wi-Fi and Bluetooth combo module. It carries two microphones and one speaker for voice interaction, and breaks out the full module pinout so you can add an LCD-and-camera stack module or wire your own peripherals. Use it to prototype AIoT voice and display applications with the standard TuyaOpen workflow.
 
-![T5AI-Board DevKit](https://images.tuyacn.com/fe-static/docs/img/83859360-38f6-42c2-9614-99b47f487775.jpg)
-
+![T5AI-Board development board, front view](https://images.tuyacn.com/fe-static/docs/img/83859360-38f6-42c2-9614-99b47f487775.jpg)
 
 ## Software build configuration
 
@@ -40,9 +39,9 @@ How to enable configurations? Refer to [CLI - tos.py Development Tool > config c
 
 ## Hardware overview
 
-Tuya T5AI-Board is a voice and screen multi-interaction development board based on the T5-E1-IPEX module, which is an embedded Wi-Fi and Bluetooth combo module developed by Tuya. The board is equipped with 2 microphones and 1 speaker, supporting voice recognition and playback to enable voice interaction functionality.
+The T5AI-Board is based on the T5-E1-IPEX module, an embedded Wi-Fi and Bluetooth combo module developed by Tuya. The board carries 2 microphones and 1 speaker, supporting voice recognition and playback to enable voice interaction.
 
-Through the I/O connectors on the board, you can use an LCD display stack module to implement touchscreen and camera capture capabilities. You can also design your own LCD screen, supporting multiple interfaces including I2C, SPI, 8080, and RGB.
+Through the I/O connectors on the board, you can stack an LCD display module to add touchscreen and camera capture capabilities. You can also design your own LCD screen using the I2C, SPI, 8080, or RGB interface.
 
 ---
 
@@ -96,15 +95,18 @@ The T5AI-Board provides comprehensive pinout options through its expansion heade
 [![](https://img.shields.io/badge/V102-Download%20PDF%20Illustration-orange?style=for-the-badge)](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
 
 ---
-## LCD + camera module
-The T5AI-Board supports an optional LCD and camera module, which can be stacked onto the baseboard.
 
-#### Display specifications:
+## LCD and camera module
+
+The T5AI-Board supports an optional LCD and camera module that stacks onto the baseboard.
+
+### Display specifications
+
 - 3.5" TFT display with 320 × 480 RGB resolution
 - TFT display driver: `ILI9488`
 - Touch panel driver: `GT1151QM`
 
-#### Camera specifications:
+### Camera specifications
 
 - Image sensor: `GC2145`
 - Resolution: 2 MP (1616 × 1232 pixels)
@@ -115,7 +117,7 @@ The T5AI-Board supports an optional LCD and camera module, which can be stacked 
 
 The following diagram shows the pin assignments used by the LCD and camera module:
 
-![Stacking module pins](https://images.tuyacn.com/content-platform/hestia/173693668247bb1930ac5.png)
+![Pin assignments for the stacked LCD and camera module](https://images.tuyacn.com/content-platform/hestia/173693668247bb1930ac5.png)
 
 :::info Important note
 - The camera and touch panel share a common I2C interface.
@@ -124,18 +126,18 @@ The following diagram shows the pin assignments used by the LCD and camera modul
 
 
 ## Resources
-#### T5AI-Board development board
+
+### T5AI-Board development board
 
 - [T5AI-Board schematic diagram](https://images.tuyacn.com/content-platform/hestia/174243908480e34e64d08.pdf): Complete circuit diagram.
 - [T5AI-Board pinout](/docs/hardware/T5-AI-Board-Pinout-v102.pdf): Detailed pin mapping and interface layout.
 - [Schematic diagram of LCD and camera module](https://images.tuyacn.com/content-platform/hestia/17387200670bcae1561bf.pdf): Circuit diagrams of the LCD and camera module boards.
 - [T5AI-Board 3D structural file (LCD+Base-Board)(STEP)](/docs/hardware/t5ai-board/T5-BOARD_V102-3D.zip): Offers a 3D model for structural design and integration.
 
-#### T5 MCU datasheets
+### T5 MCU datasheets
 
 - [T5-E1-IPEX Module Datasheet](https://developer.tuya.com/en/docs/iot/T5-E1-IPEX-Module-Datasheet?id=Kdskxvxe835tq#title-12-Pin%20definition): Technical specifications and pin definitions of the T5-E1-IPEX module.
 - [T5 MCU Chip Technical Datasheet](https://images.tuyaeu.com/content-platform/hestia/1731549161e5fd8879de6.pdf): Comprehensive technical specifications and reference documentation for the T5 series.
-
 
 ### USB-to-serial chip driver installation
 

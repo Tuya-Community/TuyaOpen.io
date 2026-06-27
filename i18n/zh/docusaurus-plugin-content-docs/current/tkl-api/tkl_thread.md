@@ -1,127 +1,159 @@
-# tkl_thread | 线程
+---
+title: "tkl_thread | 线程"
+---
 
-文件 `tkl_thread.c` 提供了操作系统线程（任务）创建、终止、获取信息等 API，适用于涂鸦智能设备中的多任务环境。本文件由涂鸦操作系统（TuyaOS）自动生成，其中留有一定范围供开发者在标记的区域内自定义和实现相关逻辑。
+`tkl_thread` 接口用于在多任务环境中创建、终止和查询操作系统线程（任务）。它是各平台在其 RTOS 之上实现的内核抽象层（TKL）适配，TAL 与应用代码通过它实现可移植的任务管理。
 
-## API 说明
-
-### tkl_thread_create
+## 类型
 
 ```c
-OPERATE_RET tkl_thread_create(TKL_THREAD_HANDLE* thread,
-                              const char* name,
-                              uint32_t stack_size,
-                              uint32_t priority,
-                              const THREAD_FUNC_T func,
-                              void* const arg);
+typedef void *TKL_THREAD_HANDLE;
+typedef void (*THREAD_FUNC_T)(void *);
 ```
 
-- 功能：创建一个任务线程。
+| 类型 | 说明 |
+| --- | --- |
+| `TKL_THREAD_HANDLE` | 线程的不透明句柄。 |
+| `THREAD_FUNC_T` | 线程入口函数，接收创建时传入的 `arg`。 |
 
-- 参数：
-    - `thread`：输出参数，用于返回创建的线程句柄。
-    - `name`：线程的名称。
-    - `stack_size`：线程栈大小。
-    - `priority`：线程优先级。
-    - `func`：线程执行的函数指针。
-    - `arg`：传递给线程函数的参数。
+线程优先级取自 `tuya_cloud_types.h` 中定义的值，从 `TKL_THREAD_PRI_LOWEST`（`0`）经 `TKL_THREAD_PRI_NORMAL`（`4`）到 `TKL_THREAD_PRI_HIGHEST`（`8`）。
 
-- 返回值：返回 `OPRT_OK` 则表示创建成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+## tkl_thread_create
 
-### tkl_thread_release
+```c
+OPERATE_RET tkl_thread_create(TKL_THREAD_HANDLE *thread, const char *name, uint32_t stack_size,
+                              uint32_t priority, const THREAD_FUNC_T func, void *const arg);
+```
+
+创建一个线程。
+
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 输出参数，接收创建的线程句柄。 |
+| `name` | 线程名称。 |
+| `stack_size` | 线程栈大小，单位为字节。 |
+| `priority` | 线程优先级，参见 `tuya_cloud_types.h` 中的优先级取值。 |
+| `func` | 线程主函数。 |
+| `arg` | 传递给 `func` 的参数，可为 `NULL`。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_thread_release
 
 ```c
 OPERATE_RET tkl_thread_release(const TKL_THREAD_HANDLE thread);
 ```
 
-- 功能：终止一个线程并释放其资源。
+终止一个线程并释放其资源。
 
-- 参数：`thread`，待终止的线程句柄。
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 待终止的线程句柄。 |
 
-- 返回值：返回 `OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_thread_get_watermark
+## tkl_thread_get_watermark
 
 ```c
-OPERATE_RET tkl_thread_get_watermark(const TKL_THREAD_HANDLE thread, uint32_t* watermark);
+OPERATE_RET tkl_thread_get_watermark(const TKL_THREAD_HANDLE thread, uint32_t *watermark);
 ```
 
-- 功能：获取线程栈的最高水位（最小剩余栈空间）。
+获取线程栈的水位（观测到的最小剩余栈空间）。
 
-- 参数：
-    - `thread`：线程句柄。
-    - `watermark`：输出参数，栈的最高水位字节数。
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 线程句柄。 |
+| `watermark` | 输出参数，接收水位值，单位为字节。 |
 
-- 返回值：返回 `OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_thread_get_id
+## tkl_thread_get_id
 
 ```c
 OPERATE_RET tkl_thread_get_id(TKL_THREAD_HANDLE *thread);
 ```
 
-- 功能：获取当前线程的句柄。
+获取调用线程的句柄。
 
-- 参数：`thread`，输出参数，当前线程句柄。
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 输出参数，接收当前线程句柄。 |
 
-- 返回值：总是返回 `OPRT_OK`，则表示调用成功。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_thread_set_self_name
-
-```c
-OPERATE_RET tkl_thread_set_self_name(const char* name);
-```
-
-- 功能：设置当前线程的名称。
-
-- 参数：`name`，线程的新名称。
-
-- 返回值：`OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
-
-### tkl_thread_is_self
+## tkl_thread_set_self_name
 
 ```c
-OPERATE_RET tkl_thread_is_self(TKL_THREAD_HANDLE thread, BOOL_T* is_self);
+OPERATE_RET tkl_thread_set_self_name(const char *name);
 ```
 
-- 功能：判断指定的线程是否为当前线程。
+设置调用线程的名称。
 
-- 参数：
-    - `thread`：线程句柄。
-    - `is_self`：输出参数，用于指示是否为当前线程。
+| 参数 | 说明 |
+| --- | --- |
+| `name` | 线程的新名称。 |
 
-- 返回值：`OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_thread_get_priority
+## tkl_thread_is_self
+
+```c
+OPERATE_RET tkl_thread_is_self(TKL_THREAD_HANDLE thread, BOOL_T *is_self);
+```
+
+判断指定线程是否为调用线程。
+
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 线程句柄。 |
+| `is_self` | 输出参数，若 `thread` 为调用线程则置为 `TRUE`。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_thread_get_priority
 
 ```c
 OPERATE_RET tkl_thread_get_priority(TKL_THREAD_HANDLE thread, int *priority);
 ```
 
-- 功能：获取线程的优先级。
-- 参数：
-    - `thread`：线程句柄，如果为 `NULL` 则表示获取当前线程的优先级。
-    - `priority`：输出参数，用于返回线程优先级。
+获取线程的优先级。
 
-- 返回值：`OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 线程句柄，`NULL` 表示当前线程。 |
+| `priority` | 输出参数，接收线程优先级。 |
 
-### tkl_thread_set_priority
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_thread_set_priority
 
 ```c
 OPERATE_RET tkl_thread_set_priority(TKL_THREAD_HANDLE thread, int priority);
 ```
 
-- 功能：设置线程优先级。
-- 参数：
-    - `thread`：线程句柄，如果为 `NULL` 则表示设置当前线程的优先级。
-    - `priority`：新的线程优先级。
-- 返回值：`OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+设置线程的优先级。
 
-### tkl_thread_diagnose
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 线程句柄，`NULL` 表示当前线程。 |
+| `priority` | 新的线程优先级。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## tkl_thread_diagnose
 
 ```c
 OPERATE_RET tkl_thread_diagnose(TKL_THREAD_HANDLE thread);
 ```
 
-- 功能：诊断线程，如打印任务栈信息等。
-- 参数：`thread`，线程句柄。
-- 返回值：`OPRT_OK` 则表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+诊断线程，例如转储其任务栈。
+
+| 参数 | 说明 |
+| --- | --- |
+| `thread` | 线程句柄。 |
+
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## 相关文档
+
+- [线程与定时器模式](../peripheral/tutorials/thread-timer-patterns)

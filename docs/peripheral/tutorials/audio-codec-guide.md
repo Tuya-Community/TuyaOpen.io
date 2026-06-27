@@ -2,9 +2,7 @@
 title: "Audio Codec Driver Guide"
 ---
 
-# Audio Codec Driver Guide
-
-Integrate an audio codec into TuyaOpen for voice interaction, audio playback, and AI applications.
+A codec driver in TuyaOpen connects an audio codec IC to the `tdl_audio_*` application interface, so an app can play and capture PCM without touching the I2S or I2C buses directly. This guide integrates a codec for voice interaction, audio playback, and AI applications.
 
 ## Prerequisites
 

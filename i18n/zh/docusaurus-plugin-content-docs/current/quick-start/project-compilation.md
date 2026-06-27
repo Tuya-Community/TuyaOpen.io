@@ -2,13 +2,13 @@
 title: "Step 1: 项目编译"
 ---
 
-# 项目编译
+项目编译将一个 TuyaOpen 应用从源码构建为可烧录的固件 bin。你将选择项目、选择开发板配置、编译并清理产物——全部通过 `tos.py` 完成。本文以 `switch_demo` 应用为例。
 
 ## 选择项目
 
-TuyaOpen 中，可编译项目可在 `apps`、`examples` 中进行选择。
+在 TuyaOpen 中，可编译的项目位于 `apps` 和 `examples` 目录下。
 
-这里以 `switch_demo` 为例。首先，进入项目目录。
+以 `switch_demo` 为例，进入项目目录。
 
 ```bash
 cd apps/tuya_cloud/switch_demo
@@ -16,9 +16,7 @@ cd apps/tuya_cloud/switch_demo
 
 ## 配置项目
 
-使用命令 `tos.py config choice` 对项目进行配置。
-
-该命令会提供已经验证过的配置选项，您可根据自己的硬件设备进行选择。
+执行 `tos.py config choice` 配置项目。该命令会列出已验证的配置选项，请选择与你硬件匹配的一项。
 
 ```bash
 ❯ tos.py config choice
@@ -40,11 +38,11 @@ Input "q" to exit.
 Choice config file:
 ```
 
-这里以涂鸦 T5 系列开发板为例，需要选择 `T5AI.config`。
+以涂鸦 T5 系列开发板为例，选择 `T5AI.config`。
 
 ## 编译产物
 
-编译项目，使用命令 `tos.py build`。
+使用 `tos.py build` 编译项目。
 
 ```bash
 ❯ tos.py build
@@ -57,9 +55,11 @@ Choice config file:
 
 ```
 
+编译成功后会打印固件 bin 路径，并以 `Build Success` 结束。你将在 [Step 2: 固件烧录](./firmware-burning.md) 中烧录该 bin。
+
 ## 清理产物
 
-清理编译缓存，使用命令 `tos.py clean` 或 `tos.py clean -f`（深度清理）。
+清理编译缓存，使用 `tos.py clean` 进行常规清理，或 `tos.py clean -f` 进行强制深度清理。
 
 ```bash
 ❯ tos.py clean -f
@@ -67,14 +67,13 @@ Choice config file:
 [INFO]: Fullclean success.
 ```
 
-##  常见问题
+## 常见问题
 
-### 在Windows环境中编译缓慢
+### 在 Windows 环境中编译缓慢
 
-现象是每个文件的编译速度可能长达3s左右，有时甚至会卡在某个文件。
+现象：每个文件的编译可能长达 3 秒左右，有时甚至会卡在某个文件上。
 
 解决办法：
 
-1. 可通过`Ctrl + Shift + Esc`打开任务管理器，查看CPU的进程，找到`MSPCManagerService`进程，并关闭；
-
-2. 如果上述方法仍不见效，可将整个`TuyaOpen`目录放在非系统盘（如D盘）下，并将目录添加到`Windows安中心-病毒和防护`设置中的`排除项`中。
+1. 使用 `Ctrl + Shift + Esc` 打开任务管理器，查看 CPU 进程，找到并关闭 `MSPCManagerService` 进程。
+2. 若仍不见效，可将整个 `TuyaOpen` 目录放在非系统盘（如 D 盘）下，并将该目录添加到 **Windows 安全中心 - 病毒和威胁防护** 设置的排除项中。

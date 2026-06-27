@@ -5,8 +5,6 @@ date: 2025-08-01
 
 <BackToProjects />
 
-# Star Tracker
-
 ## Project Overview
 
 A new-style compass based on Tuya T5AI-CORE development board with T5-E1 chip module, capable of pointing to stars and implementing astronomical Agent dialogue. This project showcases TuyaOpen's cloud-based AI agent capabilities by integrating the Tuya developer platform's agent framework with astronomical expert prompts, demonstrating how TuyaOpen makes AI development accessible to hardware creators through cloud connectivity.

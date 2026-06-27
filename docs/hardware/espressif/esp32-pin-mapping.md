@@ -2,15 +2,13 @@
 title: "ESP32 Pin Mapping -- Overview"
 ---
 
-# ESP32 Pin Mapping
+ESP32 pin mapping is the correspondence between TuyaOpen's TKL software ports and pins and the ESP32's on-chip peripherals — covering how `TUYA_GPIO_NUM_E` enum values map to physical GPIO numbers, and how you route peripherals to specific pins through the pinmux interface.
 
-This article explains the mapping between ESP32 on-chip peripherals and the TuyaOpen TKL layer's software ports and pins — covering the correspondence between `TUYA_GPIO_NUM_E` enum values and physical GPIO numbers, and how to route peripherals to specific pins using the pinmux interface.
-
-## Common Pin Mapping Mechanics
+## Common pin mapping mechanics
 
 These mechanisms apply to all ESP32 chip variants.
 
-### GPIO Number Mapping
+### GPIO number mapping
 
 TuyaOpen uses a **direct 1:1 mapping** on ESP32: `TUYA_GPIO_NUM_E` enum values map directly to physical ESP32 GPIO numbers. `TUYA_GPIO_NUM_18` operates on physical `GPIO18`, `TUYA_GPIO_NUM_5` operates on physical `GPIO5`, and so on.
 
@@ -18,7 +16,7 @@ This mapping is defined in the `pinmap[]` array in [`tkl_pin.c`](https://github.
 
 For the available GPIO range per chip, see the [Per-Platform Pin Mapping Docs](#per-platform-pin-mapping-docs) below.
 
-### Pinmux (Pin Multiplexing)
+### Pinmux (pin multiplexing)
 
 **What it does:** ESP32 on-chip peripherals (I2C, PWM, UART, etc.) are not hardwired to fixed pins — they can be flexibly routed to different GPIOs. The TKL `tkl_io_pinmux_config()` function wraps this capability, letting developers assign a peripheral function to a specific pin before initialization.
 
@@ -44,7 +42,7 @@ tkl_pwm_init(TUYA_PWM_NUM_0, &pwm_cfg);
 `tkl_io_pinmux_config()` must be called before the corresponding `tkl_xxx_init()`. Calling it after initialization has no effect.
 :::
 
-## Per-Platform Pin Mapping Docs
+## Per-platform pin mapping docs
 
 Each ESP32 chip variant has a dedicated pin mapping document covering its GPIO range, UART defaults, and board configurations:
 
@@ -53,7 +51,7 @@ Each ESP32 chip variant has a dedicated pin mapping document covering its GPIO r
 - [ESP32-C3](pinmux/esp32-c3) -- Single RISC-V core, GPIO 0–21, cost-optimized
 - [ESP32-C6](pinmux/esp32-c6) -- Single RISC-V core, GPIO 0–30, Wi-Fi 6
 
-## ADC Mapping
+## ADC mapping
 
 ADC on ESP32 uses a **port + channel bitmask** model in [`tkl_adc.c`](https://github.com/tuya/TuyaOpen-esp32/blob/master/tuya_open_sdk/tuyaos_adapter/src/drivers/tkl_adc.c):
 
@@ -68,7 +66,7 @@ ADC on ESP32 uses a **port + channel bitmask** model in [`tkl_adc.c`](https://gi
 
 **Not supported:** `tkl_adc_temperature_get()` returns `OPRT_NOT_SUPPORTED`. Use the ESP-IDF temperature sensor driver instead.
 
-## References
+## See also
 
 - [ESP32 on TuyaOpen -- Overview](overview-esp32)
 - [ESP32 Supported Features](esp32-supported-features)

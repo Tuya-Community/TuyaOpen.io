@@ -2,16 +2,14 @@
 title: "ESP32 OTA Updates"
 ---
 
-# ESP32 OTA Updates
-
-This guide walks through performing a remote OTA firmware upgrade for a TuyaOpen ESP32 project on the Tuya IoT Platform. The process follows seven steps: create firmware key → write key into firmware → upload a new version → publish → configure upgrade rule → verify → release.
+An OTA (over-the-air) update pushes new firmware to a deployed TuyaOpen ESP32 device remotely through the Tuya IoT Platform. This guide takes you through the seven steps: create a firmware key, write the key into firmware, upload a new version, publish it, configure the upgrade rule, verify, and release.
 
 ## Prerequisites
 
 - Completed [ESP32 Quick Start](esp32-quick-start)
 - Device connected to Tuya Cloud (UUID / AuthKey configured)
 
-## Step 1: Create a Firmware Key
+## Step 1: Create a firmware key
 
 A firmware key uniquely identifies a firmware on the platform. A single product (PID) can have multiple firmware keys, each corresponding to a different hardware variant or firmware branch.
 
@@ -43,7 +41,7 @@ A firmware key uniquely identifies a firmware on the platform. A single product 
 
 5. Copy the generated firmware key — you will need to embed it in your firmware code.
 
-## Step 2: Write the Firmware Key into Firmware
+## Step 2: Write the firmware key into firmware
 
 :::info
 Setting `firmware_key` is optional. If omitted, the platform assumes there is only one firmware per PID and no key distinction is needed during OTA.
@@ -85,7 +83,7 @@ ret = tuya_iot_init(&ai_client, &(const tuya_iot_config_t){
 
 4. Run `tos.py clean -f`, then rebuild and re-flash the firmware.
 
-## Step 3: Upload a New Firmware Version
+## Step 3: Upload a new firmware version
 
 1. In the left navigation, go to **Product > Device > Firmware Management**.
 2. Find the corresponding firmware key and click **Add Firmware Version**.
@@ -108,7 +106,7 @@ ret = tuya_iot_init(&ai_client, &(const tuya_iot_config_t){
 
 4. Click **Save**. The version is created with status **Unpublished**.
 
-## Step 4: Publish the Firmware Version
+## Step 4: Publish the firmware version
 
 Firmware versions are unpublished by default and must be published before they can be used for OTA.
 
@@ -118,7 +116,7 @@ Firmware versions are unpublished by default and must be published before they c
 
 ![Publish firmware version](https://images.tuyacn.com/content-platform/hestia/1660805709098031c1697.png)
 
-## Step 5: Configure the Upgrade Rule
+## Step 5: Configure the upgrade rule
 
 1. In the left navigation, go to **Product > Device > Firmware OTA**.
 2. Under **Firmware Source**, select the firmware with the **Custom Upload** attribute.
@@ -162,7 +160,7 @@ Gradual rollout is strongly recommended. If a firmware issue is found after rele
 
 After release, check the **Upgrade Device Details** section to monitor the upgrade status per device.
 
-## References
+## See also
 
 - [Firmware Upgrade](../../quick-start/firmware-ota)
 - [Authorize Devices](../../quick-start/equipment-authorization)

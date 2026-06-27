@@ -2,14 +2,9 @@
 title: TuyaOpen Directory Walkthrough
 ---
 
-# TuyaOpen Project Directory Structure
-
-## Overview
-
 This topic describes the directory structure and purpose of TuyaOpen.
 
-Main directory is as follows:
-
+The main directory is as follows:
 
 ```
 .
@@ -75,7 +70,7 @@ Both are storage paths for projects, where:
 
 ## `app_default.config`
 
-`TuyaOpen configuration file, used to configure project compilation parameters.`
+The TuyaOpen configuration file, used to configure project compilation parameters.
 
 :::warning
 The `app_default.config` file only stores **minimum configuration items**, meaning it retains only settings that differ from default values.

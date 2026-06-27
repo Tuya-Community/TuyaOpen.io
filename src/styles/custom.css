@@ -148,6 +148,20 @@ html[lang]:not([lang^='zh']) .sidebar-divider-zh {
   display: none;
 }
 
+/* Root-level docs-tree items: orange + bold for visibility.
+   Targets only first-level categories/links; nested items keep default.
+   Active items keep the theme's active highlight (excluded below). */
+.theme-doc-sidebar-menu > .menu__list-item > .menu__link:not(.menu__link--active),
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link:not(.menu__link--active) {
+  color: #e8590c;
+  font-weight: 700;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-menu > .menu__list-item > .menu__link:not(.menu__link--active),
+[data-theme='dark'] .theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link:not(.menu__link--active) {
+  color: #fb923c;
+}
+
 /* Custom styles for config flag table */
 .hw-config-flag-table {
   width: 100%;
@@ -462,4 +476,70 @@ body.announcement-visible .navbar {
 
 .mermaid-panzoom-btn:active {
   background: var(--ifm-color-emphasis-200);
+}
+
+/* ----------------------------------------------------------------------------
+ * TOC reading rail + active-item highlight
+ * Driven by src/clientModules/toc-reading-progress.js:
+ *  - a vertical progress bar (faint track + primary fill) showing how far the
+ *    reader has scrolled, via --toc-progress (px);
+ *  - a solid background box that slides to the active link, via --toc-hl-* .
+ * ------------------------------------------------------------------------- */
+.table-of-contents.table-of-contents__left-border {
+  position: relative;
+  /* Replaced by the track/fill pseudo-elements below. */
+  border-left: none;
+}
+
+/* Faint full-height track where the original border was. */
+.table-of-contents.table-of-contents__left-border::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ifm-toc-border-color);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Colored fill whose height tracks reading progress. */
+.table-of-contents.table-of-contents__left-border::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: var(--toc-progress, 0px);
+  background: var(--ifm-color-primary);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+  transition: height 0.15s ease-out;
+}
+
+/* Solid background box that slides to the active link as the reader scrolls. */
+.table-of-contents .toc-active-hl {
+  position: absolute;
+  left: 10px;
+  right: 0;
+  top: var(--toc-hl-top, 0px);
+  height: var(--toc-hl-height, 0px);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  border-radius: 6px;
+  opacity: var(--toc-hl-opacity, 0);
+  pointer-events: none;
+  z-index: 0;
+  transition:
+    top 0.25s ease,
+    height 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* Keep link text above the sliding highlight box. */
+.table-of-contents__link {
+  position: relative;
+  z-index: 1;
 }

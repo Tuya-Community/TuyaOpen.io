@@ -5,8 +5,6 @@ date: 2025-08-01
 
 <BackToProjects />
 
-# Smart Social Necklace
-
 ## Project Overview
 
 In offline social situations, when someone with common language appears near you, both necklaces flash the same light, helping us spend more time with people who share common interests. This project showcases TuyaOpen's ability to create intelligent social interaction devices that bridge the gap between digital and physical social experiences through cloud-based AI processing, demonstrating how the framework enables developers to build sophisticated wearable AI systems.

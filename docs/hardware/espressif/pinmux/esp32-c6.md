@@ -2,8 +2,6 @@
 title: "ESP32-C6 Peripheral Mapping"
 ---
 
-# ESP32-C6 Peripheral Mapping
-
 This document describes the mapping between ESP32-C6 (single-core RISC-V, Wi-Fi 6, Thread/Zigbee) on-chip peripherals and the TuyaOpen TKL layer software ports.
 
 ## GPIO

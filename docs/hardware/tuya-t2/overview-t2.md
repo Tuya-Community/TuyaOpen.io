@@ -11,7 +11,7 @@ The **T2** series are Tuya Wi-Fi and Bluetooth LE combo modules used in TuyaOpen
 ## Requirements
 
 - T2-U development board or a product module based on T2.
-- TuyaOpen SDK with `tos.py` environment; see [Quick Start](../../quick-start/index).
+- TuyaOpen SDK with `tos.py` environment; see [Quick Start](../../quick-start/index.md).
 
 ## Board support in TuyaOpen
 
@@ -32,5 +32,5 @@ Use `tos.py config choice` from your application and pick a config that targets 
 
 - Module datasheet: [T2-U module](https://developer.tuya.com/en/docs/iot/T2-U-module-datasheet?id=Kce1tncb80ldq)
 - T2-U dev board: [T2-U development board](https://developer.tuya.com/en/docs/iot-device-dev/T2-U-development-board?id=Kckeahvfhu7v0)
-- [Supported hardware list](../index)
+- [Supported hardware list](../index.md)
 - [T5AI Core overview](../tuya-t5/t5-ai-core/overview-t5-ai-core) (richer T-series documentation pattern)

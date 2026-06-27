@@ -42,7 +42,7 @@ title: TAL Bluetooth API 参考
 
 | 函数 | 说明 |
 |----------|-------------|
-| `tal_ble_connect_and_discovery(TAL_BLE_PEER_INFO_T peer, TAL_BLE_CONN_PARAMS_T const *p_conn_params)` | 建立连接；结果见 `TAL_BLE_EVT_CENTRAL_CONNECT`。 |
+| `tal_ble_connect_and_discovery(TAL_BLE_PEER_INFO_T peer, TAL_BLE_CONN_PARAMS_T const *p_conn_params)` | 建立连接；结果见 `TAL_BLE_EVT_CENTRAL_CONNECT_DISCOVERY`。 |
 | `tal_ble_disconnect(TAL_BLE_PEER_INFO_T peer)` | 断开连接（主机/从机均可调用，按角色填写句柄与地址）。 |
 | `tal_ble_conn_param_update(TAL_BLE_PEER_INFO_T peer, TAL_BLE_CONN_PARAMS_T const *p_conn_params)` | 请求更新连接参数；结果见 `TAL_BLE_EVT_CONN_PARAM_UPDATE`。 |
 | `tal_ble_rssi_get(TAL_BLE_PEER_INFO_T peer)` | 读取 RSSI；采样见 `TAL_BLE_EVT_LINK_RSSI`。 |

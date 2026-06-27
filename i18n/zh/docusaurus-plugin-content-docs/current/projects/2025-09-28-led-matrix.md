@@ -5,7 +5,6 @@ date: 2025-9-28
 
 <BackToProjects />
 
-
 # 🌈 LED像素矩阵：使用TuyaOpen创建彩色幻灯矩阵
 
 *这是单线LED矩阵系列的第一部分。在未来的文章中，我们将展示如何将其转换为完整的IoT项目！*
@@ -58,7 +57,7 @@ date: 2025-9-28
 
 此演示专为**T5AI-Core**开发板设计，但所有T5系列板都兼容。选择最适合您项目需求的板子：
 
-#### **T5AI-Core**（此项目推荐）
+#### T5AI-Core（此项目推荐）
 - **紧凑设计**：小尺寸，非常适合面包板原型制作
 - **44针接头**：易于连接到LED矩阵和其他外设
 - **电池管理**：内置锂电池支持
@@ -67,7 +66,7 @@ date: 2025-9-28
 
 **📚 硬件文档**：[T5AI-Core概述](https://tuyaopen.ai/zh/docs/hardware/t5-ai-core/overview-t5-ai-core)
 
-#### **T5AI-Board**（全功能选项）
+#### T5AI-Board（全功能选项）
 - **完整开发套件**：具有所有功能的完整开发板
 - **可选LCD屏幕**：3.5英寸触摸屏支持
 - **摄像头模块**：DVP摄像头接口
@@ -473,7 +472,7 @@ tos.py version
 tos.py check
 ```
 
-# 项目编译
+## 项目编译
 
 **📚 编译指南**：[TuyaOpen项目编译](https://www.tuyaopen.ai/zh/docs/quick-start/project-compilation)
 
@@ -577,7 +576,7 @@ static void __custom_effect(void)
 
 ---
 
-# 🌟 项目扩展 - 下一步构建什么？
+## 🌟 项目扩展 - 下一步构建什么？
 
 ### IoT集成
 - **Tuya云**：连接到Tuya IoT平台

@@ -2,9 +2,7 @@
 title: "I2C Peripheral Guide"
 ---
 
-# I2C Peripheral Guide
-
-Configure and use the I2C bus in TuyaOpen for sensor communication, OLED displays, IO expanders, and other I2C peripherals.
+The TKL I2C interface drives the I2C bus in master mode for sensors, OLED displays, IO expanders, and other peripherals. You assign the SCL/SDA pins, initialize the bus at a chosen speed, then send and receive bytes against each device address.
 
 ## Prerequisites
 

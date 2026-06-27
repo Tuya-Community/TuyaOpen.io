@@ -2,9 +2,7 @@
 title: "Display Driver Integration Guide"
 ---
 
-# Display Driver Integration Guide
-
-Integrate a new display panel into TuyaOpen using the TDL display framework and LVGL.
+A display driver in TuyaOpen registers a panel with the TDL display framework so LVGL and your application can draw to it through `tdl_display_*`. This guide integrates a new panel using TDL display and LVGL.
 
 ## Prerequisites
 

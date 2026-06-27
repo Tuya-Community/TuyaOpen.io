@@ -49,7 +49,9 @@ tos.py config choice
 tos.py config -d choice
 ```
 
-**Note:** `choice` 与 `menu` 会先执行**深度清理**，因配置变更可能切换工具链或平台。
+:::note
+`choice` 与 `menu` 会先执行**深度清理**，因配置变更可能切换工具链或平台。
+:::
 
 ### 步骤 2：调整选项（`tos.py config menu`）
 

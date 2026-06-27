@@ -1,654 +1,505 @@
-# tkl_wifi | Wi-Fi 驱动
-
-`tkl_wifi.c` 文件提供了一系列 Wi-Fi 相关的 API，以适配不同的网络接口。这些 API 包括设置/读取模式、信道、MAC 地址、连接等相关操作操作。文件同样是由涂鸦操作系统（TuyaOS）自动生成，并为开发者预留了代码实现的区域。
-
-## 索引
-
-- [ tkl_wifi_init](#tkl_wifi_init)
-- [ tkl_wifi_scan_ap](#tkl_wifi_scan_ap)
-- [ tkl_wifi_release_ap](#tkl_wifi_release_ap)
-- [ tkl_wifi_start_ap](#tkl_wifi_start_ap)
-- [ tkl_wifi_stop_ap](#tkl_wifi_stop_ap)
-- [ tkl_wifi_set_cur_channel](#tkl_wifi_set_cur_channel)
-- [ tkl_wifi_get_cur_channel](#tkl_wifi_get_cur_channel)
-- [ tkl_wifi_set_sniffer](#tkl_wifi_set_sniffer)
-- [ tkl_wifi_get_ip](#tkl_wifi_get_ip)
-- [ tkl_wifi_set_ip](#tkl_wifi_set_ip)
-- [ tkl_wifi_set_mac](#tkl_wifi_set_mac)
-- [ tkl_wifi_get_mac](#tkl_wifi_get_mac)
-- [ tkl_wifi_set_work_mode](#tkl_wifi_set_work_mode)
-- [ tkl_wifi_get_work_mode](#tkl_wifi_get_work_mode)
-- [ tkl_wifi_get_connected_ap_info](#tkl_wifi_get_connected_ap_info)
-- [ tkl_wifi_get_bssid](#tkl_wifi_get_bssid)
-- [ tkl_wifi_set_country_code](#tkl_wifi_set_country_code)
-- [ tkl_wifi_set_rf_calibrated](#tkl_wifi_set_rf_calibrated)
-- [ tkl_wifi_set_lp_mode](#tkl_wifi_set_lp_mode)
-- [ tkl_wifi_station_fast_connect](#tkl_wifi_station_fast_connect)
-- [ tkl_wifi_station_connect](#tkl_wifi_station_connect)
-- [ tkl_wifi_station_disconnect](#tkl_wifi_station_disconnect)
-- [ tkl_wifi_station_get_conn_ap_rssi](#tkl_wifi_station_get_conn_ap_rssi)
-- [ tkl_wifi_station_get_status](#tkl_wifi_station_get_status)
-- [ tkl_wifi_send_mgnt](#tkl_wifi_send_mgnt)
-- [ tkl_wifi_register_recv_mgnt_callback](#tkl_wifi_register_recv_mgnt_callback)
-
+---
+title: tkl_wifi | Wi-Fi 驱动
 ---
 
-## API 说明
+`tkl_wifi` 将平台的 Wi-Fi 驱动适配到 TuyaOS，涵盖 station 与 soft-AP 两种工作方式：初始化、扫描、连接、信道与国家码控制、MAC 与 IP 管理、sniffer 与管理帧抓取、低功耗模式以及快连。其实现位于 `tkl_wifi.c`，由 TuyaOS 生成，并预留了供平台代码填写的区域。
 
-### tkl_wifi_init
+除非另有说明，每个函数成功时返回 `OPRT_OK`，失败时返回其他值，错误码请参见 `tuya_error_code.h`。
 
-```c
-OPERATE_RET tkl_wifi_init(WIFI_EVENT_CB cb)
-```
+## 关键类型
 
-- 功能描述:
+接口类型用于选择 API 作用于哪个逻辑 Wi-Fi 接口：
 
-  设置 Wi-Fi 工作状态
+| `WF_IF_E` | 描述 |
+| --- | --- |
+| `WF_STATION` | Station（客户端）接口。 |
+| `WF_AP` | Soft-AP 接口。 |
 
-- 参数：
+工作模式用于选择 Wi-Fi 子系统的运行方式：
 
-  | 输入/输出 | 参数名 | 描述               |
-  | --------- | ------ | ------------------ |
-  | [in]      | cb     | Wi-Fi 工作状态回调 |
+| `WF_WK_MD_E` | 描述 |
+| --- | --- |
+| `WWM_POWERDOWN` | 关闭（Wi-Fi 模块下电）。 |
+| `WWM_SNIFFER` | Sniffer（监听）模式。 |
+| `WWM_STATION` | Station 模式。 |
+| `WWM_SOFTAP` | Soft-AP 模式。 |
+| `WWM_STATIONAP` | Station 与 Soft-AP 共存。 |
+| `WWM_UNKNOWN` | 未知模式。 |
 
-- 返回值:
+station 状态用于上报连接进度：
 
-返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
+| `WF_STATION_STAT_E` | 描述 |
+| --- | --- |
+| `WSS_IDLE` | 未连接。 |
+| `WSS_CONNECTING` | 正在连接。 |
+| `WSS_PASSWD_WRONG` | 密码不匹配。 |
+| `WSS_NO_AP_FOUND` | 未找到 AP。 |
+| `WSS_CONN_FAIL` | 连接失败。 |
+| `WSS_CONN_SUCCESS` | 已连接到 AP。 |
+| `WSS_GOT_IP` | 已获取 IP 地址。 |
+| `WSS_DHCP_FAIL` | DHCP 失败。 |
 
-### tkl_wifi_scan_ap
-
-```c
-OPERATE_RET tkl_wifi_scan_ap(const int8_t *ssid, AP_IF_S **ap_ary, uint32_t *num)
-```
-
-- 功能描述:
-
-  扫描当前环境，获取当前环境中的 ap 信息
-
-- 参数：
-
-  | 输入/输出 | 参数名 | 描述                                              |
-  | --------- | ------ | ------------------------------------------------- |
-  | [in]      | ssid   | 如果 ssid = NULL 则扫描所有 ap, 其他则扫描指定 ap |
-  | [out]     | ap_ary | 扫描结果信息                                      |
-  | [out]     | num    | 扫描 ap 个数                                      |
-
-- 返回值:
-
-返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  1. 阻塞函数
-  2. 只能扫描到当前国家码信道列表里的 ap
-  3. 当环境存在指定 ssid 的 ap，扫描到该 ssid 的成功率要超过 98%
-  4. ap 需要在该 api 内分配内存（扫描到多个 ap，需要分配连续的内存空间）
-  5. 释放该内存由 tuya sdk 主动调用 `tkl_wifi_release_ap` 释放
-
-### tkl_wifi_release_ap
+## tkl_wifi_init
 
 ```c
-OPERATE_RET tkl_wifi_release_ap(AP_IF_S *ap)
+OPERATE_RET tkl_wifi_init(WIFI_EVENT_CB cb);
 ```
 
-- 功能描述:
+初始化 Wi-Fi 子系统并注册事件回调。
 
-  释放 ap 信息资源
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `cb` | Wi-Fi 事件回调，`WIFI_EVENT_CB`。 |
 
-  | 输入/输出 | 参数名 | 描述               |
-  | --------- | ------ | ------------------ |
-  | [in]      | ap     | 需要释放的 ap 信息 |
-
-- 返回值:
-
-返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_start_ap
+回调函数签名如下，其中 `event` 为 `WF_EVENT_E`（`WFE_CONNECTED`、`WFE_CONNECT_FAILED`、`WFE_DISCONNECTED`）：
 
 ```c
-OPERATE_RET tkl_wifi_start_ap(const WF_AP_CFG_IF_S *cfg)
+typedef void (*WIFI_EVENT_CB)(WF_EVENT_E event, void *arg);
 ```
 
-- 功能描述:
-
-  启动 ap 模式
-
-- 参数：
-
-  | 输入/输出 | 参数名 | 描述        |
-  | --------- | ------ | ----------- |
-  | [in]      | cfg    | ap 配置参数 |
-
-- 返回值: 返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-- **备注**
-
-  1. 需要根据 max_conn 来设置 ap 模式下最多允许几个 sta 能连接成功。
-  2. 需要根据 ip 信息来设置 ap 模式下的 ip 信息。
-  3. stationap 模式，如果 ap por t有连接的情况下 staiton port 连接路由器，连接过程以及连接失败后 ap port 不可以有断连情况以及可以收发广播包。
-  4. 配网 ez+ap 共存：4.1. softap 或者 stationap 模式下可以使能 sniffer 功能以及可以切换信道。4.2. 使能 sniffer 功能之后，扔给回调的数据要包括 ap port 的设备连接请求包。
-
-### tkl_wifi_stop_ap
+## tkl_wifi_scan_ap
 
 ```c
-OPERATE_RET tkl_wifi_stop_ap(void)
+OPERATE_RET tkl_wifi_scan_ap(const int8_t *ssid, AP_IF_S **ap_ary, uint32_t *num);
 ```
 
-- 功能描述:
+扫描当前环境并返回找到的 AP。
 
-  停止 ap 模式
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `ssid` | 要扫描的 SSID。为 `NULL` 时扫描所有 AP，否则扫描指定 SSID。 |
+| [out] | `ap_ary` | 扫描到的 AP 信息数组，`AP_IF_S`。 |
+| [out] | `num` | `ap_ary` 中的 AP 数量。 |
 
-  无
+:::note
+该函数会分配结果内存，且为阻塞调用。不再使用时，请调用 `tkl_wifi_release_ap` 释放结果。它仅扫描当前国家码对应的信道。
+:::
 
-- 返回值: 返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  1. 需要针对设备当前所处模式 softap 或 stationap 做不同的关闭逻辑
-  2. stationap 模式下，如果 station port 端有连接，关闭 ap port 过程 station port 不能有断连情况
-
-### tkl_wifi_set_cur_channel
+## tkl_wifi_release_ap
 
 ```c
-OPERATE_RET tkl_wifi_set_cur_channel(const uint8_t chan)
+OPERATE_RET tkl_wifi_release_ap(AP_IF_S *ap);
 ```
 
-- 功能描述:
+释放由 `tkl_wifi_scan_ap` 分配的 AP 信息。
 
-  设置信道
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `ap` | 要释放的 AP 信息。 |
 
-  | 输入/输出 | 参数名 | 描述 |
-  | --------- | ------ | ---- |
-  | [in]      | chan   | 信道 |
+## tkl_wifi_start_ap
 
-- 返回值:
+```c
+OPERATE_RET tkl_wifi_start_ap(const WF_AP_CFG_IF_S *cfg);
+```
 
-返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
+按给定配置启动 soft-AP 模式。
 
-- **备注**
+参数：
 
-  1. 设置当前国家码信道范围之外的信道报失败
-  2. 支持在 sniffer 回调里设置信道
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `cfg` | soft-AP 配置，`WF_AP_CFG_IF_S`。 |
 
-### tkl_wifi_get_cur_channel
+`WF_AP_CFG_IF_S` 包含 SSID、密码、信道、加密模式（`md`，类型为 `WF_AP_AUTH_MODE_E`）、隐藏标志、最大连接数（`max_conn`）、广播间隔以及 AP 模式的 IP 信息：
+
+```c
+typedef struct {
+    uint8_t ssid[WIFI_SSID_LEN + 1];     // ssid
+    uint8_t s_len;                       // len of ssid
+    uint8_t passwd[WIFI_PASSWD_LEN + 1]; // passwd
+    uint8_t p_len;                       // len of passwd
+    uint8_t chan;                        // channel, default: 6
+    WF_AP_AUTH_MODE_E md;                // encryption type
+    uint8_t ssid_hidden;                 // ssid hidden, default: 0
+    uint8_t max_conn;                    // max sta connect nums, default: 1
+    uint16_t ms_interval;                // broadcast interval, default: 100
+    NW_IP_S ip;                          // ip info for ap mode
+} WF_AP_CFG_IF_S;
+```
+
+## tkl_wifi_stop_ap
+
+```c
+OPERATE_RET tkl_wifi_stop_ap(void);
+```
+
+停止 soft-AP 模式。
+
+## tkl_wifi_set_cur_channel
+
+```c
+OPERATE_RET tkl_wifi_set_cur_channel(const uint8_t chan);
+```
+
+设置 Wi-Fi 接口的工作信道。
+
+参数：
+
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `chan` | 要设置的信道。 |
+
+:::note
+设置超出当前国家码信道范围的信道会失败。支持在 sniffer 回调中设置信道。
+:::
+
+## tkl_wifi_get_cur_channel
 
 ```c
 OPERATE_RET tkl_wifi_get_cur_channel(uint8_t *chan);
 ```
 
-- 功能描述:
+获取当前工作信道。
 
-  获取当前信道
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [out] | `chan` | 当前信道。 |
 
-  | 输入/输出 | 参数名 | 描述 |
-  | --------- | ------ | ---- |
-  | [out]     | chan   | 信道 |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_set_sniffer
+## tkl_wifi_set_sniffer
 
 ```c
-OPERATE_RET tkl_wifi_set_sniffer(const BOOL_T en, const SNIFFER_CALLBACK cb)
+OPERATE_RET tkl_wifi_set_sniffer(const BOOL_T en, const SNIFFER_CALLBACK cb);
 ```
 
-- 功能描述:
+开启或关闭 sniffer 模式。开启后，驱动会将抓取到的每个数据帧回调给 `cb`。
 
-  设置 sniffer 功能开关
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `en` | `TRUE` 开启 sniffer 模式，`FALSE` 关闭。 |
+| [in] | `cb` | 抓包回调，`SNIFFER_CALLBACK`。 |
 
-  | 输入/输出 | 参数名 | 描述              |
-  | --------- | ------ | ----------------- |
-  | [in]      | en     | 开或关sniffer功能 |
-  | [in]      | cb     | 抓包数据回调      |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  返给应用的数据要括管理包数据
-
-### tkl_wifi_get_ip
+回调函数签名如下：
 
 ```c
-OPERATE_RET tkl_wifi_get_ip(const WF_IF_E wf, NW_IP_S *ip)
+typedef void (*SNIFFER_CALLBACK)(const uint8_t *buf, const uint16_t len, const int8_t rssi);
 ```
 
-- 功能描述:
-
-  获取 Wi-Fi 的 ip 信息（ip 地址、网关地址、地址掩码）
-
-- 参数：
-
-  | 输入/输出  | 参数名       | 描述       |
-  | ---------- | ------------ | ---------- |
-  | [in]       | wf           | Wi-Fi 模式 |
-  | [out]      | ip           | ip 信息    |
-  | --------   | --------     |
-  | WF_STATION | station type |
-  | WF_AP      | ap type      |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注** 需要区分不同模式（依据传参 wf）下的 ip 信息
-
-### tkl_wifi_set_ip
+## tkl_wifi_get_ip
 
 ```c
-OPERATE_RET tkl_wifi_set_ip(const WF_IF_E wf, NW_IP_S *ip)
+OPERATE_RET tkl_wifi_get_ip(const WF_IF_E wf, NW_IP_S *ip);
 ```
 
-- 功能描述:
+获取指定接口的 IPv4 地址、网关和子网掩码。
 
-  设置 Wi-Fi 的静态 ip 信息（ip地址、网关地址、地址掩码）
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `wf` | Wi-Fi 接口，`WF_IF_E`。 |
+| [out] | `ip` | IP 信息，`NW_IP_S`。 |
 
-  | 输入/输出  | 参数名       | 描述     |
-  | ---------- | ------------ | -------- |
-  | [in]       | wf           | wifi模式 |
-  | [in]       | ip           | ip 信息  |
-  | --------   | --------     |          |
-  | WF_STATION | station type |          |
-  | WF_AP      | ap type      |          |
+:::note
+在 station+AP 模式下设备有两个 IP，请通过 `wf` 选择要读取的接口。
+:::
 
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注** 需要区分不同模式（依据传参 wf）下的 ip 信息
-
-### tkl_wifi_set_mac
+## tkl_wifi_get_ipv6
 
 ```c
-OPERATE_RET tkl_wifi_set_mac(const WF_IF_E wf, const NW_MAC_S *mac)
+OPERATE_RET tkl_wifi_get_ipv6(const WF_IF_E wf, NW_IP_TYPE type, NW_IP_S *ip);
 ```
 
-- 功能描述:
+获取指定接口的 IPv6 地址。
 
-  设置 mac 地址
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `wf` | Wi-Fi 接口，`WF_IF_E`。 |
+| [in] | `type` | 要读取的 IPv6 地址类型，`NW_IP_TYPE`。 |
+| [out] | `ip` | IP 信息，`NW_IP_S`。 |
 
-  | 输入/输出  | 参数名       | 描述     |
-  | ---------- | ------------ | -------- |
-  | [in]       | wf           | wifi模式 |
-  | [in]       | mac          | mac地址  |
-  | --------   | --------     |
-  | WF_STATION | station type |
-  | WF_AP      | ap type      |
+## tkl_wifi_set_ip
 
-- 返回值:
+```c
+OPERATE_RET tkl_wifi_set_ip(const WF_IF_E wf, NW_IP_S *ip);
+```
 
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
+为指定接口设置静态 IPv4 地址、网关和子网掩码。
 
-- **备注**
+参数：
 
-  永久生效，断电不丢失
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `wf` | Wi-Fi 接口，`WF_IF_E`。 |
+| [in] | `ip` | 要设置的 IP 信息，`NW_IP_S`。 |
 
-### tkl_wifi_get_mac
+## tkl_wifi_set_mac
+
+```c
+OPERATE_RET tkl_wifi_set_mac(const WF_IF_E wf, const NW_MAC_S *mac);
+```
+
+设置指定接口的 MAC 地址。
+
+参数：
+
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `wf` | Wi-Fi 接口，`WF_IF_E`。 |
+| [in] | `mac` | 要设置的 MAC 地址，`NW_MAC_S`。 |
+
+## tkl_wifi_get_mac
 
 ```c
 OPERATE_RET tkl_wifi_get_mac(const WF_IF_E wf, NW_MAC_S *mac);
 ```
 
-- 功能描述:
+获取指定接口的 MAC 地址。
 
-  获取 mac 地址
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `wf` | Wi-Fi 接口，`WF_IF_E`。 |
+| [out] | `mac` | MAC 地址，`NW_MAC_S`。 |
 
-  | 输入/输出  | 参数名       | 描述     |
-  | ---------- | ------------ | -------- |
-  | [in]       | wf           | wifi模式 |
-  | [out]      | mac          | mac地址  |
-  | --------   | --------     |
-  | WF_STATION | station type |
-  | WF_AP      | ap type      |
-
-- 返回值:
-
-返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  stationap 模式下的 mac 地址需要区分工作模式（依据传参 wf）
-
-### tkl_wifi_set_work_mode
+## tkl_wifi_set_work_mode
 
 ```c
-OPERATE_RET tkl_wifi_set_work_mode(const WF_WK_MD_E mode)
+OPERATE_RET tkl_wifi_set_work_mode(const WF_WK_MD_E mode);
 ```
 
-- 功能描述:
+设置 Wi-Fi 工作模式。
 
-  设置 Wi-Fi 工作模式
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `mode` | 工作模式，`WF_WK_MD_E`。 |
 
-  | 输入/输出     | 参数名                   | 描述         |
-  | ------------- | ------------------------ | ------------ |
-  | [in]          | mode                     | wifi工作模式 |
-  | --------      | --------                 |
-  | WWM_LOWPOWER  | 低功耗（指关闭wifi模块） |
-  | WWM_SNIFFER   | monitor                  |
-  | WWM_STATION   | station                  |
-  | WWM_SOFTAP    | softap                   |
-  | WWM_STATIONAP | stationap                |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  1. 从设备上电到调用 tuya entranc e要求在 200ms 以内。
-  2. 如果设备初始化时间超过 200ms，底层可以做一些必要的初始化之后就调用 tuya entrance，将耗时间的 Wi-Fi 初始化放在另一个线程执行。
-  3. tkl_wifi_set_work_mode 是 tuya 业务使用 Wi-Fi 调用的第一个 api，在这个 api 需要判断 Wi-Fi 初始化是否结束，如果没结束，要在这里等到结束才开始往下执行（只需要判断一次）。
-  4. 如果设备从上电到 tuya entrance 少于 200ms，无需考虑这点。
-
-### tkl_wifi_get_work_mode
+## tkl_wifi_get_work_mode
 
 ```c
-OPERATE_RET tkl_wifi_get_work_mode(WF_WK_MD_E *mode)
+OPERATE_RET tkl_wifi_get_work_mode(WF_WK_MD_E *mode);
 ```
 
-- 功能描述:
+获取当前 Wi-Fi 工作模式。
 
-  获取wifi工作模式
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [out] | `mode` | 工作模式，`WF_WK_MD_E`。 |
 
-  | 输入/输出     | 参数名                   | 描述           |
-  | ------------- | ------------------------ | -------------- |
-  | [out]         | mode                     | Wi-Fi 工作模式 |
-  | --------      | --------                 |
-  | WWM_LOWPOWER  | 低功耗（指关闭wifi模块） |
-  | WWM_SNIFFER   | monitor                  |
-  | WWM_STATION   | station                  |
-  | WWM_SOFTAP    | softap                   |
-  | WWM_STATIONAP | stationap                |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_get_connected_ap_info
+## tkl_wifi_get_connected_ap_info
 
 ```c
-OPERATE_RET tkl_wifi_get_connected_ap_info(FAST_WF_CONNECTED_AP_INFO_T **fast_ap_info)
+OPERATE_RET tkl_wifi_get_connected_ap_info(FAST_WF_CONNECTED_AP_INFO_T **fast_ap_info);
 ```
 
-- 功能描述:
+获取当前已连接 AP 的信息，用于快连功能。
 
-  获取所连 ap 信息，用于快连功能
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [out] | `fast_ap_info` | 已连接 AP 信息，`FAST_WF_CONNECTED_AP_INFO_T`。 |
 
-  | 输入/输出 | 参数名       | 描述       |
-  | --------- | ------------ | ---------- |
-  | [out]     | fast_ap_info | 所连ap信息 |
+:::note
+该函数会分配 `fast_ap_info`。配合 `tkl_wifi_station_fast_connect` 可加快重启后的重连。
+:::
 
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  1. fast_ap_info 需要在该 api 内动态申请内存
-  2. 每次重连路由器成功都会获取一次路由器信息，如有更新会同步到 flash
-
-### tkl_wifi_get_bssid
+## tkl_wifi_get_bssid
 
 ```c
-OPERATE_RET tkl_wifi_get_bssid(uint8_t *mac)
+OPERATE_RET tkl_wifi_get_bssid(uint8_t *mac);
 ```
 
-- 功能描述:
+获取已连接 AP 的 BSSID（MAC 地址）。
 
-  获取所连 ap 的 mac 地址
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [out] | `mac` | 接收 BSSID 的 6 字节缓冲区。 |
 
-  | 输入/输出 | 参数名 | 描述     |
-  | --------- | ------ | -------- |
-  | [out]     | mac    | mac 地址 |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_set_country_code
+## tkl_wifi_set_country_code
 
 ```c
-OPERATE_RET tkl_wifi_set_country_code(const COUNTRY_CODE_E ccode)
+OPERATE_RET tkl_wifi_set_country_code(const COUNTRY_CODE_E ccode);
 ```
 
-- 功能描述:
+设置射频国家码，决定允许使用的信道列表。
 
-  设置国家码
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `ccode` | 国家码，`COUNTRY_CODE_E`。 |
 
-  | 输入/输出       | 参数名                         | 描述   |
-  | --------------- | ------------------------------ | ------ |
-  | [in]            | ccode                          | 国家码 |
-  | --------        | --------                       |
-  | COUNTRY_CODE_CN | 中国区 1-13                    |
-  | COUNTRY_CODE_US | 美国区 1-11                    |
-  | COUNTRY_CODE_JP | 日本区 1-14                    |
-  | COUNTRY_CODE_EU | 欧洲区 1-13 需要考虑欧洲自适应 |
+| `COUNTRY_CODE_E` | 区域 | 信道 |
+| --- | --- | --- |
+| `COUNTRY_CODE_CN` | 中国 | 1–13 |
+| `COUNTRY_CODE_US` | 美国 | 1–11 |
+| `COUNTRY_CODE_JP` | 日本 | 1–14 |
+| `COUNTRY_CODE_EU` | 欧洲 | 1–13 |
 
-- 返回值:
-
-返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-  1. 国家码暂时只需要支持中国区（CN 1-13）、美国区（US 1-11）、日本区（JP 1-14）、欧洲区（EU 1-13）
-  2. 针对不同的国家码，需要达到的要求如下：2.1 扫描路由器时只能扫到国家码对应信道列表的ap。2.2 欧洲区需要实现欧洲自适应功能 2.3 设置信道时，设置的信道不在当前国家码的信道列表范围之内，设置信道返回error
-
-### tkl_wifi_set_rf_calibrated
+## tkl_wifi_set_rf_calibrated
 
 ```c
-BOOL_T tkl_wifi_set_rf_calibrated(void);
+OPERATE_RET tkl_wifi_set_rf_calibrated(void);
 ```
 
-- 功能描述:
+执行 Wi-Fi 射频校准，在 Wi-Fi 产测时调用。
 
-  检查 RF 是否校准过
+返回值：
 
-- 参数：
+成功时返回 `OPRT_OK`，其他值表示错误，请参见 `tuya_error_code.h`。
 
-  无
-
-- 返回值:
-
-  - TRUE : 已校准
-  - FALSE ：未校准
-
-### tkl_wifi_set_lp_mode
+## tkl_wifi_set_lp_mode
 
 ```c
-OPERATE_RET tkl_wifi_set_lp_mode(const BOOL_T enable, const uint8_t dtim)
+OPERATE_RET tkl_wifi_set_lp_mode(const BOOL_T enable, const uint8_t dtim);
 ```
 
-- 功能描述:
+开启或关闭 Wi-Fi 低功耗模式。
 
-  wifi低功耗设置
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `enable` | `TRUE` 开启低功耗模式，`FALSE` 关闭。 |
+| [in] | `dtim` | DTIM 间隔。 |
 
-  | 输入/输出 | 参数名 | 描述                   |
-  | --------- | ------ | ---------------------- |
-  | [in]      | enable | 是否开启wifi低功耗模式 |
-  | [in]      | dtim   | dtim参数               |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_station_fast_connect
+## tkl_wifi_station_fast_connect
 
 ```c
-OPERATE_RET tkl_wifi_station_fast_connect(const FAST_WF_CONNECTED_AP_INFO_T *fast_ap_info)
+OPERATE_RET tkl_wifi_station_fast_connect(const FAST_WF_CONNECTED_AP_INFO_T *fast_ap_info);
 ```
 
-- 功能描述:
+使用缓存的 AP 信息连接路由器，实现更快的连接。
 
-  快速连接路由器
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `fast_ap_info` | 来自 `tkl_wifi_get_connected_ap_info` 的缓存 AP 信息。 |
 
-  | 输入/输出 | 参数名       | 描述             |
-  | --------- | ------------ | ---------------- |
-  | [in]      | fast_ap_info | 快连所需的ap信息 |
+:::note
+用于配网并重启后的首次连接。
+:::
 
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-
-  配过网且重启之后第一次连接才会调用这个函数
-
-### tkl_wifi_station_connect
+## tkl_wifi_station_connect
 
 ```c
-OPERATE_RET tkl_wifi_station_connect(const int8_t *ssid, const int8_t *passwd)
+OPERATE_RET tkl_wifi_station_connect(const int8_t *ssid, const int8_t *passwd);
 ```
 
-- 功能描述:
+将 station 连接到路由器。
 
-  连接路由器
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `ssid` | 要连接的 SSID。 |
+| [in] | `passwd` | 密码。 |
 
-  | 输入/输出 | 参数名 | 描述   |
-  | --------- | ------ | ------ |
-  | [in]      | ssid   | ssid   |
-  | [in]      | passwd | passwd |
+:::note
+非阻塞。连接启动后，轮询 `tkl_wifi_station_get_status` 跟踪进度。
+:::
 
-- 返回值: 返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-- **备注**
-
-  1. 非阻塞，启动连接流程成功后，上层会每隔 1s 钟调用 tkl_wifi_station_get_status 查询 Wi-Fi 连接状态
-  2. 需要使能自动重连功能，重连时间在 1min 以内即可，上层断连情况下会每隔 1min 发起一次重连
-
-### tkl_wifi_station_disconnect
+## tkl_wifi_station_disconnect
 
 ```c
-OPERATE_RET tkl_wifi_station_disconnect(void)
+OPERATE_RET tkl_wifi_station_disconnect(void);
 ```
 
-- 功能描述: 断开路由器
+断开 station 与路由器的连接。
 
-- 参数：无
-
-- 返回值: 返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_station_get_conn_ap_rssi
+## tkl_wifi_station_get_conn_ap_rssi
 
 ```c
-OPERATE_RET tkl_wifi_station_get_conn_ap_rssi(int8_t *rssi)
+OPERATE_RET tkl_wifi_station_get_conn_ap_rssi(int8_t *rssi);
 ```
 
-- 功能描述:
+获取已连接 AP 的信号强度（RSSI）。
 
-  获取所连 ap 的信号强度
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [out] | `rssi` | RSSI 值。 |
 
-  | 输入/输出 | 参数名 | 描述     |
-  | --------- | ------ | -------- |
-  | [out]     | rssi   | 信号强度 |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-- **备注**
-  1. 不移动设备和路由器的位置，多次获取 rssi 只能出现小范围的波动
-  2. 移动设备和路由器的位置，获取 rssi 会有对应的变化
-
-### tkl_wifi_station_get_status
+## tkl_wifi_station_get_status
 
 ```c
-OPERATE_RET tkl_wifi_station_get_status(WF_STATION_STAT_E *stat)
+OPERATE_RET tkl_wifi_station_get_status(WF_STATION_STAT_E *stat);
 ```
 
-- 功能描述:
+获取当前 station 连接状态。
 
-  获取wifi当前的连接状态
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [out] | `stat` | station 状态，`WF_STATION_STAT_E`。 |
 
-  | 输入/输出        | 参数名   | 描述     |
-  | ---------------- | -------- | -------- |
-  | [out]            | stat     | 连接状态 |
-  | --------         | -------- |
-  | WSS_IDLE         |          |
-  | WSS_CONNECTING   | 连接中   |
-  | WSS_PASSWD_WRONG | 密码错误 |
-  | WSS_CONN_FAIL    | 连接失败 |
-  | WSS_CONN_SUCCESS | 连接成功 |
-  | WSS_GOT_IP       | dhcp成功 |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_send_mgnt
+## tkl_wifi_send_mgnt
 
 ```c
-OPERATE_RET tkl_wifi_send_mgnt(const uint8_t *buf, const uint32_t len)
+OPERATE_RET tkl_wifi_send_mgnt(const uint8_t *buf, const uint32_t len);
 ```
 
-- 功能描述:
+发送 Wi-Fi 管理帧。
 
-  发送管理包数据
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `buf` | 管理帧缓冲区。 |
+| [in] | `len` | 缓冲区长度。 |
 
-  | 输入/输出 | 参数名 | 描述           |
-  | --------- | ------ | -------------- |
-  | [in]      | buf    | 管理包数据 buf |
-  | [in]      | len    | 管理包数据长度 |
-
-- 返回值:
-
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
-
-### tkl_wifi_register_recv_mgnt_callback
+## tkl_wifi_register_recv_mgnt_callback
 
 ```c
-OPERATE_RET tkl_wifi_register_recv_mgnt_callback(const BOOL_T enable, const WIFI_REV_MGNT_CB recv_cb)
+OPERATE_RET tkl_wifi_register_recv_mgnt_callback(const BOOL_T enable, const WIFI_REV_MGNT_CB recv_cb);
 ```
 
-- 功能描述:
+开启或关闭将接收到的管理帧回调给应用层。
 
-  设置应用层是否接收管理包数据
+参数：
 
-- 参数：
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `enable` | `TRUE` 开启管理帧接收，`FALSE` 关闭。 |
+| [in] | `recv_cb` | 接收回调，`WIFI_REV_MGNT_CB`。 |
 
-  | 输入/输出 | 参数名  | 描述                   |
-  | --------- | ------- | ---------------------- |
-  | [in]      | enable  | 是否开启接收管理包数据 |
-  | [in]      | recv_cb | 接收管理包数据回调     |
+回调函数签名如下：
 
-- 返回值:
+```c
+typedef void (*WIFI_REV_MGNT_CB)(uint8_t *buf, uint32_t len);
+```
 
-  返回值为 `OPRT_OK` 表示操作成功，其他返回值表示出现错误，请参考 `tuya_error_code.h` 获取错误信息。
+## tkl_wifi_ioctl
+
+```c
+OPERATE_RET tkl_wifi_ioctl(WF_IOCTL_CMD_E cmd, void *args);
+```
+
+下发驱动相关的控制命令。
+
+参数：
+
+| 输入/输出 | 参数名 | 描述 |
+| --- | --- | --- |
+| [in] | `cmd` | 命令，`WF_IOCTL_CMD_E`。 |
+| [in] | `args` | 与命令相关的参数。 |
+
+| `WF_IOCTL_CMD_E` | 描述 |
+| --- | --- |
+| `WFI_BEACON_CMD` | 配置 beacon 厂商自定义信息元素。 |
+| `WFI_GET_LAST_DISCONN_REASON` | 获取最后一次断连原因，`WF_DISCONN_REASON_E`。 |
+| `WFI_AP_GET_STALIST_CMD` | 获取 soft-AP 的 station 列表，`WF_STA_LIST_S`。 |
+| `WFI_CONNECT_CMD` | 使用 `WF_IOCTL_CONN_T` 发起连接。 |

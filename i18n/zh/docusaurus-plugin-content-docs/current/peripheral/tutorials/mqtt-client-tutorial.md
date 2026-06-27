@@ -4,7 +4,7 @@ title: MQTT 客户端教程
 
 ## 概述
 
-本教程介绍 **MQTT 客户端**示例：连接公共 Broker、订阅、按 QoS 发布、再取消订阅。代码使用 `mqtt_client_interface.h`（init、connect、`mqtt_client_yield`、subscribe/publish/unsubscribe），并配合 netmgr 与 Wi-Fi 或有线网络。
+本教程介绍 MQTT 客户端示例：连接公共 Broker、订阅、按 QoS 发布、再取消订阅。代码使用 `mqtt_client_interface.h`（init、connect、`mqtt_client_yield`、subscribe/publish/unsubscribe），并配合 netmgr 与 Wi-Fi 或有线网络。
 
 ## 前置条件
 
@@ -30,13 +30,13 @@ title: MQTT 客户端教程
    tos.py build
    ```
 
-4. 链路上线后依次 `mqtt_client_init`、`mqtt_client_connect`，并周期性调用 **`mqtt_client_yield`** 以处理报文。连接成功回调里订阅；订阅成功回调里发布测试消息；发布确认路径中取消订阅。
+4. 链路上线后依次 `mqtt_client_init`、`mqtt_client_connect`，并周期性调用 `mqtt_client_yield` 以处理报文。连接成功回调里订阅；订阅成功回调里发布测试消息；发布确认路径中取消订阅。
 
 **预期结果：** 串口日志依次出现连接、订阅、发布与 PUBACK。
 
 ## 实现说明
 
-- 连接期间必须定期 **`mqtt_client_yield`**，否则无法处理 SUBACK/PUBLISH/PUBACK。
+- 连接期间必须定期调用 `mqtt_client_yield`，否则无法处理 SUBACK/PUBLISH/PUBACK。
 - 主题与载荷需与云端或 Broker 约定一致。
 - 本示例为通用 MQTT 客户端，与 `tuya_iot` 内置涂鸦云 MQTT 不是同一套路径。
 

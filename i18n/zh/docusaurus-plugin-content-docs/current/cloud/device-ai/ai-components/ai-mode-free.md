@@ -2,228 +2,52 @@
 title: 自由对话模式
 ---
 
-## 名词解释
+**自由对话**是一种语音对话模式：唤醒之后，设备持续聆听，进行多轮、免手的连续对话。你只需唤醒一次，便可来回交谈，无需按键，也无需每一轮都重复唤醒词。
 
-| 名词 | 解释                                                         |
-| ---- | ------------------------------------------------------------ |
-| KWS  | 关键词唤醒（Keyword Spotting），用于检测特定的唤醒词，触发设备进入监听状态。 |
-| VAD  | 语音活动检测（Voice Activity Detection），用于检测是否有语音输入。 |
+它是四种[语音对话模式](ai-mode-manage)之一，通过 `ai_mode_free_register()` 注册。
 
-## 功能简述
+## 何时使用
 
-`ai_mode_free` 是 TuyaOpen AI 应用框架中的自由对话模式实现，提供了一种自然的语音交互方式。用户通过唤醒词或按键触发后，设备进入持续监听状态，可以在一定时间内（默认 30 秒）自由进行多轮对话，无需每次交互都重新触发。
+当用户需要连续进行多轮自然对话时，使用自由对话：
 
-- **唤醒机制**：支持关键词唤醒（KWS）和按键唤醒两种方式
-- **持续监听**：唤醒后进入持续监听状态，支持多轮对话
-- **自动超时**：在无语音活动或播放完成后，自动超时（默认 30 秒）返回空闲状态
-- **LED 指示**：不同状态显示不同的 LED 效果（需启用 LED 组件）
-  - 空闲：LED 关闭
-  - 聆听：LED 闪烁（500ms）
-  - 思考：LED 闪烁（2000ms）
-  - 说话：LED 常亮
+- **多轮对话**：唤醒后设备持续聆听后续对话，使交谈连贯进行，无需每次重新触发。
+- **完全免手**：对话过程中无需任何按键操作，用户只管继续说话。
+- **对话型产品**：最适合面向来回交谈而非单条指令的助手与陪伴类设备。
 
-## 工作流程
+代价是对话期间设备会持续聆听，因此更适合安静、单一用户的场景，而非嘈杂或多人共用的环境。需要每次只进行一轮时，请用[唤醒对话模式](ai-mode-wakeup)；需要完全手动控制时，请用[长按对话模式](ai-mode-hold)。
 
-### 模块架构图
+## 行为方式
+
+一轮对话遵循通用的模式生命周期。唤醒后设备进入 `LISTEN`；每一轮依次经过 `UPLOAD`、`THINK`、`SPEAK`，随后返回 `LISTEN` 进入下一轮，而非转为空闲——从而保持对话持续开启。
 
 ```mermaid
-flowchart TD
-    A[应用层] --> B[ai_mode_free 模块]
-    B --> C[状态机管理]
-    B --> D[唤醒检测]
-    B --> E[VAD 处理]
-    B --> F[事件处理]
-    
-    D --> G[KWS 唤醒]
-    D --> H[按键唤醒]
-    
-    C --> I[IDLE<br/>空闲]
-    C --> J[LISTEN<br/>监听]
-    C --> K[UPLOAD<br/>上传]
-    C --> L[THINK<br/>思考]
-    C --> M[SPEAK<br/>说话]
-    
-    style C fill:#e1f5ff
-    style D fill:#fff4e1
+flowchart LR
+    IDLE -->|唤醒| LISTEN
+    LISTEN --> UPLOAD
+    UPLOAD --> THINK
+    THINK --> SPEAK
+    SPEAK -->|下一轮| LISTEN
 ```
 
-### 状态机流程
+:::note
+自由对话在各轮之间保持聆听，因此对话期间设备会持续采集音频。该模式需要音频组件（`ENABLE_COMP_AI_AUDIO`）进行语音活动检测。
+:::
 
-自由对话模式通过状态机管理整个交互流程，从空闲状态开始，通过唤醒进入监听，完成语音交互后根据情况返回监听或空闲状态。
+## 启用方式
 
-```mermaid
-stateDiagram-v2
-    direction LR
-    [*] --> IDLE: 初始化
-    IDLE --> LISTEN: 唤醒词/按键触发
-    LISTEN --> UPLOAD: VAD 检测到语音
-    UPLOAD --> THINK: 上传完成
-    THINK --> SPEAK: AI 处理完成
-    SPEAK --> LISTEN: 播放完成(已唤醒)
-    SPEAK --> IDLE: 播放完成(未唤醒)
-    LISTEN --> IDLE: 超时(30秒)
-    THINK --> IDLE: 超时(30秒)
-```
-
-### 唤醒流程
-
-用户可以通过唤醒词或按键两种方式触发自由对话模式。
-
-```mermaid
-sequenceDiagram
-    participant User as 用户
-    participant Mode as ai_mode_free
-    participant KWS as KWS 模块
-    participant Audio as 音频输入
-    
-    alt 唤醒词触发
-        User->>KWS: 说出唤醒词
-        KWS->>Mode: 唤醒回调
-    else 按键触发
-        User->>Mode: 按键事件
-    end
-    
-    Mode->>Mode: 停止播放和录音
-    Mode->>Mode: 播放唤醒提示音
-    Mode->>Mode: 进入 LISTEN 状态
-    Mode->>Audio: 启用唤醒模式
-    Mode->>Audio: 设置 VAD 自动模式
-```
-
-### 语音交互流程
-
-唤醒后，设备自动通过 VAD 检测语音活动，完成一轮完整的语音交互。
-
-```mermaid
-sequenceDiagram
-    participant User as 用户
-    participant Mode as ai_mode_free
-    participant VAD as VAD 检测
-    participant Agent as AI Agent
-    participant Player as 音频播放器
-    
-    Note over Mode: LISTEN 状态
-    User->>VAD: 说话
-    VAD->>Mode: VAD_START 事件
-    Mode->>Agent: 开始录音上传
-    Mode->>Mode: 进入 UPLOAD 状态
-    
-    Agent->>Mode: ASR 识别完成
-    Mode->>Mode: 进入 THINK 状态
-    
-    Agent->>Player: 返回 TTS 音频
-    Mode->>Mode: 进入 SPEAK 状态
-    
-    Player->>Mode: 播放完成
-    alt 仍在唤醒状态
-        Mode->>Mode: 返回 LISTEN 状态
-    else 已超时
-        Mode->>Mode: 返回 IDLE 状态
-    end
-```
-
-## 配置说明
-
-### 配置文件路径
-
-```
-ai_components/ai_mode/Kconfig
-```
-
-### 功能使能
-
-```
-menuconfig ENABLE_COMP_AI_PRESENT_MODE
-    bool "enable ai present mode"
-    default y
-
-config ENABLE_COMP_AI_MODE_FREE
-    bool "enable ai mode free"
-    default y
-```
-
-### 依赖组件
-
-- **音频组件**（`ENABLE_COMP_AI_AUDIO`）：必需，用于音频输入输出和 VAD 检测
-- **LED 组件**（`ENABLE_LED`）：可选，用于状态指示
-- **按键组件**（`ENABLE_BUTTON`）：可选，用于按键唤醒功能
-
-## 开发流程
-
-### 接口说明
-
-#### 注册自由对话模式
-
-将自由对话模式注册到模式管理器中。
+在启动时注册该模式，然后用 `ai_mode_init` 将其设为当前模式：
 
 ```c
-/**
- * @brief Register free mode
- * @return OPERATE_RET Operation result
- */
-OPERATE_RET ai_mode_free_register(void);
+ai_mode_free_register();
+ai_mode_init(AI_CHAT_MODE_FREE);   // AI_CHAT_MODE_HOLD | ONE_SHOT | WAKEUP | FREE
 ```
 
-### 开发步骤
+完整的启动流程（注册多个模式、运行任务循环、运行时切换模式）请参见[语音对话模式](ai-mode-manage)。
 
-1. **注册模式**：在应用启动时调用 `ai_mode_free_register()` 注册自由对话模式
-2. **初始化模式**：通过 `ai_mode_init(AI_CHAT_MODE_FREE)` 初始化自由对话模式
-3. **运行模式任务**：在任务循环中调用 `ai_mode_task_running()` 运行状态机
-4. **处理事件**：确保用户事件、VAD 状态变化、按键事件等已正确转发到模式管理器
+## 相关文档
 
-### 参考示例
-
-#### 注册和初始化
-
-```c
-#include "ai_mode_free.h"
-#include "ai_manage_mode.h"
-
-// 注册自由对话模式
-OPERATE_RET register_free_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-    // 注册自由对话模式
-    TUYA_CALL_ERR_RETURN(ai_mode_free_register());
-    
-    return rt;
-}
-
-// 初始化自由对话模式
-OPERATE_RET init_free_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-    // 初始化自由对话模式
-    TUYA_CALL_ERR_RETURN(ai_mode_init(AI_CHAT_MODE_FREE));
-    
-    return rt;
-}
-```
-
-#### 模式切换
-
-```c
-// 切换到自由对话模式
-void switch_to_free_mode(void)
-{
-    OPERATE_RET rt = ai_mode_switch(AI_CHAT_MODE_FREE);
-    if (OPRT_OK == rt) {
-        PR_NOTICE("切换到自由对话模式");
-    } else {
-        PR_ERR("切换模式失败: %d", rt);
-    }
-}
-```
-
-#### 查询模式状态
-
-```c
-void query_free_mode_state(void)
-{
-    AI_MODE_STATE_E state = ai_mode_get_state();
-    PR_NOTICE("自由对话模式当前状态: %s", ai_get_mode_state_str(state));
-}
-```
-
+- [语音对话模式](ai-mode-manage)——注册、切换并在所有模式间路由事件
+- [长按对话模式](ai-mode-hold)——按住按键进行录音
+- [单次对话模式](ai-mode-oneshot)——单击一次完成一轮对话
+- [唤醒对话模式](ai-mode-wakeup)——通过语音开启一轮对话
+- [AI Agent](ai-agent)——各模式所驱动的云端桥梁

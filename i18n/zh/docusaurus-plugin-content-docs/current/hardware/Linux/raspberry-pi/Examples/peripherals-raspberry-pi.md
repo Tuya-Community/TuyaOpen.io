@@ -2,7 +2,7 @@
 title: "Raspberry Pi 外设"
 ---
 
-本文档介绍如何在 Raspberry Pi 上运行 TuyaOpen 的外设示例（`examples/peripherals`），包含 GPIO、I2C、SPI、PWM、UART等。
+在 Raspberry Pi 上运行 TuyaOpen 的外设示例（`examples/peripherals`）。本文涵盖 GPIO、I2C、SPI、PWM、UART、按键输入与音频编解码：如何启用每个外设、Linux 适配层支持哪些 TKL 接口，以及每个外设的最小示例。
 
 ## 快速开始
 
@@ -13,11 +13,13 @@ title: "Raspberry Pi 外设"
   - 选择型号：`Raspberry Pi Board Configuration → Choose Raspberry Pi model → Raspberry Pi 5`（按实际型号选择）
 3. 按需开启外设开关：进入 `Choice a board → LINUX → TKL Board Configuration`，勾选 `ENABLE_GPIO`/`ENABLE_I2C`/`ENABLE_SPI`/`ENABLE_PWM`/`ENABLE_UART`。
 
-![models_path_config](https://images.tuyacn.com/fe-static/docs/img/4b6127c5-ab9f-415a-b365-cb136467efed.png)
+![TKL Board Configuration 菜单中已勾选外设启用项](https://images.tuyacn.com/fe-static/docs/img/4b6127c5-ab9f-415a-b365-cb136467efed.png)
 
 4. 进入对应示例目录（如 `examples/peripherals/gpio`），执行 `tos.py build` 编译，然后用 `sudo` 运行生成的 `*.elf`。
 
-> **说明（编译方式）**：Raspberry Pi 支持交叉编译与本地编译两种方式；构建时会根据当前平台自动选择合适的编译方式。
+:::note
+Raspberry Pi 支持交叉编译与本地编译两种方式；构建时会根据当前平台自动选择合适的编译方式。
+:::
 
 ## 通用说明
 
@@ -63,10 +65,11 @@ cd examples/peripherals/gpio
 tos.py config menu
 ```
 
-按“快速开始”完成板卡与型号选择后，进入：`Choice a board → LINUX → TKL Board Configuration`并勾选 `ENABLE_GPIO`。
+按“快速开始”完成板卡与型号选择后，进入 `Choice a board → LINUX → TKL Board Configuration` 并勾选 `ENABLE_GPIO`。
 
-> 
-> **提示**：GPIO 引脚分布图与 RP1 复用功能表可参考 [树莓派 5 GPIO 参考手册](https://tuyaopen.ai/zh/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi.md)。
+:::tip
+GPIO 引脚分布图与 RP1 复用功能表可参考 [Raspberry Pi 5 GPIO 参考手册](/zh/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi)。
+:::
 
 在 `Application config` 中选择合适的引脚作为：
 
@@ -97,7 +100,9 @@ sudo ./gpio_1.0.0.elf
 - 初始化一个输出脚并每秒翻转一次电平
 - 初始化一个输入脚并读取电平
 
-> 说明：代码片段仅展示核心调用，完整可编译工程请直接参考 `examples/peripherals/gpio`。
+:::note
+代码片段仅展示核心调用，完整可编译工程请直接参考 `examples/peripherals/gpio`。
+:::
 
 ```c
 #include "tal_api.h"
@@ -176,7 +181,7 @@ sudo raspi-config
 
 - `3 Interface Options` → `I5 I2C` → `Enable`
 
-![models_path_config](https://images.tuyacn.com/fe-static/docs/img/c8daf0da-c625-472e-888f-090968719dc9.png)
+![raspi-config 接口选项菜单中已启用 I2C](https://images.tuyacn.com/fe-static/docs/img/c8daf0da-c625-472e-888f-090968719dc9.png)
 
 确认设备节点已创建：
 
@@ -219,9 +224,11 @@ sudo ./i2c_scan_1.0.0.elf
 
 ### 最小示例
 
-下面代码演示“扫描 I2C 7-bit 地址”（Linux 适配下 `size==0` 会走 quick 探测）：
+下面代码演示扫描 I2C 7-bit 地址（Linux 适配下 `size==0` 会走 quick 探测）：
 
-> 说明：完整可编译工程参考 `examples/peripherals/i2c/i2c_scan`。
+:::note
+完整可编译工程参考 `examples/peripherals/i2c/i2c_scan`。
+:::
 
 ```c
 #include "tal_api.h"
@@ -320,17 +327,16 @@ sudo raspi-config
 ls /dev | grep spidev
 ```
 
-> TuyaOpen 的 SPI 示例里，`Application config -> spi port` 是一个 **端口号**。
-> Linux 适配层会把端口号映射到具体设备节点（见 `platform/LINUX/tuyaos_adapter/src/tkl_spi.c` 的 `prv_spi_dev_path()`）：
->
-> - `spi port = 0` → `/dev/spidev0.0`
-> - `spi port = 1` → `/dev/spidev0.1`
-> - `spi port = 2` → `/dev/spidev1.0`
-> - `spi port = 3` → `/dev/spidev1.1`
-> - `spi port = 4` → `/dev/spidev2.0`
-> - `spi port = 5` → `/dev/spidev2.1`
->
-> 比如 `spidev0.0 / spidev0.1`，对应把 `spi port` 设为 `0 / 1`。
+TuyaOpen 的 SPI 示例里，`Application config -> spi port` 是一个 **端口号**。Linux 适配层会把端口号映射到具体设备节点（见 `platform/LINUX/tuyaos_adapter/src/tkl_spi.c` 的 `prv_spi_dev_path()`）：
+
+- `spi port = 0` → `/dev/spidev0.0`
+- `spi port = 1` → `/dev/spidev0.1`
+- `spi port = 2` → `/dev/spidev1.0`
+- `spi port = 3` → `/dev/spidev1.1`
+- `spi port = 4` → `/dev/spidev2.0`
+- `spi port = 5` → `/dev/spidev2.1`
+
+例如 `spidev0.0` / `spidev0.1`，对应把 `spi port` 设为 `0` / `1`。
 
 ### 进入示例目录
 
@@ -367,7 +373,9 @@ sudo ./spi_1.0.0.elf
 
 下面代码演示 SPI Master 发送固定字符串（Linux 下走 `/dev/spidevX.Y`）：
 
-> 说明：完整可编译工程参考 `examples/peripherals/spi`。
+:::note
+完整可编译工程参考 `examples/peripherals/spi`。
+:::
 
 ```c
 #include "tal_api.h"
@@ -489,7 +497,9 @@ sudo ./pwm_1.0.0.elf
 
 下面代码演示 PWM 输出（初始化 + start）：
 
-> 说明：完整可编译工程参考 `examples/peripherals/pwm`。
+:::note
+完整可编译工程参考 `examples/peripherals/pwm`。
+:::
 
 ```c
 #include "tal_api.h"
@@ -518,7 +528,9 @@ static void pwm_min_demo(void)
 
 如需快速核对 sysfs 节点是否符合预期，可检查 `/sys/class/pwm/pwmchip0/` 下是否存在（或可 export）对应的 `pwm2`。
 
-> **提示**：PWM 的 sysfs 接口依赖内核/overlay 配置；不同镜像的 `/boot/firmware/config.txt` 路径可能不同，请以实际系统为准。
+:::tip
+PWM 的 sysfs 接口依赖内核/overlay 配置；不同镜像的 `/boot/firmware/config.txt` 路径可能不同，请以实际系统为准。
+:::
 
 
 ## UART 示例
@@ -660,13 +672,17 @@ tos.py build
 sudo ./uart_1.0.0.elf
 ```
 
-> 提醒：示例代码默认使用 `TUYA_UART_NUM_0`（UART0）。在树莓派上 UART0 可能被系统控制台占用；若运行无回显或打开失败，请先检查系统串口占用情况，并按需修改示例选择的 UART 端口或调整适配层设备节点映射。
+:::note
+示例代码默认使用 `TUYA_UART_NUM_0`（UART0）。在树莓派上 UART0 可能被系统控制台占用；若运行无回显或打开失败，请先检查系统串口占用情况，并按需修改示例选择的 UART 端口或调整适配层设备节点映射。
+:::
 
 ### 最小示例 1：交互式回显（Echo）
 
 这个示例最适合在 **Dummy 串口重定向**（stdin/stdout）模式下快速验证 UART 通路：你在终端输入什么，它就回显什么。
 
-> 说明：该思路与 `examples/peripherals/uart` 一致。
+:::note
+该思路与 `examples/peripherals/uart` 一致。
+:::
 
 ```c
 #include "tal_api.h"
@@ -787,7 +803,9 @@ Raspberry Pi 平台默认通过“键盘输入”模拟按键：你在运行 `*.
 - 是否启用由板卡 Kconfig 控制：`ENABLE_KEYBOARD_INPUT`
 - 触发按键字符由 `BUTTON_NAME` 指定（默认 `s`）
 
-> 说明：示例工程里将 `TDL_BUTTON_PRESS_DOWN` 的日志打印成了 `single click`（见 `examples/peripherals/button/src/example_button.c`），它代表“按下”事件。
+:::note
+示例工程里将 `TDL_BUTTON_PRESS_DOWN` 的日志打印成了 `single click`（见 `examples/peripherals/button/src/example_button.c`），它代表“按下”事件。
+:::
 
 ### 进入示例目录
 
@@ -838,7 +856,7 @@ sudo ./button_1.0.0.elf
 - 按住不放约 3 秒（示例里 `long_start_valid_time=3000ms`），会打印 `s: long press`（长按事件）。
 
 
-## Audio Codecs 示例（audio_codecs）
+## 音频编解码示例（`audio_codecs`）
 
 本示例演示如何在 Raspberry Pi 上通过 ALSA 进行**录音 + 回放**（PCM 16k/16bit/mono），并展示 TuyaOpen 的 `TDL Audio` 管理层接口用法。
 

@@ -1,19 +1,20 @@
-# Raspberry Pi 5 GPIO Reference
-
-## 1. Detailed Pinout Diagram
-
-![Raspberry Pi GPIO Detailed Pinout](https://images.tuyacn.com/fe-static/docs/img/4154ba76-67b8-4330-a824-585c7467e30d.png)
-
-**Image Source**: [Random Nerd Tutorials](https://randomnerdtutorials.com/raspberry-pi-pinout-gpios/)
-**License**: Based on official materials from [Raspberry Pi Ltd](https://www.raspberrypi.com/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-**Applicable Models**: 40-pin Raspberry Pi models such as Raspberry Pi 4B/5
-
+---
+title: "Raspberry Pi 5 GPIO Reference"
 ---
 
-## 2. Raspberry Pi 5 GPIO Function (RP1 Mux) Table
+Look up the 40-pin header pinout and the RP1 function-mux table for the Raspberry Pi 5. Use it to choose which GPIO line carries the SPI, I2C, PWM, UART, or audio signal you need when wiring up TuyaOpen peripheral examples.
 
-**Chip**: RP1 (Raspberry Pi 5 I/O controller)
-**Design Note**: The function blocks and their GPIO placement are carefully designed to match the user-facing functions on the 40-pin header of Raspberry Pi 4 Model B.
+## Pinout diagram
+
+![Raspberry Pi 40-pin GPIO header pinout, showing power, ground, and signal functions per pin](https://images.tuyacn.com/fe-static/docs/img/4154ba76-67b8-4330-a824-585c7467e30d.png)
+
+- **Image source**: [Random Nerd Tutorials](https://randomnerdtutorials.com/raspberry-pi-pinout-gpios/)
+- **License**: based on official materials from [Raspberry Pi Ltd](https://www.raspberrypi.com/), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Applicable models**: 40-pin Raspberry Pi models such as Raspberry Pi 4B and 5
+
+## RP1 function-mux table
+
+The RP1 is the Raspberry Pi 5 I/O controller. Its function blocks and their GPIO placement are designed to match the user-facing functions on the 40-pin header of the Raspberry Pi 4 Model B.
 
 | GPIO | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 |
 |:----:|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -46,8 +47,10 @@
 | 26 | SDIO0_DAT[2] | DPI_D[22] | I2S0_SDI[3] | AUDIO_IN_DAT0 | I2S1_SDI[3] | SYS_RIO[26] | PROC_RIO[26] | PIO[26] | SPI5_CSn[1] |
 | 27 | SDIO0_DAT[3] | DPI_D[23] | I2S0_SDO[3] | AUDIO_IN_DAT1 | I2S1_SDO[3] | SYS_RIO[27] | PROC_RIO[27] | PIO[27] | SPI1_CSn[1] |
 
----
+:::note
+On Linux, `TUYA_GPIO_NUM_E` is interpreted as the gpiochip line offset. On Raspberry Pi it usually matches the BCM GPIO number in this table, but it may vary by distro or kernel configuration. Verify with `gpioinfo` or `pinctrl`.
+:::
 
-## License Notice
+## See also
 
-This document references Raspberry Pi hardware materials under the **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** license.
+- [Raspberry Pi Peripherals](/docs/hardware/Linux/raspberry-pi/Examples/peripherals-raspberry-pi) — run GPIO, I2C, SPI, PWM, and UART examples that use these pins.

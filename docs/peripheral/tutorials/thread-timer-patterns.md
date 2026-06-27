@@ -2,9 +2,7 @@
 title: "Thread and Timer Patterns"
 ---
 
-# Thread and Timer Patterns
-
-Common patterns for multithreading, software timers, and synchronization in TuyaOpen using the TAL OS abstraction.
+The TAL OS abstraction gives you portable threads, software timers, mutexes, semaphores, and queues across every TuyaOpen platform. This page collects the common patterns for multithreading, periodic work, and synchronization.
 
 ## Prerequisites
 
