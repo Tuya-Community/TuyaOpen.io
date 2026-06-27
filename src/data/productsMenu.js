@@ -142,7 +142,7 @@ export const productsMenu = {
             title: 'TuyaOpen IDE',
             subtitle: '用 AI Coding Agent 开发 TuyaOpen 的插件',
             href: '/tuyaopen-ide',
-            badge: 'New Release',
+            badge: '全新发布',
           },
           {
             icon: 'terminal',
