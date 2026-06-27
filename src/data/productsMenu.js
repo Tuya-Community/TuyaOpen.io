@@ -33,15 +33,9 @@ export const productsMenu = {
         items: [
           {
             icon: 'chip',
-            title: 'T5 × TuyaOpen',
-            subtitle: 'Why the T5 chip is built for TuyaOpen',
-            href: '/t5-tuyaopen',
-          },
-          {
-            icon: 'chip',
             title: 'Tuya T5',
-            subtitle: 'Flagship Wi-Fi & BT AI dev board',
-            href: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
+            subtitle: 'Flagship Wi-Fi & BT AI chip — built for TuyaOpen',
+            href: '/t5-tuyaopen',
           },
           {
             icon: 'chip',
@@ -122,15 +116,9 @@ export const productsMenu = {
         items: [
           {
             icon: 'chip',
-            title: 'T5 × TuyaOpen',
-            subtitle: 'T5 芯片为何为 TuyaOpen 而生',
-            href: '/t5-tuyaopen',
-          },
-          {
-            icon: 'chip',
             title: 'Tuya T5',
-            subtitle: '旗舰级 Wi-Fi 与蓝牙 AI 开发板',
-            href: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
+            subtitle: '旗舰级 Wi-Fi 与蓝牙 AI 芯片 · 为 TuyaOpen 而生',
+            href: '/t5-tuyaopen',
           },
           {
             icon: 'chip',

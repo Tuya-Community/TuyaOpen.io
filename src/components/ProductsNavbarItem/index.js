@@ -171,9 +171,13 @@ const ICONS = {
 }
 
 function ItemLink({ item, className, tabIndex, children }) {
+  const { i18n } = useDocusaurusContext()
+  // Internal links aren't locale-prefixed automatically; prepend the active locale.
+  const localePrefix = i18n.currentLocale === i18n.defaultLocale ? '' : `/${i18n.currentLocale}`
+  const href = item.external || !item.href.startsWith('/') ? item.href : `${localePrefix}${item.href}`
   const extra = item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
   return (
-    <Link to={item.href} className={className} tabIndex={tabIndex} {...extra}>
+    <Link to={href} className={className} tabIndex={tabIndex} {...extra}>
       {children}
     </Link>
   )
