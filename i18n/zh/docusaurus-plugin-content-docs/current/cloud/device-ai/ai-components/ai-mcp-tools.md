@@ -1,145 +1,40 @@
 ---
-title: MCP 工具合集
+title: 内置 MCP 工具
 ---
 
-## 名词解释
+框架自带一组已经写好并注册的 MCP 工具，因此 [MCP 服务端](ai-mcp-server)一启动，设备端 AI 就能对设备做动作。`ai_mcp_init` 在 MQTT 连接成功时自动注册它们——你不需要自己调用，而是由 AI 按名称调用。
 
-| 名词 | 解释 |
-| ---- | ------------------------------------------------------------ |
-| MCP Tool | MCP 工具，是设备端提供给 AI 模型调用的功能接口。每个工具代表一个可执行的功能，包含名称、描述、输入参数定义和执行回调函数。 |
+它们同时也是**参考实现**。每一个都是工具模式的完整、可用范例——回调读取属性、操作某个组件、返回一个值——你写自己的工具时可以照搬这个结构。
 
-## 功能简述
+:::note
+这些工具定义在 `ai_mcp_tools.c` 中。部分工具仅在对应组件启用时才会编译进来，因此某块开发板实际暴露的工具列表取决于其构建配置。
+:::
 
-`ai_mcp_tools` 是 TuyaOpen AI 应用框架中预定义的 MCP 工具集合，提供了设备信息查询、设备控制等基础功能。该模块在 MCP 服务器初始化时自动注册这些工具，使 AI 模型能够通过标准化的协议调用设备功能。
+## 工具列表
 
-### 工具列表
+| 工具名称 | AI 能做什么 | 涉及的组件 | 可用条件 |
+|----------|-------------|------------|----------|
+| `device_info_get` | 读取设备信息——型号、序列号、固件版本——并以 JSON 形式回传。 | 设备元信息（`PROJECT_NAME`、`PROJECT_VERSION`） | 始终注册 |
+| `device_camera_take_photo` | 用设备摄像头拍摄一张或多张照片（例如检测到画面变化、有访客或用户请求时），并以 Base64 图片回传。 | `ai_video_input` | 需要 `ENABLE_COMP_AI_VIDEO` |
+| `device_audio_volume_set` | 把设备播放音量设到 0 到 100 之间的某一级。 | `ai_audio_player` | 需要 `ENABLE_COMP_AI_AUDIO` |
+| `device_audio_mode_set` | 切换设备聊天模式——`0` 长按、`1` 按键、`2` 唤醒、`3` 自由。 | `ai_manage_mode` | 始终注册 |
 
-- **查询设备信息查询**
+## 每个工具是怎么实现的
 
-  - 功能：获取设备的基本信息，包括设备型号、序列号和固件版本
+这些工具与你自己写工具时遵循同一套模式，可作为模板阅读。
 
-  - 返回：JSON 格式的设备信息
+- **`device_info_get`** 构造一个含型号、序列号、固件版本的 `cJSON` 对象，用 `ai_mcp_return_value_set_json` 返回。它没有输入属性。
+- **`device_camera_take_photo`** 启动视频显示，从 `ai_video_input` 抓取一帧 JPEG，用 `ai_mcp_return_value_set_image` 以 `MCP_IMAGE_MIME_TYPE_JPEG` 返回。它声明了一个 `question` 字符串属性和一个限定在 `1`–`10` 的 `count` 整数属性。
+- **`device_audio_volume_set`** 读取 `volume` 整数属性（限定 `0`–`100`），用 `ai_audio_player_set_vol` 应用音量，返回一个表示成功的布尔值。
+- **`device_audio_mode_set`** 读取 `mode` 整数属性（限定 `0`–`3`），用 `ai_mode_switch` 切换模式，返回切换是否成功的布尔值。
 
-- **拍照**（需启用 `ENABLE_COMP_AI_VIDEO`）
+:::tip
+每个回调都用同样的循环从属性列表里读取输入：匹配 `prop->name`、检查 `prop->type`，再读取对应的 `prop->default_val` 字段。在你自己的工具里复用这个模式即可。
+:::
 
-  - 功能：激活设备摄像头拍摄照片，拍摄一张照片并返回给 AI 。AI 会对接收的图片进行分析。
+## 相关文档
 
-  - 返回：Base64 编码的 JPEG 图片数据
-
-- **设置音量**（需启用 `ENABLE_COMP_AI_AUDIO`）
-
-  - 功能：设置设备的音量级别，范围 0-100
-
-  - 返回：布尔值，表示设置是否成功
-
-- **设置聊天模式**
-
-  - 功能：切换设备的 AI 聊天模式，支持四种模式：长按模式、按键模式、唤醒词模式、自由对话模式
-
-  - 返回：布尔值，表示设置是否成功
-
-## 工作流程
-
-### 工具注册流程
-
-在 MCP 服务器初始化时，模块会自动注册所有可用的工具。工具注册顺序为：设备信息查询工具 → 视频工具（如果启用）→ 音频工具（如果启用）→ 模式设置工具。
-
-```mermaid
-sequenceDiagram
-    participant Init as 初始化流程
-    participant Tools as ai_mcp_tools
-    participant Server as MCP Server
-
-    Init->>Tools: ai_mcp_init()
-    Note over Tools: 等待 MQTT 连接成功
-    Tools->>Server: ai_mcp_server_init()
-    Tools->>Tools: __ai_mcp_tools_register()
-    Tools->>Server: 注册 device_info_get
-    alt 启用 AI_VIDEO
-        Tools->>Server: 注册 device_camera_take_photo
-    end
-    alt 启用 AI_AUDIO
-        Tools->>Server: 注册 device_audio_volume_set
-    end
-    Tools->>Server: 注册 device_audio_mode_set
-    Server->>Init: 注册完成
-```
-
-### 工具调用流程
-
-AI 模型通过 MCP 协议调用工具时，工具回调函数会解析参数、执行相应操作并返回结果。
-
-```mermaid
-sequenceDiagram
-    participant AI as AI 模型
-    participant Server as MCP Server
-    participant Tool as 工具回调
-    participant Device as 设备功能
-
-    AI->>Server: 工具调用请求
-    Server->>Tool: 执行工具回调
-    Tool->>Tool: 解析输入参数
-    Tool->>Device: 调用设备功能
-    Device->>Tool: 返回执行结果
-    Tool->>Server: 设置返回值
-    Server->>AI: 返回 JSON 响应
-```
-
-## 配置说明
-
-### 配置文件路径
-
-```
-ai_components/ai_mcp/Kconfig
-```
-
-### 功能使能
-
-工具模块的可用性依赖于相关组件的使能状态：
-
-```
-# MCP 模块使能
-menuconfig ENABLE_COMP_AI_MCP
-    bool "enable ai mcp module"
-    default y
-```
-
-## 开发流程
-
-### 接口说明
-
-#### 初始化 MCP 工具模块
-
-在应用启动时调用，会自动订阅 MQTT 连接事件，在连接成功后初始化 MCP 服务器并注册所有工具。
-
-```c
-/**
- * @brief Initialize MCP tools module
- * @return OPERATE_RET Operation result
- */
-OPERATE_RET ai_mcp_init(void);
-```
-
-#### 反初始化 MCP 工具模块
-
-释放 MCP 服务器资源，销毁所有已注册的工具。
-
-```c
-/**
- * @brief Deinitialize MCP tools module
- * @return OPERATE_RET Operation result
- */
-OPERATE_RET ai_mcp_deinit(void);
-```
-
-### 开发步骤
-
-1. **确保 MCP 模块已使能**：在配置中启用 `ENABLE_COMP_AI_MCP`
-2. **按需启用相关组件**：
-   - 如需使用拍照功能，启用 `ENABLE_COMP_AI_VIDEO`
-   - 如需使用音量控制，启用 `ENABLE_COMP_AI_AUDIO`
-3. **调用初始化接口**：在应用启动时调用 `ai_mcp_init()`
-5. **AI 模型调用**：AI 会根据你的输入内容分析意图，然后通过 MCP 协议调用这些工具
-
-
-
+- [MCP 服务端](ai-mcp-server)——注册自己的工具，定义其属性与返回值
+- [AI Agent](ai-agent)——设备如何与涂鸦 AI 云端通信
+- [组件框架](ai-components.md)——`ai_mcp` 在 AI 框架中的位置
+- [多模态数据流](../multimodal-data-flow)——输入与输出在设备中的流转方式

@@ -29,7 +29,7 @@
   },
   "link.item.label.Quick Start": {
     "message": "快速试用",
-    "description": "The label of footer link with label=Quick Start linking to docs/quick-start"
+    "description": "The label of footer link with label=Quick Start linking to /docs/quick-start/unboxing"
   },
   "link.item.label.Run a Chaos Experiment": {
     "message": "运行实验",
@@ -45,7 +45,7 @@
   },
   "link.item.label.Blog": {
     "message": "博客",
-    "description": "The label of footer link with label=Blog linking to blog"
+    "description": "The label of footer link with label=Blog linking to /blog"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
@@ -73,11 +73,11 @@
   },
   "link.item.label.Hardware List": {
     "message": "硬件支持清单",
-    "description": "The label of footer link with label=Hardware List linking to /docs/hardware-specific"
+    "description": "The label of footer link with label=Hardware List linking to /docs/hardware"
   },
   "link.item.label.Tuya T5AI Dev Kit": {
     "message": "Tuya T5AI 开发套件",
-    "description": "The label of footer link with label=Tuya T5AI Dev Kit linking to /docs/hardware-specific/t5-ai-board/overview-t5-ai-board"
+    "description": "The label of footer link with label=Tuya T5AI Dev Kit linking to /docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board"
   },
   "link.item.label.Web Serial Tool": {
     "message": "Web Serial 工具",
@@ -85,7 +85,7 @@
   },
   "link.item.label.Discord": {
     "message": "Discord",
-    "description": "The label of footer link with label=Discord linking to https://discord.gg/cbGrBjx7"
+    "description": "The label of footer link with label=Discord linking to https://discord.com/invite/yPPShSTttG"
   },
   "link.item.label.X": {
     "message": "X",
@@ -102,5 +102,57 @@
   "link.item.label.Gitee(Mirror)": {
     "message": "Gitee(Mirror)",
     "description": "The label of footer link with label=Gitee(Mirror) linking to https://gitee.com/tuya-open/TuyaOpen"
+  },
+  "link.title.Products": {
+    "message": "Products",
+    "description": "The title of the footer links column with title=Products in the footer"
+  },
+  "link.item.label.TuyaOpen IDE": {
+    "message": "TuyaOpen IDE",
+    "description": "The label of footer link with label=TuyaOpen IDE linking to /tuyaopen-ide"
+  },
+  "link.item.label.TuyaOpen SDK": {
+    "message": "TuyaOpen SDK",
+    "description": "The label of footer link with label=TuyaOpen SDK linking to https://github.com/tuya/TuyaOpen"
+  },
+  "link.item.label.TuyaOpen on Arduino": {
+    "message": "TuyaOpen on Arduino",
+    "description": "The label of footer link with label=TuyaOpen on Arduino linking to https://github.com/tuya/arduino-TuyaOpen"
+  },
+  "link.item.label.TuyaOpenClaw 🦞": {
+    "message": "TuyaOpenClaw 🦞",
+    "description": "The label of footer link with label=TuyaOpenClaw 🦞 linking to /duckyclaw"
+  },
+  "link.item.label.Get Hardware": {
+    "message": "Get Hardware",
+    "description": "The label of footer link with label=Get Hardware linking to /get-hardware"
+  },
+  "link.item.label.About TuyaOpen": {
+    "message": "About TuyaOpen",
+    "description": "The label of footer link with label=About TuyaOpen linking to /docs/about-tuyaopen"
+  },
+  "link.item.label.License Key": {
+    "message": "License Key",
+    "description": "The label of footer link with label=License Key linking to /pricing"
+  },
+  "link.item.label.TyuTools GUI/CLI": {
+    "message": "TyuTools GUI/CLI",
+    "description": "The label of footer link with label=TyuTools GUI/CLI linking to /tools/tyutool"
+  },
+  "link.item.label.YouTube": {
+    "message": "YouTube",
+    "description": "The label of footer link with label=YouTube linking to https://www.youtube.com/@tuya2023"
+  },
+  "link.item.label.LinkedIn": {
+    "message": "LinkedIn",
+    "description": "The label of footer link with label=LinkedIn linking to https://www.linkedin.com/company/tuya-smart"
+  },
+  "link.item.label.Gitee (Mirror)": {
+    "message": "Gitee (Mirror)",
+    "description": "The label of footer link with label=Gitee (Mirror) linking to https://gitee.com/tuya-open/TuyaOpen"
+  },
+  "link.item.label.Projects": {
+    "message": "Projects",
+    "description": "The label of footer link with label=Projects linking to /projects"
   }
 }

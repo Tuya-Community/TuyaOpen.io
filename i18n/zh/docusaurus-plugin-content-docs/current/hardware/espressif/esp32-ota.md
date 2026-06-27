@@ -2,9 +2,7 @@
 title: "ESP32 OTA 固件升级"
 ---
 
-# ESP32 OTA 固件升级
-
-本文以 ESP32 为例，介绍如何通过涂鸦 IoT 平台对 TuyaOpen 项目进行远程 OTA 升级，流程分为：创建固件 key → 写入固件 → 上传新版本 → 固件上架 → 配置升级规则 → 验证 → 发布。
+OTA（空中下载）升级通过涂鸦 IoT 平台向已部署的 TuyaOpen ESP32 设备远程推送新固件。本文以 ESP32 为例介绍完整的七个步骤：创建固件 key、写入固件、上传新版本、固件上架、配置升级规则、验证、发布。
 
 ## 前提条件
 
@@ -162,7 +160,7 @@ ret = tuya_iot_init(&ai_client, &(const tuya_iot_config_t){
 
 升级发布后，可在 **升级设备明细** 中查看各设备的升级状态。
 
-## 参考资料
+## 相关文档
 
 - [固件升级](../../quick-start/firmware-ota)
 - [设备授权](../../quick-start/equipment-authorization)

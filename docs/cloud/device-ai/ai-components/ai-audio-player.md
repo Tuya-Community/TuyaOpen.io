@@ -2,725 +2,219 @@
 title: Audio Player
 ---
 
-## Glossary
+`ai_audio_player` plays the spoken and audio side of the conversation on the device — streamed TTS, music, and local alert tones — out the speaker. It is the back end of the AI audio pipeline: where `ai_audio_input` captures what the user says, this module renders what the device says back.
 
-| Term | Description |
-| ---- | ------------------------------------------------------------ |
-| TTS | The abbreviation of Text-to-Speech is a technology that converts text into speech. In this module, TTS is used to play the voice reply of the AI ​​assistant. |
+It does not talk to the cloud itself. Your application (or `ai_agent`'s callbacks) feeds it audio — a TTS stream, a decoded buffer, a music playlist, or an alert request — and the player decodes and plays it.
 
-## Overview
+## Terms
 
-`ai_audio_player` is the audio playback component in the TuyaOpen AI application framework. It provides TTS (text-to-speech), music playback, and alert tone playback.
+| Term | Meaning |
+|------|---------|
+| TTS | Text-to-Speech — the cloud's spoken reply, delivered to the player as a stream or a URL. |
+| Foreground / background | Two independent players: foreground plays TTS, background plays music. They can run at the same time. |
+| Alert tone | A short, local prompt sound (power-on, low battery, "please say again") played from the device, not the cloud. |
+| Codec | The audio format of the data you hand the player, an `AI_AUDIO_CODEC_E` value. |
 
-### Play TTS audio
+## What it plays
 
-- **Play method:**
-- URL: Download audio content and play it by accessing the URL link
-- Streaming: Support streaming TTS data playback
+The player handles three kinds of audio, each through its own entry point:
 
-- **Playback status notification:** Provides TTS playback status events
-- **Playback priority**: Plays TTS audio at a higher priority than background music
+- **TTS** — the cloud's spoken reply. Feed it as a stream (`ai_audio_play_tts_stream`), from a URL (`ai_audio_play_tts_url`), or as a single decoded buffer (`ai_audio_play_data`). TTS plays on the **foreground** player.
+- **Music** — a playlist of tracks (`ai_audio_play_music`). Music plays on the **background** player, so it can keep running while a short TTS reply plays over it.
+- **Alert tones** — short local prompts (`ai_audio_player_alert`) such as power-on or low-battery.
 
-### Play music
+### Foreground vs. background
 
-- **Playlist Management**: Supports playlists with multiple songs
-- **Continuous playback**: Supports configurable continuous music playback
-- **Replay function**: Supports playlist replay
-
-### Prompt sound playback
-
-- **Local prompt sound**: Supports playing local preset prompt sound resources
-- **Cloud prompt sound**: Supports retrieving prompt sound resources from the cloud
-- **Custom prompt tone**: Supports registering a custom prompt-tone callback
-
-### Volume control
-
-- **Volume Setting**: Support volume setting (0-100)
-- **Volume Acquisition**: Supports obtaining the current volume value
-- **Automatic volume adjustment**:
-- When playing TTS audio, the background music volume is automatically reduced to 50%
-- After TTS playback is completed, the background music volume is restored
-
-### Event notification
-
-- **TTS playback status notification**: Event notification will be issued when the TTS playback status changes (prepare/start/receive data/normal stop/abort)
-
-## Workflow
-
-### Module architecture diagram
-
-```mermaid
-flowchart TD
-A[Application layer] --> B[ai_audio_player module]
-B --> C[AI Player service layer]
-C --> F[frontend player<br/>TTS Player]
-C --> G[Background Player<br/>Music Player]
-F --> H[audio decoder]
-    G --> H
-H --> I[audio output device]
-    
-B --> J[event system]
-    J --> A
-    
-    style F fill:#e1f5ff
-    style G fill:#fff4e1
-```
-
-### Initialization process
-
-- **Initialize player service:** Configure sampling rate, bit depth, number of channels, etc.
-- **Create TTS player:** Create foreground player, create foreground playlist (capacity: 2)
-- **Create music player:** Create background player, create background playlist (capacity: 32)
-- **Subscribe to events:** Subscribe to player status events (playing/playing stopped/playing paused)
-
-### TTS playback process
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Player as ai_audio_player
-participant Output as audio output
-
-App->>Player: Play TTS
-Player->>Output: Start playing
-Player->>App: Play start event
-    
-loop playback process
-Player->>Output: audio data
-    end
-    
-Player->>App: playback end event
-```
-
-### Music playback process
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Player as ai_audio_player
-participant Output as audio output
-
-App->>Player: Play music
-Player->>Output: Start playing
-    
-alt TTS start playing
-Player->>Player: Reduce music volume
-    end
-    
-alt TTS stop playing
-Player->>Player: Restore music volume
-    end
-```
-
-### Automatic volume adjustment
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Player as ai_audio_player
-
-Note over Player: Music is playing in the background
-    
-App->>Player: Start playing TTS
-Player->>Player: Reduce music volume to 50%
-    
-Note over Player: TTS playback completed
-    
-Player->>Player: Restore music volume to 100%
-```
-
-
-
-## Configuration instructions
-
-### Configuration file path
-
-```
-ai_components/ai_audio/Kconfig
-```
-
-### Function enable
-
-```
-menuconfig ENABLE_COMP_AI_AUDIO
-    select ENABLE_AI_PLAYER
-    bool "enable ai audio input/output"
-    default y
-```
-
-### Prompt audio source selection
-
-```
-choice 
-    prompt "select player alert source"
-default AI_PLAYER_ALERT_SOURCE_LOCAL //The default is local prompt sound
-
-config AI_PLAYER_ALERT_SOURCE_LOCAL //Local prompt sound, use the prompt sound source embedded in the component framework
-    bool "use local alert source"
-
-config AI_PLAYER_ALERT_SOURCE_CLOUD //Cloud prompt sound, obtain prompt sound resources from the cloud server
-    bool "use cloud alert source"
-
-config AI_PLAYER_ALERT_SOURCE_CUSTOM //Customize the prompt sound, call the developer's custom prompt sound source through the callback function
-    bool "use custom alert source"
-endchoice
-```
-
-## Development process
-
-### Data structure
-
-#### Prompt sound type
+The player runs two independent channels, selected by `AI_AUDIO_PLAYER_TYPE_E`. This same enum is what `ai_audio_player_stop` targets:
 
 ```c
 typedef enum {
-AI_AUDIO_ALERT_POWER_ON, // Boot prompt
-AI_AUDIO_ALERT_NOT_ACTIVE, // Not activated prompt
-AI_AUDIO_ALERT_NETWORK_CFG, // Network configuration prompt
-AI_AUDIO_ALERT_NETWORK_CONNECTED, // Network connection success prompt
-AI_AUDIO_ALERT_NETWORK_FAIL, // Network connection failure prompt
-AI_AUDIO_ALERT_NETWORK_DISCONNECT, // Network disconnection prompt
-AI_AUDIO_ALERT_BATTERY_LOW, // low battery reminder
-AI_AUDIO_ALERT_PLEASE_AGAIN, // Please say the prompt again
-AI_AUDIO_ALERT_LONG_KEY_TALK, // Long press to speak prompt
-AI_AUDIO_ALERT_KEY_TALK, // key to talk prompt
-AI_AUDIO_ALERT_WAKEUP_TALK, // Wake up to talk prompt
-AI_AUDIO_ALERT_RANDOM_TALK, // Random speaking prompts
-AI_AUDIO_ALERT_WAKEUP, // wake-up prompt
+    AI_AUDIO_PLAYER_FG  = 0,   // foreground player, used to play TTS
+    AI_AUDIO_PLAYER_BG  = 1,   // background player, used to play music
+    AI_AUDIO_PLAYER_ALL = 2,   // all players
+} AI_AUDIO_PLAYER_TYPE_E;
+```
+
+| Type | Channel | Stops |
+|------|---------|-------|
+| `AI_AUDIO_PLAYER_FG` | Foreground | The TTS playback only |
+| `AI_AUDIO_PLAYER_BG` | Background | The music playback only |
+| `AI_AUDIO_PLAYER_ALL` | Both | Everything currently playing |
+
+### Local alert tones
+
+`ai_audio_player_alert(type)` plays a short prompt tone stored on the device. These are **local** — they do not call the cloud, unlike the `cmd:` prompt tones in [`ai_agent`](ai-agent), which ask the cloud to synthesize a reply. Use these for fast feedback that must work before or without a network connection.
+
+```c
+typedef enum {
+    AI_AUDIO_ALERT_POWER_ON,             // power on notification
+    AI_AUDIO_ALERT_NOT_ACTIVE,           // not activated, configure network first
+    AI_AUDIO_ALERT_NETWORK_CFG,          // entering network configuration
+    AI_AUDIO_ALERT_NETWORK_CONNECTED,    // network connected
+    AI_AUDIO_ALERT_NETWORK_FAIL,         // network connection failed, retry
+    AI_AUDIO_ALERT_NETWORK_DISCONNECT,   // network disconnected
+    AI_AUDIO_ALERT_BATTERY_LOW,          // low battery
+    AI_AUDIO_ALERT_PLEASE_AGAIN,         // please say again
+    AI_AUDIO_ALERT_LONG_KEY_TALK,        // long key press to talk
+    AI_AUDIO_ALERT_KEY_TALK,             // key press to talk
+    AI_AUDIO_ALERT_WAKEUP_TALK,          // talk after wake
+    AI_AUDIO_ALERT_RANDOM_TALK,          // random chat
+    AI_AUDIO_ALERT_WAKEUP,               // "Hello, I'm here"
     AI_AUDIO_ALERT_MAX,
 } AI_AUDIO_ALERT_TYPE_E;
 ```
 
-#### Player type
+:::tip
+By default these tones come from a built-in source. If your firmware defines `AI_PLAYER_ALERT_SOURCE_CUSTOM`, register your own provider with `ai_audio_player_reg_alert_cb` to supply the audio for each `AI_AUDIO_ALERT_TYPE_E` yourself.
+:::
+
+### Streaming TTS state
+
+When you feed TTS as a stream, each call carries a state from `AI_AUDIO_PLAYER_TTS_STATE_E` that tells the player where you are in the reply:
 
 ```c
 typedef enum {
-AI_AUDIO_PLAYER_FG = 0, // Foreground player (TTS)
-AI_AUDIO_PLAYER_BG = 1, //Background player (music)
-AI_AUDIO_PLAYER_ALL = 2, // all players
-} AI_AUDIO_PLAYER_TYPE_E;
-```
-
-#### TTS stream status
-
-```c
-typedef enum {
-AI_AUDIO_PLAYER_TTS_START, // TTS starts playing
-AI_AUDIO_PLAYER_TTS_DATA, // TTS receive data
-AI_AUDIO_PLAYER_TTS_STOP, // TTS stops normally
-AI_AUDIO_PLAYER_TTS_ABORT, // TTS abort playback
+    AI_AUDIO_PLAYER_TTS_START,   // first chunk — open the stream
+    AI_AUDIO_PLAYER_TTS_DATA,    // a chunk of audio data
+    AI_AUDIO_PLAYER_TTS_STOP,    // last chunk — close the stream
+    AI_AUDIO_PLAYER_TTS_ABORT,   // abort — discard the stream
 } AI_AUDIO_PLAYER_TTS_STATE_E;
 ```
 
-#### TTS Play
+Send `AI_AUDIO_PLAYER_TTS_START` once, then `AI_AUDIO_PLAYER_TTS_DATA` for each chunk as it arrives from the cloud, then `AI_AUDIO_PLAYER_TTS_STOP` to finish — or `AI_AUDIO_PLAYER_TTS_ABORT` to drop a turn that was interrupted.
+
+## Key structures
+
+`ai_audio_play_music` takes an `AI_AUDIO_MUSIC_T` — a playlist plus a control action:
 
 ```c
 typedef struct {
-    char              *url;           // TTS URL
-char *req_body; // Request body
-AI_HTTP_METHOD_E http_method; // HTTP method
-AI_AUDIO_CODEC_E format; // Audio format
-AI_TTS_TYPE_E tts_type; // TTS type
-int duration; // duration
-} AI_AUDIO_TTS_T;
-```
-
-#### TTS playback configuration
-
-```
-typedef struct {
-AI_AUDIO_TTS_T tts; // TTS configuration
-AI_AUDIO_TTS_T bg_music; // Background music configuration
-} AI_AUDIO_PLAY_TTS_T;
-```
-
-#### Music source
-
-```c
-typedef struct {
-uint32_t id; // Music ID
-char *url; // music URL
-uint64_t length; // music length
-uint64_t duration; // music duration
-AI_AUDIO_CODEC_E format; // Audio format
-char *artist; // artist
-char *song_name; // song name
-char *audio_id; // Audio ID
-char *img_url; // Image URL
-} AI_MUSIC_SRC_T;
-```
-
-#### Music playback
-
-```c
-typedef struct {
-char action[32]; // Play action (play/next/prev/resume)
-bool has_tts; // Do you need to wait for TTS playback to complete?
-int src_cnt; // Number of music sources
-AI_MUSIC_SRC_T *src_array; //Music source array
+    char            action[32];   // play / next / prev / resume
+    bool            has_tts;      // wait for TTS to finish before playing media
+    int             src_cnt;      // number of tracks in src_array
+    AI_MUSIC_SRC_T *src_array;    // the track list
 } AI_AUDIO_MUSIC_T;
 ```
 
-### Interface description
+Each `AI_MUSIC_SRC_T` describes one track (`url`, `format`, `duration`, plus metadata such as `artist`, `song_name`, and `img_url`). Set `has_tts` to `true` when a spoken reply should play first and the music should follow.
 
-#### Initialize the player
-
-Initialize the audio playback service and create foreground and background players and their playlists
+`ai_audio_play_tts_url` takes an `AI_AUDIO_PLAY_TTS_T`, which pairs the spoken reply with optional background music:
 
 ```c
-/**
-@brief Initialize the audio player module
-@return OPERATE_RET Operation result
-*/
+typedef struct {
+    AI_AUDIO_TTS_T tts;        // the TTS audio source (url, method, format, type)
+    AI_AUDIO_TTS_T bg_music;   // optional background music to play under it
+} AI_AUDIO_PLAY_TTS_T;
+```
+
+Each `AI_AUDIO_TTS_T` carries the source `url`, the HTTP `http_method`, the `format` (`AI_AUDIO_CODEC_E`), and the `tts_type`.
+
+## API reference
+
+Header: `ai_audio_player.h`. Every function returns `OPERATE_RET` (`OPRT_OK` on success) except `ai_audio_player_is_playing`, which returns `uint8_t`.
+
+```c
 OPERATE_RET ai_audio_player_init(void);
-```
-
-#### Deinitialize the player
-
-Release the audio playback module resources and destroy the player and playlist
-
-```c
-/**
-@brief Deinitialize the audio player module
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_player_deinit(void);
-```
-
-#### Start the player
-
-```c
-/**
-@brief Start the audio player with the specified identifier
-@param id The identifier for the current playback session (can be NULL)
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_player_start(char *id);
-```
-
-#### Stop playing
-
-Stop the specified type of player
-
-```c
-typedef enum {
-AI_AUDIO_PLAYER_FG = 0, // Foreground player (TTS)
-AI_AUDIO_PLAYER_BG = 1, //Background player (music)
-AI_AUDIO_PLAYER_ALL = 2, // all players
-} AI_AUDIO_PLAYER_TYPE_E;
-
-/**
-@brief Stop all audio players
-@param type Player type to stop (foreground, background, or all)
-@return OPERATE_RET Operation result
-*/
-OPERATE_RET ai_audio_player_stop(AI_AUDIO_PLAYER_TYPE_E type);
-```
-
-#### Play TTS (URL mode)
-
-Download and play TTS audio content by accessing the URL link
-
-```c
-typedef enum {
-    AI_HTTP_METHOD_GET,
-    AI_HTTP_METHOD_POST,
-    AI_HTTP_METHOD_PUT,
-    AI_HTTP_METHOD_INVALD
-}AI_HTTP_METHOD_E;
-
-typedef enum {
-    AI_TTS_TYPE_NORMAL,
-    AI_TTS_TYPE_ALERT, 
-    AI_TTS_TYPE_CALL,  
-}AI_TTS_TYPE_E;
-
-typedef struct {
-    char                          *url;
-    char                          *req_body;
-    AI_HTTP_METHOD_E               http_method;
-    AI_AUDIO_CODEC_E               format;
-    AI_TTS_TYPE_E                  tts_type;
-    int                            duration;
-} AI_AUDIO_TTS_T;
-
-typedef struct {
-    AI_AUDIO_TTS_T      tts;
-    AI_AUDIO_TTS_T      bg_music;
-}AI_AUDIO_PLAY_TTS_T;
-
-/**
-@brief Play TTS from URL
-@param playtts Pointer to TTS play structure
-@param is_loop Loop flag (unused)
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_play_tts_url(AI_AUDIO_PLAY_TTS_T *playtts, bool is_loop);
-```
-
-#### Play TTS streaming data
-
-Streaming TTS data
-
-- Start TTS stream, will publish`AI_USER_EVT_TTS_PRE`and`AI_USER_EVT_TTS_START`event
-- Send TTS data chunk, will publish`AI_USER_EVT_TTS_DATA`event
-- Stop TTS stream, will publish`AI_USER_EVT_TTS_STOP`event
-- Abort TTS stream, will publish`AI_USER_EVT_TTS_ABORT`event
-
-```c
-typedef enum {
-    AI_AUDIO_PLAYER_TTS_START,
-    AI_AUDIO_PLAYER_TTS_DATA,
-    AI_AUDIO_PLAYER_TTS_STOP,
-    AI_AUDIO_PLAYER_TTS_ABORT,
-} AI_AUDIO_PLAYER_TTS_STATE_E;
-
-/**
-@brief Play TTS stream data
-@param state TTS stream state (START, DATA, STOP, ABORT)
-@param codec Audio codec format
-@param data Pointer to TTS data
-@param len TTS data length
-@return OPERATE_RET Operation result
-*/
-OPERATE_RET ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_STATE_E state, AI_AUDIO_CODEC_E codec, char *data,  int len);
-```
-
-#### Play audio data
-
-Usually used to play custom notification sounds
-
-```c
-typedef enum {
-    AI_AUDIO_CODEC_MP3 = 0,
-    AI_AUDIO_CODEC_WAV,
-    AI_AUDIO_CODEC_SPEEX,
-    AI_AUDIO_CODEC_OPUS,
-    AI_AUDIO_CODEC_OGGOPUS,
-    AI_AUDIO_CODEC_MAX
-} AI_AUDIO_CODEC_E;
-
-/**
-@brief Play audio data from memory
-@param format Audio codec format
-@param data Pointer to audio data
-@param len Audio data length
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_play_data(AI_AUDIO_CODEC_E format, uint8_t *data, uint32_t len);
-```
-
-#### Play music
-
-Play music playlist
-
-```c
-typedef struct {
-    uint32_t                      id;
-    char                         *url;
-    uint64_t                      length;
-    uint64_t                      duration;
-    AI_AUDIO_CODEC_E              format;
-    char                         *artist;
-    char                         *song_name;
-    char                         *audio_id;
-    char                         *img_url;
-}AI_MUSIC_SRC_T;
-
-typedef struct {
-    char                      action[32];     /* play/next/prev/resume/ */
-    bool                      has_tts;        /* Need to wait for TTS playback to finish before playing media */
-    int                       src_cnt;
-    AI_MUSIC_SRC_T           *src_array;
-}AI_AUDIO_MUSIC_T;
-
-/**
-@brief Play music from playlist
-@param music Pointer to music structure containing playlist
-@return OPERATE_RET Operation result
-*/
+OPERATE_RET ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_STATE_E state, AI_AUDIO_CODEC_E codec, char *data, int len);
 OPERATE_RET ai_audio_play_music(AI_AUDIO_MUSIC_T *music);
-```
-
-#### Set the music continuous playback flag
-
-Set whether music plays continuously, that is, continue playing music after TTS playback is completed
-
-```c
-/**
-@brief Set music continuous play flag
-@param is_music_continuous Continuous play flag
-@return OPERATE_RET Operation result
-*/
+OPERATE_RET ai_audio_player_stop(AI_AUDIO_PLAYER_TYPE_E type);
 OPERATE_RET ai_audio_player_set_resume(bool is_music_continuous);
-```
-
-#### Set music replay flag
-
-Set whether the music playlist is replayed
-
-```c
-/**
-@brief Set music replay flag
-@param is_music_replay Replay flag
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_player_set_replay(bool is_music_replay);
-```
-
-#### Is it playing?
-
-Check if the audio player is playing (TTS or music)
-
-```c
-/**
-@brief Check if audio player is currently playing
-@return uint8_t Returns TRUE if playing, FALSE otherwise
-*/
-uint8_t ai_audio_player_is_playing(void);
-```
-
-#### Play prompt sound
-
-Play a specified type of tone
-
-```c
-/**
-@brief Play alert audio
-@param type Alert type
-@return OPERATE_RET Operation result
-*/
+uint8_t     ai_audio_player_is_playing(void);
 OPERATE_RET ai_audio_player_alert(AI_AUDIO_ALERT_TYPE_E type);
-```
-
-#### Set volume
-
-Set audio player volume
-
-```c
-/**
-@brief Set audio player volume
-@param vol Volume value (0-100)
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_player_set_vol(int vol);
-```
-
-#### Get the volume
-
-Get the volume of the current audio player
-
-```c
-/**
-@brief Get audio player volume
-@param vol Pointer to store volume value
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_player_get_vol(int *vol);
+OPERATE_RET ai_audio_player_reg_alert_cb(AI_PLAYER_ALERT_CUSTOM_CB cb);  // AI_PLAYER_ALERT_SOURCE_CUSTOM only
 ```
 
-#### Register a custom prompt tone callback
+| Function | Parameters | Purpose |
+|----------|------------|---------|
+| `ai_audio_player_init` | — | Initialize the player module. |
+| `ai_audio_player_deinit` | — | Release the player's resources. |
+| `ai_audio_player_start` | `id` — playback session identifier (may be `NULL`) | Begin a playback session. |
+| `ai_audio_play_tts_url` | `playtts`, `is_loop` | Play a TTS reply (and optional background music) from a URL. `is_loop` is currently unused. |
+| `ai_audio_play_data` | `format`, `data`, `len` | Play one decoded audio buffer from memory. |
+| `ai_audio_play_tts_stream` | `state`, `codec`, `data`, `len` | Feed a TTS stream chunk by chunk, driven by the stream state. |
+| `ai_audio_play_music` | `music` — playlist and action | Play, advance, or resume a music playlist on the background player. |
+| `ai_audio_player_stop` | `type` — which channel | Stop the foreground, background, or all playback. |
+| `ai_audio_player_set_resume` | `is_music_continuous` | Set whether music resumes (continuous play) after an interruption such as a TTS reply. |
+| `ai_audio_player_set_replay` | `is_music_replay` | Set whether the current track replays when it ends. |
+| `ai_audio_player_is_playing` | — | Return `TRUE` if anything is currently playing, `FALSE` otherwise. |
+| `ai_audio_player_alert` | `type` — an `AI_AUDIO_ALERT_TYPE_E` | Play a local alert tone. |
+| `ai_audio_player_set_vol` | `vol` — 0–100 | Set the player volume. |
+| `ai_audio_player_get_vol` | `vol` (out) | Read the current player volume. |
+| `ai_audio_player_reg_alert_cb` | `cb` — alert provider | Register a custom alert-tone source. Available only when `AI_PLAYER_ALERT_SOURCE_CUSTOM` is set. |
 
-when`AI_PLAYER_ALERT_SOURCE_CUSTOM`It is only effective when the control macro is turned on, that is, the prompt sound source needs to be selected as a custom sound source through Kconfig configuration.
+:::warning
+Call `ai_audio_player_init()` before any other player function. The TTS-stream, music, and alert calls assume the module is initialized.
+:::
 
-```c
-/**
- * @brief Register a custom alert callback function.
- *
- * @param cb Pointer to the custom alert callback function. The callback will be
- *           invoked when an alert event occurs, receiving the alert type as parameter.
- * @return OPERATE_RET Operation result code.
- */
-OPERATE_RET ai_audio_player_reg_alert_cb(AI_PLAYER_ALERT_CUSTOM_CB cb);
+## How a TTS reply plays
+
+```mermaid
+sequenceDiagram
+    participant App as Application
+    participant Player as ai_audio_player
+    participant Spk as Speaker
+    App->>Player: ai_audio_player_init()
+    App->>Player: play_tts_stream(START)
+    App->>Player: play_tts_stream(DATA) xN
+    Player->>Spk: decode and play
+    App->>Player: play_tts_stream(STOP)
+    Player->>Spk: finish playback
 ```
 
-### Development steps
+## Worked example
 
-1. Initialize the audio player
-2. Set player volume
-3. Play audio (TTS/Music/Tone)
-4. Control playback (stop playback, check status, set continuous playback, and so on)
-
-### Reference example
-
-#### Initialization
+Initialize the player, then stream a TTS reply as chunks arrive from the cloud. Stop the foreground channel if the user barges in.
 
 ```c
 #include "ai_audio_player.h"
 
-//Initialize the audio player
-OPERATE_RET init_audio_player(void)
+OPERATE_RET player_start(void)
 {
     OPERATE_RET rt = OPRT_OK;
-    
-//Initialize the player module
+
     TUYA_CALL_ERR_RETURN(ai_audio_player_init());
-    
-//Set the volume
-    TUYA_CALL_ERR_RETURN(ai_audio_player_set_vol(80));
-    
-    return rt;
-}
-```
-
-#### Play TTS
-
-```c
-// Method 1: Play TTS from URL
-void play_tts_from_url(void)
-{
-    AI_AUDIO_PLAY_TTS_T playtts = {
-        .tts = {
-            .url = "https://example.com/tts.mp3",
-            .format = AI_AUDIO_CODEC_MP3,
-            .tts_type = AI_TTS_TYPE_NORMAL,
-        },
-    };
-    
-    ai_audio_play_tts_url(&playtts, false);
+    TUYA_CALL_ERR_RETURN(ai_audio_player_set_vol(70));
+    return OPRT_OK;
 }
 
-// Method 2: Play TTS from memory
-void play_tts_from_memory(void)
+// Drive the foreground TTS stream from ai_agent's media callbacks.
+void on_tts_begin(void)
 {
-uint8_t tts_data[] = { /* MP3 data */ };
-    ai_audio_play_data(AI_AUDIO_CODEC_MP3, tts_data, sizeof(tts_data));
+    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_START, AI_AUDIO_CODEC_MP3, NULL, 0);
 }
 
-// Method 3: Streaming TTS
-void play_tts_stream(void)
+void on_tts_chunk(char *data, int len)
 {
-// Start TTS stream
-    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_START, 
-                              AI_AUDIO_CODEC_MP3, 
-                              NULL, 
-                              0);
-    
-//Send TTS data chunk
-    char *tts_chunk = "TTS data chunk";
-    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_DATA, 
-                              AI_AUDIO_CODEC_MP3, 
-                              tts_chunk, 
-                              strlen(tts_chunk));
-    
-// Stop TTS stream
-    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_STOP, 
-                              AI_AUDIO_CODEC_MP3, 
-                              NULL, 
-                              0);
+    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_DATA, AI_AUDIO_CODEC_MP3, data, len);
 }
-```
 
-#### Play music
-
-```c
-void play_music_playlist(void)
+void on_tts_end(void)
 {
-    AI_MUSIC_SRC_T music_srcs[] = {
-        {
-            .url = "https://example.com/music1.mp3",
-            .format = AI_AUDIO_CODEC_MP3,
-            .song_name = "Song 1",
-            .artist = "Artist 1",
-        },
-        {
-            .url = "https://example.com/music2.mp3",
-            .format = AI_AUDIO_CODEC_MP3,
-            .song_name = "Song 2",
-            .artist = "Artist 2",
-        },
-    };
-    
-    AI_AUDIO_MUSIC_T music = {
-        .action = "play",
-.has_tts = false, // No need to wait for TTS to complete
-        .src_cnt = 2,
-        .src_array = music_srcs,
-    };
-    
-    ai_audio_play_music(&music);
+    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_STOP, AI_AUDIO_CODEC_MP3, NULL, 0);
 }
-```
 
-#### Play prompt sound
-
-```c
-void play_alert_sounds(void)
+// User interrupted — stop the TTS channel and discard the stream.
+void on_barge_in(void)
 {
-// Play wake-up tone
-    ai_audio_player_alert(AI_AUDIO_ALERT_WAKEUP);
-    
-// Play the network connection success sound
-    ai_audio_player_alert(AI_AUDIO_ALERT_NETWORK_CONNECTED);
-    
-// Play low battery alert sound
-    ai_audio_player_alert(AI_AUDIO_ALERT_BATTERY_LOW);
-}
-```
-
-#### Playback control
-
-```c
-void playback_control_example(void)
-{
-// Check if it is playing
-    if (ai_audio_player_is_playing()) {
-PR_NOTICE("Audio playing");
-    }
-    
-// Stop TTS playback
+    ai_audio_play_tts_stream(AI_AUDIO_PLAYER_TTS_ABORT, AI_AUDIO_CODEC_MP3, NULL, 0);
     ai_audio_player_stop(AI_AUDIO_PLAYER_FG);
-    
-// Stop music playing
-    ai_audio_player_stop(AI_AUDIO_PLAYER_BG);
-    
-// Stop all playback
-    ai_audio_player_stop(AI_AUDIO_PLAYER_ALL);
-    
-//Set music to play continuously
-    ai_audio_player_set_resume(true);
-    
-//Set music replay
-    ai_audio_player_set_replay(true);
 }
+
+// Local feedback that does not need the cloud.
+void on_power_on(void) { ai_audio_player_alert(AI_AUDIO_ALERT_POWER_ON); }
 ```
 
-#### Custom sound callback
+## See also
 
-```c
-#if defined(AI_PLAYER_ALERT_SOURCE_CUSTOM) && (AI_PLAYER_ALERT_SOURCE_CUSTOM == 1)
-
-// Custom sound processing function
-OPERATE_RET custom_alert_handler(AI_AUDIO_ALERT_TYPE_E type)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-    switch(type) {
-        case AI_AUDIO_ALERT_WAKEUP:
-            // Customize wake-up sound processing
-            PR_NOTICE("Play custom wake-up tone");
-            // Can play custom audio files or perform other operations
-            break;
-            
-        case AI_AUDIO_ALERT_NETWORK_CONNECTED:
-            // Customize network connection prompt sound processing
-            PR_NOTICE("Play custom network connection prompt sound");
-            break;
-            
-        default:
-            PR_NOTICE("Unprocessed prompt sound type: %d", type);
-            break;
-    }
-    
-    return rt;
-}
-
-//Register custom sound callback
-void register_custom_alert(void)
-{
-    ai_audio_player_reg_alert_cb(custom_alert_handler);
-}
-
-#endif
-```
-
+- [AI Agent](ai-agent) — delivers the TTS stream this module plays
+- [AI Audio Input](ai-audio-input) — captures the user's voice for the other half of the turn
+- [AI Skill](ai-skill) — skills such as music playback drive this player
+- [Component Framework](ai-components.md) — how the player fits the wider AI framework
+- [Multimodal Data Flow](../multimodal-data-flow) — how media travels between device and cloud

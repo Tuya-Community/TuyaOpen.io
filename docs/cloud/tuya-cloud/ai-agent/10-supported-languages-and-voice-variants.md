@@ -2,23 +2,21 @@
 title: Supported Languages and Voice Variants
 ---
 
-# **Supported Languages and Voice Variants**
+The AI Agent Dev Platform supports a fixed set of languages and voice variants for speech input and output. This page lists which languages and how many voice variants are available per region, so you can choose a combination that works end to end.
 
-This topic describes the languages and voice variants supported by AI agents.
+## ASR and TTS
 
-# **ASR and TTS**
+AI chat relies on two core technologies: automatic speech recognition (ASR) and text-to-speech (TTS). ASR converts user speech into text, and TTS turns the agent's reply into audible speech. The agent supports full voice interaction — hearing and speaking — only when both technologies cover the target language.
 
-The implementation of AI chat functionality relies on two core technologies: automatic speech recognition (ASR) and text to speech (TTS).
+The platform supports ASR and TTS for many languages across countries and regions, so users can talk to an agent in their native language. In China, it supports Mandarin, English, Cantonese, and some regional dialects (such as Sichuanese and Henanese). For the global market, it supports major languages including English, Spanish, Japanese, and French.
 
-Simply put, ASR converts user speech into text, while TTS transforms the agent’s responses into audible speech. The agent achieves true voice interaction (**hearing and speaking** capability) only when both technologies support the target language.
+:::tip
+Prioritize the supported languages in the table below to ensure smooth voice input and output. For a language that is not yet supported, wait for a future platform update.
+:::
 
-Currently, the AI Agent Dev Platform supports ASR and TTS for multiple languages across various countries and regions, enabling users to interact with agents naturally in their native languages. For instance, in China, the system already supports Mandarin, English, Cantonese, and certain regional dialects (such as Sichuanese and Henanese). For the world market, the system currently supports major languages, including English, Spanish, Japanese, and French.
+## Supported languages, regions, and voice variants
 
-It is recommended to prioritize the **supported languages** listed in the table below to ensure seamless voice input and output for users. For currently unsupported languages, please await future system updates.
-
-# **Supported languages, regions, and number of voice variants**
-
-The system now supports 223 voice variants in total. For more information, refer to the following table:
+The platform supports 223 voice variants in total.
 
 | Region | Language | Number of supported voice variants |
 | --- | --- | --- |
@@ -88,3 +86,9 @@ The system now supports 223 voice variants in total. For more information, refer
 | Overseas | Spanish (Argentina) | 2 |
 | Overseas | Portuguese (Brazil) | 2 |
 | Overseas | Norwegian (Norway) | 2 |
+
+## See also
+
+- [Add Custom Voice](10.1-add-custom-voice)
+- [AI Product Commands](9-ai-product-commands)
+- [Database](11-database)

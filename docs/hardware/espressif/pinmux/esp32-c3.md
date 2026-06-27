@@ -2,8 +2,6 @@
 title: "ESP32-C3 Peripheral Mapping"
 ---
 
-# ESP32-C3 Peripheral Mapping
-
 This document describes the mapping between ESP32-C3 (single-core RISC-V, cost-optimized) on-chip peripherals and the TuyaOpen TKL layer software ports.
 
 ## GPIO

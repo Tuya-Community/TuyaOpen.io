@@ -1,12 +1,12 @@
 ---
-title: DuckyClaw 与 ESP32-S3
+title: TuyaOpenClaw 与 ESP32-S3
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# DuckyClaw 快速开始（ESP32-S3）
+# TuyaOpenClaw 快速开始（ESP32-S3）
 
-本文介绍如何在 ESP32-S3 开发板上构建并烧录 DuckyClaw 固件，面向希望在 ESP32-S3 + Wi‑Fi 上运行 DuckyClaw 的开发者。
+本文介绍如何在 ESP32-S3 开发板上构建并烧录 TuyaOpenClaw（原名 DuckyClaw）固件，面向希望在 ESP32-S3 + Wi‑Fi 上运行 TuyaOpenClaw 的开发者。
 
 
 ## 硬件与软件要求
@@ -229,7 +229,7 @@ Choice config file: 3
 - **PID**：[Tuya 产品 / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2)。
 - **UUID 与 AuthKey**：[Tuya IoT 平台 – Open SDK 采购](https://platform.tuya.com/purchase/index?type=6)。
 
-**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、 `feishu`、`telegram` 或 `discord`，并填写对应凭证：
+**IM 配置**（可选）：若需通过即时通讯应用接收 TuyaOpenClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、 `feishu`、`telegram` 或 `discord`，并填写对应凭证：
 
 ```c
 // IM configuration
@@ -328,7 +328,7 @@ tos.py monitor
 
 ## 参考资料
 
-- [DuckyClaw 概述](/duckyclaw)
+- [TuyaOpenClaw 概述](/duckyclaw)
 - [快速开始 – 环境搭建](/docs/quick-start/enviroment-setup)
 - [自定义设备 MCP（硬件技能）](/docs/duckyclaw/custom-device-mcp)
-- [DuckyClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）
+- [TuyaOpenClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）

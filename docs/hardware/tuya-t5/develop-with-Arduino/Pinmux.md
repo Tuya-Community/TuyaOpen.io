@@ -1,14 +1,14 @@
-# TUYA T5AI Pin Mapping
-
-This document describes the pin definitions and multiplexing mappings of the TUYA_T5AI_BOARD / TUYA_T5AI_CORE development boards, helping developers quickly look up GPIO numbers and peripheral function assignments. The pin definitions of both boards are identical.
-
-## GPIO Overview
-
-The T5AI provides P0 - P55 available pins. The table below lists the Arduino aliases and available multiplexed functions for each pin.
-
+---
+title: T5AI Pin Mapping
 ---
 
-## UART Serial
+This reference lists the pin definitions and multiplexing maps for the `TUYA_T5AI_BOARD` and `TUYA_T5AI_CORE` development boards, so you can quickly look up GPIO numbers and peripheral function assignments. The pin definitions of both boards are identical.
+
+## GPIO overview
+
+The T5AI provides pins P0–P55. The tables below list the Arduino alias and available multiplexed functions for each pin.
+
+## UART serial
 
 | Port | Signal | Arduino Alias | T5 Hardware Pin |
 |:-----|:-----|:------------|:----:|
@@ -21,22 +21,20 @@ The T5AI provides P0 - P55 available pins. The table below lists the Arduino ali
 | UART2 | TX | `TX2` | P41 |
 | UART2 | RX | `RX2` | P40 |
 
-> `Serial` uses UART0 (P10/P11) by default.
+:::note
+`Serial` uses UART0 (P10/P11) by default.
+:::
 
----
-
-## I2C Bus
+## I2C bus
 
 | Signal | Arduino Alias | T5 Hardware Pin |
 |:-----|:------------|:----:|
 | SCL | `SCL` | P20 |
 | SDA | `SDA` | P21 |
 
----
+## SPI bus
 
-## SPI Bus
-
-Default clock frequency: 8 MHz
+Default clock frequency: 8 MHz.
 
 | Signal | Arduino Alias | T5 Hardware Pin |
 |:-----|:------------|:----:|
@@ -45,11 +43,9 @@ Default clock frequency: 8 MHz
 | MOSI | `MOSI` | P16 |
 | MISO | `MISO` | P17 |
 
----
+## ADC analog input
 
-## ADC Analog Input
-
-Resolution: 12-bit ｜ Mode: Continuous sampling
+Resolution: 12-bit. Mode: continuous sampling.
 
 | Arduino Alias | T5 Hardware Pin | ADC Channel | Description |
 |:------------|:----:|:--------:|:-----|
@@ -60,11 +56,11 @@ Resolution: 12-bit ｜ Mode: Continuous sampling
 | `A4` | P22 | CH5 | Recommended analog input |
 | `A5` | P21 | CH6 | Shared with I2C SDA |
 
-> A0–A4 are dedicated analog input pins with no multiplexing conflicts — recommended for priority use. A5 serves other functions as well; verify there are no multiplexing conflicts before using it for ADC.
+:::tip
+A0–A4 are dedicated analog input pins with no multiplexing conflicts — use them first. A5 also serves other functions; verify there are no multiplexing conflicts before using it for ADC.
+:::
 
----
-
-## PWM Output
+## PWM output
 
 12 PWM channels in total:
 
@@ -83,11 +79,11 @@ Resolution: 12-bit ｜ Mode: Continuous sampling
 | PWM10 | P35 | — | — |
 | PWM11 | P37 | — | — |
 
-> D0–D5 are the recommended PWM output pins.
+:::tip
+D0–D5 are the recommended PWM output pins.
+:::
 
----
-
-## Analog Pin Aliases (Ax)
+## Analog pin aliases (Ax)
 
 | Alias | T5 Hardware Pin | ADC Channel | Note |
 |:-----|:----:|:--------:|:-----|
@@ -98,7 +94,7 @@ Resolution: 12-bit ｜ Mode: Continuous sampling
 | `A4` | P22 | CH5 | — |
 | `A5` | P21 | CH6 | Shared with I2C SDA |
 
-## Digital Pin Aliases (Dx)
+## Digital pin aliases (Dx)
 
 | Alias | T5 Hardware Pin | PWM Channel | Note |
 |:-----|:----:|:--------:|:-----|
@@ -109,4 +105,6 @@ Resolution: 12-bit ｜ Mode: Continuous sampling
 | `D4` | P36 | PWM4 | — |
 | `D5` | P19 | PWM5 | — |
 
-> `A1` and `D1` share P24 and support both ADC and PWM functions. Avoid enabling both peripherals simultaneously.
+:::note
+`A1` and `D1` share P24 and support both ADC and PWM. Avoid enabling both peripherals at the same time.
+:::

@@ -2,15 +2,13 @@
 title: "ESP32-C3 外设映射"
 ---
 
-# ESP32-C3 外设映射
-
 本文说明 ESP32-C3（单核 RISC-V，成本优化）片上外设与 TuyaOpen TKL 层软件端口的映射关系。
 
 ## GPIO
 
 - 所有 GPIO 引脚均支持中断。
 - `TUYA_GPIO_NUM_E` 枚举值与物理 GPIO 编号直接 1:1 对应。
-- 共 22 个 GPIO（GPIO0 ~ GPIO21），是 ESP32 系列中 GPIO 最少的型号，请提前规划引脚分配。
+- 共 22 个 GPIO（GPIO0 ~ GPIO21），请谨慎规划引脚分配以避免冲突。
 
 | GPIO 范围 | TUYA_GPIO_NUM 范围 | 说明 |
 |-----------|-------------------|------|

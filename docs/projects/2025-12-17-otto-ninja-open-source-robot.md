@@ -62,7 +62,9 @@ The project has three core advantages:
 
   [Otto Ninja Hardware Project](https://oshwhub.com/robben.wang/ottorobot_ninja)
 
-> Note: Contains complete designs of main control module, servo interface, display interface, and power management module, supporting direct export of production files.
+:::note
+Contains complete designs of main control module, servo interface, display interface, and power management module, supporting direct export of production files.
+:::
 
 ### 3. 3D Printing Model Files
 
@@ -96,7 +98,9 @@ The project has three core advantages:
 | Microphone Module   | Model 6027, analog signal, 1.25mm terminal, IP65 waterproof | 1 piece   | [Taobao Link](https://item.taobao.com/item.htm?id=764269727410) | Used for voice interaction function                          |
 | Main Control Board  | T5 OTTO Development Board / Complete Set of Materials       | 1 piece   | [Taobao Link](https://tuyasmart.taobao.com/?spm=a1z10.5-c-s.0.0.223d5cb0RYr5fX) | Complete materials                                           |
 
-> Note: The quantity of materials can be adjusted according to the printed model version. It is recommended to purchase "1 set" for the first fabrication, with 1-2 spare vulnerable parts (such as servos and sealing rings).
+:::note
+The quantity of materials can be adjusted according to the printed model version. It is recommended to purchase "1 set" for the first fabrication, with 1-2 spare vulnerable parts (such as servos and sealing rings).
+:::
 
 ## 4. Core Functions and Features
 

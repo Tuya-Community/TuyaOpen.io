@@ -1,234 +1,53 @@
 ---
-title: Hold-to-Chat Mode
+title: Hold-to-Talk Mode
 ---
 
-## Glossary
+**Hold-to-talk** is the chat mode where you press and hold the button to record, then release to stop and upload. The capture window lasts exactly as long as you hold the button — nothing starts or stops on its own.
 
-| Term | Description |
-| ---- | ------------------------------------------------------------ |
-| VAD | Voice Activity Detection (Voice Activity Detection), used to detect whether there is voice input. |
+It is one of the four [voice chat modes](ai-mode-manage); register it with `ai_mode_hold_register()`.
 
-## Overview
+## When to use it
 
-`ai_mode_hold` implements press-and-hold mode in the TuyaOpen AI application framework. It provides a voice interaction method that requires active user control: users press and hold the button to record, then release it to stop recording and upload. This mode is suitable for scenarios that require precise control of recording duration.
+Use hold-to-talk when you want deliberate, explicit turns and full control over what the device hears:
 
-- **Button Control**: Press and hold the button to start recording, release the button to stop recording and upload. Recording is controlled by user keystrokes and does not rely on automatic voice detection.
-- **Auto Timeout**: Automatically times out (default 30 seconds) to return to idle state after no voice activity or playback is completed
-- **LED Indication**: Different states display different LED effects (LED components need to be enabled)
-- Idle: LED off
-- Listening: LED flashing (500ms)
-- Think: LED flashing (2000ms)
-- Talk: LED is always on
+- **Noisy rooms** — the microphone only captures while the button is down, so background speech and noise outside that window never reach the cloud.
+- **Deliberate turns** — the user decides exactly when a turn begins and ends, with no wake word and no voice-activity guesswork.
+- **No false triggers** — nothing is uploaded until a button is pressed, so the device never reacts to ambient sound.
 
-## Workflow
+The trade-off is that it is hands-on: every turn needs a physical press. For hands-free interaction, use [wake-word](ai-mode-wakeup) or [free](ai-mode-free) mode instead.
 
-### Module architecture diagram
+## How it behaves
+
+A turn follows the shared mode lifecycle. Pressing the button moves the device from `IDLE` into `LISTEN`; releasing the button ends capture and advances it through `UPLOAD`, `THINK`, and `SPEAK` before it returns to `IDLE`.
 
 ```mermaid
-flowchart TD
-A[Application layer] --> B[ai_mode_hold module]
-B --> C[State machine management]
-B --> D[Button control]
-B --> E[VAD processing]
-B --> F[event handling]
-    
-D --> G[long press to start]
-D --> H[release to upload]
-    
-C --> J[IDLE<br/>idle]
-C --> K[LISTEN<br/>Listening]
-C --> L[UPLOAD<br/>Upload]
-C --> M[THINK<br/>Thinking]
-C --> N[SPEAK<br/>speak]
-    
-    style C fill:#e1f5ff
-    style D fill:#fff4e1
+flowchart LR
+    IDLE -->|press and hold| LISTEN
+    LISTEN -->|release| UPLOAD
+    UPLOAD --> THINK
+    THINK --> SPEAK
+    SPEAK --> IDLE
 ```
 
-### State machine process
+:::note
+Capture is bounded by how long you hold the button. The mode needs the button component (`ENABLE_BUTTON`) to receive press and release events.
+:::
 
-Press-and-hold mode manages the full interaction flow with a state machine. It starts from idle, enters listening when the button is pressed and held, uploads after release, and then returns to listening or idle based on runtime status.
+## Enable it
 
-```mermaid
-stateDiagram-v2
-    direction LR
-[*] --> IDLE: initialization
-IDLE --> LISTEN: Long press the button
-LISTEN --> UPLOAD: Release the button
-UPLOAD --> THINK: Upload completed
-THINK --> SPEAK: AI processing completed
-SPEAK --> LISTEN: Playback completed (awakened)
-SPEAK --> IDLE: Playback completed (not awakened)
-LISTEN --> IDLE: timeout (30 seconds)
-THINK --> IDLE: timeout (30 seconds)
-```
-
-### Key interaction process
-
-The user triggers recording by long pressing the button, and stops recording and uploads after releasing the button.
-
-```mermaid
-sequenceDiagram
-participant User as user
-    participant Mode as ai_mode_hold
-participant Audio as audio input
-    participant Agent as AI Agent
-    
-User->>Mode: Long press the button
-Mode->>Mode: Enter LISTEN state
-Mode->>Audio: Enable wake-up mode
-Mode->>Audio: Set manual VAD mode
-    
-User->>Mode: Talk
-Mode->>Audio: VAD detects voice
-Mode->>Agent: Start recording upload
-    
-User->>Mode: Release the button
-Mode->>Mode: Enter UPLOAD state
-Mode->>Audio: Stop recording
-Mode->>Agent: Complete upload
-```
-
-### Voice interaction process
-
-After long pressing the button, the device starts recording. After releasing the button, it stops recording and uploads, completing a complete round of voice interaction.
-
-```mermaid
-sequenceDiagram
-participant User as user
-    participant Mode as ai_mode_hold
-participant VAD as VAD test
-    participant Agent as AI Agent
-participant Player as audio player
-    
-Note over Mode: IDLE state
-User->>Mode: Long press the button
-Mode->>Mode: Enter LISTEN state
-    
-User->>VAD: Speak
-VAD->>Mode: VAD_START event
-Mode->>Agent: Start recording upload
-    
-User->>Mode: Release the button
-Mode->>Mode: Enter UPLOAD state
-Mode->>Agent: Stop recording and upload
-    
-Agent->>Mode: ASR recognition completed
-Mode->>Mode: Enter THINK state
-    
-Agent->>Player: Return TTS audio
-Mode->>Mode: Enter SPEAK state
-    
-Player->>Mode: Playback completed
-alt is still awake
-Mode->>Mode: Return to LISTEN state
-else has timed out
-Mode->>Mode: Return to IDLE status
-    end
-```
-
-## Configuration instructions
-
-### Configuration file path
-
-```
-ai_components/ai_mode/Kconfig
-```
-
-### Function enable
-
-```
-menuconfig ENABLE_COMP_AI_PRESENT_MODE
-    bool "enable ai present mode"
-    default y
-
-config ENABLE_COMP_AI_MODE_HOLD
-    bool "enable ai mode hold"
-    default y
-```
-
-### Dependent components
-
-- **Audio Component** (`ENABLE_COMP_AI_AUDIO`): required, used for audio input and output and VAD detection
-- **LED Component** (`ENABLE_LED`): optional, used for status indication
-- **Button Component** (`ENABLE_BUTTON`): required, used for key control function
-
-## Development process
-
-### Interface description
-
-#### Register long press mode
-
-Register the long press mode into the mode manager.
+Register the mode at startup, then make it the active mode with `ai_mode_init`:
 
 ```c
-/**
- * @brief Register hold mode
- * @return OPERATE_RET Operation result
- */
-OPERATE_RET ai_mode_hold_register(void);
+ai_mode_hold_register();
+ai_mode_init(AI_CHAT_MODE_HOLD);   // AI_CHAT_MODE_HOLD | ONE_SHOT | WAKEUP | FREE
 ```
 
-### Development steps
+See [Voice Chat Modes](ai-mode-manage) for the full startup sequence — registering several modes, running the task loop, and switching between them at runtime.
 
-1. **Register mode**: At startup, call `ai_mode_hold_register()` to register press-and-hold mode
-2. **Initialize mode**: Call `ai_mode_init(AI_CHAT_MODE_HOLD)` to initialize press-and-hold mode
-3. **Run mode task**: In the task loop, call `ai_mode_task_running()` to run the state machine
-4. **Handle events**: Ensure user events, VAD state changes, and key events are correctly forwarded to the mode manager
+## See also
 
-### Reference example
-
-#### Registration and initialization
-
-```c
-#include "ai_mode_hold.h"
-#include "ai_manage_mode.h"
-
-//Register long press mode
-OPERATE_RET register_hold_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-//Register long press mode
-    TUYA_CALL_ERR_RETURN(ai_mode_hold_register());
-    
-    return rt;
-}
-
-//Initialize long press mode
-OPERATE_RET init_hold_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-//Initialize long press mode
-    TUYA_CALL_ERR_RETURN(ai_mode_init(AI_CHAT_MODE_HOLD));
-    
-    return rt;
-}
-```
-
-#### Mode switching
-
-```c
-//Switch to long press mode
-void switch_to_hold_mode(void)
-{
-    OPERATE_RET rt = ai_mode_switch(AI_CHAT_MODE_HOLD);
-    if (OPRT_OK == rt) {
-        PR_NOTICE("Switch to long press mode");
-    } else {
-        PR_ERR("Failed to switch mode: %d", rt);
-    }
-}
-```
-
-#### Query mode status
-
-```c
-void query_hold_mode_state(void)
-{
-    AI_MODE_STATE_E state = ai_mode_get_state();
-    PR_NOTICE("Current state of long press mode: %s", ai_get_mode_state_str(state));
-}
-```
-
+- [Voice Chat Modes](ai-mode-manage) — register, switch, and route events across all modes
+- [One-Shot Mode](ai-mode-oneshot) — click once for a single turn
+- [Wake-Word Mode](ai-mode-wakeup) — start a turn by voice
+- [Free Conversation Mode](ai-mode-free) — always-listening hands-free chat
+- [AI Agent](ai-agent) — the cloud bridge that modes drive

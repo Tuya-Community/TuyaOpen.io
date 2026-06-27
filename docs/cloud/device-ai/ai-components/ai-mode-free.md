@@ -1,229 +1,53 @@
 ---
-title: Free Chat Mode
+title: Free Conversation Mode
 ---
 
-## Glossary
+**Free conversation** is the chat mode where, after a wake-up, the device keeps listening for multi-round, hands-free dialogue. You wake it once and then talk back and forth without a button and without repeating the wake word for each turn.
 
-| Term | Description |
-| ---- | ------------------------------------------------------------ |
-| KWS | Keyword Spotting is used to detect specific wake words and trigger the device to enter the listening state. |
-| VAD | Voice Activity Detection (Voice Activity Detection), used to detect whether there is voice input. |
+It is one of the four [voice chat modes](ai-mode-manage); register it with `ai_mode_free_register()`.
 
-## Overview
+## When to use it
 
-`ai_mode_free` implements free conversation mode in the TuyaOpen AI application framework and provides natural voice interaction. After the user triggers it through a wake word or one-shot key action, the device enters a continuous listening state and can support multiple conversation rounds within a period of time (30 seconds by default) without retriggering each interaction.
+Use free mode for natural, conversational interaction where the user takes several turns in a row:
 
-- **Wake-up mechanism**: Supports two triggers: wake word (KWS) and one-shot key input
-- **Continuous Monitoring**: Enter continuous monitoring state after waking up, supporting multiple rounds of dialogue
-- **Auto Timeout**: Automatically times out (default 30 seconds) to return to idle state after no voice activity or playback is completed
-- **LED Indication**: Different states display different LED effects (LED components need to be enabled)
-- Idle: LED off
-- Listening: LED flashing (500ms)
-- Think: LED flashing (2000ms)
-- Talk: LED is always on
+- **Multi-round chat** — after waking, the device keeps listening for follow-up turns, so a conversation flows without re-triggering each time.
+- **Fully hands-free** — no button presses during the conversation; the user just keeps speaking.
+- **Conversational products** — best for assistants and companions designed for back-and-forth dialogue rather than single commands.
 
-## Workflow
+The trade-off is that the device listens continuously during the conversation, so it suits quieter, single-user settings better than noisy or shared rooms. For one turn at a time, use [wake-word](ai-mode-wakeup) mode; for full manual control, use [hold-to-talk](ai-mode-hold).
 
-### Module architecture diagram
+## How it behaves
+
+A turn follows the shared mode lifecycle. After wake-up the device enters `LISTEN`; each turn advances through `UPLOAD`, `THINK`, and `SPEAK`, and then returns to `LISTEN` for the next round rather than going idle — keeping the conversation open.
 
 ```mermaid
-flowchart TD
-A[application layer] --> B[ai_mode_free module]
-B --> C[State machine management]
-B --> D[Wake-up detection]
-B --> E[VAD processing]
-B --> F[event handling]
-    
-D --> G[KWS wake up]
-D --> H[Button to wake up]
-    
-C --> I[IDLE<br/>idle]
-C --> J[LISTEN<br/>Listening]
-C --> K[UPLOAD<br/>Upload]
-C --> L[THINK<br/>Thinking]
-C --> M[SPEAK<br/>speak]
-    
-    style C fill:#e1f5ff
-    style D fill:#fff4e1
+flowchart LR
+    IDLE -->|wake up| LISTEN
+    LISTEN --> UPLOAD
+    UPLOAD --> THINK
+    THINK --> SPEAK
+    SPEAK -->|next round| LISTEN
 ```
 
-### State machine process
+:::note
+Free mode keeps listening between turns, so the device captures audio continuously during a conversation. It needs the audio component (`ENABLE_COMP_AI_AUDIO`) for voice-activity detection.
+:::
 
-Free conversation mode manages the full interaction flow with a state machine. It starts from idle and enters listening after wake-up. After each voice interaction, it returns to listening or idle based on runtime status.
+## Enable it
 
-```mermaid
-stateDiagram-v2
-    direction LR
-[*] --> IDLE: initialization
-IDLE --> LISTEN: wake word/button trigger
-LISTEN --> UPLOAD: VAD detected voice
-UPLOAD --> THINK: Upload completed
-THINK --> SPEAK: AI processing completed
-SPEAK --> LISTEN: Playback completed (awakened)
-SPEAK --> IDLE: Playback completed (not awakened)
-LISTEN --> IDLE: timeout (30 seconds)
-THINK --> IDLE: timeout (30 seconds)
-```
-
-### Wake-up process
-
-Users can trigger free conversation mode through wake words or key presses.
-
-```mermaid
-sequenceDiagram
-participant User as user
-    participant Mode as ai_mode_free
-participant KWS as KWS module
-participant Audio as audio input
-    
-alt wake word trigger
-User->>KWS: Say the wake word
-KWS->>Mode: wake-up callback
-else key trigger
-User->>Mode: key event
-    end
-    
-Mode->>Mode: Stop playing and recording
-Mode->>Mode: Play wake-up tone
-Mode->>Mode: Enter LISTEN state
-Mode->>Audio: Enable wake-up mode
-Mode->>Audio: Set VAD automatic mode
-```
-
-### Voice interaction process
-
-After wake-up, the device automatically detects voice activity through VAD and completes one full voice interaction round.
-
-```mermaid
-sequenceDiagram
-participant User as user
-    participant Mode as ai_mode_free
-participant VAD as VAD test
-    participant Agent as AI Agent
-participant Player as audio player
-    
-Note over Mode: LISTEN state
-User->>VAD: Speak
-VAD->>Mode: VAD_START event
-Mode->>Agent: Start recording upload
-Mode->>Mode: Enter UPLOAD state
-    
-Agent->>Mode: ASR recognition completed
-Mode->>Mode: Enter THINK state
-    
-Agent->>Player: Return TTS audio
-Mode->>Mode: Enter SPEAK state
-    
-Player->>Mode: Playback completed
-alt is still awake
-Mode->>Mode: Return to LISTEN state
-else has timed out
-Mode->>Mode: Return to IDLE status
-    end
-```
-
-## Configuration instructions
-
-### Configuration file path
-
-```
-ai_components/ai_mode/Kconfig
-```
-
-### Function enable
-
-```
-menuconfig ENABLE_COMP_AI_PRESENT_MODE
-    bool "enable ai present mode"
-    default y
-
-config ENABLE_COMP_AI_MODE_FREE
-    bool "enable ai mode free"
-    default y
-```
-
-### Dependent components
-
-- **Audio Component** (`ENABLE_COMP_AI_AUDIO`): required, used for audio input and output and VAD detection
-- **LED Component** (`ENABLE_LED`): optional, used for status indication
-- **Button Component** (`ENABLE_BUTTON`): optional, used for key wake-up function
-
-## Development process
-
-### Interface description
-
-#### Register for free conversation mode
-
-Register the free conversation mode with the mode manager.
+Register the mode at startup, then make it the active mode with `ai_mode_init`:
 
 ```c
-/**
- * @brief Register free mode
- * @return OPERATE_RET Operation result
- */
-OPERATE_RET ai_mode_free_register(void);
+ai_mode_free_register();
+ai_mode_init(AI_CHAT_MODE_FREE);   // AI_CHAT_MODE_HOLD | ONE_SHOT | WAKEUP | FREE
 ```
 
-### Development steps
+See [Voice Chat Modes](ai-mode-manage) for the full startup sequence — registering several modes, running the task loop, and switching between them at runtime.
 
-1. **Registration Mode**: Called when the application starts`ai_mode_free_register()`Register for free chat mode
-2. **Initialization Mode**: Pass`ai_mode_init(AI_CHAT_MODE_FREE)`Initialize free conversation mode
-3. **Run Mode Task**: Called in the task loop`ai_mode_task_running()`Running state machine
-4. **Handling events**: Ensure that user events, VAD status changes, key events, etc. have been correctly forwarded to the mode manager
+## See also
 
-### Reference example
-
-#### Registration and initialization
-
-```c
-#include "ai_mode_free.h"
-#include "ai_manage_mode.h"
-
-//Register free conversation mode
-OPERATE_RET register_free_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-//Register free conversation mode
-    TUYA_CALL_ERR_RETURN(ai_mode_free_register());
-    
-    return rt;
-}
-
-//Initialize free conversation mode
-OPERATE_RET init_free_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-//Initialize free conversation mode
-    TUYA_CALL_ERR_RETURN(ai_mode_init(AI_CHAT_MODE_FREE));
-    
-    return rt;
-}
-```
-
-#### Mode switching
-
-```c
-//Switch to free conversation mode
-void switch_to_free_mode(void)
-{
-    OPERATE_RET rt = ai_mode_switch(AI_CHAT_MODE_FREE);
-    if (OPRT_OK == rt) {
-        PR_NOTICE("Switch to free conversation mode");
-    } else {
-        PR_ERR("Failed to switch mode: %d", rt);
-    }
-}
-```
-
-#### Query mode status
-
-```c
-void query_free_mode_state(void)
-{
-    AI_MODE_STATE_E state = ai_mode_get_state();
-    PR_NOTICE("Current status of free conversation mode: %s", ai_get_mode_state_str(state));
-}
-```
-
+- [Voice Chat Modes](ai-mode-manage) — register, switch, and route events across all modes
+- [Hold-to-Talk Mode](ai-mode-hold) — press and hold to record
+- [One-Shot Mode](ai-mode-oneshot) — click once for a single turn
+- [Wake-Word Mode](ai-mode-wakeup) — start a turn by voice
+- [AI Agent](ai-agent) — the cloud bridge that modes drive

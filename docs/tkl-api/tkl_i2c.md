@@ -1,283 +1,301 @@
-# tKl_i2c | I2C Driver
+---
+title: "tkl_i2c | I2C Driver"
+---
 
-## Brief Description
+The TKL I2C interface drives the I2C bus as either master or slave for sensors, displays, IO expanders, and other peripherals. You initialize a bus (`TUYA_I2C_NUM_E`) with a role, speed, and address width, then send and receive bytes against each device address, optionally with interrupt-driven event callbacks.
 
-I2C (Inter-Integrated Circuit) is a serial synchronous communication bus. The I2C serial bus has two signal lines: a bidirectional data line SDA and a clock line SCL. All serial data SDA connected to I2C bus devices are connected to the SDA of the bus, and each device's clock line SCL is connected to the SCL of the bus.
+I2C is a two-wire synchronous serial bus: a bidirectional data line (SDA) and a clock line (SCL), shared by all devices. The master generates the clock, issues the start and stop conditions, and addresses each slave by its unique 7-bit or 10-bit address. After the start condition, every slave compares the address on the bus against its own and the matching device responds.
 
-The typical wiring method for I2C is as follows:
-
-![I2C Typical Wiring Diagram](https://images.tuyacn.com/fe-static/docs/img/fd7da59e-749b-4a3a-b171-411459568eed.png)
-
-Communication on the bus is controlled by the master, which means the master is the device that transmits data (issues start signals), generates clock signals, and issues stop signals at the end of the transmission. The device being accessed by the master is called the slave. Each device connected to the I2C bus has a unique address for the master to access. Data transmission between the master and the slave can be from the master to the slave or from the slave to the master. I2C supports 7-bit or 10-bit slave device address modes. After the start condition, the first byte on the I2C bus determines which controller will be selected by the master. When the master outputs an address, each slave device in the system compares the address after the start condition with its own address. If they are the same, the slave recognizes that it has been addressed by the master.
-
-## API Description
-
-### tkl_i2c_init
+## tkl_i2c_init
 
 ```c
 OPERATE_RET tkl_i2c_init(TUYA_I2C_NUM_E port, const TUYA_IIC_BASE_CFG_T *cfg);
 ```
 
-- Function Description:
-  - Initialize the corresponding I2C instance through the port number and base configuration, and return the initialization result.
-- Parameters:
+Initializes an I2C bus with the given role, speed, and address width.
 
-  - `port`: Port number.
-  - `cfg`: I2C base configuration, including role, speed, and address width.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index, starting at `TUYA_I2C_NUM_0`. |
+| `cfg` | `const TUYA_IIC_BASE_CFG_T *` | Bus configuration. |
 
-    ```c
-    typedef struct {
-        TUYA_IIC_ROLE_E      role;
-        TUYA_IIC_SPEED_E     speed;
-        TUYA_IIC_ADDR_MODE_E addr_width;
-    } TUYA_IIC_BASE_CFG_T;
-    ```
-
-    #### TUYA_IIC_ROLE_E:
-
-    | Name                 | Definition      | Remarks |
-    | :------------------- | :-------------- | :------ |
-    | TUYA_IIC_MODE_MASTER | I2C Master Mode |         |
-    | TUYA_IIC_MODE_SLAVE  | I2C Slave Mode  |         |
-
-    #### TUYA_IIC_SPEED_E：
-
-    | Name                    | Definition                  | Remarks |
-    | :---------------------- | :-------------------------- | :------ |
-    | TUYA_IIC_BUS_SPEED_100K | I2C Standard Speed (100KHz) |         |
-    | TUYA_IIC_BUS_SPEED_400K | I2C Fast Speed (400KHz)     |         |
-    | TUYA_IIC_BUS_SPEED_1M   | I2C Standard+ Speed (1MHz)  |         |
-    | TUYA_IIC_BUS_SPEED_3_4M | I2C High Speed (3.4MHz)     |         |
-
-    #### TUYA_IIC_ADDR_MODE_E：
-
-    | Name                   | Definition          | Remarks |
-    | :--------------------- | :------------------ | :------ |
-    | TUYA_IIC_ADDRESS_7BIT  | 7-bit Address Mode  |         |
-    | TUYA_IIC_ADDRESS_10BIT | 10-bit Address Mode |         |
-
-- Return Value:
-  - OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
-
-### tkl_i2c_deinit
+The configuration structure is:
 
 ```c
-OPERATE_RET tkl_i2c_deinit(TUYA_I2C_NUM_E port)
+typedef struct {
+    TUYA_IIC_ROLE_E      role;
+    TUYA_IIC_SPEED_E     speed;
+    TUYA_IIC_ADDR_MODE_E addr_width;
+} TUYA_IIC_BASE_CFG_T;
 ```
 
-- Function Description:
-  - De-initialize the I2C instance. This interface will stop the I2C and release related software and hardware resources.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+`role` selects the bus role:
 
-### tkl_i2c_irq_init
+| Value | Description |
+| --- | --- |
+| `TUYA_IIC_MODE_MASTER` | Master mode |
+| `TUYA_IIC_MODE_SLAVE` | Slave mode |
+
+`speed` selects the bus speed:
+
+| Value | Description |
+| --- | --- |
+| `TUYA_IIC_BUS_SPEED_100K` | Standard speed (100 kHz) |
+| `TUYA_IIC_BUS_SPEED_400K` | Fast speed (400 kHz) |
+| `TUYA_IIC_BUS_SPEED_1M` | Fast+ speed (1 MHz) |
+| `TUYA_IIC_BUS_SPEED_3_4M` | High speed (3.4 MHz) |
+
+`addr_width` selects the address mode:
+
+| Value | Description |
+| --- | --- |
+| `TUYA_IIC_ADDRESS_7BIT` | 7-bit address mode |
+| `TUYA_IIC_ADDRESS_10BIT` | 10-bit address mode |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_deinit
+
+```c
+OPERATE_RET tkl_i2c_deinit(TUYA_I2C_NUM_E port);
+```
+
+Deinitializes an I2C bus, stopping it and releasing its software and hardware resources.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_irq_init
 
 ```c
 OPERATE_RET tkl_i2c_irq_init(TUYA_I2C_NUM_E port, TUYA_I2C_IRQ_CB cb);
 ```
 
-- Function Description:
-  - Initialize I2C interrupts.
-- Parameters:
+Registers an I2C interrupt callback. This call does not enable the interrupt; call `tkl_i2c_irq_enable` afterward.
 
-  - `port`: Port number.
-  - `cb`: I2C interrupt callback function.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `cb` | `TUYA_I2C_IRQ_CB` | Interrupt callback. |
 
-    The callback function type TUYA_I2C_IRQ_CB is defined as follows:
+The callback type is:
 
-    ```c
-    typedef void (*TUYA_I2C_IRQ_CB)(TUYA_I2C_NUM_E port, TUYA_I2C_IRQ_EVT_E event);
-    ```
+```c
+typedef void (*TUYA_I2C_IRQ_CB)(TUYA_I2C_NUM_E port, TUYA_IIC_IRQ_EVT_E event);
+```
 
-    Where `port` is the port number, and `event` is the event type passed to the callback function.
+`event` is one of the following:
 
-    The I2C callback event enumeration type TUYA_I2C_IRQ_EVT_E is defined as follows:
+| Value | Description |
+| --- | --- |
+| `TUYA_IIC_EVENT_TRANSFER_DONE` | Transfer complete |
+| `TUYA_IIC_EVENT_TRANSFER_INCOMPLETE` | Transfer incomplete |
+| `TUYA_IIC_EVENT_SLAVE_TRANSMIT` | Slave transmit requested |
+| `TUYA_IIC_EVENT_SLAVE_RECEIVE` | Slave receive requested |
+| `TUYA_IIC_EVENT_ADDRESS_NACK` | Address not acknowledged by slave |
+| `TUYA_IIC_EVENT_GENERAL_CALL` | General call (address 0) received |
+| `TUYA_IIC_EVENT_ARBITRATION_LOST` | Master lost arbitration |
+| `TUYA_IIC_EVENT_BUS_ERROR` | Bus error detected |
+| `TUYA_IIC_EVENT_BUS_CLEAR` | Bus clear finished |
 
-    | Name                               | Definition                                           | Remarks |
-    | :--------------------------------- | :--------------------------------------------------- | :------ |
-    | TUYA_IIC_EVENT_TRANSFER_DONE       | Transfer Complete Event                              |         |
-    | TUYA_IIC_EVENT_TRANSFER_INCOMPLETE | Transfer Incomplete Event                            |         |
-    | TUYA_IIC_EVENT_SLAVE_TRANSMIT      | Slave Transmit Operation Request Event               |         |
-    | TUYA_IIC_EVENT_SLAVE_RECEIVE       | Slave Receive Operation Request Event                |         |
-    | TUYA_IIC_EVENT_ADDRESS_NACK        | Address Not Acknowledged Event                       |         |
-    | TUYA_IIC_EVENT_GENERAL_CALL        | Indicates Received General Call (Address is 0) Event |         |
-    | TUYA_IIC_EVENT_ARBITRATION_LOST    | Master Arbitration Lost Event                        |         |
-    | TUYA_IIC_EVENT_BUS_ERROR           | Bus Error Event                                      |         |
-    | TUYA_IIC_EVENT_BUS_CLEAR           | Bus Clear Complete Event                             |         |
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
 
-- Return Value:
-  - OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
-
-### tkl_i2c_irq_enable
+## tkl_i2c_irq_enable
 
 ```c
 OPERATE_RET tkl_i2c_irq_enable(TUYA_I2C_NUM_E port);
 ```
 
-- Function Description:
-  - Enable I2C interrupts.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Enables the I2C interrupt registered with `tkl_i2c_irq_init`.
 
-### tkl_i2c_irq_disable
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_irq_disable
 
 ```c
 OPERATE_RET tkl_i2c_irq_disable(TUYA_I2C_NUM_E port);
 ```
 
-- Function Description:
-  - Disable I2C interrupts.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Disables the I2C interrupt.
 
-### tkl_i2c_master_send
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_master_send
 
 ```c
 OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, uint16_t dev_addr, const void *data, uint32_t size, BOOL_T xfer_pending);
 ```
 
-- Function Description:
-  - Start data transmission when I2C is in master mode.
-- Parameters:
-  - `port`: Port number.
-  - `dev_addr`: Slave device address.
-  - `data`: Buffer address of data to be sent.
-  - `size`: Length of data to be sent.
-  - `xfer_pending`: Whether to send a stop bit after sending. 1 - Do not send stop bit, 0 - Send stop bit.
-- Return Value:
-  - Error code, OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Sends data to a slave when the bus is in master mode.
 
-### tkl_i2c_master_receive
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `dev_addr` | `uint16_t` | Slave device address. |
+| `data` | `const void *` | Data to send. |
+| `size` | `uint32_t` | Number of bytes to send. |
+| `xfer_pending` | `BOOL_T` | `TRUE` to keep the bus (no stop condition), `FALSE` to send a stop condition. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_master_receive
 
 ```c
 OPERATE_RET tkl_i2c_master_receive(TUYA_I2C_NUM_E port, uint16_t dev_addr, void *data, uint32_t size, BOOL_T xfer_pending);
 ```
 
-- Function Description:
-  - Start data reception when I2C is in master mode.
-- Parameters:
-  - `port`: Port number.
-  - `dev_addr`: Slave device address.
-  - `data`: Buffer address for received data.
-  - `size`: Length of data to be received.
-  - `xfer_pending`: Whether to send a stop bit after receiving. 1 - Do not send stop bit, 0 - Send stop bit.
-- Return Value:
-  - Error code, OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Receives data from a slave when the bus is in master mode.
 
-### tkl_i2c_set_slave_addr
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `dev_addr` | `uint16_t` | Slave device address. |
+| `data` | `void *` | Output: buffer for received data. |
+| `size` | `uint32_t` | Number of bytes to receive. |
+| `xfer_pending` | `BOOL_T` | `TRUE` to keep the bus (no stop condition), `FALSE` to send a stop condition. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_set_slave_addr
 
 ```c
 OPERATE_RET tkl_i2c_set_slave_addr(TUYA_I2C_NUM_E port, uint16_t dev_addr);
 ```
 
-- Function Description:
-  - Configure the I2C slave device address.
-- Parameters:
-  - `port`: Port number.
-  - `dev_addr`: I2C slave device communication address.
-- Return Value:
-  - Error code, OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Sets the device address used when the bus operates as a slave.
 
-### tkl_i2c_slave_send
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `dev_addr` | `uint16_t` | Slave address to respond to. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_slave_send
 
 ```c
 OPERATE_RET tkl_i2c_slave_send(TUYA_I2C_NUM_E port, const void *data, uint32_t size);
 ```
 
-- Function Description:
-  - Start data transmission when I2C is in slave mode.
-- Parameters:
-  - `port`: Port number.
-  - `data`: Buffer address of data to be sent.
-  - `size`: Length of data to be sent by the slave.
-- Return Value:
-  - Error code, OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Sends data when the bus is in slave mode.
 
-### tkl_i2c_slave_receive
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `data` | `const void *` | Data to send. |
+| `size` | `uint32_t` | Number of bytes to send. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_slave_receive
 
 ```c
 OPERATE_RET tkl_i2c_slave_receive(TUYA_I2C_NUM_E port, void *data, uint32_t size);
 ```
 
-- Function Description:
-  - Start data reception when I2C is in slave mode.
-- Parameters:
-  - `port`: Port number.
-  - `data`: Buffer address for received data.
-  - `size`: Length of data to be received.
-- Return Value:
-  - Error code, OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Receives data when the bus is in slave mode.
 
-### tkl_i2c_get_status
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `data` | `void *` | Output: buffer for received data. |
+| `size` | `uint32_t` | Number of bytes to receive. |
 
-```c
-TUYA_IIC_STATUS_T tkl_i2c_get_status(TUYA_I2C_NUM_E port);
-```
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
 
-- Function Description:
-  - Get the current status of I2C.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - I2C status structure. I2C status definitions are in TUYA_I2C_STATUS_T.
-
-### tkl_i2c_get_data_count
+## tkl_i2c_get_status
 
 ```c
-int32_t tkl_i2c_get_data_count(TUYA_I2C_NUM_E port);
+OPERATE_RET tkl_i2c_get_status(TUYA_I2C_NUM_E port, TUYA_IIC_STATUS_T *status);
 ```
 
-- Function Description:
-  - Get the number of data transmitted by I2C.
-  - For tkl_i2c_master_send, the number of bytes transmitted or sent.
-  - For tkl_i2c_master_receive, the number of bytes received.
-  - For tkl_i2c_slave_send, the number of bytes transmitted.
-  - For tkl_i2c_slave_receive, the number of bytes received.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - Number of transmitted data.
+Reads the current status of an I2C bus.
 
-#### TUYA_IIC_STATUS_T:
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `status` | `TUYA_IIC_STATUS_T *` | Output: the bus status. |
 
-| Name                 | Definition                                    | Remarks |
-| :------------------- | :-------------------------------------------- | :------ |
-| busy : 1             | Transmission or Sending Busy Status           |         |
-| mode : 1             | Mode Bit. 1 - Master, 0 - Slave               |         |
-| direction : 1        | Transmission Direction: 1 - Receive, 0 - Send |         |
-| general_call : 1     | General Call Indicator                        |         |
-| arbitration_lost : 1 | Master Lost Arbitration                       |         |
-| bus_error : 1        | Bus Error                                     |         |
+The status structure is:
 
-### tkl_i2c_reset
+```c
+typedef struct {
+    uint32_t busy             : 1; // transmitter/receiver busy (1 = busy)
+    uint32_t mode             : 1; // 0 = slave, 1 = master
+    uint32_t direction        : 1; // 0 = transmitter, 1 = receiver
+    uint32_t general_call     : 1; // general call indication
+    uint32_t arbitration_lost : 1; // master lost arbitration
+    uint32_t bus_error        : 1; // bus error detected
+} TUYA_IIC_STATUS_T;
+```
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_reset
 
 ```c
 OPERATE_RET tkl_i2c_reset(TUYA_I2C_NUM_E port);
 ```
 
-- Function Description:
-  - Reset I2C.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - Error code, OPRT_OK for success, others please refer to the `OS_ADAPTER_I2C` section in the file `tuya_error_code.h`.
+Resets an I2C bus.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
+
+## tkl_i2c_get_data_count
+
+```c
+int32_t tkl_i2c_get_data_count(TUYA_I2C_NUM_E port);
+```
+
+Returns the number of data items transferred by the most recent operation.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+
+**Returns** a count `>= 0` on success, or a negative value on error. The count is the bytes transmitted and acknowledged for `tkl_i2c_master_send`, received for `tkl_i2c_master_receive`, transmitted for `tkl_i2c_slave_send`, and received and acknowledged for `tkl_i2c_slave_receive`.
+
+## tkl_i2c_ioctl
+
+```c
+OPERATE_RET tkl_i2c_ioctl(TUYA_I2C_NUM_E port, uint32_t cmd, void *args);
+```
+
+Performs a device-specific control operation. For example, `I2C_IOCTL_SET_REGADDR_WIDTH` sets the register address width via a `REGADDR_WIDTH_T` argument.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `port` | `TUYA_I2C_NUM_E` | I2C bus index. |
+| `cmd` | `uint32_t` | Control command. |
+| `args` | `void *` | Argument associated with the command. |
+
+**Returns** `OPRT_OK` on success. For other values, see the `OS_ADAPTER_I2C` section of `tuya_error_code.h`.
 
 ## Examples
 
-### Example 1: I2C Master Example
+Master mode with an interrupt callback:
 
 ```c
 static uint16_t cb_transfer_flag = 0xff;
 
-static void i2c_event_cb_fun(int32_t idx, TUYA_IIC_IRQ_EVT_E event)
+static void i2c_event_cb_fun(TUYA_I2C_NUM_E port, TUYA_IIC_IRQ_EVT_E event)
 {
-    if (idx == I2C_NUM_0){
+    if (port == TUYA_I2C_NUM_0) {
         cb_transfer_flag = event;
     }
 }
@@ -286,9 +304,7 @@ void tuya_i2c_master_test(void)
 {
     OPERATE_RET ret;
     TUYA_IIC_BASE_CFG_T cfg;
-    //receive buffer
     char rcv_buf[10];
-    //data to send
     char send_buf[10] = {0,1,2,3,4,5,6,7,8,9};
 
     tkl_io_pinmux_config(TUYA_IO_PIN_0, TUYA_IIC0_SCL);
@@ -298,66 +314,27 @@ void tuya_i2c_master_test(void)
     cfg.speed = TUYA_IIC_BUS_SPEED_100K;
     cfg.addr_width = TUYA_IIC_ADDRESS_7BIT;
 
-    ret = tkl_i2c_init(I2C_NUM_0, &cfg);
+    ret = tkl_i2c_init(TUYA_I2C_NUM_0, &cfg);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
 
-    ret = tkl_i2c_irq_init(I2C_NUM_0, i2c_event_cb_fun);
-    if (ret != OPRT_OK) {
-        //fail
-        return;
-    }
+    tkl_i2c_irq_init(TUYA_I2C_NUM_0, i2c_event_cb_fun);
+    tkl_i2c_irq_enable(TUYA_I2C_NUM_0);
 
-    ret = tkl_i2c_irq_enable(I2C_NUM_0);
-    if (ret != OPRT_OK) {
-        //fail
-        return;
-    }
-
-    ret = tkl_i2c_master_send(I2C_NUM_0, 0x57, send_buf, sizeof(send_buf), 0);
-    if (ret < 0) {
-        //failed
-    }
+    tkl_i2c_master_send(TUYA_I2C_NUM_0, 0x57, send_buf, sizeof(send_buf), FALSE);
     while (cb_transfer_flag == 0xff);
-
-    //check transfer result
-    if (cb_transfer_flag == IIC_EVENT_TRANSFER_DONE) {
-        //transmit done
-    } else {
-        //failed
-    }
     cb_transfer_flag = 0xff;
 
-    ret = tkl_i2c_master_receive(I2C_NUM_0, 0x57, rcv_buf, sizeof(rcv_buf), 0);
-    if (ret < 0) {
-        //failed
-    }
-
+    tkl_i2c_master_receive(TUYA_I2C_NUM_0, 0x57, rcv_buf, sizeof(rcv_buf), FALSE);
     while (cb_transfer_flag == 0xff);
 
-    //check transfer result
-    if (cb_transfer_flag == IIC_EVENT_TRANSFER_DONE) {
-        //transmit done
-    } else {
-        //failed
-    }
-
-    ret = tkl_i2c_irq_disable(I2C_NUM_0);
-    if (ret != OPRT_OK) {
-        //fail
-        return;
-    }
-    //uninitialize iic
-    ret = tkl_i2c_deinit(I2C_NUM_0);
-    if (ret != 0) {
-       //failed
-    }
+    tkl_i2c_irq_disable(TUYA_I2C_NUM_0);
+    tkl_i2c_deinit(TUYA_I2C_NUM_0);
 }
 ```
 
-### Example 2: I2C Slave Example
+Slave mode, polling the status to wait for completion:
 
 ```c
 void tuya_i2c_slave_test(void)
@@ -365,11 +342,9 @@ void tuya_i2c_slave_test(void)
     OPERATE_RET ret;
     TUYA_IIC_BASE_CFG_T cfg;
     TUYA_IIC_STATUS_T st;
-    //receive buffer
     char rcv_buf[10];
-    //data to send
     char send_buf[10] = {0,1,2,3,4,5,6,7,8,9};
-    int32_t cnt = 100;
+    int32_t cnt;
 
     tkl_io_pinmux_config(TUYA_IO_PIN_0, TUYA_IIC0_SCL);
     tkl_io_pinmux_config(TUYA_IO_PIN_1, TUYA_IIC0_SDA);
@@ -378,57 +353,37 @@ void tuya_i2c_slave_test(void)
     cfg.speed = TUYA_IIC_BUS_SPEED_100K;
     cfg.addr_width = TUYA_IIC_ADDRESS_7BIT;
 
-    ret = tkl_i2c_init(I2C_NUM_0, &cfg);
+    ret = tkl_i2c_init(TUYA_I2C_NUM_0, &cfg);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
 
-    ret = tkl_i2c_set_slave_addr(I2C_NUM_0, 0x57);
-    if (ret != OPRT_OK) {
-        //fail
-        return;
-    }
+    tkl_i2c_set_slave_addr(TUYA_I2C_NUM_0, 0x57);
 
-    ret = tkl_i2c_slave_send(I2C_NUM_0, send_buf, sizeof(send_buf));
-    if (ret < 0) {
-        //failed
-    }
-    //wait send done, waiting for 100 ms max
-    st.busy = 1;
+    tkl_i2c_slave_send(TUYA_I2C_NUM_0, send_buf, sizeof(send_buf));
     cnt = 100;
-    while(cnt--) {
+    while (cnt--) {
         tkl_system_sleep(1);
-        //check status
-        st = tkl_i2c_get_status(I2C_NUM_0);
-        //transmit done
-        if (st.busy == 0){
+        tkl_i2c_get_status(TUYA_I2C_NUM_0, &st);
+        if (st.busy == 0) {
             break;
         }
     }
 
-    ret = tkl_i2c_slave_receive(I2C_NUM_0, rcv_buf, sizeof(rcv_buf));
-    if (ret < 0) {
-        //failed
-    }
-    //wait send done, waiting for 100 ms max
-    st.busy = 1;
+    tkl_i2c_slave_receive(TUYA_I2C_NUM_0, rcv_buf, sizeof(rcv_buf));
     cnt = 100;
-    while(cnt--) {
+    while (cnt--) {
         tkl_system_sleep(1);
-        //check status
-        st = tkl_i2c_get_status(I2C_NUM_0);
-        //transmit done
-        if (st.busy == 0){
+        tkl_i2c_get_status(TUYA_I2C_NUM_0, &st);
+        if (st.busy == 0) {
             break;
         }
     }
 
-    //uninitialize iic
-    ret = tkl_i2c_deinit(I2C_NUM_0);
-    if (ret != 0) {
-       //failed
-    }
-
+    tkl_i2c_deinit(TUYA_I2C_NUM_0);
 }
 ```
+
+## See also
+
+- [I2C Peripheral Guide](../peripheral/tutorials/i2c-guide)

@@ -1,19 +1,20 @@
-# 树莓派 5 GPIO 参考手册
-
-## 1. 详细引脚功能分布图
-
-![Raspberry Pi GPIO Detailed Pinout](https://images.tuyacn.com/fe-static/docs/img/4154ba76-67b8-4330-a824-585c7467e30d.png)
-
-**图片来源**：[Random Nerd Tutorials](https://randomnerdtutorials.com/raspberry-pi-pinout-gpios/)  
-**授权协议**：基于 [Raspberry Pi Ltd](https://www.raspberrypi.com/) 官方资料，[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)  
-**适用型号**：树莓派 4B/5 等 40Pin 型号
-
+---
+title: "Raspberry Pi 5 GPIO 参考手册"
 ---
 
-## 2. 树莓派 5 GPIO 功能复用表
+查阅 Raspberry Pi 5 的 40 引脚接头分布与 RP1 功能复用表。在为 TuyaOpen 外设示例接线时，用它来确定哪个 GPIO 引脚承载所需的 SPI、I2C、PWM、UART 或音频信号。
 
-**芯片型号**：RP1（Raspberry Pi 5 专用 I/O 控制器）  
-**设计说明**：功能块及其在 GPIO 引脚上的位置经过精心设计，可与 Raspberry Pi 4 B 型的 40 引脚接头上面向用户的功能相匹配
+## 引脚分布图
+
+![Raspberry Pi 40 引脚 GPIO 接头分布图，标注每个引脚的电源、地与信号功能](https://images.tuyacn.com/fe-static/docs/img/4154ba76-67b8-4330-a824-585c7467e30d.png)
+
+- **图片来源**：[Random Nerd Tutorials](https://randomnerdtutorials.com/raspberry-pi-pinout-gpios/)
+- **授权协议**：基于 [Raspberry Pi Ltd](https://www.raspberrypi.com/) 官方资料，遵循 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **适用型号**：Raspberry Pi 4B、5 等 40 引脚型号
+
+## RP1 功能复用表
+
+RP1 是 Raspberry Pi 5 专用 I/O 控制器。其功能块及在 GPIO 引脚上的位置经过精心设计，可与 Raspberry Pi 4 B 型 40 引脚接头上面向用户的功能相匹配。
 
 | GPIO | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 |
 |:----:|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -46,9 +47,10 @@
 | 26 | SDIO0_DAT[2] | DPI_D[22] | I2S0_SDI[3] | AUDIO_IN_DAT0 | I2S1_SDI[3] | SYS_RIO[26] | PROC_RIO[26] | PIO[26] | SPI5_CSn[1] |
 | 27 | SDIO0_DAT[3] | DPI_D[23] | I2S0_SDO[3] | AUDIO_IN_DAT1 | I2S1_SDO[3] | SYS_RIO[27] | PROC_RIO[27] | PIO[27] | SPI1_CSn[1] |
 
----
+:::note
+在 Linux 侧，`TUYA_GPIO_NUM_E` 按 gpiochip 的 line offset 使用。在树莓派上它通常与本表中的 BCM GPIO 编号一致，但不同发行版或内核配置可能存在差异，建议用 `gpioinfo` 或 `pinctrl` 核对。
+:::
 
-## 许可证声明
+## 相关文档
 
-本文档引用的树莓派硬件资料遵循 **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** 协议。
-
+- [Raspberry Pi 外设](/zh/docs/hardware/Linux/raspberry-pi/Examples/peripherals-raspberry-pi) — 运行使用这些引脚的 GPIO、I2C、SPI、PWM、UART 示例。

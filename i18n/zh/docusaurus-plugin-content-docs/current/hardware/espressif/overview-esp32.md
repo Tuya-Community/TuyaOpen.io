@@ -2,23 +2,21 @@
 title: "ESP32 与 TuyaOpen -- 概述"
 ---
 
-# ESP32 与 TuyaOpen
-
-TuyaOpen 全面支持 Espressif ESP32 系列芯片，你可以使用与 Tuya T 系列、Linux 及其他支持平台相同的 TuyaOpen SDK 和 API，在 ESP32 硬件上构建物联网和 AI 应用。
+TuyaOpen 在 ESP-IDF 之上运行 Espressif ESP32 系列芯片，你可以使用与 Tuya T 系列、Linux 及其他支持平台相同的 TuyaOpen SDK 和 API，在 ESP32 硬件上构建物联网和 AI 应用。
 
 ## 为什么在 ESP32 上使用 TuyaOpen
 
-如果你是现有的 ESP32 开发者，TuyaOpen 为你提供：
+如果你已经在 ESP32 上开发，TuyaOpen 为你提供：
 
-- **Tuya Cloud 集成** -- 开箱即用的设备激活、远程控制、OTA 和数据点 (DP)，无需自行编写云端协议栈。
-- **跨平台可移植性** -- 使用 TuyaOpen 的 TAL/TKL 抽象编写一次应用代码，同一逻辑可运行在 T5AI、T2、T3、Raspberry Pi 和 ESP32 上，无需重写。
-- **AI 能力** -- 通过统一 AI SDK 访问 Tuya AI Agent、语音交互 (ASR/TTS/KWS) 和 LLM 服务。
-- **产品化路径** -- 从原型到量产：设备授权、授权码管理、OTA 固件更新和 Tuya Smart App 配网均已内置。
-- **外设驱动库** -- 可复用的显示、音频编解码器、按键、LED 和传感器驱动，支持板级配置。
+- **Tuya Cloud 集成**：开箱即用的设备激活、远程控制、OTA 和数据点 (DP)，无需自行编写云端协议栈。
+- **跨平台可移植性**：针对 TuyaOpen 的 TAL/TKL 抽象编写一次应用代码，同一逻辑即可运行在 T5AI、T2、T3、Raspberry Pi 和 ESP32 上，无需重写。
+- **AI 能力**：通过统一 AI SDK 访问 Tuya AI Agent、语音交互 (ASR/TTS/KWS) 和 LLM 服务。
+- **产品化路径**：从原型到量产，设备授权、授权码管理、OTA 固件更新和 Tuya Smart App 配网均已内置。
+- **外设驱动库**：可复用的显示、音频编解码器、按键、LED 和传感器驱动，支持板级配置。
 
 ## 与 ESP-IDF 的关系
 
-TuyaOpen 在 ESP32 上**构建于 ESP-IDF 之上**，而非替代它：
+TuyaOpen 在 ESP32 上构建于 ESP-IDF 之上，而非替代它。各层的关系如下：
 
 ```mermaid
 flowchart TD
@@ -58,13 +56,13 @@ flowchart TD
 
 ## 下一步
 
-- [ESP32 快速开始](esp32-quick-start) -- 在 ESP32 上构建和烧录你的第一个 TuyaOpen 项目
-- [ESP32 支持功能](esp32-supported-features) -- 各芯片型号的详细功能矩阵
-- [ESP32 引脚映射](esp32-pin-mapping) -- 各开发板的 GPIO、UART、I2C、SPI、PWM 引脚分配
-- [ESP32 适配新开发板](esp32-new-board) -- 为自定义硬件创建 BSP
-- [ESP32 OTA 固件升级](esp32-ota) -- OTA 固件升级
+- [ESP32 快速开始](esp32-quick-start)：在 ESP32 上构建和烧录你的第一个 TuyaOpen 项目。
+- [ESP32 支持功能](esp32-supported-features)：各芯片型号的功能矩阵。
+- [ESP32 引脚映射](esp32-pin-mapping)：各开发板的 GPIO、UART、I2C、SPI、PWM 引脚分配。
+- [ESP32 适配新开发板](esp32-new-board)：为自定义硬件创建 BSP。
+- [ESP32 OTA 固件升级](esp32-ota)：OTA 固件升级。
 
-## 参考资料
+## 相关文档
 
 - [Espressif ESP32 数据手册](https://www.espressif.com.cn/sites/default/files/documentation/esp32_datasheet_en.pdf)
 - [TuyaOpen-esp32 GitHub 仓库](https://github.com/tuya/TuyaOpen-esp32)

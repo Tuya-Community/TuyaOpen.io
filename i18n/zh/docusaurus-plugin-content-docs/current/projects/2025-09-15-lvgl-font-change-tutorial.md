@@ -44,7 +44,7 @@ date: 2025-09-19
     lv_style_set_text_font(&my_style, LV_STATE_DEFAULT, &FONT_SY_20); /* 设置较大的字体 */
     ```
 
-    :::important
+    :::note
     字体名称并不是字体文件的名称，而是字体文件中的 `const lv_font_t` 设置的名称，如下图所示。因此修改字体文件的文件名，无法同步更改字体名称。
     ![image (16).png](https://images.tuyacn.com/content-platform/hestia/1757325619f8878716df2.png)
     :::

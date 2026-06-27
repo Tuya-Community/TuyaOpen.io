@@ -5,7 +5,6 @@ date: 2025-9-28
 
 <BackToProjects />
 
-
 # 🌈 LED Pixel Matrix Magic: Creating Stunning Visual Effects with TuyaOpen
 
 *This is series part-1 of lighting up a single-wire LED matrix. In future posts, we'll show how to turn this into a full IoT project!*
@@ -64,7 +63,7 @@ By the end of this tutorial, you'll have created:
 
 This demo is designed for the **T5AI-Core** development board, but all T5 Series boards are compatible. Choose the board that best fits your project needs:
 
-#### **T5AI-Core** (Recommended for this project)
+#### T5AI-Core (Recommended for this project)
 - **Compact Design**: Small form factor, perfect for breadboard prototyping
 - **44-Pin Header**: Easy connection to LED matrices and other peripherals
 - **Battery Management**: Built-in lithium battery support
@@ -73,7 +72,7 @@ This demo is designed for the **T5AI-Core** development board, but all T5 Series
 
 **📚 Hardware Documentation**: [T5AI-Core Overview](https://tuyaopen.ai/zh/docs/hardware/t5-ai-core/overview-t5-ai-core)
 
-#### **T5AI-Board** (Full-featured option)
+#### T5AI-Board (Full-featured option)
 - **Complete DevKit**: Full development board with all features
 - **Optional LCD Screen**: 3.5" touchscreen support
 - **Camera Module**: DVP camera interface
@@ -156,9 +155,6 @@ The LED matrix demo includes multiple stunning animation effects. Here are two k
 ```c
 static void __breathing_color_effect(void)
 {
-
-static void __breathing_color_effect(void)
-{
     OPERATE_RET rt = OPRT_OK;
     PIXEL_COLOR_T current_color = {0};
     uint32_t step = 20;
@@ -211,7 +207,6 @@ __ERROR:
     PR_ERR("breathing color effect error");
     return;
 }
-}
 ```
 
 **What it does:**
@@ -229,8 +224,6 @@ __ERROR:
 
 ### 2. **2D Wave Effect**
 ```c
-static void __2d_wave_effect(void)
-{
 static void __2d_wave_effect(void)
 {
     OPERATE_RET rt = OPRT_OK;
@@ -348,10 +341,9 @@ static void __2d_wave_effect(void)
     TUYA_CALL_ERR_GOTO(tdl_pixel_dev_refresh(sg_pixels_handle), __ERROR);
     // tal_system_sleep(30); // Removed - main loop controls timing // Faster refresh for smoother transitions
 
-__ERROR:Required Tools
+__ERROR:
     PR_ERR("2D wave effect error");
     return;
-}
 }
 ```
 
@@ -504,7 +496,7 @@ tos.py version
 tos.py check
 ```
 
-# Project Compilation
+## Project Compilation
 
 **📚 Compilation Guide**: [TuyaOpen Project Compilation](https://www.tuyaopen.ai/zh/docs/quick-start/project-compilation)
 
@@ -614,7 +606,7 @@ static void __custom_effect(void)
 
 ---
 
-# 🌟 Project Extensions - What to Build Next?
+## 🌟 Project Extensions - What to Build Next?
 
 ### IoT Integration
 - **Tuya Cloud**: Connect to Tuya IoT platform

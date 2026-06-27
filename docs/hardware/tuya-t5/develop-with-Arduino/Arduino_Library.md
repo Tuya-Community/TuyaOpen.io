@@ -1,32 +1,34 @@
-# Arduino Ecosystem Library Adaptation
+---
+title: Arduino Ecosystem Library Adaptation
+---
 
-Arduino offers an extremely rich collection of extension libraries, allowing everyone to quickly bring their ideas to life with the help of these libraries. This example demonstrates how to adapt Arduino extension libraries for the TUYA-T5AI series development boards.
+The Arduino ecosystem offers a rich collection of extension libraries. This guide shows you how to adapt an Arduino extension library for the TUYA-T5AI series development boards, using the TFT_eSPI display library as the worked example.
 
-## Display Library: TFT_eSPI
+## Display library: TFT_eSPI
 
-The TFT_eSPI library is an Arduino library for driving LCD screens via SPI. It provides a rich set of APIs for controlling screen display, including initialization, text rendering, and graphics drawing. The TFT_eSPI library has now been adapted, enabling developers to easily use it for screen display development on TUYA-T5AI series development boards.
+The `TFT_eSPI` library is an Arduino library that drives LCD screens over SPI. It provides a rich set of APIs for controlling the display, including initialization, text rendering, and graphics drawing. `TFT_eSPI` is now adapted for the TUYA-T5AI series, so you can use it for screen display development on these boards.
 
-### Adding the Library
+### Add the library
 
-1. Download the repository: [TFT_eSPI Repository](https://github.com/maidang-xing/TFT_eSPI)
-   
-2. Copy the repository to the Arduino library directory. The directory location can be found via `Arduino IDE` -> `File` -> `Preferences` -> `Sketchbook location`.
-   
-3. Restart Arduino IDE, open the example `File > Examples > TFT_eSPI > Generic > Gradient_Fill`, select the corresponding board model, then compile and upload.
+1. Download the repository: [TFT_eSPI repository](https://github.com/maidang-xing/TFT_eSPI).
 
-#### Hardware Information
+2. Copy the repository into the Arduino library directory. Find its location via **Arduino IDE** -> **File** -> **Preferences** -> **Sketchbook location**.
+
+3. Restart the Arduino IDE, open the example `File > Examples > TFT_eSPI > Generic > Gradient_Fill`, select the matching board model, then compile and upload.
+
+#### Hardware information
 
 | Item | Parameter |
 | ---- | --------- |
-| Development Board | TUYA T5AI Series |
+| Development board | TUYA T5AI Series |
 | Display | 1.54-inch TFT LCD |
 | Driver IC | ST7789 |
 | Resolution | 240 × 240 |
 | Interface | SPI |
-| Pixel Format | RGB565 |
-| Platform Macro | `ARDUINO_TUYA_T5AI_CORE` `ARDUINO_TUYA_T5AI_BOARD` |
+| Pixel format | RGB565 |
+| Platform macro | `ARDUINO_TUYA_T5AI_CORE` `ARDUINO_TUYA_T5AI_BOARD` |
 
-**LCD Pin Definitions:**
+**LCD pin definitions:**
 
 | Function | GPIO | Description |
 | -------- | ---- | ----------- |
@@ -38,16 +40,16 @@ The TFT_eSPI library is an Arduino library for driving LCD screens via SPI. It p
 | RST | 6 | Screen reset |
 | BL | 5 | Backlight control (active HIGH) |
 
-> LCD screen driver, screen size, device pin mapping, font, and other configuration details are defined in the `User_Setups/Setup_TUYA_T5AI_ST7789.h` file. Developers can also modify this file to adapt to their specific requirements.
+:::note
+The LCD driver, screen size, device pin mapping, font, and other configuration details are defined in `User_Setups/Setup_TUYA_T5AI_ST7789.h`. Modify this file to adapt the library to your own requirements.
+:::
 
-#### Compile and Verify
+#### Compile and verify
 
 In the Arduino IDE:
 
-1. Select the board: **TUYA-T5AI Series**, and connect the hardware correctly.
-2. Open any TFT_eSPI example (e.g., `File > Examples > TFT_eSPI > Generic > Gradient_Fill`)
-3. Click **Verify/Compile**
-4. Confirm successful compilation (no errors; warnings can be ignored)
-5. Click Upload to flash the firmware
-
----
+1. Select the board **TUYA-T5AI Series** and connect the hardware correctly.
+2. Open any TFT_eSPI example (for example, `File > Examples > TFT_eSPI > Generic > Gradient_Fill`).
+3. Click **Verify/Compile**.
+4. Confirm the build succeeds (no errors; warnings can be ignored).
+5. Click **Upload** to flash the firmware.

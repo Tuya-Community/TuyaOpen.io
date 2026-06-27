@@ -2,8 +2,6 @@
 title: "ESP32-C6 外设映射"
 ---
 
-# ESP32-C6 外设映射
-
 本文说明 ESP32-C6（单核 RISC-V，Wi-Fi 6，Thread/Zigbee）片上外设与 TuyaOpen TKL 层软件端口的映射关系。
 
 ## GPIO

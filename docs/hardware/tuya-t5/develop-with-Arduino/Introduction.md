@@ -1,55 +1,56 @@
-# Overview
+---
+title: Overview
+---
 
-[Arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen/tree/main) is an open-source development framework provided by Tuya for the Arduino platform, enabling Arduino enthusiasts to rapidly develop AIoT smart devices based on the Tuya Cloud platform with remote AI-powered control.
+[Arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen/tree/main) is an open-source development framework that lets you build AIoT smart devices on the Arduino platform, backed by the Tuya Cloud and remote AI-powered control.
 
-Arduino-TuyaOpen is built on top of the [TuyaOpen](https://github.com/tuya/TuyaOpen) framework, offering a simplified set of Arduino-style APIs for faster development. Designed around the Arduino common interface standard, it supports communication protocols such as Bluetooth, Wi-Fi, and Ethernet, and provides core IoT development capabilities including network provisioning, activation, control, and OTA upgrades. It features robust security and compliance capabilities — including device authentication, data encryption, and communication encryption — to meet data compliance requirements across countries and regions worldwide.
+Arduino-TuyaOpen is built on top of the [TuyaOpen](https://github.com/tuya/TuyaOpen) framework and exposes a simplified set of Arduino-style APIs for faster development. Designed around the Arduino common interface standard, it supports communication protocols such as Bluetooth, Wi-Fi, and Ethernet, and provides core IoT capabilities including network provisioning, activation, control, and OTA upgrades. It carries the security and compliance features — device authentication, data encryption, and communication encryption — needed to meet data compliance requirements across countries and regions worldwide.
 
-AIoT products developed on TuyaOpen can leverage the powerful ecosystem capabilities provided by the Tuya App and cloud services, and interoperate with all Power By Tuya devices.
+AIoT products developed on TuyaOpen leverage the ecosystem capabilities of the Tuya App and cloud services, and interoperate with all Powered by Tuya devices.
 
-TuyaOpen is continuously expanding with more cloud platform integrations, voice, video, and AI Agent features. Arduino-TuyaOpen will be updated in sync to support these new capabilities.
+TuyaOpen continues to expand with more cloud platform integrations, voice, video, and AI Agent features. Arduino-TuyaOpen is updated in sync to support these new capabilities.
 
-## T5 + Arduino Supported Features
+## T5 and Arduino supported features
 
-### Arduino Standard Interface
+### Arduino standard interface
 
-Develop with T5 using familiar Arduino APIs:
+Develop on T5 using familiar Arduino APIs:
 
-- **Digital I/O**: `pinMode()`, `digitalWrite()`, `digitalRead()` - Control LEDs, relays, read button states
-- **Analog Input**: `analogRead()` - Read sensor values (temperature, humidity, light, potentiometers, etc.), 12-bit resolution
-- **PWM Output**: `analogWrite()` - Control motor speed, LED brightness, servo angles
-- **Serial Communication**: `Serial`, `Serial1`, `Serial2` - Communicate with external modules (GPS, fingerprint, sensors)
-- **I2C Bus**: `Wire` - Connect OLED displays, sensor modules
-- **SPI Bus**: `SPI` - Connect SD cards, high-speed sensors
+- **Digital I/O**: `pinMode()`, `digitalWrite()`, `digitalRead()` — control LEDs and relays, read button states.
+- **Analog input**: `analogRead()` — read sensor values (temperature, humidity, light, potentiometers, and more) at 12-bit resolution.
+- **PWM output**: `analogWrite()` — control motor speed, LED brightness, and servo angles.
+- **Serial communication**: `Serial`, `Serial1`, `Serial2` — communicate with external modules (GPS, fingerprint, sensors).
+- **I2C bus**: `Wire` — connect OLED displays and sensor modules.
+- **SPI bus**: `SPI` — connect SD cards and high-speed sensors.
 
-### Wireless Connectivity
+### Wireless connectivity
 
-- **Wi-Fi Connection**: Supports AP provisioning and Bluetooth provisioning, connects to Tuya Cloud for remote control
-- **Bluetooth BLE**: Communicate with mobile apps for local control and data transmission
-- **OTA Upgrade**: Remotely upgrade firmware via cloud, facilitating product iterations
+- **Wi-Fi connection**: supports AP provisioning and Bluetooth provisioning, and connects to the Tuya Cloud for remote control.
+- **Bluetooth BLE**: communicates with mobile apps for local control and data transmission.
+- **OTA upgrade**: upgrades firmware remotely via the cloud, easing product iteration.
 
-### Tuya Cloud Services
+### Tuya Cloud services
 
-- **Device Activation**: Quickly connect to Tuya Cloud for device management capabilities
-- **DP Data Points**: Use standardized data point models for seamless interaction with Tuya App
-- **Remote Control**: Control devices anytime, anywhere via Tuya App
-- **Scene Linkage**: Link with other Power By Tuya devices to build smart home scenarios
+- **Device activation**: connect to the Tuya Cloud for device management capabilities.
+- **DP data points**: use the standardized data point model for seamless interaction with the Tuya App.
+- **Remote control**: control devices anytime, anywhere via the Tuya App.
+- **Scene linkage**: link with other Powered by Tuya devices to build smart home scenarios.
 
-### AI Intelligence Capabilities
+### AI intelligence capabilities
 
-- **Automatic Speech Recognition (ASR)**: Offline/online speech recognition for voice control
-- **Text-to-Speech (TTS)**: Text-to-speech announcements for voice feedback
-- **Keyword Wake-up (KWS)**: Support custom wake words
-- **AI Dialogue**: Integrate with Large Language Models (Deepseek, ChatGPT, etc.) to build AI assistants
+- **Automatic Speech Recognition (ASR)**: offline and online speech recognition for voice control.
+- **Text-to-Speech (TTS)**: text-to-speech announcements for voice feedback.
+- **Keyword wake-up (KWS)**: support for custom wake words.
+- **AI dialogue**: integrate with large language models (Deepseek, ChatGPT, and others) to build AI assistants.
 
-### Application Scenarios
+### Application scenarios
 
-**Smart Sensor Node**: Use `analogRead()` to read temperature and humidity sensors, upload data to Tuya Cloud via Wi-Fi, view historical charts and receive abnormal alerts in the App.
+- **Smart sensor node**: read temperature and humidity sensors with `analogRead()`, upload the data to the Tuya Cloud over Wi-Fi, then view historical charts and receive alerts in the App.
+- **Smart switch / light control**: drive relays with `digitalWrite()` or adjust PWM dimming with `analogWrite()`, then switch remotely, schedule control, and link scenes through the Tuya App.
+- **Voice interactive device**: combine T5's voice capabilities to build voice control panels and AI speakers — wake by voice, recognize commands, and execute actions.
+- **Display products**: drive displays (OLED, TFT) over SPI or I2C to show sensor data, weather, and device status in real time.
+- **Motor control**: use PWM to drive DC and stepper motors for smart curtains, fans, robots, and similar products.
 
-**Smart Switch/Light Control**: Use `digitalWrite()` to control relays or `analogWrite()` to adjust PWM dimming, remotely switch via Tuya App, schedule control, and scene linkage.
+## See also
 
-**Voice Interactive Device**: Combine T5's voice capabilities to develop voice control panels and AI speakers - wake up by voice, recognize commands, and execute actions.
-
-**Display Products**: Drive displays (OLED, TFT) via SPI/I2C to show sensor data, weather information, device status, etc. in real-time.
-
-**Motor Control**: Use PWM to control DC motors and stepper motors, develop smart curtains, fans, robots, and other products.
-
+- [Quick Start](Quick_start.md) — install the Arduino IDE and flash your first example.

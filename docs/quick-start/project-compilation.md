@@ -2,23 +2,21 @@
 title: "Step 1: Build Project"
 ---
 
-# Build Project
+Build Project takes a TuyaOpen application from source to a flashable firmware bin. You select a project, pick a board config, build, and clean — all with `tos.py`. This page uses the `switch_demo` application as the example.
 
-## Select project
+## Select a project
 
-In TuyaOpen, you can choose compilable projects from the `apps` and `examples` directories.
+In TuyaOpen, you build projects from the `apps` and `examples` directories.
 
-Take `switch_demo` as an example. Go to the project directory.
+Using `switch_demo` as the example, enter the project directory.
 
 ```bash
 cd apps/tuya_cloud/switch_demo
 ```
 
-## Configure project
+## Configure the project
 
-Run the `tos.py config choice` command to configure the project.
-
-This command provides verified configuration options, allowing you to select them based on your hardware device.
+Run `tos.py config choice` to configure the project. The command lists verified configuration options; select the one that matches your hardware.
 
 ```bash
 ❯ tos.py config choice
@@ -40,11 +38,11 @@ Input "q" to exit.
 Choice config file:
 ```
 
-Taking the Tuya T5 series development board as an example, you need to select `T5AI.config`.
+For a Tuya T5 series development board, for example, select `T5AI.config`.
 
-## Build output
+## Build the output
 
-Build the project using the command `tos.py build`.
+Build the project with `tos.py build`.
 
 ```bash
 ❯ tos.py build
@@ -57,9 +55,11 @@ Build the project using the command `tos.py build`.
 
 ```
 
-## Clear output
+On success, the firmware bin path is printed and the build ends with `Build Success`. You flash this bin in [Step 2: Flashing and Logging](./firmware-burning.md).
 
-To clear the build cache, run the command `tos.py clean` (standard cleanup) or `tos.py clean -f` (force deep cleanup).
+## Clear the output
+
+To clear the build cache, run `tos.py clean` for a standard cleanup or `tos.py clean -f` for a forced deep cleanup.
 
 ```bash
 ❯ tos.py clean -f
@@ -67,13 +67,13 @@ To clear the build cache, run the command `tos.py clean` (standard cleanup) or `
 [INFO]: Fullclean success.
 ```
 
-## FAQ
+## FAQs
 
-### Slow compilation on Windows
+### Compilation is slow on Windows
 
-Symptom: Each file may take up to 3 seconds to compile, and sometimes the process gets stuck on a file.
+Symptom: each file can take up to 3 seconds to compile, and the process sometimes stalls on a file.
 
 Solution:
 
-1. Open Task Manager with `Ctrl + Shift + Esc`, check CPU processes, find and close the `MSPCManagerService` process.
-2. If the above does not work, move the entire `TuyaOpen` directory to a non-system drive (e.g., D drive), and add the directory to the exclusion list in `Windows Security - Virus & threat protection` settings.
+1. Open Task Manager with `Ctrl + Shift + Esc`, check the CPU processes, then find and close the `MSPCManagerService` process.
+2. If that does not help, move the entire `TuyaOpen` directory to a non-system drive (for example, the D drive), and add the directory to the exclusion list under **Windows Security - Virus & threat protection**.

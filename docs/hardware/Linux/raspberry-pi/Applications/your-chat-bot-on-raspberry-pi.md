@@ -1,107 +1,116 @@
 ---
-title: "Running your_chat_bot on Raspberry Pi"
+title: "Run your_chat_bot on Raspberry Pi"
 ---
 
-This document describes how to run the [your_chat_bot](https://tuyaopen.ai/docs/cloud/device-ai/demo-your-chat-bot) project from tuyaopen on a Raspberry Pi.
+Run the TuyaOpen [your_chat_bot](https://tuyaopen.ai/docs/cloud/device-ai/demo-your-chat-bot) voice assistant on a Raspberry Pi. This guide covers the two supported build methods, the external sound card the board needs, and how to point the firmware at the wake-word model.
 
 ## Prerequisites
 
-Read the [Quick Start](https://tuyaopen.ai/docs/quick-start) and its sub-sections to understand:
+Read the [Quick Start](https://tuyaopen.ai/docs/quick-start) and its sub-sections first:
 
-- How to set up the [TuyaOpen development environment](https://tuyaopen.ai/docs/quick-start/enviroment-setup)
-- How to obtain a [TuyaOpen authorization code](https://tuyaopen.ai/docs/quick-start/equipment-authorization); using the header-file method is recommended
-- How to perform [device network configuration](https://tuyaopen.ai/docs/quick-start/device-network-configuration)
+- Set up the [TuyaOpen development environment](https://tuyaopen.ai/docs/quick-start/enviroment-setup).
+- Obtain a [TuyaOpen authorization code](https://tuyaopen.ai/docs/quick-start/equipment-authorization). The header-file method is recommended.
+- Understand [device network configuration](https://tuyaopen.ai/docs/quick-start/device-network-configuration).
 
-## Build Methods
+:::note
+`your_chat_bot` is a cloud-paired AI application. You need a valid authorization code (授权码) before the device can connect and respond.
+:::
 
-On tuyaopen, Raspberry Pi supports two build methods:
+## Build methods
 
-- **Cross-compilation**: Build on a PC, then transfer and run on the Raspberry Pi
-- **Native build**: Build directly on the Raspberry Pi
+Raspberry Pi supports two build methods:
 
-> **Note**: Cross-compilation is not supported on macOS. Use Linux or build directly on the board.
+- **Cross-compilation**: build on a PC, then transfer the binary to the Raspberry Pi and run it.
+- **Native build**: build directly on the Raspberry Pi.
 
-## External Sound Card
+:::note
+Cross-compilation is not supported on macOS. Use Linux, or build directly on the board.
+:::
 
-The Raspberry Pi does not have a built-in microphone or speaker by default, so an external USB sound card is required. The following models are recommended:
+## External sound card
 
-- **USB Audio Module YD1076**, [Taobao link](https://e.tb.cn/h.77Vo2K5tJIaL86g?tk=lnBAUbwVNB9)
-- **Waveshare USB Sound Card**, [link](https://www.waveshare.com/wiki/USB_TO_AUDIO?srsltid=AfmBOoqQpLSG-qO8REhn6lDsAIOOjskHyjkyJv0_4BKBo3_vqFqoTisL)
+The Raspberry Pi has no built-in microphone or speaker, so an external USB sound card is required. Recommended models:
 
-You may also choose other compatible USB sound cards. Note that the microphone should support outputting raw audio data and should not include built-in noise reduction, echo cancellation, or similar processing.
+- **USB Audio Module YD1076** — [Taobao link](https://e.tb.cn/h.77Vo2K5tJIaL86g?tk=lnBAUbwVNB9)
+- **Waveshare USB Sound Card** — [link](https://www.waveshare.com/wiki/USB_TO_AUDIO?srsltid=AfmBOoqQpLSG-qO8REhn6lDsAIOOjskHyjkyJv0_4BKBo3_vqFqoTisL)
 
-## Model Path Configuration
+Other compatible USB sound cards also work. The microphone must output raw audio data — it must not apply built-in noise reduction, echo cancellation, or similar processing.
 
-### Obtaining the Wake Word Model
+## Configure the wake-word model
 
-The KWS (Keyword Spotting) wake word model can be obtained in two ways:
+The KWS (Keyword Spotting) wake-word model lets the device recognize the wake word. Obtain the model files, then point the firmware at them.
+
+### Obtain the model files
 
 **Option 1: Automatic download**
 
-After selecting the Raspberry Pi platform and building successfully, the model is automatically downloaded to `platform/LINUX/tuyaos_adapter/src/tkl_audio/models`.
+After you select the Raspberry Pi platform and build successfully, the model is downloaded automatically to `platform/LINUX/tuyaos_adapter/src/tkl_audio/models`.
 
 **Option 2: Manual download**
 
-Use the following commands to download `mdtc_chunk_300ms.mnn` and `tokens.txt` to the `~/tuyaopen_models` directory:
+Download `mdtc_chunk_300ms.mnn` and `tokens.txt` to the `~/tuyaopen_models` directory:
 
 ```bash
 wget -P ~/tuyaopen_models https://github.com/tuya/TuyaOpen-ubuntu/raw/platform_ubuntu/tuyaos_adapter/src/tkl_audio/models/mdtc_chunk_300ms.mnn
 wget -P ~/tuyaopen_models https://github.com/tuya/TuyaOpen-ubuntu/raw/platform_ubuntu/tuyaos_adapter/src/tkl_audio/models/tokens.txt
 ```
 
-The default path in the code is `~/tuyaopen_models`. If you need to change it, follow the steps below.
+The default path in the code is `~/tuyaopen_models`. To use a different path, configure it as shown below.
 
-### Configuring the Wake Word Model
+### Set the model path
 
-After obtaining the model, configure the path as follows:
-
-1. Activate the tos.py environment and go to the `apps/tuya.ai/your_chat_bot` directory
-2. Run `tos.py config choice` and select the `RaspberryPi.config` configuration
-3. Run `tos.py config menu` and navigate: `(Top) → Choice a board → LINUX → TKL Board Configuration`
-4. According to the actual location of `mdtc_chunk_300ms.mnn` and `tokens.txt`, set the following options:
+1. Activate the `tos.py` environment and go to the `apps/tuya.ai/your_chat_bot` directory.
+2. Run `tos.py config choice` and select the `RaspberryPi.config` configuration.
+3. Run `tos.py config menu` and navigate to `(Top) → Choice a board → LINUX → TKL Board Configuration`.
+4. Set the following options to the actual locations of `mdtc_chunk_300ms.mnn` and `tokens.txt`:
    - `KWS model file path`
    - `KWS model token file path`
 
-> **Note**: Ensure that the model files are placed in the Raspberry Pi filesystem and that the paths are configured correctly; otherwise, the wake word feature will not work.
+:::warning
+Place the model files on the Raspberry Pi filesystem and set the paths correctly. Otherwise the wake-word feature does not work.
+:::
 
-### Configuration Example
+### Configuration example
 
-For example, when the model files are stored in `~/tuyaopen_models`, the paths can be configured as follows:
+When the model files are stored in `~/tuyaopen_models`, configure the paths like this:
 
-![models_path_config](https://images.tuyacn.com/fe-static/docs/img/4e3897a7-6d32-40e2-b2bd-6d2a6497076e.png)
+![Example KWS model path configuration in the TKL Board Configuration menu](https://images.tuyacn.com/fe-static/docs/img/4e3897a7-6d32-40e2-b2bd-6d2a6497076e.png)
 
-> **Important**: The paths must be correct, or the voice wake word feature will not work.
+## Transfer the binary (cross-compilation only)
 
-## Additional Notes
-
-### Transferring Files When Using Cross-Compilation
-
-If you are using cross-compilation, you can use the `scp` command to copy the built executable from the build host to the Raspberry Pi. For example:
+If you cross-compile on a PC, copy the built executable to the Raspberry Pi with `scp`:
 
 ```bash
 scp ./dist/your_chat_bot_1.0.1/your_chat_bot_QIO_1.0.1.bin username@192.168.1.xxx:~/
 ```
 
-**Command parameters:**
-- `username` — Username on the board
-- `192.168.1.xxx` — IP address of the board
-- `~/` — Target directory on the board
+Parameters:
 
-### Running the Executable
+- `username` — username on the board
+- `192.168.1.xxx` — IP address of the board
+- `~/` — target directory on the board
+
+## Run the executable
 
 ```bash
 ./your_chat_bot_QIO_1.0.1.bin
 ```
 
-**Command parameters:**
-- `your_chat_bot_QIO_1.0.1.bin` — Executable file name
+`your_chat_bot_QIO_1.0.1.bin` is the executable file name.
 
-On the first run, you need to perform device network configuration (pairing). If pairing or network connection fails, try deleting the `tuyadb` folder and running the program again.
+On the first run, you must perform device network configuration (pairing). If pairing or network connection fails, delete the `tuyadb` folder and run the program again.
 
 ## FAQ
 
-**Q: Voice wake word is not working. What should I do?**  
-A: Check that the model file paths are correct and that the files are complete. You can use `ls -lh` to verify that the files exist and that their sizes are as expected.
+**The voice wake word does not work.**
 
-**Q: The executable cannot be run. What should I do?**  
-A: Check that the executable has execute permission. You can run `chmod +x your_chat_bot_QIO_1.0.1.bin` to grant execute permission.
+Check that the model file paths are correct and the files are complete. Run `ls -lh` to confirm the files exist and their sizes are as expected.
+
+**The executable does not run.**
+
+Check that the executable has execute permission. Run `chmod +x your_chat_bot_QIO_1.0.1.bin` to grant it.
+
+## See also
+
+- [Raspberry Pi Provisioning Troubleshooting](/docs/hardware/Linux/raspberry-pi/wifi-bluetooth) — fix provisioning, Wi-Fi, and Bluetooth issues.
+- [Raspberry Pi Peripherals](/docs/hardware/Linux/raspberry-pi/Examples/peripherals-raspberry-pi) — run GPIO, I2C, SPI, PWM, and UART examples.

@@ -4,7 +4,7 @@ title: HTTP and HTTPS Client Tutorial
 
 ## Overview
 
-This tutorial covers plain HTTP and HTTPS requests using `http_client_request` and `http_client_free` from `http_client_interface.h`. It documents **request and response structs** (fields, request headers, query args on `path`, response status and header block), then shows GET and POST with a JSON body, HTTPS CA setup, and JSON parsing with cJSON (`cJSON_ParseWithLength`). Runnable samples are under `examples/protocols/http_client` and `examples/protocols/https_client`.
+This tutorial covers plain HTTP and HTTPS requests using `http_client_request` and `http_client_free` from `http_client_interface.h`. It documents the request and response structs (fields, request headers, query args on `path`, response status and header block), then shows GET and POST with a JSON body, HTTPS CA setup, and JSON parsing with cJSON (`cJSON_ParseWithLength`). Runnable samples are under `examples/protocols/http_client` and `examples/protocols/https_client`.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ This tutorial covers plain HTTP and HTTPS requests using `http_client_request` a
 
 - Board or config with Wi-Fi or wired networking and HTTP client support for the example project.
 - Network that can reach your test host (samples default to `httpbin.org`).
-- For JSON examples: your application must link the SDK cJSON library (TuyaOpen ships it under `src/libcjson`). Add the component to your app CMake or Kconfig like other examples that use `cJSON`, if it is not already included.
+- For JSON examples: your application must link the SDK cJSON library (TuyaOpen ships it under `src/libcjson`). Add the component to your app CMake or Kconfig like other examples that use cJSON, if it is not already included.
 
 ## Steps
 
@@ -90,7 +90,7 @@ After a successful `http_client_request`, the client fills:
 | `buffer` | `uint8_t *` | Owning buffer for the response (implementation detail for allocation; see header comment). |
 | `buffer_length` | `size_t` | Total size of `buffer`. |
 
-To **inspect response headers as text**, treat `headers` + `headers_length` as an opaque byte range (often ASCII). Example debug print:
+To inspect response headers as text, treat `headers` + `headers_length` as an opaque byte range (often ASCII). Example debug print:
 
 ```c
 if (http_response.headers && http_response.headers_length > 0) {
@@ -103,7 +103,7 @@ if (http_response.headers && http_response.headers_length > 0) {
 
 For structured use (e.g. read `Content-Type`), parse that block yourself or use only `body` + `status_code` if enough for your API.
 
-Always call **`http_client_free`** when done; it releases memory allocated for the response.
+Always call `http_client_free` when done; it releases memory allocated for the response.
 
 ## GET request
 
@@ -248,7 +248,7 @@ To build JSON for a request body, you can use `cJSON_CreateObject`, `cJSON_AddSt
 
 ## Implementation notes
 
-- Run HTTP and HTTPS work after NETMGR_LINK_UP (the examples use `__link_status_cb`).
+- Run HTTP and HTTPS work after `NETMGR_LINK_UP` (the examples use `__link_status_cb`).
 - Always call `http_client_free` after a successful `http_client_request`.
 - See [TAL Network API reference](tal-network-api) for sockets and DNS.
 

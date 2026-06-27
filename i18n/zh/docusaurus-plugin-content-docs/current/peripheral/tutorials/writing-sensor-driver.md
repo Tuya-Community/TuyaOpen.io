@@ -2,33 +2,35 @@
 title: "编写新的 I2C 传感器驱动"
 ---
 
-# 编写新的 I2C 传感器驱动
+TuyaOpen 中的 I2C 传感器驱动通过 TKL I2C 总线读取芯片，并将结果可移植地呈现给应用。本教程以 SHT3x 温湿度传感器为例，逐步集成一个新的 I2C 传感器（温度、湿度、IMU、气压等）。
 
-逐步教程：将新的 I2C 传感器（温度、湿度、IMU、压力等）集成到 TuyaOpen 项目。以 SHT3x 温湿度传感器为具体示例。
+## 前置条件
 
-## 前提条件
-
-- 已完成[环境搭建](../../quick-start/enviroment-setup)
+- 完成 [环境搭建](../../quick-start/enviroment-setup)
 - 了解 I2C 基础（地址、读写、寄存器）
-- 传感器数据手册及寄存器映射
+- 含寄存器映射的传感器数据手册
 
-## 需求
+## 要求
 
-- TuyaOpen SDK 已克隆并完成环境配置
-- 开发板（T5AI、ESP32-S3 或其他支持平台）
+- 已克隆 TuyaOpen SDK 并完成环境配置
+- 开发板（T5AI、ESP32-S3 或任意支持的平台）
 - I2C 传感器模块（如 SHT30/SHT31、BME280、BMP280、MPU6050）
 - 杜邦线、面包板
 
-## 何时使用 TDL/TDD vs 直接 TKL
+## 何时使用 TDL/TDD，何时直接用 TKL
 
 | 方式 | 何时使用 | 示例 |
 |------|---------|------|
 | **直接 TKL I2C** | 简单传感器、一次性读取、原型开发 | SHT3x、BME280、BMP280 |
 | **完整 TDL/TDD** | 跨开发板复用的驱动、复杂生命周期 | 显示面板、音频编解码器、触摸控制器 |
 
+大多数 I2C 传感器用直接 TKL 调用即可良好工作。当需要设备注册、多实例或板级抽象时，再使用 TDL/TDD 模式。
+
 ## 步骤
 
 ### 步骤 1：配置 I2C 引脚
+
+初始化前用 `tkl_io_pinmux_config()` 配置 I2C 总线：
 
 ```c
 #include "tkl_i2c.h"
@@ -53,6 +55,8 @@ static OPERATE_RET sensor_i2c_init(void)
 ```
 
 ### 步骤 2：编写传感器读取函数
+
+对于 SHT3x，测量命令为 `0x2400`（高重复性，无时钟拉伸）。传感器返回 6 字节：2 字节温度 + 1 字节 CRC + 2 字节湿度 + 1 字节 CRC。
 
 ```c
 #define SHT3X_ADDR      0x44
@@ -95,6 +99,7 @@ static OPERATE_RET sht3x_read(float *temperature, float *humidity)
 static void sensor_task(void *arg)
 {
     float temp, humi;
+
     sensor_i2c_init();
 
     while (1) {
@@ -119,11 +124,39 @@ void tuya_app_main(void)
 }
 ```
 
-### 步骤 4：构建和测试
+### 步骤 4：加入工程
+
+创建工程结构：
+
+```
+apps/my_sensor_app/
+├── CMakeLists.txt
+├── src/
+│   └── tuya_main.c        (含 tuya_app_main + 传感器代码)
+├── include/
+│   └── sht3x.h            (可选：单独头文件)
+├── config/
+│   └── ESP32-S3.config     (或你的板型配置)
+└── Kconfig
+```
+
+`CMakeLists.txt`：
+
+```cmake
+set(APP_NAME my_sensor_app)
+```
+
+在板型配置中启用 I2C：
+
+```
+CONFIG_ENABLE_I2C=y
+```
+
+### 步骤 5：编译与测试
 
 ```bash
 cd apps/my_sensor_app
-tos.py config choice
+tos.py config choice       # 选择你的开发板
 tos.py build
 tos.py flash
 tos.py monitor
@@ -133,11 +166,12 @@ tos.py monitor
 
 ```
 [01-01 00:00:02 TUYA I][tuya_main.c:xx] temp: 25.43 C, humidity: 48.21 %
+[01-01 00:00:04 TUYA I][tuya_main.c:xx] temp: 25.51 C, humidity: 47.89 %
 ```
 
-## CRC 校验
+## 添加 CRC 校验
 
-生产代码应验证 CRC-8 字节：
+生产代码应校验 CRC-8 字节：
 
 ```c
 static UINT8_T sht3x_crc8(UINT8_T *data, UINT8_T len)
@@ -151,26 +185,59 @@ static UINT8_T sht3x_crc8(UINT8_T *data, UINT8_T len)
     }
     return crc;
 }
+
+if (sht3x_crc8(&data[0], 2) != data[2] ||
+    sht3x_crc8(&data[3], 2) != data[5]) {
+    return OPRT_CRC32_FAILED;
+}
 ```
 
 ## 跨平台说明
 
-该传感器代码可移植，因为仅使用 TKL I2C API。相同代码可在 T5AI、ESP32、Raspberry Pi 等平台上运行——仅引脚编号不同。
+该传感器代码可移植，因为它仅使用 TKL I2C API。相同代码可在 T5AI、ESP32、Raspberry Pi 等平台上运行——仅引脚编号不同。
+
+要让引脚编号可配置，使用 Kconfig：
+
+```kconfig
+config SENSOR_I2C_PORT
+    int "I2C port"
+    default 0
+
+config SENSOR_SCL_PIN
+    int "SCL pin"
+    default 9
+
+config SENSOR_SDA_PIN
+    int "SDA pin"
+    default 10
+```
 
 ## 上报传感器数据到 Tuya Cloud（可选）
+
+将传感器数据作为 Tuya Cloud 数据点上报：
 
 ```c
 #include "tuya_iot.h"
 
-dp_obj_t dp_temp = {
-    .dpid = 1,
-    .type = PROP_VALUE,
-    .value.dp_value = (int)(temp * 10),
-};
-dev_report_dp_json_async(NULL, &dp_temp, 1);
+OPERATE_RET report_sensor_data(float temp, float humi)
+{
+    dp_obj_t dp_temp = {
+        .dpid = 1,
+        .type = PROP_VALUE,
+        .value.dp_value = (int)(temp * 10),
+    };
+    dp_obj_t dp_humi = {
+        .dpid = 2,
+        .type = PROP_VALUE,
+        .value.dp_value = (int)(humi * 10),
+    };
+
+    return dev_report_dp_json_async(NULL, &dp_temp, 1);
+    return dev_report_dp_json_async(NULL, &dp_humi, 1);
+}
 ```
 
-需要在 Tuya Cloud 创建产品并定义匹配的 DP。参见[创建新产品](../../cloud/tuya-cloud/creating-new-product)。
+这需要在 Tuya Cloud 创建产品并定义匹配的 DP。参见 [创建新产品](../../cloud/tuya-cloud/creating-new-product)。
 
 ## 参考资料
 
@@ -178,4 +245,4 @@ dev_report_dp_json_async(NULL, &dp_temp, 1);
 - [将传感器库迁移到 TuyaOpen](migrating-sensor-driver)
 - [I2C 外设指南](i2c-guide)
 - [TKL I2C API](/docs/tkl-api/tkl_i2c)
-- [SHT3x 示例](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/i2c/sht3x_4x_sensor)
+- [仓库中的 SHT3x 示例](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/i2c/sht3x_4x_sensor)

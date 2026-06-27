@@ -2,233 +2,52 @@
 title: 长按对话模式
 ---
 
-## 名词解释
+**长按对话**是一种语音对话模式：按住按键开始录音，松开按键停止录音并上传。采集时长完全由按键控制——不会自行开始或结束。
 
-| 名词 | 解释                                                         |
-| ---- | ------------------------------------------------------------ |
-| VAD  | 语音活动检测（Voice Activity Detection），用于检测是否有语音输入。 |
+它是四种[语音对话模式](ai-mode-manage)之一，通过 `ai_mode_hold_register()` 注册。
 
-## 功能简述
+## 何时使用
 
-`ai_mode_hold` 是 TuyaOpen AI 应用框架中的长按模式实现，提供了一种需要用户主动控制的语音交互方式。用户需要长按按键才能进行录音，松开按键后停止录音并上传，适合需要精确控制录音时长的场景。
+当你需要明确、可控的对话节奏，并完全掌控设备听到的内容时，使用长按对话：
 
-- **按键控制**：长按按键开始录音，松开按键停止录音并上传。由用户按键控制录音，不依赖自动语音检测。
-- **自动超时**：在无语音活动或播放完成后，自动超时（默认 30 秒）返回空闲状态
-- **LED 指示**：不同状态显示不同的 LED 效果（需启用 LED 组件）
-  - 空闲：LED 关闭
-  - 聆听：LED 闪烁（500ms）
-  - 思考：LED 闪烁（2000ms）
-  - 说话：LED 常亮
+- **嘈杂环境**：仅在按住按键期间采集，按键窗口之外的背景人声和噪声不会上传到云端。
+- **明确的对话回合**：由用户决定每一轮何时开始、何时结束，无需唤醒词，也不依赖语音活动检测的判断。
+- **避免误触发**：未按下按键前不会上传任何音频，设备不会对环境声音做出反应。
 
-## 工作流程
+代价是需要动手操作：每一轮都要按一次按键。若需要免手操作，请改用[唤醒对话模式](ai-mode-wakeup)或[自由对话模式](ai-mode-free)。
 
-### 模块架构图
+## 行为方式
+
+一轮对话遵循通用的模式生命周期。按下按键时，设备从 `IDLE` 进入 `LISTEN`；松开按键结束采集，依次经过 `UPLOAD`、`THINK`、`SPEAK`，随后返回 `IDLE`。
 
 ```mermaid
-flowchart TD
-    A[应用层] --> B[ai_mode_hold 模块]
-    B --> C[状态机管理]
-    B --> D[按键控制]
-    B --> E[VAD 处理]
-    B --> F[事件处理]
-    
-    D --> G[长按开始]
-    D --> H[松开上传]
-    
-    C --> J[IDLE<br/>空闲]
-    C --> K[LISTEN<br/>监听]
-    C --> L[UPLOAD<br/>上传]
-    C --> M[THINK<br/>思考]
-    C --> N[SPEAK<br/>说话]
-    
-    style C fill:#e1f5ff
-    style D fill:#fff4e1
+flowchart LR
+    IDLE -->|按住按键| LISTEN
+    LISTEN -->|松开按键| UPLOAD
+    UPLOAD --> THINK
+    THINK --> SPEAK
+    SPEAK --> IDLE
 ```
 
-### 状态机流程
+:::note
+采集时长由按住按键的时间决定。该模式需要启用按键组件（`ENABLE_BUTTON`）以接收按下和松开事件。
+:::
 
-长按模式通过状态机管理整个交互流程，从空闲状态开始，通过长按按键进入监听，松开按键后上传，完成语音交互后根据情况返回监听或空闲状态。
+## 启用方式
 
-```mermaid
-stateDiagram-v2
-    direction LR
-    [*] --> IDLE: 初始化
-    IDLE --> LISTEN: 长按按键
-    LISTEN --> UPLOAD: 松开按键
-    UPLOAD --> THINK: 上传完成
-    THINK --> SPEAK: AI 处理完成
-    SPEAK --> LISTEN: 播放完成(已唤醒)
-    SPEAK --> IDLE: 播放完成(未唤醒)
-    LISTEN --> IDLE: 超时(30秒)
-    THINK --> IDLE: 超时(30秒)
-```
-
-### 按键交互流程
-
-用户通过长按按键触发录音，松开按键后停止录音并上传。
-
-```mermaid
-sequenceDiagram
-    participant User as 用户
-    participant Mode as ai_mode_hold
-    participant Audio as 音频输入
-    participant Agent as AI Agent
-    
-    User->>Mode: 长按按键
-    Mode->>Mode: 进入 LISTEN 状态
-    Mode->>Audio: 启用唤醒模式
-    Mode->>Audio: 设置手动 VAD 模式
-    
-    User->>Mode: 说话
-    Mode->>Audio: VAD 检测到语音
-    Mode->>Agent: 开始录音上传
-    
-    User->>Mode: 松开按键
-    Mode->>Mode: 进入 UPLOAD 状态
-    Mode->>Audio: 停止录音
-    Mode->>Agent: 完成上传
-```
-
-### 语音交互流程
-
-长按按键后，设备开始录音，松开按键后停止录音并上传，完成一轮完整的语音交互。
-
-```mermaid
-sequenceDiagram
-    participant User as 用户
-    participant Mode as ai_mode_hold
-    participant VAD as VAD 检测
-    participant Agent as AI Agent
-    participant Player as 音频播放器
-    
-    Note over Mode: IDLE 状态
-    User->>Mode: 长按按键
-    Mode->>Mode: 进入 LISTEN 状态
-    
-    User->>VAD: 说话
-    VAD->>Mode: VAD_START 事件
-    Mode->>Agent: 开始录音上传
-    
-    User->>Mode: 松开按键
-    Mode->>Mode: 进入 UPLOAD 状态
-    Mode->>Agent: 停止录音并上传
-    
-    Agent->>Mode: ASR 识别完成
-    Mode->>Mode: 进入 THINK 状态
-    
-    Agent->>Player: 返回 TTS 音频
-    Mode->>Mode: 进入 SPEAK 状态
-    
-    Player->>Mode: 播放完成
-    alt 仍在唤醒状态
-        Mode->>Mode: 返回 LISTEN 状态
-    else 已超时
-        Mode->>Mode: 返回 IDLE 状态
-    end
-```
-
-## 配置说明
-
-### 配置文件路径
-
-```
-ai_components/ai_mode/Kconfig
-```
-
-### 功能使能
-
-```
-menuconfig ENABLE_COMP_AI_PRESENT_MODE
-    bool "enable ai present mode"
-    default y
-
-config ENABLE_COMP_AI_MODE_HOLD
-    bool "enable ai mode hold"
-    default y
-```
-
-### 依赖组件
-
-- **音频组件**（`ENABLE_COMP_AI_AUDIO`）：必需，用于音频输入输出和 VAD 检测
-- **LED 组件**（`ENABLE_LED`）：可选，用于状态指示
-- **按键组件**（`ENABLE_BUTTON`）：必需，用于按键控制功能
-
-## 开发流程
-
-### 接口说明
-
-#### 注册长按模式
-
-将长按模式注册到模式管理器中。
+在启动时注册该模式，然后用 `ai_mode_init` 将其设为当前模式：
 
 ```c
-/**
- * @brief Register hold mode
- * @return OPERATE_RET Operation result
- */
-OPERATE_RET ai_mode_hold_register(void);
+ai_mode_hold_register();
+ai_mode_init(AI_CHAT_MODE_HOLD);   // AI_CHAT_MODE_HOLD | ONE_SHOT | WAKEUP | FREE
 ```
 
-### 开发步骤
+完整的启动流程（注册多个模式、运行任务循环、运行时切换模式）请参见[语音对话模式](ai-mode-manage)。
 
-1. **注册模式**：在应用启动时调用 `ai_mode_hold_register()` 注册长按模式
-2. **初始化模式**：通过 `ai_mode_init(AI_CHAT_MODE_HOLD)` 初始化长按模式
-3. **运行模式任务**：在任务循环中调用 `ai_mode_task_running()` 运行状态机
-4. **处理事件**：确保用户事件、VAD 状态变化、按键事件等已正确转发到模式管理器
+## 相关文档
 
-### 参考示例
-
-#### 注册和初始化
-
-```c
-#include "ai_mode_hold.h"
-#include "ai_manage_mode.h"
-
-// 注册长按模式
-OPERATE_RET register_hold_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-    // 注册长按模式
-    TUYA_CALL_ERR_RETURN(ai_mode_hold_register());
-    
-    return rt;
-}
-
-// 初始化长按模式
-OPERATE_RET init_hold_mode(void)
-{
-    OPERATE_RET rt = OPRT_OK;
-    
-    // 初始化长按模式
-    TUYA_CALL_ERR_RETURN(ai_mode_init(AI_CHAT_MODE_HOLD));
-    
-    return rt;
-}
-```
-
-#### 模式切换
-
-```c
-// 切换到长按模式
-void switch_to_hold_mode(void)
-{
-    OPERATE_RET rt = ai_mode_switch(AI_CHAT_MODE_HOLD);
-    if (OPRT_OK == rt) {
-        PR_NOTICE("切换到长按模式");
-    } else {
-        PR_ERR("切换模式失败: %d", rt);
-    }
-}
-```
-
-#### 查询模式状态
-
-```c
-void query_hold_mode_state(void)
-{
-    AI_MODE_STATE_E state = ai_mode_get_state();
-    PR_NOTICE("长按模式当前状态: %s", ai_get_mode_state_str(state));
-}
-```
-
+- [语音对话模式](ai-mode-manage)——注册、切换并在所有模式间路由事件
+- [单次对话模式](ai-mode-oneshot)——单击一次完成一轮对话
+- [唤醒对话模式](ai-mode-wakeup)——通过语音开启一轮对话
+- [自由对话模式](ai-mode-free)——持续聆听的免手对话
+- [AI Agent](ai-agent)——各模式所驱动的云端桥梁

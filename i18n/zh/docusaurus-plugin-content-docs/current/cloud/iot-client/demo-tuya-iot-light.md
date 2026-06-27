@@ -49,6 +49,8 @@ title: switch_demo
 
 ## 编译
 
-1. 运行 `tos config_choice` 命令，选择当前运行的开发板或 Platform。
-2. 如需修改配置，请先运行 `tos menuconfig` 命令修改配置。
-3. 运行 `tos build` 命令，编译工程。
+1. 运行 `tos.py config choice` 命令，选择当前运行的开发板或 Platform。
+2. 如需先修改配置，请运行 `tos.py config menu` 命令。
+3. 运行 `tos.py build` 命令编译工程，然后运行 `tos.py flash` 烧录。
+
+要将设备绑定到云端，需要先为其配置 `PID` 和授权码——参见 [设备与云端绑定原理](../tuya-cloud/device-cloud-binding) 和 [创建产品与智能体](../tuya-cloud/creating-new-product)。

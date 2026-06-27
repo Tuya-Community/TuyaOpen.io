@@ -2,11 +2,11 @@
 title: "Step 2: Flashing and Logging"
 ---
 
-# Flashing and Logging
+Flashing writes the firmware bin you built onto the device; logging streams the device's serial output so you can watch it boot and run. Both run from `tos.py` in the application project directory.
 
 ## Flash firmware
 
-Connect the device to your PC. If using a virtual machine, map the serial port to the virtual machine.
+Connect the device to your PC. If you use a virtual machine, map the serial port to the virtual machine.
 
 :::tip
 For Linux users, run the command `sudo usermod -aG dialout $USER` to grant serial port permissions, and then reboot the system.

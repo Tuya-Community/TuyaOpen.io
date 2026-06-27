@@ -1,59 +1,80 @@
-# tkl_semaphore | 信号量
+---
+title: "tkl_semaphore | 信号量"
+---
 
-文件 `tkl_semaphore.c` 用于创建和管理信号量，用于嵌入式系统或多任务操作系统中实现任务间同步或事件通知。本文件提供了创建信号量、等待信号量、发送信号量以及释放信号量的接口。文件同样是由涂鸦操作系统（TuyaOS）自动生成，并为开发者预留了代码实现的区域。
+`tkl_semaphore` 接口用于在多任务环境中创建和管理计数信号量，以实现任务间同步或事件通知。它是各平台在其 RTOS 之上实现的内核抽象层（TKL）适配。
 
-## API 说明
+## 类型
 
-### tkl_semaphore_create_init
+```c
+typedef void *TKL_SEM_HANDLE;
+#define TKL_SEM_WAIT_FOREVER 0xFFFFffff
+```
+
+| 符号 | 说明 |
+| --- | --- |
+| `TKL_SEM_HANDLE` | 信号量的不透明句柄。 |
+| `TKL_SEM_WAIT_FOREVER` | `tkl_semaphore_wait` 的超时取值，表示一直阻塞直到获得信号量。 |
+
+## tkl_semaphore_create_init
 
 ```c
 OPERATE_RET tkl_semaphore_create_init(TKL_SEM_HANDLE *handle, uint32_t sem_cnt, uint32_t sem_max);
 ```
 
-- 功能：创建并初始化一个计数信号量。
+创建并初始化一个计数信号量。
 
-- 参数：
+| 参数 | 说明 |
+| --- | --- |
+| `handle` | 输出参数，接收创建的信号量句柄。 |
+| `sem_cnt` | 信号量的初始计数。 |
+| `sem_max` | 信号量的最大计数。 |
 
-    - `handle`：输出参数，用于接收创建的信号量句柄。
-    - `sem_cnt`：信号量的初始计数。
-    - `sem_max`：信号量的最大计数。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-- 返回值：`OPRT_OK` 表示成功创建信号量，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
-
-### tkl_semaphore_wait
+## tkl_semaphore_wait
 
 ```c
 OPERATE_RET tkl_semaphore_wait(const TKL_SEM_HANDLE handle, uint32_t timeout);
 ```
 
-- 功能：等待一个信号量。
+等待一个信号量，获得时其计数减一。
 
-- 参数：
-    - `handle`：信号量句柄。
-    - `timeout`：等待超时时间，单位毫秒。`TKL_SEM_WAIT_FOREVER` 表示一直等待直到获得信号量。
+| 参数 | 说明 |
+| --- | --- |
+| `handle` | 信号量句柄。 |
+| `timeout` | 等待超时时间，单位为毫秒。`TKL_SEM_WAIT_FOREVER` 表示一直阻塞直到获得信号量。 |
 
-- 返回值：`OPRT_OK` 表示成功获取信号量，`OPRT_OS_ADAPTER_SEM_WAIT_TIMEOUT` 表示发生超时，其他返回值表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，`OPRT_OS_ADAPTER_SEM_WAIT_TIMEOUT` 表示发生超时，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_semaphore_post
+## tkl_semaphore_post
 
 ```c
 OPERATE_RET tkl_semaphore_post(const TKL_SEM_HANDLE handle);
 ```
 
-- 功能：发送（释放）一个信号量，增加信号量的计数。
+发送（释放）一个信号量，使其计数加一。
 
-- 参数：`handle` 为信号量句柄。
+| 参数 | 说明 |
+| --- | --- |
+| `handle` | 信号量句柄。 |
 
-- 返回值：`OPRT_OK` 表示成功发送信号量，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
 
-### tkl_semaphore_release
+## tkl_semaphore_release
 
 ```c
 OPERATE_RET tkl_semaphore_release(const TKL_SEM_HANDLE handle);
 ```
 
-- 功能：释放并删除一个信号量。
+释放并删除一个信号量。
 
-- 参数：`handle` 为信号量句柄。
+| 参数 | 说明 |
+| --- | --- |
+| `handle` | 信号量句柄。 |
 
-- 返回值：`OPRT_OK` 表示成功释放资源，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+- 返回值：`OPRT_OK` 表示成功，其他值则表示发生错误。详细错误代码请参考 `tuya_error_code.h`。
+
+## 相关文档
+
+- [线程与定时器模式](../peripheral/tutorials/thread-timer-patterns)

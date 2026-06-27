@@ -43,7 +43,7 @@ To make a font available globally, similar to using an LVGL system font, follow 
     lv_style_set_text_font(&my_style, LV_STATE_DEFAULT, &FONT_SY_20); /* Set a larger font */
     ```
 
-    :::important
+    :::note
     The font name is not the same as the font file name. It is the name of the `const lv_font_t` defined inside the font file, as shown below. Therefore, renaming the font file does not change the font name.
     ![image (16).png](https://images.tuyacn.com/content-platform/hestia/1757325619f8878716df2.png)
     :::

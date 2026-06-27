@@ -1,22 +1,20 @@
 ---
-title: DuckyClaw 连接 TuyaClaw
+title: TuyaOpenClaw 连接 TuyaClaw
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# DuckyClaw 连接 TuyaClaw
-
 ## 1. 概述
 
-DuckyClaw 是运行在物联网设备上的 AI 语音助手固件，通过 **ACP 协议（Agent Client Protocol，基于 WebSocket）** 连接到 TuyaClaw Gateway，实现与 AI Agent 的实时对话。
+TuyaOpenClaw（原名 DuckyClaw）是运行在物联网设备上的 AI 语音助手固件，通过 **ACP 协议（Agent Client Protocol，基于 WebSocket）** 连接到 TuyaClaw Gateway，实现与 AI Agent 的实时对话。
 
-[TuyaClaw](https://claw.tuya.ai/) 是涂鸦智能推出的 AI Agent 桌面客户端，支持 Windows、macOS 和 Linux 系统。其内置了 OpenClaw 核心，并通过 Gateway 服务（默认监听 `18789` 端口）与 DuckyClaw 设备建立连接。
+[TuyaClaw](https://claw.tuya.ai/) 是涂鸦智能推出的 AI Agent 桌面客户端，支持 Windows、macOS 和 Linux 系统。其内置了 OpenClaw 核心，并通过 Gateway 服务（默认监听 `18789` 端口）与 TuyaOpenClaw 设备建立连接。
 
 **连接架构：**
 
 ```
-DuckyClaw (IoT 设备)
+TuyaOpenClaw (IoT 设备)
     │  WebSocket (ACP 协议)
     ▼
 TuyaClaw Gateway (PC)
@@ -34,19 +32,19 @@ AI Agent (LLM 对话)
 | 软件 | 说明 | 获取方式 |
 |------|------|---------|
 | **TuyaClaw** | AI Agent 平台（支持 Windows / macOS / Linux），需已安装并能正常启动 | [官网下载](https://claw.tuya.ai/) |
-| **DuckyClaw 固件开发环境** | 编译固件所需工具链 | 参考 [DuckyClaw 快速入门](ducky-quick-start-T5AI) |
+| **TuyaOpenClaw 固件开发环境** | 编译固件所需工具链 | 参考 [TuyaOpenClaw 快速入门](ducky-quick-start-T5AI) |
 
 ### 2.2 网络要求
 
-- DuckyClaw 设备与运行 TuyaClaw 的 PC 处于**同一局域网**，或同一 Wi-Fi 网络
+- TuyaOpenClaw 设备与运行 TuyaClaw 的 PC 处于**同一局域网**，或同一 Wi-Fi 网络
 - 如果使用公网连接，需将 TuyaClaw Gateway 通过端口映射等方式暴露到公网
 
-### 2.3 DuckyClaw 基础配置
+### 2.3 TuyaOpenClaw 基础配置
 
-在进行本文配置前，请先完成 DuckyClaw 的基础配置（Wi-Fi 联网、固件烧录等）。
+在进行本文配置前，请先完成 TuyaOpenClaw 的基础配置（Wi-Fi 联网、固件烧录等）。
 
 :::note
-参考：[DuckyClaw 与 T5-AI 快速入门](ducky-quick-start-T5AI)
+参考：[TuyaOpenClaw 与 T5-AI 快速入门](ducky-quick-start-T5AI)
 :::
 
 ---
@@ -78,32 +76,60 @@ TuyaClaw 还有一个 Electron 层设置文件，存有 Token 供 UI 读取：
 <Tabs groupId="operating-systems">
 <TabItem value="linux" label="Linux">
 
+**终端命令：**
+
 ```bash
-# 在终端中打开配置目录
 xdg-open ~/.tuyaclaw
 ```
 
-或直接在文件管理器中按 `Ctrl+L` 并输入 `~/.tuyaclaw`。
+**文件管理器：**
+
+打开文件管理器，按 `Ctrl+L`，在地址栏中输入 `~/.tuyaclaw`，然后按回车。
+
+:::tip
+`.tuyaclaw` 是隐藏文件夹（以 `.` 开头）。如果看不到它，按 `Ctrl+H` 显示隐藏文件。
+:::
 
 </TabItem>
 <TabItem value="macos" label="macOS">
 
+**终端命令：**
+
 ```bash
-# 在 Finder 中打开配置目录
 open ~/.tuyaclaw
 ```
 
-也可以在 Finder 中按 `Cmd+Shift+G`，输入 `~/.tuyaclaw`，然后点击**前往**。
+**Finder：**
+
+1. 打开 **Finder**
+2. 点击**前往** → **前往文件夹...**（或按 `Cmd+Shift+G`）
+3. 输入 `~/.tuyaclaw`，点击**前往**
+
+:::tip
+`.tuyaclaw` 是隐藏文件夹。在 Finder 中按 `Cmd+Shift+.` 可切换显示/隐藏文件。
+:::
 
 </TabItem>
 <TabItem value="windows" label="Windows">
 
+**PowerShell 命令：**
+
 ```powershell
-# 在 PowerShell 中打开配置目录
 explorer "$env:USERPROFILE\.tuyaclaw"
 ```
 
-也可以按 `Win+R`，输入 `%USERPROFILE%\.tuyaclaw`，然后点击**确定**。
+**文件资源管理器：**
+
+1. 按 `Win+R` 打开"运行"对话框
+2. 输入 `%USERPROFILE%\.tuyaclaw`，点击**确定**
+
+**地址栏直接输入：**
+
+打开**文件资源管理器**，在地址栏中输入 `%USERPROFILE%\.tuyaclaw`，按回车。
+
+:::tip
+`.tuyaclaw` 是隐藏文件夹。在文件资源管理器的**查看**选项卡中勾选**隐藏的项目**。
+:::
 
 </TabItem>
 </Tabs>
@@ -144,31 +170,44 @@ Copy-Item "$env:USERPROFILE\.tuyaclaw\openclaw.json" `
 <Tabs groupId="operating-systems">
 <TabItem value="linux" label="Linux">
 
+**终端编辑：**
+
 ```bash
 nano ~/.tuyaclaw/openclaw.json
 ```
 
-也可以用任意文本编辑器打开该文件：在文件管理器中进入 `~/.tuyaclaw/` 目录，右键点击 `openclaw.json`，选择**用文本编辑器打开**。
+**图形界面操作：**
+
+1. 打开 `~/.tuyaclaw` 文件夹（参考第 3 节）
+2. 右键点击 `openclaw.json` → **用文本编辑器打开**
 
 </TabItem>
 <TabItem value="macos" label="macOS">
 
+**终端编辑：**
+
 ```bash
 nano ~/.tuyaclaw/openclaw.json
 ```
 
-也可以在 Finder 中进入 `~/.tuyaclaw/` 目录，右键点击 `openclaw.json`，选择**打开方式** → **文本编辑**（或任意编辑器）。
+**Finder 图形界面操作：**
+
+1. 打开 `~/.tuyaclaw` 文件夹（参考第 3 节）
+2. 右键点击 `openclaw.json` → **打开方式** → **文本编辑**（或其他编辑器）
 
 </TabItem>
 <TabItem value="windows" label="Windows">
 
-用记事本或任意编辑器（推荐 VS Code）打开：
+**图形界面操作：**
 
-```
-C:\Users\<用户名>\.tuyaclaw\openclaw.json
-```
+1. 打开 `%USERPROFILE%\.tuyaclaw` 文件夹（参考第 3 节）
+2. 右键点击 `openclaw.json` → **打开方式** → **记事本**（或 VS Code 等编辑器）
 
-**操作步骤**：在**文件资源管理器**中找到 `C:\Users\你的用户名\.tuyaclaw\` 目录，右键点击 `openclaw.json`，选择**打开方式** → **记事本**（或 VS Code）。
+**PowerShell 打开：**
+
+```powershell
+notepad "$env:USERPROFILE\.tuyaclaw\openclaw.json"
+```
 
 </TabItem>
 </Tabs>
@@ -202,7 +241,7 @@ C:\Users\<用户名>\.tuyaclaw\openclaw.json
 
 | 字段 | 说明 |
 |------|------|
-| `"bind": "lan"` | 让 Gateway 监听局域网网卡 IP，而非仅 `127.0.0.1`（默认仅本机可访问），**这是允许 DuckyClaw 连接的关键配置** |
+| `"bind": "lan"` | 让 Gateway 监听局域网网卡 IP，而非仅 `127.0.0.1`（默认仅本机可访问），**这是允许 TuyaOpenClaw 连接的关键配置** |
 | `dangerouslyAllowHostHeaderOriginFallback: true` | 允许非 UI 来源（如 IoT 设备）发起 WebSocket 连接 |
 | `allowInsecureAuth: true` | 允许局域网非 HTTPS 环境下的认证 |
 | `dangerouslyDisableDeviceAuth: true` | 禁用设备级二次认证，仅凭 Token 完成鉴权 |
@@ -303,7 +342,7 @@ Get-NetIPAddress | Where-Object {
 </Tabs>
 
 :::tip
-从输出结果中，选择与 DuckyClaw 设备**处于同一局域网段**的 IP 地址（通常是 `192.168.x.x` 或 `10.x.x.x`）。有线网络（以太网）比 Wi-Fi 更稳定，建议优先使用有线网络的 IP。
+从输出结果中，选择与 TuyaOpenClaw 设备**处于同一局域网段**的 IP 地址（通常是 `192.168.x.x` 或 `10.x.x.x`）。有线网络（以太网）比 Wi-Fi 更稳定，建议优先使用有线网络的 IP。
 :::
 
 ### 5.2 获取 Gateway Token
@@ -366,7 +405,7 @@ http://<你的局域网IP>:18789/
 
 ---
 
-## 6. 配置 DuckyClaw 固件参数
+## 6. 配置 TuyaOpenClaw 固件参数
 
 ### 6.1 创建配置文件
 
@@ -423,13 +462,13 @@ Copy-Item include\tuya_app_config_secrets.h.example include\tuya_app_config_secr
 
 ### 6.3 重新编译并烧录
 
-完成配置后，重新编译固件并烧录到 DuckyClaw 设备。
+完成配置后，重新编译固件并烧录到 TuyaOpenClaw 设备。
 
 ---
 
 ## 7. 常见问题
 
-### 7.1 DuckyClaw 连接失败排查
+### 7.1 TuyaOpenClaw 连接失败排查
 
 | 设备日志中的错误信息 | 可能原因 | 解决方法 |
 |--------------------|---------|---------|
@@ -469,7 +508,7 @@ netstat -ano | findstr ":18789"
 </TabItem>
 </Tabs>
 
-若 `Local Address` 显示 `0.0.0.0:18789`，说明 Gateway 已成功绑定所有网卡（包括局域网），DuckyClaw 可以连接。
+若 `Local Address` 显示 `0.0.0.0:18789`，说明 Gateway 已成功绑定所有网卡（包括局域网），TuyaOpenClaw 可以连接。
 
 若显示 `127.0.0.1:18789`，说明 `bind: lan` 未生效，请重新检查 `openclaw.json` 修改是否正确，并重启 TuyaClaw。
 
@@ -531,4 +570,4 @@ Get-NetFirewallRule -DisplayName "TuyaClaw Gateway"
 | 端口 | `18789` | `18789`（相同）|
 | 获取 Token | `grep '"token"' ~/.openclaw/openclaw.json` | `grep '"token"' ~/.tuyaclaw/openclaw.json` |
 | 重启 Gateway | `openclaw gateway restart` | TuyaClaw UI 或内置 CLI |
-| DuckyClaw 固件配置 | 完全相同的宏定义 | 完全相同的宏定义 |
+| TuyaOpenClaw 固件配置 | 完全相同的宏定义 | 完全相同的宏定义 |

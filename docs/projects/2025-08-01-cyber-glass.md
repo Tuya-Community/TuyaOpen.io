@@ -5,8 +5,6 @@ date: 2025-08-01
 
 <BackToProjects />
 
-# Dynamic Light Effect DIDI Glasses
-
 ## Project Overview
 
 Create immersive entertainment with heartbeat and rhythm becoming visible light. Music beats flow through the frame. This project demonstrates TuyaOpen's ability to transform abstract emotions into tangible visual experiences through cloud-based AI processing, showcasing how the framework enables developers to create innovative social interaction devices with minimal technical barriers.

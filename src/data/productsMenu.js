@@ -10,7 +10,7 @@ export const productsMenu = {
           {
             icon: 'sdk',
             title: 'TuyaOpen SDK',
-            subtitle: 'Open-source full-stack IoT OS',
+            subtitle: 'Open-source full-stack AIoT OS',
             href: 'https://github.com/tuya/TuyaOpen',
             external: true,
           },
@@ -22,8 +22,8 @@ export const productsMenu = {
           },
           {
             icon: 'ducky',
-            title: 'DuckyClaw 🦞',
-            subtitle: 'AI hardware companion agent',
+            title: 'TuyaOpenClaw 🦞',
+            subtitle: 'AI hardware companion agent · formerly DuckyClaw',
             href: '/duckyclaw',
           },
         ],
@@ -87,7 +87,7 @@ export const productsMenu = {
           {
             icon: 'sdk',
             title: 'TuyaOpen SDK',
-            subtitle: '开源全栈 IoT 操作系统',
+            subtitle: '开源全栈 AIoT 操作系统',
             href: 'https://github.com/tuya/TuyaOpen',
             external: true,
           },
@@ -99,8 +99,8 @@ export const productsMenu = {
           },
           {
             icon: 'ducky',
-            title: 'DuckyClaw 🦞',
-            subtitle: 'AI 硬件伴侣 Agent',
+            title: 'TuyaOpenClaw 🦞',
+            subtitle: 'AI 硬件伴侣 Agent · 原 DuckyClaw',
             href: '/duckyclaw',
           },
         ],

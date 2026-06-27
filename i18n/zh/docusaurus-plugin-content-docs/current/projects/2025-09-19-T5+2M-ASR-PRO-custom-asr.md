@@ -4,8 +4,6 @@ title: "T5+2M-ASR-PRO 定制命令词"
 
 <BackToProjects />
 
-
-
 ## 项目介绍
 
 由于 T5 默认支持的唤醒词有限，例如：

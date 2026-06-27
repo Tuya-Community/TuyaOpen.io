@@ -1,190 +1,176 @@
-# tkl_dac | DAC 驱动
+---
+title: "tkl_dac | DAC 驱动"
+---
 
-## 简要说明
+TKL DAC 接口将数字值转换为模拟输出电压，作用与 ADC 相反。你初始化一个 DAC 单元（`TUYA_DAC_NUM_E`），配置其通道和输出位宽，然后通过 FIFO 推入采样数据并启动转换。常见用途是还原此前由 ADC 采集的音频波形。
 
-DAC（Digital to analog converter）即数字模拟转换器，它可以将数字信号转换为模拟信号。它的功能与 ADC 相反。
-
-在常见的数字信号系统中，大部分传感器信号被转化成电压信号，而 ADC 把电压模拟信号转换成易于计算机存储、处理的数字编码，由计算机处理完成后，再由 DAC 输出电压模拟信号，该电压模拟信号常常用来驱动某些执行器件，使人类易于感知。如音频信号的采集及还原就是这样一个过程。
-
-## API 描述
-
-### tkl_dac_init
+## tkl_dac_init
 
 ```c
 OPERATE_RET tkl_dac_init(TUYA_DAC_NUM_E port_num);
 ```
 
-- 功能描述:
-  - 通过端口号初始化对应的 dac 实例，返回初始化结果。
-- 参数:
-  - port_num: 端口号
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+初始化一个 DAC 单元。
 
-### tkl_dac_deinit
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引（`TUYA_DAC_NUM_0` 至 `TUYA_DAC_NUM_6`）。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
+
+## tkl_dac_deinit
 
 ```c
 OPERATE_RET tkl_dac_deinit(TUYA_DAC_NUM_E port_num);
 ```
 
-- 功能描述:
-  - dac 实例反初始化。该接口会停止 dac。
-- 参数:
-  - port_num: 端口号。
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+反初始化一个 DAC 单元并停止转换。
 
-### tkl_dac_controller_config
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引。 |
 
-```c
-OPERATE_RET tkl_dac_controller_config(TUYA_DAC_NUM_E port_num, TUYA_DAC_CMD_E cmd, void * argu);
-```
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
 
-- 功能描述:
-
-  - 配置相应的dac设备。
-
-- 参数:
-
-  - port_num: 端口号。
-
-  - cmd: 命令字
-
-    **TUYA_DAC_CMD_E**：
-
-    | 名字                  | 含义                  |
-    | --------------------- | --------------------- |
-    | TUYA_DAC_WRITE_FIFO   | 设置 DAC 的 fifo 数据 |
-    | TUYA_DAC_SET_BASE_CFG | 设置 DAC 的基本配置   |
-
-  - argu：参数 可为下面的两个结构体
-
-  ```c
-  typedef struct{
-  	uint8_t *data;       //data
-  	uint32_t len;        // data length
-  }TUYA_DAC_DATA_T;
-  ```
-
-  ```c
-  typedef struct {
-      TUYA_AD_DA_CH_LIST_U  ch_list;       // dac channel list
-      uint8_t  ch_nums;       // dac channel number
-      uint8_t  width;         // output width
-      uint32_t freq;          // convert freq
-  } TUYA_DAC_BASE_CFG_T;
-  ```
-
-- 返回值:
-
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
-
-### tkl_dac_base_cfg_get
+## tkl_dac_controller_config
 
 ```c
-OPERATE_RET  tkl_dac_base_cfg_get (TUYA_DAC_NUM_E port_num,TUYA_DAC_BASE_CFG_T *cfg);
+OPERATE_RET tkl_dac_controller_config(TUYA_DAC_NUM_E port_num, TUYA_DAC_CMD_E cmd, void *argu);
 ```
 
-- 功能描述:
+按命令配置 DAC 单元。可用于设置基础配置或向 FIFO 写入数据。
 
-  - 获取相应 DAC 的基本配置
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引。 |
+| `cmd` | `TUYA_DAC_CMD_E` | 命令字（见下文）。 |
+| `argu` | `void *` | 命令对应的参数。 |
 
-- 参数:
+`cmd` 选择操作，`argu` 指向对应的结构体：
 
-  - `port_num`: 端口号。
-  - `cfg`：dac基本配置结构体
+| 命令 | 含义 | `argu` 类型 |
+| --- | --- | --- |
+| `TUYA_DAC_WRITE_FIFO` | 向 DAC FIFO 写入数据 | `TUYA_DAC_DATA_T *` |
+| `TUYA_DAC_SET_BASE_CFG` | 设置 DAC 基础配置 | `TUYA_DAC_BASE_CFG_T *` |
 
-    ```c
-    typedef struct {
-        TUYA_AD_DA_CH_LIST_U  ch_list;       // dac channel list
-        uint8_t  ch_nums;       // dac channel number
-        uint8_t  width;         // output width
-        uint32_t freq;          // convert freq
-    } TUYA_DAC_BASE_CFG_T;
-    ```
+```c
+typedef struct {
+    uint8_t *data; // 数据缓冲区
+    uint32_t len;  // 数据长度
+} TUYA_DAC_DATA_T;
 
-- 返回值:
+typedef struct {
+    TUYA_AD_DA_CH_LIST_U ch_list; // 通道列表
+    uint8_t              ch_nums; // 通道数量
+    uint8_t              width;   // 输出位宽
+    uint32_t             freq;    // 转换频率
+} TUYA_DAC_BASE_CFG_T;
+```
 
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
 
-### tkl_dac_start
+## tkl_dac_base_cfg_get
+
+```c
+OPERATE_RET tkl_dac_base_cfg_get(TUYA_DAC_NUM_E port_num, TUYA_DAC_BASE_CFG_T *cfg);
+```
+
+读取 DAC 单元的基础配置。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引。 |
+| `cfg` | `TUYA_DAC_BASE_CFG_T *` | 输出：基础配置。 |
+
+配置结构体如下：
+
+```c
+typedef struct {
+    TUYA_AD_DA_CH_LIST_U ch_list; // 通道列表
+    uint8_t              ch_nums; // 通道数量
+    uint8_t              width;   // 输出位宽
+    uint32_t             freq;    // 转换频率
+} TUYA_DAC_BASE_CFG_T;
+```
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
+
+## tkl_dac_start
 
 ```c
 OPERATE_RET tkl_dac_start(TUYA_DAC_NUM_E port_num);
 ```
 
-- 功能描述:
-  - 启动相应的DAC 开始转换
-- 参数:
-  - `port_num`: 端口号
-- 返回值:
-  - OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+启动 DAC 单元的转换。
 
-### tkl_dac_stop
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
+
+## tkl_dac_stop
 
 ```c
 OPERATE_RET tkl_dac_stop(TUYA_DAC_NUM_E port_num);
 ```
 
-- 功能描述:
-  - 停止相应的DAC
-- 参数:
-  - `port_num`: 端口号。
-- 返回值:
-  - 错误码，OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+停止 DAC 单元的转换。
 
-### tkl_dac_fifo_reset
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
+
+## tkl_dac_fifo_reset
 
 ```c
-OPERATE_RET  tkl_dac_fifo_reset (TUYA_DAC_NUM_E port_num);
+OPERATE_RET tkl_dac_fifo_reset(TUYA_DAC_NUM_E port_num);
 ```
 
-- 功能描述:相应的 DAC 的 FIFO 重置
-- 参数:
-  - `port_num`: 端口号。
-- 返回值:
-  - 错误码，OPRT_OK 成功，其他请参考文件 `tuya_error_code.h` 定义部分。
+复位 DAC 单元的 FIFO。
 
-# 示例
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_DAC_NUM_E` | DAC 单元索引。 |
 
-## 1.dac示例一
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中的定义部分。
+
+## 示例
+
+初始化一个 DAC 单元，设置其基础配置，然后通过 FIFO 持续推送数据：
 
 ```c
-/*初始化第0个dac外设*/
-tkl_dac_init(0);
+// 初始化 DAC 单元 0
+tkl_dac_init(TUYA_DAC_NUM_0);
 
-/*配置第0个DAC的基本配置*/
+// 设置基础配置
 TUYA_DAC_BASE_CFG_T dac_base_cfg;
-
-dac_base_cfg.freq = 8000;  /*DAC的转换速度为1秒8000次*/
-dac_base_cfg.width = 16;   /*DAC的精度为16*/
-dac_base_cfg.ch_nums = 1;  /*dac为单通道输出  端口号为2（chs_cfg = 2）*/
+dac_base_cfg.freq = 8000;          // 每秒转换 8000 次
+dac_base_cfg.width = 16;           // 16 位输出
+dac_base_cfg.ch_nums = 1;          // 单通道
 dac_base_cfg.ch_list.bits.ch_2 = 1;
+tkl_dac_controller_config(TUYA_DAC_NUM_0, TUYA_DAC_SET_BASE_CFG, &dac_base_cfg);
 
-tkl_dac_controller_config(0,TUYA_DAC_SET_BASE_CFG, &dac_base_cfg);
-
-/*写DAC的FIFO*/
+// 向 FIFO 写入初始数据
 TUYA_DAC_DATA_T data_fifo;
 uint8_t dac_data[1024];
-
 data_fifo.len = sizeof(dac_data);
 data_fifo.data = dac_data;
-tkl_dac_controller_config(0,TUYA_DAC_WRITE_FIFO, &data_fifo);
+tkl_dac_controller_config(TUYA_DAC_NUM_0, TUYA_DAC_WRITE_FIFO, &data_fifo);
 
-/*启动第0个dac开始转换*/
-tkl_dac_start(0);
+// 启动转换
+tkl_dac_start(TUYA_DAC_NUM_0);
 
-/*持续的往DAC的FIFO 写数据 让DAC转换*/
-while(1)
-{
+// 持续向 FIFO 喂数据
+while (1) {
     data_fifo.len = sizeof(dac_data);
-	data_fifo.data = dac_data;
-	tkl_dac_controller_config(0,TUYA_DAC_WRITE_FIFO, &data_fifo);
+    data_fifo.data = dac_data;
+    tkl_dac_controller_config(TUYA_DAC_NUM_0, TUYA_DAC_WRITE_FIFO, &data_fifo);
 }
 
-/*停止第0个dac开始转换*/
-tkl_dac_stop(0);
-
-/*deinit 第0个DAC*/
-tkl_dac_deinit(0);
+// 停止并反初始化
+tkl_dac_stop(TUYA_DAC_NUM_0);
+tkl_dac_deinit(TUYA_DAC_NUM_0);
 ```

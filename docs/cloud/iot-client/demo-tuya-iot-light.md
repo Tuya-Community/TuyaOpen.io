@@ -49,6 +49,8 @@ This project can run on all currently supported chips and development boards.
 
 ## Build the project
 
-1. Run the `tos config_choice` command to select the desired development board or platform.
-2. If you need to modify the configuration, run the `tos menuconfig` command first.
-3. Run `tos build` to build the project.
+1. Run `tos.py config choice` to select your development board or platform.
+2. To change the configuration first, run `tos.py config menu`.
+3. Run `tos.py build` to build the project, then `tos.py flash` to flash it.
+
+To bind the device to the cloud, give it a `PID` and a license first — see [How device–cloud binding works](../tuya-cloud/device-cloud-binding) and [Create your product & agent](../tuya-cloud/creating-new-product).

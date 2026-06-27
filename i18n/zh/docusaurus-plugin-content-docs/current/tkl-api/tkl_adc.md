@@ -1,278 +1,223 @@
-# tkl_adc | ADC 驱动
+---
+title: "tkl_adc | ADC 驱动"
+---
 
-## 说明
+TKL ADC 接口通过模数转换器对模拟电压进行采样以完成读取。你为一个 ADC 单元（`TUYA_ADC_NUM_E`）配置通道列表、分辨率和采样模式，然后读取原始计数值、将其转换为毫伏，或查询芯片温度。每个 ADC 单元通常通过位掩码暴露多个通道。
 
-### 简介
+ADC 经过采样、保持、量化和编码，将连续的模拟信号转换为离散的数字采样。其关键指标包括分辨率（位宽，如 8、10、12、16 位）、精度、转换时间，以及决定可测范围的参考电压。
 
-ADC，Analog to Digital Converter，模拟/数字转换器，通常是指一个将时间连续、幅值也连续的模拟信号转变为时间离散、幅值也离散的数字信号的电子元件。
-
-A/D 转换一般要经过取样、保持、量化及编码 4 个过程。在实际电路中，这些过程有的是合并进行的，例如，取样和保持，量化和编码往往都是在转换过程中同时实现的。
-
-### 分类
-
-| 直接 ADC | 并联比较型 ADC |
-| -------- | -------------- |
-|          | 逐次逼近型 ADC |
-|          | 闪存型 ADC     |
-| 间接 ADC | 双积分型 ADC   |
-
-### 技术指标
-
-分辨率：理论上 ADC 对输入信号的分辨能力，一般有 8 位、10 位、12 位、16 位等
-
-精度：实际模拟电压与采样电压之间的差值，差值的最大值为绝对精度，差值的最大值与满刻度模拟电压得百分比称为相对误差
-
-转换时间：每次采样所需的时间，表征 ADC 的转换速度，与 ADC 的时钟频率、采样周期、转换周期有关
-
-数据输出方式：并口输出、串口输出
-
-工作电压：需要注意 ADC 的工作电压范围、能否直接测量负电压等；
-
-## API 描述
-
-### tkl_adc_init
+## tkl_adc_init
 
 ```c
 OPERATE_RET tkl_adc_init(TUYA_ADC_NUM_E port_num, TUYA_ADC_BASE_CFG_T *cfg);
 ```
 
-- 功能描述：
-  - ADC 初始化
-- 参数：
+按给定的通道列表、分辨率和采样模式初始化一个 ADC 单元。
 
-  - `port_num`：ADC 端口号，一个端口对应一个 ADC 实体器件（一般有多个通道），取值如下：
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引（`TUYA_ADC_NUM_0` 至 `TUYA_ADC_NUM_6`）。每个单元为一个物理 ADC，通常带多个通道。 |
+| `cfg` | `TUYA_ADC_BASE_CFG_T *` | ADC 配置。 |
 
-    | 名字           | 定义       | 备注 |
-    | :------------- | :--------- | :--- |
-    | TUYA_ADC_NUM_0 | ADC 端口 0 |      |
-    | TUYA_ADC_NUM_1 | ADC 端口 1 |      |
-    | TUYA_ADC_NUM_2 | ADC 端口 2 |      |
-    | TUYA_ADC_NUM_3 | ADC 端口 3 |      |
-    | TUYA_ADC_NUM_4 | ADC 端口 4 |      |
-    | TUYA_ADC_NUM_5 | ADC 端口 5 |      |
+配置结构体如下：
 
-  - `cfg`：ADC 基础配置，取值如下：
+```c
+typedef struct {
+    TUYA_AD_DA_CH_LIST_U ch_list;  // 通道列表
+    uint8_t              ch_nums;  // 要转换的通道数量
+    uint8_t              width;    // 采样分辨率（位宽）
+    uint32_t             freq;     // 采样频率
+    TUYA_ADC_TYPE_E      type;     // 采样类型
+    TUYA_ADC_MODE_E      mode;     // 采样模式
+    uint16_t             conv_cnt; // 采样次数
+    uint32_t             ref_vol;  // 参考电压，单位 mV（不支持则忽略）
+} TUYA_ADC_BASE_CFG_T;
+```
 
-    ```c
-    typedef struct {
-        TUYA_AD_DA_CH_LIST_U  ch_list;  // ADC 通道列表
-        uint8_t ch_nums;        // 需要采集的ADC 通道个数
-        uint8_t  width;         // 分辨率（位宽）
-        uint32_t freq;          // 采样频率
-        TUYA_ADC_TYPE_E type;	// ADC 采样类型
-        TUYA_ADC_MODE_E mode;   // ADC 采样模式
-        uint16_t   conv_cnt;    // ADC 采样次数
-        uint32_t   ref_vol;     // ADC 参考电压（单位：mv）
-    } TUYA_ADC_BASE_CFG_T;
-    ```
+`ch_list` 选择要转换的通道。你可以按位设置，也可以通过 `data` 整字赋值：
 
-    #### TUYA_AD_DA_CH_LIST_U：
+```c
+typedef union {
+    TUYA_AD_DA_CH_LIST_BIT_T bits;
+    uint32_t                 data;
+} TUYA_AD_DA_CH_LIST_U;
 
-    ```c
-    typedef union {
-        TUYA_AD_DA_CH_LIST_BIT_T bits;
-        uint32_t data;
-    }TUYA_AD_DA_CH_LIST_U;
-    ```
+typedef struct {
+    uint32_t ch_0  : 1;
+    uint32_t ch_1  : 1;
+    uint32_t ch_2  : 1;
+    uint32_t ch_3  : 1;
+    uint32_t ch_4  : 1;
+    uint32_t ch_5  : 1;
+    uint32_t ch_6  : 1;
+    uint32_t ch_7  : 1;
+    uint32_t ch_8  : 1;
+    uint32_t ch_9  : 1;
+    uint32_t ch_10 : 1;
+    uint32_t ch_11 : 1;
+    uint32_t ch_12 : 1;
+    uint32_t ch_13 : 1;
+    uint32_t ch_14 : 1;
+    uint32_t ch_15 : 1;
+    uint32_t rsv   : 16;
+} TUYA_AD_DA_CH_LIST_BIT_T;
+```
 
-    ```c
-    typedef struct {
-        uint32_t ch_0             : 1;
-        uint32_t ch_1             : 1;
-        uint32_t ch_2             : 1;
-        uint32_t ch_3             : 1;
-        uint32_t ch_4             : 1;
-        uint32_t ch_5             : 1;
-        uint32_t ch_6             : 1;
-        uint32_t ch_7             : 1;
-        uint32_t ch_8             : 1;
-        uint32_t ch_9             : 1;
-        uint32_t ch_10            : 1;
-        uint32_t ch_11            : 1;
-        uint32_t ch_12            : 1;
-        uint32_t ch_13            : 1;
-        uint32_t ch_14            : 1;
-        uint32_t ch_15            : 1;
-        uint32_t rsv              :16;
-    }TUYA_AD_DA_CH_LIST_BIT_T;
-    ```
+`ch_nums` 是 `ch_list` 中要转换的通道数量。`type` 选择采样源：
 
-    采集通道列表可以使用 bit 位操作，也可以通过 data 操作，两者效果相同。
+| 取值 | 说明 |
+| --- | --- |
+| `TUYA_ADC_INNER_SAMPLE_VOL` | 采样内部电压，如供电电压 |
+| `TUYA_ADC_EXTERNAL_SAMPLE_VOL` | 采样外部电压，如引脚电压 |
 
-    `ch_nums` 采集的通道数量。
+`mode` 选择转换模式：
 
-    #### TUYA_ADC_TYPE_E：
+| 取值 | 说明 |
+| --- | --- |
+| `TUYA_ADC_SINGLE` | 单次转换 —— 每次转换一个通道 |
+| `TUYA_ADC_CONTINUOUS` | 连续转换 —— 对一个通道转换设定的次数 |
+| `TUYA_ADC_SCAN` | 扫描模式 —— 一次转换一组通道 |
 
-    | 名字                         | 定义                                 | 备注 |
-    | :--------------------------- | :----------------------------------- | :--- |
-    | TUYA_ADC_INNER_SAMPLE_VOL    | ADC 采样内部电压（例如电源电压）     |      |
-    | TUYA_ADC_EXTERNAL_SAMPLE_VOL | ADC 采样外部电压（例如外部引脚电压） |      |
+`conv_cnt` 设置该模式下的采样次数。
 
-    #### TUYA_ADC_MODE_E：
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分。
 
-    ```c
-    typedef enum {
-        TUYA_ADC_SINGLE = 0,       ///< Single conversion mode
-        TUYA_ADC_CONTINUOUS,       ///< Continuous conversion mode
-        TUYA_ADC_SCAN,             ///< Scan mode
-    } TUYA_ADC_MODE_E;
-    ```
-
-    | 名字                | 定义           | 备注         |
-    | :------------------ | :------------- | :----------- |
-    | TUYA_ADC_SINGLE     | 单通道采集     |              |
-    | TUYA_ADC_CONTINUOUS | 单通道多次采集 |              |
-    | TUYA_ADC_SCAN       | 扫描模式采集   | 可多通道采集 |
-
-    `conv_cnt` 指定采集模式下的采集次数。
-
-- 返回值：
-
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
-
-### tkl_adc_deinit
+## tkl_adc_deinit
 
 ```c
 OPERATE_RET tkl_adc_deinit(TUYA_ADC_NUM_E port_num);
 ```
 
-- 功能描述：
-  - ADC 去初始化状态
-- 参数：
-  - `port_num`：ADC 端口号
-- 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+反初始化一个 ADC 单元并释放其资源。
 
-### tkl_adc_width_get
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分。
+
+## tkl_adc_width_get
 
 ```c
 uint8_t tkl_adc_width_get(TUYA_ADC_NUM_E port_num);
 ```
 
-- 功能描述：
-  - ADC 查询分辨率（位宽）
-- 参数：
-  - `port_num`：ADC 端口号
-- 返回值：
-  - ADC 分辨率（位宽）
+读取 ADC 单元的分辨率（位宽）。
 
-### tkl_adc_ref_voltage_get
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引。 |
+
+**返回值**：ADC 分辨率，单位为位。
+
+## tkl_adc_ref_voltage_get
 
 ```c
 uint32_t tkl_adc_ref_voltage_get(TUYA_ADC_NUM_E port_num);
 ```
 
-- 功能描述：
-  - ADC 查询参考电压
-- 参数：
-  - `port_num`：ADC 端口号
-- 返回值：
-  - ADC 参考电压（单位：mv）
+读取 ADC 单元的参考电压。
 
-### tkl_adc_temperature_get
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引。 |
+
+**返回值**：参考电压，单位 mV。
+
+## tkl_adc_temperature_get
 
 ```c
 int32_t tkl_adc_temperature_get(void);
 ```
 
-- 功能描述：
-  - ADC 查询温度（此处指查询芯片温度）
-- 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+读取芯片温度。
 
-### tkl_adc_read_data
+**返回值**：温度，单位为摄氏度。
+
+## tkl_adc_read_data
 
 ```c
 OPERATE_RET tkl_adc_read_data(TUYA_ADC_NUM_E port_num, int32_t *buff, uint16_t len);
 ```
 
-- 功能描述：
-  - ADC 读取数据
-- 参数：
-  - `port_num`：ADC 端口号
-  - `buff`：ADC 数据缓冲区
-  - `len`：ADC 数据缓冲区的长度
-- 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+从 ADC 寄存器读取原始转换数据到缓冲区。
 
-### tkl_adc_read_single_channel
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引。 |
+| `buff` | `int32_t *` | 输出：存放读取数据的缓冲区。 |
+| `len` | `uint16_t` | 缓冲区长度。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分。
+
+## tkl_adc_read_single_channel
 
 ```c
 OPERATE_RET tkl_adc_read_single_channel(TUYA_ADC_NUM_E port_num, uint8_t ch_id, int32_t *data);
 ```
 
-- 功能描述：
-  - ADC 读取数据（单通道）
-- 参数：
-  - `port_num`：ADC 端口号
-  - `ch_id`：ADC 通道号
-  - `data`：ADC 数据缓冲区
-- 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+读取单个通道的转换结果。
 
-### tkl_adc_read_voltage
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引。 |
+| `ch_id` | `uint8_t` | ADC 单元内的通道索引。 |
+| `data` | `int32_t *` | 输出：转换结果。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分。
+
+## tkl_adc_read_voltage
 
 ```c
 OPERATE_RET tkl_adc_read_voltage(TUYA_ADC_NUM_E port_num, int32_t *buff, uint16_t len);
 ```
 
-- 功能描述：
-  - ADC 读取电压
-- 参数：
-  - `port_num`：ADC 端口号
-  - `buf`：ADC 电压缓冲区
-  - `len`：ADC 电压缓冲区长度
-- 返回值：
-  - OPRT_OK - 成功
-  - 其他请参考文件 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分
+读取转换数据并以计算后的电压返回。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `port_num` | `TUYA_ADC_NUM_E` | ADC 单元索引。 |
+| `buff` | `int32_t *` | 输出：存放电压的缓冲区，单位 mV。 |
+| `len` | `uint16_t` | 缓冲区长度。 |
+
+**返回值**：成功返回 `OPRT_OK`。其他值请参考 `tuya_error_code.h` 中 `OS_ADAPTER_ADC` 定义部分。
 
 ## 示例
 
-### 示例 1
+读取单个通道：
 
 ```c
 void tuya_adc_single_channel_test(void)
 {
     OPERATE_RET ret;
     TUYA_ADC_BASE_CFG_T adc_cfg;
-    uint32_t adc_value = 0;
-    uint16_t channel = 0;
+    int32_t adc_value = 0;
+    uint8_t channel = 0;
 
-    adc_cfg.ch_list.data = 1; // or adc_cfg.ch_list.bits.ch_0 = 1;
+    adc_cfg.ch_list.data = 1; // 或 adc_cfg.ch_list.bits.ch_0 = 1;
     adc_cfg.ch_nums = 1;
     adc_cfg.type = TUYA_ADC_INNER_SAMPLE_VOL;
     adc_cfg.mode = TUYA_ADC_SINGLE;
     adc_cfg.width = 10;
     adc_cfg.conv_cnt = 1;
 
-    ret = tkl_adc_init(ADC_NUM_0, &adc_cfg);
-    if(ret != OPRT_OK) {
-        // failed
+    ret = tkl_adc_init(TUYA_ADC_NUM_0, &adc_cfg);
+    if (ret != OPRT_OK) {
         return;
     }
 
-    ret = tkl_adc_read_single_channel(ADC_NUM_0, channel, &adc_value);
-    if(ret != OPRT_OK) {
-        // failed
+    ret = tkl_adc_read_single_channel(TUYA_ADC_NUM_0, channel, &adc_value);
+    if (ret != OPRT_OK) {
         return;
     }
 
-    // 输出 adc_value 的值
+    // 使用 adc_value
 
-    ret = tkl_adc_deinit(ADC_NUM_0);
-    if(ret != OPRT_OK) {
-        // failed
-        return;
-    }
+    tkl_adc_deinit(TUYA_ADC_NUM_0);
 }
 ```
 
-### 示例 2
+扫描模式一次读取多个通道：
 
 ```c
 #define ADC_CHANNEL_NUM 3
@@ -281,7 +226,7 @@ void tuya_adc_multi_channel_test(void)
 {
     OPERATE_RET ret;
     TUYA_ADC_BASE_CFG_T adc_cfg;
-    uint32_t adc_value[ADC_CHANNEL_NUM] = {0};
+    int32_t adc_value[ADC_CHANNEL_NUM] = {0};
 
     adc_cfg.ch_list.bits.ch_0 = 1;
     adc_cfg.ch_list.bits.ch_1 = 1;
@@ -292,24 +237,22 @@ void tuya_adc_multi_channel_test(void)
     adc_cfg.width = 10;
     adc_cfg.conv_cnt = 1;
 
-    ret = tkl_adc_init(ADC_NUM_0, &adc_cfg);
-    if(ret != OPRT_OK) {
-        // failed
+    ret = tkl_adc_init(TUYA_ADC_NUM_0, &adc_cfg);
+    if (ret != OPRT_OK) {
         return;
     }
 
-    ret = tkl_adc_read_data(ADC_NUM_0, adc_value, ADC_CHANNEL_NUM);
-    if(ret != OPRT_OK) {
-        // failed
+    ret = tkl_adc_read_data(TUYA_ADC_NUM_0, adc_value, ADC_CHANNEL_NUM);
+    if (ret != OPRT_OK) {
         return;
     }
 
-    // 输出 adc_value[ADC_CHANNEL_NUM] 的值
+    // 使用 adc_value[0..ADC_CHANNEL_NUM-1]
 
-    ret = tkl_adc_deinit(ADC_NUM_0);
-    if(ret != OPRT_OK) {
-        // failed
-        return;
-    }
+    tkl_adc_deinit(TUYA_ADC_NUM_0);
 }
 ```
+
+## 相关文档
+
+- [ADC 外设指南](../peripheral/tutorials/adc-guide)

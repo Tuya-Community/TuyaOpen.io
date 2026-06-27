@@ -2,9 +2,7 @@
 title: "Firmware Upgrade"
 ---
 
-# Firmware Upgrade
-
-This guide explains how to perform a remote OTA update for custom firmware on the Tuya IoT Platform. The process follows seven steps: create firmware key → write key into firmware → upload a new version → publish → configure upgrade rule → verify → release.
+A firmware OTA (over-the-air) upgrade pushes a new firmware version to deployed devices remotely through the Tuya IoT Platform. This guide takes you through the seven steps: create a firmware key, write the key into firmware, upload a new version, publish it, configure the upgrade rule, verify, and release.
 
 ## Prerequisites
 

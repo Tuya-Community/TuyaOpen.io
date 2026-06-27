@@ -11,7 +11,7 @@ title: T3 模块概述
 ## 要求
 
 - T3 LCD DevKit 或与 BSP 引脚假设一致的硬件。
-- TuyaOpen SDK 与 `tos.py`，参见 [快速开始](../../quick-start/index)。
+- TuyaOpen SDK 与 `tos.py`，参见 [快速开始](../../quick-start/index.md)。
 
 ## TuyaOpen 中的板级支持
 
@@ -31,5 +31,5 @@ title: T3 模块概述
 ## 参考
 
 - 模组数据手册：[T3-U 模组](https://developer.tuya.com/cn/docs/iot/T3-U-Module-Datasheet?id=Kdd4pzscwf0il)
-- [硬件支持列表](../index)
+- [硬件支持列表](../index.md)
 - [显示屏驱动](../../peripheral/display) 与 [显示驱动教程](../../peripheral/tutorials/display-driver-guide)（若使用 DevKit 屏幕）

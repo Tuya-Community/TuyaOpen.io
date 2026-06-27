@@ -1,8 +1,8 @@
-# Audio Driver
+---
+title: Audio Driver
+---
 
-## Overview
-
-The [audio driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/audio_codecs) is a core component within TuyaOpen responsible for handling audio input and output. It provides a unified interface to manage different types of audio devices, such as microphones and speakers. Through this driver, applications can easily perform audio capture, playback, and configuration without needing to manage the specific implementation details of the underlying hardware.
+The [audio driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/audio_codecs) handles audio input and output in TuyaOpen. It provides a unified interface for managing audio devices such as microphones and speakers, so applications can capture, play, and configure audio without managing the underlying hardware directly.
 
 ## Fundamental concepts
 
@@ -21,92 +21,30 @@ The [audio driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/
 
 ## Audio connection architecture
 
-The audio connection architecture varies depending on the main controller chip. For example, the `T5AI` includes built-in ADC and DAC interfaces and can implement an audio system without a codec chip. In contrast, the `ESP32-S3` does not support DAC and requires an external codec chip to build an audio system.
+The audio connection architecture depends on the main controller chip. The `T5AI` includes built-in ADC and DAC interfaces, so it can build an audio system without a codec chip. The `ESP32-S3` does not support DAC and requires an external codec chip.
 
-### Hardware architecture for audio devices with a built-in codec
+### Built-in codec
 
-```mermaid
-graph LR
-subgraph mic ["Microphone"]
-microphone[" Microphone "]
-end
+When the MCU has its own ADC and DAC, the codec chip is not needed. The signal path is:
 
-subgraph esp32 ["MCU"]
-esp_adc["ADC"]
-esp_dac["DAC"]
-pa_gpio["PA_GPIO"]
-end
+| Stage | Path |
+| --- | --- |
+| Capture | Microphone → MCU ADC |
+| Playback | MCU DAC → PA input → PA output → Speaker |
+| Amplifier control | MCU `PA_GPIO` → PA `CTRL` |
 
-subgraph ns4150 ["PA"]
-ns_in["IN"]
-amp["AMP"]
-ns_out["OUT"]
-ns_ctrl["CTRL"]
+### External codec
 
-%% PA internal connection
-ns_in --> amp
-amp --> ns_out
-end
+When the MCU lacks a DAC (for example, `ESP32-S3`), an external codec chip handles conversion. The MCU drives the codec over two buses: `I2C` carries control and configuration, and `I2S` carries the PCM audio data. The signal path is:
 
-subgraph speaker_box ["Speaker"]
-speaker["Speaker"]
-end
+![External codec audio path: capture runs Microphone to Codec ADC over I2S to MCU; playback runs MCU over I2S to Codec DAC to PA to Speaker, with I2C control and a PA_GPIO enable line](/img/peripheral/audio/external-codec-path-en.png)
 
-microphone -->|"ADC Capture audio signals"| esp_adc
-esp_dac -->|"DAC Output audio signal"| ns_in
-ns_out -->|"Audio output"| speaker
-pa_gpio -->|"Control signals"| ns_ctrl
-
-```
-
-### Hardware architecture for audio devices with an external codec
-
-```mermaid
-graph LR
-subgraph mic [" Microphone "]
-microphone["Microphone"]
-end
-
-subgraph codec [" CODEC "]
-adc["ADC"]
-dac["DAC"]
-i2s_port["I2S"]
-i2c_port["I2C"]
-
-%% Codec internal connection
-adc -->|"Data channels"| i2s_port
-i2s_port -->|"Data channels"| dac
-end
-
-subgraph mcu [" MCU "]
-i2s_bus["I2S"]
-i2c_bus["I2C"]
-pa_gpio["PA_GPIO"]
-end
-
-subgraph amplifier [" PA "]
-ns_in["IN"]
-amp["AMP"]
-ns_out["OUT"]
-ns_ctrl["CTRL"]
-
-%% PA internal connection
-ns_in --> amp
-amp --> ns_out
-end
-
-subgraph speaker_box ["Speaker"]
-speaker["Speaker"]
-end
-
-microphone -->|"ADC Capture audio signals"| adc
-dac -->|"DAC Output audio signal"| ns_in
-i2c_bus -->|"I2C communication"| i2c_port
-i2s_bus -->|"I2S Data (PCM coded)"| i2s_port
-ns_out -->|"Audio output"| speaker
-pa_gpio -->|"Control signals"| ns_ctrl
-
-```
+| Stage | Path |
+| --- | --- |
+| Control | MCU `I2C` ↔ codec `I2C` |
+| Capture | Microphone → codec ADC → codec `I2S` → MCU `I2S` |
+| Playback | MCU `I2S` → codec `I2S` → codec DAC → PA input → PA output → Speaker |
+| Amplifier control | MCU `PA_GPIO` → PA `CTRL` |
 
 ## Functional modules
 
@@ -166,85 +104,31 @@ This is the driver's intermediate layer, containing the concrete implementations
 
 ## Workflow
 
-Using the T5AI as an example, this section describes how the audio driver framework works.
+The audio driver framework follows the same lifecycle on every platform. Using the T5AI as an example, the board registers a device, then the application finds it by name, opens it, plays or captures audio, and closes it.
 
 ```mermaid
 sequenceDiagram
     participant App as App
-    participant TAL as Audio Abstraction Layer
-    participant TDD as Audio Device Driver
-    participant Bd as Board-level Configuration
-
-    Note over App, Bd: Register audio device
-
-    Bd->>+TDD: Call tdd_audio_register
-    Note right of Bd: Pass AUDIO_CODEC_NAME<br/>Pass TDD_AUDIO_T5AI_T config parameters<br/>- ai_chn: TKL_AI_0<br/>- sample_rate: TKL_AUDIO_SAMPLE_16K<br/>- data_bits: TKL_AUDIO_DATABITS_16<br/>- channel: TKL_AUDIO_CHANNEL_MONO<br/>- spk_pin: BOARD_SPEAKER_EN_PIN<br/>- aec_enable: 0/1
-
-    TDD->>+TAL: Call tdl_audio_driver_register
-    Note right of TDD: Register device name<br/>Register audio interface (TDD_AUDIO_INTFS_T)<br/>- __tdd_audio_open<br/>- __tdd_audio_close<br/>- __tdd_audio_play<br/>- __tdd_audio_config<br/>- __tdd_audio_set_volume
-
-    Note over TAL: Create an audio node (TDL_AUDIO_NODE_T)<br/> Add the node to the audio list (__audio_node_add)
-
-    TAL-->>-TDD: Return registration results
-    TDD-->>-Bd: Return registration results
-
-    Note over App, Bd: Get audio device handle
-
-    App->>+TAL: Call tdl_audio_find
-    Note over TAL: Find the audio device in the list by device name<br/>Return the audio node handle
-    TAL-->>-App: Return the audio device handle
-
-    Note over App, Bd: Power on audio device
-
-    App->>+TAL: Call tdl_audio_open
-    TAL->>+TDD: Call __tdd_audio_open
-    Note right of TDD: Initialize audio hardware<br/>Configure ADC/DAC parameters<br/>Set I2S interface<br/>Configure speaker enable pin
-    TDD-->>-TAL: Return the power-on result
-    TAL-->>-App: Return the device power-on result
-
-    Note over App, Bd: Configure audio parameters
-
-    App->>+TAL: Call the audio configuration interface
-    TAL->>+TDD: Call __tdd_audio_config
-    Note right of TDD: Set sample rate<br/> Set data bit depth<br/> Set channel configuration<br/> Configure echo cancellation (if enabled)
-    TDD-->>-TAL: Return configuration results
-    TAL-->>-App: Return configuration results
-
-    Note over App, Bd: Set volume
-
-    App->>+TAL: Call tdl_audio_volume_set
-    TAL->>+TDD: Call __tdd_audio_set_volume
-    Note right of TDD: Adjust audio output volume<br/>Control speaker amplifier
-    TDD-->>-TAL: Return the volume setting result
-    TAL-->>-App: Return the volume setting result
-
-    Note over App, Bd: Play back audio
-
-    App->>+TAL: Call tdl_audio_play
-    Note right of App: Pass audio frame data<br/>Pass frame format (TDL_AUDIO_FRAME_FORMAT_E)
-    TAL->>+TDD: Call __tdd_audio_play
-    TAL->>TDD: Call __tkl_audio_frame_put
-    Note right of TDD: Process audio frame data<br/> Output to DAC/I2S<br/> Control speaker enable
-    TDD-->>-TAL: Return playback results
-    TAL-->>-App: Return playback results
-
-    Note over App, Bd: Stop audio playback
-
-    App->>+TAL: Call tdl_audio_play_stop
-    TAL->>+TDD: Stop audio playback
-    Note right of TDD: Stop audio output<br/>Disable speakers
-    TDD-->>-TAL: Return results of stopping audio playback
-    TAL-->>-App: Return results of stopping audio playback
-
-    Note over App, Bd: Power off audio device
-
-    App->>+TAL: Call tdl_audio_close
-    TAL->>+TDD: Call __tdd_audio_close
-    Note right of TDD: Deinitialize audio hardware<br/> Release I2S resources<br/>Disable speaker pins
-    TDD-->>-TAL: Return power-off results
-    TAL-->>-App: Return the device power-off result
-
+    participant TDL as TDL (manage)
+    participant TDD as TDD driver
+    App->>TDL: tdl_audio_find(name)
+    App->>TDL: tdl_audio_open(handle, mic_cb)
+    TDL->>TDD: __tdd_audio_open
+    App->>TDL: tdl_audio_play(handle, data, len)
+    TDL->>TDD: __tdd_audio_play
+    App->>TDL: tdl_audio_close(handle)
+    TDL->>TDD: __tdd_audio_close
 ```
+
+The full sequence adds the registration, configuration, volume, and stop steps:
+
+1. **Register** — the board calls `tdd_audio_register` with `AUDIO_CODEC_NAME` and the `TDD_AUDIO_T5AI_T` config (`ai_chn`, `sample_rate`, `data_bits`, `channel`, `spk_pin`, `aec_enable`). The TDD driver then calls `tdl_audio_driver_register` to register its `TDD_AUDIO_INTFS_T` interface and create an audio node (`TDL_AUDIO_NODE_T`) in the device list.
+2. **Find** — the application calls `tdl_audio_find` to look up the device by name and get its handle.
+3. **Open** — `tdl_audio_open` invokes `__tdd_audio_open`, which initializes the hardware, configures ADC/DAC and the I2S interface, and sets the speaker enable pin.
+4. **Configure** — the configuration interface invokes `__tdd_audio_config` to set sample rate, data bits, channels, and echo cancellation when enabled.
+5. **Set volume** — `tdl_audio_volume_set` invokes `__tdd_audio_set_volume` to adjust output volume and amplifier gain.
+6. **Play** — `tdl_audio_play` passes frame data and format to `__tdd_audio_play`, which outputs to the DAC or I2S and controls the speaker enable.
+7. **Stop and close** — `tdl_audio_play_stop` halts output; `tdl_audio_close` invokes `__tdd_audio_close` to deinitialize the hardware and release I2S resources.
 
 ## Development guide
 

@@ -12,10 +12,10 @@ title: tos.py idf 命令参考
 
 ## 行为说明
 
-1. 读取当前 `app_default.config` 并确认平台为 ESP32。
+1. 读取解析后的配置（`.build/cache/using.config`），确认 `CONFIG_PLATFORM_CHOICE` 为 `ESP32`。
 2. 定位 `TuyaOpen/platform/ESP32/` 下的 ESP32 平台目录。
 3. 拼接命令：`idf.py` 加可选的 `--idf-flags` 加子命令及参数。
-4. 在 `platform/ESP32/tuya_open_sdk/` 工作目录下执行。
+4. 在 `platform/ESP32/tuya_open_sdk/` 工作目录下执行，该目录即 ESP-IDF 工程所在位置。
 
 属于**透传**：只要当前安装的 ESP-IDF 支持，即可使用对应的 `idf.py` 子命令与选项。
 

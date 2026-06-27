@@ -2,40 +2,36 @@
 title: Device Debugging
 ---
 
-## Overview
-
-This topic describes how to use serial port debugging tools to capture device logs for issue tracking and troubleshooting. After completing [TuyaOpen](https://github.com/tuya/TuyaOpen) firmware flashing, serial debugging serves as an effective method for troubleshooting device issues.
+Device debugging captures device logs over a serial port so you can track issues and troubleshoot behavior. After you flash [TuyaOpen](https://github.com/tuya/TuyaOpen) firmware, the serial log is the primary way to see what the device is doing.
 
 :::info
-**Currently, the IoT and AI+IoT chips supported by TuyaOpen do not support J-Link debugging tools. Instead, they use serial port logging for debugging.**
+The IoT and AI+IoT chips supported by TuyaOpen do not support J-Link debugging tools. Use serial port logging instead.
 :::
 
-## Preparation
+## What you need
 
-Before you begin debugging, make sure you have the following resources ready:
+Before you begin, get the following ready.
 
-### Hardware devices
+### Hardware
 
-- [TuyaOpen-compatible development boards or modules](../hardware/index.md#hardware-platforms)
-- USB data line or USB-to-TTL converter
+- A [TuyaOpen-compatible development board or module](../hardware/index.md#hardware-platforms)
+- A USB data cable or a USB-to-TTL converter
 
-### Debugging tools
+### Debugging tool
 
 Choose one of the following serial debugging tools:
 
-- **[Tuya's universal serial tool](https://www.tuyaopen.ai/zh/tools/tyutool)**: Graphical interface, easy to operate.
-- **TuyaOpen command line tos tool**: Command-line based, powerful functionality.
-- **Third-party tools**: SSCOM, MobaXterm, PuTTY, and more.
+- [Tuya's universal serial tool](https://www.tuyaopen.ai/zh/tools/tyutool): graphical interface, easy to operate.
+- TuyaOpen `tos` command-line tool: command-line based, flexible options.
+- Third-party tools: SSCOM, MobaXterm, PuTTY, and more.
 
-## Configure debugging parameters
+## Configure the serial parameters
 
-### Serial parameter reference table
-
-Before starting debugging, look up the debugging parameters based on your chip model.
+Look up the serial port and baud rate for your chip before you connect. Using the wrong values means you get no readable log output.
 
 | Chip model | Serial port | Baud rate | Remarks |
 |---------|---------|--------|------|
-| Ubuntu | - | - | Run directly on Ubuntu and other Linux hosts |
+| Ubuntu | - | - | Runs directly on Ubuntu and other Linux hosts |
 | T2 | Uart2 | 115200 | - |
 | T3 | Uart1 | 460800 | - |
 | T5AI | Uart1 | 460800 | - |
@@ -44,34 +40,32 @@ Before starting debugging, look up the debugging parameters based on your chip m
 | BK7231N | Uart2 | 115200 | - |
 
 :::tip
-**Select the correct serial port and baud rate. Otherwise, you may not be able to obtain log information as expected.**
+Select the correct serial port and baud rate. Otherwise, you may not get log output.
 :::
 
-## Debugging process
+## Capture logs
 
-### Method 1: Use Tuya's universal serial tool
+Pick the tool that matches your workflow.
 
-You are recommended to use the graphical serial port debugging tool provided by Tuya, which features a user-friendly interface and complete functionalities.
+### Method 1: Tuya's universal serial tool
 
-For more information, see [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md).
+The graphical tool is recommended for most users — it has a friendly interface and complete functionality. See [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md).
 
-### Method 2: Use the `tos` command-line tool
+### Method 2: The `tos` command-line tool
 
-This method is suitable for developers familiar with the command line, offering more flexible debugging options.
+Use this method if you are comfortable on the command line and want more flexible options. See the [tos monitor command](../tos-tools/tos-guide.md#monitor).
 
-For more information, see the [tos monitor command](../tos-tools/tos-guide.md#monitor).
+### Method 3: A third-party serial tool
 
-### Method 3: Use a third-party serial port tool
-
-If you prefer using other serial port debugging tools such as SSCOM, MobaXterm, and PuTTY, refer to the respective tool's documentation for configuration.
+If you prefer another serial tool such as SSCOM, MobaXterm, or PuTTY, configure it using the serial parameters above and follow that tool's documentation.
 
 ## Debugging tips
 
-- **Check connection**: Ensure hardware connections are correct and serial cables are undamaged.
-- **Match parameters**: Configure serial port parameters strictly according to the specifications in the table above.
-- **Analyze logs**: Focus on startup logs, error messages, and exceptional outputs.
-- **Record problems**: Promptly record problems identified and solutions implemented during the debugging process.
+- **Check the connection**: confirm the hardware connections are correct and the serial cable is undamaged.
+- **Match the parameters**: set the serial port and baud rate exactly as listed in the table above.
+- **Analyze the logs**: focus on startup logs, error messages, and unexpected output.
+- **Record problems**: note the issues you find and the fixes you apply as you go.
 
 :::note
-**Troubleshooting**: If you cannot get serial port output, please check hardware connections, serial port parameter settings, and driver installation.
+If you get no serial output, check the hardware connections, the serial parameter settings, and the driver installation.
 :::

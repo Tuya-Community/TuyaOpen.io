@@ -2,11 +2,9 @@
 title: "TAL Wi-Fi API Reference"
 ---
 
-# TAL Wi-Fi API Reference
+The TAL Wi-Fi API (`tal_wifi.h`) provides a platform-independent interface for Wi-Fi station and AP operations. It wraps the TKL Wi-Fi adapter, which in turn calls the platform's Wi-Fi driver (ESP-IDF, T5AI SDK, Linux, and others).
 
-The TAL Wi-Fi API (`tal_wifi.h`) provides a platform-independent interface for Wi-Fi station and AP operations. It wraps the TKL Wi-Fi adapter, which in turn calls the platform's Wi-Fi driver (ESP-IDF, T5AI SDK, Linux, etc.).
-
-Header: `#include "tal_wifi.h"`
+Header: `#include "tal_wifi.h"`. Functions return `OPERATE_RET` (`OPRT_OK` on success) unless noted otherwise.
 
 ## Initialization
 
@@ -291,7 +289,7 @@ Returns `OPRT_NOT_SUPPORTED` on ESP32.
 #include "tal_wifi.h"
 #include "tal_log.h"
 
-static void wifi_event_cb(void *arg)
+static void wifi_event_cb(WF_EVENT_E event, void *arg)
 {
     WF_STATION_STAT_E stat;
     tal_wifi_station_get_status(&stat);
@@ -309,9 +307,10 @@ void connect(void)
 }
 ```
 
-## References
+## See also
 
 - [Wi-Fi Station Tutorial](wifi-station-tutorial)
+- [TAL Network API reference](tal-network-api)
 - [TKL Wi-Fi API](/docs/tkl-api/tkl_wifi)
 - [Wi-Fi examples](https://github.com/tuya/TuyaOpen/tree/master/examples/wifi)
 - [ESP32 Wi-Fi Notes](../../hardware/espressif/overview-esp32)

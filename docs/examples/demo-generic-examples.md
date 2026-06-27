@@ -2,9 +2,7 @@
 title: Generic Demos
 ---
 
-# Generic Demos
-
-TuyaOpen provides a variety of example projects to help you quickly familiarize yourself with and master the usage of TuyaOpen, significantly reducing the learning curve.
+The `examples/` tree contains ready-to-build sample projects, grouped by topic (peripherals, Wi-Fi, BLE, protocols, graphics, multimedia, system, and more). Each is a complete TuyaOpen project you can configure, build, flash, and run to learn an API or feature in isolation.
 
 ```bash
 $ examples
@@ -13,8 +11,8 @@ $ examples
 │   └── ble_peripher
 ├── e-Paper
 │   ├── 1.54inch_e-Paper
-│   ├── 2.13inch_e-Paper
-│   └── 2.9inch_e-Paper
+│   ├── 2.13inch_e-Paper_Touch
+│   └── 4.26inch_e-Paper
 ├── get-started
 │   ├── cxx
 │   └── sample_project
@@ -88,7 +86,7 @@ $ examples
 | **protocols/** | HTTP/HTTPS client, MQTT client, TCP client/server | [HTTP and HTTPS (GET/POST, JSON)](../peripheral/tutorials/http-client-tutorial), [MQTT Client](../peripheral/tutorials/mqtt-client-tutorial), [TCP and UDP sockets](../peripheral/tutorials/tcp-socket-tutorial) |
 | **graphics/** | LVGL demos, u8g2 I2C/SPI displays | [LVGL Application Guide](../peripheral/tutorials/lvgl-application-guide), [Display Driver Guide](../peripheral/tutorials/display-driver-guide) |
 | **multimedia/** | Keyword spotting (KWS), audio player, recorder, VAD | [Audio Codec Guide](/docs/peripheral/tutorials/audio-codec-guide) |
-| **e-Paper/** | E-paper display demos (1.54", 2.13", 2.9") | |
+| **e-Paper/** | E-paper display demos (1.54", 2.13" touch, 4.26") | |
 | **tflite/** | TensorFlow Lite Micro hello-world inference | |
 | **get-started/** | Minimal project template and C++ example | |
 

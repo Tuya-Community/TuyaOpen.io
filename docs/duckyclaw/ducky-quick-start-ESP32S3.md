@@ -1,12 +1,12 @@
 ---
-title: DuckyClaw with ESP32-S3
+title: TuyaOpenClaw with ESP32-S3
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# DuckyClaw Quick Start (ESP32-S3)
+# TuyaOpenClaw Quick Start (ESP32-S3)
 
-This guide walks you through building and flashing the DuckyClaw firmware on an ESP32-S3 development board. It is for developers who want to run DuckyClaw on ESP32-S3 with Wi‑Fi.
+This guide walks you through building and flashing the TuyaOpenClaw (formerly DuckyClaw) firmware on an ESP32-S3 development board. It is for developers who want to run TuyaOpenClaw on ESP32-S3 with Wi‑Fi.
 
 ## Requirements
 
@@ -227,7 +227,7 @@ Replace the placeholder values. Obtain:
 - **PID**: [Tuya product / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2).
 - **UUID and AuthKey**: [Tuya IoT Platform – Open SDK purchase](https://platform.tuya.com/purchase/index?type=6).
 
-**IM configuration** (optional): To receive DuckyClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
+**IM configuration** (optional): To receive TuyaOpenClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
 
 ```c
 // IM configuration
@@ -326,7 +326,7 @@ If `productkey` (PID) appears as placeholders, the product ID was not set. Copy 
 
 ## References
 
-- [DuckyClaw Overview](/duckyclaw)
+- [TuyaOpenClaw Overview](/duckyclaw)
 - [Quick Start – Environment setup](/docs/quick-start/enviroment-setup)
 - [Custom Device MCP (hardware skills)](/docs/duckyclaw/custom-device-mcp)
-- [DuckyClaw repository](https://github.com/tuya/DuckyClaw) (external)
+- [TuyaOpenClaw repository](https://github.com/tuya/DuckyClaw) (external)

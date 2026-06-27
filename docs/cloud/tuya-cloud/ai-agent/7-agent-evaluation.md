@@ -2,116 +2,110 @@
 title: Agent Evaluation
 ---
 
-# **Agent Evaluation**
-# **Overview**
+Agent evaluation tests how well an agent's orchestration works and whether it meets your expected capabilities and performance. You import a test dataset, run the agent against it in batch, and analyze the outputs to get objective quality metrics — so you can keep tuning the workflow as you debug.
 
-AI agent evaluation refers to the process of systematically testing, visually analyzing, and assessing the orchestration effectiveness of AI agents, and verifying whether they meet expected capabilities and performance benchmarks. During orchestration debugging, the evaluation can provide objective quality assessment metrics to help you continuously optimize agent workflows and enhance performance.
+## Features
 
-You can import test datasets from target scenarios, systematically invoke the agent to collect output results, and analyze them to evaluate the agent’s capabilities and effectiveness.
+- **Batch data testing**: Import scenario-based datasets to simulate user dialogues, run them in batch, and collect outputs for a full assessment of response quality.
+- **AI model-assisted analysis**: Let an AI model evaluate the results automatically, returning quality judgments and performance scores to speed up analysis.
+- **Multi-dimensional comparison**: Compare and annotate results online, benchmark across versions, and trace knowledge-base retrieval for detailed diagnostics.
 
-# **Features**
+## Batch testing
 
-- **Batch data testing**: Import scenario-based test datasets to simulate user dialogues, execute batch processing, and collect agent outputs for comprehensive evaluation of response quality and effectiveness.
-- **AI model-assisted analytics**: Enable automated evaluation of test results through AI models, and deliver quality judgments and performance scores to enhance analysis efficiency.
-- **Multi-dimensional comparative analytics**: Support online test result comparison/annotation, cross-version benchmarking, and knowledge-base traceability for detailed diagnostics.
+Go to the [My Agent](https://platform.tuya.com/exp/ai) list, select an agent, then click **…** > **Batch Testing** in the **Operation** column.
 
-# **Batch testing**
+![My Agent list with the Batch Testing action](https://images.tuyacn.com/content-platform/hestia/1749780996a0816f98275.png)
 
-Go to the [My Agent](https://platform.tuya.com/exp/ai) list page, select an agent, and then click **…** > **Batch Testing** in the **Operation** column.
+Alternatively, click **Manage** in the **Operation** column to open the agent details page, then click **Batch Testing** in the top right corner.
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/1749780996a0816f98275.png)
+![Agent details page with Batch Testing button](https://images.tuyacn.com/content-platform/hestia/1749781122dce852a1e1a.png)
 
-Alternatively, click **Manage** in the **Operation** column to enter the agent details page. And then, click **Batch Testing** in the top right corner of the page to enter the evaluation page.
+:::note
+Only agents with an officially released version can be batch tested.
+:::
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/1749781122dce852a1e1a.png)
+## AI evaluation configuration
 
-Only agents that have officially released a version can be batch tested.
+The platform can use an AI evaluation model to analyze test results automatically. When you [create an evaluation task](https://developer.tuya.com/en/docs/iot/ai-agent-evaluation?id=Kenth7s0bxavo#test) with the **AI Evaluation** debug type, the system invokes the model to analyze the agent's outputs and generate a report.
 
-# **AI evaluation configuration**
+1. Click **AI Evaluation Configuration** in the top right corner. This configuration applies only to the current agent. Every **AI evaluation** task you create for this agent reuses it.
 
-The platform supports AI evaluation models to automatically analyze test results. When [creating an evaluation task](https://developer.tuya.com/en/docs/iot/ai-agent-evaluation?id=Kenth7s0bxavo#test), select the **AI Evaluation** debug type, and the system will automatically invoke the model to analyze the agent’s test results and generate an analytical report.
+   ![AI Evaluation Configuration entry](https://images.tuyacn.com/content-platform/hestia/1749781186ac5a9bab699.png)
 
-1. Click **AI Evaluation Configuration** in the top right corner of the page. The AI evaluation configuration is only valid for the current agent. When you create one or more **AI evaluation** tasks for this agent, the system will reference this evaluation configuration.
-    
-    ![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/1749781186ac5a9bab699.png)
-    
-2. Both the **Evaluation Model** and **Evaluation Prompt** must be configured.
-    
-    ![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/17497813352424e98512f.png)
-    
-    You can manually enter evaluation prompts or click the **Prompt Template** in the lower-left corner to view template content, and then select **Use** to apply it. You can also click **Switch to English** or **Switch to Chinese** to change the language of the prompt template. Currently, Chinese and English are supported.
-    
-    ![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/174978140455c5220fa9e.png)
-    
-    After configuration is complete, click **OK**.
-    
-3. After each save, the system will generate a historical version of the configuration by default. Click **Details** in the **History** section on the right to view the contents of historical versions. Also, you can click **Restore this version** to restore the configuration of a historical version.
-    
-    ![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/1749781466e17d8668a59.png)
-    
-    ![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/17497815144467da430f8.png)
-    
+2. Configure both the **Evaluation Model** and the **Evaluation Prompt**.
 
-# **Create a task**
+   ![Evaluation model and prompt fields](https://images.tuyacn.com/content-platform/hestia/17497813352424e98512f.png)
 
-On the batch testing task list page, click **Create Task** in the top right corner to create an evaluation task for the agent. You can evaluate all released versions of the agent.
+   Enter the prompt manually, or click **Prompt Template** in the lower-left corner to preview a template and click **Use** to apply it. Click **Switch to English** or **Switch to Chinese** to change the template language. Chinese and English are supported.
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/17497815658cfe2625162.png)
+   ![Prompt template selection](https://images.tuyacn.com/content-platform/hestia/174978140455c5220fa9e.png)
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/174978162146ca025095e.png)
+   When done, click **OK**.
 
-**Fields of creating a task**
+3. Each save creates a historical version of the configuration. In the **History** section on the right, click **Details** to view a version, or click **Restore this version** to roll back to it.
 
-| Field name | Description |
+   ![Configuration history list](https://images.tuyacn.com/content-platform/hestia/1749781466e17d8668a59.png)
+
+   ![Historical version details](https://images.tuyacn.com/content-platform/hestia/17497815144467da430f8.png)
+
+## Create a task
+
+On the batch testing task list, click **Create Task** in the top right corner. You can evaluate any released version of the agent.
+
+![Create Task entry](https://images.tuyacn.com/content-platform/hestia/17497815658cfe2625162.png)
+
+![Create Task form](https://images.tuyacn.com/content-platform/hestia/174978162146ca025095e.png)
+
+| Field | Description |
 | --- | --- |
-| Data Region | The data center where the specified agent is deployed. Task data is also saved in this data center. |
-| Agent | The name of the specified agent. |
-| Select Version | Select a historical version of the current agent. |
-| Test Task Name | The name of the specified evaluation task. |
-| Debug Type | There are two debug types:
-• **Agent Execution**: The agent executes test data and outputs results.
-• **AI Evaluation**: After agent execution, the AI evaluation model automatically analyzes outputs and provides analytic results. |
-| Import Data | Import test data from a spreadsheet file. Only one file can be uploaded at a time. Click **Download Test Set Template**, format, and upload your data according to the template to avoid parsing failures. |
+| Data Region | The data center where the agent is deployed. Task data is also saved here. |
+| Agent | The name of the agent. |
+| Select Version | A historical version of the current agent. |
+| Test Task Name | The name of the evaluation task. |
+| Debug Type | **Agent Execution** runs the test data and outputs results. **AI Evaluation** runs the agent, then has the AI evaluation model analyze the outputs and return results. |
+| Import Data | Import test data from a spreadsheet, one file at a time. Click **Download Test Set Template** and format your data to the template to avoid parsing failures. |
 
-After the configuration is completed, click **Save and Execute Immediately** to start executing the test task.
+When done, click **Save and Execute Immediately** to run the task.
 
-# **Evaluation result**
+## Evaluation result
 
-After the task is completed, click **Details** to view the execution results online, or click **Download** to download the result file.
+After the task finishes, click **Details** to view results online, or click **Download** to download the result file.
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/17497816824baba2eed77.png)
+![Evaluation results view](https://images.tuyacn.com/content-platform/hestia/17497816824baba2eed77.png)
 
-If the agent is linked with a knowledge base, you can click **View Retrieval** in the results to view the details of the knowledge base search.
+If the agent is linked to a knowledge base, click **View Retrieval** in the results to see the retrieval details.
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/174978174609e881426ae.png)
+![Knowledge base retrieval details](https://images.tuyacn.com/content-platform/hestia/174978174609e881426ae.png)
 
-**Fields of evaluation results**
-
-| Field name | Description |
+| Field | Description |
 | --- | --- |
 | Input | The test case data you uploaded. |
-| Expected Output | The expected response content after the test data is input to the agent. |
-| Actual Output | The results actually generated by the agent. |
-| Evaluation Result | Manual custom annotation. You can label test results with pass/fail markers and add descriptive comments for further analytics. |
-| Evaluation Description | • If the debug type is **AI evaluation**, the model evaluation opinion is displayed.
-• If the debug type is **agent execution**, the field is empty and can be manually labeled. |
-| Additional Information | You can add remarks as needed. |
-| Knowledge Retrieval | If the agent is linked with a knowledge base, you can view the details of the agent’s retrieval of the knowledge base after the current data is input. Knowledge base retrieval details cannot be exported as files. |
+| Expected Output | The response you expect for the input. |
+| Actual Output | The result the agent produced. |
+| Evaluation Result | A manual annotation. Mark each result pass or fail and add comments. |
+| Evaluation Description | For **AI evaluation**, the model's opinion. For **agent execution**, empty until you annotate it. |
+| Additional Information | Add remarks as needed. |
+| Knowledge Retrieval | If the agent is linked to a knowledge base, the retrieval details for this input. Retrieval details cannot be exported. |
 
-# **Result comparison**
+## Result comparison
 
-On the platform, you can compare any two tasks of your agent online. On the list page of **Batch Testing** tasks, click **Result Comparison**. Select any two historical tasks and click **Result Comparison** to show the details.
+You can compare any two tasks of an agent online. On the **Batch Testing** task list, click **Result Comparison**, select two historical tasks, then click **Result Comparison** to see the details.
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/174978178451339a8dad4.png)
+![Result comparison selection](https://images.tuyacn.com/content-platform/hestia/174978178451339a8dad4.png)
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/17497819046785b875f5f.png)
+![Result comparison details](https://images.tuyacn.com/content-platform/hestia/17497819046785b875f5f.png)
 
-You can also download the task execution result file and make a more detailed comparison locally.
+You can also download the result files and compare them in detail locally.
 
-# **Billing**
+## Billing
 
-The agent evaluation functionality is currently free of charge, and the token consumption generated by executing the evaluation task follows standard billing rates.
+Agent evaluation is free. The tokens consumed by running an evaluation task are billed at standard rates.
 
-Go to the [Resource Consume](https://platform.tuya.com/exp/ai/tokenUsage) page to view detailed token consumption. Also, you can select an agent, go to the **Batch Testing** list, and check the **Token Consumption** column of each task.
+Go to the [Resource Consume](https://platform.tuya.com/exp/ai/tokenUsage) page for detailed token consumption. You can also select an agent, open the **Batch Testing** list, and check the **Token Consumption** column for each task.
 
-![Agent Evaluation](https://images.tuyacn.com/content-platform/hestia/174978194822bc66d1466.png)
+![Token consumption view](https://images.tuyacn.com/content-platform/hestia/174978194822bc66d1466.png)
+
+## See also
+
+- [Agent Metering and Billing](agent-metering-and-billing) — model and voice unit prices
+- [Role Management](role-management) — define the roles you test

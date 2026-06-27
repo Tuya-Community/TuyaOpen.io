@@ -2,36 +2,30 @@
 title: 极速体验
 ---
 
-import ChipRow from '@site/src/components/ChipRow';
-
-## 概述
-
-本文档旨在帮助开发者快速上手 [TuyaOpen](https://github.com/tuya/TuyaOpen) 项目，使用已预编译的 bin 文件，完成固件下载、烧录、设备授权、设备配网等流程，连接涂鸦云，快速体验涂鸦云提供的各种服务。
-
-如需要自行开发与编译 [TuyaOpen](https://github.com/tuya/TuyaOpen)，可略过当前环节直接从 [环境搭建](./enviroment-setup.md) 开始。
+极速体验将预编译固件烧录到支持的开发板上，让你无需自行构建即可将设备接入涂鸦 IoT 云、体验涂鸦云服务。如果你想快速评估一块开发板，请走这条路径；如果你想从源码构建并编译 [TuyaOpen](https://github.com/tuya/TuyaOpen)，可跳过本页，直接从 [环境搭建](./enviroment-setup.md) 开始。
 
 ## 准备工作
 
 开始前，请准备以下资源：
- - [TuyaOpen 支持的开发板或模组](../hardware/index.md#硬件平台)
- - USB 数据线
- - 电脑（支持 Windows/Linux/macOS 系统）
+
+- 一块 [TuyaOpen 支持的开发板或模组](../hardware/index.md#硬件平台)
+- 一根 USB 数据线
+- 一台运行 Windows、Linux 或 macOS 的电脑
 
 ## 下载固件
 
-从 TuyaOpen 的 **[发布页面](https://github.com/tuya/TuyaOpen/releases)** 下载固件进行烧录和测试。
+从 **[TuyaOpen 发布页面](https://github.com/tuya/TuyaOpen/releases)** 下载用于烧录和测试的固件。
 
-可通过 [TuyaOpen 应用列表](../cloud/overview#tuyaopen-应用列表) 选择适合当前芯片和应用，下载已预编译的 bin 文件。
+在 [TuyaOpen 应用列表](../cloud/overview#tuyaopen-应用列表) 中选择与你开发板匹配的芯片和应用，下载对应的预编译 bin 文件。
 
 ## 固件烧录
 
-可以通过 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) 图形化工具 `tyutool_gui` 进行固件烧录，具体使用说明请参考 [GUI - tyutool 图形化工具](../tos-tools/tools-tyutool.md#固件烧录)。
+使用图形化的 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) `tyutool_gui` 烧录固件。具体步骤请参考 [GUI - tyutool 图形化工具](../tos-tools/tools-tyutool.md#固件烧录)。
 
 ## 设备授权
 
-如需要将设备连接至涂鸦云，必须先对设备进行授权。可以通过 `tyutool_gui` 工具进行 [设备授权](./equipment-authorization.md)。
+要将设备接入涂鸦 IoT 云，必须先对其授权。使用 `tyutool_gui` 进行 [设备授权](./equipment-authorization.md)。
 
 ## 设备配网
 
-设备配网是指将设备连接到 Wi-Fi 路由器，并在涂鸦云激活，与用户绑定的过程，需要借助手机中的 **智能生活** App 进行操作。具体操作步骤请参考 [设备配网](./device-network-configuration.md) 。
-
+设备配网将设备连接到 Wi-Fi 路由器、在涂鸦 IoT 云上激活并绑定到你的账号。该过程需要手机上的 **智能生活** App。完整步骤请参考 [设备配网](./device-network-configuration.md)。

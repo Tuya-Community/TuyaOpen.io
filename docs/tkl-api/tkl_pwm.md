@@ -1,266 +1,310 @@
-# tkl_pwm | PWM Driver
+---
+title: "tkl_pwm | PWM Driver"
+---
 
-## Brief Description
+The TKL PWM interface generates a pulse-width-modulated signal on a hardware channel and reads pulse timing back through input capture. You configure a channel's polarity, duty cycle, and frequency, then start, adjust, or stop the output at runtime. Channels are addressed by `TUYA_PWM_NUM_E`, starting at `TUYA_PWM_NUM_0`.
 
-PWM (Pulse Width Modulation) is an effective technology that uses the digital output of a microprocessor to control analog circuits.
+A PWM signal encodes an analog value as the ratio of high time to period (the duty cycle). For example, with a 10 ms period, a 7 ms high time is a 70% duty cycle and a 4 ms high time is a 40% duty cycle. Adjusting the duty cycle changes the effective analog output.
 
-![img](https://images.tuyacn.com/fe-static/docs/img/ba656efd-316e-412a-9370-7b8f10fb94d9.png)
-
-As shown in the figure above, a PWM waveform with a pulse period of 10ms: the first period has a high level of 7ms (duty cycle 70%); the second period has a high level of 4ms (duty cycle 40%). By adjusting the duty cycle value of the high level, the size of the analog output value can be changed.
-
-## API Description
-
-### tkl_pwm_init
+## tkl_pwm_init
 
 ```c
 OPERATE_RET tkl_pwm_init(TUYA_PWM_NUM_E ch_id, const TUYA_PWM_BASE_CFG_T *cfg);
 ```
 
-- Function Description:
-  - Initializes the corresponding PWM instance through the port number and basic configuration, returning the initialization result.
-- Parameters:
+Initializes a PWM channel with the given polarity, duty cycle, and frequency.
 
-  - `ch_id`: Channel number.
-  - `cfg`: PWM basic configuration, including output polarity, duty cycle, and frequency.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index, starting at `TUYA_PWM_NUM_0`. |
+| `cfg` | `const TUYA_PWM_BASE_CFG_T *` | Channel configuration. |
 
-    ```c
-    typedef struct {
-        TUYA_PWM_POLARITY_E polarity;
-        TUYA_PWM_COUNT_E    count_mode;
-        //pulse duty cycle = duty / cycle; exp duty = 5000,cycle = 10000; pulse duty cycle = 50%
-        uint32_t              duty;
-        uint32_t              cycle;
-        uint32_t              frequency;  // (bet: Hz)
-    } TUYA_PWM_BASE_CFG_T;
-    ```
+The configuration structure is:
 
-    #### polarity:
+```c
+typedef struct {
+    TUYA_PWM_POLARITY_E polarity;
+    TUYA_PWM_COUNT_E    count_mode;
+    // pulse duty cycle = duty / cycle; e.g. duty = 5000, cycle = 10000 -> 50%
+    uint32_t            duty;
+    uint32_t            cycle;
+    uint32_t            frequency; // Hz
+} TUYA_PWM_BASE_CFG_T;
+```
 
-    | Name              | Definition            | Remarks |
-    | :---------------- | :-------------------- | :------ |
-    | TUYA_PWM_NEGATIVE | PWM low-level output  |         |
-    | TUYA_PWM_POSITIVE | PWM high-level output |         |
+`polarity` selects the active level:
 
-    #### count_mode:
+| Value | Description |
+| --- | --- |
+| `TUYA_PWM_NEGATIVE` | Low-level output |
+| `TUYA_PWM_POSITIVE` | High-level output |
 
-    Counting mode, with `TUYA_PWM_CNT_UP` and `TUYA_PWM_CNT_UP_AND_DOWN` as options.
+`count_mode` selects the counter mode:
 
-    #### duty:
+| Value | Description |
+| --- | --- |
+| `TUYA_PWM_CNT_UP` | Up counting (default) |
+| `TUYA_PWM_CNT_UP_AND_DOWN` | Up-and-down counting, for complementary duplex mode |
 
-    Duty cycle, used with cycle, output = duty / cycle.
+`duty` and `cycle` set the duty ratio as `duty / cycle`. `frequency` is the output frequency in Hz.
 
-    #### cycle:
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
 
-    Period, or granularity, output = duty / cycle.
-
-    #### frequency:
-
-    Output frequency, in Hz.
-
-- Return Value:
-  - OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
-
-### tkl_pwm_deinit
+## tkl_pwm_deinit
 
 ```c
 OPERATE_RET tkl_pwm_deinit(TUYA_PWM_NUM_E ch_id);
 ```
 
-- Function Description:
-  - Deinitializes the PWM instance.
-  - This interface stops any ongoing transmission of the PWM instance (if any) and releases related software and hardware resources.
-- Parameters:
-  - `ch_id`: Channel number.
-- Return Value:
-  - OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Deinitializes a PWM channel. Stops any ongoing output and releases the channel's software and hardware resources.
 
-### tkl_pwm_start
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_start
 
 ```c
 OPERATE_RET tkl_pwm_start(TUYA_PWM_NUM_E ch_id);
 ```
 
-- Function Description:
-  - Starts PWM.
-- Parameters:
-  - `ch_id`: Channel number.
-- Return Value:
-  - OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Starts output on a PWM channel.
 
-### tkl_pwm_stop
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_stop
 
 ```c
 OPERATE_RET tkl_pwm_stop(TUYA_PWM_NUM_E ch_id);
 ```
 
-- Function Description:
-  - Stops PWM.
-- Parameters:
-  - `port`: Port number.
-- Return Value:
-  - OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Stops output on a PWM channel.
 
-### tkl_pwm_multichannel_start
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_multichannel_start
 
 ```c
 OPERATE_RET tkl_pwm_multichannel_start(TUYA_PWM_NUM_E *ch_id, uint8_t num);
 ```
 
-- Function Description:
-  - Simultaneously starts multiple channel PWMs for combined output, used in scenarios with strict timing requirements.
-- Parameters:
-  - `ch_id`: List of channel numbers, array.
-  - `num`: Number of channels to start.
-- Return Value:
-  - OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Starts several PWM channels together for synchronized combined output, for cases with strict timing requirements.
 
-### tkl_pwm_multichannel_stop
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E *` | Array of channel indices to start. |
+| `num` | `uint8_t` | Number of channels in the array. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_multichannel_stop
 
 ```c
 OPERATE_RET tkl_pwm_multichannel_stop(TUYA_PWM_NUM_E *ch_id, uint8_t num);
 ```
 
-- Function Description:
-  - Simultaneously stops multiple channel PWMs for combined output, used in scenarios with strict timing requirements.
-- Parameters:
-  - `ch_id`: List of channel numbers, array.
-  - `num`: Number of channels to stop.
-- Return Value:
-  - OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Stops several PWM channels together.
 
-### tkl_pwm_info_set
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E *` | Array of channel indices to stop. |
+| `num` | `uint8_t` | Number of channels in the array. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_duty_set
+
+```c
+OPERATE_RET tkl_pwm_duty_set(TUYA_PWM_NUM_E ch_id, uint32_t duty);
+```
+
+Sets the duty cycle of a channel.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+| `duty` | `uint32_t` | Duty cycle, used as `duty / cycle`. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_frequency_set
+
+```c
+OPERATE_RET tkl_pwm_frequency_set(TUYA_PWM_NUM_E ch_id, uint32_t frequency);
+```
+
+Sets the output frequency of a channel.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+| `frequency` | `uint32_t` | Output frequency in Hz. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_polarity_set
+
+```c
+OPERATE_RET tkl_pwm_polarity_set(TUYA_PWM_NUM_E ch_id, TUYA_PWM_POLARITY_E polarity);
+```
+
+Sets the output polarity of a channel.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+| `polarity` | `TUYA_PWM_POLARITY_E` | `TUYA_PWM_NEGATIVE` or `TUYA_PWM_POSITIVE`. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_info_set
 
 ```c
 OPERATE_RET tkl_pwm_info_set(TUYA_PWM_NUM_E ch_id, const TUYA_PWM_BASE_CFG_T *info);
 ```
 
-- Function Description:
-  - Resets PWM configuration parameters, allowing dynamic modification of the configuration after PWM start, and then restarts.
-- Parameters:
-  - `ch_id`: Channel number.
-  - `info`: PWM basic configuration, including output polarity, duty cycle, frequency. The structure parameters are described above.
-- Return Value:
-  - Error code, OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Replaces the full configuration of a channel, so you can change polarity, duty cycle, and frequency at runtime and restart the channel.
 
-### tkl_pwm_info_get
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+| `info` | `const TUYA_PWM_BASE_CFG_T *` | New channel configuration (see `tkl_pwm_init`). |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_info_get
 
 ```c
 OPERATE_RET tkl_pwm_info_get(TUYA_PWM_NUM_E ch_id, TUYA_PWM_BASE_CFG_T *info);
 ```
 
-- Function Description:
-- Parameters:
-  - `ch_id`: Channel number.
-  - `info`: PWM basic configuration, including output polarity, duty cycle, frequency. The structure parameters are described above.
-- Return Value:
-  - Error code, OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Reads the current configuration of a channel.
 
-### tkl_pwm_cap_start
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+| `info` | `TUYA_PWM_BASE_CFG_T *` | Output: the channel configuration. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## tkl_pwm_cap_start
 
 ```c
 OPERATE_RET tkl_pwm_cap_start(TUYA_PWM_NUM_E ch_id, const TUYA_PWM_CAP_IRQ_T *cfg);
 ```
 
-- Function Description:
-  - Enables PWM input capture mode.
-- Parameters:
+Starts PWM input capture mode on a channel, measuring pulse timing on the input signal.
 
-  - `ch_id`: Channel number.
-  - `cfg`: PWM input capture configuration, as detailed below.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+| `cfg` | `const TUYA_PWM_CAP_IRQ_T *` | Capture configuration. |
 
-    #### cap_mode:
+The capture configuration structure is:
 
-    | Name                         | Definition            | Remarks |
-    | :--------------------------- | :-------------------- | :------ |
-    | TUYA_PWM_CAPTURE_MODE_ONCE   | Single trigger mode   |         |
-    | TUYA_PWM_CAPTURE_MODE_PERIOD | Multiple trigger mode |         |
+```c
+typedef struct {
+    TUYA_PWM_CAPTURE_MODE_E cap_mode;      // capture mode
+    TUYA_PWM_POLARITY_E     trigger_level; // trigger edge
+    uint32_t                clk;           // sampling rate of the capture signal
+    TUYA_PWM_IRQ_CB         cb;            // capture callback
+    void                   *arg;           // argument passed to the callback
+} TUYA_PWM_CAP_IRQ_T;
+```
 
-    #### trigger_level:
+`cap_mode` selects the capture mode:
 
-    | Name              | Definition                     | Remarks |
-    | :---------------- | :----------------------------- | :------ |
-    | TUYA_PWM_NEGATIVE | Trigger signal is falling edge |         |
-    | TUYA_PWM_POSITIVE | Trigger signal is rising edge  |         |
+| Value | Description |
+| --- | --- |
+| `TUYA_PWM_CAPTURE_MODE_ONCE` | Single trigger |
+| `TUYA_PWM_CAPTURE_MODE_PERIOD` | Repeated trigger |
 
-    #### clk:
+`trigger_level` selects the trigger edge:
 
-    Sampling clock for captured signal.
+| Value | Description |
+| --- | --- |
+| `TUYA_PWM_NEGATIVE` | Falling edge |
+| `TUYA_PWM_POSITIVE` | Rising edge |
 
-    #### cb:
+`clk` is the sampling clock for the captured signal. `cb` is the capture callback, and `arg` is passed to it:
 
-    Callback function for captured signal, as follows:
+```c
+typedef void (*TUYA_PWM_IRQ_CB)(TUYA_PWM_NUM_E port, TUYA_PWM_CAPTURE_DATA_T data, void *arg);
 
-    ```c
-    typedef void(*TUYA_PWM_IRQ_CB)(TUYA_PWM_NUM_E port, TUYA_PWM_CAPTURE_DATA_T data, void *arg);
-    ```
+typedef struct {
+    uint32_t            cap_value; // captured data
+    TUYA_PWM_POLARITY_E cap_edge;  // capture edge: TUYA_PWM_NEGATIVE = falling, TUYA_PWM_POSITIVE = rising
+} TUYA_PWM_CAPTURE_DATA_T;
+```
 
-    ```c
-    typedef struct {
-        uint32_t      cap_value;            /* Captured data */
-        TUYA_PWM_POLARITY_E cap_edge;     /* Capture edge, TUYA_PWM_NEGATIVE:falling edge, TUYA_PWM_POSITIVE:rising edge */
-    } TUYA_PWM_CAPTURE_DATA_T;
-    ```
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
 
-    #### arg:
-
-    Callback function parameters.
-
-- Return Value:
-  - Error code, OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
-
-### tkl_pwm_cap_stop
+## tkl_pwm_cap_stop
 
 ```c
 OPERATE_RET tkl_pwm_cap_stop(TUYA_PWM_NUM_E ch_id);
 ```
 
-- Function Description:
-  - Disables PWM input capture mode.
-- Parameters:
-  - `ch_id`: Channel number.
-- Return Value:
-  - Error code, OPRT_OK for success, other values please refer to the file `tuya_error_code.h`.
+Stops PWM input capture mode on a channel.
 
-# PWM Example
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `ch_id` | `TUYA_PWM_NUM_E` | PWM channel index. |
+
+**Returns** `OPRT_OK` on success. For other values, see `tuya_error_code.h`.
+
+## Example
+
+Start a 50% duty cycle output, adjust the duty cycle at runtime, then stop and deinitialize the channel:
 
 ```c
 void tuya_pwm_test(void)
 {
     OPERATE_RET ret;
-    TUYA_PWM_BASE_CFG_T cfg = {.polarity = TUYA_PWM_POSITIVE,\
-                       .duty = 1000,
-                       .cycle = 10000,
-                       .frequency = 1000};
+    TUYA_PWM_BASE_CFG_T cfg = {
+        .polarity = TUYA_PWM_POSITIVE,
+        .duty = 1000,
+        .cycle = 10000,
+        .frequency = 1000,
+    };
+
     ret = tkl_pwm_init(TUYA_PWM_NUM_0, &cfg);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
+
     ret = tkl_pwm_start(TUYA_PWM_NUM_0);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
     tkl_system_delay(5000);
+
     ret = tkl_pwm_info_get(TUYA_PWM_NUM_0, &cfg);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
-    if(cfg.duty !=5000){
-        cfg.duty =5000;
+    if (cfg.duty != 5000) {
+        cfg.duty = 5000;
     }
     ret = tkl_pwm_info_set(TUYA_PWM_NUM_0, &cfg);
-    //delay
     tkl_system_delay(5000);
+
     ret = tkl_pwm_stop(TUYA_PWM_NUM_0);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
-    ret = tkl_pwm_deinit(TKL_PWM1_CH);
+    ret = tkl_pwm_deinit(TUYA_PWM_NUM_0);
     if (ret != OPRT_OK) {
-        //fail
         return;
     }
 }

@@ -1,12 +1,12 @@
 ---
-title: DuckyClaw with T5AI
+title: TuyaOpenClaw with T5AI
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# DuckyClaw Quick Start (T5-AI Board)
+# TuyaOpenClaw Quick Start (T5-AI Board)
 
-This guide walks you through building, flashing, and activating the DuckyClaw firmware on the [T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board) development kit. It is for developers who want to run DuckyClaw on Tuya T5-AI hardware and connect the device to Tuya Cloud via the Smart Life app.
+This guide walks you through building, flashing, and activating the TuyaOpenClaw (formerly DuckyClaw) firmware on the [T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board) development kit. It is for developers who want to run TuyaOpenClaw on Tuya T5-AI hardware and connect the device to Tuya Cloud via the Smart Life app.
 
 
 ## Requirements
@@ -229,7 +229,7 @@ Replace the placeholder values. Obtain:
 - **PID**: [Tuya product / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2).
 - **UUID and AuthKey**: [Tuya IoT Platform – Open SDK purchase](https://platform.tuya.com/purchase/index?type=6).
 
-**IM configuration** (optional): To receive DuckyClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
+**IM configuration** (optional): To receive TuyaOpenClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
 
 ```c
 // IM configuration
@@ -327,9 +327,9 @@ If `productkey` (PID) appears as placeholders, the product ID was not set. Copy 
 
 ## References
 
-- [DuckyClaw Overview](/duckyclaw)
+- [TuyaOpenClaw Overview](/duckyclaw)
 - [T5-AI Board overview](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)
 - [Quick Start – Environment setup](/docs/quick-start/enviroment-setup)
 - [Quick Start – Equipment authorization](/docs/quick-start/equipment-authorization)
 - [Custom Device MCP (hardware skills)](/docs/duckyclaw/custom-device-mcp)
-- [DuckyClaw repository](https://github.com/tuya/DuckyClaw) (external)
+- [TuyaOpenClaw repository](https://github.com/tuya/DuckyClaw) (external)

@@ -2,11 +2,9 @@
 title: Peripheral Driver List
 ---
 
-# Peripheral Driver List
+This page lists the TDD (Tuya Device Driver) implementations available in the TuyaOpen SDK. Each driver plugs into the corresponding TDL (Tuya Driver Layer) via the [registration pattern](driver-architecture).
 
-TDD (Tuya Device Driver) implementations available in the TuyaOpen SDK. Each driver plugs into the corresponding TDL (Tuya Driver Layer) via the [registration pattern](driver-architecture).
-
-## Input Devices
+## Input devices
 
 | Device | Supported Chips | Base Driver | TDD Source |
 |--------|----------------|-------------|-----------|
@@ -14,7 +12,7 @@ TDD (Tuya Device Driver) implementations available in the TuyaOpen SDK. Each dri
 | Joystick | ADC-capable | ADC | `src/peripherals/joystick/tdd_joystick/` |
 | Encoder (rotary) | All platforms | GPIO | `src/peripherals/encoder/` |
 
-## Output Devices
+## Output devices
 
 | Device | Supported Chips | Base Driver | TDD Source |
 |--------|----------------|-------------|-----------|
@@ -81,7 +79,7 @@ TDD (Tuya Device Driver) implementations available in the TuyaOpen SDK. Each dri
 | XL9555 (IO expander) | I2C | `boards/ESP32/common/io_expander/` |
 | TCA9554 (IO expander) | I2C | `boards/ESP32/common/io_expander/` |
 
-## References
+## See also
 
 - [TDD/TDL Driver Architecture](driver-architecture)
 - [Writing a New Sensor Driver](tutorials/writing-sensor-driver)

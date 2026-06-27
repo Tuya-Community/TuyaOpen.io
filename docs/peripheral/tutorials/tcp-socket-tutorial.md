@@ -4,7 +4,7 @@ title: TCP and UDP Socket Tutorial
 
 ## Overview
 
-This tutorial explains how to use **TAL network** sockets for **TCP** and **UDP**. The **TCP client** walkthrough matches `examples/protocols/tcp_client` (`PROTOCOL_TCP`, `tal_net_connect`, `tal_net_send`). **UDP** is illustrated with `PROTOCOL_UDP`, `tal_net_bind`, **`tal_net_send_to`**, and **`tal_net_recvfrom`**; a concrete **UDP broadcast** sample lives in `examples/wifi/ap`.
+This tutorial explains how to use TAL network sockets for TCP and UDP. The TCP client walkthrough matches `examples/protocols/tcp_client` (`PROTOCOL_TCP`, `tal_net_connect`, `tal_net_send`). UDP is illustrated with `PROTOCOL_UDP`, `tal_net_bind`, `tal_net_send_to`, and `tal_net_recvfrom`; a concrete UDP broadcast sample lives in `examples/wifi/ap`.
 
 ## Prerequisites
 
@@ -14,8 +14,8 @@ This tutorial explains how to use **TAL network** sockets for **TCP** and **UDP*
 ## Requirements
 
 - Target that builds `examples/protocols/tcp_client` with `tal_network` and (typically) Wi-Fi.
-- A reachable **TCP** server. The default sample uses `127.0.0.1` and port **7**; on hardware set **`TCP_SERVER_IP`** to your PC or server LAN address and open the port.
-- For **UDP** experiments, a peer IP/port or a broadcast-capable LAN (see the Wi-Fi AP example).
+- A reachable TCP server. The default sample uses `127.0.0.1` and port `7`; on hardware set `TCP_SERVER_IP` to your PC or server LAN address and open the port.
+- For UDP experiments, a peer IP/port or a broadcast-capable LAN (see the Wi-Fi AP example).
 
 ## Steps (TCP client)
 
@@ -32,7 +32,7 @@ This tutorial explains how to use **TAL network** sockets for **TCP** and **UDP*
    tos.py build
    ```
 
-5. After the network is up, the task creates a **`PROTOCOL_TCP`** socket, resolves the address with `tal_net_str2addr`, calls `tal_net_connect`, sends a small buffer several times with `tal_net_send`, then `tal_net_close`.
+5. After the network is up, the task creates a `PROTOCOL_TCP` socket, resolves the address with `tal_net_str2addr`, calls `tal_net_connect`, sends a small buffer several times with `tal_net_send`, then `tal_net_close`.
 
 **Expected outcome:** The server receives repeated payloads; device logs show connect and send success.
 
@@ -55,11 +55,11 @@ tal_net_send(sock_fd, msg, strlen(msg));
 tal_net_close(sock_fd);
 ```
 
-For a **TCP server**, use `examples/protocols/tcp_server` (`tal_net_bind`, `tal_net_listen`, `tal_net_accept`, `tal_net_recv`).
+For a TCP server, use `examples/protocols/tcp_server` (`tal_net_bind`, `tal_net_listen`, `tal_net_accept`, `tal_net_recv`).
 
 ## UDP send and receive
 
-Create a **UDP** socket with **`PROTOCOL_UDP`**. For a simple **unicast** client that sends to a known host and reads one reply:
+Create a UDP socket with `PROTOCOL_UDP`. For a simple unicast client that sends to a known host and reads one reply:
 
 ```c
 #include "tal_network.h"
@@ -98,13 +98,13 @@ Replace `local_ip` with the IPv4 address of the interface you want to bind; the 
 
 ## UDP broadcast reference
 
-**Broadcast** (periodic beacon on the AP subnet) is implemented in **`examples/wifi/ap/src/example_wifi_ap.c`**: `tal_net_socket_create(PROTOCOL_UDP)`, `tal_net_bind`, **`tal_net_set_broadcast`**, and **`tal_net_send_to`** with address **`0xFFFFFFFF`** and a chosen port.
+Broadcast (a periodic beacon on the AP subnet) is implemented in `examples/wifi/ap/src/example_wifi_ap.c`: `tal_net_socket_create(PROTOCOL_UDP)`, `tal_net_bind`, `tal_net_set_broadcast`, and `tal_net_send_to` with address `0xFFFFFFFF` and a chosen port.
 
 ## Implementation notes
 
 - Check return values of `tal_net_connect`, `tal_net_send`, `tal_net_send_to`, and `tal_net_recvfrom`; negative values indicate errors per the adapter.
 - Use `tal_net_set_block` or `tal_net_select` if you need timeouts or non-blocking I/O.
-- TCP is **connection-oriented**; UDP is **datagram** based—each `tal_net_send_to` is one packet unless the stack fragments.
+- TCP is connection-oriented; UDP is datagram-based — each `tal_net_send_to` is one packet unless the stack fragments.
 
 ## References
 

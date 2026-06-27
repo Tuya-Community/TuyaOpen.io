@@ -1,6 +1,8 @@
-# Contribution Guide
+---
+title: Contribution Guide
+---
 
-Welcome to contribute to [TuyaOpen](https://github.com/tuya/TuyaOpen) through GitHub's Fork and [Pull Requests](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) workflow. Contributions can include bug fixes, documentation improvements, and new features.
+You can contribute to [TuyaOpen](https://github.com/tuya/TuyaOpen) through GitHub's Fork and [Pull Requests](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) workflow. Contributions can include bug fixes, documentation improvements, and new features.
 
 ## Making Changes
 
@@ -30,4 +32,4 @@ Welcome to contribute to [TuyaOpen](https://github.com/tuya/TuyaOpen) through Gi
 6. Address review comments and update your PR accordingly
 7. Approved PRs will be merged into the main repository
 
-This completes the contribution process. 
+This completes the contribution process.

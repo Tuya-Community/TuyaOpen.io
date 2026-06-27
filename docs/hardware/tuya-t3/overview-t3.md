@@ -11,7 +11,7 @@ The **T3** series are Tuya Wi-Fi and Bluetooth LE combo modules. TuyaOpen includ
 ## Requirements
 
 - T3 LCD DevKit or hardware that matches the BSP pin assumptions.
-- TuyaOpen SDK and `tos.py`; see [Quick Start](../../quick-start/index).
+- TuyaOpen SDK and `tos.py`; see [Quick Start](../../quick-start/index.md).
 
 ## Board support in TuyaOpen
 
@@ -31,5 +31,5 @@ Select a T3 configuration via `tos.py config choice` or derive from `T3.config`,
 ## References
 
 - Module datasheet: [T3-U module](https://developer.tuya.com/en/docs/iot/T3-U-Module-Datasheet?id=Kdd4pzscwf0il)
-- [Supported hardware list](../index)
+- [Supported hardware list](../index.md)
 - [Display driver](../../peripheral/display) and [peripheral tutorials](../../peripheral/tutorials/display-driver-guide) if you use the panel on the DevKit

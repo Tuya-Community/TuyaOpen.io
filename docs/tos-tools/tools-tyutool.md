@@ -7,13 +7,13 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-tyutool is a flashing and authorization tool provided for the TuyaOpen project. The tyutool tool comes in two versions: GUI and CLI. The GUI version provides a graphical interface, while the CLI version provides a command-line interface.
+tyutool is the flashing and device-authorization tool for TuyaOpen. It writes firmware to a device over a serial port and writes the device authorization credentials (`UUID` and `AuthKey`). tyutool ships in two versions: GUI (graphical interface) and CLI (command line). This page covers the GUI.
 
 :::danger
-The authorization function of tyutool is only applicable to the TuyaOpen project and does not support the TuyaOS project. The authorization code for the TuyaOpen project is only valid for TuyaOpen, and the authorization code for the TuyaOS project is only valid for TuyaOS. The two are not interchangeable.
+The authorization function of tyutool applies only to the TuyaOpen project, not the TuyaOS project. A TuyaOpen authorization code is valid only for TuyaOpen, and a TuyaOS authorization code is valid only for TuyaOS. The two are not interchangeable.
 :::
 
-the tyutool tool supports Windows, Linux, and macOS. Developers can choose the appropriate version according to their operating system.
+tyutool runs on Windows, Linux, and macOS. Choose the version that matches your operating system.
 
 tyutool is currently available in two versions, **V2** and **V3**, with the following key differences:
 
@@ -62,10 +62,10 @@ After opening tyutool_gui, the interface is displayed as follows:
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/273ba9fc-5077-47bd-94d2-275747ca7232.png" alt="tyutool flashing view" width="800" />
 
- + ① Select the chip
- + ② Click `Browse` to select the firmware file to be flashed (the bin file containing `_QIO`)
- + ③ Select the device port for flashing (for Tuya official development boards and some partner development boards, hovering over the serial port will indicate whether it is a flashing/authorization serial port or a log serial port)
- + ④ Click `Start flash` to begin flashing the firmware
+- ① Select the chip.
+- ② Click `Browse` and select the firmware file to flash (the bin file containing `_QIO`).
+- ③ Select the device port for flashing. For Tuya official development boards and some partner development boards, hovering over a serial port indicates whether it is a flashing/authorization port or a log port.
+- ④ Click `Start flash` to begin flashing the firmware.
 
 :::tip
 The default baud rate for flashing is 921600. If you find the flashing speed too slow, you can increase the baud rate appropriately. However, increasing the baud rate may cause the firmware flashing to fail.
@@ -73,17 +73,17 @@ The default baud rate for flashing is 921600. If you find the flashing speed too
 
 ## Device Authorization Information Writing
 
-When you need to use the functions of the Tuya IoT platform, you must first authorize the device. You can use the tyutool_gui tool for device authorization. The following are the specific operation steps.
+To use the Tuya IoT platform, you must first authorize the device. Use the tyutool_gui tool to write the authorization credentials as follows.
 
-After opening the tyutool_gui tool, click the `Authorize` tab. The interface is as follows:
+After opening tyutool_gui, click the `Authorize` tab. The interface is as follows:
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/aa0e7635-2952-4322-8696-3a866b01a6ec.png" alt="tyutool authorization view" width="800" />
 
- + ① Click the `Authorize` tab
- + ② Select the authorization serial port
- + ③ Select the authorization baud rate
- + ④ Enter the `UUID` and `AuthKey`
- + ⑤ Click `Start Authorization`
+- ① Click the `Authorize` tab.
+- ② Select the authorization serial port.
+- ③ Select the authorization baud rate.
+- ④ Enter the `UUID` and `AuthKey`.
+- ⑤ Click `Start Authorization`.
 
 :::tip
 The authorization UART and the flashing UART are the same. Keep the UART default configuration (baud rate: 115200, data bits: 8, stop bits: 1, parity: none).
@@ -95,17 +95,16 @@ The TuyaOpen `UUID` and `AuthKey` can be obtained from the [Tuya IoT Platform](h
 
 ## Frequently Asked Questions
 
-### Always fails during `write` in the burning process
+### Flashing always fails at the `write` stage
 
-For the CH34x series, you can try installing or updating the driver.
+For the CH34x series, install or update the driver:
 
-**Windows**: https://www.wch.cn/downloads/ch343ser_exe.html
+- **Windows**: https://www.wch.cn/downloads/ch343ser_exe.html
+- **Mac**: https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
 
-**Mac**: https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html
+On Mac, after installing the driver, allow it to load in **Security Settings**.
 
-After installing the driver on Mac, you need to allow the driver to load in **Security Settings**.
-
-If the driver is installed successfully, the CH34x device will be recognized with a name starting with `cu.wchusb`. Otherwise, the driver installation was not successful.
+When the driver installs successfully, the CH34x device is recognized with a name starting with `cu.wchusb`. If it is not, the driver did not install correctly.
 
 <Tabs>
   <TabItem value="13" label="MacOS 13" default>

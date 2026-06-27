@@ -1,12 +1,12 @@
 ---
-title: DuckyClaw 与 Raspberry Pi 5
+title: TuyaOpenClaw 与 Raspberry Pi 5
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# DuckyClaw 快速开始（Raspberry Pi 5）
+# TuyaOpenClaw 快速开始（Raspberry Pi 5）
 
-本文介绍如何在 Raspberry Pi 5 上构建并运行 DuckyClaw。树莓派属于 Linux 主机目标，无需烧录固件，构建产物为可执行文件。面向希望在 Raspberry Pi 5 上运行 DuckyClaw 并通过智能生活 App 连接 Tuya Cloud 的开发者。
+本文介绍如何在 Raspberry Pi 5 上构建并运行 TuyaOpenClaw（原名 DuckyClaw）。树莓派属于 Linux 主机目标，无需烧录固件，构建产物为可执行文件。面向希望在 Raspberry Pi 5 上运行 TuyaOpenClaw 并通过智能生活 App 连接 Tuya Cloud 的开发者。
 
 ## 前置条件
 
@@ -231,7 +231,7 @@ Choice config file: 4
 - **PID**：[Tuya 产品 / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2)。
 - **UUID 与 AuthKey**：[Tuya IoT 平台 – Open SDK 采购](https://platform.tuya.com/purchase/index?type=6)。
 
-**IM 配置**（可选）：若需通过即时通讯应用接收 DuckyClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、`feishu`、`telegram` 或 `discord`，并填写对应凭证：
+**IM 配置**（可选）：若需通过即时通讯应用接收 TuyaOpenClaw 通知或与设备交互，请在 `tuya_app_config.h` 中将通道设为 `weixin`、`feishu`、`telegram` 或 `discord`，并填写对应凭证：
 
 ```c
 // IM configuration
@@ -362,8 +362,8 @@ scp -r dist/DuckyClaw_* username@<树莓派 IP>:~/
 
 ## 参考资料
 
-- [DuckyClaw 概述](/duckyclaw)
+- [TuyaOpenClaw 概述](/duckyclaw)
 - [快速开始 – 环境搭建](/docs/quick-start/enviroment-setup)
 - [快速开始 – 设备授权](/docs/quick-start/equipment-authorization)
 - [自定义设备 MCP（硬件技能）](/docs/duckyclaw/custom-device-mcp)
-- [DuckyClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）
+- [TuyaOpenClaw 仓库](https://github.com/tuya/DuckyClaw)（外部链接）

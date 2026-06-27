@@ -1,11 +1,10 @@
 ---
-title: "Overview"
+title: T5AI-Core Development Kit
 ---
 
-# T5AI-Core Development Kit
+The T5AI-Core is a compact voice-core development board built on the Tuya T5-E1 Wi-Fi and Bluetooth combo module. It integrates an onboard microphone, speaker, lithium-battery power management, and a 44-pin header that breaks out the module's GPIO, UART, SPI, and I2C signals. Use it to prototype portable AIoT voice-interaction applications with the standard TuyaOpen workflow.
 
-![T5AI-Core DevKit](https://images.tuyacn.com/fe-static/docs/img/02037ea4-3282-4c8c-b2ec-c9c1894e8064.png)
-
+![T5AI-Core development board, front view](https://images.tuyacn.com/fe-static/docs/img/02037ea4-3282-4c8c-b2ec-c9c1894e8064.png)
 
 ## Software build configuration
 
@@ -38,23 +37,21 @@ How to enable board-level configurations? Refer to [CLI - tos.py Development Too
 
 
 
-## Overview
+## Hardware overview
 
-Tuya T5AI-Core Development Kit is a highly integrated voice core development board based on the T5-E1 module. The T5-E1 module, independently developed by Tuya Smart, incorporates embedded Wi-Fi and Bluetooth capabilities, making it suitable for a variety of smart hardware scenarios. This board features an onboard microphone and speaker, supporting local voice recognition and audio playback to meet the requirements of voice interaction applications.
+The T5AI-Core is a highly integrated voice-core development board based on the T5-E1 module. The T5-E1 module, independently developed by Tuya, incorporates embedded Wi-Fi and Bluetooth, making it suitable for a variety of smart hardware scenarios. The board features an onboard microphone and speaker, supporting local voice recognition and audio playback to meet voice-interaction requirements.
 
-The board is equipped with a 44-pin header, making it easy for you to quickly develop and prototype AIoT projects. An onboard lithium battery power management circuit supports low-power design, suitable for developing mobile and portable smart devices.
+The board includes a 44-pin header so you can quickly develop and prototype AIoT projects. An onboard lithium-battery power management circuit supports low-power design, suitable for mobile and portable smart devices.
 
-This board provides extensive hardware interfaces and comprehensive voice functionality, so it stands out as an ideal choice for you to develop AIoT voice interaction applications.
+With extensive hardware interfaces and comprehensive voice functionality, the board is well suited to AIoT voice-interaction development.
 
 <div align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/dd9d442f-bd51-4ce0-bbb5-687058270bff.jpg" alt="" width="400" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/dd9d442f-bd51-4ce0-bbb5-687058270bff.jpg" alt="T5AI-Core board top view" width="400" />
   <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-    <img src="https://images.tuyacn.com/fe-static/docs/img/6a1310df-c48c-4c71-b52e-483ba4b49bc1.jpg" alt="" width="250" />
-    <img src="https://images.tuyacn.com/fe-static/docs/img/2475d214-9adf-4aaa-a1fe-67c88b50fbd2.jpg" alt="" width="250" />
+    <img src="https://images.tuyacn.com/fe-static/docs/img/6a1310df-c48c-4c71-b52e-483ba4b49bc1.jpg" alt="T5AI-Core board angled view" width="250" />
+    <img src="https://images.tuyacn.com/fe-static/docs/img/2475d214-9adf-4aaa-a1fe-67c88b50fbd2.jpg" alt="T5AI-Core board side view" width="250" />
   </div>
 </div>
-
-
 
 ## Highlights
 
@@ -71,12 +68,9 @@ This board provides extensive hardware interfaces and comprehensive voice functi
 - USB power supply + dual serial port chip
 - Board dimensions: 73 mm × 29 mm × 11 mm (excluding pin headers) / 17 mm (including pin headers)
 
+## Hardware architecture
 
-
-
-### Hardware architecture
-
-![T5AI-Core hardware architecture](https://images.tuyacn.com/fe-static/docs/img/e230929b-39a7-4851-bdb8-d614624a48fc.jpg)
+![T5AI-Core hardware architecture block diagram](https://images.tuyacn.com/fe-static/docs/img/e230929b-39a7-4851-bdb8-d614624a48fc.jpg)
 
 ### Design philosophy and pin availability
 
@@ -98,8 +92,8 @@ To accommodate additional I/O interfaces, pad test points are reserved on the PC
 
 
   <div style={{ display: 'flex', justifyContent: 'left', gap: '16px', flexWrap: 'wrap' }}>
-    <img src="https://images.tuyacn.com/fe-static/docs/img/b1f63d5f-80c7-44c6-9cbc-82e97461c6b2.png" alt="" width="150" />
-    <img src="https://images.tuyacn.com/fe-static/docs/img/3911e3dd-680f-48d0-a448-f764bec39d67.png" alt="" width="150" />
+    <img src="https://images.tuyacn.com/fe-static/docs/img/b1f63d5f-80c7-44c6-9cbc-82e97461c6b2.png" alt="Type-C USB power input port" width="150" />
+    <img src="https://images.tuyacn.com/fe-static/docs/img/3911e3dd-680f-48d0-a448-f764bec39d67.png" alt="JST PH 1.25 mm battery connector" width="150" />
   </div>
 
 
@@ -112,7 +106,7 @@ Make sure the power switch is turned on when flashing the firmware.
 :::
 
 <p align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/84a7c2b7-020c-4004-aab8-c0cbd6f425a4.png" alt="" width="150" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/84a7c2b7-020c-4004-aab8-c0cbd6f425a4.png" alt="Main power toggle switch" width="150" />
 </p>
 
 
@@ -147,7 +141,7 @@ Make sure the power switch is turned on when flashing the firmware.
 - **Protection circuit**: It is advised to use lithium batteries with overcharge, over-discharge, and short-circuit protection features to enhance safety.
 
 <p align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/9eade1d0-f90d-41ed-b2de-686f3e9a255e.jpg" alt="" width="250" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/9eade1d0-f90d-41ed-b2de-686f3e9a255e.jpg" alt="Recommended 3.7V lithium battery for the T5AI-Core" width="250" />
 </p>
 
 :::
@@ -158,7 +152,7 @@ Make sure the power switch is turned on when flashing the firmware.
 ETA6003 battery management chip controls the charge LED to show the current charging status. The logic is as follows:
 
 <p align="center">
-<img src="https://images.tuyacn.com/fe-static/docs/img/eed5a4d5-8eba-4d6a-87a3-c641cf0facdd.png" alt="" width="150" />
+<img src="https://images.tuyacn.com/fe-static/docs/img/eed5a4d5-8eba-4d6a-87a3-c641cf0facdd.png" alt="Charge LED indicator on the board" width="150" />
 </p>
 
 - When the toggle switch is in the **On** position, the power LED lights up, indicating the system is powered on.
@@ -174,7 +168,7 @@ To check the charging status, observe whether the charge LED on the development 
 
 ## Core processing unit
 
-#### T5-E1 Wi-Fi and Bluetooth module
+### T5-E1 Wi-Fi and Bluetooth module
 
 - **Processor**: ARMv8-M Star (M33F) architecture, with a maximum clock rate of 480 MHz.
 - **Storage**: Built-in 8 MB flash memory and 16 MB RAM.
@@ -183,12 +177,12 @@ To check the charging status, observe whether the charge LED on the development 
 - **Feature**: Acts as the core processing unit, handling all computation, communication, and control tasks.
 
 <p align="center">
-<img src="https://images.tuyacn.com/fe-static/docs/img/28b35dec-a9a0-4543-ba41-b9c3f71a8527.png" alt="" width="250" />
+<img src="https://images.tuyacn.com/fe-static/docs/img/28b35dec-a9a0-4543-ba41-b9c3f71a8527.png" alt="T5-E1 Wi-Fi and Bluetooth module on the board" width="250" />
 </p>
 
 ## Communication interfaces
 
-#### USB serial communication
+### USB serial communication
 
 - **CP2105 dual-channel serial chip**:
 
@@ -208,12 +202,13 @@ To check the charging status, observe whether the charge LED on the development 
 | Reset button | RST | Dedicated reset button that sends a reset signal to the T5-E1 module. |
 
 <div style={{ display: "flex", justifyContent: "center", gap: "24px", alignItems: "center" }}>
-  <img src="https://images.tuyacn.com/fe-static/docs/img/2e0043dc-59d8-4900-b5d1-524de845131d.png" alt="" width="250" />
-  <img src="https://images.tuyacn.com/fe-static/docs/img/cd0b54a3-d292-4d74-b91d-c474f51c89c1.png" alt="" width="250" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/2e0043dc-59d8-4900-b5d1-524de845131d.png" alt="User LED and user button on the board" width="250" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/cd0b54a3-d292-4d74-b91d-c474f51c89c1.png" alt="Reset button on the board" width="250" />
 </div>
 
 ## Audio system
-#### Audio sampling specifications
+
+### Audio sampling specifications
 
 - **Standard sampling rate**: 16 KHz
 - **Sampling bit depth**: 16 bits
@@ -232,7 +227,7 @@ The T5 module supports two channels of analog microphone input, facilitating aud
 - **Onboard analog microphone**: An integrated microphone that provides analog audio input to the T5-E1 module.
 
 <p align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/e23b3b2c-f268-4a45-8271-2945a32a094d.png" alt="" width="250" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/e23b3b2c-f268-4a45-8271-2945a32a094d.png" alt="Onboard analog microphone" width="250" />
 </p>
 
 - **Loopback circuit**: An audio loopback circuit designed for audio testing and processing. It supports Acoustic Echo Cancellation (AEC) and echo suppression features, and is connected to the T5-E1 module.
@@ -246,7 +241,7 @@ The T5 module supports two channels of analog microphone input, facilitating aud
 - **JST PH 1.25 mm speaker connector**: External speaker output interface, compatible with **4Ω 3W** speakers.
 
 <p align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/ebb095cd-be13-472d-99a0-bc4b0ff15242.png" alt="" width="250" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/ebb095cd-be13-472d-99a0-bc4b0ff15242.png" alt="Audio amplifier and JST PH speaker connector" width="250" />
 </p>
 
 :::warning Speaker selection
@@ -264,10 +259,10 @@ It is recommended to use speakers with **4Ω** impedance and **1W to 3W** power.
 The following section details pin multiplexing and functional definitions:
 
 <p align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/e902e201-77b8-4c83-aa71-1c0dae77cfb3.png" alt="" width="450" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/e902e201-77b8-4c83-aa71-1c0dae77cfb3.png" alt="44-pin header layout, part 1" width="450" />
 </p>
 <p align="center">
-  <img src="https://images.tuyacn.com/fe-static/docs/img/683ec5fa-9c4e-401a-b645-e8120628ac03.png" alt="" width="400" />
+  <img src="https://images.tuyacn.com/fe-static/docs/img/683ec5fa-9c4e-401a-b645-e8120628ac03.png" alt="44-pin header pin multiplexing and functions, part 2" width="400" />
 </p>
 
 
@@ -295,18 +290,17 @@ The UART pins of the T5 module are shared with the onboard serial chip. After fi
 
 
 ## Resources
-#### T5AI-Core development board
+
+### T5AI-Core development board
 
 - [T5AI-Core schematic diagram](/docs/hardware/t5ai-core/T5AI-Core_V101-SCH.pdf): Complete circuit diagram.
 - [T5AI-Core silkscreen (ASM)](/docs/hardware/t5ai-core/T5AI-Core_V101-ASM.pdf): Provides detailed silkscreen reference for this board.
 - [T5AI-Core 3D structural file (STEP)](/docs/hardware/t5ai-core/T5AI-Core_V101-3D.step): Offers a 3D model for structural design and integration.
 
-
-#### T5 MCU datasheets
+### T5 MCU datasheets
 
 - [T5-E1 Module Datasheet](https://developer.tuya.com/en/docs/iot/T5-E1-Module-Datasheet?id=Kdar6hf0kzmfi): Technical specifications and pin definitions of the T5-E1 module.
 - [T5 MCU Chip Technical Datasheet](https://images.tuyaeu.com/content-platform/hestia/1731549161e5fd8879de6.pdf): Comprehensive technical specifications and reference documentation for the T5 series.
-
 
 ### USB-to-serial chip driver installation
 

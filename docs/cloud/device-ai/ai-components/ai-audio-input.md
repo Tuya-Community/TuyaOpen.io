@@ -2,473 +2,156 @@
 title: AI Audio Input
 ---
 
-## Glossary
+`ai_audio_input` captures microphone audio, decides when speech is present, and hands the resulting audio slices to your application through a callback. It is the front end of the AI audio pipeline: it produces the audio that `ai_agent` uploads to the cloud.
 
-| Term | Description |
-| -------- | ------------------------------------------------------------ |
-| VAD | Voice Activity Detection (Voice Activity Detection), a technology used to determine whether there is speech in the audio signal. |
-| VAD status | VAD_START: Voice activity starts<br />VAD_STOP: Voice activity ends |
-| Audio Slice | A continuous audio stream divided into fixed-duration chunks for segmented processing and transmission. |
+It does not talk to the cloud itself. Its only job is to turn a raw microphone stream into framed slices, gated by **Voice Activity Detection (VAD)**.
 
-## Overview
+## Terms
 
-`ai_audio_input` is a submodule of the audio processing component in the TuyaOpen AI application framework. It handles audio capture, VAD processing, and audio-slice output.
+| Term | Meaning |
+|------|---------|
+| VAD | Voice Activity Detection — deciding whether a chunk of audio contains speech. |
+| VAD state | `AI_AUDIO_VAD_START` when speech begins, `AI_AUDIO_VAD_STOP` when it ends. |
+| Slice | A fixed-duration chunk of the audio stream, sized by `slice_ms`, delivered to your callback. |
+| Wake-up | Whether the module is currently "listening". VAD work and slice output happen only while woken up. |
 
-### Working mode
+## VAD modes
 
-- **MANUAL MODE**:
-- Does not start the VAD detection module; VAD state is controlled externally through APIs.
-- Suitable for scenarios such as button-triggered recording, where the user actively controls the start and end of recording.
-- **AUTO MODE**:
-- Enables the VAD detection module to detect VAD state periodically.
-- Suitable for scenarios where it is necessary to start recording when human voices are detected, without manual operation.
+The module runs in one of two modes, chosen by `vad_mode` and switchable at runtime.
 
-### Audio cache management
+| Mode | Enum | What drives it | Use it for |
+|------|------|----------------|------------|
+| Manual | `AI_AUDIO_VAD_MANUAL` | Your key/button events. You set the wake-up state directly; no voice detector runs. | Press-to-talk and hold-to-talk, where the user controls start and stop. |
+| Auto | `AI_AUDIO_VAD_AUTO` | A built-in human-voice detector. The module raises `AI_AUDIO_VAD_START` / `AI_AUDIO_VAD_STOP` on its own. | Hands-free capture that begins when someone speaks. |
 
-- Manage input audio data stream based on ring buffer.
-- Data caching strategy:
-- Manual mode: Cache incoming audio data only when there is voice activity.
-- Automatic mode: always caches input audio data and discards old data when the buffer is full.
+In **manual** mode, you decide when to listen — typically by calling `ai_audio_input_wakeup_set(true)` on key-down and `ai_audio_input_wakeup_set(false)` on key-up. In **auto** mode, the detector tracks speech for you, using `vad_active_ms` and `vad_off_ms` to debounce the start and end.
 
-### Event notification
+:::note
+Wake-word listening (saying a wake word to start a turn) is not handled here. It is driven by the [Wakeup chat mode](ai-mode-wakeup), which calls into this module to switch VAD mode and toggle the wake-up state.
+:::
 
-- Notifications are posted when VAD status changes.
-- Notification is also posted every time audio data is received.
+## VAD state and events
 
-## Workflow
-
-### Complete data flow
-
-```mermaid
-sequenceDiagram
-participant App as application layer
-    participant Input as ai_audio_input
-participant Audio as audio device
-participant VAD as VAD test
-
-    App->>Input: ai_audio_input_init()
-Input->>Audio: Initialize audio device
-Input->>VAD: Initialize VAD
-Input-->>App: Initialization completed
-
-loop audio collection
-Audio->>Input: audio data
-Input->>Input: cache data
-Input->>VAD: VAD detection
-alt speech detected
-Input->>App: Output audio slices
-        end
-    end
-```
-
-### Initialization process
-
-1. **Find Audio Device**: Pass`tdl_audio_find()`Find audio codec device
-
-2. **Get audio parameters**: Get information such as sampling rate, bit depth, number of channels, etc.
-
-3. **Create the recorder**: Allocate memory and initialize the recorder structure
-
-4. **Calculate buffer size**:
-
-- Calculate audio data size per millisecond
-
-     ```
-     audio_1ms_size = (sample_rate × sample_bits × sample_ch_num) / 8 / 1000
-     ```
-
-illustrate:
-
-     - `sample_rate`: Sampling rate (Hz), such as 16000
-
-     - `sample_bits`: Bit depth (bit), such as 16
-
-     - `sample_ch_num`: Number of channels, such as 1 (mono) or 2 (stereo)
-
-- /8: Byte conversion (bit → byte)
-
-- /1000: millisecond conversion (seconds → milliseconds)
-
-Example (16kHz, 16bit, mono):
-
-     ```
-     audio_1ms_size = (16000 × 16 × 1) / 8 / 1000
-                     = 256000 / 8 / 1000
-                     = 32000 / 1000
-= 32 bytes/ms
-     ```
-
-- Calculate VAD buffer size
-
-     ```
-     vad_size = (vad_active_ms + 300) × audio_1ms_size + 1
-     ```
-
-illustrate:
-
-     - `vad_active_ms`: VAD activation threshold (milliseconds), configuration parameter
-
-- \+ 300: Fixed compensation time (300ms), used to cache the audio data before VAD detection (pre-caching), handle the VAD detection delay, and ensure that there is enough data for VAD analysis in the cloud to avoid losing the beginning of the voice.
-
-- \+ 1: avoid boundary issues
-
-Example (vad_active_ms = 200ms, 16kHz/16bit/mono):
-
-     ```
-     vad_size = (200 + 300) × 32 + 1
-              = 500 × 32 + 1
-              = 16000 + 1
-= 16001 bytes
-     ```
-
-- Calculate audio slice size
-
-     ```
-     slice_size = slice_ms × audio_1ms_size
-     ```
-
-illustrate:
-
-     - `slice_ms`:Audio slice duration (milliseconds), configuration parameters
-
-- The amount of data to read from the ring buffer each time
-
-Example (slice_ms = 100ms, 16kHz/16bit/mono):
-
-     ```
-     slice_size = 100 × 32
-= 3200 bytes
-     ```
-
-- Calculate ring buffer size
-
-     ```
-     rb_size = vad_size;
-     ```
-
-illustrate:
-
-     - `rb_size`: Ring buffer size
-
-5. **Create a ring buffer**: used to cache audio data
-
-6. **Open audio device**: Register the callback function for collecting audio data
-
-7. **Initialize VAD**: Configure VAD parameters (sampling rate, number of channels, VAD activation threshold, etc.)
-
-8. **Start task**: Create task thread
-
-### Audio data collection process
-
-```mermaid
-sequenceDiagram
-participant HW as hardware microphone
-    participant Input as ai_audio_input
-participant Buffer as buffer
-
-loop audio collection
-HW->>Input: audio data
-alt manual mode
-            alt VAD_START
-Input->>Buffer: cache data
-            else VAD_STOP
-Input->>Input: discard data
-            end
-else automatic mode
-Input->>Buffer: cache data
-        end
-    end
-```
-
-### Audio slice output timing
-
-- **Auto Mode**
-
-  ```
-Time axis: 0ms 10ms 20ms 30ms 40ms 50ms 60ms
-          |------|------|------|------|------|------|
-Audio frames: [Frame 1] [Frame 2] [Frame 3] [Frame 4] [Frame 5] [Frame 6]
-          ↓      ↓      ↓      ↓      ↓      ↓
-Buffer: [cache] [cache] [cache] [cache] [cache] [cache]
-          ↓      ↓      ↓      ↓      ↓      ↓
-VAD detection: [Detection] [Detection] [Detection] [Detection] [Detection] [Detection]
-          ↓      ↓      ↓      ↓      ↓      ↓
-VAD status: STOP STOP START START START STOP
-          ↓      ↓      ↓      ↓      ↓      ↓
-Slice output: [none] [none] [slice1][slice2][slice3][none]
-  ```
-
-- **MANUAL MODE**
-
-  ```
-Time axis: 0ms 10ms 20ms 30ms 40ms 50ms 60ms
-          |------|------|------|------|------|------|
-Audio frames: [Frame 1] [Frame 2] [Frame 3] [Frame 4] [Frame 5] [Frame 6]
-          ↓      ↓      ↓      ↓      ↓      ↓
-VAD status: STOP STOP START START START STOP
-          ↓      ↓      ↓      ↓      ↓      ↓
-Buffer: [Discard] [Discard] [Cache] [Cache] [Cache] [Discard]
-          ↓      ↓      ↓      ↓      ↓      ↓
-Slice output: [none] [none] [slice1][slice2][slice3][none]
-  ```
-
-- **Audio Output Instructions**:
-
-- **Trigger condition**: VAD status is VAD_START and the buffer data volume reaches the slice size
-
-- **Slice Size**: By configuration parameter`slice_ms`Decision, please see the **Initialization Process** above for detailed calculation methods.
-
-- **Data Reading**: Read data of one slice size at a time
-
-## Configuration instructions
-
-### Configuration file path
-
-```
-ai_components/ai_audio/Kconfig
-```
-
-### Function enable
-
-```
-menuconfig ENABLE_COMP_AI_AUDIO
-    select ENABLE_AI_PLAYER
-    bool "enable ai audio input/output"
-    default y
-```
-
-## Development process
-
-### Data structure
-
-#### Audio input configuration
-
-```c
-typedef struct {
-AI_AUDIO_VAD_MODE_E vad_mode; // VAD mode (manual/automatic)
-uint16_t vad_off_ms; // The duration of continuous detection of vad stop. If no active voice is detected during this period, it is considered vad stop.
-uint16_t vad_active_ms; // vad start continuous detection duration. If active voice is continuously detected during this time period, it is considered vad start.
-uint16_t slice_ms; // Audio slice time (milliseconds)
-AI_AUDIO_OUTPUT output_cb; // Audio data output callback function
-} AI_AUDIO_INPUT_CFG_T;
-```
-
-#### VAD mode
+When the module is woken up, a VAD state change publishes the `EVENT_AUDIO_VAD` event. The event payload is an `AI_AUDIO_VAD_STATE_E` value:
 
 ```c
 typedef enum {
-AI_AUDIO_VAD_MANUAL, // Manual mode: use key events as VAD
-AI_AUDIO_VAD_AUTO, //Auto mode: use vocal detection
-} AI_AUDIO_VAD_MODE_E;
-```
-
-#### VAD status
-
-```c
-typedef enum {
-AI_AUDIO_VAD_START = 1, // VAD starts
-AI_AUDIO_VAD_STOP, // VAD stops
+    AI_AUDIO_VAD_START = 1,    // speech started
+    AI_AUDIO_VAD_STOP,         // speech ended
 } AI_AUDIO_VAD_STATE_E;
 ```
 
-### Interface description
+Subscribe to `EVENT_AUDIO_VAD` to start and stop your upstream AI input in step with detected speech.
 
-#### Initialization
+:::warning
+VAD work and event publishing happen **only while the module is woken up**. If you never set the wake-up state, no slices and no events are produced.
+:::
 
-Initialize the audio input module, configure VAD parameters and audio slice output callbacks.
+## Configuration
+
+You configure the module once at init with `AI_AUDIO_INPUT_CFG_T`:
 
 ```c
-typedef struct  {
+typedef struct {
     /* VAD cache = vad_active_ms + vad_off_ms */
     AI_AUDIO_VAD_MODE_E     vad_mode;
     uint16_t                vad_off_ms;        /* Voice activity compensation time, unit: ms */
     uint16_t                vad_active_ms;     /* Voice activity detection threshold, unit: ms */
     uint16_t                slice_ms;          /* Reference macro, AUDIO_RECORDER_SLICE_TIME */
-
-    /* Microphone data processing callback */
-    AI_AUDIO_OUTPUT         output_cb;
+    AI_AUDIO_OUTPUT         output_cb;         /* Microphone data processing callback */
 } AI_AUDIO_INPUT_CFG_T;
+```
 
-/**
-@brief Initialize the AI audio input module
-@param cfg Audio input configuration
-@return OPERATE_RET Operation result
-*/
+| Field | Type | Purpose |
+|-------|------|---------|
+| `vad_mode` | `AI_AUDIO_VAD_MODE_E` | Manual or auto detection (see above). |
+| `vad_off_ms` | `uint16_t` | Voice activity compensation time, in milliseconds. Used to debounce the end of speech in auto mode. |
+| `vad_active_ms` | `uint16_t` | Voice activity detection threshold, in milliseconds. How long voice must persist before VAD starts. |
+| `slice_ms` | `uint16_t` | Slice duration in milliseconds. Reference macro `AUDIO_RECORDER_SLICE_TIME`. |
+| `output_cb` | `AI_AUDIO_OUTPUT` | Called with each audio slice. |
+
+The output callback delivers one slice at a time:
+
+```c
+typedef int (*AI_AUDIO_OUTPUT)(uint8_t *data, uint16_t datalen);
+```
+
+`data` points to the slice buffer and `datalen` is its length in bytes. This is where you forward audio to the cloud (for example, via `ai_agent`).
+
+## API reference
+
+Header: `ai_audio_input.h`. Every function returns `OPERATE_RET` (`OPRT_OK` on success).
+
+```c
 OPERATE_RET ai_audio_input_init(AI_AUDIO_INPUT_CFG_T *cfg);
-```
-
-#### Start audio input
-
-Start audio collection and VAD detection tasks
-
-```c
-/**
-@brief Start audio input
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_input_start(void);
-```
-
-#### Stop audio input
-
-Stop audio collection and VAD detection tasks
-
-```c
-/**
-@brief Stop audio input
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_input_stop(void);
-```
-
-#### Deinitialization
-
-Release audio input module resources
-
-```c
-/**
-@brief Deinitialize the AI audio input module
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_input_deinit(void);
-```
-
-#### Reset audio input
-
-Reset ring buffer and VAD status
-
-```c
-/**
-@brief Reset audio input ring buffer and VAD state
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_input_reset(void);
-```
-
-#### Set mode
-
-Dynamically switch VAD mode
-
-```c
-typedef enum {
-    AI_AUDIO_VAD_MANUAL,    // use key event as vad
-    AI_AUDIO_VAD_AUTO,      // use human voice detect 
-} AI_AUDIO_VAD_MODE_E;
-
-/**
-@brief Set wake-up mode (VAD mode)
-@param mode VAD mode (manual or auto)
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_input_wakeup_mode_set(AI_AUDIO_VAD_MODE_E mode);
-```
-
-#### Set wake-up state
-
-Set whether the module is awake. In manual mode, you can directly set the VAD status through this interface.
-
-- VAD related tasks will only be processed when the module is woken up.
-- When the VAD status changes, a notification will only be issued when the module is woken up.
-
-```c
-/**
-@brief Set wake-up state
-@param is_wakeup Wake-up flag
-@return OPERATE_RET Operation result
-*/
 OPERATE_RET ai_audio_input_wakeup_set(bool is_wakeup);
 ```
 
-### Development steps
+| Function | Parameters | Purpose |
+|----------|------------|---------|
+| `ai_audio_input_init` | `cfg` — input configuration | Initialize the module with VAD mode, thresholds, slice size, and the output callback. |
+| `ai_audio_input_start` | — | Start audio capture and VAD processing. |
+| `ai_audio_input_stop` | — | Stop audio capture and VAD processing. |
+| `ai_audio_input_deinit` | — | Release the module's resources. |
+| `ai_audio_input_reset` | — | Reset the audio ring buffer and VAD state. Call between turns to clear stale audio. |
+| `ai_audio_input_wakeup_mode_set` | `mode` — an `AI_AUDIO_VAD_MODE_E` | Switch VAD mode at runtime (manual or auto). |
+| `ai_audio_input_wakeup_set` | `is_wakeup` — wake-up flag | Set whether the module is listening. In manual mode this directly drives the VAD state. |
 
-1. Define configuration parameters and set the slicing duration and VAD threshold.
-2. Implement the audio output callback function to process audio slice data.
-3. Implement VAD event processing callbacks to handle VAD status changes.
-4. Initialize the audio input module, configure and start audio input.
-5. Subscribe to VAD events and receive status change notifications.
-6. In manual mode, control audio input and start/stop recording based on application logic.
-
-### Development flow chart
+## How a turn flows
 
 ```mermaid
 sequenceDiagram
-participant App as application layer
+    participant App as Application
     participant Input as ai_audio_input
-    participant Agent as AI Agent
-
-    App->>Input: ai_audio_input_init()
-Input-->>App: Initialization completed
-    
-Note over App,Input: Runtime
-    
-App->>Input: Start recording
-Input->>App: VAD_START event
-App->>Agent: Start AI input
-    
-Input->>App: Audio slice data
-App->>Agent: Send audio data
-    
-App->>Input: Stop recording
-Input->>App: VAD_STOP event
-App->>Agent: Stop AI input
+    participant Agent as ai_agent
+    App->>Input: ai_audio_input_init(cfg)
+    App->>Input: ai_audio_input_wakeup_set(true)
+    Input-->>App: EVENT_AUDIO_VAD (START)
+    App->>Agent: start AI input
+    Input-->>App: output_cb(slice)
+    App->>Agent: upload slice
+    Input-->>App: EVENT_AUDIO_VAD (STOP)
+    App->>Agent: stop AI input
 ```
 
-### Reference example
+## Worked example
+
+Configure the module, forward slices to the cloud in the output callback, and start/stop a turn from VAD events. This snippet uses manual (button) mode.
 
 ```c
 #include "ai_audio_input.h"
-#include "ai_agent.h"
 
-// Step 1: Define configuration parameters
-#define AI_AUDIO_SLICE_TIME         80
-#define AI_AUDIO_VAD_ACTIVE_TIME    200
-#define AI_AUDIO_VAD_OFF_TIME       1000
+#define AI_AUDIO_SLICE_TIME       80
+#define AI_AUDIO_VAD_ACTIVE_TIME  200
+#define AI_AUDIO_VAD_OFF_TIME     1000
 
-static bool sg_ai_agent_inited = false;
-
-// Step 2: Implement the audio output callback function
+// Called with each audio slice. Forward it to the cloud here.
 static int __ai_audio_output(uint8_t *data, uint16_t datalen)
 {
-    OPERATE_RET rt = OPRT_OK;
-    uint64_t   pts = 0;
-    uint64_t   timestamp = 0;
-
-    if(false == sg_ai_agent_inited) {
-        return OPRT_OK;
-    }
-
-    timestamp = pts = tal_system_get_millisecond();
-    TUYA_CALL_ERR_LOG(tuya_ai_audio_input(timestamp, pts, data, datalen, datalen));
-    
-    return rt;
+    // e.g. upload `data`/`datalen` through ai_agent
+    return OPRT_OK;
 }
 
-// Step 3: Implement VAD event handling callback
-int __ai_vad_change_evt(void *data)
+// React to VAD state changes published on EVENT_AUDIO_VAD.
+static int __ai_vad_change_evt(void *data)
 {
-    OPERATE_RET rt = OPRT_OK;
-
-    TUYA_CHECK_NULL_RETURN(data, OPRT_INVALID_PARM);
-
     AI_AUDIO_VAD_STATE_E vad_flag = (AI_AUDIO_VAD_STATE_E)data;
 
-// Handle VAD status changes
     if (AI_AUDIO_VAD_START == vad_flag) {
-// VAD starts, starts AI input
-        tuya_ai_agent_set_scode(AI_AGENT_SCODE_DEFAULT);
-        tuya_ai_input_start(false);
+        // speech started — begin the AI input turn
     } else {
-// VAD stops, stops AI input
-        tuya_ai_input_stop();
+        // speech ended — finish the AI input turn
     }
-
-    return rt;
+    return OPRT_OK;
 }
 
-// initialization function
 OPERATE_RET example_init(void)
 {
-// Step 4: Initialize the audio input module
     AI_AUDIO_INPUT_CFG_T input_cfg = {
         .vad_mode      = AI_AUDIO_VAD_MANUAL,
         .vad_off_ms    = AI_AUDIO_VAD_OFF_TIME,
@@ -477,29 +160,23 @@ OPERATE_RET example_init(void)
         .output_cb     = __ai_audio_output,
     };
     TUYA_CALL_ERR_RETURN(ai_audio_input_init(&input_cfg));
-    
-    //...
-    
-// Step 5: Subscribe to VAD events
-    TUYA_CALL_ERR_RETURN(tal_event_subscribe(EVENT_AUDIO_VAD, "vad_change", 
+    TUYA_CALL_ERR_RETURN(ai_audio_input_start());
+
+    TUYA_CALL_ERR_RETURN(tal_event_subscribe(EVENT_AUDIO_VAD, "vad_change",
                                              __ai_vad_change_evt, SUBSCRIBE_TYPE_NORMAL));
-
-    sg_ai_agent_inited = true;
-
     return OPRT_OK;
 }
 
-//Key event processing (Step 6: Control audio input)
-void on_button_press(void)
-{
-// Press the button to start recording
-    ai_audio_input_wakeup_set(true);
-}
-
-void on_button_release(void)
-{
-// Release the button to stop recording
-    ai_audio_input_wakeup_set(false);
-}
-
+// Button handlers (manual mode): press to listen, release to stop.
+void on_button_press(void)   { ai_audio_input_wakeup_set(true);  }
+void on_button_release(void) { ai_audio_input_wakeup_set(false); }
 ```
+
+To go hands-free instead, set `.vad_mode = AI_AUDIO_VAD_AUTO` (or call `ai_audio_input_wakeup_mode_set(AI_AUDIO_VAD_AUTO)` at runtime) and let the detector raise the VAD events for you.
+
+## See also
+
+- [AI Agent](ai-agent) — uploads the slices this module produces
+- [Audio Player](ai-audio-player) — plays the cloud's spoken reply back
+- [Voice Chat Modes](ai-mode-manage) — decide when the device listens
+- [Wakeup mode](ai-mode-wakeup) — wake-word listening built on this module

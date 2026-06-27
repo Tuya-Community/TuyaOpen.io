@@ -2,11 +2,9 @@
 title: "TAL System API Reference"
 ---
 
-# TAL System API Reference
+The TAL System API (`tal_system.h`) provides platform-independent system utilities: critical sections, sleep and delay, timing, random numbers, reset management, and PSRAM allocation.
 
-The TAL System API (`tal_system.h`) provides platform-independent system utilities: critical sections, sleep/delay, timing, random numbers, reset management, and PSRAM allocation.
-
-Header: `#include "tal_system.h"` (or `#include "tal_api.h"` for the full TAL surface)
+Include `#include "tal_system.h"` (or `#include "tal_api.h"` for the full TAL surface).
 
 ## Critical Sections
 
