@@ -647,16 +647,16 @@ export default function Pricing() {
   const base = locale === 'zh' ? '/zh' : ''
   const guideHref = `${base}/pricing-guide`
   const tierImgs = [
-    useBaseUrl('/img/pricing/free.png'),
-    useBaseUrl('/img/pricing/iot.png'),
-    useBaseUrl('/img/pricing/ai.png'),
+    'https://images.tuyacn.com/fe-static/docs/img/9d2e76d8-1ee0-4243-a6a2-fa44ab8855e2.png', // free
+    'https://images.tuyacn.com/fe-static/docs/img/30131d50-5cb6-4819-a849-884184eff257.png', // iot
+    'https://images.tuyacn.com/fe-static/docs/img/31184fbb-e536-4e69-8dc6-c7d318e18af8.png', // ai
   ]
-  const starterImg = useBaseUrl('/img/pricing/starter.png')
+  const starterImg = 'https://images.tuyacn.com/fe-static/docs/img/30f88543-eb59-493e-9e0d-847c0c50789b.png'
   const howImgs = [
-    useBaseUrl('/img/pricing/how-uuid.png'),
-    useBaseUrl('/img/pricing/how-cloud.png'),
-    useBaseUrl('/img/pricing/how-device.png'),
-    useBaseUrl('/img/pricing/how-persist.png'),
+    'https://images.tuyacn.com/fe-static/docs/img/3ff1f0a9-4d3d-45b1-b0ef-1bc5d8c6b387.png', // how-uuid
+    'https://images.tuyacn.com/fe-static/docs/img/6599c558-59a6-4051-a40d-cfefb55a696e.png', // how-cloud
+    'https://images.tuyacn.com/fe-static/docs/img/bf82d133-86a0-430a-b961-e0acfe230942.png', // how-device
+    'https://images.tuyacn.com/fe-static/docs/img/3c69e123-5141-48f4-ad9f-1785095cff8e.png', // how-persist
   ]
   const rootRef = useRef(null)
   const [openFaq, setOpenFaq] = useState(null)
