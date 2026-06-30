@@ -4,7 +4,7 @@ title: 多模态数据流
 
 TuyaOpen AI 设备是**多模态**的：它接收语音、文本、摄像头图像以及设备/传感器数据，并以语音、屏幕文本和动作作出响应。本页对这四种模态进行分类，并说明每种模态如何在**硬件**（麦克风、扬声器、摄像头、屏幕、传感器）、**端侧软件**（`ai_components`）与**涂鸦 AI 云端**之间流动。
 
-![端侧 AI 数据通路：硬件外设经由 ai_components 软件层和 ai_agent 连接到涂鸦 AI 云端](/192c725f-3293-4f52-ab8f-7a844e4ded2b.png)
+![端侧 AI 数据通路：硬件外设经由 ai_components 软件层和 ai_agent 连接到涂鸦 AI 云端](https://images.tuyacn.com/fe-static/docs/img/192c725f-3293-4f52-ab8f-7a844e4ded2b.png)
 
 ## 三层通路
 

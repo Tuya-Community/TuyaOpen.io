@@ -52,7 +52,7 @@ The agent will call tools in combinations you didn't anticipate. Protect the dev
 
 A smart oven is a clear case of "expose capabilities, not flows." The oven has a handful of physical functions; wrap each as a tool and the agent can cook from a spoken recipe — something you could never script as a fixed menu.
 
-![A smart oven whose functions — set_temperature, set_time, top_heat, bottom_heat, start, stop, camera — are exposed as tool calls to an AI agent that plans a recipe](/ee0ad925-ae57-4393-8f15-d6fe44d8fe41.png)
+![A smart oven whose functions — set_temperature, set_time, top_heat, bottom_heat, start, stop, camera — are exposed as tool calls to an AI agent that plans a recipe](https://images.tuyacn.com/fe-static/docs/img/ee0ad925-ae57-4393-8f15-d6fe44d8fe41.png)
 
 ### Wrap the oven's functions as tools
 
