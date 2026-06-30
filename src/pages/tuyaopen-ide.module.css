@@ -989,7 +989,37 @@
 }
 
 .fdPillActive::before {
-  opacity: 1;
+  opacity: 0.3;
+}
+
+/* Auto-rotation countdown — a vertical bar that fills top→bottom along the left
+ * edge of the active pill (synced to FD_ROTATE_MS), overlaying the static accent. */
+.fdPillProgress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 0;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, var(--accent-from), var(--accent-to));
+  z-index: 2;
+  animation: fdPillProgressFill 8s linear forwards;
+}
+
+@keyframes fdPillProgressFill {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fdPillProgress {
+    animation: none;
+    height: 100%;
+  }
 }
 
 /* Right: single image with floating panels */
@@ -1008,6 +1038,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fdSceneFade 0.5s ease both;
+}
+
+/* Replays on each scene change (the element is keyed by activeScene). */
+@keyframes fdSceneFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fdMainImage:hover {
@@ -1947,8 +1990,12 @@
 @media (prefers-reduced-motion: reduce) {
   .hilBodyHighlight {
     animation: none;
-    background: linear-gradient(110deg, var(--accent-from), var(--violet-from), #0ea5e9);
+    /* Use the background-image longhand — the `background` shorthand would reset
+     * background-clip back to border-box and break the text clip. */
+    background-image: linear-gradient(110deg, var(--accent-from), var(--violet-from), #0ea5e9);
     background-size: 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 }
 

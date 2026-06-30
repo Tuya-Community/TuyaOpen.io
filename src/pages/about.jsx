@@ -6,6 +6,8 @@ import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import React, { useEffect, useRef } from 'react'
 
+import CountUp from '../components/CountUp/CountUp'
+import TextType from '../components/TextType/TextType'
 import styles from './about-us.module.css'
 
 const AURORA_COLORS = ['#06b6d4', '#7c3aed', '#a5b4fc']
@@ -77,9 +79,9 @@ const COPY = {
     },
     stats: {
       items: [
-        { num: '1.97M+', label: 'Registered AI developers' },
-        { num: '200+', label: 'Countries & regions reached' },
-        { num: '100%', label: 'Open source · Apache-2.0' },
+        { to: 1.97, suffix: 'M+', label: 'Registered AI developers' },
+        { to: 200, suffix: '+', label: 'Countries & regions reached' },
+        { to: 100, suffix: '%', label: 'Open source · Apache-2.0' },
       ],
       note: '* As of March 31, 2026',
     },
@@ -130,9 +132,9 @@ const COPY = {
     },
     stats: {
       items: [
-        { num: '197万+', label: '注册 AI 开发者' },
-        { num: '200+', label: '覆盖国家与地区' },
-        { num: '100%', label: '开源 · Apache-2.0' },
+        { to: 197, suffix: '万+', label: '注册 AI 开发者' },
+        { to: 200, suffix: '+', label: '覆盖国家与地区' },
+        { to: 100, suffix: '%', label: '开源 · Apache-2.0' },
       ],
       note: '* 截至 2026 年 3 月 31 日',
     },
@@ -175,6 +177,7 @@ export default function AboutPage() {
   const { i18n } = useDocusaurusContext()
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
   const c = COPY[locale]
+  const quoteFull = c.quote.pre + c.quote.em + c.quote.post
   const pageRef = useRef(null)
   useScrollReveal(pageRef)
 
@@ -220,11 +223,22 @@ export default function AboutPage() {
                 <div className={styles.quoteMark} aria-hidden>
                   {c.quote.mark}
                 </div>
-                <p className={styles.quoteText}>
-                  {c.quote.pre}
-                  <em>{c.quote.em}</em>
-                  {c.quote.post}
-                </p>
+                <div className={styles.quoteTypeWrap}>
+                  <p className={clsx(styles.quoteText, styles.quoteGhost)} aria-hidden>
+                    {quoteFull}
+                  </p>
+                  <TextType
+                    as="p"
+                    className={clsx(styles.quoteText, styles.quoteType)}
+                    text={[quoteFull]}
+                    typingSpeed={38}
+                    initialDelay={150}
+                    loop={false}
+                    showCursor
+                    cursorCharacter="|"
+                    startOnVisible
+                  />
+                </div>
                 <p className={styles.quoteAttr}>{c.quote.attr}</p>
               </section>
 
@@ -255,7 +269,10 @@ export default function AboutPage() {
                 <div className={styles.stats}>
                   {c.stats.items.map((s, i) => (
                     <div key={i}>
-                      <div className={styles.statNum}>{s.num}</div>
+                      <div className={styles.statNum}>
+                        <CountUp to={s.to} from={0} duration={0.5} separator="," />
+                        {s.suffix}
+                      </div>
                       <div className={styles.statLabel}>{s.label}</div>
                     </div>
                   ))}

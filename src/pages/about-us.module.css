@@ -207,12 +207,45 @@
 }
 
 .quoteText {
-  margin: 1.25rem 0 0;
+  margin: 0;
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   font-weight: 700;
   line-height: 1.34;
   letter-spacing: -0.02em;
   color: var(--ifm-heading-color);
+  white-space: pre-wrap;
+}
+
+/* Typed quote: a hidden ghost reserves the final layout height so the typing
+ * animation can play on an absolutely-positioned overlay without any shift. */
+.quoteTypeWrap {
+  position: relative;
+  margin-top: 1.25rem;
+}
+
+.quoteGhost {
+  visibility: hidden;
+}
+
+.quoteType {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+/* Gradient-color the typed quote text (the inline em highlight isn't possible
+ * with character typing, so the whole line carries the accent gradient). */
+.quoteType :global(.text-type__content) {
+  background-image: linear-gradient(110deg, var(--au-accent), var(--au-accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.quoteType :global(.text-type__cursor) {
+  color: var(--au-accent);
+  -webkit-text-fill-color: var(--au-accent);
 }
 
 .quoteText em {

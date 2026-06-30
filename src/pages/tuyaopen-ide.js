@@ -327,8 +327,34 @@ function AiInputVisual({ aiVisual }) {
   )
 }
 
+const FD_ROTATE_MS = 8000
+// Right-side media for scenes 1–4 (scene 0 is a live component). Preloaded so
+// switching pills is instant.
+const FD_PRELOAD_MEDIA = [
+  'https://images.tuyacn.com/fe-static/docs/img/2df61a11-5587-42c7-ba0a-ffbc8b2c5c8f.gif',
+  'https://images.tuyacn.com/fe-static/docs/img/472fd5df-67c9-4569-b1a0-26e2c03df2d8.jpg',
+  'https://images.tuyacn.com/fe-static/docs/img/904e1b19-a0f0-4984-99e2-2ea97f96ae61.jpg',
+  'https://images.tuyacn.com/fe-static/docs/img/c0963042-ded4-4a78-8b3e-713b7c7f437c.gif',
+]
+
 function FeatureDetailSection({ copy }) {
   const [activeScene, setActiveScene] = useState(0)
+  const sceneCount = copy.featureDetail.pills.length
+
+  // Preload the right-side media so switching scenes is instant.
+  useEffect(() => {
+    FD_PRELOAD_MEDIA.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [])
+
+  // Auto-advance every 8s; the timer resets whenever the active scene changes
+  // (including manual clicks), staying in sync with the per-pill progress bar.
+  useEffect(() => {
+    const id = setTimeout(() => setActiveScene((s) => (s + 1) % sceneCount), FD_ROTATE_MS)
+    return () => clearTimeout(id)
+  }, [activeScene, sceneCount])
 
   return (
     <section className={styles.featureDetail} id="detail">
@@ -345,12 +371,13 @@ function FeatureDetailSection({ copy }) {
                 <div className={clsx(styles.fdPillDetail, i === activeScene && styles.fdPillDetailOpen)}>
                   {pill.detail}
                 </div>
+                {i === activeScene && <span key={activeScene} className={styles.fdPillProgress} aria-hidden />}
               </button>
             ))}
           </div>
         </div>
         <div className={styles.fdRight} data-scene={activeScene} data-animate data-animate-type="right">
-          <div className={styles.fdMainImage}>
+          <div className={styles.fdMainImage} key={activeScene}>
             {activeScene === 0 ? (
               <AiInputVisual aiVisual={copy.featureDetail.aiVisual} />
             ) : activeScene === 1 ? (

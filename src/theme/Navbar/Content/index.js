@@ -17,6 +17,7 @@ import SearchBar from '@theme/SearchBar'
 import clsx from 'clsx'
 import React from 'react'
 
+import GithubStars from '../../../components/GithubStars/GithubStars'
 import styles from './styles.module.css'
 
 function useNavbarItems() {
@@ -60,10 +61,30 @@ export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar()
   const { i18n } = useDocusaurusContext()
   const { pathname } = useLocation()
-  const items = useNavbarItems()
+  const rawItems = useNavbarItems()
+  const showEventRegistration = i18n.currentLocale === 'zh'
+  // The zh-only "活动报名" link lives inside the Ecosystem (生态) dropdown.
+  const items = showEventRegistration
+    ? rawItems.map((item) =>
+        // In zh, useNavbarItems() returns the translated label (生态), so match both.
+        item.label === 'Ecosystem' || item.label === '生态'
+          ? {
+              ...item,
+              items: [
+                {
+                  href: 'https://images.tuyacn.com/rms-static/fe11d250-54e9-11f1-8d53-258e63d3fe0e-1779349939189.html?tyName=event-registration.html',
+                  label: '活动报名',
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                },
+                ...item.items,
+              ],
+            }
+          : item,
+      )
+    : rawItems
   const [leftItems, rightItems] = splitNavbarItems(items)
   const searchBarItem = items.find((item) => item.type === 'search')
-  const showEventRegistration = i18n.currentLocale === 'zh'
   // Append an "IDE" wordmark after the logo on the TuyaOpen IDE product page.
   const isIdePage = pathname.replace(/\/$/, '').endsWith('/tuyaopen-ide')
 
@@ -75,19 +96,12 @@ export default function NavbarContent() {
           <NavbarLogo />
           {isIdePage && <span className={styles.productTag}>IDE</span>}
           <NavbarItems items={leftItems} />
-          {showEventRegistration && (
-            <NavbarItem
-              href="https://images.tuyacn.com/rms-static/fe11d250-54e9-11f1-8d53-258e63d3fe0e-1779349939189.html?tyName=event-registration.html"
-              label="活动报名"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          )}
         </>
       }
       right={
         <>
           <NavbarItems items={rightItems} />
+          <GithubStars />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>

@@ -1,0 +1,447 @@
+/* Dev Styling / Design System reference page — CSS Module */
+
+.page {
+  --ds-gap: 1rem;
+  --ds-radius: 14px;
+  padding: 2.5rem 1.5rem 6rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.6rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+}
+
+.lede {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 60ch;
+  margin: 0;
+}
+
+.modeNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.modeDot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+}
+
+/* ===== Sections ===== */
+.section {
+  margin-top: 3.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.sectionHead {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.sectionNum {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.sectionDesc {
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  font-size: 0.95rem;
+  max-width: 70ch;
+}
+
+/* ===== Token table (Infima vars) ===== */
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.85rem;
+}
+
+.tokenCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ds-radius);
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.tokenSwatch {
+  height: 78px;
+  width: 100%;
+}
+
+.tokenBody {
+  padding: 0.7rem 0.85rem 0.85rem;
+}
+
+.tokenName {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  word-break: break-all;
+  margin-bottom: 0.45rem;
+}
+
+.tokenVals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tokenVal {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.tokenVal b {
+  color: var(--ifm-font-color-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.62rem;
+  padding-top: 0.1rem;
+}
+
+/* ===== Palette groups ===== */
+.paletteGroup {
+  margin-bottom: 2rem;
+}
+
+.paletteGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.85rem;
+}
+
+.paletteGroupTag {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  flex: none;
+}
+
+.paletteGroupNote {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.7rem;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--ifm-background-surface-color);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-align: left;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.swatchChip {
+  height: 64px;
+  width: 100%;
+}
+
+.swatchMeta {
+  padding: 0.5rem 0.6rem 0.6rem;
+}
+
+.swatchHex {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.swatchName {
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.15rem;
+}
+
+.swatchCount {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-500);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.copied {
+  color: var(--ifm-color-success);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+/* ===== Typography ===== */
+.fontCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ds-radius);
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.fontCardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.fontCardName {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.fontCardRole {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+}
+
+.fontStack {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.74rem;
+  color: var(--ifm-color-emphasis-700);
+  word-break: break-word;
+  margin-bottom: 1rem;
+}
+
+.fontSampleEn,
+.fontSampleZh {
+  margin: 0.35rem 0;
+  line-height: 1.4;
+}
+
+.fontSampleEn {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.fontSampleZh {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.fontSampleMono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0.35rem 0;
+}
+
+.langLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-emphasis-500);
+  margin-right: 0.5rem;
+}
+
+/* ===== Type scale ===== */
+.scaleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--ifm-color-emphasis-200);
+}
+
+.scaleSize {
+  flex: none;
+  width: 96px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.scaleCount {
+  flex: none;
+  width: 48px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.scaleSample {
+  flex: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Weights ===== */
+.weightGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.7rem;
+}
+
+.weightCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.weightSample {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.weightLabel {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ===== Light/dark explainer ===== */
+.ldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 700px) {
+  .ldGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ldCard {
+  border-radius: var(--ds-radius);
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.ldCardLight {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.ldCardDark {
+  background: #0a0a0c;
+  color: #f0f0f0;
+}
+
+.ldCardTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ldSwatchRow {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.ldSwatch {
+  flex: 1;
+  height: 38px;
+  border-radius: 6px;
+  border: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.ldNote {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.codeInline {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85em;
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.1rem 0.35rem;
+  border-radius: 5px;
+}
+
+.callout {
+  border-left: 3px solid var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-top: 1rem;
+}

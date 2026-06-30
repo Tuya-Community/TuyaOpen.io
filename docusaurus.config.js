@@ -148,12 +148,13 @@ const config = {
           ],
         },
         {
-          to: 'blog',
-          label: 'Blog',
-        },
-        {
-          to: '/projects',
-          label: 'Projects',
+          type: 'dropdown',
+          label: 'Ecosystem',
+          position: 'left',
+          items: [
+            { to: 'blog', label: 'Blog' },
+            { to: '/projects', label: 'Projects' },
+          ],
         },
         {
           type: 'dropdown',
@@ -166,12 +167,6 @@ const config = {
         },
         {
           type: 'localeDropdown',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/tuya/TuyaOpen',
-          className: 'header-github-link',
-          'aria-label': 'GitHub',
           position: 'right',
         },
       ],

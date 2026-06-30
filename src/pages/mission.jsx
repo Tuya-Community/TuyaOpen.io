@@ -6,6 +6,7 @@ import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import React, { useEffect, useRef } from 'react'
 
+import TextType from '../components/TextType/TextType'
 import styles from './about-us.module.css'
 
 const AURORA_COLORS = ['#7c3aed', '#22d3ee', '#5227FF']
@@ -154,6 +155,7 @@ export default function MissionPage() {
   const { i18n } = useDocusaurusContext()
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
   const c = COPY[locale]
+  const quoteFull = c.quote.pre + c.quote.em + c.quote.post
   const pageRef = useRef(null)
   useScrollReveal(pageRef)
 
@@ -200,11 +202,22 @@ export default function MissionPage() {
                 <div className={styles.quoteMark} aria-hidden>
                   {c.quote.mark}
                 </div>
-                <p className={styles.quoteText}>
-                  {c.quote.pre}
-                  <em>{c.quote.em}</em>
-                  {c.quote.post}
-                </p>
+                <div className={styles.quoteTypeWrap}>
+                  <p className={clsx(styles.quoteText, styles.quoteGhost)} aria-hidden>
+                    {quoteFull}
+                  </p>
+                  <TextType
+                    as="p"
+                    className={clsx(styles.quoteText, styles.quoteType)}
+                    text={[quoteFull]}
+                    typingSpeed={38}
+                    initialDelay={150}
+                    loop={false}
+                    showCursor
+                    cursorCharacter="|"
+                    startOnVisible
+                  />
+                </div>
                 <p className={styles.quoteAttr}>{c.quote.attr}</p>
               </section>
 
