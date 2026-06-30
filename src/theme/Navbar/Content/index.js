@@ -4,6 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+import { useLocation } from '@docusaurus/router'
 import { ErrorCauseBoundary, ThemeClassNames, useThemeConfig } from '@docusaurus/theme-common'
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -58,10 +59,13 @@ function NavbarContentLayout({ left, right }) {
 export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar()
   const { i18n } = useDocusaurusContext()
+  const { pathname } = useLocation()
   const items = useNavbarItems()
   const [leftItems, rightItems] = splitNavbarItems(items)
   const searchBarItem = items.find((item) => item.type === 'search')
   const showEventRegistration = i18n.currentLocale === 'zh'
+  // Append an "IDE" wordmark after the logo on the TuyaOpen IDE product page.
+  const isIdePage = pathname.replace(/\/$/, '').endsWith('/tuyaopen-ide')
 
   return (
     <NavbarContentLayout
@@ -69,6 +73,7 @@ export default function NavbarContent() {
         <>
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
           <NavbarLogo />
+          {isIdePage && <span className={styles.productTag}>IDE</span>}
           <NavbarItems items={leftItems} />
           {showEventRegistration && (
             <NavbarItem
