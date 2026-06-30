@@ -30,3 +30,6 @@ agent-plan-workspace/
 
 # TuyaOpen SDK (clone separately; see README — AI-assisted documentation and TuyaOpen SDK)
 TuyaOpen/
+
+# Local reference code (not part of the site)
+reference_code/
