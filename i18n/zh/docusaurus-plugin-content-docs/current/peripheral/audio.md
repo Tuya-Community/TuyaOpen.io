@@ -37,7 +37,7 @@ title: 音频驱动
 
 当 MCU 不带 DAC 时（例如 `ESP32-S3`），由外置 CODEC 芯片完成转换。MCU 通过两条总线驱动 CODEC：`I2C` 传输控制和配置信号，`I2S` 传输 PCM 音频数据。信号通路如下：
 
-![外置 Codec 音频通路：采集为 麦克风 → Codec ADC → I2S → MCU；播放为 MCU → I2S → Codec DAC → PA → 扬声器，并带 I2C 控制和 PA_GPIO 使能线](/img/peripheral/audio/external-codec-path-zh.png)
+![外置 Codec 音频通路：采集为 麦克风 → Codec ADC → I2S → MCU；播放为 MCU → I2S → Codec DAC → PA → 扬声器，并带 I2C 控制和 PA_GPIO 使能线](https://images.tuyacn.com/fe-static/docs/img/f2b18334-387d-42f3-b39b-c85b6916ff76.png)
 
 | 环节 | 通路 |
 | --- | --- |
@@ -143,7 +143,7 @@ sequenceDiagram
 | the name of audio codec | 字符串 | 配置 CODEC 的设备名                |
 | the num of audio codecs | 整型   | 配置板级 CODEC 数量                |
 
-![open_audio](/img/peripheral/audio/open_audio.png)
+![open_audio](https://images.tuyacn.com/fe-static/docs/img/58c12df0-250d-48be-8880-be8f50623451.png)
 
 :::tip
 以上配置项需在 `src/peripherals/audio_codecs/Kconfig` 和 `boards/<target_platform>/<target_board>/Kconfig` （选择自己目标开发板查看 `Kconfig` 文件）中支持，若没有发现相关配置项，请检查这两个文件内容。
@@ -196,7 +196,7 @@ tos.py config menu
 
 2. 打开驱动使能宏。
 
-![open_audio](/img/peripheral/audio/open_audio.png)
+![open_audio](https://images.tuyacn.com/fe-static/docs/img/58c12df0-250d-48be-8880-be8f50623451.png)
 
 ### 使用方法
 

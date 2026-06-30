@@ -21,3 +21,13 @@ See https://github.com/facebook/docusaurus/pull/11142
 :global(.navbar__items--right) > :last-child {
   padding-right: 0;
 }
+
+/* "IDE" wordmark shown after the logo on the TuyaOpen IDE page */
+.productTag {
+  margin-left: -0.9rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--ifm-navbar-link-color);
+}

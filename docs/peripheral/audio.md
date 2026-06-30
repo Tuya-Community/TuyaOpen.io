@@ -37,7 +37,7 @@ When the MCU has its own ADC and DAC, the codec chip is not needed. The signal p
 
 When the MCU lacks a DAC (for example, `ESP32-S3`), an external codec chip handles conversion. The MCU drives the codec over two buses: `I2C` carries control and configuration, and `I2S` carries the PCM audio data. The signal path is:
 
-![External codec audio path: capture runs Microphone to Codec ADC over I2S to MCU; playback runs MCU over I2S to Codec DAC to PA to Speaker, with I2C control and a PA_GPIO enable line](/img/peripheral/audio/external-codec-path-en.png)
+![External codec audio path: capture runs Microphone to Codec ADC over I2S to MCU; playback runs MCU over I2S to Codec DAC to PA to Speaker, with I2C control and a PA_GPIO enable line](https://images.tuyacn.com/fe-static/docs/img/5b4c79b1-f967-4c14-b9f2-80aef6726652.png)
 
 | Stage | Path |
 | --- | --- |
@@ -143,7 +143,7 @@ To include the driver in the build, verify that the relevant `Kconfig` options a
 | the name of audio codec | String | Configures the device name for the codec. |
 | the num of audio codecs | Integer | Configures the number of board-level codecs. |
 
-![open_audio](/img/peripheral/audio/open_audio.png)
+![open_audio](https://images.tuyacn.com/fe-static/docs/img/58c12df0-250d-48be-8880-be8f50623451.png)
 
 :::tip
 These configuration items must be supported in both `src/peripherals/audio_codecs/Kconfig` and `boards/<target_platform>/<target_board>/Kconfig` (Check the `Kconfig` file for your specific target board). If you cannot find the relevant configuration items, please review the contents of these two files.
@@ -197,7 +197,7 @@ If you enable a feature that depends on the audio driver, the audio driver's ena
 
 2. Manually locate and enable the macro.
 
-![open_audio](/img/peripheral/audio/open_audio.png)
+![open_audio](https://images.tuyacn.com/fe-static/docs/img/58c12df0-250d-48be-8880-be8f50623451.png)
 
 ### How to use
 

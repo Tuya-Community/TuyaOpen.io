@@ -249,7 +249,7 @@ export default function DeviceCloudPage() {
           <p className={styles.heroSub}>{t.subtitle}</p>
           <img
             className={styles.heroImg}
-            src="/img/cloud/device-ai/smart-oven-tools.png"
+            src="/ee0ad925-ae57-4393-8f15-d6fe44d8fe41.png"
             alt={t.ovenAlt}
             loading="lazy"
           />

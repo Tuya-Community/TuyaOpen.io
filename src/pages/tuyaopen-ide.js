@@ -1060,44 +1060,6 @@ export default function TuyaOpenIdePage() {
   return (
     <Layout title="TuyaOpen IDE" description="The all-in-one VS Code extension for embedded IoT development.">
       <div className={styles.idePage} ref={containerRef}>
-        {/* Header */}
-        <header className={styles.header}>
-          <a href="/tuyaopen-ide" className={styles.headerLogo}>
-            <img src="/img/home/tuyaopen-logo-simple-dark.png" alt="TuyaOpen" className={styles.logoIcon} />
-            <span>TuyaOpen IDE</span>
-          </a>
-          <nav>
-            <ul className={styles.headerNav}>
-              <ProductsMenu menu={copy.productsMenu} />
-              <li>
-                <a href="#features">{copy.nav.features}</a>
-              </li>
-              <li>
-                <a href="#capabilities">{copy.nav.capabilities}</a>
-              </li>
-              <li>
-                <a href="#why">{copy.nav.why}</a>
-              </li>
-              <li>
-                <a href="#download">{copy.nav.download}</a>
-              </li>
-            </ul>
-          </nav>
-          <div className={styles.headerActions}>
-            <button
-              type="button"
-              className={styles.localeSwitchBtn}
-              onClick={() => setLocale((prev) => (prev === 'en' ? 'zh' : 'en'))}
-              aria-label={locale === 'en' ? 'Switch to Chinese' : 'Switch to English'}
-            >
-              {locale === 'en' ? '中文' : 'EN'}
-            </button>
-            <button type="button" className={styles.btnCta} onClick={openInstall}>
-              {copy.nav.cta}
-            </button>
-          </div>
-        </header>
-
         {/* Hero */}
         <section className={styles.hero} ref={heroRef}>
           <div className={clsx(styles.floatOrb, styles.heroOrb1)} data-parallax-orb></div>

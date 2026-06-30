@@ -156,6 +156,15 @@ const config = {
           label: 'Projects',
         },
         {
+          type: 'dropdown',
+          label: 'About Us',
+          position: 'left',
+          items: [
+            { label: 'About', to: '/about' },
+            { label: 'Mission', to: '/mission' },
+          ],
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },

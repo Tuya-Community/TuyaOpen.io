@@ -19,7 +19,7 @@ The result is friction. Most "smart" features go unused because finding them cos
 
 Agentic-first inverts the relationship: **the device adapts to the user.** The user expresses intent in natural language (or gesture, or context), and an AI agent decides which of the device's capabilities to invoke.
 
-![App-first devices make the user learn menus to reach fixed controls; agentic-first devices route user intent through an AI agent to the device's capabilities](/img/cloud/device-ai/agentic-shift-en.png)
+![App-first devices make the user learn menus to reach fixed controls; agentic-first devices route user intent through an AI agent to the device's capabilities](https://images.tuyacn.com/fe-static/docs/img/e38296de-2d84-4614-823c-14f3c564f07f.png)
 
 The interface is no longer a screen — it is a conversation plus the device's own senses. The device's job is to expose what it *can do*; the agent's job is to decide what to do *now*.
 

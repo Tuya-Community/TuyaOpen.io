@@ -5,25 +5,27 @@ import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
-import audienceAi from '../../static/img/home/audience/ai.png'
-import audienceCommercial from '../../static/img/home/audience/commercial.png'
-import audienceMakers from '../../static/img/home/audience/makers.png'
-import audienceStudents from '../../static/img/home/audience/students.png'
-import benefitAi from '../../static/img/home/benefits/ai.png'
-import benefitArch from '../../static/img/home/benefits/arch.png'
-import benefitCloud from '../../static/img/home/benefits/cloud.png'
-import benefitProduction from '../../static/img/home/benefits/production.png'
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
 
-/** Audience persona illustrations, in the order of copy.audience.items. Imported so the bundler serves them reliably (dev + prod). */
-const AUDIENCE_IMGS = [audienceStudents, audienceMakers, audienceAi, audienceCommercial]
+/** Audience persona illustrations, in the order of copy.audience.items. Served from the Tuya CDN. */
+const AUDIENCE_IMGS = [
+  'https://images.tuyacn.com/fe-static/docs/img/9ed4a173-d815-4d70-81ba-85b61c8f29d0.png', // students
+  'https://images.tuyacn.com/fe-static/docs/img/53cb25f1-946f-4aa3-8697-6e23416ad92e.png', // makers
+  'https://images.tuyacn.com/fe-static/docs/img/1b962ced-ffd2-45a7-b1e9-43374f7cda04.png', // ai
+  'https://images.tuyacn.com/fe-static/docs/img/a5c2c9a6-1da9-4c9b-b0b6-10af56122009.png', // commercial
+]
 
-/** Benefit illustrations, in the order of copy.benefits.items (layered SDK / edge AI / cloud+security / prototype→production). */
-const BENEFIT_IMGS = [benefitArch, benefitAi, benefitCloud, benefitProduction]
+/** Benefit illustrations, in the order of copy.benefits.items (layered SDK / edge AI / cloud+security / prototype→production). Served from the Tuya CDN. */
+const BENEFIT_IMGS = [
+  'https://images.tuyacn.com/fe-static/docs/img/b35faad1-eb1e-48d9-b381-b87552dbb08d.png', // arch
+  'https://images.tuyacn.com/fe-static/docs/img/c22edf49-1114-4f37-9ee0-df436eb2cdf2.png', // ai
+  'https://images.tuyacn.com/fe-static/docs/img/d156dd4e-32af-4582-9370-ed84d145a0ea.png', // cloud
+  'https://images.tuyacn.com/fe-static/docs/img/7db63b10-3dc3-4a51-9c8a-f2b203224b45.png', // production
+]
 
 /** Terminal log `tag` → bottom step card id (see `realWorldValidation.steps` in homepageCopy). */
 const HIL_LOG_TAG_TO_STEP_NUM = {

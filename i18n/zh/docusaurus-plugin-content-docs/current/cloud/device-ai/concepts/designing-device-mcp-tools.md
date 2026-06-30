@@ -52,7 +52,7 @@ flowchart LR
 
 智能烤箱是"暴露能力，而非流程"的典型例子。烤箱只有少数几个物理功能；把每个功能封装成工具，智能体就能根据一句口述的菜谱来烹饪——这是固定菜单永远做不到的。
 
-![智能烤箱的功能——set_temperature、set_time、top_heat、bottom_heat、start、stop、camera——作为工具调用暴露给规划菜谱的 AI 智能体](/img/cloud/device-ai/smart-oven-tools.png)
+![智能烤箱的功能——set_temperature、set_time、top_heat、bottom_heat、start、stop、camera——作为工具调用暴露给规划菜谱的 AI 智能体](https://images.tuyacn.com/fe-static/docs/img/ee0ad925-ae57-4393-8f15-d6fe44d8fe41.png)
 
 ### 把烤箱功能封装为工具
 

@@ -4,7 +4,7 @@ title: Multimodal Data Flow
 
 A TuyaOpen AI device is **multimodal**: it takes in speech, text, camera images, and device/sensor data, and responds with speech, on-screen text, and actions. This page categorizes those four modalities and shows how each one travels between the **hardware** (mic, speaker, camera, display, sensors), the **on-device software** (`ai_components`), and the **Tuya AI cloud**.
 
-![On-device AI pipeline: hardware peripherals connect through the ai_components software layer and ai_agent to the Tuya AI cloud](/img/cloud/device-ai/multimodal-pipeline.png)
+![On-device AI pipeline: hardware peripherals connect through the ai_components software layer and ai_agent to the Tuya AI cloud](https://images.tuyacn.com/fe-static/docs/img/192c725f-3293-4f52-ab8f-7a844e4ded2b.png)
 
 ## The three-layer path
 

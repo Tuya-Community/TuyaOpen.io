@@ -59,6 +59,18 @@
     "message": "项目",
     "description": "Navbar item with label Projects"
   },
+  "item.label.About Us": {
+    "message": "关于我们",
+    "description": "Navbar dropdown with label About Us"
+  },
+  "item.label.About": {
+    "message": "关于",
+    "description": "Navbar item with label About"
+  },
+  "item.label.Mission": {
+    "message": "使命",
+    "description": "Navbar item with label Mission"
+  },
   "item.label.Tools": {
     "message": "工具",
     "description": "Navbar item with label Tools"
