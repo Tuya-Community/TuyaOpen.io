@@ -148,12 +148,19 @@ const config = {
           ],
         },
         {
-          to: 'blog',
-          label: 'Blog',
-        },
-        {
-          to: '/projects',
-          label: 'Projects',
+          type: 'dropdown',
+          label: 'Ecosystem',
+          position: 'left',
+          items: [
+            { label: 'Projects', to: '/projects' },
+            { label: 'Blog', to: 'blog' },
+            {
+              label: 'Event Registration',
+              href: 'https://images.tuyacn.com/rms-static/fe11d250-54e9-11f1-8d53-258e63d3fe0e-1779349939189.html?tyName=event-registration.html',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          ],
         },
         {
           type: 'dropdown',
@@ -166,12 +173,6 @@ const config = {
         },
         {
           type: 'localeDropdown',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/tuya/TuyaOpen',
-          className: 'header-github-link',
-          'aria-label': 'GitHub',
           position: 'right',
         },
       ],
@@ -286,9 +287,38 @@ const config = {
             },
           ],
         },
+        {
+          title: 'Legal',
+          items: [
+            {
+              label: 'Terms of Service',
+              href: 'https://auth.tuya.com/policies/service',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+            {
+              label: 'Legal Statement',
+              href: 'https://auth.tuya.com/policies/legal',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+            {
+              label: 'Tuya Privacy Policy',
+              href: 'https://auth.tuya.com/policies/privacy',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+            {
+              label: 'Tuya California Privacy Notice',
+              href: 'https://auth.tuya.com/policies/CAprivacynotice',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          ],
+        },
       ],
       copyright: `
-        <p style="font-weight: 500;">Copyright © TuyaOpen Authors ${new Date().getFullYear()} | Documentation Distributed under Apache License Version 2.0</p>
+        <p style="font-weight: 500;">Copyright © TuyaOpen Authors ${new Date().getFullYear()} | Documentation Distributed under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License Version 2.0</a></p>
       `,
     },
     prism: {

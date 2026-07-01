@@ -7,7 +7,6 @@
 import { useLocation } from '@docusaurus/router'
 import { ErrorCauseBoundary, ThemeClassNames, useThemeConfig } from '@docusaurus/theme-common'
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle'
 import NavbarLogo from '@theme/Navbar/Logo'
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle'
@@ -17,6 +16,7 @@ import SearchBar from '@theme/SearchBar'
 import clsx from 'clsx'
 import React from 'react'
 
+import GithubStars from './GithubStars'
 import styles from './styles.module.css'
 
 function useNavbarItems() {
@@ -58,12 +58,10 @@ function NavbarContentLayout({ left, right }) {
 
 export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar()
-  const { i18n } = useDocusaurusContext()
   const { pathname } = useLocation()
   const items = useNavbarItems()
   const [leftItems, rightItems] = splitNavbarItems(items)
   const searchBarItem = items.find((item) => item.type === 'search')
-  const showEventRegistration = i18n.currentLocale === 'zh'
   // Append an "IDE" wordmark after the logo on the TuyaOpen IDE product page.
   const isIdePage = pathname.replace(/\/$/, '').endsWith('/tuyaopen-ide')
 
@@ -75,19 +73,12 @@ export default function NavbarContent() {
           <NavbarLogo />
           {isIdePage && <span className={styles.productTag}>IDE</span>}
           <NavbarItems items={leftItems} />
-          {showEventRegistration && (
-            <NavbarItem
-              href="https://images.tuyacn.com/rms-static/fe11d250-54e9-11f1-8d53-258e63d3fe0e-1779349939189.html?tyName=event-registration.html"
-              label="活动报名"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          )}
         </>
       }
       right={
         <>
           <NavbarItems items={rightItems} />
+          <GithubStars />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>
