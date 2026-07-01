@@ -119,6 +119,33 @@
   -webkit-text-fill-color: transparent;
 }
 
+/*
+Neutralize React Bits' GradientText badge styling when it wraps a single hero
+word inline (see BlurText renderSegment usage). Two-class specificity beats the
+component's own .animated-gradient-text rule regardless of stylesheet order.
+ */
+.heroInlineGradient:global(.animated-gradient-text) {
+  display: inline-flex;
+  margin: 0;
+  border-radius: 0;
+  font-weight: inherit;
+  cursor: inherit;
+  backdrop-filter: none;
+  overflow: visible;
+}
+
+/*
+The hero title uses a tight line-height (1.1); with -webkit-background-clip: text
+the gradient is only painted inside the glyph box, so descenders (g, y, p) get
+clipped. Add a little bottom room to the painted box; the negative margin keeps
+the visual line spacing unchanged.
+ */
+.heroInlineGradient:global(.animated-gradient-text) > :global(.text-content) {
+  line-height: 1.3;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+}
+
 .heroSubtitle {
   font-size: 1.125rem;
   font-weight: 600;

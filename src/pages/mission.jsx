@@ -6,6 +6,8 @@ import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import React, { useEffect, useRef } from 'react'
 
+import TypedQuote from '@site/src/components/TypedQuote/TypedQuote'
+
 import styles from './about-us.module.css'
 
 const AURORA_COLORS = ['#7c3aed', '#22d3ee', '#5227FF']
@@ -200,10 +202,8 @@ export default function MissionPage() {
                 <div className={styles.quoteMark} aria-hidden>
                   {c.quote.mark}
                 </div>
-                <p className={styles.quoteText}>
-                  {c.quote.pre}
-                  <em>{c.quote.em}</em>
-                  {c.quote.post}
+                <p className={styles.quoteText} aria-label={`${c.quote.pre}${c.quote.em}${c.quote.post}`}>
+                  <TypedQuote pre={c.quote.pre} em={c.quote.em} post={c.quote.post} />
                 </p>
                 <p className={styles.quoteAttr}>{c.quote.attr}</p>
               </section>
