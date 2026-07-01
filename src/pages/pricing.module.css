@@ -980,23 +980,25 @@
 /* ----------------------------------------------- Comparison table */
 .compareWrap {
   overflow-x: auto;
-  border: 1px solid var(--neutral-200);
-  border-radius: 16px;
-  background: #fff;
-}
-
-[data-theme='dark'] .compareWrap {
-  background: var(--neutral-800);
-  border-color: var(--neutral-700);
+  /* Transparent top strip gives the featured cap room to protrude — the table
+     background lives on the table itself, so it aligns to the real table. */
+  padding-top: 12px;
 }
 
 .compareTable {
   display: table;
   width: 100%;
   min-width: 640px;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.92rem;
   table-layout: fixed;
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+}
+
+[data-theme='dark'] .compareTable {
+  background: var(--neutral-800);
 }
 
 .compareTable th,
@@ -1054,12 +1056,69 @@
   color: var(--brand-primary-light);
 }
 
+/* Highlighted (featured) column — one continuous card that runs the whole
+   height, punching through the section dividers, bounded by a colorful edge.
+   The left/right edges are drawn per-cell (violet → accent gradient) so the
+   frame stays unbroken even behind the grey group dividers. */
 .colPopular {
-  background: rgba(124, 92, 255, 0.05);
+  background: rgba(124, 92, 255, 0.055);
+  border-left: 2px solid var(--brand-primary);
+  border-right: 2px solid var(--brand-accent);
 }
 
 [data-theme='dark'] .colPopular {
-  background: rgba(124, 92, 255, 0.1);
+  background: rgba(124, 92, 255, 0.13);
+}
+
+/* Keep the tint + side edges unbroken behind the grey group dividers */
+.groupRow td.colPopular {
+  background: rgba(124, 92, 255, 0.055);
+}
+
+[data-theme='dark'] .groupRow td.colPopular {
+  background: rgba(124, 92, 255, 0.13);
+}
+
+/* Header cap — the vivid violet → accent gradient. Its rounded top is drawn
+   by the ::before lip so the cap rises past the table's open top edge. */
+.compareTable thead th.colPopular {
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
+  border-bottom-color: transparent;
+}
+
+.compareTable thead th.colPopular::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: -12px;
+  height: 14px;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
+  border: 2px solid var(--brand-primary);
+  border-right-color: var(--brand-accent);
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+}
+
+.compareTable thead th.colPopular .colHeadName {
+  color: #fff;
+  text-shadow:
+    0 1px 2px rgba(35, 10, 60, 0.55),
+    0 0 1px rgba(35, 10, 60, 0.5);
+}
+
+.compareTable thead th.colPopular .colHeadPrice {
+  color: #fff;
+  text-shadow:
+    0 1px 2px rgba(35, 10, 60, 0.5),
+    0 0 1px rgba(35, 10, 60, 0.45);
+}
+
+/* Rounded, colored foot closes the column card */
+.compareTable tbody tr:last-child td.colPopular {
+  border-bottom: 2px solid var(--brand-accent);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .groupRow td {
@@ -1100,6 +1159,41 @@
 
 [data-theme='dark'] .cellText {
   color: var(--neutral-300);
+}
+
+/* Feature label that links to a dedicated doc */
+.featureLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--neutral-300);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.featureLink:hover {
+  color: var(--brand-primary);
+  border-bottom-color: var(--brand-primary);
+}
+
+[data-theme='dark'] .featureLink {
+  border-bottom-color: var(--neutral-600);
+}
+
+[data-theme='dark'] .featureLink:hover {
+  color: var(--brand-primary-light);
+  border-bottom-color: var(--brand-primary-light);
+}
+
+.featureLink::after {
+  content: '↗';
+  font-size: 0.7em;
+  opacity: 0.55;
+}
+
+.featurePlain {
+  color: inherit;
 }
 
 /* ------------------------------------------------------- Steps */

@@ -14,7 +14,12 @@
     system-ui,
     sans-serif;
   background: var(--ifm-background-color);
-  overflow-x: hidden;
+  /* `clip` (not `hidden`) so this element does NOT become a scroll container.
+   * `overflow-x: hidden` forces `overflow-y` to compute to `auto`, which would
+   * make .page the sticky scroll container for .leftPanel — offsetting its
+   * `top: navbar-height` from .page's own top and opening a ~navbar-height gap
+   * under the navbar. `clip` clips horizontal bleed without that side effect. */
+  overflow-x: clip;
 }
 
 /* ---------------------------------------------------------------------------

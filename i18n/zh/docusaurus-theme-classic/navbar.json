@@ -59,6 +59,14 @@
     "message": "项目",
     "description": "Navbar item with label Projects"
   },
+  "item.label.Ecosystem": {
+    "message": "生态",
+    "description": "Navbar dropdown with label Ecosystem"
+  },
+  "item.label.Event Registration": {
+    "message": "活动报名",
+    "description": "Navbar item with label Event Registration"
+  },
   "item.label.About Us": {
     "message": "关于我们",
     "description": "Navbar dropdown with label About Us"

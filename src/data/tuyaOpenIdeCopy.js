@@ -276,8 +276,8 @@ export const tuyaOpenIdeCopy = {
         label: 'VS Code users',
         title: 'Download & install the .vsix',
         desc: 'The extension is published on the Open VSX registry. Download the package and install it manually in VS Code.',
-        downloadCta: 'Download .vsix · v0.0.12',
-        downloadUrl: 'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.0.12/file/TuyaOpen.TuyaOpenIDE-0.0.12.vsix',
+        downloadCta: 'Download .vsix · v0.0.13',
+        downloadUrl: 'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.0.13/file/TuyaOpen.TuyaOpenIDE-0.0.13.vsix',
         guideTitle: 'How to install',
         steps: [
           'Download the .vsix file using the button above.',
@@ -790,8 +790,8 @@ export const tuyaOpenIdeCopy = {
         label: 'VS Code 用户',
         title: '下载并安装 .vsix',
         desc: '扩展已发布在 Open VSX 仓库。下载安装包后，在 VS Code 中手动安装。',
-        downloadCta: '下载 .vsix · v0.0.12',
-        downloadUrl: 'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.0.12/file/TuyaOpen.TuyaOpenIDE-0.0.12.vsix',
+        downloadCta: '下载 .vsix · v0.0.13',
+        downloadUrl: 'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.0.13/file/TuyaOpen.TuyaOpenIDE-0.0.13.vsix',
         guideTitle: '安装步骤',
         steps: [
           '点击上方按钮下载 .vsix 文件。',

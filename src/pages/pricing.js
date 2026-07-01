@@ -150,9 +150,10 @@ const content = {
       ],
     },
     compare: {
-      tag: 'Full comparison',
-      title: 'What each tier unlocks',
-      subtitle: 'A feature-by-feature look, drawn straight from the TuyaOpen docs.',
+      tag: 'Compare tiers',
+      title: 'Start free, scale as you grow',
+      subtitle:
+        'The same open-source framework at every tier — pay once per device, only when it connects to Tuya Cloud.',
       cols: [
         { name: 'Open Source', price: 'Free' },
         { name: 'IoT', price: '¥5 / device' },
@@ -167,6 +168,7 @@ const content = {
             ['Arduino, Lua & MicroPython', true, true, true],
             ['11+ chips (T-series, ESP32, Pi…)', true, true, true],
             ['Serial debug & tyutool flashing', true, true, true],
+            ['TuyaOpen IDE for development', true, true, true],
           ],
         },
         {
@@ -284,7 +286,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: 'Are AI tokens included in the ¥12 license?',
-          a: 'The ¥12 license unlocks AI capabilities. Actual AI usage — LLM tokens, ASR minutes, TTS characters — is metered separately by use. See the licensing guide for the breakdown.',
+          a: 'The ¥12 license unlocks the full AI stack. For now, AI usage — LLM tokens, ASR minutes, TTS characters — is uncapped and included at no extra cost. We reserve the right to introduce usage-based billing in the future, with advance notice.',
         },
         {
           q: 'Do TuyaOS licenses work with TuyaOpen?',
@@ -434,9 +436,9 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
       ],
     },
     compare: {
-      tag: '完整对比',
-      title: '各档位解锁的能力',
-      subtitle: '逐项对比，内容直接取自 TuyaOpen 文档。',
+      tag: '档位对比',
+      title: '免费起步，按需升级',
+      subtitle: '每个档位共享同一套开源框架 —— 仅当设备接入涂鸦云时，才按设备一次性付费。',
       cols: [
         { name: '开源开发者', price: '免费' },
         { name: 'IoT', price: '¥5 / 设备' },
@@ -451,6 +453,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
             ['Arduino、Lua 与 MicroPython', true, true, true],
             ['11+ 芯片（T 系列、ESP32、树莓派…）', true, true, true],
             ['串口调试与 tyutool 烧录', true, true, true],
+            ['TuyaOpen IDE 开发环境', true, true, true],
           ],
         },
         {
@@ -568,7 +571,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: '¥12 授权是否包含 AI tokens？',
-          a: '¥12 授权解锁 AI 能力。实际 AI 用量 —— 大模型 token、ASR 时长、TTS 字符 —— 按使用单独计量。明细见授权指南。',
+          a: '¥12 授权解锁完整 AI 能力。目前 AI 用量 —— 大模型 token、ASR 时长、TTS 字符 —— 不设上限，且不额外收费。我们保留未来按量计费的权利，并将提前通知。',
         },
         {
           q: 'TuyaOS 授权能用于 TuyaOpen 吗？',
@@ -634,6 +637,63 @@ function Cell({ value }) {
   if (value === true) return <span className={styles.tick}>✓</span>
   if (value === false) return <span className={styles.cross}>—</span>
   return <span className={styles.cellText}>{value}</span>
+}
+
+/*
+ * Optional deep-links from each comparison-table feature to its dedicated doc.
+ * Shared across locales — parallel to `compare.groups` / `group.rows` by index.
+ * A `null` entry renders the label as plain text (no doc exists for it yet).
+ */
+const compareLinks = [
+  // Framework & tooling
+  [
+    '/docs/about-tuyaopen',
+    '/docs/tos-tools/tos-guide',
+    '/docs/hardware/tuya-t5/develop-with-Arduino/Introduction',
+    '/docs/hardware',
+    '/docs/tos-tools/tools-tyutool',
+    '/tuyaopen-ide', // TuyaOpen IDE
+  ],
+  // Connectivity & peripherals
+  [
+    '/docs/peripheral/tutorials/tal-wifi-api',
+    null, // Local LAN control
+    '/docs/peripheral/support_peripheral_list',
+    '/docs/tkl-api/tkl_gpio',
+    '/docs/peripheral/tutorials/http-client-tutorial',
+  ],
+  // Tuya Cloud (IoT)
+  [
+    '/docs/cloud/iot-client/tuya-iot-client-reference',
+    null, // Smart Life app control
+    '/docs/cloud/iot-client/tuya-iot-client-reference',
+    '/docs/cloud/tuya-cloud/device-cloud-binding',
+    '/docs/quick-start/firmware-ota',
+    '/docs/cloud/tuya-cloud/creating-new-product',
+    null, // Custom mini-app control panel
+  ],
+  // Multimodal AI
+  [
+    null, // Wake-word detection
+    '/docs/cloud/device-ai/ai-components/ai-audio-input',
+    '/docs/cloud/device-ai/ai-components/ai-agent',
+    '/docs/cloud/device-ai/ai-components/ai-video-input',
+    '/docs/cloud/device-ai/ai-components/ai-mcp-tools',
+    '/docs/cloud/device-ai/ai-components/ai-skill',
+    '/docs/cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
+  ],
+  // Production & support — no dedicated docs
+  [],
+]
+
+function FeatureLabel({ label, href, base }) {
+  if (!href) return <span className={styles.featurePlain}>{label}</span>
+  const to = href.startsWith('/') ? `${base}${href}` : href
+  return (
+    <Link className={styles.featureLink} to={to}>
+      {label}
+    </Link>
+  )
 }
 
 /* ----------------------------------------------------------------------- */
@@ -860,11 +920,14 @@ export default function Pricing() {
                   {c.compare.groups.map((group, gi) => (
                     <React.Fragment key={gi}>
                       <tr className={styles.groupRow}>
-                        <td colSpan={4}>{group.name}</td>
+                        <td colSpan={3}>{group.name}</td>
+                        <td className={styles.colPopular} aria-hidden />
                       </tr>
                       {group.rows.map((row, ri) => (
                         <tr key={ri}>
-                          <td>{row[0]}</td>
+                          <td>
+                            <FeatureLabel label={row[0]} href={compareLinks[gi]?.[ri]} base={base} />
+                          </td>
                           <td>
                             <Cell value={row[1]} />
                           </td>
