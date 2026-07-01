@@ -1,3 +1,4 @@
+import BrowserOnly from '@docusaurus/BrowserOnly'
 import Head from '@docusaurus/Head'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -10,6 +11,7 @@ import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import BlurText from '../components/BlurText/BlurText'
 import GradientText from '../components/GradientText/GradientText'
+import ImageParticles from '../components/ImageParticles/ImageParticles'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
 
@@ -454,6 +456,17 @@ function Home() {
         <main className={styles.landingMain}>
           {/* Hero */}
           <section className={styles.landingHero}>
+            {/* Animated iridescent WebGL background (client-only; the section's CSS
+                gradient stays as the SSR / no-WebGL fallback). */}
+            <div className={styles.heroCanvas} aria-hidden>
+              <BrowserOnly>
+                {() => {
+                  const Iridescence = require('@site/src/components/Iridescence/Iridescence').default
+                  return <Iridescence color={[0.58, 0.66, 0.835]} mouseReact={false} amplitude={0.1} speed={0.1} />
+                }}
+              </BrowserOnly>
+            </div>
+            <div className={styles.heroScrim} aria-hidden />
             <div className={styles.heroGlow} aria-hidden />
             <div className={styles.heroInner}>
               <div className={styles.heroGrid}>
@@ -500,18 +513,18 @@ function Home() {
                     </Link>
                   </div>
                 </div>
-                <div className="scroll-to-display">
-                  <div className={styles.codeWindow}>
-                    <div className={styles.codeHeader}>
-                      <span className={styles.codeDot} style={{ background: '#EF4444' }} />
-                      <span className={styles.codeDot} style={{ background: '#F59E0B' }} />
-                      <span className={styles.codeDot} style={{ background: '#10B981' }} />
-                      <span className={styles.codeTitle}>terminal</span>
-                    </div>
-                    <pre className={styles.codeBody}>
-                      <code>{copy.hero.codePreview}</code>
-                    </pre>
-                  </div>
+                <div className={clsx(styles.heroParticles, 'scroll-to-display')}>
+                  <ImageParticles
+                    src="/img/home/hero-device.png"
+                    gap={3}
+                    size={3.4}
+                    mouseRadius={110}
+                    brightness={1.14}
+                    saturation={1.4}
+                    contrast={1.35}
+                    drift={3.2}
+                    scatter={6}
+                  />
                 </div>
               </div>
             </div>
