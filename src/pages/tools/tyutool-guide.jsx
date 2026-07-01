@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import { clsx } from 'clsx';
+import useFromTutorials from '@site/src/components/useFromTutorials';
 import styles from './tyutool-guide.module.css';
 
 const GITHUB = 'https://github.com/tuya/tyutool';
@@ -181,11 +181,8 @@ tyutool authorize -p /dev/ttyUSB0 \\
             { label: 'Windows driver', href: 'https://www.wch.cn/downloads/ch343ser_exe.html' },
             { label: 'macOS driver', href: 'https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html' },
           ],
-          drivers: true,
         },
       ],
-      driverCaption13: 'macOS 13 — Privacy & Security',
-      driverCaption15: 'macOS 15 — search "login" in Settings',
     },
     help: {
       title: 'Getting help',
@@ -356,11 +353,8 @@ tyutool authorize -p /dev/ttyUSB0 \\
             { label: 'Windows 驱动', href: 'https://www.wch.cn/downloads/ch343ser_exe.html' },
             { label: 'macOS 驱动', href: 'https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html' },
           ],
-          drivers: true,
         },
       ],
-      driverCaption13: 'macOS 13 —— 隐私与安全性',
-      driverCaption15: 'macOS 15 —— 在设置中搜索"登录"',
     },
     help: {
       title: '获取帮助',
@@ -411,6 +405,7 @@ export default function TyutoolGuidePage() {
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
   const c = content[locale];
   const overviewHref = locale === 'zh' ? '/zh/tools/tyutool' : '/tools/tyutool';
+  const { fromTutorials, href: tutorialsHref, label: tutorialsLabel } = useFromTutorials();
 
   const [activeId, setActiveId] = useState(c.nav[0].id);
   const contentRef = useRef(null);
@@ -436,8 +431,6 @@ export default function TyutoolGuidePage() {
   const flashImg = SHOTS.flashing;
   const serialImg = SHOTS.debug;
   const batchImg = SHOTS.batch;
-  const macos13 = useBaseUrl('/img/tyutool/macos13.png');
-  const macos15 = useBaseUrl('/img/tyutool/macos15.png');
 
   return (
     <Layout title={`tyutool — ${c.badge}`} description={c.meta}>
@@ -446,8 +439,8 @@ export default function TyutoolGuidePage() {
         <header className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden />
           <div className={styles.heroInner}>
-            <Link to={overviewHref} className={styles.breadcrumb}>
-              {c.backToOverview}
+            <Link to={fromTutorials ? tutorialsHref : overviewHref} className={styles.breadcrumb}>
+              {fromTutorials ? tutorialsLabel : c.backToOverview}
             </Link>
             <span className={styles.heroBadge}>{c.badge}</span>
             <h1 className={styles.heroTitle}>{c.title}</h1>
@@ -653,18 +646,6 @@ export default function TyutoolGuidePage() {
                               {l.label} →
                             </a>
                           ))}
-                        </div>
-                      )}
-                      {item.drivers && (
-                        <div className={styles.driverShots}>
-                          <figure className={styles.figure}>
-                            <img src={macos13} alt={c.trouble.driverCaption13} className={styles.figureImg} />
-                            <figcaption>{c.trouble.driverCaption13}</figcaption>
-                          </figure>
-                          <figure className={styles.figure}>
-                            <img src={macos15} alt={c.trouble.driverCaption15} className={styles.figureImg} />
-                            <figcaption>{c.trouble.driverCaption15}</figcaption>
-                          </figure>
                         </div>
                       )}
                     </div>

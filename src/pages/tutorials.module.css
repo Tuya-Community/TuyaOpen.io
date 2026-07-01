@@ -1,0 +1,423 @@
+/* =========================================================================
+ * Tutorials hub — filterable card grid. Shares the tutorial design language.
+ * ========================================================================= */
+.root {
+  --brand-primary: #7c5cff;
+  --brand-primary-light: #a78bfa;
+  --brand-primary-dark: #5b3fd6;
+  --brand-accent: #ff6b35;
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+
+  /* Card surface consumed by BorderGlow (--card-bg) — theme aware. */
+  --tut-card-bg: #ffffff;
+  --tut-card-border: rgba(15, 23, 42, 0.08);
+
+  color: var(--neutral-900);
+  /* clip (not hidden) so the sticky filter bar isn't trapped in a scroll box. */
+  overflow-x: clip;
+}
+
+[data-theme='dark'] .root {
+  --tut-card-bg: #141b2d;
+  --tut-card-border: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+}
+
+/* ------------------------------------------------------------------ Hero */
+.hero {
+  position: relative;
+  padding: 3.75rem 1rem 3.25rem;
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 50%, var(--brand-primary) 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124, 92, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 92, 255, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.heroGlow {
+  position: absolute;
+  width: min(560px, 90vw);
+  height: min(560px, 90vw);
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.35) 0%, transparent 70%);
+  top: -220px;
+  right: -120px;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.2);
+  border: 1px solid rgba(255, 107, 53, 0.35);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 52rem;
+  margin: 0;
+}
+
+/* ------------------------------------------------- Body: sidebar + grid */
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2.25rem 1rem 4.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 997px) {
+  .shell {
+    grid-template-columns: 244px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+/* -------------------------------------------------------------- Sidebar */
+.sidebar {
+  min-width: 0;
+}
+
+@media (min-width: 997px) {
+  .sidebarSticky {
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+.sidebarTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--neutral-500);
+  margin: 0 0 0.75rem;
+}
+
+@media (max-width: 996px) {
+  .sidebarTitle {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ Main */
+.main {
+  min-width: 0;
+}
+
+.mainHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--tut-card-border);
+}
+
+.mainTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--neutral-900);
+  margin: 0;
+}
+
+[data-theme='dark'] .mainTitle {
+  color: #f8fafc;
+}
+
+.resultCount {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--neutral-500);
+}
+
+.empty {
+  color: var(--neutral-500);
+  font-size: 1rem;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 620px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+}
+
+/* ------------------------------------------------------------------ Card */
+/* BorderGlow is the visual frame; .glowCard tunes it into a grid item. */
+.glowCard {
+  height: 100%;
+  border-radius: 18px;
+  border-color: var(--tut-card-border) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -14px rgba(15, 23, 42, 0.25) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glowCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 22px 44px -18px rgba(15, 23, 42, 0.35) !important;
+}
+
+[data-theme='dark'] .glowCard:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 44px -18px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Clip the inner content to the rounded frame. */
+.glowCard :global(.border-glow-inner) {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glowCard,
+  .glowCard:hover {
+    transform: none;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  padding: 1.5rem 1.5rem 1.35rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  background: transparent;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.cardCat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--neutral-500);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.cardCatDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+  box-shadow: 0 0 8px rgba(124, 92, 255, 0.6);
+}
+
+[data-theme='dark'] .cardCat {
+  color: var(--neutral-400);
+}
+
+.kindBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.24rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.kindBadge svg {
+  opacity: 0.9;
+}
+
+.kind_markdown {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.22);
+}
+
+.kind_interactive {
+  background: rgba(124, 92, 255, 0.1);
+  color: var(--brand-primary-dark);
+  border-color: rgba(124, 92, 255, 0.28);
+}
+
+.kind_external {
+  background: rgba(100, 116, 139, 0.12);
+  color: var(--neutral-600);
+  border-color: rgba(100, 116, 139, 0.28);
+}
+
+[data-theme='dark'] .kind_markdown {
+  color: #93c5fd;
+}
+
+[data-theme='dark'] .kind_interactive {
+  color: var(--brand-primary-light);
+}
+
+[data-theme='dark'] .kind_external {
+  color: var(--neutral-300);
+}
+
+.cardTitle {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin: 0 0 0.55rem;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='dark'] .cardTitle {
+  color: #f8fafc;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  line-height: 1.62;
+  color: var(--neutral-600);
+  margin: 0 0 1.15rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .cardDesc {
+  color: var(--neutral-400);
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-bottom: 1.15rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--neutral-500);
+}
+
+[data-theme='dark'] .tag {
+  color: var(--neutral-400);
+}
+
+.tagDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--tut-card-border);
+}
+
+.cardMeta {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--neutral-500);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+[data-theme='dark'] .cardMeta {
+  color: var(--neutral-400);
+}
+
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .cardCta {
+  color: var(--brand-primary-light);
+}
+
+.ctaArrow {
+  transition: transform 0.2s ease;
+}
+
+.glowCard:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaArrow,
+  .glowCard:hover .ctaArrow {
+    transform: none;
+  }
+}

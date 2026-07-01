@@ -1,0 +1,179 @@
+/* =========================================================================
+ * FlowingMenu — sidebar-tuned (category filter). Class names kept distinct
+ * (flowmenu / flowmarquee) so they don't collide with anything else.
+ * ========================================================================= */
+.flowmenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--flow-border, rgba(148, 163, 184, 0.2));
+  border-radius: 14px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.flowmenu__item {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--flow-border, rgba(148, 163, 184, 0.2));
+}
+
+.flowmenu__item:first-child {
+  border-top: none;
+}
+
+/* Active accent bar on the left edge. */
+.flowmenu__item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--ifm-color-primary), #ff6b35);
+  z-index: 3;
+}
+
+.flowmenu__link {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 58px;
+  padding: 0 1.15rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: left;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.flowmenu__link:hover {
+  background: rgba(124, 92, 255, 0.06);
+}
+
+.flowmenu__item--active .flowmenu__link {
+  color: var(--ifm-color-primary) !important;
+  font-weight: 700;
+}
+
+.flowmenu__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flowmenu__count {
+  flex-shrink: 0;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-600);
+  background: var(--ifm-color-emphasis-200);
+}
+
+.flowmenu__item--active .flowmenu__count {
+  color: #fff;
+  background: var(--ifm-color-primary);
+}
+
+/* -------------------------------------------------------------- Marquee */
+.flowmarquee {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translate3d(0, 101%, 0);
+  z-index: 2;
+}
+
+.flowmarquee__wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flowmarquee__inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  will-change: transform;
+}
+
+.flowmarquee__part {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.flowmarquee__part span:first-child {
+  white-space: nowrap;
+  padding: 0 0.9rem;
+}
+
+.flowmarquee__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* Respect reduced-motion: no marquee sweep intent, keep it static/hidden. */
+@media (prefers-reduced-motion: reduce) {
+  .flowmarquee {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------- Mobile: horizontal row */
+@media (max-width: 996px) {
+  .flowmenu {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .flowmenu::-webkit-scrollbar {
+    display: none;
+  }
+  .flowmenu__item {
+    border-top: none;
+    border-left: 1px solid var(--flow-border, rgba(148, 163, 184, 0.2));
+    flex: 0 0 auto;
+  }
+  .flowmenu__item:first-child {
+    border-left: none;
+  }
+  .flowmenu__item--active::before {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ifm-color-primary), #ff6b35);
+  }
+  .flowmenu__link {
+    min-height: 46px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+}

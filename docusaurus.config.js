@@ -148,6 +148,11 @@ const config = {
           ],
         },
         {
+          label: 'Tutorials',
+          to: '/tutorials',
+          position: 'left',
+        },
+        {
           type: 'dropdown',
           label: 'Ecosystem',
           position: 'left',

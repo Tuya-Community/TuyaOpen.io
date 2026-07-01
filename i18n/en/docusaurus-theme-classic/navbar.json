@@ -10,5 +10,9 @@
   "item.label.Projects": {
     "message": "Projects",
     "description": "Navbar item with label Projects"
+  },
+  "item.label.Tutorials": {
+    "message": "Tutorials",
+    "description": "Navbar item with label Tutorials"
   }
 } 
