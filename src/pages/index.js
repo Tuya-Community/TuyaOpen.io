@@ -462,7 +462,7 @@ function Home() {
               <BrowserOnly>
                 {() => {
                   const Iridescence = require('@site/src/components/Iridescence/Iridescence').default
-                  return <Iridescence color={[0.58, 0.66, 0.835]} mouseReact={false} amplitude={0.1} speed={0.1} />
+                  return <Iridescence color={[0.2, 0.26, 0.5]} mouseReact={false} amplitude={0.08} speed={0.06} />
                 }}
               </BrowserOnly>
             </div>
@@ -516,14 +516,17 @@ function Home() {
                 <div className={clsx(styles.heroParticles, 'scroll-to-display')}>
                   <ImageParticles
                     src="/img/home/hero-device.png"
-                    gap={3}
-                    size={3.4}
-                    mouseRadius={110}
-                    brightness={1.14}
-                    saturation={1.4}
-                    contrast={1.35}
-                    drift={3.2}
-                    scatter={6}
+                    chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/[]{}=+*#"
+                    gap={5}
+                    fontSize={8}
+                    glitchSpeed={55}
+                    mouseRadius={120}
+                    brightness={1.45}
+                    saturation={0.9}
+                    contrast={1.2}
+                    whiteThreshold={248}
+                    drift={3}
+                    scatter={5}
                   />
                 </div>
               </div>

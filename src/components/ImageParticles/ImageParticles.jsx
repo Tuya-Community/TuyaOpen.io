@@ -25,8 +25,14 @@ export default function ImageParticles({
   brightness = 1.14, // >1 lifts the photo so particles pop over the bg
   saturation = 1.35, // >1 makes the colors richer / more "fitting"
   contrast = 1, // >1 pushes tones away from mid-gray for punchier lights/darks
+  hueShift = 0, // degrees to rotate every particle's hue (color shift)
   scale = 1, // >1 enlarges the image within the canvas (may crop at edges)
   scatter = 0, // random px offset applied to each particle's home for a dispersed look
+  // --- letter-glitch fusion: render each particle as a scrambling character ---
+  chars = '', // when set, particles are drawn as glitching letters instead of squares
+  fontSize = 14, // letter size in px (letter mode)
+  glitchSpeed = 60, // ms between character-scramble ticks
+  glitchFraction = 0.08, // portion of particles rescrambled each tick
 }) {
   const canvasRef = useRef(null)
 
@@ -43,8 +49,43 @@ export default function ImageParticles({
     let raf = 0
     let disposed = false
     const mouse = { x: -9999, y: -9999 }
+    const charset = chars ? Array.from(chars) : null
+    const randomChar = () => charset[(Math.random() * charset.length) | 0]
+    let lastGlitch = 0
 
     const clamp = v => (v < 0 ? 0 : v > 255 ? 255 : Math.round(v))
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1
+      if (t > 1) t -= 1
+      if (t < 1 / 6) return p + (q - p) * 6 * t
+      if (t < 1 / 2) return q
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
+      return p
+    }
+    function rotateHue(r, g, b, deg) {
+      r /= 255
+      g /= 255
+      b /= 255
+      const max = Math.max(r, g, b)
+      const min = Math.min(r, g, b)
+      let h
+      let s
+      const l = (max + min) / 2
+      if (max === min) {
+        return [r * 255, g * 255, b * 255] // gray — nothing to rotate
+      }
+      const d = max - min
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+      if (max === r) h = (g - b) / d + (g < b ? 6 : 0)
+      else if (max === g) h = (b - r) / d + 2
+      else h = (r - g) / d + 4
+      h /= 6
+      h = (h + deg / 360) % 1
+      if (h < 0) h += 1
+      const q = l < 0.5 ? l * (1 + s) : l + s - l * s
+      const p = 2 * l - q
+      return [hue2rgb(p, q, h + 1 / 3) * 255, hue2rgb(p, q, h) * 255, hue2rgb(p, q, h - 1 / 3) * 255]
+    }
     function enhance(r, g, b) {
       r *= brightness
       g *= brightness
@@ -57,6 +98,7 @@ export default function ImageParticles({
       r = luma + (r - luma) * saturation
       g = luma + (g - luma) * saturation
       b = luma + (b - luma) * saturation
+      if (hueShift) [r, g, b] = rotateHue(clamp(r), clamp(g), clamp(b), hueShift)
       return `rgb(${clamp(r)},${clamp(g)},${clamp(b)})`
     }
 
@@ -106,6 +148,7 @@ export default function ImageParticles({
             vx: 0,
             vy: 0,
             c: enhance(r, g, b),
+            ch: charset ? randomChar() : null,
             ph: Math.random() * Math.PI * 2,
           })
         }
@@ -115,15 +158,37 @@ export default function ImageParticles({
 
     function draw() {
       ctx.clearRect(0, 0, width, height)
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]
-        ctx.fillStyle = p.c
-        ctx.fillRect(p.x, p.y, size, size)
+      if (charset) {
+        ctx.font = `${fontSize}px monospace`
+        ctx.textBaseline = 'top'
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i]
+          ctx.fillStyle = p.c
+          ctx.fillText(p.ch, p.x, p.y)
+        }
+      } else {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i]
+          ctx.fillStyle = p.c
+          ctx.fillRect(p.x, p.y, size, size)
+        }
       }
     }
 
     function step() {
       frame++
+      // periodically scramble a fraction of the characters (letter-glitch)
+      if (charset && particles.length) {
+        const now = Date.now()
+        if (now - lastGlitch >= glitchSpeed) {
+          const n = Math.max(1, Math.floor(particles.length * glitchFraction))
+          for (let k = 0; k < n; k++) {
+            const p = particles[(Math.random() * particles.length) | 0]
+            if (p) p.ch = randomChar()
+          }
+          lastGlitch = now
+        }
+      }
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         // gentle idle sway around the home position
@@ -192,7 +257,8 @@ export default function ImageParticles({
       canvas.removeEventListener('pointermove', onPointerMove)
       canvas.removeEventListener('pointerleave', onPointerLeave)
     }
-  }, [src, gap, size, mouseRadius, spring, friction, drift, dropWhite, whiteThreshold, brightness, saturation, contrast, scale, scatter])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src, gap, size, mouseRadius, spring, friction, drift, dropWhite, whiteThreshold, brightness, saturation, contrast, hueShift, scale, scatter, chars, fontSize, glitchSpeed, glitchFraction])
 
   return <canvas ref={canvasRef} className={className} style={{ display: 'block', width: '100%', height: '100%', ...style }} />
 }

@@ -74,10 +74,9 @@ enough contrast to stay readable.
   z-index: 1;
   background: linear-gradient(
     90deg,
-    rgba(9, 14, 28, 0.8) 0%,
-    rgba(9, 14, 28, 0.55) 28%,
-    rgba(9, 14, 28, 0.15) 62%,
-    rgba(9, 14, 28, 0) 100%
+    rgba(9, 14, 28, 0.78) 0%,
+    rgba(9, 14, 28, 0.58) 55%,
+    rgba(9, 14, 28, 0.46) 100%
   );
   pointer-events: none;
 }
@@ -87,7 +86,7 @@ enough contrast to stay readable.
   z-index: 1;
   width: min(600px, 90vw);
   height: min(600px, 90vw);
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
   top: -180px;
   right: -120px;
   pointer-events: none;
@@ -115,19 +114,12 @@ enough contrast to stay readable.
   }
 }
 
-/* Particle-image hero visual (replaces the old terminal window). */
+/* Glitch-letter hero visual (replaces the old terminal window). */
 .heroParticles {
   position: relative;
   width: 100%;
   height: min(78vh, 600px);
   min-height: 420px;
-  /* Light-gray panel + border so the colorful particles stand out against the
-     iridescent hero background instead of competing with it. */
-  background: var(--neutral-200);
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
 }
 
 .heroBadge {
