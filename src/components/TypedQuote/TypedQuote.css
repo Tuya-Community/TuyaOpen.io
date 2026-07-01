@@ -1,0 +1,21 @@
+/* Reserve the full quote's wrapped height so nothing below shifts while it
+   types. The ghost holds the real space; the live text is overlaid on top. */
+.typed-quote {
+  position: relative;
+  display: block;
+}
+
+.typed-quote__ghost {
+  visibility: hidden;
+}
+
+.typed-quote__live {
+  position: absolute;
+  inset: 0;
+}
+
+/* Flow the segments as continuous inline text (not atomic inline-blocks) so
+   they wrap to the exact same lines/height as the ghost that reserves space. */
+.typed-quote__live .text-type {
+  display: inline;
+}

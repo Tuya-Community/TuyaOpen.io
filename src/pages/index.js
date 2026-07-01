@@ -8,8 +8,25 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 're
 import IconGithub from '../../static/img/icons/github.svg'
 import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
+import BlurText from '../components/BlurText/BlurText'
+import GradientText from '../components/GradientText/GradientText'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
+
+// Hero highlight color stops — a vibrant "AI-spectrum" anchored by the brand key
+// colors (blue #3393ff + orange #ff6b35), with cyan, violet, magenta and amber
+// woven in for a richer, more dynamic sweep. GradientText loops back to the first
+// color, so the cycle stays seamless.
+const HERO_GRADIENT_COLORS = ['#22d3ee', '#3393ff', '#8b5cf6', '#ec4899', '#ff6b35', '#f59e0b']
+
+// Each animated BlurText word is wrapped in its own GradientText so the gradient
+// is painted *inside* the blurred/faded word wrapper (an ancestor-level blur can
+// only affect a gradient that a descendant actually paints).
+const renderHeroGradientWord = (word) => (
+  <GradientText className={styles.heroInlineGradient} colors={HERO_GRADIENT_COLORS} animationSpeed={9}>
+    {word}
+  </GradientText>
+)
 
 /** Audience persona illustrations, in the order of copy.audience.items. Served from the Tuya CDN. */
 const AUDIENCE_IMGS = [
@@ -445,11 +462,25 @@ function Home() {
                     <span className={styles.heroBadgeAccent}>●</span> {copy.hero.badge}
                   </div>
                   <h1 className={styles.heroTitle}>
-                    <span className={styles.heroTitleGradient}>{copy.hero.line1}</span>
+                    <BlurText
+                      as="span"
+                      text={copy.hero.line1}
+                      animateBy="words"
+                      direction="top"
+                      delay={150}
+                      renderSegment={renderHeroGradientWord}
+                    />
                     <br />
                     {copy.hero.line2}
                     <br />
-                    <span className={styles.heroTitleGradient}>{copy.hero.line3}</span>
+                    <BlurText
+                      as="span"
+                      text={copy.hero.line3}
+                      animateBy="words"
+                      direction="top"
+                      delay={150}
+                      renderSegment={renderHeroGradientWord}
+                    />
                   </h1>
                   <p className={styles.heroSubtitle}>{copy.hero.subtitle}</p>
                   <p className={styles.heroBody}>{copy.hero.body}</p>
