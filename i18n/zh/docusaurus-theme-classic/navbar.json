@@ -59,9 +59,9 @@
     "message": "项目",
     "description": "Navbar item with label Projects"
   },
-  "item.label.Tutorials": {
-    "message": "教程",
-    "description": "Navbar item with label Tutorials"
+  "item.label.Learn": {
+    "message": "学习中心",
+    "description": "Navbar item with label Learn"
   },
   "item.label.Ecosystem": {
     "message": "生态",

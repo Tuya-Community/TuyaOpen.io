@@ -12,7 +12,11 @@ const config = {
     v4: true,
   },
 
-  clientModules: ['./src/clientModules/gtag-shim.js', './src/clientModules/toc-reading-progress.js'],
+  clientModules: [
+    './src/clientModules/gtag-shim.js',
+    './src/clientModules/toc-reading-progress.js',
+    './src/clientModules/impeccable-live.js',
+  ],
 
   title: 'TuyaOpen',
   tagline: 'A Powerful Open Source OS and Platform for IoTs Development',
@@ -148,8 +152,8 @@ const config = {
           ],
         },
         {
-          label: 'Tutorials',
-          to: '/tutorials',
+          label: 'Learn',
+          to: '/learn',
           position: 'left',
         },
         {
@@ -157,7 +161,7 @@ const config = {
           label: 'Ecosystem',
           position: 'left',
           items: [
-            { label: 'Projects', to: '/projects' },
+            { label: 'Projects', to: '/learn?cat=community' },
             { label: 'Blog', to: 'blog' },
             {
               label: 'Event Registration',
@@ -288,7 +292,7 @@ const config = {
             },
             {
               label: 'Projects',
-              to: '/projects',
+              to: '/learn?cat=community',
             },
           ],
         },
@@ -365,6 +369,67 @@ const config = {
           {
             from: '/docs/hardware-specific/t5-ai-core/overview-t5-ai-core',
             to: '/docs/hardware/tuya-t5/t5-ai-core/overview-t5-ai-core',
+          },
+          // Project markdown moved into /learn community (kind: 'markdown').
+          {
+            from: '/projects',
+            to: '/learn?cat=community',
+          },
+          {
+            from: '/docs/projects/2025-12-17-otto-ninja-open-source-robot',
+            to: '/learn/otto-ninja-open-source-robot',
+          },
+          {
+            from: '/docs/projects/2025-11-25-T5AI-Pocket',
+            to: '/learn/t5-pocket',
+          },
+          {
+            from: '/docs/projects/2025-09-28-led-matrix',
+            to: '/learn/led-matrix',
+          },
+          {
+            from: '/docs/projects/2025-09-15-t5ai-core-ai-chatbot',
+            to: '/learn/t5ai-core-ai-chatbot',
+          },
+          {
+            from: '/docs/projects/2025-09-15-project-iot-switch',
+            to: '/learn/simple-iot-switch',
+          },
+          {
+            from: '/docs/projects/2025-09-15-lvgl-font-change-tutorial',
+            to: '/learn/lvgl-font-change-tutorial',
+          },
+          {
+            from: '/docs/projects/2025-09-19-T5+2M-ASR-PRO-custom-asr',
+            to: '/learn/t5-2m-asr-pro-custom-asr',
+          },
+          {
+            from: '/docs/projects/2025-08-01-star-tracker',
+            to: '/learn/star-tracker',
+          },
+          {
+            from: '/docs/projects/2025-08-01-cyber-glass',
+            to: '/learn/cyber-glass',
+          },
+          {
+            from: '/docs/projects/2025-08-01-cyberplant',
+            to: '/learn/nft-plent-collector',
+          },
+          {
+            from: '/docs/projects/2025-08-01-auraflow',
+            to: '/learn/robot-arm',
+          },
+          {
+            from: '/docs/projects/2025-08-01-rdk-x5',
+            to: '/learn/rdk-x5',
+          },
+          {
+            from: '/docs/projects/2025-08-01-soccer-star',
+            to: '/learn/rolling-ball',
+          },
+          {
+            from: '/docs/projects/2025-08-01-smart-necklace',
+            to: '/learn/ai-social-badge',
           },
         ],
         // Map every page moved by the docs re-categorization back to its old URL.

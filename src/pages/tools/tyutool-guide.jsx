@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
-import useFromTutorials from '@site/src/components/useFromTutorials';
+import useFromLearn from '@site/src/components/useFromLearn';
 import styles from './tyutool-guide.module.css';
 
 const GITHUB = 'https://github.com/tuya/tyutool';
@@ -405,7 +405,7 @@ export default function TyutoolGuidePage() {
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
   const c = content[locale];
   const overviewHref = locale === 'zh' ? '/zh/tools/tyutool' : '/tools/tyutool';
-  const { fromTutorials, href: tutorialsHref, label: tutorialsLabel } = useFromTutorials();
+  const { fromLearn, href: learnHref, label: learnLabel } = useFromLearn();
 
   const [activeId, setActiveId] = useState(c.nav[0].id);
   const contentRef = useRef(null);
@@ -439,8 +439,8 @@ export default function TyutoolGuidePage() {
         <header className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden />
           <div className={styles.heroInner}>
-            <Link to={fromTutorials ? tutorialsHref : overviewHref} className={styles.breadcrumb}>
-              {fromTutorials ? tutorialsLabel : c.backToOverview}
+            <Link to={fromLearn ? learnHref : overviewHref} className={styles.breadcrumb}>
+              {fromLearn ? learnLabel : c.backToOverview}
             </Link>
             <span className={styles.heroBadge}>{c.badge}</span>
             <h1 className={styles.heroTitle}>{c.title}</h1>

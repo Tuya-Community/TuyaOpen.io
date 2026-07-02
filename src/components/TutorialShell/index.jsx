@@ -39,9 +39,23 @@ export default function TutorialShell({
 }) {
   const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const hubHref = locale === 'zh' ? '/zh/tutorials' : '/tutorials';
-  const backLabel = locale === 'zh' ? '← 返回教程' : '← Back to tutorials';
+  const hubHref = locale === 'zh' ? '/zh/learn' : '/learn';
+  const backLabel = locale === 'zh' ? '返回学习中心' : 'Back to Learn';
   const tocLabel = locale === 'zh' ? '本页内容' : 'On this page';
+
+  // Deep-link the "Back to Learn" breadcrumb back to the filter the visitor
+  // was on when they opened the tutorial (saved by the hub). Read in an effect
+  // so the server render and first client render match (no hydration mismatch).
+  const [backHref, setBackHref] = useState(hubHref);
+  useEffect(() => {
+    let cat = null;
+    try {
+      cat = sessionStorage.getItem('learn:cat');
+    } catch {
+      /* ignore */
+    }
+    setBackHref(cat && cat !== 'all' ? `${hubHref}?cat=${encodeURIComponent(cat)}` : hubHref);
+  }, [hubHref]);
 
   const hasToc = Array.isArray(nav) && nav.length > 0;
   const [activeId, setActiveId] = useState(hasToc ? nav[0].id : null);
@@ -128,8 +142,21 @@ export default function TutorialShell({
         <header className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden />
           <div className={styles.heroInner}>
-            <Link to={hubHref} className={styles.breadcrumb}>
+            <Link to={backHref} className={styles.breadcrumb}>
               {backLabel}
+              <svg
+                className={styles.breadcrumbArrow}
+                width={16}
+                height={16}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden>
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </Link>
             {badge && <span className={styles.heroBadge}>{badge}</span>}
             <h1 className={styles.heroTitle}>{title}</h1>

@@ -1,5 +1,5 @@
 /* =========================================================================
- * Tutorials hub — filterable card grid. Shares the tutorial design language.
+ * Learn hub — filterable card grid. Shares the tutorial design language.
  * ========================================================================= */
 .root {
   --brand-primary: #7c5cff;
@@ -17,6 +17,28 @@
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
 
+  /* Typography scale - Major third ratio (1.25) */
+  --type-xs: 0.75rem;   /* 12px */
+  --type-sm: 0.875rem;  /* 14px */
+  --type-base: 1rem;    /* 16px */
+  --type-lg: 1.125rem;  /* 18px */
+  --type-xl: 1.25rem;   /* 20px */
+  --type-2xl: 1.5rem;   /* 24px */
+  --type-3xl: 1.875rem; /* 30px */
+  --type-4xl: 2.25rem;  /* 36px */
+
+  /* Line heights - proportional to font size */
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing - optical sizing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+
   /* Card surface consumed by BorderGlow (--card-bg) — theme aware. */
   --tut-card-bg: #ffffff;
   --tut-card-border: rgba(15, 23, 42, 0.08);
@@ -24,6 +46,12 @@
   color: var(--neutral-900);
   /* clip (not hidden) so the sticky filter bar isn't trapped in a scroll box. */
   overflow-x: clip;
+
+  /* Impeccable font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 [data-theme='dark'] .root {
@@ -75,26 +103,35 @@
   border: 1px solid rgba(255, 107, 53, 0.35);
   padding: 0.4rem 0.9rem;
   border-radius: 9999px;
-  font-size: 0.8rem;
+  font-size: var(--type-sm);
   font-weight: 600;
   color: #fff;
   margin-bottom: 1rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 .heroTitle {
-  font-size: clamp(2.1rem, 5vw, 3rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: clamp(var(--type-3xl), 5vw, var(--type-4xl));
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
   color: #fff;
   margin-bottom: 0.75rem;
+  text-wrap: balance;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 .heroSubtitle {
-  font-size: 1.1rem;
-  line-height: 1.65;
+  font-size: var(--type-lg);
+  line-height: var(--leading-relaxed);
   color: rgba(255, 255, 255, 0.88);
   max-width: 52rem;
   margin: 0;
+  text-wrap: pretty;
+  font-weight: 450;
 }
 
 /* ------------------------------------------------- Body: sidebar + grid */
@@ -128,12 +165,14 @@
 }
 
 .sidebarTitle {
-  font-size: 0.72rem;
+  font-size: var(--type-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: var(--neutral-500);
   margin: 0 0 0.75rem;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 996px) {
@@ -158,11 +197,13 @@
 }
 
 .mainTitle {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-size: var(--type-xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
   color: var(--neutral-900);
   margin: 0;
+  text-wrap: balance;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 [data-theme='dark'] .mainTitle {
@@ -171,16 +212,20 @@
 
 .resultCount {
   flex-shrink: 0;
-  font-size: 0.8rem;
+  font-size: var(--type-sm);
   font-weight: 600;
   color: var(--neutral-500);
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 .empty {
   color: var(--neutral-500);
-  font-size: 1rem;
+  font-size: var(--type-base);
+  line-height: var(--leading-relaxed);
   padding: 3rem 0;
   text-align: center;
+  text-wrap: pretty;
 }
 
 .grid {
@@ -236,6 +281,63 @@
   text-decoration: none !important;
   color: inherit !important;
   background: transparent;
+  position: relative;
+}
+
+/* Optional card image. Shown by default as a small peek thumbnail in the
+   empty top-right of the card-top row; on hover it expands to fill the whole
+   card as a blurred background, sitting behind the text. Purely additive —
+   the glow, translate, and arrow effects are untouched. */
+.cardImagePeek {
+  position: absolute;
+  top: 0.85rem;
+  right: 1rem;
+  width: 72px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px -6px rgba(15, 23, 42, 0.45);
+  opacity: 1;
+  transform: none;
+  transition:
+    top 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    right 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.32s ease,
+    filter 0.32s ease,
+    opacity 0.32s ease,
+    box-shadow 0.32s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glowCard:hover .cardImagePeek {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  filter: blur(1.5px) saturate(1.05);
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .glowCard:hover .cardImagePeek {
+  opacity: 0.4;
+}
+
+/* Keep text content above the (hover) background image. */
+.card > *:not(.cardImagePeek) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardImagePeek,
+  .glowCard:hover .cardImagePeek {
+    transition: none;
+  }
 }
 
 .cardTop {
@@ -250,11 +352,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.7rem;
+  font-size: var(--type-xs);
   font-weight: 700;
   color: var(--neutral-500);
   text-transform: uppercase;
   letter-spacing: 0.07em;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 .cardCatDot {
@@ -273,12 +377,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.68rem;
+  font-size: var(--type-xs);
   font-weight: 700;
   padding: 0.24rem 0.6rem;
   border-radius: 9999px;
   border: 1px solid transparent;
   white-space: nowrap;
+  letter-spacing: 0.02em;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 .kindBadge svg {
@@ -316,12 +423,14 @@
 }
 
 .cardTitle {
-  font-size: 1.18rem;
-  font-weight: 700;
+  font-size: var(--type-lg);
+  font-weight: 600;
   color: var(--neutral-900);
   margin: 0 0 0.55rem;
-  line-height: 1.32;
-  letter-spacing: -0.01em;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: pretty;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 [data-theme='dark'] .cardTitle {
@@ -329,8 +438,8 @@
 }
 
 .cardDesc {
-  font-size: 0.9rem;
-  line-height: 1.62;
+  font-size: var(--type-sm);
+  line-height: var(--leading-relaxed);
   color: var(--neutral-600);
   margin: 0 0 1.15rem;
   flex-grow: 1;
@@ -338,6 +447,8 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-wrap: pretty;
+  font-weight: 450;
 }
 
 [data-theme='dark'] .cardDesc {
@@ -355,9 +466,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.72rem;
+  font-size: var(--type-xs);
   font-weight: 600;
   color: var(--neutral-500);
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 [data-theme='dark'] .tag {
@@ -375,18 +488,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-top: auto;
   padding-top: 0.9rem;
   border-top: 1px solid var(--tut-card-border);
 }
 
+/* Multi-link text-link row (e.g. a demo with Details + Source links). */
+.cardLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .cardMeta {
-  font-size: 0.74rem;
+  font-size: var(--type-xs);
   font-weight: 600;
   color: var(--neutral-500);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 }
 
 [data-theme='dark'] .cardMeta {
@@ -397,10 +520,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: var(--type-sm);
+  font-weight: 600;
   color: var(--brand-primary);
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 [data-theme='dark'] .cardCta {
