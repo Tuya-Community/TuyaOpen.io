@@ -1,8 +1,8 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import TutorialShell from '@site/src/components/TutorialShell';
-import BodyEn from '@site/docs/tutorials/_sample-getting-started.md';
-import BodyZh from '@site/docs/tutorials/_sample-getting-started.md';
+import BodyEn from '@site/docs/tutorials/sample-getting-started.md';
+import BodyZh from '@site/docs/tutorials/sample-getting-started.md';
 
 /* =========================================================================
  * MARKDOWN TUTORIAL TEMPLATE  (kind: 'markdown')
@@ -18,8 +18,8 @@ import BodyZh from '@site/docs/tutorials/_sample-getting-started.md';
  * A static import compiles the .md into the build and renders it via SSG.
  *
  * To make your own:
- *   1. Write docs/tutorials/_my-tutorial.md (and a zh counterpart under
- *      docs/tutorials/zh/_my-tutorial.md if you have one).
+ *   1. Write docs/tutorials/my-tutorial.md (and a zh counterpart under
+ *      docs/tutorials/zh/my-tutorial.md if you have one).
  *   2. Copy this file to src/pages/learn/my-tutorial.jsx and point the two
  *      `BodyEn` / `BodyZh` imports at your partials.
  *   3. Register it in src/data/tutorials.js with kind: 'markdown'.
