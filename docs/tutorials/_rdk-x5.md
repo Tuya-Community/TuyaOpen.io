@@ -1,0 +1,61 @@
+---
+title: "TuyaOpen With RDK-X5"
+---
+
+
+## Project Overview
+
+Run TuyaOpen's multi-modal agent on an RDK X5 SBC, with AI inference on the board's integrated NPU instead of the cloud. Local processing handles the time-critical work; Tuya Cloud stays connected for the rest.
+
+This is the "end-side AI + cloud service + ecosystem synergy" pattern in one working setup: an ARM Cortex-A78AE CPU with integrated NPU on the edge, Tuya Cloud on the back end, IoT devices bridged through one framework.
+
+<p align="center">
+  <img
+    src="https://images.tuyacn.com/fe-static/docs/img/7a0fcb92-b721-4f38-8b32-3cb84aca785e.jpg"
+    alt="TuyaOpen RDK-X5 Project Screenshot"
+    style={{
+      width: "80%",
+      borderRadius: "12px",
+      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
+    }}
+  />
+</p>
+
+## Features
+
+- **True Local AI Processing**: RDK X5 NPU acceleration for on-device AI inference
+- **Multi-modal agent capabilities**: Vision, audio, text processing powered by local NPU
+- **Seamless IoT device integration**: Local control with cloud connectivity
+- **Hybrid AI processing**: Local NPU + cloud AI for optimal performance
+- **Real-time sensor data processing**: Local NPU handles time-critical operations
+- **Edge computing optimization**: ARM-based SBC with dedicated AI acceleration
+- **Local inference capabilities**: Run AI models directly on device without cloud dependency
+- **TuyaOpen framework integration**: Seamless local and cloud AI orchestration
+
+## Technology Stack
+
+- **TuyaOpen Framework**: Complete AIoT operating system with local NPU + cloud AI capabilities
+- **Hardware**: RDK X5 Single Board Computer, ARM Cortex-A78AE CPU with integrated NPU
+- **AI Processing**: Integrated NPU for true local AI acceleration and inference
+- **Multi-Modal Capabilities**: TuyaOpen's voice interaction, LLM integration with local NPU support
+- **Connectivity**: Wi-Fi, Bluetooth, Ethernet for IoT device communication and cloud connectivity
+- **Operating System**: Linux-based system optimized for edge computing with NPU drivers
+- **Development**: Python, C++, ARM development tools with NPU optimization
+- **Cloud Integration**: Tuya Cloud platform APIs with hybrid local/cloud AI orchestration
+
+## Quick Start
+
+1. Set up RDK X5 development environment
+2. Install TuyaOpen framework and dependencies
+3. Configure NPU drivers and AI runtime
+4. Set up IoT device connectivity
+5. Deploy multi-modal agent models
+6. Configure cloud-edge synchronization
+7. Test local AI processing capabilities
+
+## Copyright & License
+
+This project was developed as part of [Adventure X 2025 Hangzhou Hackathon](https://adventure-x.org/zh). The project and all its components are owned by the participating team members and contest participants. All rights reserved.
+
+
+

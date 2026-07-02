@@ -1,0 +1,97 @@
+/* Bespoke widget styles for the interactive tutorial template.
+ * Keep local modules small — anything reusable belongs in TutorialShell. */
+
+.widget {
+  border: 1px solid var(--neutral-200, #e2e8f0);
+  border-radius: 14px;
+  padding: 1.25rem;
+  background: var(--neutral-50, #f8fafc);
+  margin: 1.25rem 0;
+}
+
+[data-theme='dark'] .widget {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.widgetControls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+@media (min-width: 560px) {
+  .widgetControls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.widgetField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+[data-theme='dark'] .widgetField {
+  color: #94a3b8;
+}
+
+.select,
+.input {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #0f172a;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+[data-theme='dark'] .select,
+[data-theme='dark'] .input {
+  background: #0f172a;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.select:focus,
+.input:focus {
+  outline: none;
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.2);
+}
+
+.widgetOut {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.widgetOutLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.widgetOut code {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85rem;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  white-space: pre;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}

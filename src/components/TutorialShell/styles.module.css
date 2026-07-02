@@ -69,17 +69,36 @@
 }
 
 .breadcrumb {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   width: fit-content;
   color: rgba(255, 255, 255, 0.8) !important;
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
+  letter-spacing: 0.01em;
   text-decoration: none !important;
+  transition: color 0.2s ease;
 }
 
 .breadcrumb:hover {
   color: #fff !important;
+}
+
+.breadcrumbArrow {
+  transition: transform 0.2s ease;
+}
+
+.breadcrumb:hover .breadcrumbArrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breadcrumbArrow,
+  .breadcrumb:hover .breadcrumbArrow {
+    transform: none;
+  }
 }
 
 .heroBadge {
