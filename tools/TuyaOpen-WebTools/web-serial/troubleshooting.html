@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="troubleshooting_title">串口故障排除指南</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .troubleshooting-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-top {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .header-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .section h2 {
+            color: #2d3748;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2 .icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        
+        .section h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+        }
+        
+        .step-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #10b981;
+            position: relative;
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 15px;
+            background: #10b981;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+        }
+        
+        .warning-box .icon {
+            color: #f59e0b;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #4f46e5;
+        }
+        
+        .info-box .icon {
+            color: #4f46e5;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .success-box {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .success-box .icon {
+            color: #10b981;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .screenshot-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #adb5bd;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            color: #6c757d;
+        }
+        
+        .screenshot-placeholder .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .download-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-card:hover {
+            border-color: #4f46e5;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+        }
+        
+        .download-card .icon {
+            font-size: 2.5em;
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+        
+        .download-card h4 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+        }
+        
+        .download-card p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .os-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 5px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .os-tab {
+            flex: 1;
+            padding: 12px 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .os-tab.active {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+        
+        .os-tab:hover:not(.active) {
+            background: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+        }
+        
+        .os-content {
+            display: none;
+        }
+        
+        .os-content.active {
+            display: block;
+        }
+        
+        .language-switcher {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .lang-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            min-width: 100px;
+        }
+        
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+        
+        .lang-flag {
+            font-size: 16px;
+            line-height: 1;
+        }
+        
+        .lang-name {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .dropdown-arrow {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
+        
+        .lang-dropdown.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .lang-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 100%;
+            min-width: 120px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .lang-dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            display: block;
+        }
+        
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            color: #2d3748;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .lang-option:hover {
+            background: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+        }
+        
+        .lang-option.active {
+            background: rgba(79, 70, 229, 0.15);
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        
+        .lang-option:first-child {
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .lang-option:last-child {
+            border-radius: 0 0 6px 6px;
+        }
+        
+        .quick-check {
+            background: rgba(79, 70, 229, 0.1);
+            border: 2px solid rgba(79, 70, 229, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .quick-check h3 {
+            color: #4f46e5;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quick-check .icon {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .check-item:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+        }
+        
+        .check-item input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+            accent-color: #4f46e5;
+        }
+        
+        .check-item label {
+            cursor: pointer;
+            flex: 1;
+            color: #2d3748;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .troubleshooting-container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .back-button {
+                position: static;
+                transform: none;
+                margin-bottom: 15px;
+                width: auto;
+                justify-content: center;
+            }
+            
+            .back-button:hover {
+                transform: translateY(-2px);
+            }
+            
+            .language-switcher {
+                position: static;
+                transform: none;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            
+            .download-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="troubleshooting-container">
+        <div class="header">
+            <div class="header-left">
+                <button class="back-button" onclick="goBack()">
+                    <span class="icon">←</span>
+                    <span data-i18n="back_to_main">返回主页</span>
+                </button>
+            </div>
+            <h1 data-i18n="troubleshooting_title">串口故障排除指南</h1>
+        </div>
+        
+        <!-- 快速检查 -->
+        <div class="section">
+            <h2>
+                <span class="icon">⚡</span>
+                <span data-i18n="quick_check_title">快速检查清单</span>
+            </h2>
+            <div class="quick-check">
+                <h3>
+                    <span class="icon">✅</span>
+                    <span data-i18n="basic_checks">基础检查项目</span>
+                </h3>
+                <div class="check-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1" data-i18n="check_browser">使用Chrome、Edge或其他Chromium内核浏览器</label>
+                </div>
+                <div class="check-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2" data-i18n="check_cable">USB数据线连接正常（非充电线）</label>
+                </div>
+                <div class="check-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3" data-i18n="check_device_power">设备已正确上电</label>
+                </div>
+                <div class="check-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4" data-i18n="check_other_software">关闭其他占用串口的软件</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 常见问题 -->
+        <div class="section">
+            <h2>
+                <span class="icon">❓</span>
+                <span data-i18n="common_issues_title">常见问题及解决方案</span>
+            </h2>
+            
+            <h3 data-i18n="issue_no_ports">问题1: 没有可用的串口设备</h3>
+            <div class="warning-box">
+                <span class="icon">⚠️</span>
+                <span data-i18n="issue_no_ports_desc">点击"连接串口"后弹出的设备列表为空</span>
+            </div>
+            
+            <h4 data-i18n="possible_causes">可能原因：</h4>
+            <ul>
+                <li data-i18n="cause_driver_missing">设备驱动未安装或安装不正确</li>
+                <li data-i18n="cause_cable_issue">USB线缆问题（使用充电线而非数据线）</li>
+                <li data-i18n="cause_device_not_recognized">设备未被系统识别</li>
+            </ul>
+            
+            <h3 data-i18n="issue_connection_failed">问题2: 连接失败</h3>
+            <div class="warning-box">
+                <span class="icon">⚠️</span>
+                <span data-i18n="issue_connection_failed_desc">能看到设备但连接时报错</span>
+            </div>
+            
+            <h4 data-i18n="possible_causes">可能原因：</h4>
+            <ul>
+                <li data-i18n="cause_port_occupied">串口被其他程序占用</li>
+                <li data-i18n="cause_permission_denied">权限不足（Linux/macOS）</li>
+                <li data-i18n="cause_device_busy">设备正在被其他应用使用</li>
+                <li data-i18n="cause_driver_conflict">驱动冲突或不兼容</li>
+            </ul>
+            
+            <h3 data-i18n="issue_no_data">问题3: 连接成功但无数据</h3>
+            <div class="warning-box">
+                <span class="icon">⚠️</span>
+                <span data-i18n="issue_no_data_desc">串口连接成功但收不到数据或数据显示异常</span>
+            </div>
+            
+            <h4 data-i18n="possible_causes">可能原因：</h4>
+            <ul>
+                <li data-i18n="cause_baud_rate_mismatch">波特率设置不匹配</li>
+                <li data-i18n="cause_serial_params_wrong">数据位、停止位、校验位设置错误</li>
+                <li data-i18n="cause_device_not_sending">设备端未发送数据</li>
+                <li data-i18n="cause_flow_control">流控制设置问题</li>
+                <li data-i18n="cause_cable_quality">数据线质量问题或接触不良</li>
+            </ul>
+        </div>
+        
+        <!-- 驱动问题诊断 -->
+        <div class="section">
+            <h2>
+                <span class="icon">🔍</span>
+                <span data-i18n="driver_diagnosis_title">驱动问题诊断</span>
+            </h2>
+            
+            <div class="info-box">
+                <span class="icon">💡</span>
+                <span data-i18n="driver_diagnosis_desc">大部分串口问题都与驱动相关，请按照以下步骤进行诊断</span>
+            </div>
+            
+            <div class="os-tabs">
+                <button class="os-tab active" onclick="switchOS('windows')">
+                    <span data-i18n="windows">Windows</span>
+                </button>
+                <button class="os-tab" onclick="switchOS('macos')">
+                    <span data-i18n="macos">macOS</span>
+                </button>
+                <button class="os-tab" onclick="switchOS('linux')">
+                    <span data-i18n="linux">Linux</span>
+                </button>
+            </div>
+            
+            <!-- Windows 内容 -->
+            <div id="windows-content" class="os-content active">
+                <h3 data-i18n="windows_check_device_manager">步骤1: 检查设备管理器</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong data-i18n="windows_step1_title">打开设备管理器</strong>
+                        <p data-i18n="windows_step1_desc">右键点击"此电脑" → "属性" → "设备管理器"，或按Win+X选择"设备管理器"</p>
+                    </li>
+                    <li>
+                        <strong data-i18n="windows_step2_title">查找串口设备</strong>
+                        <p data-i18n="windows_step2_desc">在设备管理器中查找以下分类：</p>
+                        <div style="margin-left: 20px; margin-top: 10px;">
+                            <p data-i18n="ports_com_lpt">• 端口(COM和LPT)</p>
+                            <p data-i18n="universal_serial_bus">• 通用串行总线控制器</p>
+                            <p data-i18n="other_devices">• 其他设备</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong data-i18n="windows_step3_title">识别设备状态</strong>
+                        <p data-i18n="windows_step3_desc">检查设备图标状态：</p>
+                        <div style="margin-left: 20px; margin-top: 10px;">
+                            <p data-i18n="device_normal">✅ 正常：设备名称正常显示</p>
+                            <p data-i18n="device_warning">⚠️ 警告：黄色感叹号，驱动有问题</p>
+                            <p data-i18n="device_error">❌ 错误：红色X，设备被禁用</p>
+                            <p data-i18n="device_unknown">❓ 未知：在"其他设备"中，驱动未安装</p>
+                        </div>
+                    </li>
+                </ol>
+                
+                <h3 data-i18n="windows_driver_install">步骤2: 安装驱动程序</h3>
+                <div class="download-links">
+                    <div class="download-card" onclick="openDriverLink('ch340')">
+                        <div class="icon">💾</div>
+                        <h4>CH340/CH341</h4>
+                        <p data-i18n="ch340_desc">最常见的USB转串口芯片</p>
+                    </div>
+                    <div class="download-card" onclick="openDriverLink('cp210x')">
+                        <div class="icon">💾</div>
+                        <h4>CP210x</h4>
+                        <p data-i18n="cp210x_desc">Silicon Labs USB转串口芯片</p>
+                    </div>
+                    <div class="download-card" onclick="openDriverLink('ftdi')">
+                        <div class="icon">💾</div>
+                        <h4>FTDI</h4>
+                        <p data-i18n="ftdi_desc">FTDI公司USB转串口芯片</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- macOS 内容 -->
+            <div id="macos-content" class="os-content">
+                <h3 data-i18n="macos_check_system">步骤1: 检查系统信息</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong data-i18n="macos_step1_title">打开系统信息</strong>
+                        <p data-i18n="macos_step1_desc">按住Option键点击苹果菜单 → "系统信息"</p>
+                    </li>
+                    <li>
+                        <strong data-i18n="macos_step2_title">查看USB设备</strong>
+                        <p data-i18n="macos_step2_desc">在左侧选择"USB"，查看连接的USB设备</p>
+                    </li>
+                    <li>
+                        <strong data-i18n="macos_step3_title">检查串口设备</strong>
+                        <p data-i18n="macos_step3_desc">打开终端，输入命令查看串口设备：</p>
+                        <code>ls /dev/tty.*</code>
+                    </li>
+                </ol>
+                
+                <h3 data-i18n="macos_driver_install">步骤2: 安装驱动程序</h3>
+                <div class="info-box">
+                    <span class="icon">💡</span>
+                    <span data-i18n="macos_driver_note">macOS通常内置大部分USB转串口驱动，但某些芯片仍需手动安装</span>
+                </div>
+                
+                <div class="download-links">
+                    <div class="download-card" onclick="openDriverLink('ch340-mac')">
+                        <div class="icon">💾</div>
+                        <h4>CH340/CH341 for macOS</h4>
+                        <p data-i18n="ch340_mac_desc">macOS版本CH340驱动</p>
+                    </div>
+                    <div class="download-card" onclick="openDriverLink('cp210x-mac')">
+                        <div class="icon">💾</div>
+                        <h4>CP210x for macOS</h4>
+                        <p data-i18n="cp210x_mac_desc">macOS版本CP210x驱动</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linux 内容 -->
+            <div id="linux-content" class="os-content">
+                <h3 data-i18n="linux_check_system">步骤1: 检查系统识别</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong data-i18n="linux_step1_title">检查USB设备</strong>
+                        <p data-i18n="linux_step1_desc">打开终端，输入以下命令：</p>
+                        <code>lsusb</code>
+                    </li>
+                    <li>
+                        <strong data-i18n="linux_step2_title">检查串口设备</strong>
+                        <p data-i18n="linux_step2_desc">查看可用的串口设备：</p>
+                        <code>ls /dev/ttyUSB* /dev/ttyACM*</code>
+                    </li>
+                    <li>
+                        <strong data-i18n="linux_step3_title">检查内核消息</strong>
+                        <p data-i18n="linux_step3_desc">查看设备连接时的内核消息：</p>
+                        <code>dmesg | tail</code>
+                    </li>
+                </ol>
+                
+                <h3 data-i18n="linux_permissions">步骤2: 设置权限</h3>
+                <ol class="step-list">
+                    <li>
+                        <strong data-i18n="linux_add_user_group">添加用户到dialout组</strong>
+                        <p data-i18n="linux_add_user_desc">执行以下命令并重新登录：</p>
+                        <code>sudo usermod -a -G dialout $USER</code>
+                    </li>
+                    <li>
+                        <strong data-i18n="linux_check_permissions">检查设备权限</strong>
+                        <p data-i18n="linux_check_permissions_desc">确认设备权限设置：</p>
+                        <code>ls -l /dev/ttyUSB*</code>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- 高级故障排除 -->
+        <div class="section">
+            <h2>
+                <span class="icon">🛠️</span>
+                <span data-i18n="advanced_troubleshooting">高级故障排除</span>
+            </h2>
+            
+            <h3 data-i18n="hardware_issues">硬件问题排查</h3>
+            <ul>
+                <li data-i18n="try_different_cable">尝试更换USB数据线</li>
+                <li data-i18n="try_different_port">尝试不同的USB端口</li>
+                <li data-i18n="try_different_computer">在其他计算机上测试设备</li>
+                <li data-i18n="check_device_power">检查设备供电是否正常</li>
+            </ul>
+            
+            <h3 data-i18n="software_conflicts">软件冲突解决</h3>
+            <ul>
+                <li data-i18n="close_other_serial_software">关闭其他串口调试软件</li>
+                <li data-i18n="disable_antivirus">临时禁用杀毒软件</li>
+                <li data-i18n="update_browser">更新浏览器到最新版本</li>
+                <li data-i18n="clear_browser_cache">清除浏览器缓存和数据</li>
+            </ul>
+        </div>
+        
+        <!-- 获取帮助 -->
+        <div class="section">
+            <h2>
+                <span class="icon">🆘</span>
+                <span data-i18n="get_help_title">获取帮助</span>
+            </h2>
+            
+            <div class="success-box">
+                <span class="icon">💬</span>
+                <span data-i18n="get_help_desc">如果以上方法都无法解决问题，请收集以下信息并联系技术支持：</span>
+            </div>
+            
+            <ul>
+                <li data-i18n="help_info_os">操作系统版本</li>
+                <li data-i18n="help_info_browser">浏览器版本</li>
+                <li data-i18n="help_info_device">设备型号和芯片信息</li>
+                <li data-i18n="help_info_error">具体错误信息截图</li>
+            </ul>
+            
+            <div class="download-links">
+                <div class="download-card" onclick="openSupportLink('github')">
+                    <div class="icon">🐙</div>
+                    <h4>GitHub Issues</h4>
+                    <p data-i18n="github_support_desc">在GitHub上提交问题报告</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 引入多语言支持 -->
+    <script src="i18n/loader.js"></script>
+    <script>
+        // 页面加载完成后初始化多语言系统
+        window.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // 初始化多语言系统（会自动处理URL参数和localStorage）
+                await window.i18nLoader.init();
+                console.log('故障排除页面多语言系统初始化完成');
+            } catch (error) {
+                console.error('故障排除页面多语言系统初始化失败:', error);
+            }
+        });
+        
+        // 操作系统切换
+        function switchOS(os) {
+            // 移除所有active类
+            document.querySelectorAll('.os-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.os-content').forEach(content => content.classList.remove('active'));
+            
+            // 添加active类到选中的tab和content
+            event.target.classList.add('active');
+            document.getElementById(os + '-content').classList.add('active');
+        }
+        
+        // 返回主页
+        function goBack() {
+            // 获取当前语言
+            const currentLang = localStorage.getItem('selectedLanguage') || 'zh';
+            
+            // 尝试返回上一页，如果没有历史记录则跳转到主页（带语言参数）
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = `index.html?lang=${currentLang}`;
+            }
+        }
+        
+        // 打开驱动下载链接
+        function openDriverLink(driver) {
+            const driverLinks = {
+                'ch340': 'http://www.wch.cn/downloads/CH341SER_EXE.html',
+                'cp210x': 'https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers',
+                'ftdi': 'https://ftdichip.com/drivers/vcp-drivers/',
+                'ch340-mac': 'http://www.wch.cn/downloads/CH341SER_MAC_ZIP.html',
+                'cp210x-mac': 'https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers'
+            };
+            
+            if (driverLinks[driver]) {
+                window.open(driverLinks[driver], '_blank');
+            }
+        }
+        
+        // 打开支持链接
+        function openSupportLink(type) {
+            const supportLinks = {
+                'github': 'https://github.com/Tuya/TuyaOpen-WebTools/issues'
+            };
+            
+            if (supportLinks[type]) {
+                window.open(supportLinks[type], '_blank');
+            }
+        }
+    </script>
+</body>
+</html> 
