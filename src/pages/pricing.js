@@ -2,7 +2,7 @@ import Head from '@docusaurus/Head'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import useFromTutorials from '@site/src/components/useFromTutorials'
+import useFromLearn from '@site/src/components/useFromLearn'
 import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
 import React, { useEffect, useRef, useState } from 'react'
@@ -707,7 +707,7 @@ export default function Pricing() {
   const c = content[locale]
   const base = locale === 'zh' ? '/zh' : ''
   const guideHref = `${base}/pricing-guide`
-  const { fromTutorials, href: tutorialsHref, label: tutorialsLabel } = useFromTutorials()
+  const { fromLearn, href: learnHref, label: learnLabel } = useFromLearn()
   const tierImgs = [
     'https://images.tuyacn.com/fe-static/docs/img/9d2e76d8-1ee0-4243-a6a2-fa44ab8855e2.png', // free
     'https://images.tuyacn.com/fe-static/docs/img/30131d50-5cb6-4819-a849-884184eff257.png', // iot
@@ -759,9 +759,9 @@ export default function Pricing() {
         <section className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden />
           <div className={styles.heroInner}>
-            {fromTutorials && (
+            {fromLearn && (
               <Link
-                to={tutorialsHref}
+                to={learnHref}
                 style={{
                   display: 'block',
                   width: 'fit-content',
@@ -772,7 +772,7 @@ export default function Pricing() {
                   textDecoration: 'none',
                 }}
               >
-                {tutorialsLabel}
+                {learnLabel}
               </Link>
             )}
             <span className={styles.heroBadge}>{c.badge}</span>

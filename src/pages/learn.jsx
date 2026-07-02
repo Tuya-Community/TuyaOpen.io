@@ -1,13 +1,15 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { useLocation } from '@docusaurus/router';
 
 import BorderGlow from '@site/src/components/BorderGlow';
 import FlowingMenu from '@site/src/components/FlowingMenu';
 import { categories, levels, tags as tagMeta, tutorials } from '../data/tutorials';
-import styles from './tutorials.module.css';
+import styles from './learn.module.css';
 
 /* ---- Inline SVG icons (no emoji), Lucide-style, currentColor ----------- */
 const iconProps = {
@@ -47,37 +49,103 @@ function localize(href, locale) {
   return `/zh${href}`;
 }
 
+/* sessionStorage keys for preserving the hub state across a tutorial visit.
+   SCROLL_KEY captures window.scrollY at the moment a card is opened (one-shot,
+   cleared on restore) so the hub can return to that spot. CAT_KEY holds the
+   last active filter so the detail page's "Back to Learn" can deep-link back
+   to the same filtered view. */
+const SCROLL_KEY = 'learn:scroll';
+const CAT_KEY = 'learn:cat';
+
+function readStorage(key) {
+  try {
+    return typeof sessionStorage !== 'undefined' ? sessionStorage.getItem(key) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeStorage(key, value) {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch {
+    /* ignore */
+  }
+}
+
+function removeStorage(key) {
+  try {
+    sessionStorage.removeItem(key);
+  } catch {
+    /* ignore */
+  }
+}
+
 const COPY = {
   en: {
-    title: 'Tutorials',
+    title: 'Learn',
     subtitle:
       'Hands-on, user-facing guidance for TuyaOpen — pick your board, set up the IDE, learn the SDK, and follow along with projects, tutorials, and guides.',
     all: 'All',
-    empty: 'No tutorials in this section yet — check back soon.',
-    countOne: 'tutorial',
-    countMany: 'tutorials',
+    empty: 'No guides in this section yet — check back soon.',
+    countOne: 'guide',
+    countMany: 'guides',
   },
   zh: {
-    title: '教程',
+    title: '学习',
     subtitle:
       '面向用户的 TuyaOpen 实操指引 —— 选择开发板、配置 IDE、学习 SDK，并跟随项目、教程与指南一步步动手。',
     all: '全部',
     empty: '该分类下暂无教程，敬请期待。',
-    countOne: '篇教程',
-    countMany: '篇教程',
+    countOne: '篇指南',
+    countMany: '篇指南',
   },
 };
 
-function TutorialCard({ item, locale, catMap, levelMap, tagMap }) {
+function LearnCard({ item, locale, catMap, levelMap, tagMap }) {
   const external = item.kind === 'external';
-  // Tag internal links so the destination can offer a "back to tutorials" return.
-  const href = external ? item.href : `${localize(item.href, locale)}?from=tutorials`;
+  // A card may carry one destination (`href`) OR a set of named links
+  // (`links: [{label, href}]`) — e.g. a community demo with both a details
+  // link and a source-code link. Multi-link cards render as a non-anchor
+  // container with a button row in the footer (a card can't be a single <a>
+  // and also contain <a> buttons — invalid HTML). Single-`links` and `href`
+  // cards stay whole-card-clickable.
+  const links = item.links && item.links.length > 0 ? item.links : null;
+  const multiLink = !!links && links.length > 1;
+  const linkHref = links ? links[0].href : item.href;
+  // Tag internal links so the destination can offer a "back to learn" return.
+  const href =
+    links || external
+      ? linkHref
+      : `${localize(item.href, locale)}?from=learn`;
   const cat = catMap[item.category];
   const cta = external ? (locale === 'zh' ? '前往' : 'Visit') : locale === 'zh' ? '打开' : 'Open';
   const meta = [item.level && levelMap[item.level], item.duration].filter(Boolean);
 
+  // Optional hover-reveal image. Hidden by default; on `.glowCard:hover` it
+  // quickly emerges as a peek thumbnail in the top-right of the card. Purely
+  // additive — does not touch the glow, translate, or arrow effects.
+  const imgSrc = item.image ? useBaseUrl(item.image) : null;
+
+  // Capture the hub's scroll position the instant an internal card is opened,
+  // so we can restore it when the visitor returns. External links open in a
+  // new tab and leave the hub untouched, so they're skipped.
+  const handleOpen = useCallback(() => {
+    if (external) return;
+    writeStorage(SCROLL_KEY, String(window.scrollY));
+  }, [external]);
+
   const body = (
     <>
+      {imgSrc && (
+        <img
+          src={imgSrc}
+          alt=""
+          aria-hidden
+          className={styles.cardImagePeek}
+          loading="lazy"
+        />
+      )}
       <div className={styles.cardTop}>
         <span className={styles.cardCat}>
           <span className={styles.cardCatDot} aria-hidden />
@@ -104,21 +172,43 @@ function TutorialCard({ item, locale, catMap, levelMap, tagMap }) {
       )}
 
       <div className={styles.cardFooter}>
-        <span className={styles.cardMeta}>{meta.join(' · ')}</span>
-        <span className={styles.cardCta}>
-          {cta}
-          <ArrowIcon external={external} />
-        </span>
+        {meta.length > 0 && <span className={styles.cardMeta}>{meta.join(' · ')}</span>}
+        {multiLink ? (
+          <div className={styles.cardLinks}>
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.cardCta}
+              >
+                {l.label}
+                <ArrowIcon external />
+              </a>
+            ))}
+          </div>
+        ) : (
+          <span className={styles.cardCta}>
+            {links ? links[0].label : cta}
+            <ArrowIcon external={external || !!links} />
+          </span>
+        )}
       </div>
     </>
   );
 
-  const linkEl = external ? (
+  // Multi-link cards can't be a single anchor (they contain <a> buttons), so
+  // they render as a plain div; the hover effects still apply via .glowCard.
+  // Single-link and href cards stay whole-card-clickable.
+  const linkEl = multiLink ? (
+    <div className={styles.card}>{body}</div>
+  ) : external || links ? (
     <a href={href} target="_blank" rel="noopener noreferrer" className={styles.card}>
       {body}
     </a>
   ) : (
-    <Link to={href} className={styles.card}>
+    <Link to={href} onClick={handleOpen} className={styles.card}>
       {body}
     </Link>
   );
@@ -130,7 +220,7 @@ function TutorialCard({ item, locale, catMap, levelMap, tagMap }) {
   );
 }
 
-export default function TutorialsPage() {
+export default function LearnPage() {
   const { siteConfig, i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
   const t = COPY[locale];
@@ -141,7 +231,53 @@ export default function TutorialsPage() {
   const tagMap = tagMeta[locale] || tagMeta.en;
   const items = tutorials[locale] || tutorials.en;
 
-  const [active, setActive] = useState('all');
+  // Deep-link a category via ?cat=<id> (or #<id>) so redirected nav entries
+  // (e.g. the old Projects link → /learn?cat=community) land on the right tab.
+  const location = useLocation();
+  const initialCat = useMemo(() => {
+    const params = new URLSearchParams(location.search);
+    const candidate = params.get('cat') || location.hash.replace('#', '');
+    return cats.some((c) => c.id === candidate) ? candidate : 'all';
+  }, [location.search, location.hash, cats]);
+
+  const [active, setActive] = useState(initialCat);
+
+  // Persist the active filter into the URL (via replaceState, preserving
+  // React Router's history.state) and sessionStorage. Browser-back to the hub
+  // then re-reads `?cat=` via initialCat, and the detail page's "Back to
+  // Learn" link reads CAT_KEY — so either return path lands on the same view.
+  // replaceState does not fire popstate, so this never re-triggers React Router.
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (active !== 'all') params.set('cat', active);
+    const search = params.toString();
+    const url = `${location.pathname}${search ? `?${search}` : ''}${location.hash}`;
+    if (url !== `${location.pathname}${location.search}${location.hash}`) {
+      window.history.replaceState(window.history.state, '', url);
+    }
+    writeStorage(CAT_KEY, active);
+  }, [active, location.pathname, location.search, location.hash]);
+
+  // Restore scroll after returning from a tutorial. Docusaurus scrolls to
+  // (0,0) on route change through a layout effect, so defer past it with a
+  // double rAF. The saved value is one-shot (cleared here) so an unrelated
+  // later visit (e.g. navbar → /learn) starts at the top.
+  const restoredRef = useRef(false);
+  useEffect(() => {
+    if (restoredRef.current) return;
+    const saved = readStorage(SCROLL_KEY);
+    if (saved == null) return;
+    const y = Number(saved);
+    if (!Number.isFinite(y)) return;
+    restoredRef.current = true;
+    const raf1 = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        window.scrollTo(0, y);
+        removeStorage(SCROLL_KEY);
+      });
+    });
+    return () => window.cancelAnimationFrame(raf1);
+  }, []);
 
   const counts = useMemo(() => {
     const c = { all: items.length };
@@ -210,7 +346,7 @@ export default function TutorialsPage() {
             ) : (
               <div className={styles.grid}>
                 {shown.map((item) => (
-                  <TutorialCard
+                  <LearnCard
                     key={item.id}
                     item={item}
                     locale={locale}
