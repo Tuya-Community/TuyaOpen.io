@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="license_guide_title">TuyaOpen授权码获取指南</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .license-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-top {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .header-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .section h2 {
+            color: #2d3748;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2 .icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        
+        .section h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+        }
+        
+        .framework-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .framework-list li {
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #4f46e5;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .framework-list li .icon {
+            font-size: 1.5em;
+            color: #4f46e5;
+        }
+        
+        .framework-info {
+            flex: 1;
+        }
+        
+        .framework-name {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        
+        .framework-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .framework-link:hover {
+            text-decoration: underline;
+        }
+        
+        .method-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .method-card {
+            background: linear-gradient(135deg, #f0f4ff, #e8f2ff);
+            border: 2px solid #e5eeff;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.2);
+            border-color: #4f46e5;
+        }
+        
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+        
+        .method-title {
+            color: #1e40af;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .method-title .icon {
+            font-size: 1.3em;
+        }
+        
+        .method-description {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .method-advantage {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            border-left: 4px solid #10b981;
+            margin-bottom: 15px;
+        }
+        
+        .method-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .method-link:hover {
+            background: linear-gradient(135deg, #3730a3, #6b21a8);
+            transform: translateY(-1px);
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+        }
+        
+        .warning-box .icon {
+            color: #f59e0b;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #4f46e5;
+        }
+        
+        .info-box .icon {
+            color: #4f46e5;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .success-box {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .success-box .icon {
+            color: #10b981;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .purchase-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .purchase-card {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .purchase-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        .purchase-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .purchase-card h4 {
+            color: #92400e;
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .purchase-card p {
+            color: #78350f;
+            margin: 0;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .license-container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .method-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .purchase-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="license-container">
+        <!-- 页面头部 -->
+        <div class="header">
+            <div class="header-left">
+                <button class="back-button" onclick="goBack()">
+                    <span class="icon">←</span>
+                    <span data-i18n="back_to_main">返回主页</span>
+                </button>
+            </div>
+            
+            <h1 data-i18n="license_guide_title">TuyaOpen授权码获取指南</h1>
+            <p data-i18n="license_guide_subtitle">了解TuyaOpen授权码及获取方式</p>
+        </div>
+
+        <!-- TuyaOpen专用授权码介绍 -->
+        <div class="section">
+            <h2>
+                <span class="icon">🔐</span>
+                <span data-i18n="what_is_license">什么是TuyaOpen专用授权码</span>
+            </h2>
+            
+            <div class="info-box">
+                <span class="icon">💡</span>
+                <span data-i18n="license_info">TuyaOpen Framework的所有版本均需要专用授权码才能正常连接涂鸦云，使用其他授权码无法正常工作。</span>
+            </div>
+            
+            <h3 data-i18n="supported_frameworks">支持的TuyaOpen框架</h3>
+            <ul class="framework-list">
+                <li>
+                    <span class="icon">🏗️</span>
+                    <div class="framework-info">
+                        <div class="framework-name" data-i18n="c_version">C 版 TuyaOpen</div>
+                        <a href="https://github.com/tuya/TuyaOpen" target="_blank" class="framework-link">https://github.com/tuya/TuyaOpen</a>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">🤖</span>
+                    <div class="framework-info">
+                        <div class="framework-name" data-i18n="arduino_version">Arduino 版 TuyaOpen</div>
+                        <a href="https://github.com/tuya/arduino-TuyaOpen" target="_blank" class="framework-link">https://github.com/tuya/arduino-TuyaOpen</a>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">🌙</span>
+                    <div class="framework-info">
+                        <div class="framework-name" data-i18n="lua_version">Luanode 版 TuyaOpen</div>
+                        <a href="https://github.com/tuya/luanode-TuyaOpen" target="_blank" class="framework-link">https://github.com/tuya/luanode-TuyaOpen</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 获取方式 -->
+        <div class="section">
+            <h2>
+                <span class="icon">🛒</span>
+                <span data-i18n="how_to_get">如何获取授权码</span>
+            </h2>
+            
+            <div class="method-cards">
+                <!-- 方式1：预烧录模块 -->
+                <div class="method-card" onclick="openPurchaseLink('platform_preburn')">
+                    <div class="method-title">
+                        <span class="icon">✅</span>
+                        <span data-i18n="method1_title">方式1：购买预烧录模块</span>
+                    </div>
+                    <div class="method-description" data-i18n="method1_desc">
+                        通过涂鸦开发者平台购买已烧录 TuyaOpen 授权码模块。该授权码已经在出厂时烧录在对应模组中，且不会丢失。TuyaOpen 在启动时通过 `tuya_iot_license_read()` 接口读取授权码。请确认当前设备是否为烧录了 TuyaOpen 授权码。
+                    </div>
+                    <div class="method-advantage">
+                        <span class="icon">🎯</span>
+                        <span data-i18n="method1_advantage">优势：即插即用，无需手动操作</span>
+                    </div>
+                    <a href="https://platform.tuya.com/purchase/index?type=6" target="_blank" class="method-link">
+                        <span class="icon">🛒</span>
+                        <span data-i18n="visit_platform_preburn">购买预烧录模块</span>
+                    </a>
+                </div>
+                
+                <!-- 方式2：涂鸦平台购买 -->
+                <div class="method-card" onclick="openPurchaseLink('platform')">
+                    <div class="method-title">
+                        <span class="icon">🌐</span>
+                        <span data-i18n="method2_title">方式2：涂鸦平台购买</span>
+                    </div>
+                    <div class="method-description" data-i18n="method2_desc">
+                        通过涂鸦开发者平台购买TuyaOpen授权码，然后通过串口工具写入到模组中。
+                    </div>
+                    <div class="method-advantage">
+                        <span class="icon">🏢</span>
+                        <span data-i18n="method2_advantage">优势：官方平台，支持批量购买</span>
+                    </div>
+                    <a href="https://platform.tuya.com/purchase/index?type=6" target="_blank" class="method-link">
+                        <span class="icon">🛒</span>
+                        <span data-i18n="visit_platform">访问平台</span>
+                    </a>
+                </div>
+                
+                <!-- 方式3：淘宝购买 -->
+                <div class="method-card" onclick="openPurchaseLink('taobao')">
+                    <div class="method-title">
+                        <span class="icon">🛍️</span>
+                        <span data-i18n="method3_title">方式3：淘宝购买</span>
+                    </div>
+                    <div class="method-description" data-i18n="method3_desc">
+                        通过淘宝店铺购买TuyaOpen授权码，然后通过串口工具写入到模组中。
+                    </div>
+                    <div class="method-advantage">
+                        <span class="icon">🚀</span>
+                        <span data-i18n="method3_advantage">优势：购买便捷，支付方式灵活</span>
+                    </div>
+                    <a href="https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP" target="_blank" class="method-link">
+                        <span class="icon">🛒</span>
+                        <span data-i18n="visit_taobao">访问淘宝</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用指南 -->
+        <div class="section">
+            <h2>
+                <span class="icon">📋</span>
+                <span data-i18n="usage_guide">使用指南</span>
+            </h2>
+            
+            <h3 data-i18n="check_existing">步骤1：检查现有授权码</h3>
+            <div class="warning-box">
+                <span class="icon">⚠️</span>
+                <span data-i18n="check_warning">请先确认当前设备是否已经烧录了TuyaOpen授权码，避免重复购买。</span>
+            </div>
+            
+            <h3 data-i18n="write_license">步骤2：写入授权码</h3>
+            <p data-i18n="write_desc">如果设备未烧录授权码，可以使用本工具的"TuyaOpen授权"功能进行写入：</p>
+            <ol>
+                <li data-i18n="write_step1">连接设备到电脑</li>
+                <li data-i18n="write_step2">切换到"TuyaOpen授权"标签页</li>
+                <li data-i18n="write_step3">连接串口</li>
+                <li data-i18n="write_step4">输入购买的UUID和AUTH_KEY</li>
+                <li data-i18n="write_step5">点击"写入授权"按钮</li>
+            </ol>
+            
+            <div class="success-box">
+                <span class="icon">✅</span>
+                <span data-i18n="write_success">授权码写入成功后，设备就可以正常使用TuyaOpen框架连接涂鸦云了。</span>
+            </div>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="section">
+            <h2>
+                <span class="icon">❓</span>
+                <span data-i18n="faq_title">常见问题</span>
+            </h2>
+            
+            <h3 data-i18n="q1">Q: 其他类型的授权码可以用吗？</h3>
+            <div class="warning-box">
+                <span class="icon">❌</span>
+                <span data-i18n="a1">A: 不可以。TuyaOpen框架只能使用TuyaOpen专用授权码，其他授权码无法正常连接涂鸦云。</span>
+            </div>
+            
+            <h3 data-i18n="q2">Q: 授权码会丢失吗？</h3>
+            <div class="info-box">
+                <span class="icon">💾</span>
+                <span data-i18n="a2">A: 正常情况下授权码不会丢失。预烧录模块的授权码是出厂烧录的，手动写入的授权码会保存在模组的非易失性存储区域。</span>
+            </div>
+            
+            <h3 data-i18n="q3">Q: 如何检查设备是否已有授权码？</h3>
+            <div class="success-box">
+                <span class="icon">🔍</span>
+                <span data-i18n="a3">A: 可以通过TuyaOpen程序调用 `tuya_iot_license_read()` 接口来检查。</span>
+            </div>
+        </div>
+
+        <!-- 技术支持 -->
+        <div class="section">
+            <h2>
+                <span class="icon">🆘</span>
+                <span data-i18n="support_title">技术支持</span>
+            </h2>
+            
+            <div class="info-box">
+                <span class="icon">💬</span>
+                <span data-i18n="support_desc">如果在使用过程中遇到问题，请通过以下方式获取帮助：</span>
+            </div>
+            
+            <div class="purchase-links">
+                <a href="https://github.com/Tuya/TuyaOpen-WebTools/issues" target="_blank" class="purchase-card">
+                    <span class="icon">🐙</span>
+                    <h4>GitHub Issues</h4>
+                    <p data-i18n="github_support">提交问题报告</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入多语言支持 -->
+    <script src="i18n/loader.js"></script>
+    <script>
+        // 页面加载完成后初始化多语言系统
+        window.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // 初始化多语言系统（会自动处理URL参数和localStorage）
+                await window.i18nLoader.init();
+                console.log('授权码指南页面多语言系统初始化完成');
+            } catch (error) {
+                console.error('授权码指南页面多语言系统初始化失败:', error);
+            }
+        });
+        
+        // 返回主页
+        function goBack() {
+            // 获取当前语言
+            const currentLang = localStorage.getItem('selectedLanguage') || 'zh';
+            
+            // 尝试返回上一页，如果没有历史记录则跳转到主页（带语言参数）
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = `index.html?lang=${currentLang}`;
+            }
+        }
+        
+        // 打开购买链接
+        function openPurchaseLink(type) {
+            const purchaseLinks = {
+                'platform': 'https://platform.tuya.com/purchase/index?type=6',
+                'platform_preburn': 'https://platform.tuya.com/purchase/index?type=6',
+                'taobao': 'https://item.taobao.com/item.htm?ft=t&id=911596682625&spm=a21dvs.23580594.0.0.621e2c1bzX1OIP'
+            };
+            
+            if (purchaseLinks[type]) {
+                window.open(purchaseLinks[type], '_blank');
+            }
+        }
+    </script>
+</body>
+</html> 

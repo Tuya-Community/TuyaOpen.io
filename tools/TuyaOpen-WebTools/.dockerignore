@@ -1,0 +1,9 @@
+.git/
+.gitignore
+README.md
+README_zh.md
+README_Docker.md
+LICENSE
+run-docker.sh
+*.log
+.DS_Store 
