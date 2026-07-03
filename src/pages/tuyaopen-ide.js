@@ -7,6 +7,11 @@ import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useSta
 import { tuyaOpenIdeCopy } from '../data/tuyaOpenIdeCopy'
 import styles from './tuyaopen-ide.module.css'
 
+const OPEN_VSX_LATEST_API = 'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/latest'
+const OPEN_VSX_FALLBACK_VERSION = '0.1.1'
+const OPEN_VSX_FALLBACK_DOWNLOAD_URL =
+  'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix'
+
 function patchGifPlayOnce(buf) {
   const data = new Uint8Array(buf)
   const gctSize = data[10] & 0x80 ? 3 * (1 << ((data[10] & 0x07) + 1)) : 0
@@ -206,6 +211,36 @@ function HeroMockupParallax({ children }) {
   }, [])
 
   return { heroRef, mockupRef }
+}
+
+function useLatestVsix() {
+  const [version, setVersion] = useState(null)
+  const [downloadUrl, setDownloadUrl] = useState(OPEN_VSX_FALLBACK_DOWNLOAD_URL)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch(OPEN_VSX_LATEST_API, { headers: { Accept: 'application/json' } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return
+        const url = data?.files?.download
+        const ver = data?.version
+        if (url && ver) {
+          setDownloadUrl(url)
+          setVersion(ver)
+        }
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  return { version, downloadUrl, loading }
 }
 
 function AiInputVisual({ aiVisual }) {
@@ -733,8 +768,68 @@ function InstallSteps({ steps }) {
   )
 }
 
+function DownloadIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3v12" />
+      <path d="M7 10l5 5 5-5" />
+      <path d="M5 21h14" />
+    </svg>
+  )
+}
+
+function CopyIcon() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="9" y="9" width="13" height="13" rx="2" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  )
+}
+
 function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
   const dialogRef = useRef(null)
+  const { version, downloadUrl, loading } = useLatestVsix()
+  const [agentCopied, setAgentCopied] = useState(false)
+  const agentCopiedTimeoutRef = useRef(null)
 
   useEffect(() => {
     const onKey = (e) => {
@@ -749,6 +844,39 @@ function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
       document.body.style.overflow = prevOverflow
     }
   }, [onClose])
+
+  useEffect(() => {
+    return () => {
+      if (agentCopiedTimeoutRef.current) window.clearTimeout(agentCopiedTimeoutRef.current)
+    }
+  }, [])
+
+  const handleCopyAgent = useCallback(async () => {
+    const text = copy.agent.promptText(downloadUrl)
+    try {
+      await navigator.clipboard.writeText(text)
+    } catch {
+      // Fallback for non-secure contexts / older browsers
+      try {
+        const ta = document.createElement('textarea')
+        ta.value = text
+        ta.setAttribute('readonly', '')
+        ta.style.position = 'fixed'
+        ta.style.top = '-9999px'
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      } catch {
+        /* clipboard unavailable — user can select the text manually */
+      }
+    }
+    setAgentCopied(true)
+    if (agentCopiedTimeoutRef.current) window.clearTimeout(agentCopiedTimeoutRef.current)
+    agentCopiedTimeoutRef.current = window.setTimeout(() => setAgentCopied(false), 2000)
+  }, [copy.agent.promptText, downloadUrl])
+
+  const versionLabel = loading ? copy.download.loadingLabel : `v${version || copy.download.fallbackVersion}`
 
   return (
     <div className={styles.installOverlay} onClick={onClose} role="presentation">
@@ -779,37 +907,71 @@ function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
         <h3 className={styles.installTitle}>{copy.title}</h3>
         <p className={styles.installNotice}>{copy.subtitle}</p>
 
+        {/* Recommended: let an AI coding agent install it — prompt embeds the resolved .vsix URL */}
+        <div className={styles.installAgent}>
+          <div className={styles.installAgentHead}>
+            <span className={styles.installAgentBadge}>{copy.agent.badge}</span>
+            <h4 className={styles.installAgentTitle}>{copy.agent.title}</h4>
+          </div>
+          <p className={styles.installAgentDesc}>{copy.agent.desc}</p>
+          <div className={styles.installAgentPrompt}>
+            <button
+              type="button"
+              className={styles.installAgentCopy}
+              onClick={handleCopyAgent}
+              aria-label={copy.agent.copyAria}
+            >
+              {agentCopied ? <CheckIcon /> : <CopyIcon />}
+              <span>{agentCopied ? copy.agent.copiedLabel : copy.agent.copyButton}</span>
+            </button>
+            <pre className={styles.installAgentCode}>
+              <code>{copy.agent.promptText(downloadUrl)}</code>
+            </pre>
+          </div>
+          <p className={styles.installAgentHint}>{copy.agent.hint}</p>
+        </div>
+
+        <div className={styles.installDivider}>{copy.manualLabel}</div>
+
+        {/* Manual install: shared .vsix download + per-editor steps */}
+        <div className={styles.installDownloadHero}>
+          <div className={styles.installDownloadHeroInfo}>
+            <span className={styles.installDownloadHeroLabel}>{copy.download.label}</span>
+            <span className={styles.installDownloadHeroMeta}>
+              {loading && <span className={styles.installVersionSpinner} aria-hidden="true" />}
+              <span>{versionLabel}</span>
+              <span className={styles.installDownloadHeroDot} aria-hidden="true">
+                ·
+              </span>
+              <span>{copy.download.platforms}</span>
+            </span>
+          </div>
+          <a
+            href={downloadUrl}
+            className={clsx(styles.btnCta, styles.installDownloadHeroBtn)}
+            download
+            data-testid="ide-vsix-download"
+          >
+            <DownloadIcon />
+            {copy.download.cta}
+          </a>
+        </div>
+        <p className={styles.installDownloadNote}>{copy.download.note}</p>
+
+        {/* Editor-specific install-from-VSIX steps */}
         <div className={styles.installOptions}>
           {/* VS Code — manual .vsix install */}
           <div className={styles.installCard}>
             <InstallEditorLabel icon={vscodeIcon} name={copy.vscode.label} />
             <h4 className={styles.installCardTitle}>{copy.vscode.title}</h4>
             <p className={styles.installCardDesc}>{copy.vscode.desc}</p>
-            <a href={copy.vscode.downloadUrl} className={clsx(styles.btnCta, styles.installDownloadBtn)} download>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M12 3v12" />
-                <path d="M7 10l5 5 5-5" />
-                <path d="M5 21h14" />
-              </svg>
-              {copy.vscode.downloadCta}
-            </a>
             <div className={styles.installGuide}>
               <span className={styles.installGuideTitle}>{copy.vscode.guideTitle}</span>
               <InstallSteps steps={copy.vscode.steps} />
             </div>
           </div>
 
-          {/* Cursor — marketplace search */}
+          {/* Cursor — manual .vsix install (marketplace search unavailable) */}
           <div className={styles.installCard}>
             <InstallEditorLabel icon={cursorIcon} name={copy.cursor.label} />
             <h4 className={styles.installCardTitle}>{copy.cursor.title}</h4>
