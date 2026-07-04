@@ -14,6 +14,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # Fetch the tuyaopen-ide-manifests submodule so the build can
+          # regenerate the /dev-boards catalog via sync-dev-boards.js.
+          submodules: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -84,6 +88,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # Fetch the tuyaopen-ide-manifests submodule so the build can
+          # regenerate the /dev-boards catalog via sync-dev-boards.js.
+          submodules: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

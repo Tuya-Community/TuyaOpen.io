@@ -14,5 +14,9 @@
   "item.label.Learn": {
     "message": "Learn",
     "description": "Navbar item with label Learn"
+  },
+  "item.label.Dev Boards": {
+    "message": "Dev Boards",
+    "description": "Navbar item with label Dev Boards"
   }
-} 
+}

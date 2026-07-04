@@ -1,0 +1,4 @@
+[submodule "external/tuyaopen-ide-manifests"]
+	path = external/tuyaopen-ide-manifests
+	url = https://github.com/tuya/tuyaopen-ide-manifests
+	branch = main
