@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "display": [
+      {
+        "id": "lcd-st7789",
+        "name": {
+          "en": "ST7789 LCD",
+          "zh-CN": "ST7789 显示屏"
+        },
+        "model": "ST7789",
+        "interface": "SPI",
+        "width": 320,
+        "height": 240,
+        "pixelFormat": "RGB565",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "SPI": [
+            {
+              "role": "sck",
+              "gpio": 12
+            },
+            {
+              "role": "mosi",
+              "gpio": 11
+            },
+            {
+              "role": "dc",
+              "gpio": 40
+            },
+            {
+              "role": "cs",
+              "gpio": 21
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Reset is unused (rst=-1); backlight is driven via the XL9555 IO expander, not a direct GPIO.",
+          "zh-CN": "复位脚未使用（rst=-1）；背光由 XL9555 IO 扩展芯片控制，非直连 GPIO。"
+        }
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio-es8388",
+        "name": {
+          "en": "ES8388 Audio Codec",
+          "zh-CN": "ES8388 音频编解码器"
+        },
+        "model": "ES8388",
+        "interface": "I2S",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2S": [
+            {
+              "role": "bck",
+              "gpio": 46
+            },
+            {
+              "role": "ws",
+              "gpio": 9
+            },
+            {
+              "role": "dout",
+              "gpio": 10
+            },
+            {
+              "role": "din",
+              "gpio": 14
+            },
+            {
+              "role": "mclk",
+              "gpio": 3
+            }
+          ],
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 42
+            },
+            {
+              "role": "sda",
+              "gpio": 41
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "I2C control bus shared with XL9555; ES8388 at I2C address 0x20. Speaker enable is via the XL9555 IO expander.",
+          "zh-CN": "I2C 控制总线与 XL9555 共用；ES8388 的 I2C 地址为 0x20。喇叭使能由 XL9555 IO 扩展芯片控制。"
+        }
+      }
+    ],
+    "pmic": [
+      {
+        "id": "io-expander-xl9555",
+        "name": {
+          "en": "XL9555 IO Expander",
+          "zh-CN": "XL9555 IO 扩展芯片"
+        },
+        "model": "XL9555",
+        "interface": "I2C",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 42
+            },
+            {
+              "role": "sda",
+              "gpio": 41
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "16-bit I2C IO expander at address 0x20; drives LCD backlight, speaker enable, touch/camera reset and on-board keys.",
+          "zh-CN": "16 位 I2C IO 扩展芯片，地址 0x20；用于驱动 LCD 背光、喇叭使能、触摸/摄像头复位及板载按键。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": "https://www.alientek.com"
+  },
+  "boardSymbol": "DNESP32S3",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/DNESP32S3"
+  },
+  "id": "atk-dnesp32s3"
+}

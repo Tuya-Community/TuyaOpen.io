@@ -1,0 +1,986 @@
+{
+  "schemaVersion": 1,
+  "arch": "risc-v",
+  "flashInterface": "qspi",
+  "connectivity": {
+    "wifi": true,
+    "ble": true,
+    "ethernet": false,
+    "cellular": false
+  },
+  "memory": {
+    "sramBytes": 327680,
+    "flashMaxBytes": 4194304,
+    "efuse": false
+  },
+  "peripherals": {
+    "flash": {
+      "enabled": true,
+      "count": 1,
+      "spec": {
+        "partitionMap": [
+          {
+            "type": "TUYA_FLASH_TYPE_APP",
+            "startAddr": "0x00A000",
+            "endAddr": "0x1EA000",
+            "size": 1966080,
+            "blockSize": 4096
+          },
+          {
+            "type": "TUYA_FLASH_TYPE_OTA",
+            "startAddr": "0x1EA000",
+            "endAddr": "0x3CA000",
+            "size": 1966080,
+            "blockSize": 4096
+          },
+          {
+            "type": "TUYA_FLASH_TYPE_UF",
+            "startAddr": "0x3CA000",
+            "endAddr": "0x3DA000",
+            "size": 65536,
+            "blockSize": 4096
+          },
+          {
+            "type": "TUYA_FLASH_TYPE_KV_DATA",
+            "startAddr": "0x3DA000",
+            "endAddr": "0x3EA000",
+            "size": 65536,
+            "blockSize": 4096
+          },
+          {
+            "type": "TUYA_FLASH_TYPE_KV_KEY",
+            "startAddr": "0x3EA000",
+            "endAddr": "0x3EB000",
+            "size": 4096,
+            "blockSize": 4096
+          },
+          {
+            "type": "TUYA_FLASH_TYPE_KV_SWAP",
+            "startAddr": "0x3EB000",
+            "endAddr": "0x3EF000",
+            "size": 16384,
+            "blockSize": 4096
+          },
+          {
+            "type": "TUYA_FLASH_TYPE_USER0",
+            "startAddr": "0x3EF000",
+            "endAddr": "0x3FF000",
+            "size": 65536,
+            "blockSize": 4096
+          }
+        ]
+      }
+    },
+    "gpio": {
+      "enabled": true,
+      "count": 29,
+      "spec": {
+        "pins": [
+          [
+            0,
+            28
+          ]
+        ],
+        "direction": [
+          "TUYA_GPIO_INPUT",
+          "TUYA_GPIO_OUTPUT"
+        ],
+        "mode": [
+          "TUYA_GPIO_PUSH_PULL",
+          "TUYA_GPIO_PULLUP",
+          "TUYA_GPIO_PULLDOWN",
+          "TUYA_GPIO_FLOATING",
+          "TUYA_GPIO_OPENDRAIN",
+          "TUYA_GPIO_OPENDRAIN_PULLUP"
+        ],
+        "irq": {
+          "supported": true,
+          "triggers": [
+            "TUYA_GPIO_IRQ_RISE",
+            "TUYA_GPIO_IRQ_FALL",
+            "TUYA_GPIO_IRQ_LOW",
+            "TUYA_GPIO_IRQ_HIGH"
+          ],
+          "pins": [
+            [
+              0,
+              28
+            ]
+          ]
+        }
+      }
+    },
+    "uart": {
+      "count": 3,
+      "spec": {
+        "baudrate": {
+          "min": 9600,
+          "max": 2000000
+        },
+        "databits": [
+          "TUYA_UART_DATA_LEN_8BIT"
+        ],
+        "stopbits": [
+          "TUYA_UART_STOP_LEN_1BIT",
+          "TUYA_UART_STOP_LEN_1_5BIT1",
+          "TUYA_UART_STOP_LEN_2BIT"
+        ],
+        "parity": [
+          "TUYA_UART_PARITY_TYPE_NONE",
+          "TUYA_UART_PARITY_TYPE_ODD",
+          "TUYA_UART_PARITY_TYPE_EVEN"
+        ],
+        "flowctrl": [
+          "TUYA_UART_FLOWCTRL_NONE",
+          "TUYA_UART_FLOWCTRL_RTSCTS"
+        ],
+        "ports": [
+          {
+            "id": 0,
+            "role": "log",
+            "irq": {
+              "rx": true,
+              "tx": true
+            },
+            "pinGroups": [
+              {
+                "tx": 0,
+                "rx": 15,
+                "cts": 2,
+                "rts": 3
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "role": "general",
+            "irq": {
+              "rx": true,
+              "tx": true
+            },
+            "pinGroups": [
+              {
+                "tx": 24,
+                "rx": 8,
+                "cts": 0,
+                "rts": 1
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "role": "general",
+            "irq": {
+              "rx": true,
+              "tx": true
+            },
+            "pinGroups": [
+              {
+                "tx": 6,
+                "rx": 7,
+                "cts": 16,
+                "rts": 17
+              }
+            ]
+          }
+        ]
+      },
+      "enabled": true
+    },
+    "i2c": {
+      "enabled": true,
+      "count": 2,
+      "spec": {
+        "role": [
+          "TUYA_IIC_MODE_MASTER"
+        ],
+        "speed": [
+          "TUYA_IIC_BUS_SPEED_100K",
+          "TUYA_IIC_BUS_SPEED_400K"
+        ],
+        "addrWidth": [
+          "TUYA_IIC_ADDRESS_7BIT"
+        ],
+        "ports": [
+          {
+            "id": 0,
+            "type": [
+              "hw"
+            ],
+            "irq": false,
+            "pinGroups": [
+              {
+                "scl": 2,
+                "sda": 3
+              }
+            ]
+          },
+          {
+            "id": 1,
+            "type": [
+              "hw"
+            ],
+            "irq": false,
+            "pinGroups": [
+              {
+                "scl": 15,
+                "sda": 8
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "spi": {
+      "enabled": true,
+      "count": 1,
+      "spec": {
+        "role": [
+          "TUYA_SPI_ROLE_MASTER",
+          "TUYA_SPI_ROLE_SLAVE",
+          "TUYA_SPI_ROLE_MASTER_SIMPLEX",
+          "TUYA_SPI_ROLE_SLAVE_SIMPLEX"
+        ],
+        "mode": [
+          "TUYA_SPI_MODE0",
+          "TUYA_SPI_MODE1",
+          "TUYA_SPI_MODE2",
+          "TUYA_SPI_MODE3"
+        ],
+        "csType": [
+          "TUYA_SPI_AUTO_TYPE",
+          "TUYA_SPI_SOFT_TYPE"
+        ],
+        "databits": [
+          "TUYA_SPI_DATA_BIT8",
+          "TUYA_SPI_DATA_BIT16"
+        ],
+        "bitorder": [
+          "TUYA_SPI_ORDER_MSB2LSB",
+          "TUYA_SPI_ORDER_LSB2MSB"
+        ],
+        "ports": [
+          {
+            "id": 0,
+            "backend": "spi",
+            "irq": true,
+            "dma": true,
+            "pinGroups": [
+              {
+                "clk": 11,
+                "cs": 12,
+                "mosi": 9,
+                "miso": 10
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "qspi": {
+      "count": 1,
+      "spec": {
+        "wireMode": [
+          "TUYA_QSPI_1WIRE",
+          "TUYA_QSPI_2WIRE",
+          "TUYA_QSPI_4WIRE"
+        ],
+        "role": [
+          "TUYA_QSPI_ROLE_MASTER"
+        ],
+        "type": [
+          "TUYA_QSPI_TYPE_FLASH"
+        ],
+        "mode": [
+          "TUYA_SPI_MODE0",
+          "TUYA_SPI_MODE1",
+          "TUYA_SPI_MODE2",
+          "TUYA_SPI_MODE3"
+        ],
+        "ports": [
+          {
+            "id": 0,
+            "dma": true,
+            "pinGroups": [
+              {
+                "clk": 4,
+                "cs": 5,
+                "d0": 6,
+                "d1": 7,
+                "d2": 19,
+                "d3": 20
+              },
+              {
+                "clk": 9,
+                "cs": 10,
+                "d0": 11,
+                "d1": 12,
+                "d2": null,
+                "d3": null
+              }
+            ]
+          }
+        ]
+      },
+      "enabled": true
+    },
+    "adc": {
+      "enabled": true,
+      "count": 1,
+      "spec": {
+        "bits": 12,
+        "mode": [
+          "TUYA_ADC_SINGLE",
+          "TUYA_ADC_CONTINUOUS"
+        ],
+        "ports": [
+          {
+            "id": 0,
+            "channels": [
+              {
+                "id": 0,
+                "pin": 0
+              },
+              {
+                "id": 1,
+                "pin": 1
+              },
+              {
+                "id": 2,
+                "pin": 2
+              },
+              {
+                "id": 3,
+                "pin": 3
+              },
+              {
+                "id": 4,
+                "pin": 4
+              },
+              {
+                "id": 5,
+                "pin": 5
+              },
+              {
+                "id": 6,
+                "pin": 6
+              },
+              {
+                "id": 7,
+                "pin": 7
+              },
+              {
+                "id": 8,
+                "pin": 16
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "pwm": {
+      "enabled": true,
+      "count": 3,
+      "spec": {
+        "polarity": [
+          "TUYA_PWM_NEGATIVE",
+          "TUYA_PWM_POSITIVE"
+        ],
+        "countMode": [
+          "TUYA_PWM_CNT_UP"
+        ],
+        "duty": {
+          "min": 0,
+          "max": 10000
+        },
+        "capture": {
+          "supported": false
+        },
+        "channels": [
+          {
+            "id": 0,
+            "pin": 8,
+            "irq": false
+          },
+          {
+            "id": 1,
+            "pin": 23,
+            "irq": false
+          },
+          {
+            "id": 2,
+            "pin": 10,
+            "irq": false
+          }
+        ]
+      }
+    },
+    "timer": {
+      "enabled": true,
+      "count": 2,
+      "spec": {
+        "bits": 32,
+        "mode": [
+          "TUYA_TIMER_MODE_ONCE",
+          "TUYA_TIMER_MODE_PERIOD"
+        ],
+        "ids": [
+          0,
+          1
+        ]
+      }
+    },
+    "wdt": {
+      "enabled": true,
+      "count": 1
+    },
+    "rtc": {
+      "enabled": true,
+      "count": 1
+    }
+  },
+  "platformSymbol": "GD32",
+  "pinout": [
+    {
+      "pin": 1,
+      "name": "PC8-BOOT0",
+      "gpio": 25,
+      "type": "I/O",
+      "functions": [
+        "GPIO25",
+        "BOOT0",
+        "I2C0_SDA",
+        "I2C1_SDA",
+        "UART0_TX",
+        "UART1_TX",
+        "TIMER2_CH2"
+      ]
+    },
+    {
+      "pin": 2,
+      "name": "PA15",
+      "gpio": 15,
+      "type": "I/O",
+      "functions": [
+        "GPIO15",
+        "JTDI",
+        "I2C0_SCL",
+        "I2C1_SCL",
+        "UART0_RX",
+        "UART1_RX",
+        "TIMER1_CH0",
+        "TIMER1_ETI",
+        "WKUP1"
+      ]
+    },
+    {
+      "pin": 3,
+      "name": "PC13",
+      "gpio": 26,
+      "type": "I/O",
+      "functions": [
+        "GPIO26",
+        "UART0_CK",
+        "RTC_TAMP0",
+        "RTC_OUT",
+        "RTC_TS"
+      ]
+    },
+    {
+      "pin": 4,
+      "name": "PC14",
+      "gpio": 27,
+      "type": "I/O",
+      "functions": [
+        "GPIO27",
+        "OSC32IN"
+      ]
+    },
+    {
+      "pin": 5,
+      "name": "PC15",
+      "gpio": 28,
+      "type": "I/O",
+      "functions": [
+        "GPIO28",
+        "IFRP_OUT",
+        "OSC32OUT"
+      ]
+    },
+    {
+      "pin": 6,
+      "name": "NRST",
+      "gpio": null,
+      "type": "I",
+      "functions": [
+        "RESET"
+      ]
+    },
+    {
+      "pin": 7,
+      "name": "PU",
+      "gpio": null,
+      "type": "-",
+      "functions": [
+        "PU"
+      ]
+    },
+    {
+      "pin": 8,
+      "name": "AVDD33_ANA",
+      "gpio": null,
+      "type": "P",
+      "functions": [
+        "VDD"
+      ]
+    },
+    {
+      "pin": 9,
+      "name": "NC",
+      "gpio": null,
+      "type": "-",
+      "functions": []
+    },
+    {
+      "pin": 10,
+      "name": "RF",
+      "gpio": null,
+      "type": "AI/AO",
+      "functions": [
+        "ANT"
+      ]
+    },
+    {
+      "pin": 11,
+      "name": "AVDD33_PA",
+      "gpio": null,
+      "type": "P",
+      "functions": [
+        "VDD"
+      ]
+    },
+    {
+      "pin": 12,
+      "name": "AVDD33_CLK",
+      "gpio": null,
+      "type": "P",
+      "functions": [
+        "VDD"
+      ]
+    },
+    {
+      "pin": 13,
+      "name": "XTAL1",
+      "gpio": null,
+      "type": "AI",
+      "functions": [
+        "XTAL1"
+      ]
+    },
+    {
+      "pin": 14,
+      "name": "XTAL2",
+      "gpio": null,
+      "type": "AO",
+      "functions": [
+        "XTAL2"
+      ]
+    },
+    {
+      "pin": 15,
+      "name": "VDDA",
+      "gpio": null,
+      "type": "P",
+      "functions": [
+        "VDD"
+      ]
+    },
+    {
+      "pin": 16,
+      "name": "PA0-WKUP0",
+      "gpio": 0,
+      "type": "I/O",
+      "functions": [
+        "GPIO0",
+        "UART0_TX",
+        "UART1_CTS",
+        "SPI0_MOSI",
+        "TIMER1_CH0",
+        "TIMER1_ETI",
+        "TIMER0_ETI",
+        "WKUP0",
+        "RTC_TAMP1",
+        "ADC0_CH0"
+      ]
+    },
+    {
+      "pin": 17,
+      "name": "PA1",
+      "gpio": 1,
+      "type": "I/O",
+      "functions": [
+        "GPIO1",
+        "UART0_RX",
+        "UART1_RTS",
+        "SPI0_MISO",
+        "TIMER1_CH1",
+        "ADC0_CH1"
+      ]
+    },
+    {
+      "pin": 18,
+      "name": "PA2",
+      "gpio": 2,
+      "type": "I/O",
+      "functions": [
+        "GPIO2",
+        "UART0_CTS",
+        "UART1_TX",
+        "I2C0_SCL",
+        "SPI0_SCK",
+        "TIMER1_CH2",
+        "TIMER0_CH0",
+        "ADC0_CH2"
+      ]
+    },
+    {
+      "pin": 19,
+      "name": "PA3",
+      "gpio": 3,
+      "type": "I/O",
+      "functions": [
+        "GPIO3",
+        "UART0_RTS",
+        "UART1_RX",
+        "I2C0_SDA",
+        "SPI0_CSN",
+        "TIMER1_CH3",
+        "TIMER0_CH0_ON",
+        "RTC_OUT",
+        "ADC0_CH3"
+      ]
+    },
+    {
+      "pin": 20,
+      "name": "PA4",
+      "gpio": 4,
+      "type": "I/O",
+      "functions": [
+        "GPIO4",
+        "UART1_TX",
+        "SPI0_MOSI",
+        "SPI0_CSN",
+        "QSPI0_SCK",
+        "TIMER0_CH1",
+        "ADC0_CH4"
+      ]
+    },
+    {
+      "pin": 21,
+      "name": "PA5",
+      "gpio": 5,
+      "type": "I/O",
+      "functions": [
+        "GPIO5",
+        "UART1_RX",
+        "SPI0_MISO",
+        "SPI0_SCK",
+        "QSPI0_CS",
+        "TIMER2_ETI",
+        "TIMER0_CH1_ON",
+        "ADC0_CH5"
+      ]
+    },
+    {
+      "pin": 22,
+      "name": "PA6",
+      "gpio": 6,
+      "type": "I/O",
+      "functions": [
+        "GPIO6",
+        "UART2_TX",
+        "I2C1_SCL",
+        "SPI0_MISO",
+        "SPI0_SCK",
+        "QSPI0_IO0",
+        "TIMER2_CH0",
+        "TIMER0_CH1",
+        "TIMER1_CH1",
+        "ADC0_CH6"
+      ]
+    },
+    {
+      "pin": 23,
+      "name": "PA7-WKUP2",
+      "gpio": 7,
+      "type": "I/O",
+      "functions": [
+        "GPIO7",
+        "UART2_RX",
+        "I2C1_SDA",
+        "SPI0_CSN",
+        "SPI0_MOSI",
+        "QSPI0_IO1",
+        "TIMER2_CH1",
+        "TIMER0_CH0_ON",
+        "TIMER0_CH1_ON",
+        "TIMER1_CH2",
+        "WKUP2",
+        "ADC0_CH7"
+      ]
+    },
+    {
+      "pin": 24,
+      "name": "PB0",
+      "gpio": 16,
+      "type": "I/O",
+      "functions": [
+        "GPIO16",
+        "UART1_TX",
+        "UART2_CTS",
+        "I2C0_SCL",
+        "TIMER0_CH0",
+        "TIMER0_CH1_ON",
+        "TIMER0_CH2",
+        "TIMER0_BRKIN",
+        "TIMER2_ETI",
+        "TIMER16_CH0",
+        "ADC0_CH8"
+      ]
+    },
+    {
+      "pin": 25,
+      "name": "PB1",
+      "gpio": 17,
+      "type": "I/O",
+      "functions": [
+        "GPIO17",
+        "UART1_RX",
+        "UART2_RTS",
+        "I2C0_SDA",
+        "TIMER0_CH0_ON",
+        "TIMER0_CH2_ON",
+        "TIMER2_CH2",
+        "TIMER16_CH0_ON",
+        "BOOT1"
+      ]
+    },
+    {
+      "pin": 26,
+      "name": "PB2",
+      "gpio": 18,
+      "type": "I/O",
+      "functions": [
+        "GPIO18",
+        "UART1_CTS",
+        "TIMER1_CH3",
+        "TIMER2_CH3",
+        "TIMER0_ETI",
+        "TIMER16_BRKIN"
+      ]
+    },
+    {
+      "pin": 27,
+      "name": "PB11",
+      "gpio": 21,
+      "type": "I/O",
+      "functions": [
+        "GPIO21",
+        "UART1_RTS",
+        "CLK_OUT1",
+        "TIMER1_CH2",
+        "TIMER0_CH1_ON",
+        "TIMER15_BRKIN"
+      ]
+    },
+    {
+      "pin": 28,
+      "name": "PB12",
+      "gpio": 22,
+      "type": "I/O",
+      "functions": [
+        "GPIO22",
+        "I2C1_SCL",
+        "TIMER0_CH3",
+        "TIMER0_BRKIN",
+        "TIMER1_CH2"
+      ]
+    },
+    {
+      "pin": 29,
+      "name": "PB13",
+      "gpio": 23,
+      "type": "I/O",
+      "functions": [
+        "GPIO23",
+        "I2C1_SDA",
+        "TIMER0_CH0_ON",
+        "TIMER1_CH3",
+        "TIMER15_CH0"
+      ]
+    },
+    {
+      "pin": 30,
+      "name": "PB15",
+      "gpio": 24,
+      "type": "I/O",
+      "functions": [
+        "GPIO24",
+        "UART0_TX",
+        "UART1_TX",
+        "I2C0_SCL",
+        "I2C1_SCL",
+        "TIMER2_CH0",
+        "TIMER0_CH2_ON",
+        "RTC_REFIN",
+        "IFRP_OUT"
+      ]
+    },
+    {
+      "pin": 31,
+      "name": "PA8",
+      "gpio": 8,
+      "type": "I/O",
+      "functions": [
+        "GPIO8",
+        "UART0_RX",
+        "UART0_CK",
+        "UART1_RX",
+        "I2C0_SDA",
+        "I2C1_SDA",
+        "CLK_OUT0",
+        "TIMER0_CH0",
+        "TIMER0_CH2_ON",
+        "TIMER15_CH0",
+        "RTC_OUT"
+      ]
+    },
+    {
+      "pin": 32,
+      "name": "PA9",
+      "gpio": 9,
+      "type": "I/O",
+      "functions": [
+        "GPIO9",
+        "UART0_TX",
+        "SPI0_MOSI",
+        "QSPI0_SCK",
+        "TIMER0_CH1",
+        "TIMER15_CH0_ON"
+      ]
+    },
+    {
+      "pin": 33,
+      "name": "PA10",
+      "gpio": 10,
+      "type": "I/O",
+      "functions": [
+        "GPIO10",
+        "UART0_RX",
+        "SPI0_MISO",
+        "QSPI0_CS",
+        "TIMER0_CH2",
+        "TIMER16_CH0"
+      ]
+    },
+    {
+      "pin": 34,
+      "name": "PA11",
+      "gpio": 11,
+      "type": "I/O",
+      "functions": [
+        "GPIO11",
+        "SPI0_SCK",
+        "QSPI0_IO0",
+        "TIMER0_CH3",
+        "TIMER1_CH3",
+        "TIMER16_BRKIN"
+      ]
+    },
+    {
+      "pin": 35,
+      "name": "PA12-WKUP3",
+      "gpio": 12,
+      "type": "I/O",
+      "functions": [
+        "GPIO12",
+        "UART0_CK",
+        "SPI0_CSN",
+        "QSPI0_IO1",
+        "TIMER0_CH3",
+        "TIMER0_ETI",
+        "TIMER1_CH2",
+        "TIMER16_CH0_ON",
+        "WKUP3"
+      ]
+    },
+    {
+      "pin": 36,
+      "name": "PB3",
+      "gpio": 19,
+      "type": "I/O",
+      "functions": [
+        "GPIO19",
+        "JTDO",
+        "UART0_RX",
+        "UART1_TX",
+        "QSPI0_IO2",
+        "TIMER1_CH1",
+        "TIMER15_BRKIN"
+      ]
+    },
+    {
+      "pin": 37,
+      "name": "PB4",
+      "gpio": 20,
+      "type": "I/O",
+      "functions": [
+        "GPIO20",
+        "NJTRST",
+        "UART0_TX",
+        "UART1_RX",
+        "QSPI0_IO3",
+        "TIMER1_CH0",
+        "TIMER1_ETI"
+      ]
+    },
+    {
+      "pin": 38,
+      "name": "PA13",
+      "gpio": 13,
+      "type": "I/O",
+      "functions": [
+        "GPIO13",
+        "JTMS",
+        "UART0_CTS",
+        "UART1_CTS",
+        "I2C0_SMBA",
+        "I2C1_SCL"
+      ]
+    },
+    {
+      "pin": 39,
+      "name": "PA14",
+      "gpio": 14,
+      "type": "I/O",
+      "functions": [
+        "GPIO14",
+        "JTCK",
+        "UART0_RTS",
+        "UART1_RTS",
+        "I2C1_SMBA",
+        "I2C1_SDA"
+      ]
+    },
+    {
+      "pin": 40,
+      "name": "VDD",
+      "gpio": null,
+      "type": "P",
+      "functions": [
+        "VDD"
+      ]
+    }
+  ],
+  "id": "gd32vw553"
+}
