@@ -33,3 +33,10 @@ TuyaOpen/
 
 # Local reference code (not part of the site)
 reference_code/
+
+# Dev-board catalog — generated from external/tuyaopen-ide-manifests submodule
+# by scripts/sync-dev-boards.js (runs via the build/start/deploy scripts). The
+# submodule is the source of truth; these artifacts are rebuilt locally and in CI.
+src/data/devBoards.js
+/static/dev-boards-data/
+/static/img/boards/

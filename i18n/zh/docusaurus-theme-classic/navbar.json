@@ -55,6 +55,10 @@
     "message": "博客",
     "description": "Navbar item with label Blog"
   },
+  "item.label.Dev Boards": {
+    "message": "开发板",
+    "description": "Navbar item with label Dev Boards"
+  },
   "item.label.Projects": {
     "message": "项目",
     "description": "Navbar item with label Projects"

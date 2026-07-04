@@ -162,6 +162,7 @@ const config = {
           position: 'left',
           items: [
             { label: 'Projects', to: '/learn?cat=community' },
+            { label: 'Dev Boards', to: '/dev-boards' },
             { label: 'Blog', to: 'blog' },
             {
               label: 'Event Registration',
