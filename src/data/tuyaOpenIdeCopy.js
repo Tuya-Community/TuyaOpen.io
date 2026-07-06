@@ -91,12 +91,12 @@ export const tuyaOpenIdeCopy = {
       titlePrefix: 'Build Hardware with ',
       titleHighlight: 'TuyaOpen IDE',
       subtitle:
-        'The full-stack hardware development tool for the AI era — from project creation to device firmware, cloud Agent, and App development. Three in one. Vibe Coding Your Way.',
+        'The full-stack hardware development tool for the AI era — from project creation to device firmware, cloud agent, and app development. Three surfaces, one workflow. Vibe Coding Your Way.',
       ctaPrimary: 'Install Extension',
       earlyPreview: '✨ Early Preview',
       ctaSecondary: 'View on GitHub',
       screenshotAlt: 'IDE Main Interface',
-      floatBuild: 'Vibe Coding Working',
+      floatBuild: 'Vibe Coding in progress',
       floatFlash: 'Device IO Context Synced',
       floatConnected: 'AI Build Passed',
     },
@@ -111,13 +111,13 @@ export const tuyaOpenIdeCopy = {
           icons: ['vscode', 'cursor'],
         },
         {
-          title: 'Use Any Coding Agent You Know and Love',
-          desc: 'Pair with any coding agent — Claude Code, Codex, or your own. Hardware context flows into the agent so it understands your board, peripherals, and SDK. Vibe-code your next device.',
+          title: 'Pair With Any Coding Agent',
+          desc: 'Pair TuyaOpen IDE with any coding agent — Claude Code, Codex, or your own. Hardware context flows straight into the agent, so it understands your board, peripherals, and SDK. Vibe-code your next device.',
           image: 'coding-agent',
         },
         {
-          title: 'App/Cloud/HW in One',
-          desc: "AI-Coding Driven Development — the world's first tool unifying device firmware, cloud AI Agent, and App panel in one workflow. From hardware networking to production-ready product, fully automated.",
+          title: 'Firmware, Cloud & App in One',
+          desc: 'AI-coding-driven development — the first tool to unify device firmware, cloud AI agents, and app panels in a single workflow. From hardware bring-up to a production-ready product, fully automated.',
           image: '3-plat-dev',
         },
       ],
@@ -178,27 +178,27 @@ export const tuyaOpenIdeCopy = {
         {
           label: 'Hardware IDE for the AI Productivity Era',
           detail:
-            'A development environment built for AI Agents — structured hardware context, cloud capability descriptions, and AI-operable device abstractions that let agents truly understand and drive the entire hardware development workflow.',
+            'A development environment built for AI agents — structured hardware context, cloud capability descriptions, and agent-operable device abstractions that let agents genuinely understand and drive the entire hardware development workflow.',
         },
         {
           label: 'AI-Native Project Creation',
           detail:
-            'Describe your product idea in natural language. The IDE auto-generates multi-platform project structures and AI-readable metadata, letting agents take over development immediately.',
+            'Describe your product idea in natural language. The IDE auto-generates multi-platform project structures and AI-readable metadata, so agents can take over development immediately.',
         },
         {
           label: 'Vibe Coding Across Three Platforms',
           detail:
-            'Built-in AI chat panel that routes prompts to Cursor / VS Code Chat with one click, covering firmware, panel, and cloud development surfaces.',
+            'A built-in AI chat panel that routes prompts to Cursor or VS Code Chat with one click — covering firmware, panels, and the cloud in a single workspace.',
         },
         {
           label: 'Vibe Coding Skills Library',
           detail:
-            'Pre-built AI coding skills for embedded, cloud, and mini-app development. One-click install into your project, empowering AI Agents to deeply participate in development.',
+            'Pre-built AI coding skills for embedded, cloud, and mini-app development. Install them into your project with one click to let AI agents take an active role throughout development.',
         },
         {
           label: 'PlatformIO Ecosystem Integration',
           detail:
-            'Search and install third-party drivers and sensor libraries. Auto-generate dependency configs and guide AI through CMake integration.',
+            'Search and install third-party drivers and sensor libraries. Dependency configs are generated automatically, and the agent is guided through CMake integration.',
         },
       ],
     },
@@ -215,7 +215,7 @@ export const tuyaOpenIdeCopy = {
         {
           icon: 'Pin Mapping',
           title: 'AI Pin Mapping',
-          desc: 'AI aware pin-usage and pin mapping, integrating new hardware at your command.',
+          desc: 'AI-aware pin usage and pin mapping — integrate new hardware on command.',
         },
         {
           icon: 'Demo Library',
@@ -230,12 +230,12 @@ export const tuyaOpenIdeCopy = {
         {
           icon: 'SDK Management',
           title: 'SDK Management',
-          desc: 'Auto-clone, update, and environment bootstrap for TuyaOpen SDK.',
+          desc: 'Automatically clone, update, and bootstrap the environment for the TuyaOpen SDK.',
         },
         {
           icon: 'Device Tooling',
           title: 'Device Tooling',
-          desc: 'Flash firmware, monitor serial, and manage device connections.',
+          desc: 'Flash firmware, monitor serial output, and manage device connections.',
         },
       ],
     },
@@ -256,7 +256,7 @@ export const tuyaOpenIdeCopy = {
         'Multi-platform support: T2, T3, T5, ESP32, Raspberry Pi 4/5 and more',
         'Modular component design: networking, security, OTA, peripherals',
         'Cloud-agnostic connectivity with Tuya IoT Core integration',
-        'AI Agent and APP capabilities — rapid integration out of the box',
+        'AI agent and app capabilities — rapid integration out of the box',
         'Open source with Apache 2.0 license — fully auditable',
       ],
       architectureAlt: 'TuyaOpen SDK Architecture Overview',
@@ -335,7 +335,7 @@ export const tuyaOpenIdeCopy = {
       bodyBefore: 'Built-in ',
       bodyHighlight: 'SDK expert skills, hardware context & workflows',
       bodyAfter:
-        '—a hardware ReAct Loop of Coding→Build→Debug→Coding, fully hardware-in-the-loop, so shipping connected AI devices is faster and easier.',
+        '— a hardware ReAct loop of code → build → debug → code, fully hardware-in-the-loop, so shipping connected AI devices is faster and easier.',
       consoleTitle: 'VibeCoding agent',
       devSkillsCopyText: 'Install the TuyaOpen Dev Skills from https://github.com/tuya/TuyaOpen-dev-skills',
       devSkillsToolsHint:
@@ -355,7 +355,7 @@ export const tuyaOpenIdeCopy = {
       hilTerminalUserLabel: 'User',
       hilTerminalAgentLabel: 'Agent>',
       hilTerminalSequence: [
-        { kind: 'user', delayBefore: 480, text: 'Create a TuyaCloud IoT connected humidity sensor.' },
+        { kind: 'user', delayBefore: 480, text: 'Create a TuyaCloud-connected IoT humidity sensor.' },
         { kind: 'agent', delayBefore: 820, text: 'Initializing VibeCoding AI...' },
         {
           kind: 'log',
@@ -444,7 +444,7 @@ export const tuyaOpenIdeCopy = {
           text: 'Writing credentials: product_id=3FB2XXZ1, uuid=b1994432...',
         },
         { kind: 'log', delayBefore: 55, tag: 'AUTH', tone: 'purple', text: '✓ Device Authenticated' },
-        { kind: 'agent', delayBefore: 820, text: 'Start Monitor, Debug Output' },
+        { kind: 'agent', delayBefore: 820, text: 'Start monitor and debug output' },
         {
           kind: 'log',
           delayBefore: 120,
@@ -549,17 +549,17 @@ export const tuyaOpenIdeCopy = {
         {
           num: '01',
           title: 'New Project, build, and flash',
-          body: 'VibeCoding narrows SDK and peripherals, forks a template, wires DP and CLI hooks, then compiles and flashes a binary to hardware—the create, build, and flash lane in the demo.',
+          body: 'VibeCoding narrows down the SDK and peripherals, forks a template, wires up DP and CLI hooks, then compiles and flashes a binary to hardware — the create, build, and flash lane shown in the demo.',
         },
         {
           num: '02',
           title: 'Authenticate and connect',
-          body: 'Provision device identity, open the monitor stream, attach Wi-Fi, bind to Tuya Cloud, and push DP telemetry—the auth credentials and live cloud path you see in the log.',
+          body: 'Provision device identity, open the monitor stream, attach Wi-Fi, bind to Tuya Cloud, and push DP telemetry — the auth credentials and live cloud path you see in the log.',
         },
         {
           num: '03',
           title: 'Debug and CLI test',
-          body: 'Read UART, I2C, and sensor output in real time, then inject hardware CLI commands to force reads and connectivity checks—debugging plus scripted hardware tests on the board.',
+          body: 'Read UART, I2C, and sensor output in real time, then inject hardware CLI commands to force reads and connectivity checks — debugging plus scripted hardware tests on the board.',
         },
       ],
     },
