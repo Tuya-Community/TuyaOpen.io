@@ -102,7 +102,7 @@ export const tutorials = {
       id: 'tyutool-guide',
       category: 'basics',
       kind: 'interactive',
-      href: '/tools/tyutool-guide',
+      href: '/tyutool-guide',
       title: 'tyutool — flashing & authorization guide',
       description:
         'Install tyutool, flash your first board, authorize it for Tuya IoT, and fix common hiccups (GUI + CLI).',
@@ -195,7 +195,8 @@ export const tutorials = {
       kind: 'markdown',
       href: '/learn/otto-ninja-open-source-robot',
       title: 'Otto Ninja — Open-Source Dual-Mode Robot',
-      description: 'Build a 3D-printed robot that walks and races on wheels, driven by TuyaOpen with voice control and a GC9D01 display.',
+      description:
+        'Build a 3D-printed robot that walks and races on wheels, driven by TuyaOpen with voice control and a GC9D01 display.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/402dea40-bf93-43ae-ab9a-e502233e8604.png',
       meta: ['Maker', 'Robotics'],
     },
@@ -205,7 +206,8 @@ export const tutorials = {
       kind: 'markdown',
       href: '/learn/t5-pocket',
       title: 'T5-Pocket — Your AI+IoT Companion',
-      description: 'Carry a pocket-sized AI+IoT host running TuyaOpen: multimodal chat, audio/video, and a virtual pet.',
+      description:
+        'Carry a pocket-sized AI+IoT host running TuyaOpen: multimodal chat, audio/video, and a virtual pet.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/0f9616de-e94e-49af-ac0b-a6842296e1db.png',
       meta: ['Maker', 'AI + IoT'],
     },
@@ -245,7 +247,8 @@ export const tutorials = {
       kind: 'markdown',
       href: '/learn/lvgl-font-change-tutorial',
       title: 'Custom Fonts in LVGL',
-      description: 'Set local and global fonts in LVGL, change the default, and add custom icon glyphs for embedded UIs.',
+      description:
+        'Set local and global fonts in LVGL, change the default, and add custom icon glyphs for embedded UIs.',
       image: 'https://images.tuyacn.com/fe-static/docs/img/3cff6dfb-ccff-4fde-8386-78babc9578b3.png',
       meta: ['Intermediate', 'UI'],
     },
@@ -305,7 +308,7 @@ export const tutorials = {
       kind: 'markdown',
       href: '/learn/rdk-x5',
       title: 'TuyaOpen on RDK-X5',
-      description: 'Run TuyaOpen\'s multimodal agent on RDK-X5\'s local NPU for edge AI + IoT.',
+      description: "Run TuyaOpen's multimodal agent on RDK-X5's local NPU for edge AI + IoT.",
       image: 'https://images.tuyacn.com/fe-static/docs/img/7a0fcb92-b721-4f38-8b32-3cb84aca785e.jpg',
       meta: ['Advanced', 'Edge AI'],
     },
@@ -338,8 +341,10 @@ export const tutorials = {
         { label: 'Source', href: 'https://github.com/Eilgnaw/openclaw_pet' },
       ],
       title: 'OpenClaw Desktop Pet',
-      description: 'Pixel side-scroller on an embedded device whose characters react to OpenClaw server status over TCP/MQTT. — by 王劣劣',
-      image: 'https://images.tuyacn.com/rms-static/c3f19730-54e5-11f1-8d53-258e63d3fe0e-1779348123683.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_9ce2f097-cba5-4072-b3c7-ed4de3f25c78.png',
+      description:
+        'Pixel side-scroller on an embedded device whose characters react to OpenClaw server status over TCP/MQTT. — by 王劣劣',
+      image:
+        'https://images.tuyacn.com/rms-static/c3f19730-54e5-11f1-8d53-258e63d3fe0e-1779348123683.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_9ce2f097-cba5-4072-b3c7-ed4de3f25c78.png',
     },
     {
       id: 'verdure-buddy',
@@ -351,7 +356,8 @@ export const tutorials = {
       ],
       title: 'Verdure Buddy Desktop Ornament',
       description: 'A desktop ornament on the Tuya T5 board running a full DuckyClaw. — by 绿荫阿广',
-      image: 'https://images.tuyacn.com/rms-static/85d7a6f0-54e6-11f1-95db-cfd3b8132c07-1779348448991.png?tyName=%E6%88%AA%E5%B1%8F2026-05-21%2015.27.10.png',
+      image:
+        'https://images.tuyacn.com/rms-static/85d7a6f0-54e6-11f1-95db-cfd3b8132c07-1779348448991.png?tyName=%E6%88%AA%E5%B1%8F2026-05-21%2015.27.10.png',
     },
     {
       id: 'win95-t5-demo',
@@ -363,18 +369,24 @@ export const tutorials = {
       ],
       title: 'Win95-style OS on T5',
       description: 'A Windows 95-style embedded desktop simulator on the TuyaOpen T5 AI board. — by 福杰',
-      image: 'https://images.tuyacn.com/rms-static/37772610-54e7-11f1-95db-cfd3b8132c07-1779348746993.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_2568bbea-5e60-4415-8f08-8f6314289f49.png',
+      image:
+        'https://images.tuyacn.com/rms-static/37772610-54e7-11f1-95db-cfd3b8132c07-1779348746993.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_2568bbea-5e60-4415-8f08-8f6314289f49.png',
     },
     {
       id: 'work-buddy-assistant',
       category: 'community',
       kind: 'external',
       links: [
-        { label: 'Source', href: 'https://mp.weixin.qq.com/s?__biz=MzY5ODI3MDk1NA==&mid=2247483692&idx=1&sn=88350412b920f3c523abb8cea137880c&chksm=f5600cfe0aadb5e0ed4b0cc61bbaef9bcbff0087492f6ed05ae93178360a199f58c93154092c&scene=90&subscene=93#rd' },
+        {
+          label: 'Source',
+          href: 'https://mp.weixin.qq.com/s?__biz=MzY5ODI3MDk1NA==&mid=2247483692&idx=1&sn=88350412b920f3c523abb8cea137880c&chksm=f5600cfe0aadb5e0ed4b0cc61bbaef9bcbff0087492f6ed05ae93178360a199f58c93154092c&scene=90&subscene=93#rd',
+        },
       ],
       title: 'Work Buddy Desktop Assistant',
-      description: 'A desktop assistant on a Tuya AI board with screen, mic, speaker, and camera, backed by the Tuya Cloud. — by 陈瑞',
-      image: 'https://images.tuyacn.com/rms-static/b35ea960-54e7-11f1-8d53-258e63d3fe0e-1779348954870.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_5b6bb0db-5bf1-4032-96ec-e3b36bfbd8f7.png',
+      description:
+        'A desktop assistant on a Tuya AI board with screen, mic, speaker, and camera, backed by the Tuya Cloud. — by 陈瑞',
+      image:
+        'https://images.tuyacn.com/rms-static/b35ea960-54e7-11f1-8d53-258e63d3fe0e-1779348954870.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_5b6bb0db-5bf1-4032-96ec-e3b36bfbd8f7.png',
     },
     {
       id: 'duckyclaw-smart-car',
@@ -385,42 +397,49 @@ export const tutorials = {
         { label: 'Source', href: 'https://github.com/jiaxianhua/DuckyClaw' },
       ],
       title: 'DuckyClaw Voice-Controlled Smart Car',
-      description: 'Voice-control an ESP32 smart car from a Tuya T5 AI board — the AI parses natural language and sends HTTP commands to drive. — by 贾献华',
-      image: 'https://images.tuyacn.com/rms-static/2bdcc2f0-54e8-11f1-95db-cfd3b8132c07-1779349157023.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_61412cf2-a4d6-4b77-8561-f0cafd552602.png',
+      description:
+        'Voice-control an ESP32 smart car from a Tuya T5 AI board — the AI parses natural language and sends HTTP commands to drive. — by 贾献华',
+      image:
+        'https://images.tuyacn.com/rms-static/2bdcc2f0-54e8-11f1-95db-cfd3b8132c07-1779349157023.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_61412cf2-a4d6-4b77-8561-f0cafd552602.png',
     },
     {
       id: 'zodiac-eink-screen',
       category: 'community',
       kind: 'external',
-      links: [
-        { label: 'Source', href: 'https://github.com/HonestQiao/e-Paper-Album' },
-      ],
+      links: [{ label: 'Source', href: 'https://github.com/HonestQiao/e-Paper-Album' }],
       title: 'Zodiac E-Paper Screen',
-      description: 'A 4-inch E6 color e-paper display on Tuya T5AI hardware that generates zodiac imagery with AI. — by 乔楚',
-      image: 'https://images.tuyacn.com/rms-static/cd439f10-1d0c-11f1-95db-cfd3b8132c07-1773207624577.png?tyName=%E6%88%AA%E5%B1%8F2026-03-11%2013.38.47.png',
+      description:
+        'A 4-inch E6 color e-paper display on Tuya T5AI hardware that generates zodiac imagery with AI. — by 乔楚',
+      image:
+        'https://images.tuyacn.com/rms-static/cd439f10-1d0c-11f1-95db-cfd3b8132c07-1773207624577.png?tyName=%E6%88%AA%E5%B1%8F2026-03-11%2013.38.47.png',
     },
     {
       id: 't5-e-paper-reader',
       category: 'community',
       kind: 'external',
       links: [
-        { label: 'Details', href: 'https://mp.weixin.qq.com/s/gYr4v2M-IWmP05P7OQH0tw?mpshare=1&scene=1&srcid=0211OnlTf2MrYGk7lPBPuJcI&sharer_shareinfo=48d1e0aa58f476e0ee5ca59dd7031c52&sharer_shareinfo_first=d2b6d45d7ea466fe4d57441576254e8d&version=4.1.33.70494&platform=mac#rd' },
+        {
+          label: 'Details',
+          href: 'https://mp.weixin.qq.com/s/gYr4v2M-IWmP05P7OQH0tw?mpshare=1&scene=1&srcid=0211OnlTf2MrYGk7lPBPuJcI&sharer_shareinfo=48d1e0aa58f476e0ee5ca59dd7031c52&sharer_shareinfo_first=d2b6d45d7ea466fe4d57441576254e8d&version=4.1.33.70494&platform=mac#rd',
+        },
         { label: 'Source', href: 'https://github.com/jiaxianhua/Tuya_T5_ePaper_Reader/blob/main/docs/WIKI.md' },
       ],
       title: 'E-Paper Reader on T5AI-Board',
-      description: 'An e-paper reader with SD-card browsing, text/image viewing, orientation switch, and NTP — paper-like static display. — by 贾献华',
-      image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=e-paper%20reader%20device%20with%20T5AI-Board%20text%20on%20screen&image_size=square',
+      description:
+        'An e-paper reader with SD-card browsing, text/image viewing, orientation switch, and NTP — paper-like static display. — by 贾献华',
+      image:
+        'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=e-paper%20reader%20device%20with%20T5AI-Board%20text%20on%20screen&image_size=square',
     },
     {
       id: 't5-ported-games',
       category: 'community',
       kind: 'external',
-      links: [
-        { label: 'Source', href: 'https://github.com/HangYongmao/lvgl_games' },
-      ],
+      links: [{ label: 'Source', href: 'https://github.com/HangYongmao/lvgl_games' }],
       title: 'Ported Games on T5AI-Board',
-      description: 'Five classic games (Plants vs Zombies, 2048, etc.) ported to the Tuya T5AI-Board with LVGL touch interaction. — by 大树',
-      image: 'https://images.tuyacn.com/rms-static/137fb440-1d0e-11f1-bc69-dd9d99b0210c-1773208171908.png?tyName=%E6%B8%B8%E6%88%8F%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_f8c773df-3b23-479b-95a3-9538556e5fa4.png',
+      description:
+        'Five classic games (Plants vs Zombies, 2048, etc.) ported to the Tuya T5AI-Board with LVGL touch interaction. — by 大树',
+      image:
+        'https://images.tuyacn.com/rms-static/137fb440-1d0e-11f1-bc69-dd9d99b0210c-1773208171908.png?tyName=%E6%B8%B8%E6%88%8F%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_f8c773df-3b23-479b-95a3-9538556e5fa4.png',
     },
   ],
 
@@ -429,7 +448,7 @@ export const tutorials = {
       id: 'tyutool-guide',
       category: 'basics',
       kind: 'interactive',
-      href: '/tools/tyutool-guide',
+      href: '/tyutool-guide',
       title: 'tyutool —— 烧录与授权指南',
       description: '安装 tyutool、烧录第一块板子、为涂鸦 IoT 授权，并解决常见问题（GUI + CLI）。',
       tags: ['flashing', 'cli'],
@@ -658,8 +677,10 @@ export const tutorials = {
         { label: '代码', href: 'https://github.com/Eilgnaw/openclaw_pet' },
       ],
       title: '桌面宠物',
-      description: '像素风格横版游戏运行于嵌入式设备，通过 TCP/MQTT 接收 OpenClaw 服务器工作状态，驱动小动物做出对应动作。 —— 开发者：王劣劣',
-      image: 'https://images.tuyacn.com/rms-static/c3f19730-54e5-11f1-8d53-258e63d3fe0e-1779348123683.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_9ce2f097-cba5-4072-b3c7-ed4de3f25c78.png',
+      description:
+        '像素风格横版游戏运行于嵌入式设备，通过 TCP/MQTT 接收 OpenClaw 服务器工作状态，驱动小动物做出对应动作。 —— 开发者：王劣劣',
+      image:
+        'https://images.tuyacn.com/rms-static/c3f19730-54e5-11f1-8d53-258e63d3fe0e-1779348123683.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_9ce2f097-cba5-4072-b3c7-ed4de3f25c78.png',
     },
     {
       id: 'verdure-buddy',
@@ -671,7 +692,8 @@ export const tutorials = {
       ],
       title: '绿荫伴伴桌面助手',
       description: '基于涂鸦 T5 开发板的精致桌面摆件，里面完整运行了一个 DuckyClaw。 —— 开发者：绿荫阿广',
-      image: 'https://images.tuyacn.com/rms-static/85d7a6f0-54e6-11f1-95db-cfd3b8132c07-1779348448991.png?tyName=%E6%88%AA%E5%B1%8F2026-05-21%2015.27.10.png',
+      image:
+        'https://images.tuyacn.com/rms-static/85d7a6f0-54e6-11f1-95db-cfd3b8132c07-1779348448991.png?tyName=%E6%88%AA%E5%B1%8F2026-05-21%2015.27.10.png',
     },
     {
       id: 'win95-t5-demo',
@@ -683,18 +705,23 @@ export const tutorials = {
       ],
       title: '仿 Win95 操作系统的 T5 开发板 Demo',
       description: '运行在 TuyaOpen T5 AI 开发板上的 Windows 95 风格嵌入式桌面模拟器。 —— 开发者：福杰',
-      image: 'https://images.tuyacn.com/rms-static/37772610-54e7-11f1-95db-cfd3b8132c07-1779348746993.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_2568bbea-5e60-4415-8f08-8f6314289f49.png',
+      image:
+        'https://images.tuyacn.com/rms-static/37772610-54e7-11f1-95db-cfd3b8132c07-1779348746993.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_2568bbea-5e60-4415-8f08-8f6314289f49.png',
     },
     {
       id: 'work-buddy-assistant',
       category: 'community',
       kind: 'external',
       links: [
-        { label: '代码', href: 'https://mp.weixin.qq.com/s?__biz=MzY5ODI3MDk1NA==&mid=2247483692&idx=1&sn=88350412b920f3c523abb8cea137880c&chksm=f5600cfe0aadb5e0ed4b0cc61bbaef9bcbff0087492f6ed05ae93178360a199f58c93154092c&scene=90&subscene=93#rd' },
+        {
+          label: '代码',
+          href: 'https://mp.weixin.qq.com/s?__biz=MzY5ODI3MDk1NA==&mid=2247483692&idx=1&sn=88350412b920f3c523abb8cea137880c&chksm=f5600cfe0aadb5e0ed4b0cc61bbaef9bcbff0087492f6ed05ae93178360a199f58c93154092c&scene=90&subscene=93#rd',
+        },
       ],
       title: '上班搭子桌面助手',
       description: '基于涂鸦云平台与带屏、麦克风、扬声器、摄像头的 AI 开发板打造的桌面助手。 —— 开发者：陈瑞',
-      image: 'https://images.tuyacn.com/rms-static/b35ea960-54e7-11f1-8d53-258e63d3fe0e-1779348954870.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_5b6bb0db-5bf1-4032-96ec-e3b36bfbd8f7.png',
+      image:
+        'https://images.tuyacn.com/rms-static/b35ea960-54e7-11f1-8d53-258e63d3fe0e-1779348954870.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_5b6bb0db-5bf1-4032-96ec-e3b36bfbd8f7.png',
     },
     {
       id: 'duckyclaw-smart-car',
@@ -705,42 +732,49 @@ export const tutorials = {
         { label: '代码', href: 'https://github.com/jiaxianhua/DuckyClaw' },
       ],
       title: 'DuckyClaw 端云硬件-智造桌面智能小车搭子',
-      description: '用 TuyaT5AIBoard 通过语音命令控制 ESP32 智能小车 —— AI 助手理解自然语言后下发 HTTP 指令，实现进退转向。 —— 开发者：贾献华',
-      image: 'https://images.tuyacn.com/rms-static/2bdcc2f0-54e8-11f1-95db-cfd3b8132c07-1779349157023.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_61412cf2-a4d6-4b77-8561-f0cafd552602.png',
+      description:
+        '用 TuyaT5AIBoard 通过语音命令控制 ESP32 智能小车 —— AI 助手理解自然语言后下发 HTTP 指令，实现进退转向。 —— 开发者：贾献华',
+      image:
+        'https://images.tuyacn.com/rms-static/2bdcc2f0-54e8-11f1-95db-cfd3b8132c07-1779349157023.png?tyName=%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_61412cf2-a4d6-4b77-8561-f0cafd552602.png',
     },
     {
       id: 'zodiac-eink-screen',
       category: 'community',
       kind: 'external',
-      links: [
-        { label: '代码', href: 'https://github.com/HonestQiao/e-Paper-Album' },
-      ],
+      links: [{ label: '代码', href: 'https://github.com/HonestQiao/e-Paper-Album' }],
       title: '基于涂鸦 T5 的智能生肖墨水屏',
-      description: '涂鸦 T5AI 硬件 + 4 英寸 E6 全彩墨水屏 + AI 图片生成，融合传统生肖文化与现代科技的智能展示设备。 —— 开发者：乔楚',
-      image: 'https://images.tuyacn.com/rms-static/cd439f10-1d0c-11f1-95db-cfd3b8132c07-1773207624577.png?tyName=%E6%88%AA%E5%B1%8F2026-03-11%2013.38.47.png',
+      description:
+        '涂鸦 T5AI 硬件 + 4 英寸 E6 全彩墨水屏 + AI 图片生成，融合传统生肖文化与现代科技的智能展示设备。 —— 开发者：乔楚',
+      image:
+        'https://images.tuyacn.com/rms-static/cd439f10-1d0c-11f1-95db-cfd3b8132c07-1773207624577.png?tyName=%E6%88%AA%E5%B1%8F2026-03-11%2013.38.47.png',
     },
     {
       id: 't5-e-paper-reader',
       category: 'community',
       kind: 'external',
       links: [
-        { label: '详情', href: 'https://mp.weixin.qq.com/s/gYr4v2M-IWmP05P7OQH0tw?mpshare=1&scene=1&srcid=0211OnlTf2MrYGk7lPBPuJcI&sharer_shareinfo=48d1e0aa58f476e0ee5ca59dd7031c52&sharer_shareinfo_first=d2b6d45d7ea466fe4d57441576254e8d&version=4.1.33.70494&platform=mac#rd' },
+        {
+          label: '详情',
+          href: 'https://mp.weixin.qq.com/s/gYr4v2M-IWmP05P7OQH0tw?mpshare=1&scene=1&srcid=0211OnlTf2MrYGk7lPBPuJcI&sharer_shareinfo=48d1e0aa58f476e0ee5ca59dd7031c52&sharer_shareinfo_first=d2b6d45d7ea466fe4d57441576254e8d&version=4.1.33.70494&platform=mac#rd',
+        },
         { label: '代码', href: 'https://github.com/jiaxianhua/Tuya_T5_ePaper_Reader/blob/main/docs/WIKI.md' },
       ],
       title: '基于涂鸦 T5AI-Board 的墨水屏阅读器',
-      description: '支持 SD 卡文件浏览、文本/图片阅读、横竖屏切换及网络时间同步，类纸感静态内容展示。 —— 开发者：贾献华',
-      image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=e-paper%20reader%20device%20with%20T5AI-Board%20text%20on%20screen&image_size=square',
+      description:
+        '支持 SD 卡文件浏览、文本/图片阅读、横竖屏切换及网络时间同步，类纸感静态内容展示。 —— 开发者：贾献华',
+      image:
+        'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=e-paper%20reader%20device%20with%20T5AI-Board%20text%20on%20screen&image_size=square',
     },
     {
       id: 't5-ported-games',
       category: 'community',
       kind: 'external',
-      links: [
-        { label: '代码', href: 'https://github.com/HangYongmao/lvgl_games' },
-      ],
+      links: [{ label: '代码', href: 'https://github.com/HangYongmao/lvgl_games' }],
       title: '基于涂鸦 T5AI 的开发板移植游戏',
-      description: '在涂鸦 T5AI-Board 上移植植物大战僵尸、2048、羊了个羊、消消乐、华容道五款经典游戏，LVGL 实现触摸交互。 —— 开发者：大树',
-      image: 'https://images.tuyacn.com/rms-static/137fb440-1d0e-11f1-bc69-dd9d99b0210c-1773208171908.png?tyName=%E6%B8%B8%E6%88%8F%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_f8c773df-3b23-479b-95a3-9538556e5fa4.png',
+      description:
+        '在涂鸦 T5AI-Board 上移植植物大战僵尸、2048、羊了个羊、消消乐、华容道五款经典游戏，LVGL 实现触摸交互。 —— 开发者：大树',
+      image:
+        'https://images.tuyacn.com/rms-static/137fb440-1d0e-11f1-bc69-dd9d99b0210c-1773208171908.png?tyName=%E6%B8%B8%E6%88%8F%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_f8c773df-3b23-479b-95a3-9538556e5fa4.png',
     },
   ],
 }

@@ -65,7 +65,7 @@ Choose one of the following methods.
 Before you go further, make these preparations:
 
 - Get a [TuyaOpen license](#get-tuyaopen-license).
-- Get [Tuya's universal serial tool](https://www.tuyaopen.ai/tools/tyutool) for firmware flashing, TuyaOpen license writing, serial debugging, and later operations.
+- Get [Tuya's universal serial tool](https://www.tuyaopen.ai/tyutool) for firmware flashing, TuyaOpen license writing, serial debugging, and later operations.
 
 ## Video guidance
 

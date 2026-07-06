@@ -20,7 +20,7 @@ title: 极速体验
 
 ## 固件烧录
 
-使用图形化的 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool) `tyutool_gui` 烧录固件。具体步骤请参考 [GUI - tyutool 图形化工具](../tos-tools/tools-tyutool.md#固件烧录)。
+使用图形化的 [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tyutool) `tyutool_gui` 烧录固件。具体步骤请参考 [GUI - tyutool 图形化工具](../tos-tools/tools-tyutool.md#固件烧录)。
 
 ## 设备授权
 

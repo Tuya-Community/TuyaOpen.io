@@ -245,7 +245,7 @@ const config = {
           items: [
             {
               label: 'TyuTools GUI/CLI',
-              to: '/tools/tyutool',
+              to: '/tyutool',
             },
             {
               label: 'Web Serial Tool',
@@ -443,6 +443,9 @@ const config = {
             ['/docs/hardware/', '/docs/hardware-specific/'],
             ['/docs/cloud/device-ai/', '/docs/applications/tuya.ai/'],
             ['/docs/cloud/iot-client/', '/docs/applications/tuya_cloud/'],
+            // tyutool pages moved off /tools/ (the web-serial tool owns /tools/).
+            // Substring match also covers /tyutool-guide and the /zh/ locale variants.
+            ['/tyutool', '/tools/tyutool'],
           ]
           for (const [neu, old] of moves) {
             const i = existingPath.indexOf(neu)

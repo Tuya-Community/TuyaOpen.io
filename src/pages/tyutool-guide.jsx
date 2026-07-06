@@ -404,7 +404,7 @@ export default function TyutoolGuidePage() {
   const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
   const c = content[locale];
-  const overviewHref = locale === 'zh' ? '/zh/tools/tyutool' : '/tools/tyutool';
+  const overviewHref = locale === 'zh' ? '/zh/tyutool' : '/tyutool';
   const { fromLearn, href: learnHref, label: learnLabel } = useFromLearn();
 
   const [activeId, setActiveId] = useState(c.nav[0].id);

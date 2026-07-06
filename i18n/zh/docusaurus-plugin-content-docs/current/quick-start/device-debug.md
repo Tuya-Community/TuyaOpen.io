@@ -21,7 +21,7 @@ title: 设备调试
 
 从以下串口调试工具中任选其一：
 
-- [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tools/tyutool)：图形化界面，操作简便。
+- [涂鸦通用串口工具](https://www.tuyaopen.ai/zh/tyutool)：图形化界面，操作简便。
 - TuyaOpen `tos` 命令行工具：命令行方式，调试选项灵活。
 - 第三方工具：SSCOM、MobaXterm、PuTTY 等。
 

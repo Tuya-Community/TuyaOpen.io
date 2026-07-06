@@ -73,7 +73,7 @@ export const tuyaOpenIdeCopy = {
               icon: 'terminal',
               title: 'TyuTools GUI/CLI',
               subtitle: 'Universal serial & flashing toolkit',
-              href: '/tools/tyutool',
+              href: '/tyutool',
             },
             {
               icon: 'web',
@@ -638,7 +638,7 @@ export const tuyaOpenIdeCopy = {
               icon: 'terminal',
               title: 'TyuTools GUI/CLI',
               subtitle: '通用串口烧录工具集',
-              href: '/tools/tyutool',
+              href: '/tyutool',
             },
             {
               icon: 'web',

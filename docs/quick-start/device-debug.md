@@ -21,7 +21,7 @@ Before you begin, get the following ready.
 
 Choose one of the following serial debugging tools:
 
-- [Tuya's universal serial tool](https://www.tuyaopen.ai/zh/tools/tyutool): graphical interface, easy to operate.
+- [Tuya's universal serial tool](https://www.tuyaopen.ai/zh/tyutool): graphical interface, easy to operate.
 - TuyaOpen `tos` command-line tool: command-line based, flexible options.
 - Third-party tools: SSCOM, MobaXterm, PuTTY, and more.
 

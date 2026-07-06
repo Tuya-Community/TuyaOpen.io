@@ -164,7 +164,7 @@ export default function UsingLicenseKey() {
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
   const c = content[locale];
   const pricingHref = locale === 'zh' ? '/zh/pricing' : '/pricing';
-  const tyutoolHref = locale === 'zh' ? '/zh/tools/tyutool-guide' : '/tools/tyutool-guide';
+  const tyutoolHref = locale === 'zh' ? '/zh/tyutool-guide' : '/tyutool-guide';
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>

@@ -20,7 +20,7 @@ Select the chip and application that match your board from the [TuyaOpen applica
 
 ## Flash firmware
 
-Flash the firmware with the graphical [Tuya universal serial tool](https://www.tuyaopen.ai/tools/tyutool), `tyutool_gui`. For step-by-step instructions, see [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#firmware-flashing).
+Flash the firmware with the graphical [Tuya universal serial tool](https://www.tuyaopen.ai/tyutool), `tyutool_gui`. For step-by-step instructions, see [GUI - tyutool Graphical Tool](../tos-tools/tools-tyutool.md#firmware-flashing).
 
 ## Authorize the device
 

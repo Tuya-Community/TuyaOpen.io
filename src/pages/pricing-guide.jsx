@@ -182,7 +182,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
         { label: 'Equipment authorization (serial & header methods)', href: '/docs/quick-start/equipment-authorization' },
         { label: 'Get a developer license (claim free codes)', href: '/docs/faqs/get-developer-license' },
         { label: 'Authorization & license FAQ', href: '/docs/faqs' },
-        { label: 'tyutool flashing & authorization tool', href: '/tools/tyutool' },
+        { label: 'tyutool flashing & authorization tool', href: '/tyutool' },
       ],
       contactNote: 'For enterprise, volume, or custom pricing, contact',
     },
@@ -355,7 +355,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
         { label: '设备授权（串口与头文件方式）', href: '/docs/quick-start/equipment-authorization' },
         { label: '获取开发者授权（领取免费码）', href: '/docs/faqs/get-developer-license' },
         { label: '授权与许可常见问题', href: '/docs/faqs' },
-        { label: 'tyutool 烧录与授权工具', href: '/tools/tyutool' },
+        { label: 'tyutool 烧录与授权工具', href: '/tyutool' },
       ],
       contactNote: '企业、批量或定制价格，请联系',
     },
@@ -524,7 +524,7 @@ export default function PricingGuide() {
                     <p>{m.body}</p>
                     {m.code && <Code>{m.code}</Code>}
                     {m.title.includes('tyutool') && (
-                      <Link className={styles.btnGhost} to={`${base}/tools/tyutool`}>
+                      <Link className={styles.btnGhost} to={`${base}/tyutool`}>
                         tyutool →
                       </Link>
                     )}
