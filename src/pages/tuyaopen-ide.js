@@ -989,11 +989,7 @@ function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
 
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
-  const [locale, setLocale] = useState(() => {
-    if (i18n.currentLocale === 'zh') return 'zh'
-    if (typeof navigator !== 'undefined' && /^zh\b/i.test(navigator.language)) return 'zh'
-    return 'en'
-  })
+  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
   const copy = tuyaOpenIdeCopy[locale]
   const debuggerGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/bd92fba8-5833-4e09-a7fc-d6c3d7d31908.gif'
   const pinIoConfigUrl = useBaseUrl('/img/ide/pin-io-config.svg')
