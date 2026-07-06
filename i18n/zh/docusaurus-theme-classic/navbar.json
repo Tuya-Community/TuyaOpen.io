@@ -83,6 +83,10 @@
     "message": "使命",
     "description": "Navbar item with label Mission"
   },
+  "item.label.Partner with Us": {
+    "message": "成为合作伙伴",
+    "description": "Navbar item with label Partner with Us"
+  },
   "item.label.Tools": {
     "message": "工具",
     "description": "Navbar item with label Tools"

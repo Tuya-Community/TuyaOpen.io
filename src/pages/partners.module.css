@@ -1,0 +1,803 @@
+/* ===========================================================================
+ * Partners & Contributors page (B2B partnership invitation).
+ *
+ * Bolder/agentic extension of the About/Mission brand language: the same
+ * violet → cyan axis and Aurora motion, pushed harder. The hero and the
+ * reach-out close are full-bleed drenched panels that bookend a light,
+ * scannable middle (what-you-can-do → bento → prototype→production).
+ *
+ * Anti-slop notes:
+ *  - No side-stripe borders. Each track's accent color is carried by the icon
+ *    and a TOP hairline (top borders are not the side-stripe tell).
+ *  - Bento cells vary in size AND surface treatment, not a uniform 3-up.
+ *  - Gradient text is used on the hero label and hero-title accent as
+ *    committed brand identity — not on every heading.
+ *  - Slabs + bentoLarge are theme-aware: light surface + ink text in light
+ *    theme, dark slabs in dark theme — no dark holes on a white page.
+ * ======================================================================== */
+
+.page {
+  --p-accent: #7c3aed;
+  --p-accent2: #06b6d4;
+  --p-glow: rgba(124, 58, 237, 0.45);
+  --p-ink: #070b16;
+  /* Slab/card surface. Dark defaults — the hero/reach bookends are drenched
+   * dark, and in dark theme the middle cards read as dark slabs. Under light
+   * theme these flip to a light surface so the cards aren't dark holes on a
+   * white page (the violet→cyan accent survives in icon, hairline, persona). */
+  --p-slab: #0d1424;
+  --p-slab-border: rgba(148, 163, 184, 0.14);
+  --p-slab-layer: #f1f5f9;
+  --p-slab-text: #cbd5e1;
+  --p-slab-kicker: rgba(148, 163, 184, 0.85);
+  --p-slab-shadow: none;
+  font-family: 'Inter', var(--ifm-font-family-base), system-ui, sans-serif;
+  background: var(--ifm-background-color);
+  /* `clip` not `hidden` — see about-us.module.css for the sticky-container
+   * rationale. Keeps horizontal Aurora bleed from forcing a scroll container. */
+  overflow-x: clip;
+}
+
+/* Light theme: slabs/bentoLarge become light surface cards. Text flips to the
+ * ink end of the ramp (slate-900/700) for ≥4.5:1 on white; a faint resting
+ * shadow lifts the cards off the page bg. */
+:root[data-theme='light'] .page {
+  --p-slab: #ffffff;
+  --p-slab-border: rgba(15, 23, 42, 0.1);
+  --p-slab-layer: #0f172a;
+  --p-slab-text: #334155;
+  --p-slab-kicker: rgba(71, 85, 105, 0.85);
+  --p-slab-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* ---------------------------------------------------------------------------
+ * Hero
+ * --------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--p-ink);
+}
+
+.heroAurora {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.heroVeil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(78% 58% at 72% 8%, rgba(124, 58, 237, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(7, 11, 22, 0.12) 0%, rgba(7, 11, 22, 0.5) 78%, rgba(7, 11, 22, 0.82) 100%);
+}
+
+.heroInner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 7vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.heroCopy {
+  max-width: 44rem;
+  text-align: center;
+}
+
+.heroLabel {
+  margin: 0 0 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--p-accent), var(--p-accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeUp 0.8s ease 0.05s both;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: clamp(2.6rem, 6.2vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #f8fafc;
+  text-shadow: 0 2px 30px rgba(2, 6, 18, 0.65);
+  text-wrap: balance;
+  /* Room for descenders (y, p in "TuyaOpen") so they don't clip on a tight
+   * line box — also helps the gradient accent cover the full glyph height. */
+  padding-bottom: 0.12em;
+  /* Entrance handled per-word by BlurText (motion) — no CSS fadeUp here. */
+}
+
+/* Accent words: violet→cyan gradient painted on each BlurText word via
+ * segmentClassName (the blur/fade is on the same element, so it affects the
+ * gradient). Avoids GradientText's <div>-in-<span> invalid HTML. */
+.heroTitleAccent {
+  background: linear-gradient(90deg, #c4b5fd, #67e8f9, #a5b4fc);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+.heroSub {
+  margin: 1.6rem auto 0;
+  max-width: 40rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(226, 232, 240, 0.9);
+  text-shadow: 0 1px 18px rgba(2, 6, 18, 0.6);
+  animation: fadeUp 0.9s ease 0.28s both;
+}
+
+.heroScrollCue {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(196, 181, 253, 0.75);
+}
+
+.heroScrollCue span {
+  display: inline-block;
+  width: 1px;
+  height: 26px;
+  background: linear-gradient(rgba(196, 181, 253, 0.9), transparent);
+  animation: scrollCue 1.8s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes scrollCue {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Section base
+ * --------------------------------------------------------------------------- */
+.section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.sectionInner {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: var(--ifm-heading-color);
+  text-wrap: balance;
+}
+
+.sectionSub {
+  margin: 1rem 0 0;
+  max-width: 62ch;
+  font-size: clamp(1.02rem, 1.7vw, 1.18rem);
+  line-height: 1.7;
+  color: var(--ifm-color-emphasis-700);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------------
+ * The open stack
+ * --------------------------------------------------------------------------- */
+.stackSection {
+  padding-top: clamp(5rem, 9vw, 8rem);
+}
+
+.stackHead {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  max-width: 64ch;
+}
+
+.stackList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.slab {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1.05fr) minmax(0, 1.4fr) minmax(0, 1.4fr);
+  gap: clamp(1rem, 2.4vw, 1.9rem);
+  align-items: center;
+  padding: clamp(1.25rem, 2.4vw, 1.65rem) clamp(1.25rem, 2.4vw, 1.75rem);
+  background: var(--p-slab);
+  border: 1px solid var(--p-slab-border);
+  border-radius: 16px;
+  box-shadow: var(--p-slab-shadow);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Top hairline in the layer's own color — the ramp reads as one gradient bar
+ * across the stack. (Top border, not a side-stripe.) */
+.slab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--layer-color);
+  opacity: 0.45;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.slab:hover,
+.slab:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--layer-color) 45%, transparent);
+  box-shadow: 0 18px 44px -22px color-mix(in srgb, var(--layer-color) 75%, transparent);
+}
+
+.slab:hover::before,
+.slab:focus-within::before {
+  opacity: 1;
+  height: 3px;
+}
+
+.slabIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex: none;
+}
+
+.slabIconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slabMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.slabLayer {
+  font-size: 1.16rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--p-slab-layer);
+}
+
+.slabCell {
+  min-width: 0;
+}
+
+.slabKicker {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* 10.9px bold = normal-text size → needs ≥4.5:1. The kicker var is tuned per
+   * theme: slate-400 @0.85 on the dark slab (~5.5:1), slate-600 @0.85 on white
+   * (~5:1). */
+  color: var(--p-slab-kicker);
+}
+
+.slabText {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--p-slab-text);
+}
+
+/* Slab reveal: staggered fade-up — the stack assembles layer by layer.
+ * Per-property delays: only `opacity` takes the stagger (the visible
+ * "build-up"), while transform/border/shadow stay at 0s so hover stays snappy
+ * after entrance. Staggering all properties left the 4th slab's hover delayed
+ * by ~280ms — felt unresponsive. */
+.slab.reveal {
+  transition:
+    opacity 0.6s ease calc(var(--i, 0) * 70ms),
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ---------------------------------------------------------------------------
+ * Bento — varied cell sizes + surface treatments
+ * --------------------------------------------------------------------------- */
+.bento {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.bentoCell {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: 18px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  box-shadow: var(--p-slab-shadow);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.bentoCell:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--p-accent) 35%, transparent);
+  box-shadow: 0 18px 40px -22px var(--p-glow);
+}
+
+/* Large feature panel — violet-tinted, breaks the uniform-card read. Tint
+ * glows on dark slabs and on a light surface alike. Holds the IDE screenshot. */
+.bentoLarge {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(124, 58, 237, 0.22), transparent 60%),
+    var(--p-slab);
+  border-color: var(--p-slab-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 260px;
+}
+
+/* IDE screenshot — fills the top of the feature cell, rounded. flex:1 grows it
+ * to fill the space above the title/body (which sit at the bottom via flex-end). */
+.bentoLargeImg {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--p-slab-border);
+}
+
+.bentoLarge .bentoTitle {
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  color: var(--p-slab-layer);
+}
+
+.bentoLarge .bentoBody {
+  color: var(--p-slab-text);
+  font-size: 1rem;
+}
+
+.bentoLarge::after {
+  content: '';
+  position: absolute;
+  inset: auto -10% -30% auto;
+  width: 60%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 65%);
+  pointer-events: none;
+}
+
+.bentoCell:not(.bentoLarge):not(.bentoWide) {
+  grid-column: span 2;
+}
+
+.bentoWide {
+  grid-column: 1 / -1;
+  background:
+    linear-gradient(100deg, rgba(124, 58, 237, 0.07), rgba(6, 182, 212, 0.07));
+}
+
+.bentoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--p-accent), var(--p-accent2));
+  box-shadow: 0 8px 20px -8px var(--p-glow);
+}
+
+.bentoIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.bentoTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.bentoBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ---------------------------------------------------------------------------
+ * Reach out — full-bleed bookend mirroring the hero
+ * --------------------------------------------------------------------------- */
+.reach {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--p-ink);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+
+.reachAurora {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.reachVeil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(70% 60% at 50% 30%, rgba(124, 58, 237, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(7, 11, 22, 0.55) 0%, rgba(7, 11, 22, 0.82) 100%);
+}
+
+.reachInner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.reachTitle {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #f8fafc;
+  text-shadow: 0 2px 30px rgba(2, 6, 18, 0.7);
+  text-wrap: balance;
+}
+
+.reachBody {
+  margin: 1.3rem auto 0;
+  max-width: 48ch;
+  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(226, 232, 240, 0.88);
+}
+
+.reachEmail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding: 0.85rem 1.4rem 0.85rem 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow:
+    0 12px 36px -10px var(--p-glow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.reachEmail:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  box-shadow:
+    0 18px 48px -10px var(--p-glow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.reachEmail:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 3px;
+}
+
+.reachEmailIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  flex: none;
+}
+
+.reachEmailIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.reachEmailText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.reachEmailCta {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.88;
+  letter-spacing: 0.02em;
+}
+
+.reachEmailAddr {
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.reachEmailArrow {
+  display: inline-flex;
+  opacity: 0.85;
+  flex: none;
+}
+
+.reachEmailArrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.reachSecondary {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.reachSecondaryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.62rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  color: rgba(226, 232, 240, 0.92);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.reachSecondaryLink:hover {
+  border-color: rgba(196, 181, 253, 0.6);
+  background: rgba(124, 58, 237, 0.18);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.reachSecondaryLink:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 3px;
+}
+
+.reachSecondaryIcon {
+  display: inline-flex;
+}
+
+.reachSecondaryIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Scroll reveal (shared)
+ * --------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Responsive
+ * --------------------------------------------------------------------------- */
+@media (max-width: 996px) {
+  .hero {
+    min-height: auto;
+    padding-top: clamp(4rem, 8vw, 6rem);
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+  }
+
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .heroVisual {
+    order: -1;
+    width: min(100%, 380px);
+  }
+
+  .heroScrollCue {
+    display: none;
+  }
+}
+
+@media (max-width: 879px) {
+  .slab {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'icon main'
+      'contrib contrib'
+      'value value';
+    gap: 0.9rem 1rem;
+    align-items: start;
+  }
+
+  .slab > :nth-child(1) {
+    grid-area: icon;
+  }
+
+  .slab > :nth-child(2) {
+    grid-area: main;
+  }
+
+  .slab > :nth-child(3) {
+    grid-area: contrib;
+  }
+
+  .slab > :nth-child(4) {
+    grid-area: value;
+  }
+
+  .slabMain {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bentoLarge,
+  .bentoCell:not(.bentoLarge):not(.bentoWide),
+  .bentoWide {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .reachEmail {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .reachEmailText {
+    align-items: center;
+    text-align: center;
+  }
+
+  .reachEmailArrow {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Reduced motion
+ * --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .heroTitle .accent,
+  .heroVisual,
+  .heroScrollCue span {
+    animation: none;
+  }
+
+  .reveal,
+  .slab.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0s;
+  }
+
+  .slab,
+  .bentoCell,
+  .reachEmail,
+  .reachSecondaryLink {
+    transition: none;
+  }
+}

@@ -10,6 +10,7 @@ import IconHelp from '../../static/img/icons/help.svg'
 import IconOctocat from '../../static/img/icons/octocat.svg'
 import BlurText from '../components/BlurText/BlurText'
 import GradientText from '../components/GradientText/GradientText'
+import PartnersShowcase from '../components/PartnersShowcase/PartnersShowcase'
 import { homepageCopy } from '../data/homepageCopy'
 import styles from './index.module.css'
 
@@ -1363,39 +1364,7 @@ function Home() {
           {/* Partners — no bottom padding so band meets community gradient */}
           <section className={clsx(styles.lightSection, styles.lightSectionFlushBottom)}>
             <div className={styles.container}>
-              <div className={clsx(styles.partnersShowcase, 'scroll-to-display')}>
-                <div className={styles.partnersShowcaseHeader}>
-                  <span className={styles.partnersShowcaseTag}>{copy.partners.sectionTag}</span>
-                  <h2 className={styles.partnersShowcaseTitle}>{copy.partners.title}</h2>
-                  <p className={styles.partnersShowcaseSubtitle}>{copy.partners.subtitle}</p>
-                </div>
-                {copy.partners.colabSections?.length > 0 ? (
-                  <div className={styles.partnersColabBlock}>
-                    {copy.partners.colabSections.map((section, secIdx) => (
-                      <div key={secIdx} className={styles.partnersColabSection}>
-                        <h3 className={styles.partnersColabTitle}>{section.title}</h3>
-                        <div className={styles.partnersColabGrid}>
-                          {section.items.map((item) => (
-                            <div key={`${secIdx}-${item.alt}-${item.src}`} className={styles.partnersColabCell}>
-                              <img
-                                className={clsx(
-                                  styles.partnersColabImg,
-                                  item.invertForLightBg && styles.partnersColabImgInvertLight,
-                                )}
-                                src={item.src}
-                                alt={item.alt}
-                                loading="lazy"
-                                decoding="async"
-                                referrerPolicy="no-referrer-when-downgrade"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
+              <PartnersShowcase {...copy.partners} />
             </div>
           </section>
 

@@ -178,6 +178,7 @@ const config = {
           items: [
             { label: 'About', to: '/about' },
             { label: 'Mission', to: '/mission' },
+            { label: 'Partner with Us', to: '/partners' },
           ],
         },
         {
