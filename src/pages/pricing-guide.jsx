@@ -1,3 +1,4 @@
+import Head from '@docusaurus/Head'
 import React, { useEffect, useRef, useState } from 'react'
 import Layout from '@theme/Layout'
 import Link from '@docusaurus/Link'
@@ -408,6 +409,7 @@ export default function PricingGuide() {
 
   return (
     <Layout title={`${c.title} — TuyaOpen`} description={c.meta}>
+      <Head><meta name="keywords" content="tuyaopen pricing guide, iot development platform pricing, license key, aiot platform cost, open source iot platform" /></Head>
       <main className={styles.root}>
         {/* -------------------------------------------------------- Hero */}
         <header className={styles.hero}>

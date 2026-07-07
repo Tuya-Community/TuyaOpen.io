@@ -752,6 +752,10 @@ export default function Pricing() {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content={c.meta} />
+        <meta
+          name="keywords"
+          content="iot development platform pricing, free open source iot platform, aiot platform pricing, open source iot platform cost, tuyaopen pricing"
+        />
       </Head>
 
       <main className={styles.root} ref={rootRef}>

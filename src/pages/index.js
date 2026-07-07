@@ -444,6 +444,10 @@ function Home() {
     <Layout description={copy.metaDescription}>
       <Head>
         <title>TuyaOpen: {siteConfig.tagline}</title>
+        <meta
+          name="keywords"
+          content="open source iot platform, open source ai platform, open source aiot platform, iot development platform, tuyaopen"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

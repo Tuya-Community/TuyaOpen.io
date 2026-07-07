@@ -1,3 +1,4 @@
+import Head from '@docusaurus/Head'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
@@ -1216,7 +1217,16 @@ export default function TuyaOpenIdePage() {
   }, [hilTerminalLines])
 
   return (
-    <Layout title="TuyaOpen IDE" description="The all-in-one VS Code extension for embedded IoT development.">
+    <Layout
+      title="TuyaOpen IDE — Embedded Development IDE for AI"
+      description="An embedded development IDE for AI and IoT projects — build, debug, and deploy intelligent applications in one integrated development environment."
+    >
+      <Head>
+        <meta
+          name="keywords"
+          content="embedded development ide, ai development environment, iot embedded development ide, vs code extension embedded, tuyaopen ide"
+        />
+      </Head>
       <div className={styles.idePage} ref={containerRef}>
         {/* Hero */}
         <section className={styles.hero} ref={heroRef}>

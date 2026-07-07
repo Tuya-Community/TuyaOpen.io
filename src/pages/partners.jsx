@@ -305,6 +305,7 @@ export default function PartnersPage() {
   return (
     <Layout title={c.meta.title} description={c.meta.description}>
       <Head>
+        <meta name="keywords" content="tuyaopen partners, b2b iot partnership, aiot platform partnership, open source iot ecosystem, hardware partnership" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

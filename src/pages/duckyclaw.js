@@ -378,6 +378,10 @@ export default function DuckyClaw() {
             isZh,
           )}
         />
+        <meta
+          name="keywords"
+          content="edge ai platform open source, duckyclaw, tuyaopenclaw, ai agent framework, edge ai deployment"
+        />
       </Head>
 
       {/* Hero — neo beams + content + banner in one main section */}

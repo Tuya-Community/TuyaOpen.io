@@ -1,3 +1,4 @@
+import Head from '@docusaurus/Head';
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -434,6 +435,7 @@ export default function TyutoolGuidePage() {
 
   return (
     <Layout title={`tyutool — ${c.badge}`} description={c.meta}>
+      <Head><meta name="keywords" content="tyutool guide, firmware flash tool, tuyaopen serial tool, device authorization, iot development utility tool" /></Head>
       <main className={styles.root}>
         {/* -------------------------------------------------------- Hero */}
         <header className={styles.hero}>

@@ -1,3 +1,4 @@
+import Head from '@docusaurus/Head'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
@@ -242,6 +243,12 @@ export default function DeviceCloudPage() {
 
   return (
     <Layout title={t.title} description={t.subtitle}>
+      <Head>
+        <meta
+          name="keywords"
+          content="device cloud collaboration, agentic device, ai agent iot, edge cloud ai, tuyaopen device ai"
+        />
+      </Head>
       <main className={styles.page}>
         {/* Hero */}
         <header className={styles.hero}>
