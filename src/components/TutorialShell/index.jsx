@@ -143,7 +143,6 @@ export default function TutorialShell({
           <div className={styles.heroGlow} aria-hidden />
           <div className={styles.heroInner}>
             <Link to={backHref} className={styles.breadcrumb}>
-              {backLabel}
               <svg
                 className={styles.breadcrumbArrow}
                 width={16}
@@ -155,8 +154,9 @@ export default function TutorialShell({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 aria-hidden>
-                <path d="M5 12h14M13 6l6 6-6 6" />
+                <path d="M19 12H5M11 6l-6 6 6 6" />
               </svg>
+              {backLabel}
             </Link>
             {badge && <span className={styles.heroBadge}>{badge}</span>}
             <h1 className={styles.heroTitle}>{title}</h1>
