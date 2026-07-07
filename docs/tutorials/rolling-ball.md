@@ -1,5 +1,6 @@
 ---
 title: "Soccer Star"
+noindex: true
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: "Smart Social Necklace"
+noindex: true
 ---
 
 

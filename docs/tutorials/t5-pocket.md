@@ -1,5 +1,6 @@
 ---
 title: "[Open Source] Play with T5-Pocket: Your AI+IoT Smart Companion"
+noindex: true
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: "LED Pixel Art Light Matrix"
+noindex: true
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: "T5+2M-ASR-PRO Custom Wake Words"
+noindex: true
 ---
 
 
