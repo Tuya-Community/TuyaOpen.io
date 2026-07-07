@@ -1,5 +1,12 @@
 ---
 title: "Step 0: Environment Setup"
+description: "Set up the TuyaOpen embedded development environment — install the toolchain, clone the repo, and activate tos.py to build and flash IoT projects."
+keywords:
+  - embedded development environment setup
+  - iot development environment setup guide
+  - tuyaopen quick start
+  - tos.py toolchain
+  - get started with open source iot
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

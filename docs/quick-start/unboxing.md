@@ -1,5 +1,12 @@
 ---
 title: Unboxing Use
+description: "AI hardware unboxing and setup guide — flash pre-compiled TuyaOpen firmware onto a supported board, authorize it, and connect to Tuya IoT Cloud."
+keywords:
+  - ai hardware unboxing and setup guide
+  - tuyaopen unboxing
+  - flash firmware esp32
+  - iot device pairing tutorial
+  - tuya iot cloud quick start
 ---
 
 Unboxing use flashes a pre-compiled firmware onto a supported board so you can connect it to the Tuya IoT Cloud and try Tuya Cloud services without building anything yourself. Use this path to evaluate a board quickly; if you want to build and compile [TuyaOpen](https://github.com/tuya/TuyaOpen) from source, skip this page and start at [Environment Setup](./enviroment-setup.md).
