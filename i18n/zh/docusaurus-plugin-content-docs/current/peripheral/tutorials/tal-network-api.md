@@ -1,5 +1,12 @@
 ---
 title: TAL Network API 参考
+description: "tal_network.h 封装 TCP/UDP 套接字、select 与常用套接字选项为可移植 API，流程类似 BSD：创建、connect/listen/accept，再 send/recv。"
+keywords:
+  - TAL Network
+  - tal_network
+  - TCP
+  - UDP
+  - TuyaOpen API
 ---
 
 ## 概述

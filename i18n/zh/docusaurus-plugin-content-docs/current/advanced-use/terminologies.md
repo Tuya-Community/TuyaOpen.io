@@ -1,5 +1,12 @@
 ---
 title: 名词解释
+description: "汇总 TuyaOpen 使用中常见的术语名词，对比 TuyaOpen 与 TuyaOS 的差异，涵盖 AIoT 开源开发框架与端云融合多模态 AI 能力。"
+keywords:
+  - TuyaOpen
+  - 名词解释
+  - TuyaOS
+  - AIoT
+  - 开源物联网平台
 ---
 # 名词解释
 本文介绍了您在使用TuyaOpen时常见的术语名词。

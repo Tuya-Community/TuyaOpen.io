@@ -1,5 +1,12 @@
 ---
 title: CLI - tos.py 开发工具
+description: "tos.py 是 TuyaOpen 的命令行开发工具，用于项目配置、编译、烧录与调试，介绍其工作原理、各子命令行为与常见问题解决方法。"
+keywords:
+  - TuyaOpen
+  - tos.py
+  - CLI工具
+  - 命令行开发
+  - 嵌入式开发
 ---
 
 ## 概述

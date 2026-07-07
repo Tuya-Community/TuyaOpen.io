@@ -1,5 +1,12 @@
 ---
 title: 免费领取开发者授权码
+description: "介绍如何在涂鸦开发者平台免费领取开发者授权码，用于 TuyaOpen 专用 UUID 与 AuthKey 连接涂鸦云或使用云端功能。"
+keywords:
+  - TuyaOpen
+  - 开发者授权码
+  - UUID
+  - AuthKey
+  - 涂鸦云
 ---
 
 本文介绍如何在涂鸦开发者平台免费领取开发者授权码（授权码），用于产品开发与调试。面向需要使用 TuyaOpen 专用 UUID 与 AuthKey 连接涂鸦云或使用云端功能的开发者。

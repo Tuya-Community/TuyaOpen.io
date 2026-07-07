@@ -1,5 +1,12 @@
 ---
 title: "在 Raspberry Pi 上运行 your_chat_bot"
+description: "在树莓派上运行 TuyaOpen your_chat_bot 语音助手：介绍交叉/本地两种编译方式、所需外置声卡与唤醒模型指向配置。"
+keywords:
+  - Raspberry Pi
+  - your_chat_bot
+  - 语音助手
+  - 交叉编译
+  - TuyaOpen 硬件
 ---
 
 在树莓派上运行 TuyaOpen 的 [your_chat_bot](https://tuyaopen.ai/zh/docs/cloud/device-ai/demo-your-chat-bot) 语音助手。本文介绍两种受支持的编译方式、开发板所需的外置声卡，以及如何让固件指向唤醒模型。

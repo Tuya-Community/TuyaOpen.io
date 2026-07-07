@@ -1,5 +1,11 @@
 ---
 title: OLED UI
+description: "ai_ui_chat_oled 是为小尺寸单色 OLED 屏优化的聊天 UI，在有限像素与内存下渲染对话，实现 ai_ui_manage 接口。"
+keywords:
+  - OLED UI
+  - ai_ui_chat_oled
+  - 聊天 UI
+  - 端侧 AI
 ---
 
 `ai_ui_chat_oled` 是 TuyaOpen AI 框架中为小尺寸单色 OLED 屏优化的聊天 UI。它在典型 OLED 面板有限的空间与单一颜色下渲染对话，在图形化气泡布局放不下的场景里仍保持文字清晰可读。它实现了 [`ai_ui_manage`](ai-ui-manage) 接口，注册后即可渲染框架分发的聊天消息与状态。

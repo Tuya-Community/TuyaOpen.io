@@ -1,5 +1,12 @@
 ---
 title: "将传感器库迁移到 TuyaOpen"
+description: "迁移传感器库指在保留寄存器与应用逻辑的前提下，将其总线层替换为 TuyaOpen 的 TKL 接口，使驱动可在所有支持平台运行。"
+keywords:
+  - 传感器库迁移
+  - TKL
+  - 总线抽象
+  - Arduino
+  - TuyaOpen 教程
 ---
 
 迁移传感器库，是指在保留其寄存器与应用逻辑不变的前提下，将其总线层替换为 TuyaOpen 的 TKL 接口，从而让驱动可在所有支持的平台上运行。本指南介绍如何移植现有的 Arduino 或 ESP-IDF 库。

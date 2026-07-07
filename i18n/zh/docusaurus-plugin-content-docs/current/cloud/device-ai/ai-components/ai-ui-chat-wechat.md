@@ -1,5 +1,11 @@
 ---
 title: 微信风格 UI
+description: "ai_ui_chat_wechat 是微信风格气泡聊天 UI，把对话呈现为可滚动气泡列表，支持流式回复、情绪、摄像头预览与图片。"
+keywords:
+  - 微信风格 UI
+  - ai_ui_chat_wechat
+  - 聊天 UI
+  - 端侧 AI
 ---
 
 `ai_ui_chat_wechat` 是 TuyaOpen AI 框架的微信风格气泡聊天 UI。它把对话呈现为可滚动的气泡列表——用户消息在右侧、AI 回复在左侧——即大家熟悉的聊天软件外观。它实现了 [`ai_ui_manage`](ai-ui-manage) 接口，注册后即可渲染框架分发的每条聊天消息、情绪、状态、摄像头画面与图片。

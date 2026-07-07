@@ -1,5 +1,12 @@
 ---
 title: 编译指导
+description: "详解 tos.py build 流水线，说明 Python 如何驱动 CMake/Ninja 完成环境检查、配置、平台下载与产物输出的构建流程。"
+keywords:
+  - TuyaOpen
+  - 编译指南
+  - CMake
+  - Ninja
+  - 构建系统
 ---
 
 ## 概述

@@ -1,5 +1,12 @@
 ---
 title: HTTP 与 HTTPS 客户端教程
+description: "使用 http_client_request 与 http_client_free 发送 HTTP 与 HTTPS 请求，说明请求响应结构体、请求头、查询参数与状态码处理。"
+keywords:
+  - HTTP 客户端
+  - HTTPS
+  - http_client
+  - TuyaOpen 教程
+  - 网络协议
 ---
 
 ## 概述

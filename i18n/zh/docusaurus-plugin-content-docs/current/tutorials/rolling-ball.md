@@ -1,5 +1,6 @@
 ---
 title: "国足之星"
+noindex: true
 ---
 
 

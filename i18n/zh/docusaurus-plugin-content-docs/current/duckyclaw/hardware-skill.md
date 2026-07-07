@@ -1,5 +1,12 @@
 ---
 title: 硬件外设技能
+description: "介绍 TuyaOpenClaw 内置硬件外设 MCP 工具，AI Agent 通过自然语言指令操作 GPIO、ADC、I2C、串口、PWM 与舵机等外设。"
+keywords:
+  - TuyaOpenClaw
+  - 硬件技能
+  - 硬件外设
+  - MCP 工具
+  - GPIO
 ---
 
 # 硬件外设技能（Hardware MCP Tools）

@@ -1,5 +1,6 @@
 ---
 title: "CyberPlant 赛博植物"
+noindex: true
 ---
 
 

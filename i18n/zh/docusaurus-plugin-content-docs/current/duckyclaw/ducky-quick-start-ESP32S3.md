@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw 与 ESP32-S3
+description: "ESP32-S3 开发板上构建并烧录 TuyaOpenClaw 固件的快速开始指南，通过 Wi-Fi 接入 Tuya Cloud 运行端侧 AI 语音助手。"
+keywords:
+  - TuyaOpenClaw
+  - ESP32-S3
+  - 快速开始
+  - 端侧 AI
+  - Wi-Fi
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

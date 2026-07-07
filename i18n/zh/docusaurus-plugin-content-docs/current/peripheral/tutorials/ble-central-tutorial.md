@@ -1,5 +1,12 @@
 ---
 title: BLE Central 教程
+description: "说明 BLE Central 示例：将协议栈初始化为中央设备、扫描广播，并在回调中处理 TAL_BLE_EVT_ADV_REPORT 事件。"
+keywords:
+  - BLE Central
+  - TAL Bluetooth
+  - 扫描广播
+  - TuyaOpen 教程
+  - 蓝牙
 ---
 
 ## 概述

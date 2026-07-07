@@ -1,5 +1,12 @@
 ---
 title: "ESP32-S3 外设映射"
+description: "ESP32-S3（双核 Xtensa LX7，AI/音频）片上外设与 TuyaOpen TKL 软件端口的映射关系：它是 TuyaOpen 中 AI 对话与语音应用的主要芯片。"
+keywords:
+  - ESP32-S3
+  - 引脚映射
+  - 外设映射
+  - AI 语音
+  - TuyaOpen 硬件
 ---
 
 本文说明 ESP32-S3（双核 Xtensa LX7，AI / 音频）片上外设与 TuyaOpen TKL 层软件端口的映射关系。ESP32-S3 是 TuyaOpen 中 AI 对话和语音应用的主要芯片。

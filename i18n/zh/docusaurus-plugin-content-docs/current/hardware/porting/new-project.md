@@ -1,5 +1,12 @@
 ---
 title: 新建工程
+description: "介绍 tos.py new project 命令：基于预定义模板初始化 TuyaOpen 项目的基础结构，包含配置文件、CMake 与示例源码。"
+keywords:
+  - 新建工程
+  - tos.py
+  - 项目模板
+  - CMake
+  - TuyaOpen 硬件
 ---
 
 `tos.py new project` 用于在 TuyaOpen 开发环境中创建一个新项目。该命令会基于预定义的模板初始化项目的基础结构。

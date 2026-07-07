@@ -1,5 +1,12 @@
 ---
 title: "显示驱动集成指南"
+description: "显示驱动将面板注册到 TDL 显示框架，使 LVGL 与应用可通过 tdl_display_* 接口向其绘制，本指南演示新面板的集成流程。"
+keywords:
+  - 显示驱动
+  - TDL
+  - LVGL
+  - tdl_display
+  - TuyaOpen 教程
 ---
 
 TuyaOpen 中的显示驱动将面板注册到 TDL 显示框架，使 LVGL 与应用可通过 `tdl_display_*` 向其绘制。本指南使用 TDL 显示与 LVGL 集成新的显示面板。

@@ -1,5 +1,6 @@
 ---
 title: "LVGL 字体变更"
+noindex: true
 ---
 
 

@@ -1,5 +1,12 @@
 ---
 title: 快速开始
+description: "Arduino IDE 上手 T5 开发板的快速指南：安装 IDE、添加涂鸦开发板管理器、选择开发板，并通过手机 App 完成设备配网。"
+keywords:
+  - Arduino
+  - T5
+  - 快速开始
+  - 开发板管理器
+  - 配网
 ---
 
 本指南带你从全新的 Arduino IDE 开始，完成一次 T5 示例烧录：安装 IDE、添加涂鸦开发板管理器、选择开发板，并通过手机 App 完成设备配网。

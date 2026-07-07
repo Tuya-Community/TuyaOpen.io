@@ -1,5 +1,12 @@
 ---
 title: "TDD/TDL 驱动架构"
+description: "TuyaOpen 采用 TDL 与 TDD 两层外设驱动框架：TDL 管理设备生命周期与应用 API，TDD 实现芯片特定硬件访问，无需改应用即可加新硬件。"
+keywords:
+  - TDD
+  - TDL
+  - 驱动架构
+  - TuyaOpen 外设
+  - 嵌入式驱动
 ---
 
 TuyaOpen 使用两层外设驱动框架：**TDL**（Tuya Driver Layer）管理设备生命周期并提供应用 API，而 **TDD**（Tuya Device Driver）实现芯片特定的硬件访问。这种分层让你无需修改应用代码即可添加新硬件。

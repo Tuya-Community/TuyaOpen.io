@@ -1,5 +1,12 @@
 ---
 title: TAL KV 存储指南
+description: "TAL KV 为 TuyaOpen 应用提供基于 LittleFS 的持久化键值存储，值为二进制字节流，部分接口可将结构化字段序列化为 JSON 后写入。"
+keywords:
+  - TAL KV
+  - tal_kv
+  - LittleFS
+  - 持久化存储
+  - TuyaOpen 教程
 ---
 
 ## 概述

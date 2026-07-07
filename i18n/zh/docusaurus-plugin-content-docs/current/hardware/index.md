@@ -1,5 +1,12 @@
 ---
 title: 硬件支持列表
+description: "按系列列出 TuyaOpen 支持的 Wi-Fi 与 Bluetooth LE 双模芯片及开发板：覆盖 T 系列、ESP32 系列、Linux 平台，并提供数据手册与板卡概述入口。"
+keywords:
+  - 硬件支持列表
+  - 芯片
+  - 开发板
+  - TuyaOpen 硬件
+  - Wi-Fi
 ---
 
 import ChipRow from '@site/src/components/ChipRow';

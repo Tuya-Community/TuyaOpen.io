@@ -1,5 +1,12 @@
 ---
 title: 适配平台
+description: "适配新 Platform 是在 TuyaOpen 上新增对某款芯片的支持：介绍需阅读的文档、编译流程、TKL 适配步骤与验证方法。"
+keywords:
+  - 适配平台
+  - TKL 适配
+  - 编译流程
+  - 移植
+  - TuyaOpen 硬件
 ---
 
 适配新 Platform 是指在 TuyaOpen 上新增对某款芯片的支持。本文介绍适配过程中需要阅读的文档、操作步骤以及验证适配是否成功的方法。

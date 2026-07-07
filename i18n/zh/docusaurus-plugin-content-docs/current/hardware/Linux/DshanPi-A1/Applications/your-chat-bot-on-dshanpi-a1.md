@@ -1,5 +1,12 @@
 ---
 title: "在 DshanPi-A1 上运行 your_chat_bot"
+description: "在 DshanPi-A1 开发板上运行 TuyaOpen your_chat_bot 语音助手：覆盖板载声卡配置、唤醒模型指向与交叉/本地两种编译方式。"
+keywords:
+  - DshanPi-A1
+  - your_chat_bot
+  - 语音助手
+  - 交叉编译
+  - TuyaOpen 硬件
 ---
 
 在 [DshanPi-A1](https://rockchip.100ask.net/en/docs/DshanPi-A1/intro/) 开发板上运行 TuyaOpen 的 [your_chat_bot](https://tuyaopen.ai/zh/docs/cloud/device-ai/demo-your-chat-bot) 语音助手。与树莓派不同，DshanPi-A1 自带麦克风和扬声器，因此两个板级专属步骤是配置板载声卡和让固件指向唤醒模型。

@@ -1,5 +1,6 @@
 ---
 title: "【开源】玩转 T5-Pocket：你的 AI+IoT 智能伙伴"
+noindex: true
 ---
 
 

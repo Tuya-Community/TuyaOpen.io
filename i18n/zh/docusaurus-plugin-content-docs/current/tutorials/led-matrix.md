@@ -1,5 +1,6 @@
 ---
 title: "LED像素艺术灯矩阵"
+noindex: true
 ---
 
 

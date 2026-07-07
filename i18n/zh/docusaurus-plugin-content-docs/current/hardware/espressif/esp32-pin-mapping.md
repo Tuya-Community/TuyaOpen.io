@@ -1,5 +1,12 @@
 ---
 title: "ESP32 引脚映射 -- 概述"
+description: "概述 ESP32 引脚映射：TuyaOpen TKL 软件端口与 ESP32 片上外设的对应关系，含 GPIO 1:1 映射与 pinmux 引脚复用机制。"
+keywords:
+  - ESP32
+  - 引脚映射
+  - pinmux
+  - GPIO
+  - TuyaOpen 硬件
 ---
 
 ESP32 引脚映射指 TuyaOpen TKL 层的软件端口及引脚与 ESP32 片上外设之间的对应关系，涵盖 `TUYA_GPIO_NUM_E` 枚举值与物理 GPIO 编号的对应，以及如何通过 pinmux 接口将外设路由到指定引脚。

@@ -1,5 +1,12 @@
 ---
 title: 关于 TuyaOpen
+description: "TuyaOpen 是一套灵活的跨平台 C/C++ SDK，用于构建下一代 AI 智能体硬件，支持涂鸦 T 系列芯片、树莓派与 ESP32，集成涂鸦云低延迟多模态 AI 能力。"
+keywords:
+  - 开源物联网平台
+  - AIoT
+  - TuyaOpen SDK
+  - AI智能体硬件
+  - 嵌入式开发
 ---
 
 ![TuyaOpen](https://images.tuyacn.com/fe-static/docs/img/c128362b-eb25-4512-b5f2-ad14aae2395c.jpg)

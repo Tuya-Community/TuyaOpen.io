@@ -1,5 +1,12 @@
 ---
 title: GUI - tyutool 图形化工具
+description: "tyutool 是 TuyaOpen 烧录与设备授权工具，通过串口写入固件与授权信息，本文介绍其 GUI 版本及 V2、V3 版本差异。"
+keywords:
+  - TuyaOpen
+  - tyutool
+  - 固件烧录
+  - 设备授权
+  - GUI工具
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,5 +1,12 @@
 ---
 title: Generic Demos
+description: "TuyaOpen generic demo examples — ready-to-build sample projects by topic (peripherals, Wi-Fi, BLE, protocols, graphics). Build, flash, and run each to learn an API."
+keywords:
+  - tuyaopen examples
+  - iot sample projects
+  - embedded demo projects
+  - tuyaopen api examples
+  - ble wifi demos
 ---
 
 The `examples/` tree contains ready-to-build sample projects, grouped by topic (peripherals, Wi-Fi, BLE, protocols, graphics, multimedia, system, and more). Each is a complete TuyaOpen project you can configure, build, flash, and run to learn an API or feature in isolation.

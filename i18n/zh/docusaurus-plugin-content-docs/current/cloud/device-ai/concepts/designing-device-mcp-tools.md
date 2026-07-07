@@ -1,5 +1,11 @@
 ---
 title: 设计设备 MCP 工具
+description: "设计设备 MCP 工具讲的是如何把设备功能封装成供 AI 智能体调用的工具——读取传感器、驱动电机、拍照——并为其名称与描述而编写。"
+keywords:
+  - 设备 MCP 工具
+  - MCP 工具设计
+  - Model Context Protocol
+  - 端侧 AI
 ---
 
 一个 **设备 MCP 工具** 封装了设备的某项功能——读取传感器、修改设置、驱动电机、拍一张照片——以便设备端的 AI 智能体能够调用它。工具正是让一台智能体设备把自身能力转化为 AI 真正可用之物的途径。本文讲的是设计优秀工具背后的思路；关于 API，请参见 [MCP Server](../ai-components/ai-mcp-server)。

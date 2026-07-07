@@ -1,5 +1,11 @@
 ---
 title: "tkl_thread | 线程"
+description: "tkl_thread 参考 —— 用于在多任务环境中创建、终止与查询操作系统线程任务并配置优先级与栈大小的线程管理 TKL API。"
+keywords:
+  - tkl_thread
+  - TuyaOpen 线程
+  - RTOS 任务
+  - 嵌入式驱动
 ---
 
 `tkl_thread` 接口用于在多任务环境中创建、终止和查询操作系统线程（任务）。它是各平台在其 RTOS 之上实现的内核抽象层（TKL）适配，TAL 与应用代码通过它实现可移植的任务管理。

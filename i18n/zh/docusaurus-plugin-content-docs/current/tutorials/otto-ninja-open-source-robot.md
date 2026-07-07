@@ -1,5 +1,6 @@
 ---
 title: "Otto Ninja 机器人"
+noindex: true
 ---
 
 

@@ -1,5 +1,11 @@
 ---
 title: "tkl_system | 系统接口"
+description: "tkl_system 参考 —— 提供重启、时间基准、随机数、休眠延时、复位原因与 CPU 信息及临界区的系统接口 TKL API。"
+keywords:
+  - tkl_system
+  - TuyaOpen 系统接口
+  - 临界区
+  - 嵌入式驱动
 ---
 
 `tkl_system` 接口提供核心系统服务：重启、滴答与毫秒时间基准、随机数、休眠与忙等待延时、复位原因上报以及 CPU 信息。它们是各平台实现的内核抽象层（TKL）入口，上层 TAL 与应用代码通过它们实现可移植的计时与生命周期控制。

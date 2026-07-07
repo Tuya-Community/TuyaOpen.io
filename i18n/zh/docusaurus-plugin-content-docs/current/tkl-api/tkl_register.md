@@ -1,5 +1,11 @@
 ---
 title: tkl_register | Register 驱动
+description: "tkl_register 参考 —— 提供芯片寄存器字级读取写入与按位域（0 至 31 位）读取写入的统一寄存器操作 TKL API。"
+keywords:
+  - tkl_register
+  - TuyaOpen Register 驱动
+  - 寄存器操作
+  - 嵌入式驱动
 ---
 
 ## 概述

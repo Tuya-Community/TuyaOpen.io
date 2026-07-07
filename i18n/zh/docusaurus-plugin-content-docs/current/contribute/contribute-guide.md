@@ -1,5 +1,12 @@
 ---
 title: 贡献指南
+description: "通过 GitHub Fork 与 Pull Request 流程向 TuyaOpen 贡献代码与文档，涵盖准备工作、编码规范检查与 Pull Request 提交流程。"
+keywords:
+  - TuyaOpen
+  - 贡献指南
+  - 开源贡献
+  - Pull Request
+  - 协作开发
 ---
 
 您可以通过 GitHub 的 Fork 和 [Pull Requests](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) 流程为 [TuyaOpen](https://github.com/tuya/TuyaOpen) 贡献内容，包括修复功能代码、文档错误，新增功能和文档等。

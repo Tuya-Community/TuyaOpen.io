@@ -1,5 +1,12 @@
 ---
 title: MQTT 客户端教程
+description: "介绍 MQTT 客户端示例：连接公共 Broker、订阅、按 QoS 发布并取消订阅，代码基于 mqtt_client_interface.h 与 netmgr 网络管理。"
+keywords:
+  - MQTT 客户端
+  - mqtt_client_interface
+  - QoS
+  - TuyaOpen 教程
+  - 网络协议
 ---
 
 ## 概述

@@ -1,5 +1,11 @@
 ---
 title: tkl_wired | 以太有线驱动
+description: "tkl_wired 参考 —— 将有线以太网链路适配到 TuyaOS，上报链路状态与 IP/MAC 地址并注册状态变化回调的有线驱动 TKL API。"
+keywords:
+  - tkl_wired
+  - TuyaOpen 有线驱动
+  - 以太网链路
+  - 嵌入式驱动
 ---
 
 `tkl_wired` 将有线以太网链路适配到 TuyaOS。它用于上报链路状态、有线接口的 IPv4 和 IPv6 地址以及 MAC 地址，并允许注册在链路状态变化时触发的回调。其实现位于 `tkl_wired.c`，由 TuyaOS 生成，并预留了供平台代码填写的区域。

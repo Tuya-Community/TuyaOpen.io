@@ -1,5 +1,12 @@
 ---
 title: 设备调试
+description: "设备调试通过串口获取设备日志，用于 TuyaOpen 固件的问题跟踪与故障定位，介绍串口工具与 tos 命令行调试方法。"
+keywords:
+  - TuyaOpen
+  - 设备调试
+  - 串口日志
+  - 故障定位
+  - 嵌入式开发
 ---
 
 设备调试是通过串口获取设备日志，用于问题跟踪和故障定位。烧录 [TuyaOpen](https://github.com/tuya/TuyaOpen) 固件后，串口日志是查看设备运行情况的主要方式。

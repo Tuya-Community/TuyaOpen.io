@@ -1,5 +1,12 @@
 ---
 title: TCP 与 UDP 套接字教程
+description: "用 TAL 网络接口使用 TCP 与 UDP：TCP 客户端流程对应 tal_net_connect 与 tal_net_send，UDP 部分说明 bind、send_to 与 recvfrom。"
+keywords:
+  - TCP 套接字
+  - UDP
+  - tal_network
+  - TuyaOpen 教程
+  - 网络协议
 ---
 
 ## 概述

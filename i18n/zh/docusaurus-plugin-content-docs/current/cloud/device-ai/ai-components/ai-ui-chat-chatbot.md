@@ -1,5 +1,11 @@
 ---
 title: Chatbot UI
+description: "ai_ui_chat_chatbot 是简单聊天机器人 UI，在屏幕中央一次只显示当前一条 AI 回复或状态，适合自助终端、玩具等聚焦产品。"
+keywords:
+  - Chatbot UI
+  - ai_ui_chat_chatbot
+  - 聊天 UI
+  - 端侧 AI
 ---
 
 `ai_ui_chat_chatbot` 是 TuyaOpen AI 框架的简单聊天机器人 UI。它在屏幕中央一次只显示一条消息——当前的 AI 回复或状态——而不是可滚动的历史记录。它实现了 [`ai_ui_manage`](ai-ui-manage) 接口，注册后即可渲染框架分发的聊天消息、情绪与状态。

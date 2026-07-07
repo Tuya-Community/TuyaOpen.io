@@ -1,5 +1,11 @@
 ---
 title: "tkl_gpio | GPIO 驱动"
+description: "tkl_gpio 参考 —— 用于配置引脚模式与方向、读写逻辑电平并为边沿或电平事件注册中断的 GPIO 驱动 TKL API。"
+keywords:
+  - tkl_gpio
+  - TuyaOpen GPIO 驱动
+  - 引脚控制
+  - 嵌入式驱动
 ---
 
 TKL GPIO 接口将芯片引脚配置为通用输入或输出，读写其逻辑电平，并为边沿或电平事件注册中断处理函数。引脚通过涂鸦分配的索引 `TUYA_GPIO_NUM_E`（从 0 开始）寻址，该索引独立于芯片的物理引脚编号。

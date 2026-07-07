@@ -1,5 +1,12 @@
 ---
 title: "Step 1: 项目编译"
+description: "项目编译通过 tos.py 将 TuyaOpen 应用从源码构建为可烧录固件 bin，涵盖选择项目、配置开发板、编译与清理产物的完整流程。"
+keywords:
+  - TuyaOpen
+  - 项目编译
+  - tos.py
+  - 固件构建
+  - 快速入门
 ---
 
 项目编译将一个 TuyaOpen 应用从源码构建为可烧录的固件 bin。你将选择项目、选择开发板配置、编译并清理产物——全部通过 `tos.py` 完成。本文以 `switch_demo` 应用为例。

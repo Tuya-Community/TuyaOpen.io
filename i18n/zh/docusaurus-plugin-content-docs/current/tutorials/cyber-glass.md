@@ -1,5 +1,6 @@
 ---
 title: "动感光效DIDI眼镜"
+noindex: true
 ---
 
 

@@ -1,5 +1,11 @@
 ---
 title: tkl_i2s | I2S 驱动
+description: "tkl_i2s 参考 —— 用于初始化 I2S 端口并按位时钟与声道选择收发数字音频数据的 I2S 音频驱动 TKL API。"
+keywords:
+  - tkl_i2s
+  - TuyaOpen I2S 驱动
+  - 数字音频
+  - 嵌入式驱动
 ---
 
 ## 概述

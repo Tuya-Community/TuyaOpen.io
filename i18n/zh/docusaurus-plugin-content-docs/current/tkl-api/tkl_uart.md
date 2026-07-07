@@ -1,5 +1,11 @@
 ---
 title: tkl_uart | UART 驱动
+description: "tkl_uart 参考 —— 提供端口初始化、数据读写、收发中断回调注册与流控的通用异步收发器 UART 驱动 TKL API。"
+keywords:
+  - tkl_uart
+  - TuyaOpen UART 驱动
+  - 串口通信
+  - 嵌入式驱动
 ---
 
 ## 概述

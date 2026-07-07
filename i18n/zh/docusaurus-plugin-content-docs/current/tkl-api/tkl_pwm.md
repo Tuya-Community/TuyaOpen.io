@@ -1,5 +1,11 @@
 ---
 title: "tkl_pwm | PWM 驱动"
+description: "tkl_pwm 参考 —— 用于配置通道极性、占空比与频率生成 PWM 信号，并通过输入捕获读取脉冲时序的 PWM 驱动 TKL API。"
+keywords:
+  - tkl_pwm
+  - TuyaOpen PWM 驱动
+  - 脉宽调制
+  - 嵌入式驱动
 ---
 
 TKL PWM 接口在硬件通道上生成脉冲宽度调制信号，并通过输入捕获读取脉冲时序。你配置通道的极性、占空比和频率，然后在运行时启动、调整或停止输出。通道通过 `TUYA_PWM_NUM_E` 寻址，从 `TUYA_PWM_NUM_0` 开始。

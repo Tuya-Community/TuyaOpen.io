@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 1：系统与日志"
+description: "移植 bring-up 第一阶段：把芯片 RTOS 与一路 UART 映射到 TuyaOpen OS 抽象层，使系统能启动、运行线程定时器并打印日志。"
+keywords:
+  - 移植
+  - 系统适配
+  - RTOS
+  - UART 日志
+  - TuyaOpen 硬件
 ---
 
 第一个 bring-up 阶段把你的芯片 RTOS 和一路 UART 映射到 TuyaOpen 的 OS 抽象层，使系统能够启动并打印日志。之后的所有工作都依赖于此——如果线程、定时器和控制台无法正常工作，你就无法调试后续各个阶段。

@@ -1,6 +1,13 @@
 ---
 id: t5ai-peripheral-mapping
 title: T5AI 外设映射说明
+description: "阐明 T5AI 硬件外设与涂鸦 TKL 层软件外设端口的映射关系：覆盖 GPIO、ADC、PWM、I2C、SPI、UART 等外设的板级引脚与软件端口。"
+keywords:
+  - T5AI
+  - 外设映射
+  - TKL
+  - GPIO
+  - TuyaOpen 硬件
 ---
 
 本文主要阐明 T5AI 的硬件外设与涂鸦 TKL 层的软件外设端口的映射关系。

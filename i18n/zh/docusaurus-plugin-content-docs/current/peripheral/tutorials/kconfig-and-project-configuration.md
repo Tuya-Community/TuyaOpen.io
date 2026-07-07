@@ -1,5 +1,12 @@
 ---
 title: Kconfig 与工程配置
+description: "TuyaOpen 使用 Kconfig 菜单与 app_default.config 保存工程配置，tos.py config 衔接两者：选板级预设、改功能、并在配置损坏时恢复。"
+keywords:
+  - Kconfig
+  - app_default.config
+  - tos.py
+  - 工程配置
+  - TuyaOpen 教程
 ---
 
 ## 概述

@@ -1,5 +1,12 @@
 ---
 title: Tuya IoT 客户端 API 参考
+description: "Tuya IoT 客户端 API 参考覆盖 tuya_iot.h 的配置结构体、生命周期（init/start/yield/stop）、云端激活、MQTT 连接、DP 上报与事件分发等接口。"
+keywords:
+  - IoT 客户端
+  - Tuya 云
+  - tuya_iot.h
+  - DP 上报
+  - MQTT
 ---
 
 ## 概述

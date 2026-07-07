@@ -1,5 +1,12 @@
 ---
 title: "音频编解码器驱动指南"
+description: "编解码器驱动将音频编解码器 IC 接入 tdl_audio_* 应用接口，使应用无需直接操作 I2S 或 I2C 总线即可播放与采集 PCM。"
+keywords:
+  - 音频编解码器
+  - tdl_audio
+  - I2S
+  - I2C
+  - TuyaOpen 教程
 ---
 
 TuyaOpen 中的编解码器驱动将音频编解码器 IC 接入 `tdl_audio_*` 应用接口，使应用无需直接操作 I2S 或 I2C 总线即可播放与采集 PCM。本指南介绍如何为语音交互、音频播放和 AI 应用集成编解码器。

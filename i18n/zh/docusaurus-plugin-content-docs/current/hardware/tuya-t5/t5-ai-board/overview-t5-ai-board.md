@@ -1,6 +1,13 @@
 ---
 id: overview-t5-ai-board
 title: T5AI-Board 开发套件
+description: "T5AI-Board 是基于涂鸦 T5-E1-IPEX Wi-Fi 与蓝牙组合模组的语音与屏幕交互开发板：板载双麦克风与扬声器，完整引出模组引脚。"
+keywords:
+  - T5AI-Board
+  - T5-E1-IPEX
+  - 语音开发板
+  - 屏幕交互
+  - TuyaOpen 硬件
 ---
 
 T5AI-Board 是一款基于涂鸦 T5-E1-IPEX Wi-Fi 与蓝牙组合模组的语音与屏幕交互开发板。板载 2 个麦克风和 1 个扬声器以支持语音交互，并完整引出模组引脚，便于堆叠 LCD 与摄像头模块或自行连接外设。可用它以标准 TuyaOpen 流程快速开发 AIoT 语音与显示应用。

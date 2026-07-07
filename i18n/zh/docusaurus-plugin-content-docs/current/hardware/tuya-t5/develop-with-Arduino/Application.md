@@ -1,5 +1,12 @@
 ---
 title: 应用开发 - AI 聊天机器人
+description: "基于 YourChatBot 示例与 TUYA-T5AI 开发板构建 AI 聊天机器人应用：覆盖项目结构、烧录流程与语音、文本、MCP 工具功能。"
+keywords:
+  - AI 聊天机器人
+  - YourChatBot
+  - T5AI
+  - Arduino
+  - MCP
 ---
 
 Arduino-TuyaOpen 提供了一个完整的 AI 聊天机器人应用实例。基于 `YourChatBot` 示例代码，配合 TUYA-T5AI 系列开发板，你可以快速构建一个支持语音交互、文本对话、MCP 工具调用等功能的智能聊天机器人。

@@ -1,5 +1,12 @@
 ---
 title: 自定义设备 MCP（硬件技能开发指南）
+description: "介绍如何为 TuyaOpenClaw 创建自定义设备 MCP 工具，将摄像头、传感器与显示屏等外设作为硬件技能接入 Agent 框架。"
+keywords:
+  - TuyaOpenClaw
+  - 设备 MCP
+  - 硬件技能
+  - MCP 工具
+  - 端侧 AI
 ---
 
 # TuyaOpenClaw - 自定义设备 MCP（硬件技能开发指南）

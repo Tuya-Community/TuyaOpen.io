@@ -1,5 +1,11 @@
 ---
 title: 内置 MCP 工具
+description: "框架自带的内置 MCP 工具在 ai_mcp_init 时自动注册，让设备端 AI 即可读取设备信息、拍照、调音量、切换聊天模式。"
+keywords:
+  - 内置 MCP 工具
+  - ai_mcp_tools
+  - MCP
+  - 端侧 AI
 ---
 
 框架自带一组已经写好并注册的 MCP 工具，因此 [MCP 服务端](ai-mcp-server)一启动，设备端 AI 就能对设备做动作。`ai_mcp_init` 在 MQTT 连接成功时自动注册它们——你不需要自己调用，而是由 AI 按名称调用。

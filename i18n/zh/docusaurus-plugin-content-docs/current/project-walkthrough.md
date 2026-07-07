@@ -1,5 +1,12 @@
 ---
 title: 目录结构
+description: "介绍 TuyaOpen 仓库的目录结构与各目录作用，涵盖 apps、boards、examples、platform、src、tools 等主要模块的组织方式。"
+keywords:
+  - TuyaOpen
+  - 目录结构
+  - 开源物联网平台
+  - 嵌入式开发
+  - SDK架构
 ---
 
 本文介绍 `TuyaOpen` 的目录结构及作用。

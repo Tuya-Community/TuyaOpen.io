@@ -1,5 +1,12 @@
 ---
 title: "Step 0: 环境搭建"
+description: "在你的电脑上搭建 TuyaOpen 所需工具链、下载仓库并激活 tos.py 命令行工具，覆盖 Windows、Linux 与 macOS 各系统安装步骤。"
+keywords:
+  - TuyaOpen
+  - 环境搭建
+  - 工具链
+  - tos.py
+  - 快速入门
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

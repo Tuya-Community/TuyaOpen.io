@@ -1,5 +1,12 @@
 ---
 title: TAL Bluetooth API 参考
+description: "tal_bluetooth.h 提供 TAL 层蓝牙接口：协议栈初始化、广播、扫描、连接、类 GATT 数据收发与 MTU 协商，事件经回调上报。"
+keywords:
+  - TAL Bluetooth
+  - tal_bluetooth
+  - BLE
+  - GATT
+  - TuyaOpen API
 ---
 
 ## 概述

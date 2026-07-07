@@ -1,5 +1,11 @@
 ---
 title: tkl_ota | OTA 固件升级
+description: "tkl_ota 参考 —— 提供 OTA 固件升级钩子，分阶段查询能力、通知起止并逐包处理数据的 OTA 升级 TKL API。"
+keywords:
+  - tkl_ota
+  - TuyaOpen OTA 升级
+  - 固件升级
+  - 嵌入式驱动
 ---
 
 `tkl_ota` API 提供内核层（TKL）的 OTA（Over-the-Air）固件升级钩子。升级分阶段进行：查询设备 OTA 能力、通知升级开始、逐包处理数据、通知升级结束。另有一个单独的接口用于获取旧固件信息以支持断点续传。每个函数成功时返回 `OPRT_OK`，失败时返回 `tuya_error_code.h` 中定义的错误码。

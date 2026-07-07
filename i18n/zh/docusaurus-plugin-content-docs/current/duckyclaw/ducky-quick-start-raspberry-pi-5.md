@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw 与 Raspberry Pi 5
+description: "Raspberry Pi 5 上构建并运行 TuyaOpenClaw 的快速开始指南，Linux 主机无需烧录固件，通过智能生活 App 接入 Tuya Cloud。"
+keywords:
+  - TuyaOpenClaw
+  - Raspberry Pi 5
+  - 树莓派 5
+  - 快速开始
+  - 端侧 AI
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
