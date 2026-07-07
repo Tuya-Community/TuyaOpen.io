@@ -128,7 +128,7 @@ const config = {
       searchPagePath: 'search',
     },
     navbar: {
-      hideOnScroll: true,
+      hideOnScroll: false,
       title: 'TuyaOpen',
       logo: {
         alt: 'TuyaOpen',
@@ -249,9 +249,7 @@ const config = {
             },
             {
               label: 'Web Serial Tool',
-              href: 'https://tuyaopen.ai/tools',
-              target: '_blank',
-              rel: 'noopener noreferrer',
+              to: '/web-serial',
             },
           ],
         },
@@ -446,6 +444,9 @@ const config = {
             // tyutool pages moved off /tools/ (the web-serial tool owns /tools/).
             // Substring match also covers /tyutool-guide and the /zh/ locale variants.
             ['/tyutool', '/tools/tyutool'],
+            // The standalone web-serial docker (formerly /tools/) is now integrated
+            // into the site at /web-serial. Redirect the old root URL.
+            ['/web-serial', '/tools'],
           ]
           for (const [neu, old] of moves) {
             const i = existingPath.indexOf(neu)

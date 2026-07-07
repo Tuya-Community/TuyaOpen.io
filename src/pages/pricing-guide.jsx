@@ -8,7 +8,6 @@ import styles from './pricing-guide.module.css'
 
 const PLATFORM = 'https://platform.tuya.com/'
 const PURCHASE = 'https://platform.tuya.com/purchase/index?type=6'
-const WEB_TOOL = 'https://tuyaopen.ai/tools/'
 
 /* ----------------------------------------------------------------------- */
 /* Bilingual copy                                                          */
@@ -531,9 +530,9 @@ export default function PricingGuide() {
                       </Link>
                     )}
                     {(m.badge === 'Browser' || m.badge === '浏览器') && (
-                      <a className={styles.btnGhost} href={WEB_TOOL} target="_blank" rel="noopener noreferrer">
-                        {WEB_TOOL.replace('https://', '')} →
-                      </a>
+                      <Link className={styles.btnGhost} to={`${base}/web-serial`}>
+                        web-serial →
+                      </Link>
                     )}
                   </div>
                 ))}
