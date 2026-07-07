@@ -1,5 +1,12 @@
 ---
 title: Component Framework
+description: "Component Framework (ai_components) is the modular on-device AI library: audio, chat modes, AI agent, UI, and playback for a voice assistant."
+keywords:
+  - ai components
+  - tuyaopen ai framework
+  - device ai
+  - voice assistant
+  - ai agent
 ---
 
 `ai_components` is the on-device AI framework behind every TuyaOpen AI application. It is a modular library that turns a board with a microphone, speaker, and screen into a voice assistant: it captures audio, runs the chat modes, talks to the [AI Agent](ai-agent), renders the UI, and plays the reply. You enable the modules your product needs and call one init function.

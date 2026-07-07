@@ -1,5 +1,11 @@
 ---
 title: tkl_rtc | RTC Driver
+description: "tkl_rtc reference — TuyaOpen real-time clock (RTC) driver TKL API for init, deinit, and setting/getting the UTC time in embedded IoT development."
+keywords:
+  - tkl_rtc
+  - tuyaopen rtc driver
+  - tkl rtc api
+  - embedded rtc driver
 ---
 
 ## Overview

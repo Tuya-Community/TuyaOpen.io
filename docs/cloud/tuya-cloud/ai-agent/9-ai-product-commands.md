@@ -1,5 +1,12 @@
 ---
 title: AI Product Commands
+description: "AI Product Commands on Tuya map natural-language phrases to device actions so an AI agent can control home devices like lights and sockets."
+keywords:
+  - ai product commands
+  - tuya ai agent
+  - device control
+  - natural language
+  - tuya cloud
 ---
 
 AI product commands map natural-language phrases (such as "Turn on the lights") to device actions, so an AI agent can control home devices like lights and sockets. You configure them on the Tuya Developer Platform, then publish the command solution to make it live.

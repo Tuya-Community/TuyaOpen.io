@@ -1,6 +1,13 @@
 ---
 title: "Raspberry Pi Provisioning Troubleshooting"
 slug: /hardware/Linux/raspberry-pi/wifi-bluetooth
+description: "Raspberry Pi provisioning troubleshooting — fix the Wi-Fi and Bluetooth problems that block TuyaOpen app pairing and re-provisioning on the board."
+keywords:
+  - raspberry pi
+  - wifi
+  - bluetooth
+  - tuyaopen hardware
+  - troubleshooting
 ---
 
 Fix Wi-Fi and Bluetooth problems that block provisioning when you run a TuyaOpen app on Raspberry Pi (for example, `apps/tuya.ai/your_chat_bot`). Each section below states the symptom, the cause, and the fix.

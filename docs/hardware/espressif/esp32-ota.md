@@ -1,5 +1,12 @@
 ---
 title: "ESP32 OTA Updates"
+description: "ESP32 OTA updates push new firmware to deployed TuyaOpen devices via the Tuya IoT Platform — create a key, upload, publish, and release."
+keywords:
+  - esp32
+  - ota
+  - firmware update
+  - tuyaopen hardware
+  - tuya cloud
 ---
 
 An OTA (over-the-air) update pushes new firmware to a deployed TuyaOpen ESP32 device remotely through the Tuya IoT Platform. This guide takes you through the seven steps: create a firmware key, write the key into firmware, upload a new version, publish it, configure the upgrade rule, verify, and release.

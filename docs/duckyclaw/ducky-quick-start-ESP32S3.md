@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw with ESP32-S3
+description: "TuyaOpenClaw quick start for ESP32-S3 builds and flashes the edge-AI voice assistant firmware with Wi-Fi on an ESP32-S3 development board."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - esp32-s3
+  - ai model deployment on edge devices
+  - quick start
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

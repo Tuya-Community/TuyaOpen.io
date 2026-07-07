@@ -1,5 +1,12 @@
 ---
 title: Button Driver
+description: "The TuyaOpen button driver detects presses and releases via GPIO with debounce, interrupts, polling, and edge-triggered state machines."
+keywords:
+  - button driver
+  - gpio
+  - debounce
+  - interrupt
+  - tuyaopen peripheral
 ---
 
 The [button driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/button) handles user input in TuyaOpen. It provides unified interfaces for managing button devices and detecting button events, so applications can implement input detection, event handling, and state management without managing the underlying hardware directly.

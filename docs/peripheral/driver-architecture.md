@@ -1,5 +1,12 @@
 ---
 title: "TDD/TDL Driver Architecture"
+description: "TuyaOpen's TDD/TDL architecture splits peripheral drivers into a TDL application API and chip-specific TDD drivers so new hardware needs no app changes."
+keywords:
+  - tdd
+  - tdl
+  - driver architecture
+  - peripheral driver
+  - tuyaopen
 ---
 
 TuyaOpen uses a two-layer peripheral driver framework: **TDL** (Tuya Driver Layer) manages device lifecycle and provides the application API, while **TDD** (Tuya Device Driver) implements chip-specific hardware access. This separation lets you add new hardware without changing application code.

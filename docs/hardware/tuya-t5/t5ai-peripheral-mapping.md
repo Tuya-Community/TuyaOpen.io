@@ -1,5 +1,12 @@
 ---
 title: T5AI Peripheral Mapping
+description: "T5AI peripheral mapping — how T5AI hardware peripherals correspond to Tuya TKL layer software peripheral ports across GPIO, ADC, and more."
+keywords:
+  - t5ai
+  - peripheral mapping
+  - tuyaopen hardware
+  - gpio
+  - tkl
 ---
 
 This document describes the mapping relationship between T5AI hardware peripherals and Tuya TKL layer software peripheral ports.

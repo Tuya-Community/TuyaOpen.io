@@ -1,5 +1,12 @@
 ---
 title: Contribution Guide
+description: "How to contribute to TuyaOpen via GitHub fork and pull request workflow: making changes, preparation, CLA, PR submission, and merge conventions."
+keywords:
+  - contribution guide
+  - pull request
+  - github
+  - cla
+  - tuyaopen
 ---
 
 You can contribute to [TuyaOpen](https://github.com/tuya/TuyaOpen) through GitHub's Fork and [Pull Requests](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) workflow. Contributions can include bug fixes, documentation improvements, and new features.

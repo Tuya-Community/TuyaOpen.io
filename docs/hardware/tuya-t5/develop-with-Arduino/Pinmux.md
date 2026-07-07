@@ -1,5 +1,12 @@
 ---
 title: T5AI Pin Mapping
+description: "T5AI pin mapping reference — pin definitions and mux maps for TUYA_T5AI_BOARD and TUYA_T5AI_CORE boards; look up GPIO and peripheral pins."
+keywords:
+  - t5ai
+  - pin mapping
+  - tuyaopen hardware
+  - pinmux
+  - gpio
 ---
 
 This reference lists the pin definitions and multiplexing maps for the `TUYA_T5AI_BOARD` and `TUYA_T5AI_CORE` development boards, so you can quickly look up GPIO numbers and peripheral function assignments. The pin definitions of both boards are identical.

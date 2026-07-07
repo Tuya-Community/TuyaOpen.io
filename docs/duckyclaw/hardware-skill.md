@@ -1,5 +1,12 @@
 ---
 title: Hardware Peripheral Skills
+description: "TuyaOpenClaw hardware skills let the AI agent control GPIO, ADC, I2C, UART, PWM, and servo peripherals through natural-language voice commands."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - hardware skills
+  - mcp tools
+  - physical ai agent
 ---
 
 # Hardware Peripheral Skills (Hardware MCP Tools)

@@ -1,5 +1,12 @@
 ---
 title: Bring Your Chip to TuyaOpen
+description: "Bring your chip to TuyaOpen — a guide for silicon, module, and board vendors implementing the TKL adapter that maps a chip SDK onto TuyaOpen."
+keywords:
+  - tuyaopen porting
+  - chip vendor
+  - tkl adapter
+  - silicon
+  - module vendor
 ---
 
 This guide is for **silicon, module, and board vendors** who want their hardware to run TuyaOpen. Porting means implementing a thin adapter — the "glue layer" — that maps your chip SDK onto TuyaOpen's hardware abstraction, so every TuyaOpen application, cloud service, and AI feature runs on your platform unchanged. This page explains what to build, which reference ports to copy from, and what the work unlocks for you.

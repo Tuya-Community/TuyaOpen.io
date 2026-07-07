@@ -1,5 +1,12 @@
 ---
 title: TAL KV Storage Guide
+description: "TAL KV storage guide for TuyaOpen: tal_kv.h provides persistent key-value storage backed by LittleFS with helpers to serialize fields to JSON."
+keywords:
+  - tal kv
+  - tal_kv.h
+  - key-value storage
+  - littlefs
+  - tuyaopen api
 ---
 
 ## Overview

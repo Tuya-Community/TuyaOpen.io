@@ -1,5 +1,12 @@
 ---
 title: Chatbot
+description: "Chatbot (your_chat_bot) is a Tuya AI demo with voice input, four chat modes, status tones, multiple UI themes, and live agent role switching."
+keywords:
+  - chatbot demo
+  - physical ai agent
+  - device ai demo
+  - tuyaopen
+  - voice assistant
 ---
 
 [your_chat_bot](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/your_chat_bot) is an intelligent chatbot based on Tuya AI open-source large language model. It captures voice input by using a microphone, processes it with speech recognition, and enables conversational interaction, responsive replies, and humorous banter. The chat content is displayed in real-time on the screen.

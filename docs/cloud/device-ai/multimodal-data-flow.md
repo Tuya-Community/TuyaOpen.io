@@ -1,5 +1,12 @@
 ---
 title: Multimodal Data Flow
+description: "Multimodal Data Flow categorizes speech, text, camera, and sensor data, tracing each between hardware, ai_components, and the Tuya AI cloud."
+keywords:
+  - multimodal data flow
+  - ai components
+  - device ai
+  - tuyaopen
+  - ai cloud
 ---
 
 A TuyaOpen AI device is **multimodal**: it takes in speech, text, camera images, and device/sensor data, and responds with speech, on-screen text, and actions. This page categorizes those four modalities and shows how each one travels between the **hardware** (mic, speaker, camera, display, sensors), the **on-device software** (`ai_components`), and the **Tuya AI cloud**.

@@ -1,5 +1,12 @@
 ---
 title: Get a Developer License (Authorization Code)
+description: "Claim two free developer licenses (UUID and AuthKey) from the Tuya Developer Platform for TuyaOpen product development and cloud-connected debugging."
+keywords:
+  - developer license
+  - authorization code
+  - uuid
+  - authkey
+  - tuya developer platform
 ---
 
 This guide explains how to claim free developer licenses (authorization codes) from the Tuya Developer Platform for product development and debugging. It is for developers who need TuyaOpen-specific UUID and AuthKey to connect devices to Tuya Cloud or use cloud-dependent features.

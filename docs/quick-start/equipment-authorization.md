@@ -1,5 +1,12 @@
 ---
 title: "Step 3: Authorize Devices"
+description: "Write a TuyaOpen license (UUID and AuthKey) into your device via the serial monitor or a config header so it can connect to Tuya IoT Cloud."
+keywords:
+  - device authorization
+  - uuid
+  - authkey
+  - license
+  - tuyaopen
 ---
 
 Device authorization writes a TuyaOpen license — a `UUID` and an `AuthKey` — into your device so it can connect to the Tuya IoT Cloud. Every device needs a unique license before it can pair and come online.

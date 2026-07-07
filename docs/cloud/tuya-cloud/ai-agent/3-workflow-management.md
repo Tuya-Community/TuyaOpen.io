@@ -1,5 +1,12 @@
 ---
 title: Workflow Management
+description: "Workflow Management on Tuya — a visual drag-and-drop workbench to build, automate, and optimize an agent's business logic and reduce hallucinations."
+keywords:
+  - workflow management
+  - tuya ai agent
+  - visual workbench
+  - agent logic
+  - tuya cloud
 ---
 
 A workflow is a visual workbench for simplifying and automating an agent's business logic. You create, manage, and optimize workflows on a drag-and-drop interface to improve an agent's efficiency and reduce hallucinations.

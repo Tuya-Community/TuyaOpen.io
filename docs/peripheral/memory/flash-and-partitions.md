@@ -1,5 +1,12 @@
 ---
 title: Flash, partitions, and capacity
+description: "Flash and partitions on TuyaOpen MCU targets: firmware, OTA, authorization, and KV/LittleFS share external NOR flash via tkl_flash_* and Kconfig."
+keywords:
+  - flash
+  - partitions
+  - ota
+  - tkl_flash
+  - tuyaopen peripheral
 ---
 
 ## Overview

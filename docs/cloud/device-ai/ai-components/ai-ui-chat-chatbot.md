@@ -1,5 +1,12 @@
 ---
 title: Chatbot UI
+description: "Chatbot UI (ai_ui_chat_chatbot) shows one centered message at a time, the latest AI reply or status, for focused displays like kiosks and toys."
+keywords:
+  - chatbot ui
+  - ai ui
+  - device ai
+  - tuyaopen
+  - chat display
 ---
 
 `ai_ui_chat_chatbot` is a simple chatbot UI for the TuyaOpen AI framework. It shows one message at a time, centered on the screen — the current AI reply or status — rather than a scrolling history. It implements the [`ai_ui_manage`](ai-ui-manage) interface, so once registered it renders the chat messages, emotions, and status the framework dispatches.

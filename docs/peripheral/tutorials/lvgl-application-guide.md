@@ -1,5 +1,12 @@
 ---
 title: LVGL Application Guide
+description: "LVGL application guide for TuyaOpen: enable the LVGL stack, initialize the display via lv_vendor, create widgets, and run the LVGL task on T5AI or ESP32."
+keywords:
+  - lvgl
+  - graphics
+  - widgets
+  - lv_vendor
+  - tuyaopen peripheral
 ---
 
 ## Overview

@@ -1,5 +1,12 @@
 ---
 title: Role Management
+description: "Role Management on Tuya defines personalities your AI agent can adopt — name, description, voice, and prompt — bound from a shared role library."
+keywords:
+  - role management
+  - tuya ai agent
+  - role library
+  - voice timbre
+  - tuya cloud
 ---
 
 Role management defines the personalities your AI agent can adopt — the name, description, voice, and prompt that shape how it talks. You create roles in a shared library, then bind one or more roles to an agent so a single product can switch between personas. It powers products such as AI dolls and smart storytelling robots, where each role carries its own character and chat style.

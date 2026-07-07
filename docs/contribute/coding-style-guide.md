@@ -1,5 +1,12 @@
 ---
 title: Coding Style Guide
+description: "TuyaOpen coding conventions based on the Linux kernel style, covering file naming, header guards, formatting, and readability for C contributions."
+keywords:
+  - coding style
+  - conventions
+  - c language
+  - linux kernel style
+  - tuyaopen
 ---
 
 This style guide encourages TuyaOpen developers to adopt unified coding conventions, improving code readability and maintainability.

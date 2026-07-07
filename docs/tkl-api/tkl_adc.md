@@ -1,5 +1,11 @@
 ---
 title: "tkl_adc | ADC Driver"
+description: "tkl_adc reference — TuyaOpen ADC driver TKL API for sampling analog voltages, reading raw counts, millivolts, and chip temperature in embedded IoT development."
+keywords:
+  - tkl_adc
+  - tuyaopen adc driver
+  - tkl adc api
+  - embedded adc driver
 ---
 
 The TKL ADC interface reads analog voltages by sampling them with an analog-to-digital converter. You configure an ADC unit (`TUYA_ADC_NUM_E`) with a channel list, resolution, and sampling mode, then read raw counts, convert them to millivolts, or query the chip temperature. Each ADC unit usually exposes several channels selected through a bitmask.

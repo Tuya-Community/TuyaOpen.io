@@ -1,5 +1,12 @@
 ---
 title: Memory and storage overview
+description: "Memory and storage overview for TuyaOpen: MCU SRAM, PSRAM, and NOR flash versus Linux DDR and block storage, with TAL patterns and heap/flash guides."
+keywords:
+  - memory
+  - storage
+  - sram
+  - psram
+  - tuyaopen peripheral
 ---
 
 ## Overview

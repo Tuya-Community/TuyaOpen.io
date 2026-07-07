@@ -1,5 +1,12 @@
 ---
 title: "Audio Codec Driver Guide"
+description: "Audio codec driver guide for TuyaOpen: connect a codec IC (ES8311, ES8388) to tdl_audio_* over I2S and I2C so apps play and capture PCM."
+keywords:
+  - audio codec
+  - es8311
+  - i2s
+  - tdl_audio
+  - tuyaopen peripheral
 ---
 
 A codec driver in TuyaOpen connects an audio codec IC to the `tdl_audio_*` application interface, so an app can play and capture PCM without touching the I2S or I2C buses directly. This guide integrates a codec for voice interaction, audio playback, and AI applications.

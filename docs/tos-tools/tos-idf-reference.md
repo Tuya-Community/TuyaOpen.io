@@ -1,5 +1,12 @@
 ---
 title: tos.py idf Command Reference
+description: "Reference for tos.py idf, which forwards arguments to Espressif idf.py inside the ESP32 platform tree for native ESP-IDF workflows on TuyaOpen."
+keywords:
+  - tos.py idf
+  - esp32
+  - esp-idf
+  - idf.py
+  - tuyaopen
 ---
 
 ## Overview

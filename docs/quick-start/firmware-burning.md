@@ -1,5 +1,12 @@
 ---
 title: "Step 2: Flashing and Logging"
+description: "Flash TuyaOpen firmware onto your device with the tos.py flash command and stream the device's serial log output to watch it boot and run."
+keywords:
+  - firmware flashing
+  - tos.py
+  - serial log
+  - tuyaopen
+  - burning
 ---
 
 Flashing writes the firmware bin you built onto the device; logging streams the device's serial output so you can watch it boot and run. Both run from `tos.py` in the application project directory.

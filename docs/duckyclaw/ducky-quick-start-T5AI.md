@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw with T5AI
+description: "TuyaOpenClaw quick start for the T5-AI Board builds, flashes, and activates the edge-AI voice firmware on Tuya T5-AI hardware with Tuya Cloud."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - t5ai
+  - ai model deployment on edge devices
+  - quick start
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

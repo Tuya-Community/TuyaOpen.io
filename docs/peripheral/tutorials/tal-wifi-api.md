@@ -1,5 +1,12 @@
 ---
 title: "TAL Wi-Fi API Reference"
+description: "TAL Wi-Fi API reference for TuyaOpen: tal_wifi.h provides portable station and AP operations, wrapping the TKL Wi-Fi adapter via tal_wifi_init."
+keywords:
+  - tal wifi
+  - tal_wifi.h
+  - wifi station
+  - wifi ap
+  - tuyaopen api
 ---
 
 The TAL Wi-Fi API (`tal_wifi.h`) provides a platform-independent interface for Wi-Fi station and AP operations. It wraps the TKL Wi-Fi adapter, which in turn calls the platform's Wi-Fi driver (ESP-IDF, T5AI SDK, Linux, and others).

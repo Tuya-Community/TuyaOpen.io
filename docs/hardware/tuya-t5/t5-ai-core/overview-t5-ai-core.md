@@ -1,5 +1,12 @@
 ---
 title: T5AI-Core Development Kit
+description: "T5AI-Core development kit — a compact voice-core board on the Tuya T5-E1 Wi-Fi and Bluetooth module with onboard mic, speaker, and 44-pin header."
+keywords:
+  - t5ai-core
+  - tuyaopen hardware
+  - t5-e1
+  - voice
+  - dev kit
 ---
 
 The T5AI-Core is a compact voice-core development board built on the Tuya T5-E1 Wi-Fi and Bluetooth combo module. It integrates an onboard microphone, speaker, lithium-battery power management, and a 44-pin header that breaks out the module's GPIO, UART, SPI, and I2C signals. Use it to prototype portable AIoT voice-interaction applications with the standard TuyaOpen workflow.

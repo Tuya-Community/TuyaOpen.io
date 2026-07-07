@@ -1,5 +1,12 @@
 ---
 title: T3 Module Overview
+description: "T3 module overview — Tuya Wi-Fi and Bluetooth LE combo modules in TuyaOpen, with BSP entries for the T3 LCD DevKit and shared T3 Kconfig."
+keywords:
+  - t3 module
+  - tuyaopen hardware
+  - wi-fi
+  - ble
+  - t3 lcd devkit
 ---
 
 ## Overview

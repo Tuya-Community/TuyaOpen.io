@@ -1,5 +1,12 @@
 ---
 title: Heap allocation and PSRAM
+description: "Heap allocation and PSRAM in TuyaOpen: tal_malloc/tal_free from tal_memory.h and tal_psram_* allocators enabled by ENABLE_EXT_RAM on ESP32 SPIRAM."
+keywords:
+  - heap allocation
+  - psram
+  - tal_malloc
+  - esp32 spiram
+  - tuyaopen peripheral
 ---
 
 ## Overview

@@ -1,5 +1,12 @@
 ---
 title: TCP and UDP Socket Tutorial
+description: "TCP and UDP socket tutorial for TuyaOpen: build a TCP client with tal_net_connect and tal_net_send, and use UDP via tal_net_bind, send_to, and recvfrom."
+keywords:
+  - tcp socket
+  - udp
+  - tal_network
+  - tal_net_connect
+  - tuyaopen peripheral
 ---
 
 ## Overview

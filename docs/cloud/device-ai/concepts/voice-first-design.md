@@ -1,5 +1,12 @@
 ---
 title: Voice-First Design
+description: "Voice-First Design covers principles that make voice interaction natural — obvious state, instant response, graceful interruption — mapped to TuyaOpen."
+keywords:
+  - voice first design
+  - voice interaction
+  - device ai
+  - tuyaopen
+  - voice assistant
 ---
 
 Voice-first design means the **conversation is the main way the user controls the device** — voice carries the interaction, and screens, LEDs, and tones support it rather than lead it. This page covers the principles that make a voice interaction feel natural, and how each one maps to a TuyaOpen capability.

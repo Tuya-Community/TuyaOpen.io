@@ -1,5 +1,11 @@
 ---
 title: tkl_pinmux | Pinmux Driver
+description: "tkl_pinmux reference — TuyaOpen pinmux TKL API for mapping peripheral functions to physical IO pins and querying pin assignments in embedded IoT development."
+keywords:
+  - tkl_pinmux
+  - tuyaopen pinmux driver
+  - tkl pinmux api
+  - embedded pinmux
 ---
 
 ## Overview

@@ -1,5 +1,12 @@
 ---
 title: How Device–Cloud Binding Works
+description: "How Device–Cloud Binding Works on Tuya — the four pieces (Product, License, Activation, DP control) connecting a device to its cloud identity."
+keywords:
+  - device cloud binding
+  - tuya cloud
+  - activation
+  - license
+  - pid
 ---
 
 Binding is what connects a physical device to its identity in the Tuya cloud, so the Tuya app and the AI agent can recognize, control, and update it. This page explains the four pieces involved and the order you put them together — read it before you create a product or flash a board.

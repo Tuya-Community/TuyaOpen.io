@@ -1,5 +1,12 @@
 ---
 title: Application Development - AI Chatbot
+description: "Application development for an AI chatbot on Arduino-TuyaOpen — build the YourChatBot sample on a TUYA-T5AI board with voice, text, and MCP tools."
+keywords:
+  - ai chatbot
+  - arduino
+  - t5ai
+  - yourchatbot
+  - tuyaopen hardware
 ---
 
 Arduino-TuyaOpen ships a complete AI chatbot application example. Using the `YourChatBot` sample code with a TUYA-T5AI series development board, you build a smart chatbot that supports voice interaction, text conversation, MCP tool invocation, and more.

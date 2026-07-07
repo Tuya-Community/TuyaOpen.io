@@ -1,5 +1,12 @@
 ---
 title: Agent OpenAPIs
+description: "Agent OpenAPIs on Tuya integrate a Tuya AI agent into your own platform via OpenAPI endpoints authenticated by cloud-project access keys."
+keywords:
+  - agent openapi
+  - tuya ai agent
+  - tuya cloud
+  - api integration
+  - access key
 ---
 
 Agent OpenAPIs let you integrate a Tuya-powered AI agent into your own platform or software. If you built an agent on the Tuya Developer Platform and want to use it from your own product, you access the agent's data through Tuya's OpenAPI endpoints.

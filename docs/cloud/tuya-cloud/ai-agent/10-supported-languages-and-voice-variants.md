@@ -1,5 +1,12 @@
 ---
 title: Supported Languages and Voice Variants
+description: "Supported languages and voice variants for the Tuya AI Agent Dev Platform — ASR and TTS coverage by region with 223 voice variants total."
+keywords:
+  - supported languages voice variants
+  - asr tts
+  - tuya ai agent
+  - voice interaction
+  - tuya cloud
 ---
 
 The AI Agent Dev Platform supports a fixed set of languages and voice variants for speech input and output. This page lists which languages and how many voice variants are available per region, so you can choose a combination that works end to end.

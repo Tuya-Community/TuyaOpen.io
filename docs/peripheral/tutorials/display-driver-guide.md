@@ -1,5 +1,12 @@
 ---
 title: "Display Driver Integration Guide"
+description: "Display driver integration guide for TuyaOpen: register a panel with the TDL display framework so LVGL and apps draw via tdl_display_* (SPI, RGB, 8080)."
+keywords:
+  - display driver
+  - tdl_display
+  - lvgl
+  - panel
+  - tuyaopen peripheral
 ---
 
 A display driver in TuyaOpen registers a panel with the TDL display framework so LVGL and your application can draw to it through `tdl_display_*`. This guide integrates a new panel using TDL display and LVGL.

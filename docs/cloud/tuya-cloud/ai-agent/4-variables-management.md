@@ -1,5 +1,12 @@
 ---
 title: Variables Management
+description: "Variables Management on Tuya stores user characteristics as key-value pairs so an agent remembers preferences and generates personalized responses."
+keywords:
+  - variables management
+  - tuya ai agent
+  - system variables
+  - custom variables
+  - tuya cloud
 ---
 
 Variables store user characteristics such as language preferences and habits. Through variable management, an agent remembers user information dynamically and generates personalized responses.

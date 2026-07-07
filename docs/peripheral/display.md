@@ -1,5 +1,12 @@
 ---
 title: Display Driver
+description: "The TuyaOpen display driver registers and manages screens with frame buffers, refresh, backlight control, and RGB/SPI panel support."
+keywords:
+  - display driver
+  - frame buffer
+  - spi panel
+  - backlight
+  - tuyaopen peripheral
 ---
 ## Overview
 

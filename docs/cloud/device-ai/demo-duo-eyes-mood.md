@@ -1,5 +1,12 @@
 ---
 title: Duo-Eyes Mood Robot
+description: "Duo-Eyes Mood Robot is a Tuya AI chatbot demo with voice input, four chat modes, status tones, and expressive eye GIFs showing the current emotion."
+keywords:
+  - duo eyes mood robot
+  - physical ai agent
+  - device ai demo
+  - tuyaopen
+  - chatbot
 ---
 
 [duo_eye_mood](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya.ai/duo_eye_mood) is an intelligent chatbot based on Tuya AI's open-source large language model. It captures voice input by using a microphone, processes it with speech recognition, and enables conversational interaction, responsive replies, and humorous banter. The chat content is displayed in real-time on the screen.

@@ -1,5 +1,12 @@
 ---
 title: CLI - tos.py Development Tool
+description: "tos.py is the command-line interface for TuyaOpen, used for project configuration, compilation, firmware flashing, debugging, and monitoring."
+keywords:
+  - tos.py
+  - cli tool
+  - tuyaopen
+  - project configuration
+  - command line
 ---
 
 ## Overview

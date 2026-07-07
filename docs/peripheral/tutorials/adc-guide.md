@@ -1,5 +1,12 @@
 ---
 title: "ADC Peripheral Guide"
+description: "ADC peripheral guide for TuyaOpen: configure TKL ADC units, enable channels with a bitmask, set attenuation, and read raw counts converted to millivolts."
+keywords:
+  - adc
+  - tkl_adc
+  - analog voltage
+  - channel bitmask
+  - tuyaopen peripheral
 ---
 
 The TKL ADC interface reads analog voltages from sensors, potentiometers, and other analog sources. You configure an ADC unit, enable channels with a bitmask, then read raw counts and convert them to millivolts.

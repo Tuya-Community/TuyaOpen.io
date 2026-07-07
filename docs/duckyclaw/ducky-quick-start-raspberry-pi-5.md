@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw with Raspberry Pi 5
+description: "TuyaOpenClaw quick start for Raspberry Pi 5 builds and runs the edge-AI voice assistant as a Linux executable on the Pi and connects to Tuya Cloud."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - raspberry pi 5
+  - ai model deployment on edge devices
+  - quick start
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

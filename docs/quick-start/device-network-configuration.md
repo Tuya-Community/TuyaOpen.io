@@ -1,5 +1,12 @@
 ---
 title: "Step 4: Device Pairing w/ Smartphone"
+description: "Register and pair a flashed, authorized TuyaOpen device to the Tuya IoT Cloud using the SmartLife mobile app to control and monitor it remotely."
+keywords:
+  - device pairing
+  - smartlife app
+  - tuya iot cloud
+  - remote control
+  - tuyaopen
 ---
 
 Device pairing connects and registers your device to the Tuya IoT Cloud, so you can control it remotely from a mobile app. This page pairs a flashed, authorized device using the **SmartLife** app.

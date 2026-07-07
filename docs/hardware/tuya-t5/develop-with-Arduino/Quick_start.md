@@ -1,5 +1,12 @@
 ---
 title: Quick Start
+description: "Arduino quick start for T5 on TuyaOpen — install the Arduino IDE, add the Tuya board manager, pick a development board, and provision the device."
+keywords:
+  - arduino
+  - t5
+  - quick start
+  - tuyaopen hardware
+  - board manager
 ---
 
 This guide gets you from a clean Arduino IDE to a flashed T5 example: install the IDE, add the Tuya board manager, pick a development board, and provision the device through the app.

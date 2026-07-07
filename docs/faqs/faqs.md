@@ -1,5 +1,12 @@
 ---
 title: FAQs
+description: "Answers to common TuyaOpen problems across setup, building, flashing, and pairing, with each entry covering the symptom, cause, and fix."
+keywords:
+  - faqs
+  - troubleshooting
+  - tuyaopen
+  - tos.py
+  - common issues
 ---
 
 Answers to the most common problems you hit while setting up, building, flashing, and pairing TuyaOpen devices. Each entry follows the same shape: the symptom, why it happens, and how to fix it. Use your browser's find (`Ctrl + F`) to jump to a keyword, or open a section below.

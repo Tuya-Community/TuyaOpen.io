@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 1: System and logs"
+description: "Bring-up stage 1 for TuyaOpen porting — map your chip's RTOS and a UART onto TuyaOpen's OS abstraction so the system boots and prints logs."
+keywords:
+  - tuyaopen porting
+  - bring-up
+  - system
+  - logs
+  - rtos
 ---
 
 The first bring-up stage maps your chip's RTOS and a UART onto TuyaOpen's OS abstraction, so the system boots and prints logs. Everything after this depends on it — without working threads, timers, and a console you cannot debug the later stages.

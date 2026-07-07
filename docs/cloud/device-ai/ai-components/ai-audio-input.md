@@ -1,5 +1,12 @@
 ---
 title: AI Audio Input
+description: "AI Audio Input (ai_audio_input) captures microphone audio and uses Voice Activity Detection (VAD) to gate speech slices for the AI agent."
+keywords:
+  - ai audio input
+  - voice activity detection
+  - vad
+  - device ai
+  - microphone capture
 ---
 
 `ai_audio_input` captures microphone audio, decides when speech is present, and hands the resulting audio slices to your application through a callback. It is the front end of the AI audio pipeline: it produces the audio that `ai_agent` uploads to the cloud.

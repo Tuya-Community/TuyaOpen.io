@@ -1,5 +1,12 @@
 ---
 title: MCP Management
+description: "MCP Management on Tuya — integrate Model Context Protocol servers so AI agents reach external data sources, tools, and services through one standard."
+keywords:
+  - mcp management
+  - model context protocol
+  - tuya ai agent
+  - mcp server
+  - tuya cloud
 ---
 
 The Model Context Protocol (MCP) is an open standard, created and open-sourced by Anthropic in 2024, that standardizes how large language models (LLMs) and AI agents interact securely and flexibly with external data sources, tools, and services.

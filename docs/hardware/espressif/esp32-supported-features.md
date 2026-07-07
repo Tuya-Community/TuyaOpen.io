@@ -1,5 +1,12 @@
 ---
 title: "ESP32 Supported Features"
+description: "ESP32 supported features reference — chip features, peripherals, boards, and applications TuyaOpen supports across ESP32, S3, C3, and C6."
+keywords:
+  - esp32
+  - supported features
+  - tuyaopen hardware
+  - esp32-s3
+  - esp32-c3
 ---
 
 This reference lists which chip features, on-board peripherals, boards, and applications TuyaOpen supports across the ESP32 chip variants.

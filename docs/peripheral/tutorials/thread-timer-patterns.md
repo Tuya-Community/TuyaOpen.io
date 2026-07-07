@@ -1,5 +1,12 @@
 ---
 title: "Thread and Timer Patterns"
+description: "Thread and timer patterns for TuyaOpen: use the TAL OS abstraction for portable threads, software timers, mutexes, semaphores, and queues."
+keywords:
+  - thread
+  - timer
+  - mutex
+  - semaphore
+  - tuyaopen peripheral
 ---
 
 The TAL OS abstraction gives you portable threads, software timers, mutexes, semaphores, and queues across every TuyaOpen platform. This page collects the common patterns for multithreading, periodic work, and synchronization.

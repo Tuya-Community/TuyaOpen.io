@@ -1,5 +1,11 @@
 ---
 title: tkl_i2s | I2S Driver
+description: "tkl_i2s reference — TuyaOpen I2S digital audio driver TKL API for init, send, receive, and stop on the Inter-IC Sound bus in embedded IoT development."
+keywords:
+  - tkl_i2s
+  - tuyaopen i2s driver
+  - tkl i2s api
+  - embedded audio driver
 ---
 
 ## Overview

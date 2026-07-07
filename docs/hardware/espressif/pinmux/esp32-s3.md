@@ -1,5 +1,12 @@
 ---
 title: "ESP32-S3 Peripheral Mapping"
+description: "ESP32-S3 peripheral mapping — how the dual-core Xtensa LX7 AI/audio chip's on-chip peripherals map onto TuyaOpen TKL software ports."
+keywords:
+  - esp32-s3
+  - peripheral mapping
+  - tuyaopen hardware
+  - pinmux
+  - ai audio
 ---
 
 This document describes the mapping between ESP32-S3 (dual-core Xtensa LX7, AI/audio) on-chip peripherals and the TuyaOpen TKL layer software ports. ESP32-S3 is the primary chip for AI chat and voice applications in TuyaOpen.

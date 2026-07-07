@@ -1,5 +1,12 @@
 ---
 title: Device Debugging
+description: "Device debugging captures TuyaOpen serial port logs so you can track device behavior and troubleshoot issues after flashing new firmware."
+keywords:
+  - device debugging
+  - serial log
+  - troubleshooting
+  - tuyaopen
+  - uart
 ---
 
 Device debugging captures device logs over a serial port so you can track issues and troubleshoot behavior. After you flash [TuyaOpen](https://github.com/tuya/TuyaOpen) firmware, the serial log is the primary way to see what the device is doing.

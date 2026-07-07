@@ -1,5 +1,12 @@
 ---
 title: Framework Entry
+description: "Framework Entry (ai_main) is the one init call that initializes components, registers chat modes, and starts event dispatch in a TuyaOpen AI app."
+keywords:
+  - ai main
+  - framework entry
+  - tuyaopen ai
+  - ai_chat_init
+  - device ai
 ---
 
 `ai_main` is the entry point of the on-device AI framework. One call — `ai_chat_init` — initializes the enabled components, registers the chat modes, subscribes to the events that drive the conversation, and starts dispatching. The rest of your application talks to the framework through this one module.

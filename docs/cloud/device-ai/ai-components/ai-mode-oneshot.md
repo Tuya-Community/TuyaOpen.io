@@ -1,5 +1,12 @@
 ---
 title: One-Shot Mode
+description: "One-Shot Mode starts a single turn on one button click and uses Voice Activity Detection to end capture when you stop speaking, no hold required."
+keywords:
+  - one shot mode
+  - voice chat mode
+  - device ai
+  - vad
+  - tuyaopen
 ---
 
 **One-shot** is the chat mode where you click the button once to start a single turn. The device begins listening immediately, and Voice Activity Detection (VAD) ends the turn when you stop speaking — you do not hold the button.

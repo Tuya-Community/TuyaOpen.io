@@ -1,5 +1,12 @@
 ---
 title: "Run your_chat_bot on DshanPi-A1"
+description: "DshanPi-A1 brings the TuyaOpen your_chat_bot voice assistant to Rockchip hardware using its onboard mic and speaker; configure sound and build."
+keywords:
+  - dshanpi-a1
+  - your_chat_bot
+  - tuyaopen hardware
+  - voice assistant
+  - rockchip
 ---
 
 Run the TuyaOpen [your_chat_bot](https://tuyaopen.ai/docs/cloud/device-ai/demo-your-chat-bot) voice assistant on the [DshanPi-A1](https://rockchip.100ask.net/en/docs/DshanPi-A1/intro/) board. Unlike a Raspberry Pi, the DshanPi-A1 has a built-in microphone and speaker, so the two board-specific steps are configuring the onboard sound card and pointing the firmware at the wake-word model.

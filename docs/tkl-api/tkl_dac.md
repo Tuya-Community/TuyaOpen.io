@@ -1,5 +1,11 @@
 ---
 title: "tkl_dac | DAC Driver"
+description: "tkl_dac reference — TuyaOpen DAC driver TKL API for converting digital values to analog output via FIFO and channels in embedded IoT development."
+keywords:
+  - tkl_dac
+  - tuyaopen dac driver
+  - tkl dac api
+  - embedded dac driver
 ---
 
 The TKL DAC interface converts digital values into an analog output voltage — the inverse of an ADC. You initialize a DAC unit (`TUYA_DAC_NUM_E`), configure its channels and output width, then push sample data through the FIFO and start conversion. A common use is restoring an audio waveform that was previously captured by an ADC.

@@ -1,5 +1,11 @@
 ---
 title: tkl_register | Register Driver
+description: "tkl_register reference — TuyaOpen register TKL API for word-level read/write and bit-field read/write of chip registers for porting/platform adaptation."
+keywords:
+  - tkl_register
+  - tuyaopen register api
+  - tkl register access
+  - chip register io
 ---
 
 ## Overview

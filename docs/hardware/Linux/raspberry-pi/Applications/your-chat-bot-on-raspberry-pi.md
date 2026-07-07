@@ -1,5 +1,11 @@
 ---
 title: "Run your_chat_bot on Raspberry Pi"
+description: "Raspberry Pi runs the TuyaOpen your_chat_bot voice assistant with an external sound card; pick a build method and point firmware at the wake word."
+keywords:
+  - raspberry pi
+  - your_chat_bot
+  - tuyaopen hardware
+  - voice assistant
 ---
 
 Run the TuyaOpen [your_chat_bot](https://tuyaopen.ai/docs/cloud/device-ai/demo-your-chat-bot) voice assistant on a Raspberry Pi. This guide covers the two supported build methods, the external sound card the board needs, and how to point the firmware at the wake-word model.

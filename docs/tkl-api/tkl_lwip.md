@@ -1,5 +1,11 @@
 ---
 title: tkl_lwip | lwIP Ethernet Interface
+description: "tkl_lwip reference — TuyaOpen lwIP Ethernet TKL API for initializing the interface and tx/rx of packets in pbuf form for porting/platform adaptation."
+keywords:
+  - tkl_lwip
+  - tuyaopen lwip driver
+  - tkl ethernet api
+  - lwip porting
 ---
 
 `tkl_lwip` adapts the lwIP network stack to the underlying Ethernet hardware. It initializes the Ethernet interface and transmits and receives packets in lwIP `pbuf` form. The implementation lives in `tkl_lwip.c`, which TuyaOS generates and maintains; add your own code between the `BEGIN` and `END` markers so it survives regeneration.

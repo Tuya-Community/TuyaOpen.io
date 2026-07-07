@@ -1,5 +1,12 @@
 ---
 title: MQTT Client Tutorial
+description: "MQTT client tutorial for TuyaOpen: connect to a broker, subscribe, publish with QoS, and unsubscribe using mqtt_client_interface.h on netmgr networking."
+keywords:
+  - mqtt
+  - mqtt client
+  - subscribe
+  - publish
+  - tuyaopen peripheral
 ---
 
 ## Overview

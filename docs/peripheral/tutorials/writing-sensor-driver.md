@@ -1,5 +1,12 @@
 ---
 title: "Writing a New I2C Sensor Driver"
+description: "Writing a new I2C sensor driver for TuyaOpen: read a chip over the TKL I2C bus and expose results to applications, using the SHT3x as a concrete example."
+keywords:
+  - i2c sensor driver
+  - sht3x
+  - tkl_i2c
+  - sensor
+  - tuyaopen peripheral
 ---
 
 An I2C sensor driver in TuyaOpen reads a chip over the TKL I2C bus and exposes the result to your application, portably across platforms. This tutorial integrates a new I2C sensor (temperature, humidity, IMU, pressure) step by step, using the SHT3x temperature/humidity sensor as a concrete example.

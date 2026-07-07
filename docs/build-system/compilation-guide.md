@@ -1,5 +1,12 @@
 ---
 title: Compilation Guide
+description: "The tos.py build pipeline end-to-end: environment check, configuration data, platform download, CMake configure, Ninja build, and output validation."
+keywords:
+  - compilation guide
+  - tos.py build
+  - cmake
+  - ninja
+  - build pipeline
 ---
 
 ## Overview

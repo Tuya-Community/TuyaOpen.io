@@ -1,5 +1,12 @@
 ---
 title: cJSON crash course
+description: "cJSON crash course for TuyaOpen: parse, traverse, print, and free JSON for MQTT/HTTP payloads with the bundled cJSON library and optional TAL hooks."
+keywords:
+  - cjson
+  - json parsing
+  - mqtt
+  - http
+  - tuyaopen
 ---
 
 ## Overview
