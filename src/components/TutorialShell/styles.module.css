@@ -91,7 +91,7 @@
 }
 
 .breadcrumb:hover .breadcrumbArrow {
-  transform: translateX(3px);
+  transform: translateX(-3px);
 }
 
 @media (prefers-reduced-motion: reduce) {
