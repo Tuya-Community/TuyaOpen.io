@@ -4,8 +4,8 @@
   <ShortName>TuyaOpen</ShortName>
   <Description>Search TuyaOpen</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://tuyaopen.io/zh/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://tuyaopen.io/zh/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://tuyaopen.io/zh/opensearch.xml" />
-  <moz:SearchForm>https://tuyaopen.io/zh/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://tuyaopen.ai/zh/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://tuyaopen.ai/zh/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://tuyaopen.ai/zh/opensearch.xml" />
+  <moz:SearchForm>https://tuyaopen.ai/zh/</moz:SearchForm>
 </OpenSearchDescription>

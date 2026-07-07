@@ -1,0 +1,61 @@
+# TuyaOpen
+
+> TuyaOpen is an open source AI and IoT development platform for building intelligent connected devices. It provides an open source operating system, development tools, hardware support, cloud integration, AI agent capabilities, and comprehensive documentation for AIoT developers.
+
+## Website
+
+- Home: https://tuyaopen.ai/
+- Chinese: https://tuyaopen.ai/zh
+
+## Overview
+
+- About TuyaOpen: https://tuyaopen.ai/docs/about-tuyaopen
+- Pricing: https://tuyaopen.ai/pricing
+- Get Hardware: https://tuyaopen.ai/get-hardware
+- Projects: https://tuyaopen.ai/learn?cat=community
+- Blog: https://tuyaopen.ai/blog
+
+## Development Tools
+
+- TuyaOpen IDE: https://tuyaopen.ai/tuyaopen-ide
+- Tool Documentation: https://tuyaopen.ai/docs/tos-tools/tos-guide
+
+## Quick Start
+
+- Environment Setup: https://tuyaopen.ai/docs/quick-start/enviroment-setup
+- Unboxing Guide: https://tuyaopen.ai/docs/quick-start/unboxing
+
+## Hardware
+
+- Hardware Overview: https://tuyaopen.ai/docs/hardware
+- ESP32 Overview: https://tuyaopen.ai/docs/hardware/espressif/overview-esp32
+- Raspberry Pi Examples: https://tuyaopen.ai/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi
+- T5 AI Board: https://tuyaopen.ai/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board
+- Arduino Quick Start: https://tuyaopen.ai/docs/hardware/tuya-t5/develop-with-Arduino/Quick_start
+
+## AI Applications
+
+- AI Agent Development Platform: https://tuyaopen.ai/docs/cloud/tuya-cloud/ai-agent/2-ai-agent-dev-platform
+- Tuya IoT Light Demo: https://tuyaopen.ai/docs/cloud/iot-client/demo-tuya-iot-light
+- AI Chat Bot Demo: https://tuyaopen.ai/docs/cloud/device-ai/demo-your-chat-bot
+- Duo Eyes Mood Demo: https://tuyaopen.ai/docs/cloud/device-ai/demo-duo-eyes-mood
+
+## Open Source
+
+- DuckyClaw: https://tuyaopen.ai/duckyclaw
+
+## Topics
+
+- Open Source OS
+- Open Source AI
+- AIoT
+- IoT Development Platform
+- Embedded Development
+- Edge AI
+- AI Agent
+- ESP32
+- Raspberry Pi
+- Arduino
+- Smart Devices
+- AI Hardware
+- Cloud Integration
