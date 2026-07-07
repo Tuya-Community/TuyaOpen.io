@@ -1,5 +1,12 @@
 ---
 title: "ESP32 Quick Start"
+description: "ESP32 quick start for TuyaOpen — build, flash, and run your first application on an ESP32, ESP32-S3, ESP32-C3, or ESP32-C6 development board."
+keywords:
+  - esp32
+  - quick start
+  - tuyaopen hardware
+  - flashing
+  - esp32-s3
 ---
 
 Build, flash, and run your first TuyaOpen application on an ESP32 board.

@@ -1,5 +1,12 @@
 ---
 title: BLE Peripheral Tutorial
+description: "BLE peripheral tutorial for TuyaOpen: advertise, accept a central connection, exchange GATT data, and handle read, write, notify, and MTU events."
+keywords:
+  - ble peripheral
+  - gatt
+  - bluetooth
+  - advertising
+  - tuyaopen peripheral
 ---
 
 A BLE peripheral advertises itself, accepts a connection from a central, and exchanges data over GATT. This tutorial covers the BLE Peripheral example: initialize as a peripheral, register advertising and scan-response payloads, advertise, accept a connection from a central (for example a phone running nRF Connect), and handle GATT-related events (read update, writes, subscribe/notify, connection parameter update, MTU). The example path is `examples/ble/ble_peripher` (folder name `ble_peripher` in the repo).

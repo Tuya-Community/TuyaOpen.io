@@ -1,5 +1,12 @@
 ---
 title: MCP Server
+description: "MCP Server (ai_mcp) is the on-device Model Context Protocol server that exposes your functions as tools the AI calls to read sensors and actuate."
+keywords:
+  - mcp server
+  - model context protocol
+  - device ai
+  - ai tools
+  - tuyaopen
 ---
 
 MCP (Model Context Protocol) lets the on-device AI call your device's own functions as **tools** — read a sensor, change a setting, trigger an actuator — instead of only talking. `ai_mcp` is the device-side MCP server: you register your functions as tools, and the server runs them when the AI asks.

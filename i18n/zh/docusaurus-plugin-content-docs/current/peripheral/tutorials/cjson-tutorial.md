@@ -1,5 +1,12 @@
 ---
 title: cJSON 快速入门
+description: "TuyaOpen 内置 cJSON，云端 Demo、AI 应用与协议示例常用它解析 MQTT/HTTP 负载并构造请求体；本篇给出钩子、解析、遍历、打印与释放用法。"
+keywords:
+  - cJSON
+  - JSON 解析
+  - MQTT 负载
+  - TuyaOpen 教程
+  - 嵌入式
 ---
 
 ## 概述

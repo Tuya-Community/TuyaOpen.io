@@ -1,5 +1,11 @@
 ---
 title: tkl_bluetooth | Bluetooth Driver
+description: "tkl_bluetooth reference — TuyaOpen BLE driver TKL API adapting GAP, GATT server/client, and vendor control to TuyaOS for porting/platform adaptation."
+keywords:
+  - tkl_bluetooth
+  - tuyaopen ble driver
+  - tkl bluetooth api
+  - embedded ble stack
 ---
 
 `tkl_bluetooth` adapts a platform's BLE stack to TuyaOS. It exposes the BLE stack lifecycle, GAP operations (advertising, scanning, connection, address, power, RSSI), the GATT server (services, attribute values, notify and indicate, MTU), the GATT client (service and characteristic discovery, read and write, MTU), and vendor-specific control. The implementation lives in `tkl_bluetooth.c`, and the supporting types are declared in `tkl_bluetooth_def.h`.

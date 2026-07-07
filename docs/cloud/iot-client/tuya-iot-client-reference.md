@@ -1,5 +1,12 @@
 ---
 title: Tuya IoT Client API Reference
+description: "Tuya IoT Client API reference — tuya_iot.h covers config, lifecycle, activation, MQTT, DP reporting, and events for cloud app development."
+keywords:
+  - tuya iot client api
+  - tuya_cloud_service
+  - mqtt
+  - dp reporting
+  - iot client reference
 ---
 
 ## Overview

@@ -1,5 +1,12 @@
 ---
 title: TuyaAI API 开发
+description: "TuyaAI API 在 Arduino IDE 中为设备集成 AI 能力的示例集：从 IoT 开关到语音对话、MCP 工具与自定义 UI 的渐进式开发指南。"
+keywords:
+  - TuyaAI
+  - Arduino
+  - AI API
+  - MCP
+  - T5AI
 ---
 
 `TuyaAI` API 提供了一套简洁易用的接口，帮助你在 Arduino IDE 中为设备应用集成 AI 能力。以下示例由浅入深，带你从一个简单的 IoT 开关逐步走到语音对话、MCP 工具和自定义 UI。

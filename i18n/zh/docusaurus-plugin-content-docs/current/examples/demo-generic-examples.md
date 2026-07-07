@@ -1,5 +1,12 @@
 ---
 title: 基础参考示例
+description: "TuyaOpen examples 目录按主题收录可直接编译的示例工程，覆盖外设、Wi-Fi、BLE、协议、图形、多媒体与系统等 API。"
+keywords:
+  - TuyaOpen
+  - 示例工程
+  - examples
+  - 参考示例
+  - API
 ---
 
 `examples/` 目录按主题（外设、Wi-Fi、BLE、协议、图形、多媒体、系统等）收录了一批可直接编译的示例工程。每个示例都是完整的 TuyaOpen 工程，可配置、编译、烧录并运行，用于单独学习某个 API 或功能。

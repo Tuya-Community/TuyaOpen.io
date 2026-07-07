@@ -1,5 +1,12 @@
 ---
 title: "Wi-Fi Station 教程"
+description: "Wi-Fi Station 教程基于 tal_wifi.h 接口，介绍如何将 TuyaOpen 设备连接到 Wi-Fi、扫描接入点、读取连接信息，并在断连后重连。"
+keywords:
+  - Wi-Fi Station
+  - tal_wifi
+  - 扫描接入点
+  - TuyaOpen 教程
+  - 网络协议
 ---
 
 Wi-Fi Station（station 模式）连接到接入点，使设备接入网络。本教程基于 `tal_wifi.h` 接口，介绍如何将 TuyaOpen 设备连接到 Wi-Fi 网络、扫描接入点、读取连接信息，以及在断连后重连。

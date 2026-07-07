@@ -1,5 +1,12 @@
 ---
 title: T5AI 管脚映射
+description: "TUYA_T5AI_BOARD 与 TUYA_T5AI_CORE 开发板的引脚定义与复用映射参考：列出 GPIO、UART、I2C 等外设的 Arduino 别名与硬件管脚。"
+keywords:
+  - T5AI
+  - 管脚映射
+  - 引脚定义
+  - Arduino
+  - TuyaOpen 硬件
 ---
 
 本参考文档列出 `TUYA_T5AI_BOARD` 与 `TUYA_T5AI_CORE` 开发板的引脚定义与复用映射，方便你快速查阅 GPIO 编号和外设功能分配。两款开发板的引脚定义完全一致。

@@ -1,5 +1,11 @@
 ---
 title: tkl_wifi | Wi-Fi 驱动
+description: "tkl_wifi 参考 —— 将平台 Wi-Fi 驱动适配到 TuyaOS，涵盖 station 与 soft-AP 扫描连接及信道 MAC 管理的 Wi-Fi 驱动 TKL API。"
+keywords:
+  - tkl_wifi
+  - TuyaOpen Wi-Fi 驱动
+  - 无线网络
+  - 嵌入式驱动
 ---
 
 `tkl_wifi` 将平台的 Wi-Fi 驱动适配到 TuyaOS，涵盖 station 与 soft-AP 两种工作方式：初始化、扫描、连接、信道与国家码控制、MAC 与 IP 管理、sniffer 与管理帧抓取、低功耗模式以及快连。其实现位于 `tkl_wifi.c`，由 TuyaOS 生成，并预留了供平台代码填写的区域。

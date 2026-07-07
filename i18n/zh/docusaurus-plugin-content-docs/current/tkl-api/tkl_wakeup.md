@@ -1,5 +1,11 @@
 ---
 title: tkl_wakeup | 唤醒驱动
+description: "tkl_wakeup 参考 —— 用于配置 GPIO 边沿电平、定时器或 RTC 闹钟等唤醒源以从低功耗状态唤醒芯片的唤醒驱动 TKL API。"
+keywords:
+  - tkl_wakeup
+  - TuyaOpen 唤醒驱动
+  - 低功耗
+  - 嵌入式驱动
 ---
 
 `tkl_wakeup` API 用于配置将芯片从低功耗状态唤醒的唤醒源。唤醒源可以是 GPIO 的边沿或电平、定时器，或 RTC 闹钟。你在 `TUYA_WAKEUP_SOURCE_BASE_CFG_T` 中描述一个唤醒源，再将其传入设置或清除接口。两个函数成功时返回 `OPRT_OK`，失败时返回 `tuya_error_code.h` 中定义的错误码。

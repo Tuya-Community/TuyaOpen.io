@@ -1,5 +1,12 @@
 ---
 title: "ESP32 (Classic) Peripheral Mapping"
+description: "ESP32 (Classic) peripheral mapping — how the dual-core Xtensa LX6 chip's on-chip peripherals map onto TuyaOpen TKL software ports."
+keywords:
+  - esp32
+  - peripheral mapping
+  - tuyaopen hardware
+  - pinmux
+  - gpio
 ---
 
 This document describes the mapping between ESP32 (dual-core Xtensa LX6) on-chip peripherals and the TuyaOpen TKL layer software ports.

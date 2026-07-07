@@ -1,5 +1,11 @@
 ---
 title: "tkl_output | Log Output"
+description: "tkl_output reference — TuyaOpen log output TKL API for writing formatted log messages and opening/closing the platform log port for porting/platform adaptation."
+keywords:
+  - tkl_output
+  - tuyaopen log output
+  - tkl log api
+  - embedded logging
 ---
 
 The `tkl_output` interface writes formatted log output to the platform's log port and opens or closes that port. It is the kernel abstraction layer (TKL) port each platform implements; the TAL logging layer routes messages through it.

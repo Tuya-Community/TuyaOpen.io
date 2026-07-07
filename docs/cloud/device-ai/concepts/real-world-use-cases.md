@@ -1,5 +1,12 @@
 ---
 title: What Agentic Hardware Unlocks
+description: "What Agentic Hardware Unlocks maps the agentic-first pattern onto real problems — companionship, accessibility, eldercare — to see where they fit."
+keywords:
+  - agentic hardware use cases
+  - physical ai agent
+  - device ai
+  - tuyaopen
+  - voice first
 ---
 
 Agentic-first hardware is not a single product — it is a pattern that applies wherever people would rather *talk to a thing* than operate it. This page maps that pattern onto real problems, so you can see where a TuyaOpen AI device fits and what to build next.

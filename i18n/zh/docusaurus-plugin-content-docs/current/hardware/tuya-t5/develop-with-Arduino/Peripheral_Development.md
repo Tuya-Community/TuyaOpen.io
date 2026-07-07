@@ -1,5 +1,12 @@
 ---
 title: Arduino 外设开发
+description: "Arduino-TuyaOpen 外设与网络库使用指南：覆盖日志、定时器、按键、SPI、I2C、文件系统、音频、显示、摄像头、BLE 与云端接入。"
+keywords:
+  - Arduino 外设
+  - 网络库
+  - I2C
+  - BLE
+  - TuyaOpen 硬件
 ---
 
 Arduino-TuyaOpen 框架提供了丰富的外设驱动和网络通信库，让你在 Arduino IDE 中快速实现 WiFi 联网、蓝牙通信、音视频采集、屏幕显示、文件存储、云端接入等功能。以下示例按功能分类，引导你逐步掌握各外设库的使用方法。

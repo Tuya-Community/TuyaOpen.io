@@ -1,5 +1,12 @@
 ---
 title: Voice Chat Modes
+description: "Voice Chat Modes (ai_manage_mode) register, switch, and route events to the active mode that decides when the device listens, uploads, and replies."
+keywords:
+  - voice chat mode
+  - ai mode
+  - device ai
+  - tuyaopen
+  - chat mode management
 ---
 
 A **voice chat mode** decides *when* the device listens, uploads, and replies — press-and-hold to talk, click once, wake by keyword, or chat hands-free. `ai_manage_mode` is the component that registers these modes, switches between them, and routes events (user, VAD, key) to whichever mode is active.

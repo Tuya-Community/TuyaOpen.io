@@ -1,5 +1,11 @@
 ---
 title: 双眼屏情绪机器人
+description: "duo_eye_mood 是基于 Tuya.AI 的大模型智能聊天机器人 Demo，麦克风采集语音实现对话交流，并以眼睛 GIF 实时显示情绪。"
+keywords:
+  - duo_eye_mood
+  - 双眼屏情绪机器人
+  - 物理 AI Agent
+  - Demo
 ---
 
 ## 概述

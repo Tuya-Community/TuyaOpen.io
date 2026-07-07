@@ -1,5 +1,11 @@
 ---
 title: tkl_lwip | lwIP 以太网接口
+description: "tkl_lwip 参考 —— 将 lwIP 协议栈适配到底层以太网硬件，初始化接口并以 pbuf 形式收发数据包的 lwIP 接口 TKL API。"
+keywords:
+  - tkl_lwip
+  - TuyaOpen lwIP 接口
+  - 以太网
+  - 嵌入式驱动
 ---
 
 `tkl_lwip` 将 lwIP 网络协议栈适配到底层以太网硬件，负责初始化以太网接口并以 lwIP `pbuf` 形式收发数据包。其实现位于 `tkl_lwip.c`，由 TuyaOS 自动生成和维护；请将自定义代码写在 `BEGIN` 与 `END` 标记之间，以便在重新生成时得到保留。

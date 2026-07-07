@@ -1,5 +1,12 @@
 ---
 title: Flash、分区与容量
+description: "MCU 上固件、OTA、授权与 KV 等持久化共享外部 Flash，TKL 提供擦写读接口，容量与分区边界由 Kconfig、分区表与板级 BSP 决定。"
+keywords:
+  - Flash 分区
+  - TKL
+  - Kconfig
+  - KV 存储
+  - TuyaOpen 外设
 ---
 
 ## 概述

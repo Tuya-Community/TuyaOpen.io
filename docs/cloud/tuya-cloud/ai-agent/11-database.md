@@ -1,5 +1,12 @@
 ---
 title: Database
+description: "Agent database on Tuya — structured data module letting agents store, read, update, and delete data in single-user, multi-user, or developer mode."
+keywords:
+  - agent database
+  - tuya ai agent
+  - structured data
+  - multi-user mode
+  - tuya cloud
 ---
 
 The database is a structured data management module the Tuya Developer Platform provides for agents. It lets an agent store, read, update, and delete data at runtime, driven by natural language or system logic.

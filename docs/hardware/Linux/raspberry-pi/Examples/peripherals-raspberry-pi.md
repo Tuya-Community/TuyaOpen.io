@@ -1,5 +1,12 @@
 ---
 title: "Raspberry Pi Peripherals"
+description: "Raspberry Pi peripherals reference for TuyaOpen — enable and run GPIO, I2C, SPI, PWM, UART, button, and audio codec examples via TKL Linux adapter."
+keywords:
+  - raspberry pi
+  - peripherals
+  - tuyaopen hardware
+  - gpio
+  - i2c
 ---
 
 Run the TuyaOpen peripheral examples (`examples/peripherals`) on Raspberry Pi. This guide covers GPIO, I2C, SPI, PWM, UART, button input, and audio codecs: how to enable each peripheral, which TKL APIs the Linux adapter supports, and a minimal example per peripheral.

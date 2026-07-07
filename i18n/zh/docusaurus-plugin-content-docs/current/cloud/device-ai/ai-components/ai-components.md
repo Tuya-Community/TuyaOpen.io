@@ -1,5 +1,11 @@
 ---
 title: 组件框架
+description: "ai_components 是 TuyaOpen AI 应用的端侧 AI 框架，把开发板变成语音助手——采集音频、运行对话模式、与 AI Agent 通信、渲染 UI 并播放回复。"
+keywords:
+  - ai_components
+  - 端侧 AI 框架
+  - 组件框架
+  - TuyaOpen AI
 ---
 
 `ai_components` 是每个 TuyaOpen AI 应用背后的端侧 AI 框架。它是一个模块化库，把带有麦克风、扬声器和屏幕的开发板变成语音助手：采集音频、运行对话模式、与 [AI Agent](ai-agent) 通信、渲染 UI 并播放回复。你只需启用产品所需的模块，并调用一个初始化函数。

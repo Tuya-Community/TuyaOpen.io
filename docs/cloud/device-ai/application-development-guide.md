@@ -1,5 +1,12 @@
 ---
 title: Develop Applications
+description: "Develop Applications walks through creating a Tuya product PID, replacing TUYA_PRODUCT_KEY, and burning the TuyaOpen license to connect to the IoT Cloud."
+keywords:
+  - application development
+  - tuyaopen license
+  - product pid
+  - device ai
+  - tuya cloud
 ---
 
 # Develop Applications

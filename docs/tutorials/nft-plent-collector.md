@@ -1,5 +1,6 @@
 ---
 title: "CyberPlant"
+noindex: true
 ---
 
 

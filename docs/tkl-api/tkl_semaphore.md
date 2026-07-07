@@ -1,5 +1,11 @@
 ---
 title: "tkl_semaphore | Semaphore"
+description: "tkl_semaphore reference — TuyaOpen counting semaphore TKL API for create, wait, post, and release for task sync for porting/platform adaptation."
+keywords:
+  - tkl_semaphore
+  - tuyaopen semaphore api
+  - tkl semaphore api
+  - rtos synchronization
 ---
 
 The `tkl_semaphore` interface creates and manages counting semaphores for task synchronization and event notification in a multitasking environment. It is the kernel abstraction layer (TKL) port each platform implements on top of its RTOS.

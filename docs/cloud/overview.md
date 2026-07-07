@@ -1,5 +1,12 @@
 ---
 title: Cloud & AI Overview
+description: "TuyaOpen Cloud & AI overview — connect devices to an open source IoT cloud, run AI agents, and call OpenAPI to integrate IoT devices."
+keywords:
+  - open source cloud integration for iot
+  - integrate iot device with open source cloud
+  - tuya cloud iot
+  - ai agent platform
+  - iot openapi
 ---
 
 ## TuyaOpen Applications

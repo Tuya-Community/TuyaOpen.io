@@ -1,5 +1,12 @@
 ---
 title: TuyaAI API Development
+description: "TuyaAI API development in Arduino — add AI capabilities to a device app, from an IoT switch to voice chat, MCP tools, and custom UI on T5 boards."
+keywords:
+  - tuyaai api
+  - arduino
+  - t5
+  - ai development
+  - mcp
 ---
 
 The `TuyaAI` API gives you a concise set of interfaces for adding AI capabilities to a device application in the Arduino IDE. The examples below progress from basic to advanced, taking you from a simple IoT switch to voice chat, MCP tools, and custom UI on Arduino.

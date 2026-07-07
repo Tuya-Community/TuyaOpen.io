@@ -1,5 +1,12 @@
 ---
 title: Terminologies
+description: "Reference of common TuyaOpen and TuyaOS framework terms, including the difference between TuyaOpen and TuyaOS, license, and AI definitions."
+keywords:
+  - terminologies
+  - tuyaopen
+  - tuyaos
+  - glossary
+  - definitions
 ---
 
 # TuyaOpen Terminologies

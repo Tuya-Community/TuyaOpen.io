@@ -1,5 +1,12 @@
 ---
 title: Free Conversation Mode
+description: "Free Conversation Mode keeps the device listening for multi-round hands-free dialogue after one wake-up, with no button or wake word between turns."
+keywords:
+  - free conversation mode
+  - voice chat mode
+  - device ai
+  - hands-free
+  - tuyaopen
 ---
 
 **Free conversation** is the chat mode where, after a wake-up, the device keeps listening for multi-round, hands-free dialogue. You wake it once and then talk back and forth without a button and without repeating the wake word for each turn.

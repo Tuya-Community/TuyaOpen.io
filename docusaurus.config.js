@@ -23,7 +23,7 @@ const config = {
   favicon: '/img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://tuyaopen.io',
+  url: 'https://tuyaopen.ai',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -474,6 +474,51 @@ const config = {
         name: 'algolia-site-verification',
         content: '6232065417750C16',
       },
+    },
+    // Site-wide structured data (GEO): Organization + WebSite (with SearchAction).
+    // Per-page schema (BreadcrumbList, SoftwareApplication, HowTo, FAQPage) is
+    // added separately on individual pages/docs — see tuyaopen-seo-geo skill.
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': 'https://tuyaopen.ai/#organization',
+            name: 'TuyaOpen',
+            url: 'https://tuyaopen.ai/',
+            logo: 'https://tuyaopen.ai/img/home/tuyaopen-logo-social-preview.png',
+            description: 'Open source AI, open source OS, and IoT development platform for AIoT innovation.',
+            sameAs: [
+              'https://github.com/tuya/TuyaOpen',
+              'https://discord.com/invite/yPPShSTttG',
+              'https://x.com/tuyasmart',
+              'https://www.youtube.com/@tuya2023',
+              'https://www.linkedin.com/company/tuya-smart',
+            ],
+          },
+          {
+            '@type': 'WebSite',
+            '@id': 'https://tuyaopen.ai/#website',
+            url: 'https://tuyaopen.ai/',
+            name: 'TuyaOpen',
+            inLanguage: ['en', 'zh'],
+            publisher: { '@id': 'https://tuyaopen.ai/#organization' },
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: {
+                '@type': 'EntryPoint',
+                urlTemplate: 'https://tuyaopen.ai/search?q={search_term_string}',
+              },
+              'query-input': 'required name=search_term_string',
+            },
+          },
+        ],
+      }),
     },
   ],
 }

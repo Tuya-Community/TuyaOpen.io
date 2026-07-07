@@ -1,5 +1,6 @@
 ---
 title: "觅星"
+noindex: true
 ---
 
 

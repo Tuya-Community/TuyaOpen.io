@@ -1,5 +1,12 @@
 ---
 title: 外设驱动列表
+description: "列出 TuyaOpen SDK 已有的 TDD 外设驱动实现，涵盖输入、输出、显示等设备，各驱动经注册模式挂接到对应 TDL。"
+keywords:
+  - 外设驱动列表
+  - TDD
+  - TDL
+  - TuyaOpen 外设
+  - 嵌入式驱动
 ---
 
 本页列出 TuyaOpen SDK 中已有的 TDD（Tuya Device Driver）实现。各驱动通过 [注册模式](driver-architecture) 挂接到对应的 TDL（Tuya Driver Layer）。

@@ -1,5 +1,6 @@
 ---
 title: "T5+2M-ASR-PRO 定制命令词"
+noindex: true
 ---
 
 

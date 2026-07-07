@@ -1,5 +1,12 @@
 ---
 title: CMake、Kconfig 与组件模型
+description: "说明 TuyaOpen 中 CMake 与 Kconfig 如何衔接，涵盖库来源、SDK 与工程 CMakeLists.txt 关系，以及扩展板级或组件时应修改的位置。"
+keywords:
+  - TuyaOpen
+  - CMake
+  - Kconfig
+  - 构建系统
+  - 组件模型
 ---
 
 ## 概述

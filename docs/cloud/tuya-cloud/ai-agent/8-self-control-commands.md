@@ -1,5 +1,12 @@
 ---
 title: Self-control Commands
+description: "Self-control Commands on Tuya let a device act on its own user's voice — define commands and expressions the cloud matches and the device executes."
+keywords:
+  - self-control commands
+  - tuya ai agent
+  - voice commands
+  - natural language
+  - tuya cloud
 ---
 
 Self-control commands let a device act on what its own user says — "move forward", "lower the volume", "what's the battery level?" — without another device in the loop. You define the commands and their natural-language expressions on the platform, the cloud matches a user utterance to a command after semantic recognition, and the device executes it. They suit smart devices with voice or text interaction, such as AI dolls, AI robots, and smart water dispensers.

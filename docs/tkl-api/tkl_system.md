@@ -1,5 +1,11 @@
 ---
 title: "tkl_system | System"
+description: "tkl_system reference — TuyaOpen system TKL API for reboot, tick/ms time bases, random, sleep, delay, reset reason, and CPU info for porting/platform adaptation."
+keywords:
+  - tkl_system
+  - tuyaopen system api
+  - tkl system api
+  - embedded system services
 ---
 
 The `tkl_system` interface provides core system services: reboot, tick and millisecond time bases, random numbers, sleep and busy delay, reset-reason reporting, and CPU information. These are the kernel abstraction layer (TKL) entry points each platform implements; higher-level TAL and application code call them for portable timing and lifecycle control.

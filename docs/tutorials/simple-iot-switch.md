@@ -1,5 +1,6 @@
 ---
 title: "Simple Tuya IoT Switch"
+noindex: true
 ---
 
 

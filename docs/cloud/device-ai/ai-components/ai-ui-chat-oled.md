@@ -1,5 +1,12 @@
 ---
 title: OLED UI
+description: "OLED UI (ai_ui_chat_oled) renders the AI conversation on small monochrome OLED panels, tuned for tight pixel and memory budgets on compact boards."
+keywords:
+  - oled ui
+  - ai ui
+  - device ai
+  - tuyaopen
+  - monochrome display
 ---
 
 `ai_ui_chat_oled` is a chat UI for the TuyaOpen AI framework optimized for small monochrome OLED screens. It renders the conversation in the limited space and single color of a typical OLED panel, keeping text legible where a graphical bubble layout would not fit. It implements the [`ai_ui_manage`](ai-ui-manage) interface, so once registered it renders the chat messages and status the framework dispatches.

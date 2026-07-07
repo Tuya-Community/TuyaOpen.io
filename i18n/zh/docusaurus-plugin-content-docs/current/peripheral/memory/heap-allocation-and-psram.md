@@ -1,5 +1,12 @@
 ---
 title: 堆分配与 PSRAM
+description: "TuyaOpen 通过 TAL 接口分配动态内存；带 PSRAM 芯片可经 Kconfig 打开 ENABLE_EXT_RAM，将大块缓冲切到 tal_psram_*，避免挤占片上 SRAM。"
+keywords:
+  - 堆分配
+  - PSRAM
+  - TAL
+  - Kconfig
+  - TuyaOpen 内存
 ---
 
 ## 概述

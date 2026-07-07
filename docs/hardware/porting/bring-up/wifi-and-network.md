@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 3: Wi-Fi and network"
+description: "Bring-up stage 3 for TuyaOpen porting — associate with a Wi-Fi AP, obtain an IP, and reach the internet over TCP and TLS on your chip."
+keywords:
+  - tuyaopen porting
+  - bring-up
+  - wi-fi
+  - network
+  - tls
 ---
 
 The third stage connects your chip to the network: associate with an AP, obtain an IP, and reach the internet over TCP and TLS. This is the foundation the cloud connection sits on.

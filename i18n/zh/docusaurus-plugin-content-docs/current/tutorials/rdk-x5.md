@@ -1,5 +1,6 @@
 ---
 title: TuyaOpen 与 RDK-X5
+noindex: true
 ---
 
 ## 项目概述

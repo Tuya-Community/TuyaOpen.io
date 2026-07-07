@@ -1,5 +1,12 @@
 ---
 title: Get Started
+description: "TuyaOpen onboarding guide: license, UUID/AuthKey, and serial tool setup needed to bring a device from activation to the Tuya IoT Cloud."
+keywords:
+  - tuyaopen
+  - license
+  - uuid authkey
+  - onboarding
+  - iot cloud
 ---
 
 Get Started walks you from a TuyaOpen license to a device that talks to the Tuya IoT Cloud. Read the terms below first, then get your license and the serial tool you need for every later step.

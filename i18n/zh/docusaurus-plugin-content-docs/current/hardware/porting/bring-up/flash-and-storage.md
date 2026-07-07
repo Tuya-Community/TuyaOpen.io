@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 2：Flash 与存储"
+description: "移植 bring-up 第二阶段：为 TuyaOpen 在芯片 flash 上预留持久化区域，实现读、写、擦除并支持掉电安全的键值存储。"
+keywords:
+  - 移植
+  - Flash 存储
+  - 键值存储
+  - LittleFS
+  - TuyaOpen 硬件
 ---
 
 第二个阶段为 TuyaOpen 在你芯片的 flash 上提供一处持久化数据的空间。设备授权信息、密钥和配网状态必须在重启后依然保留——因此该阶段必须先工作起来，设备才能保持对云端的激活状态。

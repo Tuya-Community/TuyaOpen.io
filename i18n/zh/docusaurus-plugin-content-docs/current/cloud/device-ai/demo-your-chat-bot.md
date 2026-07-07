@@ -1,5 +1,11 @@
 ---
 title: 聊天机器人
+description: "your_chat_bot 是基于 Tuya.AI 的大模型智能聊天机器人 Demo，麦克风采集语音实现对话交流，支持多种显示屏与微信风格等 UI 界面。"
+keywords:
+  - your_chat_bot
+  - 聊天机器人
+  - 物理 AI Agent
+  - Demo
 ---
 
 ## 概述

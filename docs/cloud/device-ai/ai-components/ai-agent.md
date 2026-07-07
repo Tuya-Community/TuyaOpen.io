@@ -1,5 +1,12 @@
 ---
 title: AI Agent
+description: "AI Agent (ai_agent) is the on-device bridge to the Tuya AI cloud, uploading multimodal input and receiving streamed AI replies via callbacks."
+keywords:
+  - ai agent
+  - tuyaopen ai agent
+  - device ai
+  - multimodal agent
+  - tuya ai cloud
 ---
 
 `ai_agent` is the bridge between your device and the Tuya AI cloud. It uploads voice, text, image, and file input, receives the AI's streamed reply, and reports progress to your application through events — so the rest of your firmware never talks to the cloud directly.

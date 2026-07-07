@@ -1,5 +1,12 @@
 ---
 title: T2 模块概述
+description: "T2 系列涂鸦 Wi-Fi 与 Bluetooth LE 组合模组在 TuyaOpen 中的板级支持概述：含 T2-U 参考开发板 BSP、Kconfig 与功能预期。"
+keywords:
+  - T2 模组
+  - Wi-Fi
+  - BLE
+  - 板级支持
+  - TuyaOpen 硬件
 ---
 
 ## 概述

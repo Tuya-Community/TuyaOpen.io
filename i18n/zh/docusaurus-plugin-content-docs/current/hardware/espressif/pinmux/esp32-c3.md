@@ -1,5 +1,12 @@
 ---
 title: "ESP32-C3 外设映射"
+description: "ESP32-C3（单核 RISC-V，成本优化）片上外设与 TuyaOpen TKL 软件端口的映射关系：GPIO、UART 及其默认引脚与配置方法。"
+keywords:
+  - ESP32-C3
+  - 引脚映射
+  - 外设映射
+  - GPIO
+  - TuyaOpen 硬件
 ---
 
 本文说明 ESP32-C3（单核 RISC-V，成本优化）片上外设与 TuyaOpen TKL 层软件端口的映射关系。

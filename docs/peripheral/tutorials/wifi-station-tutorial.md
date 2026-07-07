@@ -1,5 +1,12 @@
 ---
 title: "Wi-Fi Station Tutorial"
+description: "Wi-Fi station tutorial for TuyaOpen: connect to an AP with tal_wifi_station_connect, scan APs, read connection info, and reconnect after drops."
+keywords:
+  - wifi station
+  - tal_wifi
+  - access point
+  - reconnect
+  - tuyaopen peripheral
 ---
 
 A Wi-Fi station connects to an access point so your device can reach the network. This tutorial shows how to connect a TuyaOpen device to a Wi-Fi network, scan for access points, read connection info, and reconnect after a drop, using the `tal_wifi.h` API.

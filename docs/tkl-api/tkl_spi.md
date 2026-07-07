@@ -1,5 +1,11 @@
 ---
 title: "tkl_spi | SPI Driver"
+description: "tkl_spi reference — TuyaOpen SPI driver TKL API for master/slave init, send, receive, full-duplex transfer, and interrupt callbacks in embedded IoT development."
+keywords:
+  - tkl_spi
+  - tuyaopen spi driver
+  - tkl spi api
+  - embedded spi driver
 ---
 
 The TKL SPI interface drives the SPI bus in master or slave mode for displays, flash, sensors, and other high-speed peripherals. You initialize a bus (`TUYA_SPI_NUM_E`) with a role, clock mode, data width, and bit order, then send, receive, or full-duplex transfer data, optionally with interrupt-driven event callbacks.

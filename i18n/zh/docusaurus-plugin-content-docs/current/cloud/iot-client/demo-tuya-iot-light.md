@@ -1,5 +1,12 @@
 ---
 title: switch_demo
+description: "switch_demo 是涂鸦 AI + IoT 平台提供的最小功能应用演示，跨平台跨系统支持蓝牙与 Wi-Fi 配网、云端 MQTT 与局域网 TCP 控制及 OTA，可经涂鸦 App 与云服务远程控制开关。"
+keywords:
+  - 开源 IoT 智能灯 Demo
+  - switch_demo
+  - IoT 客户端
+  - 开源云集成
+  - Tuya 云
 ---
 
 ## 概述

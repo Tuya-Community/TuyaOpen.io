@@ -1,5 +1,6 @@
 ---
 title: "Build AI Chatbot with T5AI-Core"
+noindex: true
 ---
 
 

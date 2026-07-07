@@ -1,5 +1,12 @@
 ---
 title: HTTP and HTTPS Client Tutorial
+description: "HTTP and HTTPS client tutorial for TuyaOpen: send GET/POST requests with http_client_request, configure HTTPS CA certs, and parse JSON with cJSON."
+keywords:
+  - http client
+  - https
+  - http_client_request
+  - json
+  - tuyaopen peripheral
 ---
 
 ## Overview

@@ -1,5 +1,12 @@
 ---
 title: Audio Player
+description: "Audio Player (ai_audio_player) renders TTS, music, and alert tones through foreground and background channels for the AI conversation."
+keywords:
+  - ai audio player
+  - tts playback
+  - device ai
+  - audio alert tones
+  - tuyaopen
 ---
 
 `ai_audio_player` plays the spoken and audio side of the conversation on the device — streamed TTS, music, and local alert tones — out the speaker. It is the back end of the AI audio pipeline: where `ai_audio_input` captures what the user says, this module renders what the device says back.

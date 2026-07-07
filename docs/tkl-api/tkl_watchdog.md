@@ -1,5 +1,11 @@
 ---
 title: tkl_watchdog | Watchdog Driver
+description: "tkl_watchdog reference — TuyaOpen watchdog TKL API for init with interval, feeding, and deinit to reset on hang in embedded IoT development."
+keywords:
+  - tkl_watchdog
+  - tuyaopen watchdog driver
+  - tkl watchdog api
+  - embedded watchdog
 ---
 
 ## Overview

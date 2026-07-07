@@ -1,5 +1,11 @@
 ---
 title: "tkl_gpio | GPIO Driver"
+description: "tkl_gpio reference — TuyaOpen GPIO driver TKL API for configuring pin mode/direction, reading and writing levels, and interrupts in embedded IoT development."
+keywords:
+  - tkl_gpio
+  - tuyaopen gpio driver
+  - tkl gpio api
+  - embedded gpio driver
 ---
 
 The TKL GPIO interface configures a chip pin as a general-purpose input or output, reads or writes its logic level, and attaches an interrupt handler for edge or level events. Pins are addressed by the Tuya-assigned index `TUYA_GPIO_NUM_E` (starting at 0), which is independent of the chip's physical pin numbering.

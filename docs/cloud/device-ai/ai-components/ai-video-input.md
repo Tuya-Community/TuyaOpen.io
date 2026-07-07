@@ -1,5 +1,12 @@
 ---
 title: AI Video Input
+description: "AI Video Input (ai_video) captures camera frames, encodes JPEG stills for the AI cloud to analyze, and drives a live preview on the display."
+keywords:
+  - ai video input
+  - camera capture
+  - device ai
+  - jpeg
+  - tuyaopen
 ---
 
 `ai_video` turns a camera into an input source for the AI. It captures camera frames, encodes a still as JPEG so the AI can analyze what the device sees, and drives a live preview on the display. You send a captured JPEG to the cloud through the [AI Agent](ai-agent) for visual question answering and image understanding.

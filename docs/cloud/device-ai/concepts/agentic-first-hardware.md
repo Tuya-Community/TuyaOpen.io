@@ -1,5 +1,12 @@
 ---
 title: Agentic-First Hardware
+description: "Agentic-First Hardware is a device built around an AI agent as its primary interface: it perceives, reasons, and acts through device functions."
+keywords:
+  - agentic first hardware
+  - physical ai agent
+  - device ai
+  - ai agent
+  - tuyaopen
 ---
 
 Agentic-first hardware is a device built around an **AI agent as its primary interface** — instead of buttons, menus, and a companion app, the user states what they want and the device figures out how to do it. The agent perceives (voice, vision, sensors), reasons (in the cloud), and acts (through the device's own functions). This page explains the shift, the problem it solves, and what it makes possible.

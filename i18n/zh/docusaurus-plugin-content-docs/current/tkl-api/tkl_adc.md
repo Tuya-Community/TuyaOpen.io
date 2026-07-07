@@ -1,5 +1,11 @@
 ---
 title: "tkl_adc | ADC 驱动"
+description: "tkl_adc 参考 —— 用于配置 ADC 单元通道、分辨率与采样模式并读取原始计数值或毫伏电压的 ADC 驱动 TKL API。"
+keywords:
+  - tkl_adc
+  - TuyaOpen ADC 驱动
+  - 模数转换
+  - 嵌入式驱动
 ---
 
 TKL ADC 接口通过模数转换器对模拟电压进行采样以完成读取。你为一个 ADC 单元（`TUYA_ADC_NUM_E`）配置通道列表、分辨率和采样模式，然后读取原始计数值、将其转换为毫伏，或查询芯片温度。每个 ADC 单元通常通过位掩码暴露多个通道。

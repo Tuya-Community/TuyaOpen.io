@@ -1,5 +1,11 @@
 ---
 title: tkl_wired | Wired Ethernet Driver
+description: "tkl_wired reference — TuyaOpen wired Ethernet TKL API for link state, IPv4/IPv6 and MAC addresses, and link-change callbacks for porting/platform adaptation."
+keywords:
+  - tkl_wired
+  - tuyaopen ethernet driver
+  - tkl wired api
+  - embedded ethernet
 ---
 
 `tkl_wired` adapts a wired Ethernet link to TuyaOS. It reports the link state, the IPv4 and IPv6 addresses, and the MAC address of the wired interface, and lets you register a callback that fires when the link state changes. The implementation lives in `tkl_wired.c`, which TuyaOS generates with marked regions for your platform code.

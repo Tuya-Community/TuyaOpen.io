@@ -1,5 +1,6 @@
 ---
 title: "使用 T5AI-Core 快速搭建 AI 聊天机器人"
+noindex: true
 ---
 
 

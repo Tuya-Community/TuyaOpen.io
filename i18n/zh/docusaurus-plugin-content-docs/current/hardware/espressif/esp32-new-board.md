@@ -1,5 +1,12 @@
 ---
 title: "ESP32 适配新开发板"
+description: "为自定义 ESP32 硬件创建 TuyaOpen 板级支持包：区分目标芯片是否已适配两种情况，给出 tos.py new board 操作步骤。"
+keywords:
+  - ESP32
+  - 新增开发板
+  - 板级支持包
+  - tos.py
+  - TuyaOpen 硬件
 ---
 
 为自定义 ESP32 硬件创建 TuyaOpen 板级支持包（BSP）。根据目标芯片是否已在 ESP32 平台中适配，分为两种情况。

@@ -1,5 +1,12 @@
 ---
 title: T5AI-Core 开发套件
+description: "T5AI-Core 是基于涂鸦 T5-E1 Wi-Fi 与蓝牙组合模组的紧凑型语音核心开发板：板载麦克风、扬声器与锂电池电源管理，引出 44 Pin 信号。"
+keywords:
+  - T5AI-Core
+  - T5-E1
+  - 语音开发板
+  - Wi-Fi
+  - TuyaOpen 硬件
 ---
 
 T5AI-Core 是一款基于涂鸦 T5-E1 Wi-Fi 与蓝牙组合模组的紧凑型语音核心开发板。板载麦克风、扬声器与锂电池电源管理电路，并通过 44 Pin 排针引出模组的 GPIO、UART、SPI、I2C 等信号。可用它以标准 TuyaOpen 流程快速开发便携式 AIoT 语音交互应用。

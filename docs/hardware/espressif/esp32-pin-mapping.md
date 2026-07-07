@@ -1,5 +1,12 @@
 ---
 title: "ESP32 Pin Mapping -- Overview"
+description: "ESP32 pin mapping overview — how TuyaOpen TKL software ports and pins correspond to ESP32 on-chip peripherals via the pinmux interface."
+keywords:
+  - esp32
+  - pin mapping
+  - pinmux
+  - tuyaopen hardware
+  - tkl
 ---
 
 ESP32 pin mapping is the correspondence between TuyaOpen's TKL software ports and pins and the ESP32's on-chip peripherals — covering how `TUYA_GPIO_NUM_E` enum values map to physical GPIO numbers, and how you route peripherals to specific pins through the pinmux interface.

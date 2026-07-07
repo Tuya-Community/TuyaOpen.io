@@ -1,5 +1,12 @@
 ---
 title: Peripheral Driver List
+description: "Peripheral driver list of TDD implementations in TuyaOpen: buttons, joysticks, encoders, LEDs, addressable LEDs, IR, and display drivers."
+keywords:
+  - peripheral driver list
+  - tdd
+  - led
+  - display
+  - tuyaopen peripheral
 ---
 
 This page lists the TDD (Tuya Device Driver) implementations available in the TuyaOpen SDK. Each driver plugs into the corresponding TDL (Tuya Driver Layer) via the [registration pattern](driver-architecture).

@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw 与 T5-AI
+description: "T5-AI Board 开发板上构建、烧录并激活 TuyaOpenClaw 固件的快速开始指南，通过智能生活 App 连接 Tuya Cloud。"
+keywords:
+  - TuyaOpenClaw
+  - T5-AI
+  - T5AI
+  - 快速开始
+  - 端侧 AI
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';

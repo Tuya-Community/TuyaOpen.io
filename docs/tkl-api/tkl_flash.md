@@ -1,5 +1,11 @@
 ---
 title: tkl_flash | Flash Driver
+description: "tkl_flash reference — TuyaOpen Flash driver TKL API for read, write, erase, lock, unlock, and partition-layout queries in embedded IoT development."
+keywords:
+  - tkl_flash
+  - tuyaopen flash driver
+  - tkl flash api
+  - embedded flash driver
 ---
 
 The `tkl_flash` API provides the kernel-layer (TKL) operations for on-chip Flash storage: read, write, erase, lock, unlock, and partition-layout queries. Every function returns `OPRT_OK` on success or an error code defined in `tuya_error_code.h`.

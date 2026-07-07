@@ -1,5 +1,12 @@
 ---
 title: Create a project
+description: "Create a project in TuyaOpen with tos.py new project, which initializes the basic project structure from a predefined template for your application."
+keywords:
+  - tuyaopen
+  - new project
+  - tos.py
+  - project structure
+  - build
 ---
 
 `tos.py new project` creates a new project in the TuyaOpen development environment. The command initializes the basic structure of a project from a predefined template.

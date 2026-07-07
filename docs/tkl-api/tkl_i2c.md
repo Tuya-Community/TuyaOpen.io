@@ -1,5 +1,11 @@
 ---
 title: "tkl_i2c | I2C Driver"
+description: "tkl_i2c reference — TuyaOpen I2C driver TKL API for master/slave bus init, send, receive, and interrupt callbacks in embedded IoT development."
+keywords:
+  - tkl_i2c
+  - tuyaopen i2c driver
+  - tkl i2c api
+  - embedded i2c driver
 ---
 
 The TKL I2C interface drives the I2C bus as either master or slave for sensors, displays, IO expanders, and other peripherals. You initialize a bus (`TUYA_I2C_NUM_E`) with a role, speed, and address width, then send and receive bytes against each device address, optionally with interrupt-driven event callbacks.

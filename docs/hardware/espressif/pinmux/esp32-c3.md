@@ -1,5 +1,12 @@
 ---
 title: "ESP32-C3 Peripheral Mapping"
+description: "ESP32-C3 peripheral mapping — how the single-core RISC-V chip's on-chip peripherals map onto TuyaOpen TKL software ports and pins."
+keywords:
+  - esp32-c3
+  - peripheral mapping
+  - tuyaopen hardware
+  - pinmux
+  - gpio
 ---
 
 This document describes the mapping between ESP32-C3 (single-core RISC-V, cost-optimized) on-chip peripherals and the TuyaOpen TKL layer software ports.

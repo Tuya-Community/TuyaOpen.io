@@ -1,6 +1,13 @@
 ---
 title: "Raspberry Pi 配网失败排障"
 slug: /hardware/Linux/raspberry-pi/wifi-bluetooth
+description: "排查在 Raspberry Pi 上运行 TuyaOpen 应用时阻碍配网的 Wi-Fi 与蓝牙问题：每节给出现象、原因与解决方法。"
+keywords:
+  - Raspberry Pi
+  - 配网排障
+  - Wi-Fi
+  - 蓝牙
+  - TuyaOpen 硬件
 ---
 
 排查在 Raspberry Pi 上运行 TuyaOpen 应用（如 `apps/tuya.ai/your_chat_bot`）时阻碍配网的 Wi-Fi 与蓝牙问题。下面每一节都给出现象、原因和解决方法。

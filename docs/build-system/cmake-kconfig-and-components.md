@@ -1,5 +1,12 @@
 ---
 title: CMake, Kconfig, and the component model
+description: "How TuyaOpen's CMake plus Ninja build and Kconfig layers connect: SDK root, project CMakeLists, libraries, board BSP, and component model."
+keywords:
+  - cmake
+  - kconfig
+  - component model
+  - build system
+  - ninja
 ---
 
 ## Overview

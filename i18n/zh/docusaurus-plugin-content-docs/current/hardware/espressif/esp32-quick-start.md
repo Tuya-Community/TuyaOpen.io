@@ -1,5 +1,12 @@
 ---
 title: "ESP32 快速开始"
+description: "在 ESP32 开发板上构建、烧录并运行你的第一个 TuyaOpen 应用：覆盖硬件准备、环境搭建、克隆仓库、配置、编译烧录与配网验证。"
+keywords:
+  - ESP32
+  - 快速开始
+  - 烧录
+  - 配网
+  - TuyaOpen 硬件
 ---
 
 在 ESP32 开发板上构建、烧录并运行你的第一个 TuyaOpen 应用。

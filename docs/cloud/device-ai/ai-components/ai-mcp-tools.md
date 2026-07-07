@@ -1,5 +1,12 @@
 ---
 title: Built-in MCP Tools
+description: "Built-in MCP Tools are pre-registered device functions (info, camera, volume, mode) the AI calls via the MCP server, and templates for your own."
+keywords:
+  - mcp tools
+  - device tools
+  - ai mcp
+  - tuyaopen
+  - physical ai agent
 ---
 
 The framework ships a set of MCP tools already written and registered, so the on-device AI can act on the device the moment the [MCP server](ai-mcp-server) comes up. `ai_mcp_init` registers them automatically when MQTT connects — you do not call them yourself; the AI does, by name.

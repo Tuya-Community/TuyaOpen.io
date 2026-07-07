@@ -1,5 +1,12 @@
 ---
 title: AI Agent Development
+description: "AI Agent Development on Tuya: build agents on large models to manage smart devices, with hallucination controls, RAG, and multi-model collaboration."
+keywords:
+  - ai agent development
+  - tuya ai agent
+  - tuya cloud
+  - things data model
+  - rag
 ---
 
 The Tuya [AI Agent Dev Platform](https://platform.tuya.com/exp/ai) lets you build AI agents on top of large models and manage smart devices through them. You configure an agent on the platform, then publish it to apps and devices or integrate it into your own systems through APIs and SDKs.

@@ -444,6 +444,10 @@ function Home() {
     <Layout description={copy.metaDescription}>
       <Head>
         <title>TuyaOpen: {siteConfig.tagline}</title>
+        <meta
+          name="keywords"
+          content="open source iot platform, open source ai platform, open source aiot platform, iot development platform, tuyaopen"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -596,7 +600,7 @@ function Home() {
                 <div key={item.title} className={clsx(styles.featureCard, 'scroll-to-display')}>
                   {BENEFIT_IMGS[i] ? (
                     <div className={styles.featureMedia}>
-                      <img src={BENEFIT_IMGS[i]} alt="" loading="lazy" />
+                      <img src={BENEFIT_IMGS[i]} alt={item.title} loading="lazy" />
                     </div>
                   ) : (
                     <div className={styles.featureIcon}>{i + 1}</div>
@@ -621,7 +625,7 @@ function Home() {
                   <article key={item.title} className={clsx(styles.audienceCard, 'scroll-to-display')}>
                     {AUDIENCE_IMGS[i] && (
                       <div className={styles.audienceMedia}>
-                        <img src={AUDIENCE_IMGS[i]} alt="" loading="lazy" />
+                        <img src={AUDIENCE_IMGS[i]} alt={item.title} loading="lazy" />
                       </div>
                     )}
                     <div className={styles.audienceText}>

@@ -306,6 +306,7 @@ export default function LearnPage() {
           {t.title} - {siteConfig.title}
         </title>
         <meta name="description" content={t.subtitle} />
+        <meta name="keywords" content="tuyaopen learn, aiot projects, ai powered iot applications, embedded ai tutorial, iot development" />
       </Head>
 
       <main className={styles.root}>

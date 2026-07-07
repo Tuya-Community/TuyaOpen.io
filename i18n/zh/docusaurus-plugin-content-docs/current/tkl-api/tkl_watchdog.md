@@ -1,5 +1,11 @@
 ---
 title: tkl_watchdog | Watchdog 驱动
+description: "tkl_watchdog 参考 —— 用于按间隔初始化看门狗、定期喂狗以避免计数器递减触发复位并反初始化的看门狗驱动 TKL API。"
+keywords:
+  - tkl_watchdog
+  - TuyaOpen Watchdog 驱动
+  - 看门狗
+  - 嵌入式驱动
 ---
 
 ## 概述

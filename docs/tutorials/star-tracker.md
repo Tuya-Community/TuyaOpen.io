@@ -1,5 +1,6 @@
 ---
 title: "Star Tracker"
+noindex: true
 ---
 
 

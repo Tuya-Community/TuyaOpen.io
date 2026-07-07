@@ -1,5 +1,12 @@
 ---
 title: Overview
+description: "Arduino-TuyaOpen overview — an open-source framework to build AIoT smart devices on Arduino backed by Tuya Cloud, with T5-supported Arduino APIs."
+keywords:
+  - arduino-tuyaopen
+  - t5
+  - arduino
+  - tuyaopen hardware
+  - aiot
 ---
 
 [Arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen/tree/main) is an open-source development framework that lets you build AIoT smart devices on the Arduino platform, backed by the Tuya Cloud and remote AI-powered control.

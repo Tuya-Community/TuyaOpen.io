@@ -1,5 +1,12 @@
 ---
 title: Arduino Peripheral Development
+description: "Arduino peripheral development on TuyaOpen — WiFi, Bluetooth, audio, display, camera, file system, cloud, and networking libraries for T5 boards."
+keywords:
+  - arduino peripherals
+  - tuyaopen hardware
+  - t5
+  - wifi
+  - bluetooth
 ---
 
 The Arduino-TuyaOpen framework provides a rich set of peripheral drivers and communication libraries, letting you implement WiFi connectivity, Bluetooth communication, audio/video capture, display rendering, file storage, cloud access, and more in the Arduino IDE. The examples below are organized by functional category so you can master each peripheral library step by step.

@@ -1,5 +1,12 @@
 ---
 title: "ESP32-C6 Peripheral Mapping"
+description: "ESP32-C6 peripheral mapping — how the single-core RISC-V Wi-Fi 6 chip's on-chip peripherals map onto TuyaOpen TKL software ports."
+keywords:
+  - esp32-c6
+  - peripheral mapping
+  - tuyaopen hardware
+  - wi-fi 6
+  - pinmux
 ---
 
 This document describes the mapping between ESP32-C6 (single-core RISC-V, Wi-Fi 6, Thread/Zigbee) on-chip peripherals and the TuyaOpen TKL layer software ports.

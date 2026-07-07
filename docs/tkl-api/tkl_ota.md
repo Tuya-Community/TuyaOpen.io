@@ -1,5 +1,11 @@
 ---
 title: tkl_ota | OTA Firmware Update
+description: "tkl_ota reference — TuyaOpen OTA firmware update TKL API for capability query, start/process/end, and previous-firmware info in embedded IoT development."
+keywords:
+  - tkl_ota
+  - tuyaopen ota driver
+  - tkl ota api
+  - firmware update
 ---
 
 The `tkl_ota` API provides the kernel-layer (TKL) hooks for an over-the-air (OTA) firmware update. The update runs in stages: query the device OTA capability, signal the start, process each data packet, and signal the end. A separate call retrieves the previous firmware's information for resumable transfers. Every function returns `OPRT_OK` on success or an error code defined in `tuya_error_code.h`.

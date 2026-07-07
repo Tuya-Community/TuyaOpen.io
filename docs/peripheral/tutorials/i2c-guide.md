@@ -1,5 +1,12 @@
 ---
 title: "I2C Peripheral Guide"
+description: "I2C peripheral guide for TuyaOpen: drive the TKL I2C bus in master mode, assign SCL/SDA pins, set speed, and send/receive bytes to device addresses."
+keywords:
+  - i2c
+  - tkl_i2c
+  - master mode
+  - sensor bus
+  - tuyaopen peripheral
 ---
 
 The TKL I2C interface drives the I2C bus in master mode for sensors, OLED displays, IO expanders, and other peripherals. You assign the SCL/SDA pins, initialize the bus at a chosen speed, then send and receive bytes against each device address.

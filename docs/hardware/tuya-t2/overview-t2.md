@@ -1,5 +1,12 @@
 ---
 title: T2 Module Overview
+description: "T2 module overview — Tuya Wi-Fi and Bluetooth LE combo modules in TuyaOpen, with board support under boards/T2/ for T2-U and compatible hardware."
+keywords:
+  - t2 module
+  - tuyaopen hardware
+  - wi-fi
+  - ble
+  - t2-u
 ---
 
 ## Overview

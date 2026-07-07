@@ -1,5 +1,12 @@
 ---
 title: "TAL System API Reference"
+description: "TAL System API reference for TuyaOpen: tal_system.h provides critical sections, sleep, timing, random, reset management, and PSRAM allocation."
+keywords:
+  - tal system
+  - tal_system.h
+  - critical section
+  - psram
+  - tuyaopen api
 ---
 
 The TAL System API (`tal_system.h`) provides platform-independent system utilities: critical sections, sleep and delay, timing, random numbers, reset management, and PSRAM allocation.

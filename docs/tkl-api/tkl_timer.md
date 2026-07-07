@@ -1,5 +1,11 @@
 ---
 title: "tkl_timer | Hardware Timer"
+description: "tkl_timer reference — TuyaOpen hardware timer TKL API for interrupt-driven timing with once/period modes and microsecond intervals in embedded IoT development."
+keywords:
+  - tkl_timer
+  - tuyaopen timer driver
+  - tkl hardware timer api
+  - embedded timer driver
 ---
 
 The `tkl_timer` interface drives an on-chip hardware timer for precise, interrupt-driven timing. You configure a timer with a counting mode and an interrupt service callback, start it with a microsecond interval, and read back its configured interval or current count. It is the kernel abstraction layer (TKL) port each platform implements.

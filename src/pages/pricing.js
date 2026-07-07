@@ -752,6 +752,10 @@ export default function Pricing() {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content={c.meta} />
+        <meta
+          name="keywords"
+          content="iot development platform pricing, free open source iot platform, aiot platform pricing, open source iot platform cost, tuyaopen pricing"
+        />
       </Head>
 
       <main className={styles.root} ref={rootRef}>
@@ -903,7 +907,7 @@ export default function Pricing() {
               {c.how.cards.map((card, i) => (
                 <Reveal className={styles.infoCard} key={i} style={{ transitionDelay: `${(i % 4) * 60}ms` }}>
                   <div className={styles.infoMedia}>
-                    <img src={howImgs[i]} alt="" loading="lazy" />
+                    <img src={howImgs[i]} alt={card.title} loading="lazy" />
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.desc}</p>

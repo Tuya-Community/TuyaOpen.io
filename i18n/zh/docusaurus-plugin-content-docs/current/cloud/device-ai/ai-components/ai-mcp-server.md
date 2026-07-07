@@ -1,5 +1,11 @@
 ---
 title: MCP 服务端
+description: "ai_mcp 是运行在设备端的 MCP 服务端，把设备函数注册成工具，供 AI 智能体按需调用以读取传感器、修改设置、触发执行器。"
+keywords:
+  - MCP 服务端
+  - ai_mcp
+  - 设备工具
+  - Model Context Protocol
 ---
 
 MCP（Model Context Protocol，模型上下文协议）让设备端 AI 不再只是"说话"，而是把设备自身的函数当作**工具**来调用——读取传感器、修改设置、触发执行器。`ai_mcp` 就是运行在设备端的 MCP 服务端：你把函数注册成工具，AI 需要时由服务端来执行它们。

@@ -1,5 +1,12 @@
 ---
 title: Custom Device MCP (Hardware Skills Guide)
+description: "TuyaOpenClaw custom device MCP tools expose cameras, sensors, and displays as hardware skills the AI agent can call on device hardware."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - device mcp
+  - hardware skills
+  - physical ai agent
 ---
 
 # TuyaOpenClaw - Custom Device MCP (Hardware Skills Guide)

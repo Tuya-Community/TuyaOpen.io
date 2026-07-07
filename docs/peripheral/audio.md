@@ -1,5 +1,12 @@
 ---
 title: Audio Driver
+description: "The TuyaOpen audio driver manages microphones, speakers, codecs, I2S, PCM, and PDM for audio capture and playback."
+keywords:
+  - audio driver
+  - codec
+  - i2s
+  - pcm
+  - tuyaopen peripheral
 ---
 
 The [audio driver](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/audio_codecs) handles audio input and output in TuyaOpen. It provides a unified interface for managing audio devices such as microphones and speakers, so applications can capture, play, and configure audio without managing the underlying hardware directly.

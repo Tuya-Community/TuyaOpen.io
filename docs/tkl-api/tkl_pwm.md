@@ -1,5 +1,11 @@
 ---
 title: "tkl_pwm | PWM Driver"
+description: "tkl_pwm reference — TuyaOpen PWM driver TKL API for polarity, duty cycle, frequency, start/stop, and input-capture pulse timing in embedded IoT development."
+keywords:
+  - tkl_pwm
+  - tuyaopen pwm driver
+  - tkl pwm api
+  - embedded pwm driver
 ---
 
 The TKL PWM interface generates a pulse-width-modulated signal on a hardware channel and reads pulse timing back through input capture. You configure a channel's polarity, duty cycle, and frequency, then start, adjust, or stop the output at runtime. Channels are addressed by `TUYA_PWM_NUM_E`, starting at `TUYA_PWM_NUM_0`.

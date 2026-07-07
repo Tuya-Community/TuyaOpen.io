@@ -1,5 +1,11 @@
 ---
 title: "tkl_thread | Thread"
+description: "tkl_thread reference — TuyaOpen thread TKL API for creating, terminating, and inspecting OS tasks with stack and priority for porting/platform adaptation."
+keywords:
+  - tkl_thread
+  - tuyaopen thread api
+  - tkl thread api
+  - rtos task management
 ---
 
 The `tkl_thread` interface creates, terminates, and inspects operating-system threads (tasks) in a multitasking environment. It is the kernel abstraction layer (TKL) port each platform implements on top of its RTOS; TAL and application code call it for portable task management.

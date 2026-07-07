@@ -1,5 +1,12 @@
 ---
 title: BLE Peripheral 教程
+description: "说明 BLE Peripheral 示例：初始化为外设、设置广播与扫描响应、接受中央设备连接并处理 GATT 读、写、订阅与通知事件。"
+keywords:
+  - BLE Peripheral
+  - TAL Bluetooth
+  - GATT
+  - TuyaOpen 教程
+  - 蓝牙
 ---
 
 ## 概述

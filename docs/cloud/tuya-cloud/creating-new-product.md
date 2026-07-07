@@ -1,5 +1,12 @@
 ---
 title: Create Your Product & Agent
+description: "Create Your Product & Agent on Tuya — define device functions, AI agent, and firmware entry on the cloud, then get the PID your board activates against."
+keywords:
+  - create product
+  - tuya cloud
+  - pid
+  - ai agent
+  - device cloud binding
 ---
 
 Creating a product is the cloud-side half of [device–cloud binding](device-cloud-binding): you define your device model on the Tuya platform — its functions, its AI agent, and a firmware entry — and get the `PID` that the device will activate against. This guide walks the full path from an empty product to a flashed, bound board.

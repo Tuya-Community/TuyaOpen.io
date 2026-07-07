@@ -1,5 +1,12 @@
 ---
 title: "TAL Wi-Fi API 参考"
+description: "TAL Wi-Fi API（tal_wifi.h）为 Wi-Fi station 与 AP 操作提供平台无关接口，封装 TKL Wi-Fi 适配层，后者再调用各平台 Wi-Fi 驱动。"
+keywords:
+  - TAL Wi-Fi
+  - tal_wifi
+  - station
+  - AP
+  - TuyaOpen API
 ---
 
 TAL Wi-Fi API（`tal_wifi.h`）为 Wi-Fi station 与 AP 操作提供平台无关接口。它封装 TKL Wi-Fi 适配层，后者再调用各平台的 Wi-Fi 驱动（ESP-IDF、T5AI SDK、Linux 等）。

@@ -1,5 +1,12 @@
 ---
 title: Connect TuyaOpenClaw to OpenClaw
+description: "TuyaOpenClaw edge-AI voice firmware connects to the OpenClaw Gateway over the WebSocket ACP protocol for AI voice conversation."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - openclaw gateway
+  - edge ai platform open source
+  - acp protocol
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,5 +1,12 @@
 ---
 title: T3 模块概述
+description: "T3 系列涂鸦 Wi-Fi 与 Bluetooth LE 组合模组在 TuyaOpen 中的板级支持概述：含 T3 LCD DevKit BSP、共享 Kconfig 与功能预期。"
+keywords:
+  - T3 模组
+  - Wi-Fi
+  - BLE
+  - LCD DevKit
+  - TuyaOpen 硬件
 ---
 
 ## 概述

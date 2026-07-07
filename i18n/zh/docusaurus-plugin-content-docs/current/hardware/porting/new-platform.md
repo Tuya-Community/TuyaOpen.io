@@ -1,5 +1,12 @@
 ---
 title: 创建平台
+description: "介绍 tos.py new platform 命令：生成完整的平台目录结构与 TKL 适配层模板代码，用于将 TuyaOpen 移植到新硬件芯片。"
+keywords:
+  - 创建平台
+  - tos.py
+  - TKL 模板
+  - 移植
+  - TuyaOpen 硬件
 ---
 
 `tos.py new platform` 用于创建一个新的硬件平台移植模板。该命令会自动生成一套完整的目录结构和基础代码文件，用于将 TuyaOpen 适配到新硬件。

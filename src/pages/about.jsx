@@ -183,6 +183,7 @@ export default function AboutPage() {
   return (
     <Layout title={c.meta.title} description={c.meta.description}>
       <Head>
+        <meta name="keywords" content="open source iot platform, aiot platform, about tuyaopen, open source ai platform, tuyaopen" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

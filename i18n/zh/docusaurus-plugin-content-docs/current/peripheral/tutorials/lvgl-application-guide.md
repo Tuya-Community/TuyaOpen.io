@@ -1,5 +1,12 @@
 ---
 title: LVGL 应用指南
+description: "说明如何在 TuyaOpen 上开发 LVGL 应用：在配置中打开协议栈、通过 lv_vendor_* 厂商移植层初始化显示、创建控件并启动 LVGL 任务。"
+keywords:
+  - LVGL
+  - lv_vendor
+  - 图形库
+  - TuyaOpen 教程
+  - 显示
 ---
 
 ## 概述

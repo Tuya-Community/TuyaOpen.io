@@ -1,5 +1,11 @@
 ---
 title: tkl_network | Networking APIs
+description: "tkl_network reference — TuyaOpen networking TKL API for sockets, connect, bind, listen, send/recv, and socket options in embedded IoT development."
+keywords:
+  - tkl_network
+  - tuyaopen network api
+  - tkl socket api
+  - embedded networking
 ---
 
 The `tkl_network.c` file provides a series of APIs required for network communication processes to adapt to different network interfaces. These APIs include creating sockets, connecting, binding, listening, sending data, receiving data, setting and getting socket options, and other network operations. The file defines common handling of network APIs and allows for cross-platform network communication through these encapsulated functions.

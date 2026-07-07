@@ -1,5 +1,11 @@
 ---
 title: tkl_pinmux | Pinmux 驱动
+description: "tkl_pinmux 参考 —— 用于将外设功能映射并复用到物理 IO 管脚，支持单管脚配置与批量查询的 Pinmux 驱动 TKL API。"
+keywords:
+  - tkl_pinmux
+  - TuyaOpen Pinmux 驱动
+  - 管脚复用
+  - 嵌入式驱动
 ---
 
 ## 概述

@@ -1,5 +1,11 @@
 ---
 title: tkl_wakeup | Wake-up Driver
+description: "tkl_wakeup reference — TuyaOpen wake-up TKL API for setting/clearing GPIO, timer, and RTC alarm sources for low-power wake in embedded IoT development."
+keywords:
+  - tkl_wakeup
+  - tuyaopen wakeup driver
+  - tkl wakeup api
+  - low power wake
 ---
 
 The `tkl_wakeup` API configures the source that wakes the chip from a low-power state. A wake-up source can be a GPIO edge or level, a timer, or an RTC alarm. You describe one source in a `TUYA_WAKEUP_SOURCE_BASE_CFG_T` and pass it to set or clear that source. Both functions return `OPRT_OK` on success or an error code defined in `tuya_error_code.h`.

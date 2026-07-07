@@ -1,5 +1,11 @@
 ---
 title: "tkl_semaphore | 信号量"
+description: "tkl_semaphore 参考 —— 用于在多任务环境中创建与管理计数信号量以实现任务同步或事件通知的信号量 TKL API。"
+keywords:
+  - tkl_semaphore
+  - TuyaOpen 信号量
+  - RTOS 同步
+  - 嵌入式驱动
 ---
 
 `tkl_semaphore` 接口用于在多任务环境中创建和管理计数信号量，以实现任务间同步或事件通知。它是各平台在其 RTOS 之上实现的内核抽象层（TKL）适配。

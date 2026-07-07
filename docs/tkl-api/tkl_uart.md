@@ -1,5 +1,11 @@
 ---
 title: tkl_uart | UART Driver
+description: "tkl_uart reference — TuyaOpen UART TKL API for port init, read/write, rx/tx callbacks, flow control, and control commands in embedded IoT development."
+keywords:
+  - tkl_uart
+  - tuyaopen uart driver
+  - tkl uart api
+  - embedded uart driver
 ---
 
 ## Overview

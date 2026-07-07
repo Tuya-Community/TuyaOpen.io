@@ -1,5 +1,12 @@
 ---
 title: GUI - tyutool Graphical Tool
+description: "tyutool GUI is the cross-platform flashing and device-authorization tool for TuyaOpen, writing firmware and UUID/AuthKey credentials over serial."
+keywords:
+  - tyutool
+  - flashing tool
+  - device authorization
+  - gui
+  - tuyaopen
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,5 +1,11 @@
 ---
 title: MCP 管理
+description: "MCP 管理介绍模型上下文协议（MCP）的客户端-服务器架构，以及涂鸦智能体开发平台接入官方与自定义 MCP Server 以扩展智能体能力的方式。"
+keywords:
+  - Tuya AI Agent
+  - MCP 管理
+  - 模型上下文协议
+  - MCP Server
 ---
 
 模型上下文协议（Model Context Protocol，MCP）是由 Anthropic 在 2024 年推出并开源的一项开放标准，用于规范大语言模型（Large Language Model，LLM）与 AI 智能体安全、灵活地与外部数据源、工具及服务进行交互的方式。

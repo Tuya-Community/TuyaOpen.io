@@ -1,5 +1,11 @@
 ---
 title: "tkl_dac | DAC 驱动"
+description: "tkl_dac 参考 —— 用于初始化 DAC 单元、配置通道与输出位宽，并通过 FIFO 推入采样数据启动转换的 DAC 驱动 TKL API。"
+keywords:
+  - tkl_dac
+  - TuyaOpen DAC 驱动
+  - 数模转换
+  - 嵌入式驱动
 ---
 
 TKL DAC 接口将数字值转换为模拟输出电压，作用与 ADC 相反。你初始化一个 DAC 单元（`TUYA_DAC_NUM_E`），配置其通道和输出位宽，然后通过 FIFO 推入采样数据并启动转换。常见用途是还原此前由 ADC 采集的音频波形。

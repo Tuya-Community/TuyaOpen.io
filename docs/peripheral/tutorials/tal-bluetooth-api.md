@@ -1,5 +1,12 @@
 ---
 title: TAL Bluetooth API Reference
+description: "TAL Bluetooth API reference for TuyaOpen: tal_bluetooth.h covers init, advertising, scanning, connections, GATT exchange, and MTU via event callback."
+keywords:
+  - tal bluetooth
+  - tal_bluetooth.h
+  - ble
+  - gatt
+  - tuyaopen api
 ---
 
 ## Overview

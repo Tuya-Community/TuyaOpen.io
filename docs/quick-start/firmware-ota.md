@@ -1,5 +1,12 @@
 ---
 title: "Firmware Upgrade"
+description: "Push a firmware OTA upgrade to deployed TuyaOpen devices remotely via the Tuya IoT Platform: key, upload, publish, rule, verify, release."
+keywords:
+  - firmware ota
+  - over-the-air upgrade
+  - tuya iot platform
+  - device firmware
+  - tuyaopen
 ---
 
 A firmware OTA (over-the-air) upgrade pushes a new firmware version to deployed devices remotely through the Tuya IoT Platform. This guide takes you through the seven steps: create a firmware key, write the key into firmware, upload a new version, publish it, configure the upgrade rule, verify, and release.

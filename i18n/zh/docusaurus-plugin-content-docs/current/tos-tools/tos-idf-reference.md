@@ -1,5 +1,12 @@
 ---
 title: tos.py idf 命令参考
+description: "tos.py idf 透传至 ESP32 平台树内 Espressif idf.py，在 TuyaOpen 目录下使用原生 ESP-IDF 工作流如 menuconfig 与 set-target。"
+keywords:
+  - TuyaOpen
+  - tos.py idf
+  - ESP-IDF
+  - ESP32
+  - 命令参考
 ---
 
 ## 概述

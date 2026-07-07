@@ -1,5 +1,12 @@
 ---
 title: "Adding a New ESP32 Board"
+description: "Adding a new ESP32 board to TuyaOpen — create a Board Support Package for custom ESP32 hardware when the target chip is already supported."
+keywords:
+  - esp32
+  - new board
+  - bsp
+  - tuyaopen hardware
+  - porting
 ---
 
 Create a TuyaOpen Board Support Package (BSP) for your custom ESP32 hardware. The process differs depending on whether your target chip is already supported by the ESP32 platform.

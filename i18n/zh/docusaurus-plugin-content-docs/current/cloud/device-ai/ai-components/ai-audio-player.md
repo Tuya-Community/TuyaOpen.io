@@ -1,5 +1,11 @@
 ---
 title: 音频播放器
+description: "ai_audio_player 在设备上播放流式 TTS、音乐与本地提示音，是 AI 音频流水线的后端，由应用或 ai_agent 提供音频。"
+keywords:
+  - ai_audio_player
+  - TTS 播放
+  - 音频播放器
+  - 端侧 AI
 ---
 
 `ai_audio_player` 负责在设备上播放对话中“说”的那一侧音频——流式 TTS、音乐和本地提示音——通过扬声器输出。它是 AI 音频流水线的后端：`ai_audio_input` 采集用户所说的内容，而本模块则渲染设备回复所说的内容。

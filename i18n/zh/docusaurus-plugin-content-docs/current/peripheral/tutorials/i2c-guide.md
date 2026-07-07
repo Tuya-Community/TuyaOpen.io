@@ -1,5 +1,12 @@
 ---
 title: "I2C 外设指南"
+description: "TKL I2C 接口以主模式驱动 I2C 总线，用于传感器、OLED 显示、IO 扩展器等外设：分配 SCL/SDA 引脚、按速率初始化后按地址收发字节。"
+keywords:
+  - I2C
+  - TKL
+  - 主模式
+  - TuyaOpen 外设
+  - 嵌入式驱动
 ---
 
 TKL I2C 接口以主模式驱动 I2C 总线，用于传感器、OLED 显示、IO 扩展器等外设。你分配 SCL/SDA 引脚，按所选速率初始化总线，然后针对各设备地址收发字节。

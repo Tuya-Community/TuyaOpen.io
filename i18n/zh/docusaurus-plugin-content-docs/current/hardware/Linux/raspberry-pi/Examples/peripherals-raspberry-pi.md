@@ -1,5 +1,12 @@
 ---
 title: "Raspberry Pi 外设"
+description: "在 Raspberry Pi 上运行 TuyaOpen 外设示例：覆盖 GPIO、I2C、SPI、PWM、UART、按键与音频编解码的启用方法与最小示例。"
+keywords:
+  - Raspberry Pi
+  - 外设示例
+  - GPIO
+  - I2C
+  - TuyaOpen 硬件
 ---
 
 在 Raspberry Pi 上运行 TuyaOpen 的外设示例（`examples/peripherals`）。本文涵盖 GPIO、I2C、SPI、PWM、UART、按键输入与音频编解码：如何启用每个外设、Linux 适配层支持哪些 TKL 接口，以及每个外设的最小示例。

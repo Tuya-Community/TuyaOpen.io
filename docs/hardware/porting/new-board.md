@@ -1,5 +1,12 @@
 ---
 title: Add a new board
+description: "Add a new board to a TuyaOpen-supported chip platform with tos.py new board, which generates a board configuration through an interactive prompt."
+keywords:
+  - tuyaopen
+  - new board
+  - bsp
+  - tos.py
+  - porting
 ---
 
 `tos.py new board` creates a new board support package for a chip platform that TuyaOpen already supports. Through an interactive prompt and a template system, the command adds a new board configuration to an existing chip platform, which simplifies hardware porting and adaptation.

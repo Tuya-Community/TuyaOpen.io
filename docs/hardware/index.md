@@ -1,5 +1,12 @@
 ---
 title: Supported Hardware List
+description: "Supported hardware list for TuyaOpen — Wi-Fi/BLE chips (T2, T3, T5AI), ESP32, and Raspberry Pi dev boards. Compare boards and find pinouts, specs, and downloads."
+keywords:
+  - tuyaopen supported hardware
+  - iot development boards
+  - esp32 vs t5
+  - raspberry pi ai board
+  - ai development board
 ---
 
 import ChipRow from '@site/src/components/ChipRow';

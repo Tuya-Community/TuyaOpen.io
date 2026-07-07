@@ -1,5 +1,12 @@
 ---
 title: Create the platform
+description: "Create the platform for a new TuyaOpen hardware target with tos.py new platform, which generates the directory structure and adapter template files."
+keywords:
+  - tuyaopen
+  - new platform
+  - tos.py
+  - porting
+  - tkl
 ---
 
 `tos.py new platform` creates a porting template for a new hardware platform. The command generates a complete directory structure and the basic code files needed to adapt TuyaOpen to new hardware.

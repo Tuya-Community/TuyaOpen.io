@@ -1,5 +1,11 @@
 ---
 title: "tkl_output | 日志输出"
+description: "tkl_output 参考 —— 将格式化日志输出到平台日志端口并支持开关该端口，供 TAL 日志层转发消息的日志输出 TKL API。"
+keywords:
+  - tkl_output
+  - TuyaOpen 日志输出
+  - TAL 日志
+  - 嵌入式驱动
 ---
 
 `tkl_output` 接口将格式化的日志输出到平台的日志端口，并可打开或关闭该端口。它是各平台实现的内核抽象层（TKL）适配，TAL 日志层通过它转发日志消息。

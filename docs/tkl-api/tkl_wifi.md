@@ -1,5 +1,11 @@
 ---
 title: tkl_wifi | Wi-Fi Driver
+description: "tkl_wifi reference — TuyaOpen Wi-Fi driver TKL API for station/soft-AP, scan, connect, channel, MAC/IP, sniffer, and low-power for porting/platform adaptation."
+keywords:
+  - tkl_wifi
+  - tuyaopen wifi driver
+  - tkl wifi api
+  - embedded wifi driver
 ---
 
 `tkl_wifi` adapts a platform's Wi-Fi driver to TuyaOS. It covers station and soft-AP operation: initialization, scanning, connecting, channel and country-code control, MAC and IP management, sniffer and management-frame capture, low-power mode, and fast connect. The implementation lives in `tkl_wifi.c`, which TuyaOS generates with marked regions for your platform code.

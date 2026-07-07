@@ -1,5 +1,12 @@
 ---
 title: Designing Device MCP Tools
+description: "Designing Device MCP Tools covers the thinking behind good tools — naming by intent, one job per tool, clear descriptions — the AI can reliably call."
+keywords:
+  - mcp tools
+  - device tools
+  - physical ai agent
+  - device ai
+  - tuyaopen
 ---
 
 A **device MCP tool** wraps one of your device's functions — read a sensor, change a setting, move a motor, take a photo — so the on-device AI agent can call it. Tools are how an agentic device turns its capabilities into something the AI can actually use. This page is the design thinking behind good tools; for the API, see [MCP Server](../ai-components/ai-mcp-server).

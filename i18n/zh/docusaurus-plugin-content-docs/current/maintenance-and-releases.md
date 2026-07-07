@@ -1,6 +1,12 @@
 ---
 title: 技术 Roadmap 与发布
-description: 关于 TuyaOpen 维护频率、SDK 发布、平台支持、路线图和发布说明的综合信息
+description: "TuyaOpen 维护计划、SDK 发布周期、平台支持策略与路线图 Roadmap 的综合说明，涵盖错误修复、功能更新与季度主要发布节奏。"
+keywords:
+  - TuyaOpen
+  - 版本发布
+  - 维护计划
+  - 路线图
+  - 开源物联网平台
 ---
 
 本文介绍关于 TuyaOpen 维护计划、发布周期、平台支持和开发路线图 Roadmap 的综合信息。

@@ -1,5 +1,12 @@
 ---
 title: Arduino 生态库适配
+description: "以 TFT_eSPI 显示库为例，介绍如何为 TUYA-T5AI 系列开发板适配 Arduino 生态扩展库，含库添加步骤与硬件参数。"
+keywords:
+  - Arduino 库
+  - TFT_eSPI
+  - T5AI
+  - 显示库
+  - TuyaOpen 硬件
 ---
 
 Arduino 生态提供了极其丰富的扩展库。本文档以 TFT_eSPI 显示库为示例，介绍如何为 TUYA-T5AI 系列开发板适配 Arduino 扩展库。

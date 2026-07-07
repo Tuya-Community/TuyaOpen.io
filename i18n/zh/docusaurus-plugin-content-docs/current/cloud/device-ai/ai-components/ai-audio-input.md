@@ -1,5 +1,11 @@
 ---
 title: AI 音频输入
+description: "ai_audio_input 采集麦克风音频并经 VAD 门控，把切分后的音频切片交给应用，作为 AI 音频流水线的前端。"
+keywords:
+  - ai_audio_input
+  - 语音活动检测
+  - VAD
+  - 端侧 AI
 ---
 
 `ai_audio_input` 负责采集麦克风音频、判断其中是否存在语音，并通过回调把切分后的音频切片交给你的应用。它是 AI 音频流水线的前端：产出由 `ai_agent` 上传到云端的音频。

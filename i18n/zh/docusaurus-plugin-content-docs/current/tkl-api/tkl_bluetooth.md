@@ -1,5 +1,12 @@
 ---
 title: tkl_bluetooth | 蓝牙驱动
+description: "tkl_bluetooth 参考 —— 将平台 BLE 协议栈适配到 TuyaOS，提供 GAP、GATT 服务端与客户端及厂商自定义控制的蓝牙驱动 TKL API。"
+keywords:
+  - tkl_bluetooth
+  - TuyaOpen 蓝牙驱动
+  - BLE 协议栈
+  - GATT
+  - 嵌入式驱动
 ---
 
 `tkl_bluetooth` 将平台的 BLE 协议栈适配到 TuyaOS，对外提供：BLE 协议栈生命周期管理、GAP 操作（广播、扫描、连接、地址、发射功率、RSSI）、GATT 服务端（服务、属性值、通知与指示、MTU）、GATT 客户端（服务与特征值发现、读写、MTU）以及厂商自定义控制。其实现位于 `tkl_bluetooth.c`，相关类型在 `tkl_bluetooth_def.h` 中声明。

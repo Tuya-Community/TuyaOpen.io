@@ -1,5 +1,6 @@
 ---
 title: "简单涂鸦物联网开关"
+noindex: true
 ---
 
 

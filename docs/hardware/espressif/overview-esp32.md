@@ -1,5 +1,12 @@
 ---
 title: "ESP32 on TuyaOpen -- Overview"
+description: "ESP32 IoT tutorial for AI projects — build IoT and AI apps on ESP32 with the TuyaOpen SDK and ESP-IDF, Tuya Cloud, and AI agents."
+keywords:
+  - esp32 iot tutorial
+  - esp32 ai development tutorial
+  - esp32 embedded ai example
+  - deploy machine learning model on esp32
+  - esp32 iot project tutorial
 ---
 
 TuyaOpen runs the Espressif ESP32 chip family on top of ESP-IDF, so you build IoT and AI applications on ESP32 hardware with the same TuyaOpen SDK and APIs you use on Tuya T-series, Linux, and other supported platforms.

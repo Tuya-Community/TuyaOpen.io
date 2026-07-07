@@ -1,5 +1,12 @@
 ---
 title: UI Management
+description: "UI Management (ai_ui_manage) routes chat messages, emotions, status, and camera frames from the framework to whichever UI style is registered."
+keywords:
+  - ui management
+  - ai ui
+  - device ai
+  - tuyaopen
+  - chat ui
 ---
 
 `ai_ui_manage` is the on-screen chat UI dispatch layer of the TuyaOpen AI framework. The framework hands it chat messages — user text, AI replies, emotions, status, notifications, network state, camera frames, pictures — and it routes each one to whichever UI style is registered. The rest of your firmware never draws to the screen directly; it sends a typed message and the registered style renders it.

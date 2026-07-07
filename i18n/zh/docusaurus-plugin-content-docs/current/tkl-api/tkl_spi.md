@@ -1,5 +1,11 @@
 ---
 title: "tkl_spi | SPI 驱动"
+description: "tkl_spi 参考 —— 以主机或从机模式驱动 SPI 总线，配置角色时钟模式与位宽位序并收发数据的 SPI 驱动 TKL API。"
+keywords:
+  - tkl_spi
+  - TuyaOpen SPI 驱动
+  - 同步串行总线
+  - 嵌入式驱动
 ---
 
 TKL SPI 接口以主机或从机模式驱动 SPI 总线，用于显示屏、Flash、传感器等高速外设。你为一条总线（`TUYA_SPI_NUM_E`）配置角色、时钟模式、数据位宽和位序，然后发送、接收或全双工传输数据，并可选用中断驱动的事件回调。

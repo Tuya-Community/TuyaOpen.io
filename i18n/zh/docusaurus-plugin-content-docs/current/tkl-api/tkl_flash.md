@@ -1,5 +1,11 @@
 ---
 title: tkl_flash | Flash 驱动
+description: "tkl_flash 参考 —— 提供片上 Flash 读取、写入、擦除、加解锁及分区布局查询的 Flash 存储驱动 TKL API。"
+keywords:
+  - tkl_flash
+  - TuyaOpen Flash 驱动
+  - 片上存储
+  - 嵌入式驱动
 ---
 
 `tkl_flash` API 提供内核层（TKL）的片上 Flash 存储操作：读取、写入、擦除、加锁、解锁，以及分区布局查询。每个函数成功时返回 `OPRT_OK`，失败时返回 `tuya_error_code.h` 中定义的错误码。

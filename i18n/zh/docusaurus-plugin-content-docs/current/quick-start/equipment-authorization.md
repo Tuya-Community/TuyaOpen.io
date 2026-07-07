@@ -1,5 +1,12 @@
 ---
 title: "Step 3: 设备授权"
+description: "设备授权将 TuyaOpen 授权码（UUID 与 AuthKey）写入设备使其接入涂鸦 IoT 云，支持串口命令与修改头文件两种方式。"
+keywords:
+  - TuyaOpen
+  - 设备授权
+  - UUID
+  - AuthKey
+  - 快速入门
 ---
 
 设备授权是将 TuyaOpen 授权码（一个 `UUID` 和一个 `AuthKey`）写入设备，使其能够接入涂鸦 IoT 云。每台设备在配网上线前都需要一组唯一的授权码。

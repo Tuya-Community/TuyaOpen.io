@@ -1,5 +1,12 @@
 ---
 title: "Raspberry Pi 5 GPIO 参考手册"
+description: "Raspberry Pi 5 的 40 引脚接头分布与 RP1 功能复用表参考：用于确定哪个 GPIO 引脚承载所需的 SPI、I2C、PWM、UART 或音频信号。"
+keywords:
+  - Raspberry Pi 5
+  - GPIO
+  - 引脚分布
+  - RP1
+  - TuyaOpen 硬件
 ---
 
 查阅 Raspberry Pi 5 的 40 引脚接头分布与 RP1 功能复用表。在为 TuyaOpen 外设示例接线时，用它来确定哪个 GPIO 引脚承载所需的 SPI、I2C、PWM、UART 或音频信号。

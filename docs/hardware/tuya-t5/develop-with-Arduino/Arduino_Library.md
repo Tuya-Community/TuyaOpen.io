@@ -1,5 +1,12 @@
 ---
 title: Arduino Ecosystem Library Adaptation
+description: "Arduino ecosystem library adaptation for TUYA-T5AI boards — adapt an Arduino extension library such as TFT_eSPI for SPI LCD display development."
+keywords:
+  - arduino library
+  - tft_espi
+  - t5ai
+  - tuyaopen hardware
+  - display
 ---
 
 The Arduino ecosystem offers a rich collection of extension libraries. This guide shows you how to adapt an Arduino extension library for the TUYA-T5AI series development boards, using the TFT_eSPI display library as the worked example.

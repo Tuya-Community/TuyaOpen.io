@@ -233,6 +233,10 @@ export default function Hardware() {
               : 'TuyaOpen Hardware - T5AI Board and Core Development Kit'
           }
         />
+        <meta
+          name="keywords"
+          content="ai hardware development board, edge ai development kit, buy ai development board, t5ai board, tuyaopen hardware"
+        />
       </Head>
 
       <main className={styles.main}>

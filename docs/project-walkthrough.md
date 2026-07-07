@@ -1,5 +1,12 @@
 ---
 title: TuyaOpen Directory Walkthrough
+description: "Tour of the TuyaOpen repository directory structure and the purpose of each top-level folder: apps, boards, examples, src, platform, and tools."
+keywords:
+  - directory structure
+  - repository layout
+  - tuyaopen
+  - project structure
+  - source tree
 ---
 
 This topic describes the directory structure and purpose of TuyaOpen.

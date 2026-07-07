@@ -1,5 +1,6 @@
 ---
 title: "Custom Fonts in LVGL"
+noindex: true
 ---
 
 

@@ -1,5 +1,12 @@
 ---
 title: CLI - tos.py Development Tool
+description: "tos.py is the command-line interface for TuyaOpen, used for project configuration, compilation, firmware flashing, debugging, and monitoring."
+keywords:
+  - tos.py
+  - cli tool
+  - tuyaopen
+  - project configuration
+  - command line
 ---
 
 ## Overview
@@ -145,7 +152,7 @@ If you only want to display configurations in `boards`, you can add the command 
 
 The `menu` command will open a visual configuration interface
 
-![menu](https://images.tuyacn.com/fe-static/docs/img/0ad1b8c6-303d-411c-bfe7-c25e17968c05.png)
+![tos.py menu command visual configuration interface](https://images.tuyacn.com/fe-static/docs/img/0ad1b8c6-303d-411c-bfe7-c25e17968c05.png)
 
 Users can modify configuration options according to project requirements, and after saving, it will synchronously modify the [app_default.config](/docs/project-walkthrough#app_defaultconfig) file
 

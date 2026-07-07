@@ -1,5 +1,12 @@
 ---
 title: "TAL System API 参考"
+description: "TAL System API（tal_system.h）提供与平台无关的系统工具：临界区、休眠与延时、计时、随机数、复位管理以及 PSRAM 分配接口。"
+keywords:
+  - TAL System
+  - tal_system
+  - 临界区
+  - PSRAM
+  - TuyaOpen API
 ---
 
 TAL System API（`tal_system.h`）提供与平台无关的系统工具：临界区、休眠与延时、计时、随机数、复位管理以及 PSRAM 分配。

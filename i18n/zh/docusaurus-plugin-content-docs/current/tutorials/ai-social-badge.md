@@ -1,5 +1,6 @@
 ---
 title: "友念智能社交项链"
+noindex: true
 ---
 
 

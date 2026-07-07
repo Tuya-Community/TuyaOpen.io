@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 4: Cloud connection"
+description: "Bring-up stage 4 for TuyaOpen porting — pair, activate, and connect the device to Tuya cloud over MQTT, verified end to end with switch_demo."
+keywords:
+  - tuyaopen porting
+  - bring-up
+  - cloud connection
+  - mqtt
+  - tuya cloud
 ---
 
 The fourth stage is the integration milestone: with system, storage, and network in place, the device pairs, activates, and talks to the Tuya cloud over MQTT. When `switch_demo` works end to end, your port is functionally complete.

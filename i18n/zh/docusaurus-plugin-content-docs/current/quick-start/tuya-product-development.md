@@ -1,5 +1,12 @@
 ---
 title: "Tuya 产品开发"
+description: "介绍如何在涂鸦 IoT 平台创建自己的产品、获取全局唯一 PID 并写入固件，覆盖数据点 DP、App 面板与 OTA 通道配置。"
+keywords:
+  - TuyaOpen
+  - Tuya产品开发
+  - PID
+  - 涂鸦云
+  - IoT平台
 ---
 
 每台接入涂鸦云的设备都必须拥有一个 **PID（Product ID）**——由涂鸦 IoT 平台分配的全局唯一标识符。PID 将设备与一组特定能力绑定：数据点（DP）定义、App 控制面板、OTA 通道等。本文将创建你自己的产品、获取 PID，并将该 PID 写入固件。

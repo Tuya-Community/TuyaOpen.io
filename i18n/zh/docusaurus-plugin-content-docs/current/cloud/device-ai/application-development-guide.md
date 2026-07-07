@@ -1,5 +1,11 @@
 ---
 title: 应用开发介绍
+description: "应用开发介绍说明如何创建产品并获取 PID、配置 TuyaOpen 专用授权码，以及接入 C/Arduino/Luanode 版 TuyaOpen 连接涂鸦云。"
+keywords:
+  - 应用开发
+  - TuyaOpen 授权码
+  - 产品 PID
+  - 涂鸦云
 ---
 
 # 应用开发

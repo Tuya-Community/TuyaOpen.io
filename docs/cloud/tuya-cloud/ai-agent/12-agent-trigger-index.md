@@ -1,5 +1,12 @@
 ---
 title: Agent Trigger
+description: "Agent triggers on Tuya auto-invoke an agent when a device event fires — bound to DP conditions for alerts, control, and cross-system automation."
+keywords:
+  - agent trigger
+  - tuya ai agent
+  - device event
+  - dp condition
+  - tuya cloud
 ---
 
 An agent trigger automatically invokes an agent to run a task when a device meets a specific event condition — for example, notifying the user, controlling the device, or automating across systems. You bind a trigger to a device event; the agent then responds in its configured voice whenever that event fires.

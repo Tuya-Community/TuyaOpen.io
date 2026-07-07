@@ -1,5 +1,11 @@
 ---
 title: 云端与 AI 概览
+description: "云端与 AI 概览介绍 TuyaOpen 应用开发平台支持的应用类型，包括连接涂鸦云 IoT 服务的 tuya_cloud 与接入 AI 服务的 tuya.ai。"
+keywords:
+  - Tuya 云
+  - 云端概览
+  - tuya.ai
+  - IoT 应用
 ---
 
 ## TuyaOpen 应用

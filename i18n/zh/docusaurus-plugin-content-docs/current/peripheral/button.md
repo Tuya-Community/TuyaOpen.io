@@ -1,5 +1,12 @@
 ---
 title: 按键驱动
+description: "按键驱动统一管理 TuyaOpen 中的用户输入，检测按键事件并处理消抖、电平与中断，使应用无需直接操作 GPIO 硬件。"
+keywords:
+  - 按键驱动
+  - TuyaOpen 外设
+  - GPIO
+  - 消抖
+  - 嵌入式驱动
 ---
 
 [按键驱动](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/button) 负责处理 TuyaOpen 中的用户输入。它提供统一的接口来管理按键设备并检测按键事件，使应用无需直接操作底层硬件即可实现按键输入检测、事件处理和状态管理。

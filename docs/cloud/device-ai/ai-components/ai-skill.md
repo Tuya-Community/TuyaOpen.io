@@ -1,5 +1,12 @@
 ---
 title: Skill Processing
+description: "Skill Processing (ai_skills) interprets the AI's structured skill data into device behavior: emotions, music, playback, and cloud events."
+keywords:
+  - ai skills
+  - skill processing
+  - device ai
+  - ai agent
+  - tuyaopen
 ---
 
 `ai_skills` interprets the structured skill data the AI returns and turns it into device behavior — showing an emotion, playing music or a story, handling playback control, and reacting to cloud events. The [AI Agent](ai-agent) delivers the skill data; this module decides what the device does with it.

@@ -1,5 +1,12 @@
 ---
 title: 概述
+description: "Arduino-TuyaOpen 是涂鸦面向 Arduino 平台的开源框架：基于 TuyaOpen 二次开发，提供 Arduino 风格 API 与 T5 支持功能概览。"
+keywords:
+  - Arduino-TuyaOpen
+  - T5
+  - Arduino
+  - 开源框架
+  - TuyaOpen 硬件
 ---
 
 [Arduino-TuyaOpen](https://github.com/tuya/arduino-TuyaOpen/tree/main) 是涂鸦面向 Arduino 平台提供的开源开发框架，让开发者可以在 Arduino 平台上快速构建基于涂鸦云的 AIoT 智能设备，实现远程 AI 智能控制。

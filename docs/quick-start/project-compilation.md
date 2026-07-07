@@ -1,5 +1,12 @@
 ---
 title: "Step 1: Build Project"
+description: "Build a TuyaOpen application from source to a flashable firmware bin with tos.py: select a project, pick a board config, build, and clean."
+keywords:
+  - project compilation
+  - tos.py build
+  - firmware bin
+  - tuyaopen
+  - build system
 ---
 
 Build Project takes a TuyaOpen application from source to a flashable firmware bin. You select a project, pick a board config, build, and clean — all with `tos.py`. This page uses the `switch_demo` application as the example.

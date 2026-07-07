@@ -1,5 +1,11 @@
 ---
 title: tkl_rtc | RTC 驱动
+description: "tkl_rtc 参考 —— 用于初始化与反初始化 RTC 并以 UTC 秒数设置和获取当前时间的实时时钟驱动 TKL API。"
+keywords:
+  - tkl_rtc
+  - TuyaOpen RTC 驱动
+  - 实时时钟
+  - 嵌入式驱动
 ---
 
 ## 概述

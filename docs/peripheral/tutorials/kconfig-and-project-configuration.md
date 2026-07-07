@@ -1,5 +1,12 @@
 ---
 title: Kconfig and project configuration
+description: "Kconfig and project configuration in TuyaOpen: use tos.py config commands and app_default.config to pick a board preset and toggle features via the menu."
+keywords:
+  - kconfig
+  - project configuration
+  - tos.py
+  - app_default.config
+  - tuyaopen
 ---
 
 ## Overview

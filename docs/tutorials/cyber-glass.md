@@ -1,5 +1,6 @@
 ---
 title: "Dynamic Light Effect DIDI Glasses"
+noindex: true
 ---
 
 

@@ -1,5 +1,12 @@
 ---
 title: "GPIO and Interrupt Tutorial"
+description: "GPIO and interrupt tutorial for TuyaOpen: configure TKL pins for digital input, output, and interrupt callbacks handling edge and level events."
+keywords:
+  - gpio
+  - interrupt
+  - tkl_gpio
+  - edge trigger
+  - tuyaopen peripheral
 ---
 
 The TKL GPIO interface configures a pin for digital input, output, or interrupt-driven event handling. You set a pin's mode and direction, read or write its level, and optionally attach an interrupt callback for edge or level events.

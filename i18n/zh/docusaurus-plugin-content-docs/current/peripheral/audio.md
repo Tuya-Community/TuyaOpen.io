@@ -1,5 +1,12 @@
 ---
 title: 音频驱动
+description: "TuyaOpen 音频驱动统一管理麦克风、扬声器与编解码器，提供采集、播放与配置接口，使应用无需直接操作底层硬件即可完成音频输入输出。"
+keywords:
+  - 音频驱动
+  - TuyaOpen 外设
+  - 编解码器
+  - I2S
+  - 嵌入式驱动
 ---
 
 [音频驱动](https://github.com/tuya/TuyaOpen/tree/master/src/peripherals/audio_codecs) 负责处理 TuyaOpen 中的音频输入和输出。它提供统一的接口来管理麦克风、扬声器等音频设备，使应用无需直接操作底层硬件即可完成音频采集、播放和配置。

@@ -1,5 +1,12 @@
 ---
 title: Adapt the platform
+description: "Adapt the platform to add a new chipset to TuyaOpen — required reading, build flow, adapter steps, and the verification procedure for a full port."
+keywords:
+  - tuyaopen porting
+  - adapt platform
+  - chipset
+  - tkl
+  - build
 ---
 
 Adapting a new platform adds support for a new chipset to TuyaOpen. This guide covers the required reading, the steps, and the verification procedure.

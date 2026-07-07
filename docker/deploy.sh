@@ -20,7 +20,7 @@ fi
 REMOTE_DIR="~/code/"
 IMAGE_NAME="docusaurus-beta"
 CONTAINER_NAME="docusaurus-beta"
-DOMAIN="tuyaopen.io"
+DOMAIN="tuyaopen.ai"
 
 # Colors for output
 GREEN='\033[0;32m'

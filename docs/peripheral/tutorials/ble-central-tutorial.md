@@ -1,5 +1,12 @@
 ---
 title: BLE Central Tutorial
+description: "BLE central tutorial for TuyaOpen: initialize as central with tal_ble_bt_init, scan advertisers via tal_ble_scan_start, and handle ADV_REPORT events."
+keywords:
+  - ble central
+  - bluetooth
+  - tal_ble
+  - advertising
+  - tuyaopen peripheral
 ---
 
 A BLE central device scans for advertising peripherals and reads their advertising data. This tutorial walks through the BLE Central example: initialize the stack as a central device, scan for advertisers, and handle `TAL_BLE_EVT_ADV_REPORT` events. You use `tal_ble_bt_init` with `TAL_BLE_ROLE_CENTRAL`, `tal_ble_scan_start`, and a callback that prints peer address, address type, RSSI, and raw advertising payload. The example is under `examples/ble/ble_central` in the TuyaOpen repo.

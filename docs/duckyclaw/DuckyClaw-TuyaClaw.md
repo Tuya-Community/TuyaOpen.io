@@ -1,5 +1,12 @@
 ---
 title: Connect TuyaOpenClaw to TuyaClaw
+description: "TuyaOpenClaw edge-AI voice firmware connects to TuyaClaw, Tuya's AI Agent desktop client, via the WebSocket ACP protocol for conversation."
+keywords:
+  - duckyclaw
+  - tuyaopenclaw
+  - tuyaclaw
+  - physical ai agent
+  - acp protocol
 ---
 
 import Tabs from '@theme/Tabs';

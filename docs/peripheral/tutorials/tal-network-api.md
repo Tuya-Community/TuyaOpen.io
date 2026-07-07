@@ -1,5 +1,12 @@
 ---
 title: TAL Network API Reference
+description: "TAL Network API reference for TuyaOpen: tal_network.h wraps TCP and UDP sockets, select, and socket options behind a portable BSD-style interface."
+keywords:
+  - tal network
+  - tal_network.h
+  - tcp socket
+  - udp
+  - tuyaopen api
 ---
 
 ## Overview

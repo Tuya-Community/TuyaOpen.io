@@ -1,5 +1,12 @@
 ---
 title: TuyaOpenClaw 连接 OpenClaw
+description: "TuyaOpenClaw 通过 ACP 协议经 WebSocket 连接 OpenClaw Gateway，实现物联网设备与开源 AI Agent 平台的实时对话。"
+keywords:
+  - TuyaOpenClaw
+  - OpenClaw
+  - ACP 协议
+  - AI Agent
+  - 端侧 AI
 ---
 
 import Tabs from '@theme/Tabs';

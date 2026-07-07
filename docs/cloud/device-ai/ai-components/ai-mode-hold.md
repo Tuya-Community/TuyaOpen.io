@@ -1,5 +1,12 @@
 ---
 title: Hold-to-Talk Mode
+description: "Hold-to-Talk Mode records only while you press and hold the button, giving deliberate, explicit turns with no false triggers from ambient sound."
+keywords:
+  - hold to talk
+  - voice chat mode
+  - device ai
+  - press to talk
+  - tuyaopen
 ---
 
 **Hold-to-talk** is the chat mode where you press and hold the button to record, then release to stop and upload. The capture window lasts exactly as long as you hold the button — nothing starts or stops on its own.

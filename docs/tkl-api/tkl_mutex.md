@@ -1,5 +1,11 @@
 ---
 title: "tkl_mutex | Mutex"
+description: "tkl_mutex reference — TuyaOpen recursive mutex TKL API for create, lock, unlock, and release of synchronization primitives for porting/platform adaptation."
+keywords:
+  - tkl_mutex
+  - tuyaopen mutex driver
+  - tkl mutex api
+  - rtos synchronization
 ---
 
 The `tkl_mutex` interface creates and manages recursive mutexes for synchronized access to shared resources in a multitasking environment. It is the kernel abstraction layer (TKL) port each platform implements on top of its RTOS. Every mutex created by these functions is recursive: the owning thread can lock it more than once and must unlock it the same number of times.

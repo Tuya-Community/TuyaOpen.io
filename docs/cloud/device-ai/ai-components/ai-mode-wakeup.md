@@ -1,5 +1,12 @@
 ---
 title: Wake-Word Mode
+description: "Wake-Word Mode starts a single turn after a spoken wake word with no button, listening for a 30-second window before returning to idle."
+keywords:
+  - wake word mode
+  - voice chat mode
+  - device ai
+  - hands-free
+  - tuyaopen
 ---
 
 **Wake-word** is the chat mode where a spoken wake word starts a single-round turn — no button. After the wake word, the device listens for a window (about 30 seconds), takes one turn, and then returns to idle.

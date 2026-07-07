@@ -1,5 +1,12 @@
 ---
 title: Agent Metering and Billing
+description: "Agent Metering and Billing on Tuya — model fees by token usage plus smart voice fees, metered daily and settled by actual usage at unit prices."
+keywords:
+  - agent metering billing
+  - tuya ai agent
+  - model fees
+  - token pricing
+  - tuya cloud
 ---
 
 An AI agent bills for two things: the language model it runs and the smart voice it uses. This page lists each billing item, how it is calculated, and the current unit prices.

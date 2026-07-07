@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 5: Peripherals and AI"
+description: "Bring-up stage 5 for TuyaOpen porting — bring up GPIO, buses, audio, display, and Bluetooth, then run an AI app such as your_chat_bot."
+keywords:
+  - tuyaopen porting
+  - bring-up
+  - peripherals
+  - ai
+  - your_chat_bot
 ---
 
 The final stage brings up the hardware your product actually uses — GPIO, buses, audio, display, Bluetooth — and then runs the AI application on top of the now-solid base. Do this last: a peripheral bug is easy to find once system, storage, network, and cloud already work.

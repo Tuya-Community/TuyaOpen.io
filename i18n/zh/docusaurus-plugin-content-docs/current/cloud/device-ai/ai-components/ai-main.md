@@ -1,5 +1,11 @@
 ---
 title: 框架入口
+description: "ai_main 是设备端 AI 框架的入口，一次 ai_chat_init 调用即可初始化组件、注册对话模式、订阅事件并开始分发。"
+keywords:
+  - ai_main
+  - 框架入口
+  - ai_chat_init
+  - 端侧 AI
 ---
 
 `ai_main` 是设备端 AI 框架的入口。一次调用——`ai_chat_init`——即可初始化已启用的组件、注册对话模式、订阅驱动对话的事件并开始分发。你的应用其余部分都通过这一个模块与框架交互。

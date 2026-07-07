@@ -1,5 +1,12 @@
 ---
 title: 内存与存储概述
+description: "TuyaOpen 运行于 MCU 开发板与 Linux 目标机：MCU 具备片上 SRAM、PSRAM 与外部 NOR Flash；Linux 使用 DDR 与块设备，适配层映射相同 TAL 抽象。"
+keywords:
+  - 内存与存储
+  - TAL
+  - SRAM
+  - PSRAM
+  - TuyaOpen 内存
 ---
 
 ## 概述

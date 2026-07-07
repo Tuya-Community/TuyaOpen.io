@@ -1,5 +1,12 @@
 ---
 title: "编写新的 I2C 传感器驱动"
+description: "I2C 传感器驱动通过 TKL I2C 总线读取芯片并将结果可移植地呈现给应用，本教程以 SHT3x 温湿度传感器为例逐步集成新的 I2C 传感器。"
+keywords:
+  - I2C 传感器
+  - SHT3x
+  - TKL
+  - 驱动开发
+  - TuyaOpen 教程
 ---
 
 TuyaOpen 中的 I2C 传感器驱动通过 TKL I2C 总线读取芯片，并将结果可移植地呈现给应用。本教程以 SHT3x 温湿度传感器为例，逐步集成一个新的 I2C 传感器（温度、湿度、IMU、气压等）。

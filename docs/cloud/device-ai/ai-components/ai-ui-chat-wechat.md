@@ -1,5 +1,12 @@
 ---
 title: WeChat-style UI
+description: "WeChat-style UI (ai_ui_chat_wechat) renders the conversation as a scrolling bubble thread on color LCD, with streaming replies and camera previews."
+keywords:
+  - wechat ui
+  - ai ui
+  - device ai
+  - tuyaopen
+  - chat bubbles
 ---
 
 `ai_ui_chat_wechat` is a WeChat-style bubble chat UI for the TuyaOpen AI framework. It shows the conversation as a scrolling thread of bubbles — the user's messages on the right, the AI's replies on the left — the look people already know from messaging apps. It implements the [`ai_ui_manage`](ai-ui-manage) interface, so once registered it renders every chat message, emotion, status, camera frame, and picture the framework dispatches.

@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 3：Wi-Fi 与网络"
+description: "移植 bring-up 第三阶段：让芯片关联 Wi-Fi AP、获取 IP 并解析 DNS，通过 TCP 与 TLS socket 访问互联网，为云端连接打基础。"
+keywords:
+  - 移植
+  - Wi-Fi 网络
+  - TLS
+  - lwIP
+  - TuyaOpen 硬件
 ---
 
 第三个阶段把你的芯片连入网络：关联到一个 AP、获取 IP，并通过 TCP 和 TLS 访问互联网。这是云端连接所依赖的基础。

@@ -1,5 +1,12 @@
 ---
 title: "Bring-up 2: Flash and storage"
+description: "Bring-up stage 2 for TuyaOpen porting — give TuyaOpen a persistent flash region and key-value store for authorization, keys, and pairing state."
+keywords:
+  - tuyaopen porting
+  - bring-up
+  - flash storage
+  - tkl
+  - littlefs
 ---
 
 The second stage gives TuyaOpen a place to persist data on your chip's flash. Device authorization, keys, and pairing state must survive a reboot — so this stage must work before the device can stay activated against the cloud.

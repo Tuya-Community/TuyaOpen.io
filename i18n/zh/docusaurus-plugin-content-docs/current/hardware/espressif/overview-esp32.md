@@ -1,5 +1,12 @@
 ---
 title: "ESP32 与 TuyaOpen -- 概述"
+description: "TuyaOpen 在 ESP-IDF 之上运行 ESP32 系列芯片，提供云端集成、跨平台可移植性、AI 能力与产品化路径的整体概述。"
+keywords:
+  - ESP32
+  - ESP-IDF
+  - TuyaOpen 概述
+  - 跨平台
+  - AI 能力
 ---
 
 TuyaOpen 在 ESP-IDF 之上运行 Espressif ESP32 系列芯片，你可以使用与 Tuya T 系列、Linux 及其他支持平台相同的 TuyaOpen SDK 和 API，在 ESP32 硬件上构建物联网和 AI 应用。

@@ -1,5 +1,12 @@
 ---
 title: AI Agent Dev Platform
+description: "AI agent development platform — build, configure, and run AI agents on TuyaOpen. Integrate multiple LLMs and deploy physical AI agents for IoT."
+keywords:
+  - ai agent development platform open source
+  - physical ai agent development
+  - ai agent for iot devices tutorial
+  - free ai agent development platform
+  - tuya ai agent platform
 ---
 
 The AI Agent Dev Platform integrates multiple language models and gives you one place to build, configure, and run AI agents. You deploy and debug agent applications through configuration on the platform, without writing the orchestration yourself.

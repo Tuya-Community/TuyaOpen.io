@@ -1,5 +1,12 @@
 ---
 title: Agent Evaluation
+description: "Agent Evaluation on Tuya tests orchestration with batch datasets, AI-assisted analysis, and multi-dimensional comparison to tune the workflow."
+keywords:
+  - agent evaluation
+  - tuya ai agent
+  - batch testing
+  - quality metrics
+  - tuya cloud
 ---
 
 Agent evaluation tests how well an agent's orchestration works and whether it meets your expected capabilities and performance. You import a test dataset, run the agent against it in batch, and analyze the outputs to get objective quality metrics — so you can keep tuning the workflow as you debug.
