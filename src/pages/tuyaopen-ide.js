@@ -1226,6 +1226,19 @@ export default function TuyaOpenIdePage() {
           name="keywords"
           content="embedded development ide, ai development environment, iot embedded development ide, vs code extension embedded, tuyaopen ide"
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'TuyaOpen IDE',
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'Windows, macOS, Linux',
+            description:
+              'Embedded development IDE for AI and IoT projects — build, debug, and deploy intelligent applications in one integrated development environment.',
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            url: 'https://tuyaopen.ai/tuyaopen-ide',
+          })}
+        </script>
       </Head>
       <div className={styles.idePage} ref={containerRef}>
         {/* Hero */}

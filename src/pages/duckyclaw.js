@@ -382,6 +382,19 @@ export default function DuckyClaw() {
           name="keywords"
           content="edge ai platform open source, duckyclaw, tuyaopenclaw, ai agent framework, edge ai deployment"
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'TuyaOpenClaw',
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'T5AI, ESP32-S3, Raspberry Pi 5, Linux',
+            description:
+              'Open-source edge-AI agent framework — deploy OpenClaw-style agents to MCUs, SoCs, and PCs with one codebase.',
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            url: 'https://tuyaopen.ai/duckyclaw',
+          })}
+        </script>
       </Head>
 
       {/* Hero — neo beams + content + banner in one main section */}
