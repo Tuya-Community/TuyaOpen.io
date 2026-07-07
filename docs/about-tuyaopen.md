@@ -9,7 +9,7 @@ keywords:
   - tuyaopen sdk
 ---
 
-![TuyaOpen](https://images.tuyacn.com/fe-static/docs/img/c128362b-eb25-4512-b5f2-ad14aae2395c.jpg)
+![TuyaOpen — open source IoT and AI development platform](https://images.tuyacn.com/fe-static/docs/img/c128362b-eb25-4512-b5f2-ad14aae2395c.jpg)
 
 
 ## Overview

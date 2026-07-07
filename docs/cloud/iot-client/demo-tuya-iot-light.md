@@ -30,7 +30,7 @@ Before using `switch_demo`, you need to understand the following terms:
 
 ## Default app control panel
 
-![](https://images.tuyacn.com/content-platform/hestia/1756435281b95ab053f77.png)
+![Default app control panel for the Tuya IoT light demo](https://images.tuyacn.com/content-platform/hestia/1756435281b95ab053f77.png)
 
 
 ## Directory

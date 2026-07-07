@@ -136,19 +136,19 @@ This project depends on the application component [ai_audio](./ai-components/ai-
 
 - **Hold-to-talk mode**
 
-   ![](/img/applications/your_chat_bot/en/long_talk.svg)
+   ![Hold-to-talk mode diagram](/img/applications/your_chat_bot/en/long_talk.svg)
 
 - **Press-to-talk mode**
 
-   ![](/img/applications/your_chat_bot/en/button_talk.svg)
+   ![Press-to-talk mode diagram](/img/applications/your_chat_bot/en/button_talk.svg)
 
 - **Wake word mode**
 
-   ![](/img/applications/your_chat_bot/en/wakeup_talk.svg)
+   ![Wake word mode diagram](/img/applications/your_chat_bot/en/wakeup_talk.svg)
 
 - **Free talk mode**
 
-   ![](/img/applications/your_chat_bot/en/free_talk.svg)
+   ![Free talk mode diagram](/img/applications/your_chat_bot/en/free_talk.svg)
 
 ## Build project
 

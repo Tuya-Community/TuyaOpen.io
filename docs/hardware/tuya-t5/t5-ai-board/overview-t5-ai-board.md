@@ -99,7 +99,7 @@ The T5AI-Board provides comprehensive pinout options through its expansion heade
 
 ### Download high-resolution pinout diagram
 
-[![](https://img.shields.io/badge/V102-Download%20PDF%20Illustration-orange?style=for-the-badge)](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
+[![Download high-resolution T5AI-Board pinout diagram (PDF)](https://img.shields.io/badge/V102-Download%20PDF%20Illustration-orange?style=for-the-badge)](/docs/hardware/T5-AI-Board-Pinout-v102.pdf)
 
 ---
 
