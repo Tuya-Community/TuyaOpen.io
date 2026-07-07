@@ -23,7 +23,7 @@ const config = {
   favicon: '/img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://tuyaopen.io',
+  url: 'https://tuyaopen.ai',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
