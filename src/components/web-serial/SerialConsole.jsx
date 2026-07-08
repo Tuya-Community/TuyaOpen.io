@@ -106,7 +106,7 @@ export default function SerialConsole({variant = 'full', locale: localeProp, cla
 
   const onSend = async () => {
     if (!connected) {
-      push('err', t.serial_not_connected)
+      push('error', t.serial_not_connected)
       return
     }
     let bytes
@@ -114,7 +114,7 @@ export default function SerialConsole({variant = 'full', locale: localeProp, cla
     if (hex) {
       const parsed = parseHex(input)
       if (!parsed) {
-        push('err', t.hex_length_error)
+        push('error', t.hex_length_error)
         return
       }
       bytes = parsed
@@ -130,9 +130,25 @@ export default function SerialConsole({variant = 'full', locale: localeProp, cla
     try {
       await write(bytes)
     } catch (e) {
-      push('err', fmt(t.send_error, e.message || String(e)))
+      push('error', fmt(t.send_error, e.message || String(e)))
     }
     setInput('')
+  }
+
+  const sendQuick = async (cmd, label) => {
+    if (!connected) {
+      push('error', t.serial_not_connected)
+      return
+    }
+    flushBuffer()
+    push('tx', label ? `${label}: ${cmd}` : cmd)
+    const bytes = new TextEncoder().encode(cmd + '\r\n')
+    setTxBytes((n) => n + bytes.byteLength)
+    try {
+      await write(bytes)
+    } catch (e) {
+      push('error', fmt(t.send_error, e.message || String(e)))
+    }
   }
 
   const onKeyDown = (e) => {
@@ -268,6 +284,20 @@ export default function SerialConsole({variant = 'full', locale: localeProp, cla
     </div>
   )
 
+  const quickActions = (
+    <div className={s.quickActions}>
+      <Button variant="subtle" onClick={() => sendQuick('sys_reboot', t.quick_reboot)}>
+        {t.quick_reboot}
+      </Button>
+      <Button variant="subtle" onClick={() => sendQuick('tuya_net_reset', t.quick_reset_network)}>
+        {t.quick_reset_network}
+      </Button>
+      <Button variant="subtle" onClick={() => sendQuick('?', t.quick_help)}>
+        {t.quick_help}
+      </Button>
+    </div>
+  )
+
   if (variant === 'minimal') {
     return (
       <div className={clsx(s.wsTool, className)} data-ws-mode="serial">
@@ -321,6 +351,7 @@ export default function SerialConsole({variant = 'full', locale: localeProp, cla
             height={320}
             stats={stats}
           />
+          {quickActions}
           {sendRow}
         </div>
       </div>

@@ -3,6 +3,7 @@ import Head from '@docusaurus/Head'
 import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import BrowserOnly from '@docusaurus/BrowserOnly'
+import Link from '@docusaurus/Link'
 import {COPY} from '@site/src/components/web-serial/i18n'
 import {useWebSerialSupport} from '@site/src/components/web-serial/useSerialPort'
 import {SegmentedControl, Notice} from '@site/src/components/web-serial/primitives'
@@ -98,6 +99,25 @@ function ToolBody({locale, t}) {
           )}
         </div>
       </div>
+
+      <section className={p.marketing}>
+        <div className={p.marketingCard}>
+          <h2 className={p.marketingTitle}>{t.desktop_title}</h2>
+          <p className={p.marketingDesc}>{t.desktop_desc}</p>
+          <div className={p.marketingLinks}>
+            <a
+              className={p.marketingPrimary}
+              href="https://github.com/tuya/tyutool/releases/latest"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {t.desktop_download} ↗
+            </a>
+            <Link to={locale === 'zh' ? '/zh/tyutool' : '/tyutool'}>{t.desktop_features} →</Link>
+            <Link to={locale === 'zh' ? '/zh/tyutool-guide' : '/tyutool-guide'}>{t.desktop_guide} →</Link>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

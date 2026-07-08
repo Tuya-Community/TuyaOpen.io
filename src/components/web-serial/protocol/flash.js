@@ -142,7 +142,7 @@ function makeProgressAdapter(fileSize, onProgress, onLog) {
       // T5Downloader: {stage, message, progress, total}
       const phase = phaseFromMessage(a.message)
       if (a.stage === 'error') {
-        onLog(toEnglish(a.message), true)
+        onLog(toEnglish(a.message), 'error')
         onProgress(null, { error: true, phase })
         return
       }
@@ -207,7 +207,9 @@ export function flash({ chipId, port, file, address, baud, locale, onLog, onProg
 
     const debugCb = (level, message) => {
       // Only surface errors/warnings; drop the noisy comm/info/main chatter.
-      if (level === 'error' || level === 'warning') onLog(toEnglish(message), level === 'error')
+      if (level === 'error' || level === 'warning') {
+        onLog(toEnglish(message), level === 'warning' ? 'warn' : 'error')
+      }
     }
     const downloader = await createVendorDownloader(chip, port, debugCb, locale, baud)
     stopFn = () => downloader.stop()

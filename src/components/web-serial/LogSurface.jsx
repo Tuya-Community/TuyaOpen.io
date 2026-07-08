@@ -10,13 +10,23 @@ import React, {useLayoutEffect, useRef, useState} from 'react'
 import {clsx} from 'clsx'
 import s from './styles.module.css'
 import {parseAnsi, stripAnsi} from './ansi'
-import {CopyIcon, CheckIcon, TrashIcon} from './icons'
+import {CopyIcon, CheckIcon, TrashIcon, DownloadIcon} from './icons'
 
 const TAG = {
   rx: {cls: s.logTagRx, label: 'RX'},
   tx: {cls: s.logTagTx, label: 'TX'},
+  error: {cls: s.logTagErr, label: 'E'},
+  warn: {cls: s.logTagWarn, label: 'W'},
+  info: {cls: s.logTagInfo, label: 'I'},
+  debug: {cls: s.logTagDebug, label: 'D'},
   sys: {cls: s.logTagSys, label: ''},
-  err: {cls: s.logTagErr, label: ''},
+}
+
+// text color by level: errors/warns emphasized, debug muted, info/sys readable.
+const TEXT = {
+  error: s.logTextErr,
+  warn: s.logTextWarn,
+  debug: s.logTextDebug,
 }
 
 function ts(d) {
@@ -87,6 +97,22 @@ export default function LogSurface({
     }
   }
 
+  const save = () => {
+    const text = entries.map((e) => (ansi ? stripAnsi(e.text) : e.text)).join('\n')
+    const blob = new Blob([text], {type: 'text/plain;charset=utf-8'})
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    const d = new Date()
+    const p = (n, l = 2) => String(n).padStart(l, '0')
+    const ts = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`
+    a.href = url
+    a.download = `tuyaopen-web-serial-${ts}.log`
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div className={clsx(s.log, className)} style={{height}}>
       <div
@@ -103,7 +129,7 @@ export default function LogSurface({
               <div className={s.logLine} key={e.id}>
                 {showTimestamps && e.ts ? <span className={s.logTs}>{ts(e.ts)}</span> : null}
                 {tag.label ? <span className={clsx(s.logTag, tag.cls)}>{tag.label}</span> : null}
-                <span className={s.logText}>
+                <span className={clsx(s.logText, TEXT[e.type])}>
                   {ansi ? parseAnsi(e.text, String(e.id)) : e.text}
                 </span>
               </div>
@@ -119,9 +145,9 @@ export default function LogSurface({
           className={clsx(s.btn, s.btnSubtle, follow && s.logFollowOn)}
           onClick={toggleFollow}
           aria-pressed={follow}
-          title={follow ? 'Following latest — click to pause' : 'Paused — click to follow latest'}
+          title={follow ? 'Locked to newest — click to pause' : 'Paused — click to lock to newest'}
         >
-          Follow
+          Lock Scrolling
         </button>
         {!atBottom ? (
           <button
@@ -133,6 +159,14 @@ export default function LogSurface({
             ↓
           </button>
         ) : null}
+        <button
+          type="button"
+          className={clsx(s.btn, s.btnSubtle)}
+          onClick={save}
+          title="Save log"
+        >
+          <DownloadIcon size={14} />
+        </button>
         <button
           type="button"
           className={clsx(s.btn, s.btnSubtle)}

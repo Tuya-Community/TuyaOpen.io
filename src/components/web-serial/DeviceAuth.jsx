@@ -111,8 +111,8 @@ export default function DeviceAuth({variant = 'full', locale: localeProp, classN
   const onAuthorize = async () => {
     if (!canAuth) {
       const msg = !uuidValid ? t.uuid_length_error : t.auth_key_length_error
-      if (!uuidValid) push('err', t.uuid_length_error)
-      if (!authValid) push('err', t.auth_key_length_error)
+      if (!uuidValid) push('error', t.uuid_length_error)
+      if (!authValid) push('error', t.auth_key_length_error)
       setResult({ok: false, msg})
       return
     }
@@ -137,7 +137,7 @@ export default function DeviceAuth({variant = 'full', locale: localeProp, classN
       setResult({ok: true, msg: t.tuya_auth_success})
     } catch (e) {
       const msg = fmt(t.tuya_auth_failed, e.message || String(e))
-      push('err', msg)
+      push('error', msg)
       setResult({ok: false, msg})
     } finally {
       setSending(false)

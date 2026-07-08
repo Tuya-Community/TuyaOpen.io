@@ -557,9 +557,36 @@
   background: var(--ws-err-soft);
 }
 
+.logTagWarn {
+  color: var(--ws-warn);
+  background: var(--ws-warn-soft);
+}
+
+.logTagInfo {
+  color: var(--ws-info);
+  background: var(--ws-info-soft);
+}
+
+.logTagDebug {
+  color: var(--ws-ink-faint);
+  background: var(--ws-panel-2);
+}
+
 .logText {
   flex: 1 1 auto;
   min-width: 0;
+}
+
+.logTextErr {
+  color: var(--ws-err);
+}
+
+.logTextWarn {
+  color: var(--ws-warn);
+}
+
+.logTextDebug {
+  color: var(--ws-ink-faint);
 }
 
 .logEmpty {
@@ -888,6 +915,12 @@
 .sendInput {
   flex: 1 1 auto;
   min-width: 0;
+}
+
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 /* ---------- file dropzone ---------- */

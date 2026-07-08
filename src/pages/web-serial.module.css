@@ -106,3 +106,69 @@
   text-align: center;
   color: var(--ifm-color-emphasis-600);
 }
+
+/* ---------- desktop-app marketing ---------- */
+
+.marketing {
+  max-width: 1040px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.25rem;
+}
+
+.marketingCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 14px;
+  background: var(--ifm-background-surface-color);
+  padding: 1.5rem 1.75rem;
+}
+
+.marketingTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.marketingDesc {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.55;
+  margin: 0 0 1.1rem;
+  max-width: 72ch;
+}
+
+.marketingLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.25rem;
+}
+
+.marketingLinks a {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.marketingLinks a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.marketingPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 9px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.marketingPrimary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+}

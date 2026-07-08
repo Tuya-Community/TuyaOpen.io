@@ -58,7 +58,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
   const [progress, setProgress] = useState({percent: 0, state: 'idle', written: 0, total: 0, phase: null, message: ''})
   const [log, setLog] = useState([])
   const [elapsed, setElapsed] = useState(0)
-  const [autoDisconnect, setAutoDisconnect] = useState(true)
+  const [autoDisconnect, setAutoDisconnect] = useState(false)
   const [result, setResult] = useState(null) // {ok, msg}
 
   const portRef = useRef(null)
@@ -79,9 +79,9 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
     setIsCustomBaud(false)
   }, [chipId, chip.flashBaud])
 
-  const push = useCallback((text, isError = false) => {
+  const push = useCallback((text, level = 'info') => {
     setLog((l) => {
-      const next = [...l, {id: newId(), type: isError ? 'err' : 'sys', text, ts: new Date()}]
+      const next = [...l, {id: newId(), type: level, text, ts: new Date()}]
       return next.length > 1000 ? next.slice(-1000) : next
     })
   }, [])
@@ -122,7 +122,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
       if (!f) return
       const lower = f.name.toLowerCase()
       if (!lower.endsWith('.bin') && !lower.endsWith('.img')) {
-        push(`${f.name}: unsupported file type`, true)
+        push(`${f.name}: unsupported file type`, 'error')
         setResult({ok: false, msg: `${f.name}: unsupported file type`})
         return
       }
@@ -152,7 +152,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
     } catch (e) {
       const quiet = e?.name === 'NotFoundError' || e?.name === 'AbortError'
       setPortState(quiet ? 'idle' : 'error')
-      if (!quiet) push(fmt(t.connect_failed, e?.message || String(e)), true)
+      if (!quiet) push(fmt(t.connect_failed, e?.message || String(e)), 'error')
     }
   }
   const onDisconnect = async () => {
@@ -168,7 +168,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
 
   const runFlash = async () => {
     if (!portRef.current) {
-      push(t.please_connect_flash_serial, true)
+      push(t.please_connect_flash_serial, 'warn')
       return
     }
     cancelRef.current = false
@@ -186,7 +186,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
       address,
       baud,
       locale,
-      onLog: (msg, isErr) => push(msg, isErr),
+      onLog: (msg, level) => push(msg, level),
       onProgress,
     })
     jobRef.current = job
@@ -205,7 +205,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
         setResult({ok: false, msg: t.user_cancelled})
       } else {
         const m = e?.message || String(e)
-        push(fmt(t.flash_download_failed, m), true)
+        push(fmt(t.flash_download_failed, m), 'error')
         setProgress((p) => ({...p, state: 'error'}))
         setResult({ok: false, msg: fmt(t.result_failed, m)})
       }
@@ -227,7 +227,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
   // Start: auto-connect (open the OS port picker) if needed, then flash.
   const onStart = async () => {
     if (!file) {
-      push(t.please_select_file, true)
+      push(t.please_select_file, 'warn')
       setResult({ok: false, msg: t.please_select_file})
       return
     }
@@ -243,7 +243,7 @@ export default function FirmwareFlasher({variant = 'full', locale: localeProp, c
         setPortState(quiet ? 'idle' : 'error')
         if (!quiet) {
           const m = fmt(t.connect_failed, e?.message || String(e))
-          push(m, true)
+          push(m, 'error')
           setResult({ok: false, msg: m})
         }
         return
