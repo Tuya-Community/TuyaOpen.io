@@ -1,0 +1,174 @@
+.page {
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding-bottom: 5rem;
+}
+
+.hero {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3.25rem 1.25rem 1.75rem;
+}
+
+.title {
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 0.75rem;
+  color: var(--ifm-heading-color);
+  text-wrap: balance;
+}
+
+.sub {
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  color: var(--ifm-color-emphasis-700);
+  max-width: 60ch;
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+  text-wrap: pretty;
+}
+
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.heroMeta a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.heroMeta a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-400);
+  display: inline-block;
+}
+
+/* sticky mode bar */
+.modeBar {
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: 10;
+  background: color-mix(in srgb, var(--ifm-background-color) 88%, transparent);
+  backdrop-filter: saturate(1.2) blur(8px);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.modeBarInner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.modeHint {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  font-family: var(--ws-mono);
+}
+
+@media (max-width: 560px) {
+  .modeHint {
+    display: none;
+  }
+}
+
+.content {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 0;
+}
+
+.unsupportedBanner {
+  max-width: 1040px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.25rem;
+}
+
+.fallback {
+  padding: 4rem 1.25rem;
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* ---------- desktop-app marketing ---------- */
+
+.marketing {
+  max-width: 1040px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.25rem;
+}
+
+.marketingCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 14px;
+  background: var(--ifm-background-surface-color);
+  padding: 1.5rem 1.75rem;
+}
+
+.marketingTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.marketingDesc {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.55;
+  margin: 0 0 1.1rem;
+  max-width: 72ch;
+}
+
+.marketingLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.25rem;
+}
+
+.marketingLinks a {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.marketingLinks a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.marketingPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 9px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.marketingPrimary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+}

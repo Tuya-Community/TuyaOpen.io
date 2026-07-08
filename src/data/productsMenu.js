@@ -71,8 +71,8 @@ export const productsMenu = {
             icon: 'web',
             title: 'WebTool',
             subtitle: 'Browser-based serial & flashing',
-            href: 'https://tuyaopen.ai/tools',
-            external: true,
+            href: '/web-serial',
+            external: false,
           },
           {
             icon: 'license',
@@ -154,8 +154,8 @@ export const productsMenu = {
             icon: 'web',
             title: 'WebTool',
             subtitle: '基于浏览器的串口与烧录工具',
-            href: 'https://tuyaopen.ai/tools',
-            external: true,
+            href: '/web-serial',
+            external: false,
           },
           {
             icon: 'license',
