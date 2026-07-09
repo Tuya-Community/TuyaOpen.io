@@ -34,7 +34,15 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'tuya-open', // Usually your GitHub org/user name.
   projectName: 'TuyaOpen', // Usually your repo name.
-
+headTags: [
+  {
+    tagName: 'meta',
+    attributes: {
+      name: 'google-site-verification',
+      content: 'Pg0iUHrYEd6YrJjmb4C5o5VRnBjtcEkDDt_vJ9yU05o',
+    },
+  },
+],
   onBrokenLinks: 'warn',
   trailingSlash: false,
 
