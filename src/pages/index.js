@@ -442,19 +442,17 @@ function Home() {
 
   return (
     <Layout description={copy.metaDescription}>
-      <Head>
-        <title>TuyaOpen: {siteConfig.tagline}</title>
-        <meta
-          name="keywords"
-          content="open source iot platform, open source ai platform, open source aiot platform, iot development platform, tuyaopen"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
+     <Head>
+  <title>TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development</title>
+  <meta name="description" content="TuyaOpen is an open source AI, open source OS, and IoT development platform for building intelligent connected devices at scale. Explore embedded development tools, edge AI, and hardware support." />
+  <meta name="keywords" content="open source ai, iot development platform, open source os, aiot platform, embedded development" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+</Head>
       <div className={styles.landingRoot}>
         <main className={styles.landingMain}>
           {/* Hero */}
