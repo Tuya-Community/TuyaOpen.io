@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "display": [
+      {
+        "id": "display",
+        "name": {
+          "en": "1.8-inch AMOLED Display",
+          "zh-CN": "1.8 寸 AMOLED 屏"
+        },
+        "model": "SH8601",
+        "interface": "QSPI",
+        "width": 368,
+        "height": 448,
+        "pixelFormat": "RGB565",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "QSPI": [
+            {
+              "role": "sck",
+              "gpio": 11
+            },
+            {
+              "role": "cs",
+              "gpio": 12
+            },
+            {
+              "role": "d0",
+              "gpio": 4
+            },
+            {
+              "role": "d1",
+              "gpio": 5
+            },
+            {
+              "role": "d2",
+              "gpio": 6
+            },
+            {
+              "role": "d3",
+              "gpio": 7
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "SH8601 AMOLED on QSPI bus (SPI host 1). No DC/RST/BL pins: reset and backlight are driven over QSPI commands. d0=MOSI, d1=MISO.",
+          "zh-CN": "SH8601 AMOLED，QSPI 总线（SPI 主机 1）。无 DC/RST/BL 引脚：复位与背光通过 QSPI 命令控制。d0=MOSI，d1=MISO。"
+        }
+      }
+    ],
+    "touchpad": [
+      {
+        "id": "touchpad",
+        "name": {
+          "en": "Capacitive Touch",
+          "zh-CN": "电容触控"
+        },
+        "model": "FT5X06",
+        "interface": "I2C",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 14
+            },
+            {
+              "role": "sda",
+              "gpio": 15
+            },
+            {
+              "role": "int",
+              "gpio": 21
+            }
+          ]
+        },
+        "kconfig": null,
+        "group": "i2c-bus-0",
+        "note": {
+          "en": "FT5x06 (FT5X06) capacitive touch on shared I2C0 (scl=14, sda=15). No reset pin (rst=-1).",
+          "zh-CN": "FT5x06（FT5X06）电容触摸，挂在共享 I2C0（scl=14，sda=15）。无复位引脚（rst=-1）。"
+        }
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio",
+        "name": {
+          "en": "ES8311 Audio Codec",
+          "zh-CN": "ES8311 音频编解码器"
+        },
+        "model": "ES8311",
+        "interface": "I2S",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2S": [
+            {
+              "role": "mclk",
+              "gpio": 16
+            },
+            {
+              "role": "bck",
+              "gpio": 9
+            },
+            {
+              "role": "ws",
+              "gpio": 45
+            },
+            {
+              "role": "dout",
+              "gpio": 8
+            },
+            {
+              "role": "din",
+              "gpio": 10
+            },
+            {
+              "role": "spk_en",
+              "gpio": 46
+            }
+          ],
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 14
+            },
+            {
+              "role": "sda",
+              "gpio": 15
+            }
+          ]
+        },
+        "kconfig": null,
+        "group": "i2c-bus-0",
+        "note": {
+          "en": "ES8311 codec on I2S0; I2C control bus shared on I2C0 (scl=14, sda=15) at address 0x30. spk_en (power amp enable) = GPIO46.",
+          "zh-CN": "ES8311 编解码器，I2S0；I2C 控制总线共享 I2C0（scl=14，sda=15），地址 0x30。spk_en（功放使能）= GPIO46。"
+        }
+      }
+    ],
+    "pmic": [
+      {
+        "id": "pmic-axp2101",
+        "name": {
+          "en": "AXP2101 PMIC",
+          "zh-CN": "AXP2101 电源管理芯片"
+        },
+        "model": "AXP2101",
+        "interface": "I2C",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 14
+            },
+            {
+              "role": "sda",
+              "gpio": 15
+            }
+          ]
+        },
+        "kconfig": null,
+        "group": "i2c-bus-0",
+        "note": {
+          "en": "AXP2101 power management on shared I2C0. Handles battery charging and power-key (PEKEY short/long press IRQ).",
+          "zh-CN": "AXP2101 电源管理，挂在共享 I2C0。负责电池充电与电源键（PEKEY 短按/长按 IRQ）。"
+        }
+      },
+      {
+        "id": "io-expander-tca9554",
+        "name": {
+          "en": "TCA9554 IO Expander",
+          "zh-CN": "TCA9554 IO 扩展芯片"
+        },
+        "model": "TCA9554",
+        "interface": "I2C",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 14
+            },
+            {
+              "role": "sda",
+              "gpio": 15
+            }
+          ]
+        },
+        "kconfig": null,
+        "group": "i2c-bus-0",
+        "note": {
+          "en": "TCA9554 8-bit I2C IO expander at address 0x20 on shared I2C0. Drives display power-on sequence; EXIO5 is wired to the AXP2101 IRQ and serves as the power-key input.",
+          "zh-CN": "TCA9554 8 位 I2C IO 扩展芯片，地址 0x20，挂在共享 I2C0。负责屏幕上电时序；EXIO5 连到 AXP2101 IRQ，作为电源键输入。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "button",
+        "name": {
+          "en": "User Button",
+          "zh-CN": "用户按键"
+        },
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 0,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "On-board BOOT button (GPIO0), active low with pull-up. A separate power key is provided via TCA9554 EXIO5 (AXP2101 IRQ), not a direct GPIO.",
+          "zh-CN": "板载 BOOT 按键（GPIO0），低有效带上拉。另有电源键经 TCA9554 EXIO5（AXP2101 IRQ）实现，非直接 GPIO。"
+        }
+      }
+    ]
+  },
+  "peripheralGroups": {
+    "i2c-bus-0": {
+      "name": {
+        "en": "Shared I2C0 Bus",
+        "zh-CN": "共享 I2C0 总线"
+      },
+      "note": {
+        "en": "I2C0 (scl=GPIO14, sda=GPIO15) is shared by the FT5x06 touch, ES8311 codec (0x30), AXP2101 PMIC, and TCA9554 IO expander (0x20).",
+        "zh-CN": "I2C0（scl=GPIO14，sda=GPIO15）由 FT5x06 触摸、ES8311 编解码器（0x30）、AXP2101 电源管理及 TCA9554 IO 扩展芯片（0x20）共用。"
+      }
+    }
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": "https://www.waveshare.com/wiki/ESP32-S3-Touch-AMOLED-1.8"
+  },
+  "boardSymbol": "WAVESHARE_ESP32_S3_TOUCH_AMOLED_1_8",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/WAVESHARE_ESP32S3_Touch_AMOLED_1.8"
+  },
+  "id": "waveshare-esp32s3-touch-amoled-1-8"
+}

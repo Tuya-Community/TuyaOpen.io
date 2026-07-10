@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "name": {
+          "en": "Audio",
+          "zh-CN": "音频"
+        },
+        "interface": "INTERNAL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "INTERNAL": [
+            {
+              "role": "spk_en",
+              "gpio": 42,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "AEC enabled by default.",
+          "zh-CN": "默认启用 AEC。"
+        },
+        "id": "audio"
+      }
+    ],
+    "display": [
+      {
+        "model": "UC8276",
+        "name": {
+          "en": "E-Ink Display",
+          "zh-CN": "墨水屏"
+        },
+        "interface": "SPI",
+        "pins": {
+          "SPI": [
+            {
+              "role": "sck",
+              "gpio": 44
+            },
+            {
+              "role": "mosi",
+              "gpio": 46
+            },
+            {
+              "role": "cs",
+              "gpio": 45
+            },
+            {
+              "role": "dc",
+              "gpio": 47
+            },
+            {
+              "role": "rst",
+              "gpio": 43
+            },
+            {
+              "role": "busy",
+              "gpio": 13
+            },
+            {
+              "role": "bl",
+              "gpio": 33
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "SPI0 pinmux group 2 — MISO(47) repurposed as DC. Front light via PWM9. Refresh ~1–2 s.",
+          "zh-CN": "SPI0 引脚复用组 2，MISO(47) 复用为 DC。前置灯 PWM9。刷新约 1–2 秒。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "display",
+        "width": 400,
+        "height": 300
+      }
+    ],
+    "touchpad": [
+      {
+        "model": "FT6336",
+        "name": {
+          "en": "Capacitive Touch",
+          "zh-CN": "电容触控"
+        },
+        "interface": "I2C",
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 20
+            },
+            {
+              "role": "sda",
+              "gpio": 21
+            },
+            {
+              "role": "rst",
+              "gpio": 37
+            },
+            {
+              "role": "int",
+              "gpio": 36
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Overlaid on e-ink. Up to 2-point touch.",
+          "zh-CN": "覆盖在墨水屏上，最多 2 点触控。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "touchpad"
+      }
+    ],
+    "led": [
+      {
+        "name": {
+          "en": "Indicator LED",
+          "zh-CN": "指示灯"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 9,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active high.",
+          "zh-CN": "高有效。"
+        },
+        "id": "led"
+      }
+    ],
+    "button": [
+      {
+        "name": {
+          "en": "Up",
+          "zh-CN": "上"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 22,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low.",
+          "zh-CN": "低有效。"
+        },
+        "id": "button-up"
+      },
+      {
+        "name": {
+          "en": "Down",
+          "zh-CN": "下"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 23,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low.",
+          "zh-CN": "低有效。"
+        },
+        "id": "button-down"
+      },
+      {
+        "name": {
+          "en": "Enter",
+          "zh-CN": "确认"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 24,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low.",
+          "zh-CN": "低有效。"
+        },
+        "id": "button-enter"
+      },
+      {
+        "name": {
+          "en": "Return",
+          "zh-CN": "返回"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 25,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low.",
+          "zh-CN": "低有效。"
+        },
+        "id": "button-return"
+      },
+      {
+        "name": {
+          "en": "Left",
+          "zh-CN": "左"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 26,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low.",
+          "zh-CN": "低有效。"
+        },
+        "id": "button-left"
+      },
+      {
+        "name": {
+          "en": "Right",
+          "zh-CN": "右"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 28,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low.",
+          "zh-CN": "低有效。"
+        },
+        "id": "button-right"
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": null
+  },
+  "boardSymbol": "TUYA_T5AI_EINK_NFC",
+  "expansionPins": [],
+  "id": "tuya-t5ai-eink-nfc"
+}
