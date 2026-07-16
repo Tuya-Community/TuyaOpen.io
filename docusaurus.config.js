@@ -256,6 +256,10 @@ const config = {
         {
           title: 'Community',
           items: [
+                        {
+              label: 'FAQ',
+              to: '/faq',
+            },
             {
               label: 'Blog',
               to: '/blog',
@@ -348,6 +352,25 @@ const config = {
   },
 
   plugins: [
+        // FAQ Blog — reverse chronological FAQ articles with cover images
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'faq',
+        path: 'faq',
+        routeBasePath: 'faq',
+        blogTitle: 'FAQ',
+        blogDescription: 'Frequently asked questions about TuyaOpen, IoT development, and open source.',
+        blogSidebarTitle: 'FAQ Articles',
+        postsPerPage: 12,
+        showReadingTime: true,
+        editUrl: 'https://github.com/Tuya-Community/TuyaOpen.io/edit/master/',
+        feedOptions: {
+          type: 'all',
+          title: 'TuyaOpen FAQ RSS Feed',
+        },
+      },
+    ],
     './docusaurus-tailwind-v3',
     'docusaurus-plugin-image-zoom',
     './plugins/mermaid-panzoom',
