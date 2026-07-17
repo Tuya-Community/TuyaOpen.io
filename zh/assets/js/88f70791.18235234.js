@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([["8268"],{45620(e){e.exports=JSON.parse('{"metadata":{"permalink":"/zh/faq","page":1,"postsPerPage":12,"totalPages":1,"totalCount":2,"blogDescription":"Frequently asked questions about TuyaOpen, IoT development, and open source.","blogTitle":"FAQ"}}')}}]);
