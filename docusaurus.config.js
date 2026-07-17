@@ -65,6 +65,8 @@ const config = {
         },
         docs: {
           sidebarPath: './sidebars.js',
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/Tuya-Community/TuyaOpen.io/edit/master/',
@@ -72,6 +74,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/Tuya-Community/TuyaOpen.io/edit/master/',
@@ -256,7 +260,7 @@ const config = {
         {
           title: 'Community',
           items: [
-                        {
+            {
               label: 'FAQ',
               to: '/faq',
             },
@@ -352,7 +356,7 @@ const config = {
   },
 
   plugins: [
-        // FAQ Blog — reverse chronological FAQ articles with cover images
+    // FAQ Blog — reverse chronological FAQ articles with cover images
     [
       '@docusaurus/plugin-content-blog',
       {
@@ -364,6 +368,8 @@ const config = {
         blogSidebarTitle: 'FAQ Articles',
         postsPerPage: 12,
         showReadingTime: true,
+        showLastUpdateAuthor: false,
+        showLastUpdateTime: false,
         editUrl: 'https://github.com/Tuya-Community/TuyaOpen.io/edit/master/',
         feedOptions: {
           type: 'all',
