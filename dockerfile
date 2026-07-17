@@ -36,6 +36,6 @@ EXPOSE 9050
 # Switch to the node user
 USER node
 # Run the serve script
-CMD ["npm", "run", "serve", "--", "--port", "9050"]
+CMD ["npm", "run", "serve", "--", "--port", "9050", "--host", "0.0.0.0"]
 
 
