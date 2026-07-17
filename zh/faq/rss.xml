@@ -4,19 +4,10 @@
         <title>TuyaOpen FAQ RSS Feed</title>
         <link>https://tuyaopen.ai/zh/faq</link>
         <description>TuyaOpen Blog</description>
-        <lastBuildDate>Fri, 17 Jul 2026 08:37:59 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 15 Jul 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
-        <item>
-            <title><![CDATA[FAQ]]></title>
-            <link>https://tuyaopen.ai/zh/faq/index</link>
-            <guid>https://tuyaopen.ai/zh/faq/index</guid>
-            <pubDate>Fri, 17 Jul 2026 08:37:59 GMT</pubDate>
-            <description><![CDATA[Frequently asked questions about IoT development, AIoT, embedded systems, open source platforms, and TuyaOpen.]]></description>
-            <content:encoded><![CDATA[<p>Welcome to the TuyaOpen FAQ. Here you'll find answers to common questions about IoT development, AIoT platforms, embedded systems, open source tools, and more.</p>
-<p>Browse the sidebar to find topics you're interested in.</p>]]></content:encoded>
-        </item>
         <item>
             <title><![CDATA[What is an IDE?]]></title>
             <link>https://tuyaopen.ai/zh/faq/2024/07/15/what-is-ide</link>
@@ -72,6 +63,15 @@
 <p>Head to <a href="https://tuyaopen.ai/docs/quick-start" target="_blank" rel="noopener noreferrer" class="">Quick Start Guide</a> to set up your first project.</p>
 <hr>
 <p><em>Have more questions? Browse the <a href="https://tuyaopen.ai/faq" target="_blank" rel="noopener noreferrer" class="">FAQ</a> for more answers.</em></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[FAQ]]></title>
+            <link>https://tuyaopen.ai/zh/faq/index</link>
+            <guid>https://tuyaopen.ai/zh/faq/index</guid>
+            <pubDate>Sun, 14 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Frequently asked questions about IoT development, AIoT, embedded systems, open source platforms, and TuyaOpen.]]></description>
+            <content:encoded><![CDATA[<p>Welcome to the TuyaOpen FAQ. Here you'll find answers to common questions about IoT development, AIoT platforms, embedded systems, open source tools, and more.</p>
+<p>Browse the sidebar to find topics you're interested in.</p>]]></content:encoded>
         </item>
     </channel>
 </rss>
