@@ -190,6 +190,18 @@ export const tutorials = {
       level: 'intermediate',
     },
     {
+      id: 'tuyaopen-ide-agent-dev',
+      category: 'ide',
+      kind: 'interactive',
+      href: '/learn/tuyaopen-ide-agent-dev',
+      title: 'Agent Development Guide',
+      description:
+        'Complete end-to-end workflow for developing, deploying, and binding TuyaOpen IoT Agents across device and cloud using the TuyaOpen IDE.',
+      tags: ['setup'],
+      level: 'beginner',
+      duration: '15 min',
+    },
+    {
       id: 'otto-ninja-open-source-robot',
       category: 'community',
       kind: 'markdown',
@@ -527,6 +539,17 @@ export const tutorials = {
       description: '每个 tos.py 子命令的交互式参考 —— 选择一个查看其签名、真实示例与使用时机。',
       tags: ['cli'],
       level: 'intermediate',
+    },
+    {
+      id: 'tuyaopen-ide-agent-dev',
+      category: 'ide',
+      kind: 'interactive',
+      href: '/learn/tuyaopen-ide-agent-dev',
+      title: 'Agent 开发指南',
+      description: '使用 TuyaOpen IDE 进行端到端的开发、部署和绑定 TuyaOpen IoT 智能体的完整工作流。',
+      tags: ['setup'],
+      level: 'beginner',
+      duration: '15 分钟',
     },
     {
       id: 'otto-ninja-open-source-robot',
