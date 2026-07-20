@@ -220,6 +220,35 @@ function LearnCard({ item, locale, catMap, levelMap, tagMap }) {
   );
 }
 
+/* Section header card for a category — spans the full grid width and leads
+   each grouped section on the hub. Carries the category title, a one-line
+   intro, an optional image, and the guide count. */
+function CategoryHeader({ cat, count, countWord, locale }) {
+  const imgSrc = cat.image ? useBaseUrl(cat.image) : null;
+  const countLabel = locale === 'zh' ? `${count} 篇指南` : `${count} ${countWord}`;
+  return (
+    <div className={styles.categoryHeader}>
+      {imgSrc && (
+        <img
+          src={imgSrc}
+          alt=""
+          aria-hidden
+          className={styles.categoryHeaderImage}
+          loading="lazy"
+        />
+      )}
+      <div className={styles.categoryHeaderText}>
+        <div className={styles.categoryHeaderTop}>
+          <span className={styles.categoryHeaderDot} aria-hidden />
+          <h3 className={styles.categoryHeaderTitle}>{cat.label}</h3>
+          <span className={styles.categoryHeaderCount}>{countLabel}</span>
+        </div>
+        {cat.intro && <p className={styles.categoryHeaderIntro}>{cat.intro}</p>}
+      </div>
+    </div>
+  );
+}
+
 export default function LearnPage() {
   const { siteConfig, i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
@@ -289,6 +318,21 @@ export default function LearnPage() {
 
   const shown = active === 'all' ? items : items.filter((it) => it.category === active);
 
+  // Group the visible items by category, in category order, dropping empty
+  // categories. Each group renders as a full-width section header card
+  // followed by that category's card grid — so the hub reads as a series of
+  // labeled sections rather than one long flat grid. When a single category
+  // is filtered, exactly one group is produced.
+  const sections = useMemo(() => {
+    const byCat = {};
+    shown.forEach((it) => {
+      (byCat[it.category] ||= []).push(it);
+    });
+    return cats
+      .filter((c) => byCat[c.id] && byCat[c.id].length > 0)
+      .map((c) => ({ cat: c, items: byCat[c.id] }));
+  }, [shown, cats]);
+
   const menuItems = useMemo(
     () => [
       { key: 'all', text: t.all, count: counts.all },
@@ -345,16 +389,28 @@ export default function LearnPage() {
             {shown.length === 0 ? (
               <p className={styles.empty}>{t.empty}</p>
             ) : (
-              <div className={styles.grid}>
-                {shown.map((item) => (
-                  <LearnCard
-                    key={item.id}
-                    item={item}
-                    locale={locale}
-                    catMap={catMap}
-                    levelMap={levelMap}
-                    tagMap={tagMap}
-                  />
+              <div className={styles.sections}>
+                {sections.map(({ cat, items: catItems }) => (
+                  <section key={cat.id} className={styles.section}>
+                    <CategoryHeader
+                      cat={cat}
+                      count={catItems.length}
+                      countWord={catItems.length === 1 ? t.countOne : t.countMany}
+                      locale={locale}
+                    />
+                    <div className={styles.grid}>
+                      {catItems.map((item) => (
+                        <LearnCard
+                          key={item.id}
+                          item={item}
+                          locale={locale}
+                          catMap={catMap}
+                          levelMap={levelMap}
+                          tagMap={tagMap}
+                        />
+                      ))}
+                    </div>
+                  </section>
                 ))}
               </div>
             )}
