@@ -31,23 +31,85 @@
  * ========================================================================= */
 
 /* ------------------------------------------------------------- Categories */
-/* Order here is the order of the filter chips. Sections may be empty for now. */
+/* Order here is the order of the filter chips. Sections may be empty for now.
+ * Each category may carry an `intro` (one-line description) and an optional
+ * `image` shown on its section-header card on the /learn hub. */
 export const categories = {
   en: [
-    { id: 'basics', label: 'Basics' },
-    { id: 'ide', label: 'TuyaOpen IDE' },
-    { id: 'sdk', label: 'TuyaOpen SDK' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'tutorials', label: 'Tutorials' },
-    { id: 'community', label: 'Community' },
+    {
+      id: 'basics',
+      label: 'Basics',
+      intro: 'Quick takeaways and fundamentals — the essential concepts, tools, and tips to get moving with TuyaOpen.',
+      image: '/img/learn/cat-basics.png',
+    },
+    {
+      id: 'ide',
+      label: 'TuyaOpen IDE',
+      intro: 'Build firmware, cloud Agents, and app panels from one AI-driven workspace with Vibe Coding.',
+      image: '/img/learn/cat-ide.png',
+    },
+    {
+      id: 'sdk',
+      label: 'TuyaOpen SDK',
+      intro: 'The toolchain workflow — set up the environment, build firmware, flash, monitor, and pair a device.',
+      image: '/img/learn/cat-sdk.png',
+    },
+    {
+      id: 'projects',
+      label: 'Projects',
+      intro: 'Step-by-step builds that take you from a blank board to a finished, connected device.',
+      image: '/img/learn/cat-projects.png',
+    },
+    {
+      id: 'tutorials',
+      label: 'Tutorials',
+      intro: 'Focused how-tos for specific tasks, peripherals, and techniques.',
+      image: '/img/learn/cat-tutorials.png',
+    },
+    {
+      id: 'community',
+      label: 'Community',
+      intro: 'Projects built by the TuyaOpen community — robots, wearables, edge AI, and more.',
+      image: '/img/learn/cat-community.png',
+    },
   ],
   zh: [
-    { id: 'basics', label: '基础' },
-    { id: 'ide', label: 'TuyaOpen IDE' },
-    { id: 'sdk', label: 'TuyaOpen SDK' },
-    { id: 'projects', label: '项目' },
-    { id: 'tutorials', label: '教程' },
-    { id: 'community', label: '社区' },
+    {
+      id: 'basics',
+      label: '基础',
+      intro: '快速要点与基础概念——上手 TuyaOpen 必备的概念、工具与小技巧。',
+      image: '/img/learn/cat-basics.png',
+    },
+    {
+      id: 'ide',
+      label: 'TuyaOpen IDE',
+      intro: '在一个 AI 驱动的工作区里用 Vibe Coding 打通固件、云端 Agent 与 App 面板。',
+      image: '/img/learn/cat-ide.png',
+    },
+    {
+      id: 'sdk',
+      label: 'TuyaOpen SDK',
+      intro: '工具链工作流——配置环境、编译固件、烧录、监听并配网一台设备。',
+      image: '/img/learn/cat-sdk.png',
+    },
+    {
+      id: 'projects',
+      label: '项目',
+      intro: '从一块空板到一台完成的联网设备的分步实战。',
+      image: '/img/learn/cat-projects.png',
+    },
+    {
+      id: 'tutorials',
+      label: '教程',
+      intro: '针对具体任务、外设与技巧的专题指南。',
+      image: '/img/learn/cat-tutorials.png',
+    },
+    {
+      id: 'community',
+      label: '社区',
+      intro: '由 TuyaOpen 社区打造的项目——机器人、可穿戴、边缘 AI 等。',
+      image: '/img/learn/cat-community.png',
+    },
   ],
 }
 

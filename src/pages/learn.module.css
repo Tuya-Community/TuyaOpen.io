@@ -240,6 +240,107 @@
   }
 }
 
+/* ------------------------------------------- Grouped sections + cat header */
+/* The hub renders as a series of labeled sections; each is a header card
+   followed by that category's card grid. */
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Full-width category header card — leads each section. */
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.35rem 1.6rem;
+  border-radius: 18px;
+  border: 1px solid var(--tut-card-border);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--tuya-primary, #7c5cff) 10%, var(--tut-card-bg)),
+    var(--tut-card-bg)
+  );
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px -18px rgba(15, 23, 42, 0.28);
+  overflow: hidden;
+}
+
+.categoryHeaderImage {
+  width: 84px;
+  height: 84px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--tut-card-border);
+}
+
+.categoryHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.categoryHeaderTop {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.categoryHeaderDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--tuya-primary, #7c5cff);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tuya-primary, #7c5cff) 22%, transparent);
+}
+
+.categoryHeaderTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ifm-heading-color);
+}
+
+.categoryHeaderCount {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  color: var(--tuya-primary, #7c5cff);
+  background: color-mix(in srgb, var(--tuya-primary, #7c5cff) 12%, transparent);
+}
+
+.categoryHeaderIntro {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-700);
+  text-wrap: pretty;
+}
+
+@media (max-width: 560px) {
+  .categoryHeader {
+    padding: 1.1rem 1.2rem;
+  }
+  .categoryHeaderImage {
+    width: 60px;
+    height: 60px;
+  }
+  .categoryHeaderTitle {
+    font-size: 1.2rem;
+  }
+}
+
 /* ------------------------------------------------------------------ Card */
 /* BorderGlow is the visual frame; .glowCard tunes it into a grid item. */
 .glowCard {
