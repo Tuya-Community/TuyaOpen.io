@@ -1,4 +1,5 @@
 import Head from '@docusaurus/Head'
+import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
@@ -1272,6 +1273,9 @@ export default function TuyaOpenIdePage() {
               >
                 {copy.hero.ctaSecondary}
               </a>
+              <Link to="/learn?cat=ide" className={styles.btnSecondary}>
+                {copy.hero.ctaDocs}
+              </Link>
             </div>
           </div>
 

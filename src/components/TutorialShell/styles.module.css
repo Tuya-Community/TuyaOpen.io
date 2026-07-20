@@ -602,6 +602,7 @@
 
 .markdown :global(img) {
   max-width: 100%;
+  height: auto;
   border-radius: 12px;
   border: 1px solid var(--neutral-200);
   box-shadow:
