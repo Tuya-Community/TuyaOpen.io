@@ -160,6 +160,13 @@ const config = {
           position: 'left',
         },
         {
+          label: 'Forums',
+          href: 'https://forum-tuyaopen.discourse.group/',
+          position: 'left',
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        },
+        {
           type: 'dropdown',
           label: 'Ecosystem',
           position: 'left',
@@ -260,6 +267,10 @@ const config = {
         {
           title: 'Community',
           items: [
+            {
+              label: 'Forums',
+              href: 'https://forum-tuyaopen.discourse.group/',
+            },
             {
               label: 'FAQ',
               to: '/faq',
