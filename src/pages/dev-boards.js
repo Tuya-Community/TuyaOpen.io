@@ -459,6 +459,26 @@ function BoardDetail({ board, tags, zh, onBack }) {
   const pins = detail?.expansionPins || []
   const loc = zh ? 'zh' : 'en'
 
+  // Chip spec data for chip platform overview
+  const conn = detail?.connectivity || {}
+  const mem = detail?.memory || {}
+  const pwr = detail?.power || {}
+  const periphs = detail?.peripherals || {}
+
+  // Chip peripheral count tiles
+  const periphEntries = PERIPHERAL_ORDER.filter(
+    (k) => periphs[k] && periphs[k].enabled !== false && periphs[k].count,
+  ).map((k) => ({ key: k, label: PERIPHERAL_LABELS[k], count: periphs[k].count }))
+  for (const k of Object.keys(periphs)) {
+    if (PERIPHERAL_LABELS[k] || ['wifi', 'ble', 'pinmux'].includes(k)) continue
+    if (periphs[k].enabled !== false && periphs[k].count) {
+      periphEntries.push({ key: k, label: k.toUpperCase(), count: periphs[k].count })
+    }
+  }
+
+  const wifiSpec = periphs.wifi?.spec
+  const bleSpec = periphs.ble?.spec
+
   return (
     <div className={styles.detail}>
       <button type="button" className={styles.backLink} onClick={onBack} ref={backRef}>
@@ -508,10 +528,90 @@ function BoardDetail({ board, tags, zh, onBack }) {
       {loading && <div className={styles.statusBox}>{zh ? '加载板卡详情…' : 'Loading board details…'}</div>}
       {error && <div className={styles.statusBox}>{zh ? '无法加载板卡详情。' : 'Could not load board details.'}</div>}
 
-      {/* Peripherals */}
+      {/* Chip Platform Overview */}
+      {detail && (
+        <>
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>{zh ? '芯片概述' : 'Chip Overview'}</h2>
+            <div className={styles.specGrid}>
+              <SpecTile label={zh ? '架构' : 'Architecture'} value={prettyArch(detail.arch)} />
+              <SpecTile
+                label={zh ? 'Flash 接口' : 'Flash interface'}
+                value={detail.flashInterface ? detail.flashInterface.toUpperCase() : null}
+              />
+              <SpecTile label="SRAM" value={formatBytes(mem.sramBytes)} />
+              <SpecTile label="ROM" value={formatBytes(mem.romBytes)} />
+              <SpecTile label={zh ? 'Flash 最大' : 'Flash max'} value={formatBytes(mem.flashMaxBytes)} />
+              {mem.psramMaxBytes > 0 && (
+                <SpecTile label={zh ? 'PSRAM 最大' : 'PSRAM max'} value={formatBytes(mem.psramMaxBytes)} />
+              )}
+              <SpecTile label="VDD" value={pwr.vdd ? `${pwr.vdd.min}–${pwr.vdd.max} ${pwr.vdd.unit}` : null} />
+              <SpecTile
+                label={zh ? '深度睡眠电流' : 'Deep sleep'}
+                value={pwr.deepSleep ? `${pwr.deepSleep} μA` : null}
+              />
+              <SpecTile
+                label={zh ? '工作温度' : 'Operating temp'}
+                value={pwr.temp ? `${pwr.temp.min}～${pwr.temp.max} ${pwr.temp.unit}` : null}
+              />
+              <SpecTile
+                label={zh ? '工作频率' : 'CPU speed'}
+                value={
+                  detail.cpu
+                    ? `${detail.cpu.speedMin == null ? '' : `${detail.cpu.speedMin}–`}${detail.cpu.speedMax} MHz`
+                    : null
+                }
+              />
+            </div>
+          </section>
+
+          {/* Wireless */}
+          {(conn.wifi || conn.ble) && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>{zh ? '无线' : 'Wireless'}</h2>
+              <div className={styles.specGrid}>
+                {conn.wifi && (
+                  <div className={styles.wirelessSpec}>
+                    <h3 className={styles.wirelessTitle}>Wi-Fi</h3>
+                    {wifiSpec && <p className={styles.wirelessSub}>{wifiSpec}</p>}
+                  </div>
+                )}
+                {conn.ble && (
+                  <div className={styles.wirelessSpec}>
+                    <h3 className={styles.wirelessTitle}>Bluetooth LE</h3>
+                    {bleSpec && <p className={styles.wirelessSub}>{bleSpec}</p>}
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+
+          {/* Chip Peripherals */}
+          {periphEntries.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>{zh ? '芯片外设' : 'Chip Peripherals'}</h2>
+              <div className={styles.chipPeriphGrid}>
+                {periphEntries.map((e) => (
+                  <div key={e.key} className={styles.periphTile}>
+                    <span className={styles.periphTileCount}>
+                      <span className={styles.periphTileTimes} aria-hidden="true">
+                        ×
+                      </span>
+                      {e.count}
+                    </span>
+                    <span className={styles.periphTileName}>{e.label}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </>
+      )}
+
+      {/* Board Peripherals */}
       {detail && orderedCategories.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>{zh ? '外设' : 'Peripherals'}</h2>
+          <h2 className={styles.sectionTitle}>{zh ? '板载外设' : 'Board Peripherals'}</h2>
           {orderedCategories.map((cat) => (
             <details key={cat} className={styles.periphGroup} open>
               <summary className={styles.periphGroupSummary}>

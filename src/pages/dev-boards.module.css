@@ -1062,6 +1062,30 @@
   color: #f8fafc;
 }
 
+.wirelessSpec {
+  background: var(--tut-card-bg);
+  border: 1px solid var(--tut-card-border);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+[data-theme='dark'] .wirelessSpec {
+  background: #0f172a;
+}
+.wirelessTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin: 0 0 0.25rem 0;
+}
+[data-theme='dark'] .wirelessTitle {
+  color: #f8fafc;
+}
+.wirelessSub {
+  font-size: 0.85rem;
+  color: var(--neutral-500);
+  margin: 0;
+}
+
 .chipPeriphGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
