@@ -827,28 +827,28 @@
 }
 .periphGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(420px, 1fr));
   gap: 1.5rem;
   padding: 0.5rem 0 1.5rem;
 }
 
 @media (max-width: 1400px) {
   .periphGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(380px, 1fr));
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .periphGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(300px, 1fr);
   }
 }
 .periphCard {
   background: var(--neutral-100);
   border: 1px solid var(--tut-card-border);
-  border-radius: 14px;
-  padding: 1.25rem 1.4rem;
-  min-height: 100px;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
