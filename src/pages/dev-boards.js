@@ -403,6 +403,7 @@ function SpecTile({ label, value }) {
 
 function BoardDetail({ board, tags, zh, onBack }) {
   const [detail, setDetail] = useState(null)
+  const [platformSpec, setPlatformSpec] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
@@ -411,18 +412,44 @@ function BoardDetail({ board, tags, zh, onBack }) {
     setLoading(true)
     setError(false)
     setDetail(null)
-    if (!board.detailUrl) {
-      setLoading(false)
-      return
+    setPlatformSpec(null)
+
+    // Load both board detail and platform chip spec in parallel
+    const promises = []
+
+    if (board.detailUrl) {
+      promises.push(
+        fetch(`/dev-boards-data/${board.id}.json`).then((r) => {
+          if (!r.ok) throw new Error(r.status)
+          return r.json()
+        }),
+      )
+    } else {
+      promises.push(Promise.resolve(null))
     }
-    fetch(`/dev-boards-data/${board.id}.json`)
-      .then((r) => {
-        if (!r.ok) throw new Error(r.status)
-        return r.json()
-      })
-      .then((d) => {
+
+    if (board.platformId) {
+      promises.push(
+        fetch(`/dev-boards-data/platforms/${board.platformId}.json`).then((r) => {
+          if (!r.ok) throw new Error(r.status)
+          return r.json()
+        }),
+      )
+    } else {
+      promises.push(Promise.resolve(null))
+    }
+
+    Promise.allSettled(promises)
+      .then((results) => {
         if (!cancelled) {
-          setDetail(d)
+          const detailResult = results[0]
+          const platformResult = results[1]
+          if (detailResult.status === 'fulfilled') {
+            setDetail(detailResult.value)
+          }
+          if (platformResult.status === 'fulfilled') {
+            setPlatformSpec(platformResult.value)
+          }
           setLoading(false)
         }
       })
@@ -432,10 +459,11 @@ function BoardDetail({ board, tags, zh, onBack }) {
           setLoading(false)
         }
       })
+
     return () => {
       cancelled = true
     }
-  }, [board.id, board.detailUrl])
+  }, [board.id, board.detailUrl, board.platformId])
 
   // Focus the back button on mount; Escape returns to the catalog.
   const backRef = useRef(null)
@@ -459,11 +487,11 @@ function BoardDetail({ board, tags, zh, onBack }) {
   const pins = detail?.expansionPins || []
   const loc = zh ? 'zh' : 'en'
 
-  // Chip spec data for chip platform overview
-  const conn = detail?.connectivity || {}
-  const mem = detail?.memory || {}
-  const pwr = detail?.power || {}
-  const periphs = detail?.peripherals || {}
+  // Chip spec data from platform spec JSON
+  const conn = platformSpec?.connectivity || {}
+  const mem = platformSpec?.memory || {}
+  const pwr = platformSpec?.power || {}
+  const periphs = platformSpec?.peripherals || {}
 
   // Chip peripheral count tiles
   const periphEntries = PERIPHERAL_ORDER.filter(
@@ -476,8 +504,20 @@ function BoardDetail({ board, tags, zh, onBack }) {
     }
   }
 
-  const wifiSpec = periphs.wifi?.spec
-  const bleSpec = periphs.ble?.spec
+  // Format wireless specs
+  const formatWifiSpec = (spec) => {
+    if (!spec) return null
+    const parts = []
+    if (spec.standard) parts.push(spec.standard)
+    if (spec.bands) parts.push(spec.bands.join(', '))
+    return parts.join(' · ')
+  }
+  const formatBleSpec = (spec) => {
+    if (!spec) return null
+    return spec.version ? `Bluetooth ${spec.version}` : null
+  }
+  const wifiSpec = formatWifiSpec(periphs.wifi?.spec)
+  const bleSpec = formatBleSpec(periphs.ble?.spec)
 
   return (
     <div className={styles.detail}>
@@ -529,15 +569,15 @@ function BoardDetail({ board, tags, zh, onBack }) {
       {error && <div className={styles.statusBox}>{zh ? '无法加载板卡详情。' : 'Could not load board details.'}</div>}
 
       {/* Chip Platform Overview */}
-      {detail && (
+      {platformSpec && (
         <>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>{zh ? '芯片概述' : 'Chip Overview'}</h2>
             <div className={styles.specGrid}>
-              <SpecTile label={zh ? '架构' : 'Architecture'} value={prettyArch(detail.arch)} />
+              <SpecTile label={zh ? '架构' : 'Architecture'} value={prettyArch(platformSpec.arch)} />
               <SpecTile
                 label={zh ? 'Flash 接口' : 'Flash interface'}
-                value={detail.flashInterface ? detail.flashInterface.toUpperCase() : null}
+                value={platformSpec.flashInterface ? platformSpec.flashInterface.toUpperCase() : null}
               />
               <SpecTile label="SRAM" value={formatBytes(mem.sramBytes)} />
               <SpecTile label="ROM" value={formatBytes(mem.romBytes)} />
@@ -557,8 +597,8 @@ function BoardDetail({ board, tags, zh, onBack }) {
               <SpecTile
                 label={zh ? '工作频率' : 'CPU speed'}
                 value={
-                  detail.cpu
-                    ? `${detail.cpu.speedMin == null ? '' : `${detail.cpu.speedMin}–`}${detail.cpu.speedMax} MHz`
+                  platformSpec.cpu
+                    ? `${platformSpec.cpu.speedMin == null ? '' : `${platformSpec.cpu.speedMin}–`}${platformSpec.cpu.speedMax} MHz`
                     : null
                 }
               />
