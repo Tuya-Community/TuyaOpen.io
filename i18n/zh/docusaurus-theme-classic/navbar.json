@@ -67,6 +67,10 @@
     "message": "学习中心",
     "description": "Navbar item with label Learn"
   },
+  "item.label.Forums": {
+    "message": "论坛",
+    "description": "Navbar item with label Forums"
+  },
   "item.label.Ecosystem": {
     "message": "生态",
     "description": "Navbar dropdown with label Ecosystem"

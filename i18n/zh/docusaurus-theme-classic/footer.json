@@ -39,6 +39,10 @@
     "message": "开发指南概览",
     "description": "The label of footer link with label=Developer Guide Overview linking to docs/developer-guide-overview"
   },
+  "link.item.label.Forums": {
+    "message": "论坛",
+    "description": "The label of footer link with label=Forums linking to https://forum-tuyaopen.discourse.group/"
+  },
   "link.item.label.FAQs": {
     "message": "常见问题",
     "description": "The label of footer link with label=FAQs linking to docs/faqs"
