@@ -792,20 +792,20 @@
 .periphGroup {
   background: var(--tut-card-bg);
   border: 1px solid var(--tut-card-border);
-  border-radius: 12px;
-  margin-bottom: 0.6rem;
-  padding: 0.25rem 1.1rem;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  padding: 0.4rem 1.25rem;
 }
 .periphGroupSummary {
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--neutral-900);
-  padding: 0.7rem 0;
+  padding: 0.9rem 0;
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 .periphGroupSummary::-webkit-details-marker {
   display: none;
@@ -827,15 +827,25 @@
 }
 .periphGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 0.6rem;
-  padding: 0 0 0.9rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 0.25rem 0 1.25rem;
 }
 .periphCard {
   background: var(--neutral-100);
   border: 1px solid var(--tut-card-border);
-  border-radius: 10px;
-  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.periphCard:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.1);
 }
 [data-theme='dark'] .periphCard {
   background: #0f172a;
@@ -843,34 +853,37 @@
 .periphHead {
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.75rem;
   align-items: baseline;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.6rem;
 }
 .periphName {
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--neutral-900);
 }
 [data-theme='dark'] .periphName {
   color: #f8fafc;
 }
 .periphModel {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   color: var(--neutral-500);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .periphMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-bottom: 0.3rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 .chip {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.1rem 0.45rem;
-  border-radius: 5px;
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
   background: rgba(124, 92, 255, 0.1);
   color: var(--brand-primary-dark);
 }
@@ -879,10 +892,10 @@
   color: var(--brand-primary-light);
 }
 .periphNote {
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   color: var(--neutral-500);
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 [data-theme='dark'] .periphNote {
   color: var(--neutral-400);
