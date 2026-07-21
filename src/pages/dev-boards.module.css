@@ -1062,7 +1062,7 @@
   color: #f8fafc;
 }
 
-.periphGrid {
+.chipPeriphGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
   gap: 0.6rem;

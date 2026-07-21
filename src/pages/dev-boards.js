@@ -731,7 +731,7 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
           {periphEntries.length > 0 && (
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>{zh ? '外设' : 'Peripherals'}</h2>
-              <div className={styles.periphGrid}>
+              <div className={styles.chipPeriphGrid}>
                 {periphEntries.map((e) => (
                   <div key={e.key} className={styles.periphTile}>
                     <span className={styles.periphTileCount}>
