@@ -63,7 +63,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.
 3. 点击扩展面板右上角的 `⋯` 菜单。
 4. 选择「从 VSIX 安装…」，选中刚刚下载的文件。
 
-   ![从扩展面板菜单安装 VSIX](/img/ide/get-started/install-vsix-vscode-menu.png)
+   ![从扩展面板菜单安装 VSIX](/img/ide/get-started/install-vsix-vscode-menu-zh.png)
 
 5. 根据提示重新加载编辑器，即可开始使用。
 
