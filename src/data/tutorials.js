@@ -310,6 +310,18 @@ export const tutorials = {
       duration: '20 min',
     },
     {
+      id: 'tuyaopen-ide-practice-4',
+      category: 'ide',
+      kind: 'markdown',
+      href: '/learn/tuyaopen-ide-practice-4',
+      title: 'Practice 4: Linux board Hello World',
+      description:
+        'Deploy the simplest Hello World to a Linux board (Raspberry Pi) from the IDE — build, deploy over SSH, and run. The cross-deploy workflow for Linux targets.',
+      tags: ['setup'],
+      level: 'intermediate',
+      duration: '15 min',
+    },
+    {
       id: 'tuyaopen-ide-vibe-coding',
       category: 'ide',
       kind: 'markdown',
@@ -724,6 +736,18 @@ export const tutorials = {
       tags: ['setup'],
       level: 'intermediate',
       duration: '20 分钟',
+    },
+    {
+      id: 'tuyaopen-ide-practice-4',
+      category: 'ide',
+      kind: 'markdown',
+      href: '/learn/tuyaopen-ide-practice-4',
+      title: '实战四：Linux 板 Hello World',
+      description:
+        '用 IDE 把最简单的 Hello World 一键部署到树莓派这类 Linux 开发板——编译、SSH 部署、运行，跑通 Linux 板的 cross-deploy 工作流。',
+      tags: ['setup'],
+      level: 'intermediate',
+      duration: '15 分钟',
     },
     {
       id: 'tuyaopen-ide-vibe-coding',
