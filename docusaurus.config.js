@@ -152,7 +152,7 @@ const config = {
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
             { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'TuyaOpenClaw' },
-            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'tyutool' },
+            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'Tyutool' },
           ],
         },
         {

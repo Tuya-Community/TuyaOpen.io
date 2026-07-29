@@ -84,10 +84,6 @@ Once the wiring is checked and the device is in download mode, build the connect
 
 After you pick a port, tyutool **auto-fills** the recommended baud rate and chip model — you can accept them as-is. **Higher** is faster but more prone to failure; **lower** is slower but steadier. See [Firmware Flash](./flash.md#flash-tab--flashing).
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/1c2bb6dd-cd03-428f-aa28-00faa2fca714.png" alt="Flash page top connection bar — serial dropdown open showing detected ports, plus baud-rate and chip options" width="800" />
-
-*Flash page top connection bar — serial dropdown open showing detected ports, plus baud-rate and chip options.*
-
 :::tip
 If no ports show in the dropdown, first confirm the adapter is plugged in and its driver is installed (CH340/CP2102/FT232), and check your macOS/Linux serial access permissions (see the installation notes above).
 :::

@@ -84,10 +84,6 @@ WEBKIT_DISABLE_COMPOSITING_MODE=1 ./tyutool-gui_linux_x86_64_appimage_x.x.x.AppI
 
 选好端口后，波特率与芯片型号由 tyutool **自动填入推荐值**，可直接采用。**调高**更快但易失稳失败，**调低**更慢更稳。详见[固件烧录](./flash.md)。
 
-<img src="https://images.tuyacn.com/fe-static/docs/img/1c2bb6dd-cd03-428f-aa28-00faa2fca714.png" alt="Flash 页顶部连接栏——串口下拉框展开、显示已检测到的端口，波特率与芯片选项" width="800" />
-
-*Flash 页顶部连接栏——串口下拉框展开、显示已检测到的端口，波特率与芯片选项。*
-
 :::tip
 如果下拉框里看不到任何端口，先确认适配器已插好、驱动已装（CH340/CP2102/FT232），并检查 macOS/Linux 的串口访问权限（见上方安装小节）。
 :::
