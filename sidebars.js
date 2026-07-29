@@ -7,6 +7,7 @@
 //   hardwareSidebar  -> Hardware       (/docs/hardware/*)
 //   cloudSidebar     -> Cloud & AI     (/docs/cloud/*)
 //   duckyclawSidebar -> TuyaOpenClaw    (/docs/duckyclaw/*)  (brand formerly DuckyClaw; route kept)
+//   tyutoolSidebar   -> tyutool        (/docs/tyutool/*)
 //
 // SHARED / UNIVERSAL DOCS
 // -----------------------
@@ -558,9 +559,33 @@ const duckyclawSidebar = [
   'duckyclaw/DuckyClaw-TuyaClaw',
 ]
 
+// =============================================================================
+// tyutool (parallel to the TuyaOpen SDK docs — not nested inside them)
+// =============================================================================
+const tyutoolSidebar = [
+  { type: 'doc', id: 'tyutool/index', label: 'Overview' },
+  // Concepts before Getting Started: both pages tell readers new to flashing
+  // to read Concepts first, so the sidebar order should match that advice.
+  'tyutool/concepts',
+  'tyutool/getting-started',
+  'tyutool/flash',
+  'tyutool/serial-debug',
+  'tyutool/settings',
+  {
+    type: 'category',
+    label: 'Batch Flash & Auth',
+    collapsed: false,
+    link: { type: 'doc', id: 'tyutool/batch-flash-auth' },
+    items: ['tyutool/batch-auth-operator', 'tyutool/batch-auth-developer'],
+  },
+  'tyutool/cli',
+  'tyutool/faq',
+]
+
 module.exports = {
   sdkSidebar,
   hardwareSidebar,
   cloudSidebar,
   duckyclawSidebar,
+  tyutoolSidebar,
 }
