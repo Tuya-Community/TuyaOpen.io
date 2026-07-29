@@ -152,6 +152,7 @@ const config = {
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
             { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'TuyaOpenClaw' },
+            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'Tyutool' },
           ],
         },
         {
@@ -396,7 +397,15 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         // Legacy aliases that predate the per-product docs split.
+        // NOTE: this config runs once per locale build, and each locale's own
+        // build validates `to` against its own (locale-relative) route list —
+        // entries here must NOT be hand-prefixed with `/zh`.
         redirects: [
+          // The standalone /tyutool-guide page was replaced by the tyutool docs section.
+          {
+            from: '/tyutool-guide',
+            to: '/docs/tyutool',
+          },
           {
             from: '/docs/hardware-specific/t5ai-peripheral-mapping',
             to: '/docs/hardware/tuya-t5/t5ai-peripheral-mapping',
@@ -482,7 +491,7 @@ const config = {
             ['/docs/cloud/device-ai/', '/docs/applications/tuya.ai/'],
             ['/docs/cloud/iot-client/', '/docs/applications/tuya_cloud/'],
             // tyutool pages moved off /tools/ (the web-serial tool owns /tools/).
-            // Substring match also covers /tyutool-guide and the /zh/ locale variants.
+            // Substring match also covers the /zh/ locale variant.
             ['/tyutool', '/tools/tyutool'],
             // The standalone web-serial docker (formerly /tools/) is now integrated
             // into the site at /web-serial. Redirect the old root URL.

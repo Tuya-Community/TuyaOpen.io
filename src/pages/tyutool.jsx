@@ -395,8 +395,7 @@ export default function TyutoolPage() {
 
   // Docusaurus internal links are not locale-prefixed automatically here, so
   // build the guide path for the active locale (en = root, zh = /zh).
-  const base = locale === 'zh' ? '/zh' : '';
-  const guideHref = `${base}/tyutool-guide`;
+  const guideHref = locale === 'zh' ? '/zh/docs/tyutool' : '/docs/tyutool';
 
   // Scroll-reveal: fade sections in as they enter the viewport.
   useEffect(() => {
