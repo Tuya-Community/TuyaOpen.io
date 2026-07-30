@@ -1,0 +1,9 @@
+"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([["141"],{55421(e,t,r){r.d(t,{A:()=>o});var n=r(74848),s=r(96540);function o({discourseUrl:e="https://forum-tuyaopen.discourse.group/",discourseUsername:t,embedUrl:r,embedHeight:i="800px",fullApp:d=!1}){let c=(0,s.useRef)(null);return(0,s.useEffect)(()=>{if(!c.current)return;delete window.DiscourseEmbed;let n=c.current.querySelector("iframe");n&&n.remove();let s=r||window.location.href;window.DiscourseEmbed={discourseUrl:e,discourseEmbedUrl:s,fullApp:d,embedHeight:i};let o=null;t&&(document.querySelector('meta[name="discourse-username"]')?.remove(),(o=document.createElement("meta")).name="discourse-username",o.content=t,document.head.appendChild(o));let m=document.createElement("script");return m.type="text/javascript",m.async=!0,m.src=e+"javascripts/embed.js?v="+Date.now(),(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(m),()=>{o&&document.head.removeChild(o),m.parentNode&&m.parentNode.removeChild(m);let e=c.current?.querySelector("iframe");e&&e.remove()}},[e,t,r,i,d]),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)("style",{children:`
+        #discourse-comments {
+          overflow: hidden !important;
+        }
+        #discourse-comments iframe {
+          margin-top: -60px !important;
+          height: calc(100% + 60px) !important;
+        }
+      `}),(0,n.jsx)("div",{id:"discourse-comments",ref:c})]})}},46886(e,t,r){r.r(t),r.d(t,{default:()=>i});var n=r(74848),s=r(55421),o=r(19793);function i(){return(0,n.jsx)(o.A,{title:"Discourse Embed Test",description:"Test page for Discourse embedding",children:(0,n.jsx)("div",{style:{width:"100%",minHeight:"100vh"},children:(0,n.jsx)(s.A,{embedHeight:"calc(100vh - 60px)"})})})}r(96540)}}]);
