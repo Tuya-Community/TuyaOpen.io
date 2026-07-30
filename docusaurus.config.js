@@ -519,6 +519,12 @@ const config = {
   ],
   headTags: [
     {
+      tagName: 'script',
+      attributes: {
+        src: 'https://forum-tuyaopen.discourse.group/javascripts/embed-topics.js',
+      },
+    },
+    {
       tagName: 'meta',
       attributes: {
         name: 'google-site-verification',
