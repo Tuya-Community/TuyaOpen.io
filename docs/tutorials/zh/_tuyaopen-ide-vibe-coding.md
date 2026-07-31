@@ -1,6 +1,6 @@
 以上[实战](/learn/tuyaopen-ide-practice-1)中大部分操作都可以用 TuyaOpen IDE 直接安装的 **Skills** 完成，大大提高开发效率。下面按场景给你可以直接复制粘贴的提示词。
 
-![Vibe Coding 技能总览](/img/ide/get-started/vibe-coding-skills-overview.png)
+![Vibe Coding 技能总览](/img/ide/get-started/vibe-coding-skills-overview-zh.png)
 
 <section id="hardware" className="section">
 

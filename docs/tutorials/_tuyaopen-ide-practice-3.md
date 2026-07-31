@@ -1,4 +1,4 @@
-This practice turns to the **interface** — you use Tuya mini-app technology to build a device control panel that runs inside the phone app and talks to the firmware through **DP (Data Points)**.
+This practice turns to the **interface** — you use Tuya mini-app technology to build a device control panel that runs inside the phone app and talks to the firmware through **DP (Data Points)**. The two sides cooperate over DP: the firmware defines and reports DPs, and the panel reads and sends DPs.
 
 <section id="dp-model" className="section">
 
@@ -19,7 +19,7 @@ Firmware and panel are two independent programs that communicate through DP:
 
 ## Step 1: Account and product
 
-1. Enter **mini-app panel development** and follow the three steps on the right.
+1. Open **Mini App Panel Dev** and follow the three steps on the right.
 
    ![Mini-app panel development — three steps](/img/ide/get-started/miniapp-panel-dev-three-steps.png)
 
@@ -35,11 +35,7 @@ Firmware and panel are two independent programs that communicate through DP:
 
    ![Select the panel mini-app type](/img/ide/get-started/select-panel-miniapp-type.png)
 
-5. After creating it, return to the IDE and log in to your Tuya developer account again.
-
-   ![Relogin to the developer account in the IDE](/img/ide/get-started/ide-relogin-developer-account.png)
-
-6. After login, return to mini-app panel development and click **Update**. You see the panel mini-app you just created on the developer site — click **Bind**.
+5. After creating it, close the page and return to the IDE, then click **Refresh**. You see the panel mini-app you just created on the developer site — click **Select**.
 
    ![Bind the panel mini-app](/img/ide/get-started/bind-panel-miniapp.png)
 
@@ -49,7 +45,7 @@ Firmware and panel are two independent programs that communicate through DP:
 
 ## Step 2: Debug and preview
 
-1. Click **Debug & Preview** on the right to build the mini-app and render the panel. The panel appears below on a virtual device.
+1. Click **Build MiniApp** on the right to build the mini-app and render the panel. The panel appears below on a virtual device.
 
    ![Mini-app debug and preview](/img/ide/get-started/miniapp-debug-and-preview.png)
 
@@ -65,31 +61,43 @@ Firmware and panel are two independent programs that communicate through DP:
 
 ## Step 3: Upload and publish
 
-1. Click **Upload & Publish** on the right to upload to the cloud first.
+1. Click **Upload to Cloud** on the right to upload the mini-app. Once it uploads, go to the Tuya Developer Platform to submit it for review and publish.
 
    ![Upload the mini-app to the cloud](/img/ide/get-started/miniapp-upload-to-cloud.png)
 
-2. After upload succeeds, go to the Tuya Developer Platform to submit for review.
-
-   ![Submit for review on the platform](/img/ide/get-started/platform-submit-for-review.png)
-
-3. Open **Basic settings**, fill in the mini-app description, English display name, and upload a preview image.
+2. Open **Basic settings**, fill in the mini-app description and English display name, and upload a preview image.
 
    ![Panel basic settings — intro and preview image](/img/ide/get-started/panel-basic-settings-intro.png)
 
-4. Open **Version management** and do **Step 1 — Submit for review**.
+3. Open **Version management** and submit for review.
 
    ![Version management — submit for review](/img/ide/get-started/panel-version-management-submit.png)
 
-5. Open the review version and wait. After a few minutes, refresh to see it approved, then click **Publish**.
+4. Open the review version and wait. After a few minutes, refresh to see it approved, then publish.
 
    ![Review approved — publish](/img/ide/get-started/panel-review-approved-publish.png)
 
-6. Back in the IDE, do **Step 2** — click **Reselect panel**, choose the custom panel, and you can see the latest panel in the SmartLife app.
+</section>
 
-   ![Reselect the custom panel in the IDE](/img/ide/get-started/ide-reselect-custom-panel.png)
+<section id="step-4" className="section">
 
-   ![Custom panel in the SmartLife app](/img/ide/get-started/smartlife-app-custom-panel.png)
+## Step 4: Bind the mini-app to the product
+
+After developing the mini-app, to use the panel in the phone app you need to bind it to the product.
+
+1. Back in the IDE, open **Project Details** and click **Rebind MiniApp**.
+
+   ![Rebind MiniApp in Project Details](/img/ide/get-started/project-details-rebind-miniapp.png)
+
+2. Click **Change Panel** and choose the custom panel.
+
+   ![Change the custom panel in the IDE](/img/ide/get-started/ide-reselect-custom-panel.png)
+
+3. Select the custom panel — you can now see the published mini-app panel.
+
+   ![Published custom panel](/img/ide/get-started/smartlife-app-custom-panel.png)
+
+4. You can now see the latest panel in the SmartLife app.
 
 </section>
 
