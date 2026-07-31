@@ -3,6 +3,8 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { MDXProvider } from '@mdx-js/react';
+import MDXComponents from '@theme/MDXComponents';
 import styles from './styles.module.css';
 
 /* =========================================================================
@@ -199,7 +201,11 @@ export default function TutorialShell({
 
           {/* ------------------------------------------------- Content */}
           <div className={clsx(styles.content, markdown && styles.markdown)} ref={contentRef}>
-            {children}
+            {markdown ? (
+              <MDXProvider components={MDXComponents}>{children}</MDXProvider>
+            ) : (
+              children
+            )}
           </div>
         </div>
       </main>

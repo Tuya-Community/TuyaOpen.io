@@ -1,3 +1,23 @@
+<section id="install-git" className="section">
+
+## Install Git
+
+TuyaOpen IDE uses **Git** to clone the TuyaOpen SDK and to install Vibe Coding skills into your project. Install Git once, before you create your first project.
+
+| OS | How to install |
+| --- | --- |
+| **Windows** | Download the installer from [git-scm.com](https://git-scm.com/download/win) and run it. |
+| **macOS** | Run `brew install git`, or run `git` once and let macOS prompt to install the Xcode Command Line Tools. |
+| **Linux** | Install with your package manager, for example `sudo apt install git` on Debian/Ubuntu. |
+
+Check that Git is on your PATH:
+
+```bash
+git --version
+```
+
+</section>
+
 <section id="before-install" className="section">
 
 ## Before you install
@@ -10,7 +30,7 @@ TuyaOpen IDE is an extension for **VS Code** or **Cursor**. Install one of these
 | **Cursor** | https://cursor.com | Ships with stronger built-in AI. |
 
 :::warning
-Both the VS Code Marketplace and Open VSX search are temporarily unavailable. Install via an AI coding agent or the manual `.vsix` below — do not expect to find it by searching inside the editor.
+Both the VS Code Marketplace and Open VSX search are temporarily unavailable. Install via an AI coding agent, or download the `.vsix` from the official site below — do not expect to find it by searching inside the editor.
 :::
 
 </section>
@@ -19,14 +39,14 @@ Both the VS Code Marketplace and Open VSX search are temporarily unavailable. In
 
 ## Method 1: Let an AI agent install it (fastest)
 
-Paste the prompt below into **Claude Code, Cursor, Codex, or any coding agent that can run shell commands**. It downloads the `.vsix` and installs the extension for you.
+Paste the prompt below into **Claude Code, Cursor, Codex, or any coding agent that can run shell commands**. It downloads the latest `.vsix` and installs the extension for you.
 
 ```text
 Install the TuyaOpen IDE extension. Download the latest .vsix from
-https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix
-then install it with `code --install-extension <path.vsix>` (VS Code) or
-`cursor --install-extension <path.vsix>` (Cursor), and reload the editor
-window so the extension takes effect.
+https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.1.5.vsix
+then install it with `code --install-extension <path-to-vsix>` (VS Code) or
+`cursor --install-extension <path-to-vsix>` (Cursor), and reload the editor
+window so the extension activates.
 ```
 
 **Steps:**
@@ -51,22 +71,27 @@ The download link in the prompt points to the **latest** version of the `.vsix`.
 
 <section id="manual-vsix" className="section">
 
-## Method 2: Install the .vsix manually
+## Method 2: Download the .vsix from the official site
 
-The same package works in both **VS Code** and **Cursor**.
+Get the `.vsix` from the official TuyaOpen IDE site so you always receive the **latest** version. The same package works in both **VS Code** and **Cursor**.
 
-Download: [TuyaOpen.TuyaOpenIDE-0.1.1.vsix](https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix) (v0.1.1 · Windows · macOS · Linux · universal).
+1. Open the [TuyaOpen IDE page](/tuyaopen-ide) and click **Install Extension**.
 
-The steps below use VS Code as the demo.
+   ![Install Extension button on the official TuyaOpen IDE page](/img/ide/get-started/official-site-install-extension.png)
 
-1. Download the `.vsix` from the link above.
-2. Open VS Code and go to the **Extensions** view — `Ctrl+Shift+X` (macOS: `⌘+Shift+X`).
-3. Open the `⋯` menu at the top right of the Extensions panel.
-4. Choose **Install from VSIX…** and select the file you just downloaded.
+2. In the install dialog, click **Download .vsix** to download the latest installer.
+
+   ![Download .vsix button in the install dialog](/img/ide/get-started/official-site-download-vsix.png)
+
+3. Open VS Code and go to the **Extensions** view — `Ctrl+Shift+X` (macOS: `⌘+Shift+X`).
+
+4. Open the `⋯` menu at the top right of the Extensions panel.
+
+5. Choose **Install from VSIX…** and select the file you just downloaded.
 
    ![Installing a VSIX from the Extensions panel menu](/img/ide/get-started/install-vsix-vscode-menu.png)
 
-5. Reload the editor when prompted, then start using it.
+6. Reload the editor when prompted, then start using it.
 
 </section>
 

@@ -1,3 +1,23 @@
+<section id="install-git" className="section">
+
+## 安装 Git
+
+TuyaOpen IDE 用 **Git** 来克隆 TuyaOpen SDK，并把 Vibe Coding 技能安装到你的项目里。请在创建第一个项目之前，先装好 Git。
+
+| 操作系统 | 安装方式 |
+| --- | --- |
+| **Windows** | 从 [git-scm.com](https://git-scm.com/download/win) 下载安装包并运行。 |
+| **macOS** | 运行 `brew install git`，或运行一次 `git`，让 macOS 提示安装 Xcode 命令行工具。 |
+| **Linux** | 用包管理器安装，例如 Debian/Ubuntu 上执行 `sudo apt install git`。 |
+
+检查 Git 是否已在 PATH 中：
+
+```bash
+git --version
+```
+
+</section>
+
 <section id="before-install" className="section">
 
 ## 安装前准备
@@ -23,7 +43,7 @@ VS Code 应用市场与 Open VSX 搜索暂时均不可用。请通过 AI 编程 
 
 ```text
 安装 TuyaOpen IDE 扩展。从
-https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix
+https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.1.5.vsix
 下载最新 .vsix，然后用 `code --install-extension <路径.vsix>`（VS Code）或
 `cursor --install-extension <路径.vsix>`（Cursor）安装，并重新加载编辑器窗口让扩展生效。
 ```
@@ -32,15 +52,15 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.
 
 1. 打开 Cursor（此处作为演示），把提示词输入 Agent。
 
-   ![在 Cursor Agent 中粘贴安装提示词](/img/ide/get-started/install-prompt-in-cursor.png)
+   ![在 Cursor Agent 中粘贴安装提示词](/img/ide/get-started/install-prompt-in-cursor-zh.png)
 
 2. 执行完成后，打开 Cursor。在**扩展**视图里能看到 **TuyaOpen IDE** 已安装并启用。
 
-   ![扩展面板中 TuyaOpen IDE 显示为已启用](/img/ide/get-started/extensions-panel-tuyaopen-enabled.png)
+   ![扩展面板中 TuyaOpen IDE 显示为已启用](/img/ide/get-started/extensions-panel-tuyaopen-enabled-zh.png)
 
 3. 点击窗口下栏右侧的 **TuyaOpen**，即可开始使用。
 
-   ![编辑器状态栏的 TuyaOpen 入口](/img/ide/get-started/install-status-bar-tuyaopen.png)
+   ![编辑器状态栏的 TuyaOpen 入口](/img/ide/get-started/install-status-bar-tuyaopen-zh.png)
 
 :::note
 提示词里的下载链接会指向**最新版本**的 `.vsix`。Agent 收到后会自动完成「下载 → 安装 → 重新加载」全流程，无需手动操作。
@@ -50,22 +70,27 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.
 
 <section id="manual-vsix" className="section">
 
-## 方式二：手动安装 .vsix
+## 方式二：从官网下载 .vsix
 
-同一个安装包，**VS Code 与 Cursor 通用**。
+从 TuyaOpen IDE 官网获取 `.vsix`，确保始终拿到**最新版本**。同一个安装包，**VS Code 与 Cursor 通用**。
 
-下载地址：[TuyaOpen.TuyaOpenIDE-0.1.1.vsix](https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix)（v0.1.1 · Windows · macOS · Linux · 通用）。
+1. 打开 [TuyaOpen IDE 官网页面](/tuyaopen-ide)，点击**安装插件**。
 
-下面用 VS Code 演示手动安装。
+   ![官网 TuyaOpen IDE 页面上的安装插件按钮](/img/ide/get-started/official-site-install-extension-zh.png)
 
-1. 点击上方链接下载 `.vsix` 文件。
-2. 打开 VS Code，进入扩展视图 —— `Ctrl+Shift+X`（macOS 为 `⌘+Shift+X`）。
-3. 点击扩展面板右上角的 `⋯` 菜单。
-4. 选择「从 VSIX 安装…」，选中刚刚下载的文件。
+2. 在安装对话框中，点击**下载 .vsix**，下载最新安装包。
+
+   ![安装对话框中的下载 .vsix 按钮](/img/ide/get-started/official-site-download-vsix-zh.png)
+
+3. 打开 VS Code，进入**扩展**视图 —— `Ctrl+Shift+X`（macOS 为 `⌘+Shift+X`）。
+
+4. 点击扩展面板右上角的 `⋯` 菜单。
+
+5. 选择「从 VSIX 安装…」，选中刚刚下载的文件。
 
    ![从扩展面板菜单安装 VSIX](/img/ide/get-started/install-vsix-vscode-menu-zh.png)
 
-5. 根据提示重新加载编辑器，即可开始使用。
+6. 根据提示重新加载编辑器，即可开始使用。
 
 </section>
 
@@ -77,7 +102,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.
 
 1. **命令面板有 TuyaOpen 命令**：按 `Ctrl+Shift+P`（macOS：`⌘+Shift+P`），输入 `TuyaOpen`，能看到一组 TuyaOpen 命令。
 
-   ![命令面板中的 TuyaOpen 命令](/img/ide/get-started/command-palette-tuyaopen-commands.png)
+   ![命令面板中的 TuyaOpen 命令](/img/ide/get-started/command-palette-tuyaopen-commands-zh.png)
 
 2. **扩展已启用**：在扩展视图（`Ctrl+Shift+X`）中找到 "TuyaOpen IDE"，状态为「已启用」。
 

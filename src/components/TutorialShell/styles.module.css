@@ -417,8 +417,8 @@
 
 /* ------------------------------------------------------ Code block */
 .codeBlock {
-  background: var(--neutral-900);
-  color: #e2e8f0;
+  background: #f6f8fa;
+  color: #24292f;
   border-radius: 12px;
   padding: 1.1rem 1.25rem;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -426,13 +426,19 @@
   line-height: 1.7;
   overflow-x: auto;
   margin: 1rem 0;
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+[data-theme='dark'] .codeBlock {
+  background: var(--neutral-900);
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.15);
 }
 
 .codeBlock code {
   font-family: inherit;
   white-space: pre;
-  color: #e2e8f0;
+  color: inherit;
   background: transparent;
   border: none;
   padding: 0;
@@ -615,6 +621,21 @@
   border-color: var(--neutral-700);
 }
 
+.markdown :global(figure) {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.markdown :global(figure img) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.markdown :global(figcaption) {
+  display: none;
+}
+
 .markdown :global(code) {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.85em;
@@ -630,18 +651,24 @@
 }
 
 .markdown :global(pre) {
-  background: var(--neutral-900);
-  color: #e2e8f0;
+  background: #f6f8fa;
+  color: #24292f;
   border-radius: 12px;
   padding: 1.1rem 1.25rem;
   overflow-x: auto;
   margin: 1rem 0;
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+[data-theme='dark'] .markdown :global(pre) {
+  background: var(--neutral-900);
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.15);
 }
 
 .markdown :global(pre code) {
   background: transparent;
-  color: #e2e8f0;
+  color: inherit;
   padding: 0;
   font-size: 0.82rem;
   line-height: 1.7;

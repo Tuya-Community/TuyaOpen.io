@@ -15,9 +15,10 @@ const content = {
     badge: 'TuyaOpen IDE',
     title: 'Install TuyaOpen IDE',
     subtitle:
-      'Install the TuyaOpen IDE extension in VS Code or Cursor — by letting an AI coding agent do it, or from the manual .vsix — then verify it is enabled.',
-    meta: ['Beginner', '5 min', 'IDE'],
+      'Install Git, then add the TuyaOpen IDE extension to VS Code or Cursor — by letting an AI coding agent do it, or from the official .vsix — then verify it is enabled.',
+    meta: ['Beginner', '10 min', 'IDE'],
     nav: [
+      { id: 'install-git', label: 'Install Git' },
       { id: 'before-install', label: 'Before you install' },
       { id: 'ai-agent-install', label: 'Method 1: AI agent' },
       { id: 'manual-vsix', label: 'Method 2: manual .vsix' },
@@ -30,9 +31,10 @@ const content = {
     badge: 'TuyaOpen IDE',
     title: '安装 TuyaOpen IDE',
     subtitle:
-      '在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或用手动 .vsix 安装，然后验证已启用。',
+      '先安装 Git，再在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或从官网下载 .vsix 手动安装，然后验证已启用。',
     meta: ['入门', '5 分钟', 'IDE'],
     nav: [
+      { id: 'install-git', label: '安装 Git' },
       { id: 'before-install', label: '安装前准备' },
       { id: 'ai-agent-install', label: '方式一：AI Agent' },
       { id: 'manual-vsix', label: '方式二：手动 .vsix' },

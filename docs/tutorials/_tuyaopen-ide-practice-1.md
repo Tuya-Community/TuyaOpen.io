@@ -14,9 +14,9 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 ## Step 1: Enter from the board catalogue
 
 1. Open VS Code or Cursor and confirm the TuyaOpen IDE extension is enabled.
-2. Click the **Board Catalogue** icon in the left activity bar to browse the supported boards, chips, and SoC platforms with their full specs.
+2. Click the **Boards** icon in the left activity bar to browse the supported boards, chips, and SoC platforms with their full specs.
 
-   ![Board catalogue icon in the IDE activity bar](/img/ide/get-started/ide-activity-bar-board-catalogue.png)
+   ![Boards icon in the IDE activity bar](/img/ide/get-started/ide-activity-bar-board-catalogue.png)
 
 3. Find **T5AI_Board** in the list and open its detail page. You see a large amount of developer material — purchase links, schematics, datasheets, source code, 3D models, and more.
 
@@ -30,7 +30,7 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 
 ## Step 2: Create an example project
 
-1. On the T5AI_Board detail page, click **Create project from this board**.
+1. On the T5AI_Board detail page, click **New Project with This Board**.
 2. Fill in a project name and a location, then click **Create project**.
 
    ![New project dialog from a board](/img/ide/get-started/new-project-from-board.png)
@@ -45,9 +45,9 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 
 ## Step 3: Build
 
-Open **Project Details** in the IDE toolbar and build — click **Build now** in the middle, or **Build** under **Hardware firmware operations** at the top right. Wait for the build to finish.
+Open **Project Details** in the IDE sidebar, then click **Compile** in **Firmware Operations** and wait for the build to finish. The Project Details view shows the firmware status visually.
 
-![Build button in Project Details](/img/ide/get-started/project-details-compile-button.png)
+![Firmware build summary](/img/ide/get-started/firmware-build-summary.png)
 
 **Expected output** (build success):
 
@@ -62,10 +62,6 @@ Open **Project Details** in the IDE toolbar and build — click **Build now** in
  Framework : base
 ========================================================
 ```
-
-The Project Details view shows the firmware status visually.
-
-![Firmware build summary](/img/ide/get-started/firmware-build-summary.png)
 
 </section>
 

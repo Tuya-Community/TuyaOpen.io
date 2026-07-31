@@ -14,15 +14,15 @@
 ## 第一步：从开发板目录进入
 
 1. 打开 VS Code / Cursor，确认 TuyaOpen IDE 扩展已启用。
-2. 点击左侧活动栏的**开发板目录**图标，浏览支持的开发板、芯片和 SoC 平台及详细规格。
+2. 点击左侧活动栏的**开发板**图标，浏览支持的开发板、芯片和 SoC 平台及详细规格。
 
-   ![IDE 活动栏中的开发板目录图标](/img/ide/get-started/ide-activity-bar-board-catalogue.png)
+   ![IDE 活动栏中的开发板图标](/img/ide/get-started/ide-activity-bar-board-catalogue-zh.png)
 
 3. 在开发板列表中找到 **T5AI_Board**，进入它的详情页。你能看到大量开发资料——购买渠道、原理图、数据手册、源代码、3D 模型等等。
 
-   ![开发板目录中的 T5AI_Board 详情页](/img/ide/get-started/board-detail-page-t5ai-board.png)
+   ![开发板中的 T5AI_Board 详情页](/img/ide/get-started/board-detail-page-t5ai-board-zh.png)
 
-   ![开发板资料——原理图、数据手册、源码、3D 模型](/img/ide/get-started/board-resources-schematic-datasheet.png)
+   ![开发板资料——原理图、数据手册、源码、3D 模型](/img/ide/get-started/board-resources-schematic-datasheet-zh.png)
 
 </section>
 
@@ -33,11 +33,11 @@
 1. 在 T5AI_Board 详情页，点击**用此开发板，新建项目**。
 2. 填写项目名称和存放位置，点击**创建项目**。
 
-   ![从开发板新建项目的对话框](/img/ide/get-started/new-project-from-board.png)
+   ![从开发板新建项目的对话框](/img/ide/get-started/new-project-from-board-zh.png)
 
 3. IDE 会基于该示例派生一个工程到你的工作区，自动配置好 T5AI_Board 的板级信息。
 
-   ![派生好的项目工作区](/img/ide/get-started/project-scaffolded-workspace.png)
+   ![派生好的项目工作区](/img/ide/get-started/project-scaffolded-workspace-zh.png)
 
 </section>
 
@@ -45,9 +45,9 @@
 
 ## 第三步：编译
 
-点击 IDE 工具栏的**项目详情**进行编译——点击中间的**立即编译**，或右上侧**硬件固件操作**中的**编译**，等待编译完成。
+点击 IDE 侧边栏的**项目详情**，在**硬件固件操作**中点击**编译**，等待编译完成。项目详情中可以可视化看到嵌入式固件情况。
 
-![项目详情中的编译按钮](/img/ide/get-started/project-details-compile-button.png)
+![固件编译汇总](/img/ide/get-started/firmware-build-summary-zh.png)
 
 **预期输出**（编译成功）：
 
@@ -63,10 +63,6 @@
 ========================================================
 ```
 
-项目详情中可以可视化看到嵌入式固件情况。
-
-![固件编译汇总](/img/ide/get-started/firmware-build-summary.png)
-
 </section>
 
 <section id="step-4" className="section">
@@ -76,7 +72,7 @@
 1. 用 USB 连接开发板（T5AI_Board 有两路串口：一路烧录、一路日志），确保 USB 线不仅能供电，还能传输数据。
 2. 点击**烧录（Flash）**。最初不确定哪一路是烧录口，可以任选一个试一下，这里选择 `COM4`。
 
-   ![烧录按钮与端口选择](/img/ide/get-started/flash-button-select-port.png)
+   ![烧录按钮与端口选择](/img/ide/get-started/flash-button-select-port-zh.png)
 
 **预期输出**（烧录成功）：
 
@@ -99,7 +95,7 @@ Flash OK  38.9s
 
 ## 第五步：监控串口日志
 
-点击**监视（Monitor）**，选择日志串口，这里选择 `COM3`。看到 `hello world`，你的第一个 TuyaOpen 项目就跑通了。
+点击**监控（Monitor）**，选择日志串口，这里选择 `COM3`。看到 `hello world`，你的第一个 TuyaOpen 项目就跑通了。
 
 **预期输出**：
 
