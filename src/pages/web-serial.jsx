@@ -114,7 +114,7 @@ function ToolBody({locale, t}) {
               {t.desktop_download} ↗
             </a>
             <Link to={locale === 'zh' ? '/zh/tyutool' : '/tyutool'}>{t.desktop_features} →</Link>
-            <Link to={locale === 'zh' ? '/zh/tyutool-guide' : '/tyutool-guide'}>{t.desktop_guide} →</Link>
+            <Link to={locale === 'zh' ? '/zh/docs/tyutool' : '/docs/tyutool'}>{t.desktop_guide} →</Link>
           </div>
         </div>
       </section>

@@ -24,11 +24,11 @@ tyutool runs on Windows, Linux, and macOS. Choose the version that matches your 
 
 tyutool is currently available in two versions, **V2** and **V3**, with the following key differences:
 
-- **V3** (latest): Completely rewritten with a **Rust (Tauri 2) + Vue 3** architecture for better cross-platform compatibility. **Recommended for Mac users.** Audio debugging and batch flashing are not yet supported.
-- **V2**: Original architecture with full feature support, including audio debugging and batch flashing.
+- **V3** (latest): Completely rewritten with a **Rust (Tauri 2) + Vue 3** architecture for better cross-platform compatibility. **Recommended for Mac users.** Now supports batch flashing and authorization; audio debugging is not yet supported.
+- **V2**: Original architecture with full feature support, including audio debugging.
 
 :::note
-V3 does not yet support audio debugging and batch flashing from V2. If you need these features, please download V2.
+V3 does not yet support V2's audio debugging — download V2 if you need it. For the complete V3 feature set (flashing, serial debug, settings, batch flash & auth, CLI reference), see the [tyutool V3 usage guide](../tyutool/index.md).
 :::
 
 | Platform | Source (Recommended) |
@@ -69,10 +69,10 @@ After opening tyutool_gui, the interface is displayed as follows:
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/273ba9fc-5077-47bd-94d2-275747ca7232.png" alt="tyutool flashing view" width="800" />
 
-- ① Select the chip.
-- ② Click `Browse` and select the firmware file to flash (the bin file containing `_QIO`).
-- ③ Select the device port for flashing. For Tuya official development boards and some partner development boards, hovering over a serial port indicates whether it is a flashing/authorization port or a log port.
-- ④ Click `Start flash` to begin flashing the firmware.
+1. Select the chip.
+2. Click `Browse` and select the firmware file to flash (the bin file containing `_QIO`).
+3. Select the device port for flashing. For Tuya official development boards and some partner development boards, hovering over a serial port indicates whether it is a flashing/authorization port or a log port.
+4. Click `Start flash` to begin flashing the firmware.
 
 :::tip
 The default baud rate for flashing is 921600. If you find the flashing speed too slow, you can increase the baud rate appropriately. However, increasing the baud rate may cause the firmware flashing to fail.
@@ -86,11 +86,11 @@ After opening tyutool_gui, click the `Authorize` tab. The interface is as follow
 
 <img src="https://images.tuyacn.com/fe-static/docs/img/aa0e7635-2952-4322-8696-3a866b01a6ec.png" alt="tyutool authorization view" width="800" />
 
-- ① Click the `Authorize` tab.
-- ② Select the authorization serial port.
-- ③ Select the authorization baud rate.
-- ④ Enter the `UUID` and `AuthKey`.
-- ⑤ Click `Start Authorization`.
+1. Click the `Authorize` tab.
+2. Select the authorization serial port.
+3. Select the authorization baud rate.
+4. Enter the `UUID` and `AuthKey`.
+5. Click `Start Authorization`.
 
 :::tip
 The authorization UART and the flashing UART are the same. Keep the UART default configuration (baud rate: 115200, data bits: 8, stop bits: 1, parity: none).

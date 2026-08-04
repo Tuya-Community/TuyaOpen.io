@@ -1,0 +1,39 @@
+.card {
+  height: 100%;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none !important;
+  color: var(--ifm-font-color-base);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ifm-global-shadow-md);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-base);
+}
+
+.icon {
+  display: block;
+  font-size: 1.75rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ifm-heading-color);
+  margin-bottom: 0.35rem;
+}
+
+.description {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.5;
+}

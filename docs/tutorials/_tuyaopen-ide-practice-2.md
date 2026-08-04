@@ -17,7 +17,7 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 
 ## Step 1: Create a project from an example
 
-1. Click **Examples** in the IDE toolbar, choose **AI voice chatbot**, and click **Create project**.
+1. Click **Demos** in the IDE sidebar, choose **AI voice chatbot**, and click **Create project**.
 2. Select **Tuya T5AI** and the **Tuya T5AI-Board**, plus the 3.5-inch LCD touch screen (optional).
 
    ![Examples gallery — AI voice chatbot](/img/ide/get-started/examples-ai-voice-chatbot.png)
@@ -30,17 +30,11 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 
    ![Copy product dialog](/img/ide/get-started/copy-product-dialog.png)
 
-5. Click to enter the development flow.
+5. Copy the PID on the left.
 
-   ![Enter the development flow](/img/ide/get-started/enter-development-flow.png)
+   ![Copy the PID on the left](/img/ide/get-started/copy-pid-left.png)
 
-   ![Development flow detail](/img/ide/get-started/development-flow-detail.png)
-
-6. Copy the PID in the top left.
-
-   ![Copy the PID from the product](/img/ide/get-started/copy-pid-from-product.png)
-
-7. Back in TuyaOpen IDE, paste the PID and click **Next** to create the project.
+6. Back in TuyaOpen IDE, paste the PID and click **Next** to create the project.
 
    ![Paste the PID and create the project in the IDE](/img/ide/get-started/ide-paste-pid-create-project.png)
 
@@ -54,7 +48,7 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 
 ## Step 2: Build and flash
 
-1. In **Cloud IoT / Agent development** you can see that the cloud product is now bound.
+1. In **Cloud IoT/Agent Dev** you can see that the cloud product is now bound.
 
    ![Cloud IoT / Agent page — product bound](/img/ide/get-started/cloud-iot-agent-product-bound.png)
 
@@ -80,9 +74,9 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 
    ![Continue development on the platform](/img/ide/get-started/developer-platform-continue-development.png)
 
-3. Under **03 Hardware development**, in the selected cloud-access hardware section, click **Claim 2 free license keys**.
+3. Under the **Hardware Development** tab, in the selected cloud-access hardware section, click **Get 2 Free Licenses**.
 
-   ![Claim free license keys](/img/ide/get-started/claim-free-license-keys.png)
+   ![Get 2 Free Licenses button](/img/ide/get-started/claim-free-license-keys.png)
 
    ![License keys claimed](/img/ide/get-started/license-keys-claimed.png)
 
@@ -92,7 +86,7 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 
    ![Download the license key list](/img/ide/get-started/download-license-key-list.png)
 
-5. Enter the license keys into the TuyaOpen IDE license key manager.
+5. Enter the license keys in the IDE's **Licenses** panel (**Key Management**).
 
    ![IDE license key manager](/img/ide/get-started/ide-license-key-manager.png)
 

@@ -163,8 +163,8 @@ export const tutorials = {
     {
       id: 'tyutool-guide',
       category: 'basics',
-      kind: 'interactive',
-      href: '/tyutool-guide',
+      kind: 'markdown',
+      href: '/docs/tyutool',
       title: 'tyutool — flashing & authorization guide',
       description:
         'Install tyutool, flash your first board, authorize it for Tuya IoT, and fix common hiccups (GUI + CLI).',
@@ -601,8 +601,8 @@ export const tutorials = {
     {
       id: 'tyutool-guide',
       category: 'basics',
-      kind: 'interactive',
-      href: '/tyutool-guide',
+      kind: 'markdown',
+      href: '/docs/tyutool',
       title: 'tyutool —— 烧录与授权指南',
       description: '安装 tyutool、烧录第一块板子、为涂鸦 IoT 授权，并解决常见问题（GUI + CLI）。',
       tags: ['flashing', 'cli'],
