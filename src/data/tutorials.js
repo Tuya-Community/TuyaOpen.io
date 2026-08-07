@@ -344,6 +344,17 @@ export const tutorials = {
       duration: '15 min',
     },
     {
+      id: 'hardware-mcp-skills-smart-oven',
+      category: 'tutorials',
+      kind: 'markdown',
+      href: '/learn/hardware-mcp-skills-smart-oven',
+      title: 'Hands-On: Build MCP Skills That Let AI Control Real Devices',
+      description:
+        "Create hardware MCP skills (tool functions) that let an AI agent control physical devices — build an AI Smart Oven from scratch with TuyaOpen's MCP function-call framework.",
+      level: 'intermediate',
+      duration: '30 min',
+    },
+    {
       id: 'otto-ninja-open-source-robot',
       category: 'community',
       kind: 'markdown',
@@ -768,6 +779,17 @@ export const tutorials = {
       tags: ['setup'],
       level: 'beginner',
       duration: '15 分钟',
+    },
+    {
+      id: 'hardware-mcp-skills-smart-oven',
+      category: 'tutorials',
+      kind: 'markdown',
+      href: '/learn/hardware-mcp-skills-smart-oven',
+      title: '实战：给你的硬件装上大脑 — 构建让 AI 控制真实设备的 MCP 技能',
+      description:
+        '学习如何创建硬件 MCP 技能（工具函数），让 AI Agent 控制物理设备——用 TuyaOpen 的 MCP Function Call 框架从零构建一台 AI 智能烤箱。',
+      level: 'intermediate',
+      duration: '30 分钟',
     },
     {
       id: 'otto-ninja-open-source-robot',
