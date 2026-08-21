@@ -12,13 +12,13 @@ keywords:
   - TuyaOpen
 ---
 
-# Hands-On: Give Your Hardware a Brain — Build MCP Skills That Let AI Control Real Devices
-
 Imagine telling your oven *"Preheat to 200 degrees and bake for 25 minutes"* — and it just... does it. No app, no buttons, no menu diving. Just natural language, understood by an AI agent, executed on real hardware.
 
 This guide shows you **exactly** how that works, using a **Smart Oven** project built with TuyaOpen. By the end, you'll know how to create your own hardware MCP skills for any device.
 
 ---
+
+<section id="what-youll-build" className="section">
 
 ## What You'll Build
 
@@ -35,7 +35,11 @@ An AI-powered Smart Oven where a chat agent can:
 
 The magic glue? **MCP Function Call** — the protocol that turns hardware operations into tools an AI agent can discover and invoke.
 
+</section>
+
 ---
+
+<section id="how-it-works" className="section">
 
 ## How It Works: The Architecture
 
@@ -51,7 +55,11 @@ graph LR
 
 **The key insight:** Every hardware capability (set temperature, read state, capture image) is registered as an **MCP tool** — a named function with typed parameters and a callback. The AI agent sees these tools, decides which to call based on user intent, and the callback drives the real hardware.
 
+</section>
+
 ---
+
+<section id="step-1-cloud-product" className="section">
 
 ## Step 1: Create the Cloud Product
 
@@ -118,7 +126,11 @@ This produces `tuya_dp_profile.h` — the contract between cloud and device:
 The full product creation flow is documented in [Create Your Product & Agent](/docs/cloud/tuya-cloud/creating-new-product). For the oven demo, you can also let the AI Agent generate the product and DPs for you using the `/tuya-iot-platform` skill in TuyaOpen IDE.
 :::
 
+</section>
+
 ---
+
+<section id="step-2-mock-hardware" className="section">
 
 ## Step 2: Implement the Mock Hardware Layer
 
@@ -158,7 +170,11 @@ OPERATE_RET app_oven_set_temp(int temp_c) {
 }
 ```
 
+</section>
+
 ---
+
+<section id="step-3-register-tools" className="section">
 
 ## Step 3: Register MCP Tools (The Core Step)
 
@@ -254,7 +270,11 @@ static OPERATE_RET __oven_get_state_cb(const MCP_PROPERTY_LIST_T *properties,
 }
 ```
 
+</section>
+
 ---
+
+<section id="step-4-wire-boot" className="section">
 
 ## Step 4: Wire It Into the Boot Sequence
 
@@ -269,7 +289,11 @@ In your `app_chat_bot.c`, call your MCP init **right after** `ai_mcp_init()`:
 
 Tools register automatically when MQTT connects. That's it.
 
+</section>
+
 ---
+
+<section id="step-5-build-test" className="section">
 
 ## Step 5: Build and Test
 
@@ -287,7 +311,11 @@ Verify the tool appears in the agent's tool list, then try these interactions:
 | "Is it still on? How hot?" | `oven.get_state()` | Returns `{switch_on: true, temp_set: 200, ...}` |
 | "Take a photo and check if the cake is done" | `device.camera_shot()` | AI receives a JPEG and can visually inspect |
 
+</section>
+
 ---
+
+<section id="complete-tool-set" className="section">
 
 ## The Complete Tool Set
 
@@ -317,7 +345,11 @@ Here's the full set of MCP tools for the Smart Oven:
 | `reheat` | 120°C | 5 min | Leftovers |
 | `warm` | 80°C | 30 min | Keep food warm |
 
+</section>
+
 ---
+
+<section id="ai-coding-prompts" className="section">
 
 ## AI Coding Prompts: Tips for Developers
 
@@ -409,7 +441,11 @@ Create a complete Smart Oven project:
 
 **Why it works:** The `/tuyaopen-dev-loop` skill orchestrates the full cloud-to-device workflow.
 
+</section>
+
 ---
+
+<section id="key-takeaways" className="section">
 
 ## Key Takeaways
 
@@ -420,7 +456,11 @@ Create a complete Smart Oven project:
 5. **Keep hardware separate from MCP** — Your `app_oven.c` handles hardware; `app_oven_mcp.c` handles tool registration. Clean separation.
 6. **Return structured data** — JSON responses with `ok: false` + available options let the AI self-correct.
 
+</section>
+
 ---
+
+<section id="next-steps" className="section">
 
 ## Next Steps
 
@@ -429,3 +469,5 @@ Create a complete Smart Oven project:
 - [Hardware Peripheral Skills](/docs/duckyclaw/hardware-skill) — Built-in GPIO, ADC, I2C, UART, PWM tools
 - [MCP Server API](/docs/cloud/device-ai/ai-components/ai-mcp-server) — Complete MCP server documentation
 - [Designing Device MCP Tools](/docs/cloud/device-ai/concepts/designing-device-mcp-tools) — Best practices for tool design
+
+</section>

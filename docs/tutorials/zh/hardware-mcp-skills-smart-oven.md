@@ -12,13 +12,13 @@ keywords:
   - TuyaOpen
 ---
 
-# 实战：给你的硬件装上大脑 — 构建让 AI 控制真实设备的 MCP 技能
-
 想象一下，你对烤箱说 *"预热到 200 度，烤 25 分钟"* — 它就照做了。不用打开 App，不用找按钮，不用翻菜单。只需自然语言，AI Agent 理解你的意图，在真实硬件上执行。
 
 本指南将用 TuyaOpen 构建的 **智能烤箱** 项目，**详细** 展示这套机制是如何工作的。读完后，你将掌握如何为任意设备创建自己的硬件 MCP 技能。
 
 ---
+
+<section id="what-youll-build" className="section">
 
 ## 你将构建什么
 
@@ -35,7 +35,11 @@ keywords:
 
 核心粘合剂？**MCP Function Call** — 将硬件操作变成 AI Agent 可以发现并调用的工具的协议。
 
+</section>
+
 ---
+
+<section id="how-it-works" className="section">
 
 ## 架构：它是如何工作的
 
@@ -51,7 +55,11 @@ graph LR
 
 **核心洞察：** 每一个硬件能力（设置温度、读取状态、拍照）都被注册为一个 **MCP 工具** — 一个带类型参数和回调的命名函数。AI Agent 看到这些工具，根据用户意图决定调用哪个，回调函数驱动真实硬件。
 
+</section>
+
 ---
+
+<section id="step-1-cloud-product" className="section">
 
 ## 步骤 1：创建云端产品
 
@@ -118,7 +126,11 @@ tuyaopen dp generate --target embedded
 完整的产品创建流程详见[创建你的产品与 Agent](/docs/cloud/tuya-cloud/creating-new-product)。烤箱 Demo 中，你也可以在 TuyaOpen IDE 中使用 `/tuya-iot-platform` 技能让 AI Agent 自动生成产品和 DP。
 :::
 
+</section>
+
 ---
+
+<section id="step-2-mock-hardware" className="section">
 
 ## 步骤 2：实现 Mock 硬件层
 
@@ -158,7 +170,11 @@ OPERATE_RET app_oven_set_temp(int temp_c) {
 }
 ```
 
+</section>
+
 ---
+
+<section id="step-3-register-tools" className="section">
 
 ## 步骤 3：注册 MCP 工具（核心步骤）
 
@@ -254,7 +270,11 @@ static OPERATE_RET __oven_get_state_cb(const MCP_PROPERTY_LIST_T *properties,
 }
 ```
 
+</section>
+
 ---
+
+<section id="step-4-wire-boot" className="section">
 
 ## 步骤 4：接入启动流程
 
@@ -269,7 +289,11 @@ static OPERATE_RET __oven_get_state_cb(const MCP_PROPERTY_LIST_T *properties,
 
 MQTT 连接后工具会自动注册。就这么简单。
 
+</section>
+
 ---
+
+<section id="step-5-build-test" className="section">
 
 ## 步骤 5：构建与测试
 
@@ -287,7 +311,11 @@ tos.py build
 | "还开着吗？多热？" | `oven.get_state()` | 返回 `{switch_on: true, temp_set: 200, ...}` |
 | "拍张照片看看蛋糕好了没" | `device.camera_shot()` | AI 收到 JPEG 并视觉判断 |
 
+</section>
+
 ---
+
+<section id="complete-tool-set" className="section">
 
 ## 完整工具集
 
@@ -317,7 +345,11 @@ tos.py build
 | `reheat` | 120°C | 5 分钟 | 加热剩菜 |
 | `warm` | 80°C | 30 分钟 | 保温 |
 
+</section>
+
 ---
+
+<section id="ai-coding-prompts" className="section">
 
 ## AI 编程提示词技巧
 
@@ -408,7 +440,11 @@ tos.py build
 
 **为什么有效：** `/tuyaopen-dev-loop` 技能编排了从云端到设备的完整工作流。
 
+</section>
+
 ---
+
+<section id="key-takeaways" className="section">
 
 ## 核心要点
 
@@ -419,7 +455,11 @@ tos.py build
 5. **硬件与 MCP 分离** — `app_oven.c` 负责硬件，`app_oven_mcp.c` 负责工具注册。职责清晰。
 6. **返回结构化数据** — JSON 响应带 `ok: false` + 可选项，让 AI 能自我纠正。
 
+</section>
+
 ---
+
+<section id="next-steps" className="section">
 
 ## 下一步
 
@@ -428,3 +468,5 @@ tos.py build
 - [硬件外设技能](/docs/duckyclaw/hardware-skill) — 内置 GPIO、ADC、I2C、UART、PWM 工具
 - [MCP Server API](/docs/cloud/device-ai/ai-components/ai-mcp-server) — MCP 服务端完整文档
 - [设计设备 MCP 工具](/docs/cloud/device-ai/concepts/designing-device-mcp-tools) — 工具设计最佳实践
+
+</section>
