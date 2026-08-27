@@ -16,13 +16,13 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 1. Open VS Code or Cursor and confirm the TuyaOpen IDE extension is enabled.
 2. Click the **Boards** icon in the left activity bar to browse the supported boards, chips, and SoC platforms with their full specs.
 
-   ![Boards icon in the IDE activity bar](/img/ide/get-started/ide-activity-bar-board-catalogue.png)
+   ![Boards icon in the IDE activity bar](/img/ide/get-started/ide-activity-bar-board-catalogue.webp)
 
 3. Find **T5AI_Board** in the list and open its detail page. You see a large amount of developer material — purchase links, schematics, datasheets, source code, 3D models, and more.
 
-   ![T5AI_Board detail page in the board catalogue](/img/ide/get-started/board-detail-page-t5ai-board.png)
+   ![T5AI_Board detail page in the board catalogue](/img/ide/get-started/board-detail-page-t5ai-board.webp)
 
-   ![Board resources — schematic, datasheet, source, 3D model](/img/ide/get-started/board-resources-schematic-datasheet.png)
+   ![Board resources — schematic, datasheet, source, 3D model](/img/ide/get-started/board-resources-schematic-datasheet.webp)
 
 </section>
 
@@ -33,11 +33,11 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 1. On the T5AI_Board detail page, click **New Project with This Board**.
 2. Fill in a project name and a location, then click **Create project**.
 
-   ![New project dialog from a board](/img/ide/get-started/new-project-from-board.png)
+   ![New project dialog from a board](/img/ide/get-started/new-project-from-board.webp)
 
 3. The IDE derives a project into your workspace and auto-configures the T5AI_Board board-level information.
 
-   ![Scaffolded project workspace](/img/ide/get-started/project-scaffolded-workspace.png)
+   ![Scaffolded project workspace](/img/ide/get-started/project-scaffolded-workspace.webp)
 
 </section>
 
@@ -47,7 +47,7 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 
 Open **Project Details** in the IDE sidebar, then click **Compile** in **Firmware Operations** and wait for the build to finish. The Project Details view shows the firmware status visually.
 
-![Firmware build summary](/img/ide/get-started/firmware-build-summary.png)
+![Firmware build summary](/img/ide/get-started/firmware-build-summary.webp)
 
 **Expected output** (build success):
 
@@ -72,7 +72,7 @@ Open **Project Details** in the IDE sidebar, then click **Compile** in **Firmwar
 1. Connect the board with USB. The T5AI_Board has two serial ports — one for flashing and one for logs. Make sure your USB cable carries data, not just power.
 2. Click **Flash**. If you are unsure which port is the flash port, try either one. Here `COM4` is selected.
 
-   ![Flash button and port selection](/img/ide/get-started/flash-button-select-port.png)
+   ![Flash button and port selection](/img/ide/get-started/flash-button-select-port.webp)
 
 **Expected output** (flash success):
 

@@ -16,13 +16,13 @@
 1. 打开 VS Code / Cursor，确认 TuyaOpen IDE 扩展已启用。
 2. 点击左侧活动栏的**开发板**图标，浏览支持的开发板、芯片和 SoC 平台及详细规格。
 
-   ![IDE 活动栏中的开发板图标](/img/ide/get-started/ide-activity-bar-board-catalogue-zh.png)
+   ![IDE 活动栏中的开发板图标](/img/ide/get-started/ide-activity-bar-board-catalogue-zh.webp)
 
 3. 在开发板列表中找到 **T5AI_Board**，进入它的详情页。你能看到大量开发资料——购买渠道、原理图、数据手册、源代码、3D 模型等等。
 
-   ![开发板中的 T5AI_Board 详情页](/img/ide/get-started/board-detail-page-t5ai-board-zh.png)
+   ![开发板中的 T5AI_Board 详情页](/img/ide/get-started/board-detail-page-t5ai-board-zh.webp)
 
-   ![开发板资料——原理图、数据手册、源码、3D 模型](/img/ide/get-started/board-resources-schematic-datasheet-zh.png)
+   ![开发板资料——原理图、数据手册、源码、3D 模型](/img/ide/get-started/board-resources-schematic-datasheet-zh.webp)
 
 </section>
 
@@ -33,11 +33,11 @@
 1. 在 T5AI_Board 详情页，点击**用此开发板，新建项目**。
 2. 填写项目名称和存放位置，点击**创建项目**。
 
-   ![从开发板新建项目的对话框](/img/ide/get-started/new-project-from-board-zh.png)
+   ![从开发板新建项目的对话框](/img/ide/get-started/new-project-from-board-zh.webp)
 
 3. IDE 会基于该示例派生一个工程到你的工作区，自动配置好 T5AI_Board 的板级信息。
 
-   ![派生好的项目工作区](/img/ide/get-started/project-scaffolded-workspace-zh.png)
+   ![派生好的项目工作区](/img/ide/get-started/project-scaffolded-workspace-zh.webp)
 
 </section>
 
@@ -47,7 +47,7 @@
 
 点击 IDE 侧边栏的**项目详情**，在**硬件固件操作**中点击**编译**，等待编译完成。项目详情中可以可视化看到嵌入式固件情况。
 
-![固件编译汇总](/img/ide/get-started/firmware-build-summary-zh.png)
+![固件编译汇总](/img/ide/get-started/firmware-build-summary-zh.webp)
 
 **预期输出**（编译成功）：
 
@@ -72,7 +72,7 @@
 1. 用 USB 连接开发板（T5AI_Board 有两路串口：一路烧录、一路日志），确保 USB 线不仅能供电，还能传输数据。
 2. 点击**烧录（Flash）**。最初不确定哪一路是烧录口，可以任选一个试一下，这里选择 `COM4`。
 
-   ![烧录按钮与端口选择](/img/ide/get-started/flash-button-select-port-zh.png)
+   ![烧录按钮与端口选择](/img/ide/get-started/flash-button-select-port-zh.webp)
 
 **预期输出**（烧录成功）：
 
