@@ -1,8 +1,8 @@
 ---
 title: 硬件外设技能
-description: "介绍 TuyaOpenClaw 内置硬件外设 MCP 工具，AI Agent 通过自然语言指令操作 GPIO、ADC、I2C、串口、PWM 与舵机等外设。"
+description: "介绍 TClaw 内置硬件外设 MCP 工具，AI Agent 通过自然语言指令操作 GPIO、ADC、I2C、串口、PWM 与舵机等外设。"
 keywords:
-  - TuyaOpenClaw
+  - TClaw
   - 硬件技能
   - 硬件外设
   - MCP 工具
@@ -11,11 +11,11 @@ keywords:
 
 # 硬件外设技能（Hardware MCP Tools）
 
-本文介绍 TuyaOpenClaw（原名 DuckyClaw）内置的硬件外设 MCP 工具，面向希望通过 AI 语音指令直接控制 GPIO、ADC、I2C、串口、PWM 和舵机等硬件外设的开发者。
+本文介绍 TClaw（原名 DuckyClaw）内置的硬件外设 MCP 工具，面向希望通过 AI 语音指令直接控制 GPIO、ADC、I2C、串口、PWM 和舵机等硬件外设的开发者。
 
 ## 概述
 
-硬件外设技能是一组内置 MCP（Model Context Protocol）工具，允许 AI Agent 通过自然语言指令直接操作设备硬件。开启后，你可以对 TuyaOpenClaw 说出类似"把 GPIO 5 拉高"或"读取串口数据"这样的指令，AI 将自动调用对应的硬件工具完成操作。
+硬件外设技能是一组内置 MCP（Model Context Protocol）工具，允许 AI Agent 通过自然语言指令直接操作设备硬件。开启后，你可以对 TClaw 说出类似"把 GPIO 5 拉高"或"读取串口数据"这样的指令，AI 将自动调用对应的硬件工具完成操作。
 
 - **源文件位置**：`tools/tool_hw.c`
 - **适用场景**：硬件调试、外设验证、快速原型开发
@@ -232,5 +232,5 @@ ADC 采样值为原始数值，需根据实际参考电压和分辨率换算为�
 ## 参考
 
 - [自定义设备 MCP（硬件技能开发指南）](custom-device-mcp)
-- [TuyaOpenClaw 快速入门（T5-AI）](ducky-quick-start-T5AI)
+- [TClaw 快速入门（T5-AI）](ducky-quick-start-T5AI)
 - TuyaOpen 外设示例：`TuyaOpen/examples/peripherals/`

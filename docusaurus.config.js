@@ -151,7 +151,7 @@ const config = {
             { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
-            { type: 'docSidebar', sidebarId: 'duckyclawSidebar', label: 'TuyaOpenClaw' },
+            { type: 'docSidebar', sidebarId: 'tclawSidebar', label: 'TClaw' },
             { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'Tyutool' },
           ],
         },
@@ -217,8 +217,8 @@ const config = {
               href: 'https://github.com/tuya/arduino-TuyaOpen',
             },
             {
-              label: 'TuyaOpenClaw 🦞',
-              to: '/duckyclaw',
+              label: 'TClaw 🦞',
+              to: '/tclaw',
             },
             // Hidden per request — re-enable to show "Get Hardware" in the footer.
             // {
@@ -486,6 +486,10 @@ const config = {
         createRedirects(existingPath) {
           // [newPrefix, oldPrefix] — order matters: more specific prefixes first.
           const moves = [
+            // TClaw was published under the DuckyClaw brand's slugs; keep the
+            // old /duckyclaw routes alive after the rename to /tclaw.
+            ['/docs/tclaw/', '/docs/duckyclaw/'],
+            ['/tclaw', '/duckyclaw'],
             ['/docs/hardware/porting/', '/docs/new-hardware/'],
             ['/docs/hardware/', '/docs/hardware-specific/'],
             ['/docs/cloud/device-ai/', '/docs/applications/tuya.ai/'],
@@ -665,7 +669,7 @@ const config = {
           },
         ],
       }),
-    }
+    },
   ],
 }
 

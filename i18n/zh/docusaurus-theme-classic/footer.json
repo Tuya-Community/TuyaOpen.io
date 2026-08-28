@@ -123,9 +123,9 @@
     "message": "TuyaOpen on Arduino",
     "description": "The label of footer link with label=TuyaOpen on Arduino linking to https://github.com/tuya/arduino-TuyaOpen"
   },
-  "link.item.label.TuyaOpenClaw 🦞": {
-    "message": "TuyaOpenClaw 🦞",
-    "description": "The label of footer link with label=TuyaOpenClaw 🦞 linking to /duckyclaw"
+  "link.item.label.TClaw 🦞": {
+    "message": "TClaw 🦞",
+    "description": "The label of footer link with label=TClaw 🦞 linking to /tclaw"
   },
   "link.item.label.Get Hardware": {
     "message": "Get Hardware",

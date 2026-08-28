@@ -71,7 +71,7 @@ docs/
 │       ├── faq_template.md
 │       ├── operation_guide-template.md
 │       └── README-template.md
-├── duckyclaw/
+├── tclaw/
 │   ├── ducky-quick-start-T5AI.md
 │   ├── ducky-quick-start-raspberry-pi-5.md
 │   ├── ducky-quick-start-ESP32S3.md
@@ -181,7 +181,7 @@ docs/
 ## Sidebar sections (quick reference)
 
 1. Top-level: about-tuyaopen, maintenance-and-releases, project-walkthrough
-2. DuckyClaw: duckyclaw/*
+2. DuckyClaw: tclaw/*
 3. Getting Started: quick-start/*
 4. Hardware Guides: hardware-specific/*
 5. Applications: applications/*

@@ -30,9 +30,9 @@ export const tuyaOpenIdeCopy = {
             },
             {
               icon: 'ducky',
-              title: 'TuyaOpenClaw 🦞',
+              title: 'TClaw 🦞',
               subtitle: 'AI hardware companion agent · formerly DuckyClaw',
-              href: '/duckyclaw',
+              href: '/tclaw',
             },
           ],
         },
@@ -596,9 +596,9 @@ export const tuyaOpenIdeCopy = {
             },
             {
               icon: 'ducky',
-              title: 'TuyaOpenClaw 🦞',
+              title: 'TClaw 🦞',
               subtitle: 'AI 硬件伴侣 Agent · 原 DuckyClaw',
-              href: '/duckyclaw',
+              href: '/tclaw',
             },
           ],
         },

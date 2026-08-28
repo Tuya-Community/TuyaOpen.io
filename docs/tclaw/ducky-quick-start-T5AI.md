@@ -1,29 +1,30 @@
 ---
-title: TuyaOpenClaw with ESP32-S3
-description: "TuyaOpenClaw quick start for ESP32-S3 builds and flashes the edge-AI voice assistant firmware with Wi-Fi on an ESP32-S3 development board."
+title: TClaw with T5AI
+description: "TClaw quick start for the T5-AI Board builds, flashes, and activates the edge-AI voice firmware on Tuya T5-AI hardware with Tuya Cloud."
 keywords:
   - duckyclaw
-  - tuyaopenclaw
-  - esp32-s3
+  - tclaw
+  - t5ai
   - ai model deployment on edge devices
   - quick start
 ---
 
 import { SyncedTabs, SyncedTabItem } from '@site/src/components/SyncedTabs';
 
-# TuyaOpenClaw Quick Start (ESP32-S3)
+# TClaw Quick Start (T5-AI Board)
 
-This guide walks you through building and flashing the TuyaOpenClaw (formerly DuckyClaw) firmware on an ESP32-S3 development board. It is for developers who want to run TuyaOpenClaw on ESP32-S3 with Wi‑Fi.
+This guide walks you through building, flashing, and activating the TClaw (formerly DuckyClaw) firmware on the [T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board) development kit. It is for developers who want to run TClaw on Tuya T5-AI hardware and connect the device to Tuya Cloud via the Smart Life app.
+
 
 ## Requirements
 
-- **ESP32-S3 development board** with PSRAM 8 MB and FLASH 16 MB.
+- **[T5-AI Board](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)** development board (carries the T5 module).
 - **USB data cable** to connect the board to your computer.
 - **Computer** running Windows 10/11, Linux (e.g. Ubuntu 20/22/24 LTS), or macOS.
 - **Tuya Cloud**: This demo uses Tuya Cloud services. You need a valid [license key (authorization code)](/docs/quick-start/equipment-authorization) and correct PID, UUID, and AuthKey in `tuya_app_config.h` for cloud and LLM features.
 
 :::note
-If your development board has microphone and speaker support, **ASR** (Automatic Speech Recognition) is enabled as the default input method and can coexist with IM (messaging apps).
+The T5-AI Board has built-in microphone and speaker support. On boards with mic/speaker, **ASR** (Automatic Speech Recognition) is the default input method and can coexist with IM (messaging apps).
 :::
 
 ## Steps
@@ -107,6 +108,7 @@ Download, install, and add to your PATH (then restart the computer so the comman
 </SyncedTabs>
 
 ### 2. Clone the repo
+
 :::info
 You can increase Git buffer size for large clones:
 
@@ -204,7 +206,7 @@ cd ..
 tos.py config choice
 ```
 
-Enter **3** to select **ESP32S3_BREAD_COMPACT_WIFI**:
+Enter **5** to select **TUYA_T5AI_BOARD_LCD_3.5_CAMERA**:
 
 ```text
 --------------------
@@ -216,7 +218,7 @@ Enter **3** to select **ESP32S3_BREAD_COMPACT_WIFI**:
 6. WAVESHARE_T5AI_TOUCH_AMOLED_1_75.config
 --------------------
 Input "q" to exit.
-Choice config file: 3
+Choice config file: 5
 ```
 
 ### 5. Edit application configuration
@@ -234,7 +236,7 @@ Replace the placeholder values. Obtain:
 - **PID**: [Tuya product / PID](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2).
 - **UUID and AuthKey**: [Tuya IoT Platform – Open SDK purchase](https://platform.tuya.com/purchase/index?type=6).
 
-**IM configuration** (optional): To receive TuyaOpenClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
+**IM configuration** (optional): To receive TClaw notifications or interact via a messaging app, set the channel to `weixin`, `feishu`, `telegram`, or `discord` and fill in the corresponding credentials in `tuya_app_config.h`:
 
 ```c
 // IM configuration
@@ -283,7 +285,7 @@ Connect to the serial console to view logs:
 tos.py monitor
 ```
 
-**Expected outcome:** The firmware builds without errors, flashes to the ESP32-S3, and the device boots. Use the serial monitor to confirm startup and, if configured, cloud connectivity.
+**Expected outcome:** The firmware builds without errors, flashes to the T5-AI Board, and the device boots. Use the serial monitor to confirm startup and activation mode before adding the device in the app.
 
 ### 7. Device activation and network setup
 
@@ -330,10 +332,11 @@ If the log shows `uuid` and `authkey` as placeholder values (e.g. `uuidxxxxxxxxx
 
 If `productkey` (PID) appears as placeholders, the product ID was not set. Copy or create a product and get your PID from the [Tuya product link](https://pbt.tuya.com/s?p=dd46368ae3840e54f018b2c45dc1550b&u=c38c8fc0a5d14c4f66cae9f0cfcb2a24&t=2), then set `TUYA_PRODUCT_ID` in `tuya_app_config.h`, rebuild, and reflash.
 
-
 ## References
 
-- [TuyaOpenClaw Overview](/duckyclaw)
+- [TClaw Overview](/tclaw)
+- [T5-AI Board overview](/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board)
 - [Quick Start – Environment setup](/docs/quick-start/enviroment-setup)
-- [Custom Device MCP (hardware skills)](/docs/duckyclaw/custom-device-mcp)
-- [TuyaOpenClaw repository](https://github.com/tuya/DuckyClaw) (external)
+- [Quick Start – Equipment authorization](/docs/quick-start/equipment-authorization)
+- [Custom Device MCP (hardware skills)](/docs/tclaw/custom-device-mcp)
+- [TClaw repository](https://github.com/tuya/DuckyClaw) (external)

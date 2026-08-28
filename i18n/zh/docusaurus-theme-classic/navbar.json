@@ -27,9 +27,9 @@
     "message": "云端与 AI",
     "description": "Navbar item with label Cloud & AI"
   },
-  "item.label.TuyaOpenClaw": {
-    "message": "TuyaOpenClaw",
-    "description": "Navbar item with label TuyaOpenClaw"
+  "item.label.TClaw": {
+    "message": "TClaw",
+    "description": "Navbar item with label TClaw"
   },
   "item.label.Get Yours": {
     "message": "获取",

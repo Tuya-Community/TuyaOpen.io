@@ -1,23 +1,23 @@
 ---
 title: Custom Device MCP (Hardware Skills Guide)
-description: "TuyaOpenClaw custom device MCP tools expose cameras, sensors, and displays as hardware skills the AI agent can call on device hardware."
+description: "TClaw custom device MCP tools expose cameras, sensors, and displays as hardware skills the AI agent can call on device hardware."
 keywords:
   - duckyclaw
-  - tuyaopenclaw
+  - tclaw
   - device mcp
   - hardware skills
   - physical ai agent
 ---
 
-# TuyaOpenClaw - Custom Device MCP (Hardware Skills Guide)
+# TClaw - Custom Device MCP (Hardware Skills Guide)
 
-This guide describes how to create custom device MCP tools (hardware skills) for TuyaOpenClaw (formerly DuckyClaw). It is for app developers who want to connect cameras, sensors, displays, and other peripherals as skills that plug into the same agentic framework—so the agent can reason over sensor data, trigger actions on hardware, and combine device inputs with cloud AI.
+This guide describes how to create custom device MCP tools (hardware skills) for TClaw (formerly DuckyClaw). It is for app developers who want to connect cameras, sensors, displays, and other peripherals as skills that plug into the same agentic framework—so the agent can reason over sensor data, trigger actions on hardware, and combine device inputs with cloud AI.
 
 ## Prerequisites
 
 - Completed [Environment setup](/docs/quick-start/enviroment-setup) for your target platform (Tuya T5AI, ESP32, Raspberry Pi, or Linux).
 - Basic familiarity with the [MCP Server](/docs/cloud/device-ai/ai-components/ai-mcp-server) (tool discovery and execution) and [MCP Tools](/docs/cloud/device-ai/ai-components/ai-mcp-tools) (predefined device tools).
-- A TuyaOpenClaw-capable board or runtime. See the [TuyaOpenClaw project](https://github.com/tuya/DuckyClaw) for supported platforms.
+- A TClaw-capable board or runtime. See the [TClaw project](https://github.com/tuya/DuckyClaw) for supported platforms.
 
 ## Requirements
 
@@ -27,9 +27,9 @@ This guide describes how to create custom device MCP tools (hardware skills) for
 - **Optional**: TuyaOpen drivers or APIs for the peripherals you are integrating (e.g. sensor driver, display driver).
 
 
-## Overview: Device MCP in TuyaOpenClaw
+## Overview: Device MCP in TClaw
 
-In TuyaOpenClaw, **device MCP** means the device runs an MCP server and exposes **tools** that the agent (local or cloud) can discover and call. Each tool is a function with a name, description, input parameters, and a callback that runs on the device. Built-in device MCP tools in TuyaOpenClaw include:
+In TClaw, **device MCP** means the device runs an MCP server and exposes **tools** that the agent (local or cloud) can discover and call. Each tool is a function with a name, description, input parameters, and a callback that runs on the device. Built-in device MCP tools in TClaw include:
 
 - **CRON**: Scheduled device tasks and heartbeating.
 - **FILE**: File operations on the device.
@@ -42,7 +42,7 @@ When you build a **custom device MCP** (hardware skill), you define one or more 
 
 ### 1. Enable MCP and initialize the server
 
-Ensure the MCP component is enabled in your config (e.g. `ai_mcp/Kconfig` → `ENABLE_COMP_AI_MCP`). In your application startup, after MQTT (or the transport your TuyaOpenClaw stack uses) is ready, initialize the MCP server and register your tools.
+Ensure the MCP component is enabled in your config (e.g. `ai_mcp/Kconfig` → `ENABLE_COMP_AI_MCP`). In your application startup, after MQTT (or the transport your TClaw stack uses) is ready, initialize the MCP server and register your tools.
 
 ```c
 #include "ai_mcp_server.h"
@@ -108,21 +108,21 @@ Reference: [MCP Server – Attribute definition macro](/docs/cloud/device-ai/ai-
 
 ### 4. Wire message handling
 
-Ensure incoming MCP messages (e.g. JSON-RPC over the same channel TuyaOpenClaw uses for the agent) are passed to the server:
+Ensure incoming MCP messages (e.g. JSON-RPC over the same channel TClaw uses for the agent) are passed to the server:
 
 ```c
 ai_mcp_server_parse_message(json, NULL);
 ```
 
-This is typically done in the message or MQTT callback that your TuyaOpenClaw/AI agent stack uses. The server will dispatch to the correct tool callback and return the response.
+This is typically done in the message or MQTT callback that your TClaw/AI agent stack uses. The server will dispatch to the correct tool callback and return the response.
 
 ### 5. Build and verify
 
-Build your application for the target board, flash or deploy, and run TuyaOpenClaw. Confirm that the agent (or cloud) can list your new tool and invoke it. Expected outcome: the tool appears in the tool list and returns the correct type of value (integer, string, JSON, etc.) when called.
+Build your application for the target board, flash or deploy, and run TClaw. Confirm that the agent (or cloud) can list your new tool and invoke it. Expected outcome: the tool appears in the tool list and returns the correct type of value (integer, string, JSON, etc.) when called.
 
 ## Integration with TuyaOpen drivers
 
-For hardware skills, use TuyaOpen drivers and APIs where available so your tool callbacks stay portable across boards. Access peripherals through the TKL or driver layer (e.g. ADC for a sensor, GPIO for a relay) rather than board-specific code when possible. This aligns with the "build on TuyaOpen drivers and APIs for fast prototyping" approach described on the [TuyaOpenClaw page](/duckyclaw).
+For hardware skills, use TuyaOpen drivers and APIs where available so your tool callbacks stay portable across boards. Access peripherals through the TKL or driver layer (e.g. ADC for a sensor, GPIO for a relay) rather than board-specific code when possible. This aligns with the "build on TuyaOpen drivers and APIs for fast prototyping" approach described on the [TClaw page](/tclaw).
 
 :::info
 [Generic examples](/docs/examples/demo-generic-examples) include sample code to help you validate hardware interfaces and minimal interface code. Use them to test peripherals (e.g. GPIO, UART, ADC) before wiring them into your device MCP tool callbacks.
@@ -133,4 +133,4 @@ For hardware skills, use TuyaOpen drivers and APIs where available so your tool 
 - [MCP Server](/docs/cloud/device-ai/ai-components/ai-mcp-server) — Device MCP access, tool registration, and API reference.
 - [MCP Tools](/docs/cloud/device-ai/ai-components/ai-mcp-tools) — Predefined device tools and initialization.
 - [Generic examples](/docs/examples/demo-generic-examples) — Validate hardware interfaces and minimal interface code examples.
-- [TuyaOpenClaw project](https://github.com/tuya/DuckyClaw) — Repository and built-in device MCP tools (CRON, FILE, IoT, EXEC).
+- [TClaw project](https://github.com/tuya/DuckyClaw) — Repository and built-in device MCP tools (CRON, FILE, IoT, EXEC).

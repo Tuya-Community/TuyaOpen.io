@@ -42,7 +42,7 @@
 
 ## Open Source
 
-- DuckyClaw: https://tuyaopen.ai/duckyclaw
+- DuckyClaw: https://tuyaopen.ai/tclaw
 
 ## Topics
 

@@ -1,8 +1,8 @@
 ---
-title: TuyaOpenClaw 连接 OpenClaw
-description: "TuyaOpenClaw 通过 ACP 协议经 WebSocket 连接 OpenClaw Gateway，实现物联网设备与开源 AI Agent 平台的实时对话。"
+title: TClaw 连接 OpenClaw
+description: "TClaw 通过 ACP 协议经 WebSocket 连接 OpenClaw Gateway，实现物联网设备与开源 AI Agent 平台的实时对话。"
 keywords:
-  - TuyaOpenClaw
+  - TClaw
   - OpenClaw
   - ACP 协议
   - AI Agent
@@ -14,14 +14,14 @@ import TabItem from '@theme/TabItem';
 
 ## 1. 概述
 
-TuyaOpenClaw（原名 DuckyClaw）是运行在物联网设备上的 AI 语音助手固件，通过 **ACP 协议（Agent Client Protocol，基于 WebSocket）** 连接到 OpenClaw Gateway，实现与 AI Agent 的实时对话。
+TClaw（原名 DuckyClaw）是运行在物联网设备上的 AI 语音助手固件，通过 **ACP 协议（Agent Client Protocol，基于 WebSocket）** 连接到 OpenClaw Gateway，实现与 AI Agent 的实时对话。
 
-OpenClaw 是一款开源 AI Agent 平台，可部署在 Linux / macOS / Windows 等系统上。其内置的 Gateway 服务默认监听 `18789` 端口，TuyaOpenClaw 通过局域网（或公网）与其建立连接。
+OpenClaw 是一款开源 AI Agent 平台，可部署在 Linux / macOS / Windows 等系统上。其内置的 Gateway 服务默认监听 `18789` 端口，TClaw 通过局域网（或公网）与其建立连接。
 
 **连接架构：**
 
 ```
-TuyaOpenClaw (IoT 设备)
+TClaw (IoT 设备)
     │  WebSocket (ACP 协议)
     ▼
 OpenClaw Gateway (PC / 服务器)
@@ -39,19 +39,19 @@ AI Agent (LLM 对话)
 | 软件 | 说明 | 下载 |
 |------|------|------|
 | **OpenClaw** | AI Agent 平台，需在 PC 或服务器上安装 | [官网下载](https://openclaw.ai) |
-| **TuyaOpenClaw 固件开发环境** | 编译固件所需工具链 | 参考 [TuyaOpenClaw 快速入门](ducky-quick-start-T5AI) |
+| **TClaw 固件开发环境** | 编译固件所需工具链 | 参考 [TClaw 快速入门](ducky-quick-start-T5AI) |
 
 ### 2.2 网络要求
 
-- **局域网模式**：TuyaOpenClaw 设备与安装 OpenClaw 的 PC 处于同一局域网，或同一 Wi-Fi 网络
+- **局域网模式**：TClaw 设备与安装 OpenClaw 的 PC 处于同一局域网，或同一 Wi-Fi 网络
 - **公网模式**：OpenClaw 部署在服务器上，需获取服务器公网 IP 地址
 
-### 2.3 TuyaOpenClaw 基础配置
+### 2.3 TClaw 基础配置
 
-在进行本文配置前，请先完成 TuyaOpenClaw 的基础配置（Wi-Fi 联网、固件烧录等）。
+在进行本文配置前，请先完成 TClaw 的基础配置（Wi-Fi 联网、固件烧录等）。
 
 :::note
-参考：[TuyaOpenClaw 与 T5-AI 快速入门](ducky-quick-start-T5AI)
+参考：[TClaw 与 T5-AI 快速入门](ducky-quick-start-T5AI)
 :::
 
 ---
@@ -346,7 +346,7 @@ Get-NetIPAddress | Where-Object {
 </Tabs>
 
 :::tip
-选择与 TuyaOpenClaw 设备**处于同一局域网段**的 IP 地址（通常是 `192.168.x.x` 或 `10.x.x.x`）。有线网络（以太网）比 Wi-Fi 更稳定，建议优先使用有线网络的 IP。
+选择与 TClaw 设备**处于同一局域网段**的 IP 地址（通常是 `192.168.x.x` 或 `10.x.x.x`）。有线网络（以太网）比 Wi-Fi 更稳定，建议优先使用有线网络的 IP。
 :::
 
 ### 5.2 获取 Gateway Token
@@ -384,7 +384,7 @@ grep '"token"' ~/.openclaw/openclaw.json
 
 ### 5.3 验证 Gateway 可访问性
 
-在与 TuyaOpenClaw 同网络的设备浏览器中访问：
+在与 TClaw 同网络的设备浏览器中访问：
 
 ```
 http://<你的局域网IP>:18789/
@@ -394,7 +394,7 @@ http://<你的局域网IP>:18789/
 
 ---
 
-## 6. 配置 TuyaOpenClaw 固件参数
+## 6. 配置 TClaw 固件参数
 
 ### 6.1 创建配置文件
 
@@ -458,13 +458,13 @@ Copy-Item include\tuya_app_config_secrets.h.example include\tuya_app_config_secr
 
 ### 6.3 重新编译并烧录
 
-完成配置后，重新编译固件并烧录到 TuyaOpenClaw 设备。
+完成配置后，重新编译固件并烧录到 TClaw 设备。
 
 ---
 
 ## 7. 常见问题
 
-### 7.1 TuyaOpenClaw 连接失败
+### 7.1 TClaw 连接失败
 
 | 日志中的错误信息 | 可能原因 | 解决方法 |
 |----------------|---------|---------|

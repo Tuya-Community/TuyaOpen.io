@@ -219,9 +219,9 @@ Keep responses concise and helpful.`,
 
     seeAlsoTitle: 'See Also',
     seeAlso: [
-      { label: 'TuyaOpenClaw Quick Start (T5-AI)', href: '/docs/duckyclaw/ducky-quick-start-T5AI' },
-      { label: 'Hardware Skill Development', href: '/docs/duckyclaw/hardware-skill' },
-      { label: 'Custom Device MCP', href: '/docs/duckyclaw/custom-device-mcp' },
+      { label: 'TClaw Quick Start (T5-AI)', href: '/docs/tclaw/ducky-quick-start-T5AI' },
+      { label: 'Hardware Skill Development', href: '/docs/tclaw/hardware-skill' },
+      { label: 'Custom Device MCP', href: '/docs/tclaw/custom-device-mcp' },
     ],
   },
   zh: {
@@ -432,9 +432,9 @@ Keep responses concise and helpful.`,
 
     seeAlsoTitle: '另请参阅',
     seeAlso: [
-      { label: 'TuyaOpenClaw 快速开始（T5-AI）', href: '/zh/docs/duckyclaw/ducky-quick-start-T5AI' },
-      { label: '硬件技能开发', href: '/zh/docs/duckyclaw/hardware-skill' },
-      { label: '自定义设备 MCP', href: '/zh/docs/duckyclaw/custom-device-mcp' },
+      { label: 'TClaw 快速开始（T5-AI）', href: '/zh/docs/tclaw/ducky-quick-start-T5AI' },
+      { label: '硬件技能开发', href: '/zh/docs/tclaw/hardware-skill' },
+      { label: '自定义设备 MCP', href: '/zh/docs/tclaw/custom-device-mcp' },
     ],
   },
 };

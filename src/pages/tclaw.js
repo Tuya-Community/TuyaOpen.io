@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 import React from 'react'
 
 import IconGithub from '../../static/img/icons/github.svg'
-import styles from './duckyclaw.module.css'
+import styles from './tclaw.module.css'
 
 const BANNER_IMG = 'https://images.tuyacn.com/fe-static/docs/img/210f532a-0bb1-4ca5-9037-f5488958a709.jpg'
 const ARCH_IMG_ZH = 'https://images.tuyacn.com/fe-static/docs/img/9b8d1a57-3359-4837-af84-710f729d8e48.png'
@@ -23,7 +23,7 @@ const DEMO_VIDEO_EMBED_URL_EN = 'https://www.youtube.com/embed/kC36AVT3CHI?si=mD
 
 const t = (en, zh, isZh) => (isZh ? zh : en)
 
-/** TuyaOpenClaw skills list: name, category, deployment, purpose (en/zh) */
+/** TClaw skills list: name, category, deployment, purpose (en/zh) */
 const SKILLS_LIST = [
   {
     nameEn: 'Long-term memory',
@@ -360,39 +360,39 @@ export default function DuckyClaw() {
 
   return (
     <Layout
-      title={t('TuyaOpenClaw Project', 'TuyaOpenClaw 项目', isZh)}
+      title={t('TClaw Project', 'TClaw 项目', isZh)}
       description={t(
         'AI Agent in the physical world. Deploy OpenClaw-style agents to MCUs, SoCs, and PCs with one codebase.',
         '端侧 AI Agent 框架：一套代码，横跨 MCU、SoC、PC 部署。',
         isZh,
       )}
-      wrapperClassName={clsx(styles.page, styles.duckyclawTheme)}
+      wrapperClassName={clsx(styles.page, styles.tclawTheme)}
     >
       <Head>
-        <title>TuyaOpenClaw — {siteConfig.title}</title>
+        <title>TClaw — {siteConfig.title}</title>
         <meta
           name="description"
           content={t(
-            'TuyaOpenClaw (formerly DuckyClaw): hardware-oriented OpenClaw. One TuyaOpen key. Deploy to T5AI, ESP32, Raspberry Pi, Linux.',
-            'TuyaOpenClaw（原名 DuckyClaw）：面向硬件的 OpenClaw。一个 TuyaOpen 密钥，部署到 T5AI、ESP32、树莓派、Linux。',
+            'TClaw (formerly DuckyClaw): hardware-oriented OpenClaw. One TuyaOpen key. Deploy to T5AI, ESP32, Raspberry Pi, Linux.',
+            'TClaw（原名 DuckyClaw）：面向硬件的 OpenClaw。一个 TuyaOpen 密钥，部署到 T5AI、ESP32、树莓派、Linux。',
             isZh,
           )}
         />
         <meta
           name="keywords"
-          content="edge ai platform open source, duckyclaw, tuyaopenclaw, ai agent framework, edge ai deployment"
+          content="edge ai platform open source, duckyclaw, tclaw, ai agent framework, edge ai deployment"
         />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SoftwareApplication',
-            name: 'TuyaOpenClaw',
+            name: 'TClaw',
             applicationCategory: 'DeveloperApplication',
             operatingSystem: 'T5AI, ESP32-S3, Raspberry Pi 5, Linux',
             description:
               'Open-source edge-AI agent framework — deploy OpenClaw-style agents to MCUs, SoCs, and PCs with one codebase.',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-            url: 'https://tuyaopen.ai/duckyclaw',
+            url: 'https://tuyaopen.ai/tclaw',
           })}
         </script>
       </Head>
@@ -437,7 +437,7 @@ export default function DuckyClaw() {
 
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>{t('Open source · TuyaOpen', '开源 · TuyaOpen', isZh)}</span>
-          <h1 className={styles.heroTitle}>TuyaOpenClaw</h1>
+          <h1 className={styles.heroTitle}>TClaw</h1>
           <p className={styles.heroFormerly}>{t('formerly DuckyClaw', '原名 DuckyClaw', isZh)}</p>
           <p className={styles.heroTagline}>
             {t(
@@ -465,7 +465,7 @@ export default function DuckyClaw() {
 
           {/* Banner image inside main page section */}
           <div className={styles.heroBannerWrap}>
-            <img src={BANNER_IMG} alt={t('TuyaOpenClaw project banner', 'TuyaOpenClaw 项目横幅', isZh)} />
+            <img src={BANNER_IMG} alt={t('TClaw project banner', 'TClaw 项目横幅', isZh)} />
           </div>
         </div>
       </section>
@@ -512,7 +512,7 @@ export default function DuckyClaw() {
       {/* Intro */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="intro">
         <div className={styles.sectionInner}>
-          <h2 className={styles.sectionTitle}>{t('What is TuyaOpenClaw?', '什么是 TuyaOpenClaw？', isZh)}</h2>
+          <h2 className={styles.sectionTitle}>{t('What is TClaw?', '什么是 TClaw？', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
               'A hardware-oriented AI Agent framework. Not just a dev board—a full deployment stack for the physical world.',
@@ -522,8 +522,8 @@ export default function DuckyClaw() {
           </p>
           <p className={styles.introLead}>
             {t(
-              'When your AI Agent needs to perceive, decide, and control real devices, TuyaOpenClaw is the stack. Built on TuyaOpen C SDK—no Node.js on MCU. One codebase from ARM Cortex-M to x64.',
-              '当 AI Agent 需要感知、决策并控制真实设备时，TuyaOpenClaw 就是这套技术栈。基于 TuyaOpen C SDK 构建，MCU 上无需 Node.js。从 ARM Cortex-M 到 x64，一套代码。',
+              'When your AI Agent needs to perceive, decide, and control real devices, TClaw is the stack. Built on TuyaOpen C SDK—no Node.js on MCU. One codebase from ARM Cortex-M to x64.',
+              '当 AI Agent 需要感知、决策并控制真实设备时，TClaw 就是这套技术栈。基于 TuyaOpen C SDK 构建，MCU 上无需 Node.js。从 ARM Cortex-M 到 x64，一套代码。',
               isZh,
             )}
           </p>
@@ -710,10 +710,10 @@ export default function DuckyClaw() {
           </p>
 
           <div className={styles.quickstartCtaWrap}>
-            <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.quickstartBtn}>
+            <Link to="/docs/tclaw/ducky-quick-start-T5AI" className={styles.quickstartBtn}>
               {t(
-                'TuyaOpenClaw quick start: T5-AI Board · ESP32-S3 · Raspberry Pi 5',
-                'TuyaOpenClaw 快速开始：T5-AI Board · ESP32-S3 · Raspberry Pi 5',
+                'TClaw quick start: T5-AI Board · ESP32-S3 · Raspberry Pi 5',
+                'TClaw 快速开始：T5-AI Board · ESP32-S3 · Raspberry Pi 5',
                 isZh,
               )}
             </Link>
@@ -740,7 +740,7 @@ export default function DuckyClaw() {
                 >
                   {t('HW Docs', '硬件文档', isZh)}
                 </Link>
-                <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                <Link to="/docs/tclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
                   {t('Quick start(T5)', '快速开始(T5)', isZh)}
                 </Link>
               </div>
@@ -766,7 +766,7 @@ export default function DuckyClaw() {
                 >
                   {t('HW Docs', '硬件文档', isZh)}
                 </Link>
-                <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                <Link to="/docs/tclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
                   {t('Quick start (T5)', '快速开始 (T5)', isZh)}
                 </Link>
               </div>
@@ -800,7 +800,7 @@ export default function DuckyClaw() {
                   >
                     硬件文档
                   </a>
-                  <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                  <Link to="/docs/tclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
                     快速开始 (T5)
                   </Link>
                 </div>
@@ -817,7 +817,7 @@ export default function DuckyClaw() {
               <div className={styles.hardwareCategory}>MCU</div>
               <p className={styles.hardwareList}>ESP32 series</p>
               <div className={styles.hardwareCardBtns}>
-                <Link to="/docs/duckyclaw/ducky-quick-start-ESP32S3" className={styles.hardwareCardBtnSecondary}>
+                <Link to="/docs/tclaw/ducky-quick-start-ESP32S3" className={styles.hardwareCardBtnSecondary}>
                   {t('Quick start (ESP32-S3)', '快速开始 (ESP32-S3)', isZh)}
                 </Link>
               </div>
@@ -865,7 +865,7 @@ export default function DuckyClaw() {
               <div className={styles.hardwareCategory}>SoC</div>
               <p className={styles.hardwareList}>Raspberry Pi 4/5, CM4/CM5</p>
               <div className={styles.hardwareCardBtns}>
-                <Link to="/docs/duckyclaw/ducky-quick-start-raspberry-pi-5" className={styles.hardwareCardBtnSecondary}>
+                <Link to="/docs/tclaw/ducky-quick-start-raspberry-pi-5" className={styles.hardwareCardBtnSecondary}>
                   {t('Quick start (Raspberry Pi 5)', '快速开始 (Raspberry Pi 5)', isZh)}
                 </Link>
               </div>
@@ -914,7 +914,7 @@ export default function DuckyClaw() {
                 >
                   {t('HW Docs', '硬件文档', isZh)}
                 </a>
-                <Link to="/docs/duckyclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
+                <Link to="/docs/tclaw/ducky-quick-start-T5AI" className={styles.hardwareCardBtnSecondary}>
                   {t('Quick start (T5)', '快速开始 (T5)', isZh)}
                 </Link>
               </div>
@@ -953,8 +953,8 @@ export default function DuckyClaw() {
           </p>
           <p className={styles.introLead}>
             {t(
-              'Developers can build custom hardware skills on top of TuyaOpenClaw: add cameras for vision, sensors for environment data, displays, audio, and more. These skills plug into the same agentic framework—the agent can reason over sensor data, trigger actions on hardware, and combine device inputs with cloud AI. Deep integration means your hardware is a first-class part of the agent loop, not a side script.',
-              '开发者可在 TuyaOpenClaw 上构建自定义硬件技能：接入摄像头做视觉、传感器做环境数据、显示屏、音频等。这些技能接入同一套 Agent 框架——Agent 可基于传感器数据推理、在硬件上触发动作，并将设备输入与云端 AI 结合。深度集成意味着你的硬件是 Agent 循环的一等公民，而非旁路脚本。',
+              'Developers can build custom hardware skills on top of TClaw: add cameras for vision, sensors for environment data, displays, audio, and more. These skills plug into the same agentic framework—the agent can reason over sensor data, trigger actions on hardware, and combine device inputs with cloud AI. Deep integration means your hardware is a first-class part of the agent loop, not a side script.',
+              '开发者可在 TClaw 上构建自定义硬件技能：接入摄像头做视觉、传感器做环境数据、显示屏、音频等。这些技能接入同一套 Agent 框架——Agent 可基于传感器数据推理、在硬件上触发动作，并将设备输入与云端 AI 结合。深度集成意味着你的硬件是 Agent 循环的一等公民，而非旁路脚本。',
               isZh,
             )}
           </p>
@@ -982,7 +982,7 @@ export default function DuckyClaw() {
             </li>
           </ul>
           <div className="tw-text-center tw-mt-8">
-            <Link to="/docs/duckyclaw/custom-device-mcp" className={styles.docLink}>
+            <Link to="/docs/tclaw/custom-device-mcp" className={styles.docLink}>
               {t('Hardware skills guide: Custom device MCP', '硬件技能开发指南：自定义设备 MCP', isZh)}
             </Link>
           </div>
@@ -997,15 +997,15 @@ export default function DuckyClaw() {
         </a>
       </section>
 
-      {/* TuyaOpenClaw Skills list */}
+      {/* TClaw Skills list */}
       <section className={`${styles.section} ${styles.sectionSkillsList}`} id="skills-list">
         <div className={styles.sectionInner}>
           <img
             src="https://images.tuyacn.com/fe-static/docs/img/d8c2dc8a-3b70-41a4-b0d0-be3d07e2bde0.png"
-            alt={t('TuyaOpenClaw skills list illustration', 'TuyaOpenClaw 技能清单示意图', isZh)}
+            alt={t('TClaw skills list illustration', 'TClaw 技能清单示意图', isZh)}
             className={styles.skillsListImage}
           />
-          <h2 className={styles.sectionTitle}>{t('TuyaOpenClaw Skills list', 'TuyaOpenClaw 技能清单', isZh)}</h2>
+          <h2 className={styles.sectionTitle}>{t('TClaw Skills list', 'TClaw 技能清单', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
               'Skills by category, capability scope, and core purpose.',
@@ -1162,7 +1162,7 @@ export default function DuckyClaw() {
             >
               <img
                 src={workflowImageSrc}
-                alt={t('TuyaOpenClaw agent and workflow diagram', 'TuyaOpenClaw Agent 与工作流示意', isZh)}
+                alt={t('TClaw agent and workflow diagram', 'TClaw Agent 与工作流示意', isZh)}
                 className={styles.agentWorkflowImage}
               />
             </div>
@@ -1188,7 +1188,7 @@ export default function DuckyClaw() {
                 </button>
                 <img
                   src={workflowImageSrc}
-                  alt={t('TuyaOpenClaw agent and workflow diagram', 'TuyaOpenClaw Agent 与工作流示意', isZh)}
+                  alt={t('TClaw agent and workflow diagram', 'TClaw Agent 与工作流示意', isZh)}
                   className={styles.archLightboxImage}
                   onClick={(e) => e.stopPropagation()}
                 />
@@ -1219,7 +1219,7 @@ export default function DuckyClaw() {
           >
             <img
               src={isZh ? ARCH_IMG_ZH : ARCH_IMG_EN}
-              alt={t('TuyaOpenClaw architecture diagram', 'TuyaOpenClaw 架构图', isZh)}
+              alt={t('TClaw architecture diagram', 'TClaw 架构图', isZh)}
               className={styles.archImage}
             />
           </div>
@@ -1245,7 +1245,7 @@ export default function DuckyClaw() {
               </button>
               <img
                 src={isZh ? ARCH_IMG_ZH : ARCH_IMG_EN}
-                alt={t('TuyaOpenClaw architecture diagram', 'TuyaOpenClaw 架构图', isZh)}
+                alt={t('TClaw architecture diagram', 'TClaw 架构图', isZh)}
                 className={styles.archLightboxImage}
                 onClick={(e) => e.stopPropagation()}
               />
@@ -1278,8 +1278,8 @@ export default function DuckyClaw() {
           <h2 className={styles.sectionTitle}>{t('Platform Overview', '平台总览', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
-              'Where TuyaOpenClaw runs, its architecture layers, and quick comparison with similar solutions.',
-              'TuyaOpenClaw 部署方式、架构层次及对比其他方案。',
+              'Where TClaw runs, its architecture layers, and quick comparison with similar solutions.',
+              'TClaw 部署方式、架构层次及对比其他方案。',
               isZh,
             )}
           </p>
@@ -1316,15 +1316,13 @@ export default function DuckyClaw() {
           </ul>
 
           {/* Comparison */}
-          <h3 className={styles.specsSubtitle}>
-            {t('TuyaOpenClaw vs others (at a glance)', 'TuyaOpenClaw 与其它方案概览', isZh)}
-          </h3>
+          <h3 className={styles.specsSubtitle}>{t('TClaw vs others (at a glance)', 'TClaw 与其它方案概览', isZh)}</h3>
           <div className={styles.specsTableWrap}>
             <table className={styles.specsTable}>
               <thead>
                 <tr>
                   <th>{t('Aspect', '方面', isZh)}</th>
-                  <th>TuyaOpenClaw</th>
+                  <th>TClaw</th>
                   <th>{t('OpenClaw / MimiClaw / others', 'OpenClaw / MimiClaw / 其它', isZh)}</th>
                 </tr>
               </thead>
@@ -1487,7 +1485,7 @@ export default function DuckyClaw() {
             >
               <img
                 src="https://contrib.rocks/image?repo=tuya/DuckyClaw"
-                alt={t('TuyaOpenClaw contributors', 'TuyaOpenClaw 贡献者', isZh)}
+                alt={t('TClaw contributors', 'TClaw 贡献者', isZh)}
               />
             </a>
           </div>
@@ -1500,8 +1498,8 @@ export default function DuckyClaw() {
           <h2 className={styles.sectionTitle}>{t('See it in action', '效果展示', isZh)}</h2>
           <p className={styles.sectionSubtitle}>
             {t(
-              'Experience TuyaOpenClaw in action — watch highlight videos, see live demos, and explore real-world deployments below.',
-              '体验 TuyaOpenClaw — 观看高光视频、实机演示与实际应用案例。',
+              'Experience TClaw in action — watch highlight videos, see live demos, and explore real-world deployments below.',
+              '体验 TClaw — 观看高光视频、实机演示与实际应用案例。',
               isZh,
             )}
           </p>
@@ -1513,7 +1511,7 @@ export default function DuckyClaw() {
                     <div className={styles.demoVideoEmbedWrap}>
                       <iframe
                         src={DEMO_VIDEO_EMBED_URL_EN}
-                        title="TuyaOpenClaw demo video"
+                        title="TClaw demo video"
                         className={styles.demoVideoEmbed}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1534,7 +1532,7 @@ export default function DuckyClaw() {
                   <div className={styles.demoVideoEmbedWrap}>
                     <iframe
                       src={DEMO_VIDEO_EMBED_URL.replace(/([&?])autoplay=1/, '$1autoplay=0')}
-                      title={t('TuyaOpenClaw demo video', 'TuyaOpenClaw 演示视频', isZh)}
+                      title={t('TClaw demo video', 'TClaw 演示视频', isZh)}
                       className={styles.demoVideoEmbed}
                       scrolling="no"
                       frameBorder="0"
