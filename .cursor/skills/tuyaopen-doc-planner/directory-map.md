@@ -181,7 +181,7 @@ docs/
 ## Sidebar sections (quick reference)
 
 1. Top-level: about-tuyaopen, maintenance-and-releases, project-walkthrough
-2. DuckyClaw: tclaw/*
+2. TClaw: tclaw/*
 3. Getting Started: quick-start/*
 4. Hardware Guides: hardware-specific/*
 5. Applications: applications/*
