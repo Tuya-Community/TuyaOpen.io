@@ -20,23 +20,23 @@
 1. 点击 IDE 工具栏**示例**，选择 AI 语音聊天机器人，点击**创建项目**。
 2. 依次选择涂鸦 T5AI、涂鸦 T5AI-Board 开发板，以及 3.5 寸 LCD 触摸屏（按需选择）。
 
-   ![示例库——AI 语音聊天机器人](/img/ide/get-started/examples-ai-voice-chatbot-zh.png)
+   ![示例库——AI 语音聊天机器人](/img/ide/get-started/examples-ai-voice-chatbot-zh.webp)
 
 3. 跟随指引去 OEM 示例的 PID，会跳转到浏览器涂鸦开发者平台。关于 PID 的概念，请参阅 [PID 名词解释](/docs/quick-start#pid)。
 
-   ![OEM 示例 PID——跳转到开发者平台](/img/ide/get-started/oem-pid-jump-to-developer-platform-zh.png)
+   ![OEM 示例 PID——跳转到开发者平台](/img/ide/get-started/oem-pid-jump-to-developer-platform-zh.webp)
 
 4. 点击**复制产品**，填写产品名称和产品型号，点击确定。
 
-   ![复制产品对话框](/img/ide/get-started/copy-product-dialog-zh.png)
+   ![复制产品对话框](/img/ide/get-started/copy-product-dialog-zh.webp)
 
 5. 复制左侧产品 ID。
 
-   ![从产品复制 PID](/img/ide/get-started/copy-pid-from-product-zh.png)
+   ![从产品复制 PID](/img/ide/get-started/copy-pid-from-product-zh.webp)
 
 6. 回到 TuyaOpen IDE 界面，粘贴 PID，点击下一步，创建项目。
 
-   ![在 IDE 中粘贴 PID 并创建项目](/img/ide/get-started/ide-paste-pid-create-project-zh.png)
+   ![在 IDE 中粘贴 PID 并创建项目](/img/ide/get-started/ide-paste-pid-create-project-zh.webp)
 
 :::note
 **为什么用复制？** 复制可以快速完成与默认 PID 功能一致的产品；AI + IoT 类产品还会一并复制当前产品已绑定的智能体。
@@ -50,11 +50,11 @@
 
 1. 在**云端 IoT / Agent 开发**可以看到已经成功绑定云端产品。
 
-   ![云端 IoT / Agent 页面——产品已绑定](/img/ide/get-started/cloud-iot-agent-product-bound-zh.png)
+   ![云端 IoT / Agent 页面——产品已绑定](/img/ide/get-started/cloud-iot-agent-product-bound-zh.webp)
 
 2. 进入**项目详情**，进行编译和烧录。页面下方可以看到 Vibe Coding 硬件视图和全部引脚情况。
 
-   ![项目详情——Vibe Coding 硬件视图](/img/ide/get-started/project-details-vibe-hardware-view-zh.png)
+   ![项目详情——Vibe Coding 硬件视图](/img/ide/get-started/project-details-vibe-hardware-view-zh.webp)
 
 3. 烧录成功后可以看到触摸屏亮起。
 
@@ -68,31 +68,31 @@
 
 1. 关于授权码的概念及获取方式，请参阅 [TuyaOpen 专用授权码](/docs/quick-start#tuyaopen-专用授权码) 和[授权指南](/pricing-guide)。根据项目实战需求先获取 2 个免费的授权码。回到[涂鸦开发者平台](https://platform.tuya.com/)，点击左侧栏 AI 产品 → 产品开发，能看到第一步 OEM 的产品示例。
 
-   ![开发者平台中的 OEM 产品示例](/img/ide/get-started/oem-product-example-in-platform-zh.png)
+   ![开发者平台中的 OEM 产品示例](/img/ide/get-started/oem-product-example-in-platform-zh.webp)
 
 2. 点击右侧继续开发。
 
-   ![平台上继续开发](/img/ide/get-started/developer-platform-continue-development-zh.png)
+   ![平台上继续开发](/img/ide/get-started/developer-platform-continue-development-zh.webp)
 
 3. 点击 03 硬件开发后，在已选云端接入硬件处，点击免费领取 2 个授权码。
 
-   ![免费领取授权码](/img/ide/get-started/claim-free-license-keys-zh.png)
+   ![免费领取授权码](/img/ide/get-started/claim-free-license-keys-zh.webp)
 
-   ![授权码已领取](/img/ide/get-started/license-keys-claimed-zh.png)
+   ![授权码已领取](/img/ide/get-started/license-keys-claimed-zh.webp)
 
-   ![授权码清单详情](/img/ide/get-started/license-key-list-detail-zh.png)
+   ![授权码清单详情](/img/ide/get-started/license-key-list-detail-zh.webp)
 
 4. 下载授权码清单。
 
-   ![下载授权码清单](/img/ide/get-started/download-license-key-list-zh.png)
+   ![下载授权码清单](/img/ide/get-started/download-license-key-list-zh.webp)
 
 5. 将授权码填写到 IDE 的**授权码管理**面板（即**密钥管理**页面）。
 
-   ![IDE 授权码管理](/img/ide/get-started/ide-license-key-manager-zh.png)
+   ![IDE 授权码管理](/img/ide/get-started/ide-license-key-manager-zh.webp)
 
 6. 通过 AI 将授权码写入设备。
 
-   ![AI 将授权码写入设备](/img/ide/get-started/ai-write-license-to-device-zh.png)
+   ![AI 将授权码写入设备](/img/ide/get-started/ai-write-license-to-device-zh.webp)
 
 </section>
 
@@ -103,7 +103,7 @@
 1. 参照官方[设备配网步骤](/docs/quick-start/device-network-configuration)完成设备配网。
 2. 配网完成后，在小程序面板可以切换对话的 AI Agent。
 
-   ![小程序面板切换 AI Agent](/img/ide/get-started/miniapp-switch-agent.png)
+   ![小程序面板切换 AI Agent](/img/ide/get-started/miniapp-switch-agent.webp)
 
 3. 双击开发板 KEY 按键，可以切换对话模式，当前项目支持唤醒词"你好涂鸦" / "Hey Tuya"。
 

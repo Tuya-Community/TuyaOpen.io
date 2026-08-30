@@ -1,6 +1,6 @@
 Most of the operations in the [practices](/learn/tuyaopen-ide-practice-1) can be done with **skills** that install directly in TuyaOpen IDE, which dramatically improves efficiency. Below are copy-paste prompts grouped by scenario.
 
-![Vibe Coding skills overview](/img/ide/get-started/vibe-coding-skills-overview.png)
+![Vibe Coding skills overview](/img/ide/get-started/vibe-coding-skills-overview.webp)
 
 <section id="hardware" className="section">
 

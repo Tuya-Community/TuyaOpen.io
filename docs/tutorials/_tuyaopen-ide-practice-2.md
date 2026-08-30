@@ -20,23 +20,23 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 1. Click **Demos** in the IDE sidebar, choose **AI voice chatbot**, and click **Create project**.
 2. Select **Tuya T5AI** and the **Tuya T5AI-Board**, plus the 3.5-inch LCD touch screen (optional).
 
-   ![Examples gallery — AI voice chatbot](/img/ide/get-started/examples-ai-voice-chatbot.png)
+   ![Examples gallery — AI voice chatbot](/img/ide/get-started/examples-ai-voice-chatbot.webp)
 
 3. Follow the prompt to grab the OEM example PID. This opens the Tuya Developer Platform in your browser. For what a PID is, see [PID](/docs/quick-start#pid).
 
-   ![OEM example PID — jump to the developer platform](/img/ide/get-started/oem-pid-jump-to-developer-platform.png)
+   ![OEM example PID — jump to the developer platform](/img/ide/get-started/oem-pid-jump-to-developer-platform.webp)
 
 4. Click **Copy product**, fill in a product name and model number, and confirm.
 
-   ![Copy product dialog](/img/ide/get-started/copy-product-dialog.png)
+   ![Copy product dialog](/img/ide/get-started/copy-product-dialog.webp)
 
 5. Copy the PID on the left.
 
-   ![Copy the PID on the left](/img/ide/get-started/copy-pid-left.png)
+   ![Copy the PID on the left](/img/ide/get-started/copy-pid-left.webp)
 
 6. Back in TuyaOpen IDE, paste the PID and click **Next** to create the project.
 
-   ![Paste the PID and create the project in the IDE](/img/ide/get-started/ide-paste-pid-create-project.png)
+   ![Paste the PID and create the project in the IDE](/img/ide/get-started/ide-paste-pid-create-project.webp)
 
 :::note
 **Why copy?** Copying quickly produces a product with the same features as the default PID. For AI + IoT products it also copies the Agent already bound to that product.
@@ -50,11 +50,11 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 
 1. In **Cloud IoT/Agent Dev** you can see that the cloud product is now bound.
 
-   ![Cloud IoT / Agent page — product bound](/img/ide/get-started/cloud-iot-agent-product-bound.png)
+   ![Cloud IoT / Agent page — product bound](/img/ide/get-started/cloud-iot-agent-product-bound.webp)
 
 2. Open **Project Details** and build and flash. At the bottom of the page you can see the Vibe Coding hardware view and all pin states.
 
-   ![Project Details — Vibe Coding hardware view](/img/ide/get-started/project-details-vibe-hardware-view.png)
+   ![Project Details — Vibe Coding hardware view](/img/ide/get-started/project-details-vibe-hardware-view.webp)
 
 3. After flashing succeeds, the touch screen lights up.
 
@@ -68,31 +68,31 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 
 1. For the concept of license keys and how to get them, see [TuyaOpen license keys](/docs/quick-start#tuyaopen-dedicated-license) and the [authorization guide](/pricing-guide). For this practice, claim two free license keys first. Back on the [Tuya Developer Platform](https://platform.tuya.com/), open **AI Products → Product Development** to see the OEM example product from step 1.
 
-   ![OEM example product in the developer platform](/img/ide/get-started/oem-product-example-in-platform.png)
+   ![OEM example product in the developer platform](/img/ide/get-started/oem-product-example-in-platform.webp)
 
 2. Click **Continue development** on the right.
 
-   ![Continue development on the platform](/img/ide/get-started/developer-platform-continue-development.png)
+   ![Continue development on the platform](/img/ide/get-started/developer-platform-continue-development.webp)
 
 3. Under the **Hardware Development** tab, in the selected cloud-access hardware section, click **Get 2 Free Licenses**.
 
-   ![Get 2 Free Licenses button](/img/ide/get-started/claim-free-license-keys.png)
+   ![Get 2 Free Licenses button](/img/ide/get-started/claim-free-license-keys.webp)
 
-   ![License keys claimed](/img/ide/get-started/license-keys-claimed.png)
+   ![License keys claimed](/img/ide/get-started/license-keys-claimed.webp)
 
-   ![License key list detail](/img/ide/get-started/license-key-list-detail.png)
+   ![License key list detail](/img/ide/get-started/license-key-list-detail.webp)
 
 4. Download the license key list.
 
-   ![Download the license key list](/img/ide/get-started/download-license-key-list.png)
+   ![Download the license key list](/img/ide/get-started/download-license-key-list.webp)
 
 5. Enter the license keys in the IDE's **Licenses** panel (**Key Management**).
 
-   ![IDE license key manager](/img/ide/get-started/ide-license-key-manager.png)
+   ![IDE license key manager](/img/ide/get-started/ide-license-key-manager.webp)
 
 6. Use AI to write the license key to the device.
 
-   ![AI writes the license key to the device](/img/ide/get-started/ai-write-license-to-device.png)
+   ![AI writes the license key to the device](/img/ide/get-started/ai-write-license-to-device.webp)
 
 </section>
 
@@ -103,7 +103,7 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 1. Follow the official [device network configuration](/docs/quick-start/device-network-configuration) steps to pair the device.
 2. Once paired, you can switch the AI Agent you talk to from the mini-app panel.
 
-   ![Switch AI Agent from the mini-app panel](/img/ide/get-started/miniapp-switch-agent.png)
+   ![Switch AI Agent from the mini-app panel](/img/ide/get-started/miniapp-switch-agent.webp)
 
 3. Double-tap the board **KEY** button to switch conversation mode. The current project supports the wake words "你好涂鸦" / "Hey Tuya".
 

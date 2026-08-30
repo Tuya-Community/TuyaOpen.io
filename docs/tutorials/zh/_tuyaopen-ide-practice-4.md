@@ -37,15 +37,15 @@ IDE 对 Linux 板走的是 **cross-deploy（交叉部署）**：在你电脑上�
 
 1. 点击左侧活动栏的开发板目录图标，浏览支持的开发板、芯片和 SoC 平台及详细规格。
 
-   ![Linux 板开发板目录图标](/img/ide/get-started/linux-board-catalogue-icon-zh.png)
+   ![Linux 板开发板目录图标](/img/ide/get-started/linux-board-catalogue-icon-zh.webp)
 
 2. 在开发板列表中找到 **树莓派**（或你实际的 Linux 板），点击 `用此开发板，新建项目`。
 
-   ![Linux 板开发板目录图标](/img/ide/get-started/linux-board-new-project-zh.png)
+   ![Linux 板开发板目录图标](/img/ide/get-started/linux-board-new-project-zh.webp)
 
 3. 打开**项目详情**页，确认顶部 **Flash 显示为「部署」**、**Monitor 显示为「运行」**，页面下方出现**「开发板连接」**表单——这就是 IDE 已识别为 Linux 板的标志。
 
-   ![Linux 板项目详情页——顶部按钮切换为「部署/运行」，下方出现「开发板连接」表单](/img/ide/get-started/linux-board-project-detail-deploy-run-zh.png)
+   ![Linux 板项目详情页——顶部按钮切换为「部署/运行」，下方出现「开发板连接」表单](/img/ide/get-started/linux-board-project-detail-deploy-run-zh.webp)
 
 </section>
 
@@ -83,7 +83,7 @@ Linux raspberrypi 6.x.x ... aarch64 GNU/Linux
 pi
 ```
 
-![「开发板连接」表单——填写 SSH 用户名、IP、端口、登录方式、密码、远端目录](/img/ide/get-started/linux-board-connection-ssh-form-zh.png)
+![「开发板连接」表单——填写 SSH 用户名、IP、端口、登录方式、密码、远端目录](/img/ide/get-started/linux-board-connection-ssh-form-zh.webp)
 
 看到 `SSH OK` + 内核信息 + 登录用户即连通。若失败，IDE 会分类提示——认证失败核对用户名密码、网络不通先 `ping <IP>`、首次连接的主机密钥问题在电脑上手动 `ssh <用户名>@<IP>` 走一次确认即可。
 
@@ -152,7 +152,7 @@ Hello World 不依赖任何模型或云端凭据，编译产物就是一个纯�
 [01-01 00:00:00 ty D][sample_project.c:48] hello world
 ```
 
-![运行——专用 SSH 终端前台执行，末尾打印 hello world](/img/ide/get-started/linux-board-run-hello-world-zh.png)
+![运行——专用 SSH 终端前台执行，末尾打印 hello world](/img/ide/get-started/linux-board-run-hello-world-zh.webp)
 
 看到末尾的 **`hello world`** 就成功了。程序打印完信息后进入常驻循环保持运行；要停止，按 `Ctrl + C` 或关闭终端。
 
@@ -167,7 +167,7 @@ Hello World 不依赖任何模型或云端凭据，编译产物就是一个纯�
 1. 把资源文件放进工程的 `source/embedded/resources/` 目录（可以建子目录，IDE 会递归上传并保持目录结构）。
 2. 命令面板（`Ctrl+Shift+P`）运行 **`TuyaOpen: Upload Resources to Board`** 或点击 **`资源上传`** 键。
 
-   ![资源目录 source/embedded/resources/ 与「Upload Resources to Board」命令](/img/ide/get-started/linux-board-upload-resources-zh.png)
+   ![资源目录 source/embedded/resources/ 与「Upload Resources to Board」命令](/img/ide/get-started/linux-board-upload-resources-zh.webp)
 
 资源会落到板子的 `<远端目录>/resources/` 下（默认 `~/tuyaopen-apps/<工程名>/resources/`），比如本地的 `resources/hero.glb` 对应板子上的 `~/tuyaopen-apps/<工程名>/resources/hero.glb`。
 
@@ -183,7 +183,7 @@ Hello World 不依赖任何模型或云端凭据，编译产物就是一个纯�
 
 除了树莓派（ARM/aarch64），IDE 也支持把 **Ubuntu** 当作 Linux 部署目标——它是一块 **X86_64** 架构的「Linux 板」。流程和树莓派完全一致（都是 cross-deploy：编译 ELF → SSH 部署 → 运行），只是编译目标的架构不同；建工程时板型选 **Ubuntu**，其余从第二步起照做即可。
 
-   ![资源目录 source/embedded/resources/ 与「Upload Resources to Board」命令](/img/ide/get-started/linux-board-upload-resources-zh.png)
+   ![资源目录 source/embedded/resources/ 与「Upload Resources to Board」命令](/img/ide/get-started/linux-board-upload-resources-zh.webp)
 
 为什么用它调试：
 
