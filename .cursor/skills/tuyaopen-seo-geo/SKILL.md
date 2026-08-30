@@ -44,7 +44,7 @@ Columns: `关键词层级, 关键词, 搜索意图, 承接页面, 数据来源`.
 | Tier | Meaning | Lands on | Intent mix |
 | --- | --- | --- | --- |
 | **L1** 核心开源平台词 | Core platform brand terms (`open source iot platform`, `tuyaopen`, `开源物联网平台`) | Homepage `/` and `/zh/` | navigational + informational + commercial |
-| **L2** 品类技术词 | Category/tech terms (`embedded development ide`, `edge ai platform open source`, `ai agent development platform`) | Product pages (`/tuyaopen-ide`, `/duckyclaw`, `/get-hardware`, `/tools`, `/pricing`) + key docs | mostly commercial |
+| **L2** 品类技术词 | Category/tech terms (`embedded development ide`, `edge ai platform open source`, `ai agent development platform`) | Product pages (`/tuyaopen-ide`, `/tclaw`, `/get-hardware`, `/tools`, `/pricing`) + key docs | mostly commercial |
 | **L3** 硬件场景词 | Hardware/scenario terms (`esp32 ai tutorial`, `raspberry pi home automation`, `arduino smart home`) | Hardware docs (`docs/hardware/...`) | mostly informational |
 | **L4** 长尾教程词 | Long-tail tutorial/comparison terms (`best open source iot frameworks 2026`, `tuyaopen vs esphome`) | Blog, `/learn`, deep docs | informational |
 
@@ -163,7 +163,7 @@ A draft exists at `SEO-temp-folder/tuyaopen.ai-llms.txt.md` — but note it is *
   - `/docs/applications/tuya_cloud/...` → `/docs/cloud/iot-client/...` (iot-light demo)
   - `/docs/hardware-specific` (bare) → `/docs/hardware`
   - `/projects` → `/learn?cat=community` (or omit; prefer the canonical `/learn` surface)
-- Keep it factual, link-dense, and ≤~50 lines: what TuyaOpen is, the four pillars (SDK / Hardware / Cloud & AI / TuyaOpenClaw), primary entry URLs, key docs. Write it the way you'd describe the project to a smart engineer in 30 seconds.
+- Keep it factual, link-dense, and ≤~50 lines: what TuyaOpen is, the four pillars (SDK / Hardware / Cloud & AI / TClaw), primary entry URLs, key docs. Write it the way you'd describe the project to a smart engineer in 30 seconds.
 - Optionally `static/llms-full.txt` — a longer concatenation of key docs for models that fetch it.
 - This is the single highest-leverage GEO artifact; keep its URLs in sync with `createRedirects` whenever docs move.
 
@@ -181,7 +181,7 @@ Schema.org JSON-LD is how you tell both Google and LLMs exactly what each entity
 | --- | --- | --- |
 | Site-wide (Organization + WebSite + SearchAction) | `Organization`, `WebSite` (with `potentialAction` SearchAction → `/search?q={query}`) | `docusaurus.config.js` `headTags` |
 | Homepage | `SoftwareApplication` or `WebApplication` (TuyaOpen as open-source platform: `applicationCategory`, `operatingSystem`, `offers` free, `license` Apache-2.0) | `<Head>` in `index.js` |
-| Product pages (`/tuyaopen-ide`, `/duckyclaw`, `/get-hardware`, `/pricing`) | `SoftwareApplication` / `Product` + `Offer` | page `<Head>` |
+| Product pages (`/tuyaopen-ide`, `/tclaw`, `/get-hardware`, `/pricing`) | `SoftwareApplication` / `Product` + `Offer` | page `<Head>` |
 | Hardware board docs (`docs/hardware/.../overview-*.md`) | `Product` (board: `brand`, `category`, `description`) + `BreadcrumbList` | swizzled `theme/DocItem` from frontmatter, or MDX `<head>` export |
 | Tutorial / quick-start docs | `HowTo` (steps from the doc's numbered list) + `BreadcrumbList` | per doc |
 | FAQ sections | `FAQPage` (one `Question`/`Answer` per block) | per doc/page that has an FAQ |
@@ -198,7 +198,7 @@ Schema.org JSON-LD is how you tell both Google and LLMs exactly what each entity
 - **Comparison tables** (TuyaOpen vs ESPHome, T5 vs Raspberry Pi) — LLMs love structured comparisons and quote them.
 - **Numbered step lists** for procedures → maps to `HowTo` schema.
 - **Cite sources.** Link the GitHub repo, real specs, official Tuya docs. E-E-A-T for both Google and AI.
-- **Consistent entity definitions.** Define "TuyaOpen", "TuyaOpenClaw", "T5 AI Board", "TuyaOpen IDE" the same way everywhere so models form a stable entity. Cross-reference the terminology table in `tuyaopen-technical-writer`.
+- **Consistent entity definitions.** Define "TuyaOpen", "TClaw", "T5 AI Board", "TuyaOpen IDE" the same way everywhere so models form a stable entity. Cross-reference the terminology table in `tuyaopen-technical-writer`.
 
 ## Bilingual (zh) SEO
 

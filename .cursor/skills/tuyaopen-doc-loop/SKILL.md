@@ -145,7 +145,7 @@ docs/{topic}-{YYYY-MM}
 Examples:
 - `docs/tal-wifi-api-2026-04`
 - `docs/peripheral-examples-2026-04`
-- `docs/duckyclaw-guides-2026-04`
+- `docs/tclaw-guides-2026-04`
 - `docs/cloud-agent-update-2026-05`
 - `docs/i18n-parity-2026-05`
 

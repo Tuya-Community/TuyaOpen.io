@@ -6,7 +6,7 @@
 //   sdkSidebar       -> TuyaOpen SDK   (/docs root content)
 //   hardwareSidebar  -> Hardware       (/docs/hardware/*)
 //   cloudSidebar     -> Cloud & AI     (/docs/cloud/*)
-//   duckyclawSidebar -> TuyaOpenClaw    (/docs/duckyclaw/*)  (brand formerly DuckyClaw; route kept)
+//   tclawSidebar     -> TClaw          (/docs/tclaw/*)  (formerly DuckyClaw, then TuyaOpenClaw)
 //   tyutoolSidebar   -> tyutool        (/docs/tyutool/*)
 //
 // SHARED / UNIVERSAL DOCS
@@ -539,24 +539,25 @@ const cloudSidebar = [
 ]
 
 // =============================================================================
-// TuyaOpenClaw (brand formerly DuckyClaw; doc ids / routes kept as duckyclaw/*)
+// TClaw (formerly DuckyClaw, then TuyaOpenClaw; doc ids / routes are tclaw/*,
+// with /duckyclaw/* redirects wired up in docusaurus.config.js)
 // =============================================================================
-const duckyclawSidebar = [
-  { type: 'link', label: 'Overview', href: '/duckyclaw' },
+const tclawSidebar = [
+  { type: 'link', label: 'Overview', href: '/tclaw' },
   {
     type: 'category',
     label: 'Quick Start',
     collapsed: false,
     items: [
-      'duckyclaw/ducky-quick-start-T5AI',
-      'duckyclaw/ducky-quick-start-raspberry-pi-5',
-      'duckyclaw/ducky-quick-start-ESP32S3',
+      'tclaw/ducky-quick-start-T5AI',
+      'tclaw/ducky-quick-start-raspberry-pi-5',
+      'tclaw/ducky-quick-start-ESP32S3',
     ],
   },
-  'duckyclaw/custom-device-mcp',
-  'duckyclaw/hardware-skill',
-  'duckyclaw/DuckyClaw-OpenClaw',
-  'duckyclaw/DuckyClaw-TuyaClaw',
+  'tclaw/custom-device-mcp',
+  'tclaw/hardware-skill',
+  'tclaw/DuckyClaw-OpenClaw',
+  'tclaw/DuckyClaw-TuyaClaw',
 ]
 
 // =============================================================================
@@ -586,6 +587,6 @@ module.exports = {
   sdkSidebar,
   hardwareSidebar,
   cloudSidebar,
-  duckyclawSidebar,
+  tclawSidebar,
   tyutoolSidebar,
 }

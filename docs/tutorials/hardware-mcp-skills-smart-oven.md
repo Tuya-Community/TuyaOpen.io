@@ -465,8 +465,8 @@ Create a complete Smart Oven project:
 ## Next Steps
 
 - [Create Your Product & Agent](/docs/cloud/tuya-cloud/creating-new-product) — Full guide to creating the cloud product, DPs, and AI Agent
-- [Custom Device MCP (Hardware Skills Guide)](/docs/duckyclaw/custom-device-mcp) — Full API reference for MCP tool development
-- [Hardware Peripheral Skills](/docs/duckyclaw/hardware-skill) — Built-in GPIO, ADC, I2C, UART, PWM tools
+- [Custom Device MCP (Hardware Skills Guide)](/docs/tclaw/custom-device-mcp) — Full API reference for MCP tool development
+- [Hardware Peripheral Skills](/docs/tclaw/hardware-skill) — Built-in GPIO, ADC, I2C, UART, PWM tools
 - [MCP Server API](/docs/cloud/device-ai/ai-components/ai-mcp-server) — Complete MCP server documentation
 - [Designing Device MCP Tools](/docs/cloud/device-ai/concepts/designing-device-mcp-tools) — Best practices for tool design
 

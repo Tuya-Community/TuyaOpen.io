@@ -1,6 +1,6 @@
 ---
 name: tuyaopen-docs-author
-description: Senior technical-writer craft for the TuyaOpen.ai (TuyaOpen.io) Docusaurus site, across all four product pillars — SDK, Hardware, Cloud, and Agent (TuyaOpenClaw). Use when writing, revising, reviewing, or structuring any doc, tutorial, API reference, hardware guide, cloud/agent guide, or per-product overview on the site. Produces bilingual (en + zh), audience-tiered, single-concept, linear docs grounded in real source — never assumption. Delegates placement to tuyaopen-doc-planner, build/render checks to tuyaopen-build-check, and source grounding to tuyaopen-code-analyzer; this skill governs HOW the doc reads and WHICH product model it follows.
+description: Senior technical-writer craft for the TuyaOpen.ai (TuyaOpen.io) Docusaurus site, across all four product pillars — SDK, Hardware, Cloud, and Agent (TClaw). Use when writing, revising, reviewing, or structuring any doc, tutorial, API reference, hardware guide, cloud/agent guide, or per-product overview on the site. Produces bilingual (en + zh), audience-tiered, single-concept, linear docs grounded in real source — never assumption. Delegates placement to tuyaopen-doc-planner, build/render checks to tuyaopen-build-check, and source grounding to tuyaopen-code-analyzer; this skill governs HOW the doc reads and WHICH product model it follows.
 ---
 
 # TuyaOpen Docs Author
@@ -43,14 +43,14 @@ If code and an existing doc disagree, the code wins — flag the stale doc, do n
 
 ## The four product pillars (pick the right model)
 
-The site is one Docusaurus instance with **four sidebars** (`sidebars.js`): `sdkSidebar`, `hardwareSidebar`, `cloudSidebar`, `duckyclawSidebar`. Each pillar documents best by borrowing from a proven model. Identify the pillar first — it sets the doc's shape, depth, and visual budget.
+The site is one Docusaurus instance with **four sidebars** (`sidebars.js`): `sdkSidebar`, `hardwareSidebar`, `cloudSidebar`, `tclawSidebar`. Each pillar documents best by borrowing from a proven model. Identify the pillar first — it sets the doc's shape, depth, and visual budget.
 
 | Pillar | Sidebar · root | Reader's job | Model to follow | Shape |
 | --- | --- | --- | --- | --- |
 | **SDK** | `sdkSidebar` · `docs/` (TKL/TAL, build, examples, peripherals) | Build firmware, call an API | **ESP-IDF + STM32 HAL**: Get Started → Guides → exhaustive API Reference | Signature + params table + return + minimal runnable example, grounded in the header. Link the repo example. |
 | **Hardware** | `hardwareSidebar` · `docs/hardware/` (boards, pinouts, DevKits, porting) | Wire it up, flash it, know the specs | **Adafruit + Waveshare**: visual-first resource hub | Board photo, pinout diagram, specs table, "what you need", per-board steps. Overview page gathers schematic/datasheet/downloads. |
 | **Cloud** | `cloudSidebar` · `docs/cloud/` (Tuya Cloud IoT, OpenAPI, device-AI demos) | Connect a device, call cloud/OpenAPI | **Claude + Google**: concept + how-to, honest reference | Definition-first, "why", numbered flow, OpenAPI reference, explicit license/授权码 rule (below). |
-| **Agent** | `duckyclawSidebar` · `docs/duckyclaw/` (TuyaOpenClaw — skills, MCP, voice modes) | Make the on-device agent do X | **Claude (capability docs)**: definition-first, capability-honest, cookbook | What it is in one line, what it can/can't do, a worked end-to-end run, MCP/skill contract. |
+| **Agent** | `tclawSidebar` · `docs/tclaw/` (TClaw — skills, MCP, voice modes) | Make the on-device agent do X | **Claude (capability docs)**: definition-first, capability-honest, cookbook | What it is in one line, what it can/can't do, a worked end-to-end run, MCP/skill contract. |
 
 A doc belongs to exactly one pillar. If a topic spans pillars (e.g. "flash the AI chat demo on T5"), it is a **how-to in one pillar that links once** to the others — not a doc that lives in two trees.
 
@@ -132,7 +132,7 @@ Every doc ships in English (`docs/…`) and 简体中文 (`i18n/zh/docusaurus-pl
 
 **The docs tree must be fully Chinese too.** Sidebar text is NOT localized by the doc files — leaf `type: 'doc'` items show the doc's zh `title:` frontmatter (so always translate it), but every **`label:`** in `sidebars.js` (category, link, custom-doc) falls back to English on the zh site unless it has a matching key in `i18n/zh/docusaurus-plugin-content-docs/current.json`. The build does **not** warn about this.
 
-The translation key is namespaced by **the sidebar's id** (its key in the `sidebars.js` export), not the literal `docs`. This repo exports **four** sidebars — `sdkSidebar`, `hardwareSidebar`, `cloudSidebar`, `duckyclawSidebar` — so keys are `sidebar.<sidebarId>.category.X` (e.g. `sidebar.cloudSidebar.category.Voice Chat Modes`), where `X` is the label verbatim (including `&`/`+`/punctuation). **Renaming a sidebar id orphans every one of its keys** and silently reverts those labels to English — which is exactly how a whole tree can go un-localized while dividers (CSS) and leaf docs (frontmatter) still look fine.
+The translation key is namespaced by **the sidebar's id** (its key in the `sidebars.js` export), not the literal `docs`. This repo exports **four** sidebars — `sdkSidebar`, `hardwareSidebar`, `cloudSidebar`, `tclawSidebar` — so keys are `sidebar.<sidebarId>.category.X` (e.g. `sidebar.cloudSidebar.category.Voice Chat Modes`), where `X` is the label verbatim (including `&`/`+`/punctuation). **Renaming a sidebar id orphans every one of its keys** and silently reverts those labels to English — which is exactly how a whole tree can go un-localized while dividers (CSS) and leaf docs (frontmatter) still look fine.
 
 Never hand-guess the namespace. Generate the authoritative keys, then translate the English defaults:
 
@@ -143,7 +143,7 @@ npx docusaurus write-translations --locale zh   # adds correct sidebar.<id>.* ke
 Then audit — flag any real-namespace sidebar key whose message has no Chinese (proper-noun product names like board IDs may legitimately stay Latin):
 
 ```bash
-node -e 'const j=require("./i18n/zh/docusaurus-plugin-content-docs/current.json"),R=new Set(["sdkSidebar","hardwareSidebar","cloudSidebar","duckyclawSidebar"]),cjk=s=>/[一-鿿]/.test(s||"");const m=Object.entries(j).filter(([k,v])=>{const x=k.match(/^sidebar\.([^.]+)\.(category|link|doc)\./);return x&&R.has(x[1])&&!cjk(v.message)});console.log(m.length?"UNTRANSLATED: "+m.map(([k])=>k).join(", "):"OK — docs tree fully localized")'
+node -e 'const j=require("./i18n/zh/docusaurus-plugin-content-docs/current.json"),R=new Set(["sdkSidebar","hardwareSidebar","cloudSidebar","tclawSidebar"]),cjk=s=>/[一-鿿]/.test(s||"");const m=Object.entries(j).filter(([k,v])=>{const x=k.match(/^sidebar\.([^.]+)\.(category|link|doc)\./);return x&&R.has(x[1])&&!cjk(v.message)});console.log(m.length?"UNTRANSLATED: "+m.map(([k])=>k).join(", "):"OK — docs tree fully localized")'
 ```
 
 After a sidebar rename or split, delete the orphaned old-namespace keys (e.g. dead `sidebar.docs.*`) so the file does not accumulate cruft. `tuyaopen-doc-planner` documents the key-shape rules.

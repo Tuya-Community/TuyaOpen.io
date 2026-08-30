@@ -1,9 +1,9 @@
 ---
-title: Connect TuyaOpenClaw to OpenClaw
-description: "TuyaOpenClaw edge-AI voice firmware connects to the OpenClaw Gateway over the WebSocket ACP protocol for AI voice conversation."
+title: Connect TClaw to OpenClaw
+description: "TClaw edge-AI voice firmware connects to the OpenClaw Gateway over the WebSocket ACP protocol for AI voice conversation."
 keywords:
   - duckyclaw
-  - tuyaopenclaw
+  - tclaw
   - openclaw gateway
   - edge ai platform open source
   - acp protocol
@@ -14,14 +14,14 @@ import TabItem from '@theme/TabItem';
 
 ## 1. Overview
 
-TuyaOpenClaw (formerly DuckyClaw) is an AI voice assistant firmware that runs on IoT devices. It connects to the OpenClaw Gateway via the **ACP protocol (Agent Client Protocol, WebSocket-based)** to enable real-time conversation with an AI Agent.
+TClaw (formerly DuckyClaw) is an AI voice assistant firmware that runs on IoT devices. It connects to the OpenClaw Gateway via the **ACP protocol (Agent Client Protocol, WebSocket-based)** to enable real-time conversation with an AI Agent.
 
-OpenClaw is an open-source AI Agent platform that can be deployed on Linux, macOS, or Windows. Its built-in Gateway service listens on port `18789` by default, and TuyaOpenClaw connects to it over the local network (or the internet).
+OpenClaw is an open-source AI Agent platform that can be deployed on Linux, macOS, or Windows. Its built-in Gateway service listens on port `18789` by default, and TClaw connects to it over the local network (or the internet).
 
 **Connection architecture:**
 
 ```
-TuyaOpenClaw (IoT device)
+TClaw (IoT device)
     │  WebSocket (ACP protocol)
     ▼
 OpenClaw Gateway (PC / server)
@@ -39,19 +39,19 @@ AI Agent (LLM conversation)
 | Software | Description | Download |
 |----------|-------------|----------|
 | **OpenClaw** | AI Agent platform — install on your PC or server | [Official website](https://openclaw.ai) |
-| **TuyaOpenClaw firmware toolchain** | Required to compile and flash TuyaOpenClaw firmware | See [TuyaOpenClaw Quick Start](ducky-quick-start-T5AI) |
+| **TClaw firmware toolchain** | Required to compile and flash TClaw firmware | See [TClaw Quick Start](ducky-quick-start-T5AI) |
 
 ### 2.2 Network requirements
 
-- **LAN mode**: TuyaOpenClaw device and the PC running OpenClaw are on the same local network or Wi-Fi
+- **LAN mode**: TClaw device and the PC running OpenClaw are on the same local network or Wi-Fi
 - **Internet mode**: OpenClaw is deployed on a server with a public IP address
 
-### 2.3 TuyaOpenClaw base setup
+### 2.3 TClaw base setup
 
-Complete the TuyaOpenClaw base setup (Wi-Fi, firmware flashing) before following this guide.
+Complete the TClaw base setup (Wi-Fi, firmware flashing) before following this guide.
 
 :::note
-See: [TuyaOpenClaw Quick Start (T5-AI)](ducky-quick-start-T5AI)
+See: [TClaw Quick Start (T5-AI)](ducky-quick-start-T5AI)
 :::
 
 ---
@@ -253,7 +253,7 @@ Keep the `"token"` field's existing value. Do not write `your_token_here` litera
 
 | Field | Description |
 |-------|-------------|
-| `"bind": "lan"` | Makes the Gateway listen on the LAN network interface instead of only `127.0.0.1` — **required** for TuyaOpenClaw to connect |
+| `"bind": "lan"` | Makes the Gateway listen on the LAN network interface instead of only `127.0.0.1` — **required** for TClaw to connect |
 | `dangerouslyAllowHostHeaderOriginFallback: true` | Allows non-browser clients (e.g. IoT devices) to open WebSocket connections |
 | `allowInsecureAuth: true` | Allows authentication without HTTPS (LAN scenario) |
 | `dangerouslyDisableDeviceAuth: true` | Disables device-level secondary authentication; token-only auth |
@@ -346,7 +346,7 @@ Get-NetIPAddress | Where-Object {
 </Tabs>
 
 :::tip
-Use the IP address on the **same LAN segment** as your TuyaOpenClaw device (typically `192.168.x.x` or `10.x.x.x`). A wired connection is more stable than Wi-Fi.
+Use the IP address on the **same LAN segment** as your TClaw device (typically `192.168.x.x` or `10.x.x.x`). A wired connection is more stable than Wi-Fi.
 :::
 
 ### 5.2 Get the Gateway Token
@@ -384,7 +384,7 @@ grep '"token"' ~/.openclaw/openclaw.json
 
 ### 5.3 Verify Gateway accessibility
 
-Open a browser on a device on the same network as TuyaOpenClaw and visit:
+Open a browser on a device on the same network as TClaw and visit:
 
 ```
 http://<your-LAN-IP>:18789/
@@ -394,7 +394,7 @@ Any HTTP response (even an error page) means the Gateway is listening on the LAN
 
 ---
 
-## 6. Configure TuyaOpenClaw firmware
+## 6. Configure TClaw firmware
 
 ### 6.1 Create the config file
 
@@ -458,13 +458,13 @@ Open `include/tuya_app_config_secrets.h` and fill in the ACP Gateway macros:
 
 ### 6.3 Recompile and flash
 
-After saving the config, recompile the firmware and flash it to the TuyaOpenClaw device.
+After saving the config, recompile the firmware and flash it to the TClaw device.
 
 ---
 
 ## 7. Troubleshooting
 
-### 7.1 TuyaOpenClaw cannot connect
+### 7.1 TClaw cannot connect
 
 | Error in device log | Likely cause | Fix |
 |---------------------|-------------|-----|

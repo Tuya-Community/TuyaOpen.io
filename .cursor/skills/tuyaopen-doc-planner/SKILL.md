@@ -69,7 +69,7 @@ A doc is **shared** if the same steps work across platforms (e.g., `tos.py build
 The sidebar is defined in `sidebars.js` (root of repo). It has 12 major sections separated by HTML dividers:
 
 1. Top-level pages (about, releases, walkthrough)
-2. DuckyClaw
+2. TClaw
 3. Getting Started (quick-start/*)
 4. Hardware Guides (hardware-specific/*)
 5. Apps & Examples (applications/*, examples/*, peripheral/*, new-hardware/*)

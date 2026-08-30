@@ -207,12 +207,12 @@
     "message": "双眼情绪（duo_eye_mood）",
     "description": "The label for the doc item 'duo_eye_mood' in sidebar 'cloudSidebar', linking to the doc cloud/device-ai/demo-duo-eyes-mood"
   },
-  "sidebar.duckyclawSidebar.category.Quick Start": {
+  "sidebar.tclawSidebar.category.Quick Start": {
     "message": "快速开始",
-    "description": "The label for category 'Quick Start' in sidebar 'duckyclawSidebar'"
+    "description": "The label for category 'Quick Start' in sidebar 'tclawSidebar'"
   },
-  "sidebar.duckyclawSidebar.link.Overview": {
+  "sidebar.tclawSidebar.link.Overview": {
     "message": "简介",
-    "description": "The label for link 'Overview' in sidebar 'duckyclawSidebar', linking to '/duckyclaw'"
+    "description": "The label for link 'Overview' in sidebar 'tclawSidebar', linking to '/tclaw'"
   }
 }

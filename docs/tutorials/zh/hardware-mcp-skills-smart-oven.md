@@ -464,8 +464,8 @@ tos.py build
 ## 下一步
 
 - [创建你的产品与 Agent](/docs/cloud/tuya-cloud/creating-new-product) — 云端产品、DP 和 AI Agent 完整指南
-- [自定义设备 MCP（硬件技能指南）](/docs/duckyclaw/custom-device-mcp) — MCP 工具开发 API 参考
-- [硬件外设技能](/docs/duckyclaw/hardware-skill) — 内置 GPIO、ADC、I2C、UART、PWM 工具
+- [自定义设备 MCP（硬件技能指南）](/docs/tclaw/custom-device-mcp) — MCP 工具开发 API 参考
+- [硬件外设技能](/docs/tclaw/hardware-skill) — 内置 GPIO、ADC、I2C、UART、PWM 工具
 - [MCP Server API](/docs/cloud/device-ai/ai-components/ai-mcp-server) — MCP 服务端完整文档
 - [设计设备 MCP 工具](/docs/cloud/device-ai/concepts/designing-device-mcp-tools) — 工具设计最佳实践
 
