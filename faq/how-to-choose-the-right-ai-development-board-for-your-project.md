@@ -1,3 +1,7 @@
+---
+date: 2026-08-20
+---
+
 # How to Choose the Right AI Development Board for Your Project
 
 Picking an AI development board looks straightforward on the surface, but it can quietly wreck your timeline if you get it wrong. The spec sheets all read impressively — GHz clocks, TOPS ratings, an alphabet soup of wireless protocols — but the number that actually matters is how well the board maps to the thing you're actually building. A board that's perfect for a desk-bound voice assistant is a terrible choice for a battery-powered wearable camera, and vice versa. With [edge AI expanding](https://www.arm.com/markets/artificial-intelligence/agentic-ai) across smart home, industrial, and wearable categories — and the [TinyML Foundation](https://www.tinyml.org/) tracking a steady wave of new microcontroller-class ML deployments — choosing the right hardware foundation matters more than it did a few years ago. Before diving in, it helps to understand the landscape: platforms like [STMicroelectronics' STM32](https://www.st.com/en/microcontrollers-microprocessors.html), [NXP's EdgeVerse](https://www.nxp.com/applications/enabling-technologies/edgeverse), and [Espressif's ESP32 family](https://www.espressif.com/en/products/socs) each approach edge AI differently, and knowing those differences is the whole game.
