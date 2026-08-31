@@ -23,6 +23,12 @@ const divider = (en, zh) => ({
   defaultStyle: false,
 })
 
+/* A category that is also a real page. Docusaurus generates an index listing
+   its children at /docs/category/<slug>, which is the only way a category gets
+   a URL — without this, /documentation has nothing to link 'Networking' to and
+   has to point at one arbitrary tutorial inside it instead. */
+const index = (slug) => ({ type: 'generated-index', slug: '/category/' + slug })
+
 // --- Shared building blocks (reused across multiple product sidebars) ---------
 
 const gettingStarted = {
@@ -95,6 +101,7 @@ const sdkSidebar = [
         type: 'category',
         label: 'Networking',
         collapsed: true,
+        link: index('networking'),
         items: [
           'peripheral/tutorials/wifi-station-tutorial',
           {
@@ -142,6 +149,7 @@ const sdkSidebar = [
         type: 'category',
         label: 'Graphics',
         collapsed: true,
+        link: index('graphics'),
         items: [
           'peripheral/tutorials/lvgl-application-guide',
           'peripheral/display',
@@ -152,12 +160,14 @@ const sdkSidebar = [
         type: 'category',
         label: 'Audio',
         collapsed: true,
+        link: index('audio'),
         items: ['peripheral/audio', 'peripheral/tutorials/audio-codec-guide'],
       },
       {
         type: 'category',
         label: 'Peripherals',
         collapsed: true,
+        link: index('peripherals'),
         items: [
           'peripheral/support_peripheral_list',
           'peripheral/driver-architecture',
@@ -180,6 +190,7 @@ const sdkSidebar = [
         type: 'category',
         label: 'System Programming',
         collapsed: true,
+        link: index('system-programming'),
         items: [
           'peripheral/tutorials/thread-timer-patterns',
           'peripheral/tutorials/tal-system-api',
@@ -206,6 +217,7 @@ const sdkSidebar = [
         type: 'category',
         label: 'Memory & storage',
         collapsed: true,
+        link: index('memory-storage'),
         items: [
           'peripheral/memory/overview',
           'peripheral/memory/heap-allocation-and-psram',
@@ -216,6 +228,7 @@ const sdkSidebar = [
         type: 'category',
         label: 'Hardware Interfaces',
         collapsed: true,
+        link: index('hardware-interfaces'),
         items: [
           'tkl-api/tkl_adc',
           'tkl-api/tkl_dac',
@@ -272,6 +285,7 @@ const hardwareSidebar = [
     type: 'category',
     label: 'Tuya T5',
     collapsed: false,
+    link: index('tuya-t5'),
     items: [
       'hardware/tuya-t5/t5ai-peripheral-mapping',
       {
