@@ -549,6 +549,7 @@ const tclawSidebar = [
     label: 'Quick Start',
     collapsed: false,
     items: [
+      'tclaw/quick-start-prebuilt-firmware',
       'tclaw/ducky-quick-start-T5AI',
       'tclaw/ducky-quick-start-raspberry-pi-5',
       'tclaw/ducky-quick-start-ESP32S3',
@@ -556,6 +557,7 @@ const tclawSidebar = [
   },
   'tclaw/custom-device-mcp',
   'tclaw/hardware-skill',
+  'tclaw/lua-scripting',
   'tclaw/DuckyClaw-OpenClaw',
   'tclaw/DuckyClaw-TuyaClaw',
 ]
