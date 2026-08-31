@@ -146,13 +146,22 @@ const config = {
         {
           type: 'dropdown',
           label: 'Docs',
+          // Clicking the label lands on the docs portal; the menu below mirrors
+          // that page's areas one-for-one, in the same order, so the hover menu
+          // and the portal are the same map at two levels of detail. Keep them
+          // in step with `areas` in src/data/docsPortal.js.
+          to: '/documentation',
           position: 'left',
           items: [
+            { to: '/documentation', label: 'All docs' },
             { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
+            // The IDE has no sidebar — its material is the product page plus
+            // the tutorial series on /learn.
+            { to: '/tuyaopen-ide', label: 'TuyaOpen IDE' },
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
             { type: 'docSidebar', sidebarId: 'tclawSidebar', label: 'TClaw' },
-            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'Tyutool' },
+            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'tyutool' },
           ],
         },
         {
@@ -231,8 +240,11 @@ const config = {
           title: 'Documentation',
           items: [
             {
+              // Points at the Learn hub's quick-start tracks, not straight into
+              // /docs/quick-start — the tracks are the front door that decides
+              // between the IDE and SDK routes; the docs funnel is one of them.
               label: 'Quick Start',
-              to: '/docs/quick-start/unboxing',
+              to: '/learn#quick-start',
             },
             {
               label: 'About TuyaOpen',

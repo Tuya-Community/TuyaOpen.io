@@ -122,5 +122,17 @@
   "item.label.Web Serial/Flashing Tools": {
     "message": "Web串口/烧录工具",
     "description": "Navbar item with label Web Serial/Flashing Tools"
+  },
+  "item.label.All docs": {
+    "message": "文档导览",
+    "description": "Navbar item with label All docs"
+  },
+  "item.label.TuyaOpen IDE": {
+    "message": "TuyaOpen IDE",
+    "description": "Navbar item with label TuyaOpen IDE"
+  },
+  "item.label.tyutool": {
+    "message": "tyutool",
+    "description": "Navbar item with label tyutool"
   }
 }

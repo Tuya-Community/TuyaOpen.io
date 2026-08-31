@@ -28,7 +28,7 @@
     "description": "The title of the footer links column with title=Acknowledgements in the footer"
   },
   "link.item.label.Quick Start": {
-    "message": "快速试用",
+    "message": "快速上手",
     "description": "The label of footer link with label=Quick Start linking to /docs/quick-start/unboxing"
   },
   "link.item.label.Run a Chaos Experiment": {

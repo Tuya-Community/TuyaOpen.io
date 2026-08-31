@@ -43,6 +43,14 @@
   --tut-card-bg: #ffffff;
   --tut-card-border: rgba(15, 23, 42, 0.08);
 
+  /* Page ground. Deliberately NOT pure white: white cards on a white page
+     have no separation, which is what made this page read as flat. A faint
+     violet-biased tint (matching the brand, not a neutral grey) lets every
+     card surface lift off it. */
+  --tut-ground: #f7f6fb;
+
+  background: var(--tut-ground);
+
   color: var(--neutral-900);
   /* clip (not hidden) so the sticky filter bar isn't trapped in a scroll box. */
   overflow-x: clip;
@@ -57,6 +65,9 @@
 [data-theme='dark'] .root {
   --tut-card-bg: #141b2d;
   --tut-card-border: rgba(255, 255, 255, 0.08);
+  /* Dark mirror of the same idea: ground sits *below* the card surface so
+     cards still lift, rather than both being the same slab. */
+  --tut-ground: #0c1120;
   color: #e2e8f0;
 }
 
@@ -138,7 +149,7 @@
 .shell {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 2.25rem 1rem 4.5rem;
+  padding: 1.75rem 1rem 4.5rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.75rem;
@@ -148,11 +159,18 @@
   .shell {
     grid-template-columns: 244px 1fr;
     gap: 2.5rem;
-    align-items: start;
+    /* NOT align-items: start — the sidebar grid cell must stretch to match
+       .main's full height, or position:sticky on .sidebarSticky has no room
+       to travel and stops sticking almost immediately. Stretch (the grid
+       default) gives .sidebar a tall box; .sidebarSticky keeps its own
+       short natural height and sticks within that tall box for the entire
+       scroll of .main, only releasing once .main's bottom is reached. */
   }
 }
 
 /* -------------------------------------------------------------- Sidebar */
+/* Persistent: spans the whole main column (path cards + category wall), not
+   just the browse grid, so it's on screen from the top of the page down. */
 .sidebar {
   min-width: 0;
 }
@@ -160,24 +178,7 @@
 @media (min-width: 997px) {
   .sidebarSticky {
     position: sticky;
-    top: 5rem;
-  }
-}
-
-.sidebarTitle {
-  font-size: var(--type-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--neutral-500);
-  margin: 0 0 0.75rem;
-  font-feature-settings: 'tnum';
-  font-variant-numeric: tabular-nums;
-}
-
-@media (max-width: 996px) {
-  .sidebarTitle {
-    display: none;
+    top: calc(var(--ifm-navbar-height, 60px) + 1.25rem);
   }
 }
 
@@ -190,24 +191,18 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.9rem 1rem;
   margin-bottom: 1.4rem;
   padding-bottom: 0.9rem;
   border-bottom: 1px solid var(--tut-card-border);
 }
 
-.mainTitle {
-  font-size: var(--type-xl);
-  font-weight: 700;
-  letter-spacing: var(--tracking-tight);
-  color: var(--neutral-900);
-  margin: 0;
-  text-wrap: balance;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-}
-
-[data-theme='dark'] .mainTitle {
-  color: #f8fafc;
+.mainHeadRight {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
 }
 
 .resultCount {
@@ -645,4 +640,426 @@
   .glowCard:hover .ctaArrow {
     transform: none;
   }
+
+  .pathStepsWrap,
+  .pathCardHead,
+  .sidebarPanel,
+  .sidebarToggle {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------- Choose your path */
+.pathsSection {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--tut-card-border);
+}
+
+.pathsTitle {
+  font-size: var(--type-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--neutral-900);
+  margin: 0 0 0.4rem;
+}
+
+[data-theme='dark'] .pathsTitle {
+  color: #f8fafc;
+}
+
+.pathsSubtitle {
+  font-size: var(--type-base);
+  color: var(--neutral-500);
+  margin: 0 0 1.75rem;
+  text-wrap: pretty;
+}
+
+/* -------------------------------------------------------------- Search */
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 1 220px;
+  max-width: 320px;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--tut-card-border);
+  border-radius: 999px;
+  color: var(--neutral-400);
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: var(--type-sm);
+  color: var(--neutral-900);
+  width: 100%;
+}
+
+[data-theme='dark'] .searchInput {
+  color: #e2e8f0;
+}
+
+.searchInput::placeholder {
+  color: var(--neutral-400);
+}
+
+/* ==========================================================================
+   Quick-start tracks — the two mainlines (IDE / SDK) at the top of the hub.
+   Replaced the style x difficulty chooser: two routes, both shown in full,
+   so the reader compares them instead of committing before they can.
+   ========================================================================== */
+
+.tracks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.25rem;
+}
+
+.track {
+  display: flex;
+}
+
+/* Pointer feedback is stated at the row, not the card: the thing under the
+   cursor is a step you can click, so that is what lights. The card itself only
+   firms up its border and lifts — no halo tracking the pointer, which read as
+   decoration rather than as an answer to "what am I about to click". */
+.trackCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid var(--tut-card-border);
+  border-top: 3px solid var(--accent);
+  background: var(--tut-card-bg);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(15, 23, 42, 0.05);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.track:hover .trackCard,
+.trackCard:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 38%, transparent);
+  border-top-color: var(--accent);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 16px 36px rgba(15, 23, 42, 0.09);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trackCard,
+  .track:hover .trackCard,
+  .trackCard:focus-within {
+    transition: none;
+    transform: none;
+  }
+}
+
+.trackHead {
+  min-width: 0;
+}
+
+.trackName {
+  margin: 0;
+  font-size: var(--type-xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--neutral-900);
+}
+
+.trackTagline {
+  margin: 0.15rem 0 0;
+  font-size: var(--type-sm);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Length and time, side by side under the name — the two facts someone weighs
+   before committing to a track. Tabular figures so the two cards' numbers line
+   up when read against each other. */
+.trackMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0;
+  font-size: var(--type-sm);
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.trackMetaDot {
+  opacity: 0.5;
+}
+
+.trackBlurb {
+  margin: 0.75rem 0 1.25rem;
+  font-size: var(--type-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-600);
+}
+
+.trackSteps {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.125rem;
+  flex: 1;
+}
+
+.trackStep {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.trackStepNum {
+  flex-shrink: 0;
+  font-size: var(--type-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-wide);
+  color: var(--neutral-400);
+}
+
+.trackStepLink {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 0.4rem 0.5rem;
+  margin-left: -0.5rem;
+  border-radius: 8px;
+  font-size: var(--type-base);
+  line-height: var(--leading-snug);
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.trackStepLink:hover {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  text-decoration: none;
+}
+
+.trackStep:hover .trackStepNum {
+  color: var(--accent);
+}
+
+/* Per-step time sits right-aligned so the column scans as a budget. Quiet by
+   default — the total in the header is the number that drives the decision;
+   these are for pacing once you are already on the track. */
+.trackStepTime {
+  flex-shrink: 0;
+  font-size: var(--type-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--neutral-400);
+}
+
+.trackStep:hover .trackStepTime {
+  color: var(--accent);
+}
+
+.trackCta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--accent);
+  font-size: var(--type-sm);
+  font-weight: 650;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.trackCta:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.trackCta:hover .ctaArrow {
+  transform: translateX(2px);
+}
+
+/* ==========================================================================
+   Page nav — the sidebar as a table of contents.
+   It navigates rather than filters: every tutorial stays on the page, so
+   there is no "All" to return to and no state to keep in the URL.
+   ========================================================================== */
+
+.toc {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tocHeading {
+  font-size: var(--type-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--neutral-400);
+}
+
+.tocGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tocGroupLink,
+.tocChildLink {
+  appearance: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  border-radius: 7px;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+
+.tocGroupLink {
+  padding: 0.3rem 0.5rem;
+  margin-left: -0.5rem;
+  font-size: var(--type-base);
+  font-weight: 650;
+  letter-spacing: var(--tracking-tight);
+  color: var(--neutral-800);
+}
+
+.tocGroupLink:hover {
+  color: var(--brand-primary);
+}
+
+/* The rail makes the children read as a nested outline, and gives the active
+   marker something to sit on rather than floating beside the text. */
+.tocChildren {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.75rem;
+  border-left: 1.5px solid var(--tut-card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tocChildLink {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.32rem 0.5rem;
+  font-size: var(--type-sm);
+  line-height: var(--leading-snug);
+  color: var(--neutral-500);
+}
+
+.tocChildLink:hover {
+  color: var(--neutral-800);
+  background: rgba(124, 92, 255, 0.06);
+}
+
+.tocChildLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.tocCount {
+  flex-shrink: 0;
+  font-size: var(--type-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--neutral-400);
+}
+
+/* Two levels of "you are here", set by the scroll spy.
+
+   The group you are inside is stated quietly — it is context, and you can
+   usually see its heading on screen anyway. The exact section is stated
+   loudly, because that is the thing the sidebar knows and the page does not
+   make obvious. Giving both the same weight would flatten that distinction. */
+.tocGroupActive {
+  color: var(--neutral-900);
+}
+
+/* Inactive groups recede so the current branch of the outline stands out as
+   a whole, not just the one lit row inside it. */
+.tocGroup:not(.tocGroupCurrent) .tocGroupLink {
+  color: var(--neutral-500);
+}
+
+.tocGroup:not(.tocGroupCurrent) .tocChildren {
+  opacity: 0.62;
+}
+
+.tocGroup:not(.tocGroupCurrent):hover .tocChildren {
+  opacity: 1;
+}
+
+.tocChildren,
+.tocGroupLink {
+  transition: opacity 0.18s ease, color 0.18s ease;
+}
+
+.tocActive {
+  color: var(--brand-primary);
+  font-weight: 650;
+  background: rgba(124, 92, 255, 0.08);
+}
+
+/* Lights the rail segment beside the row, so the outline shows where you are
+   without having to read the labels. */
+.tocChildLink.tocActive::before {
+  content: '';
+  position: absolute;
+  left: -0.75rem;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 2px;
+  margin-left: -1.75px;
+  border-radius: 2px;
+  background: var(--brand-primary);
+}
+
+.tocChildLink.tocActive:hover {
+  color: var(--brand-primary);
+  background: rgba(124, 92, 255, 0.12);
+}
+
+.tocChildLink.tocActive .tocCount {
+  color: var(--brand-primary);
+}
+
+@media (max-width: 996px) {
+  .toc {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+  .tocHeading {
+    width: 100%;
+  }
+}
+
+/* Anchor targets. scrollToId() does its own offset math for in-page clicks;
+   this covers a native #hash landing, where the browser does the scrolling. */
+.pathsSection,
+.browseSection,
+.section {
+  scroll-margin-top: 88px;
+}
+
+.browseSection {
+  min-width: 0;
 }

@@ -55,12 +55,6 @@ export const categories = {
       image: 'https://picgocloud.com/m/46ec1cad-4e7d-464d-a7f4-42c3f5093227.png',
     },
     {
-      id: 'projects',
-      label: 'Projects',
-      intro: 'Step-by-step builds that take you from a blank board to a finished, connected device.',
-      image: 'https://picgocloud.com/m/0e8fdfca-9582-4ae2-a60b-17aaf7d6c8ed.png',
-    },
-    {
       id: 'tutorials',
       label: 'Tutorials',
       intro: 'Focused how-tos for specific tasks, peripherals, and techniques.',
@@ -91,12 +85,6 @@ export const categories = {
       label: 'TuyaOpen SDK',
       intro: '工具链工作流——配置环境、编译固件、烧录、监听并配网一台设备。',
       image: 'https://picgocloud.com/m/46ec1cad-4e7d-464d-a7f4-42c3f5093227.png',
-    },
-    {
-      id: 'projects',
-      label: '项目',
-      intro: '从一块空板到一台完成的联网设备的分步实战。',
-      image: 'https://picgocloud.com/m/0e8fdfca-9582-4ae2-a60b-17aaf7d6c8ed.png',
     },
     {
       id: 'tutorials',
@@ -170,6 +158,7 @@ export const tutorials = {
         'Install tyutool, flash your first board, authorize it for Tuya IoT, and fix common hiccups (GUI + CLI).',
       tags: ['flashing', 'cli'],
       level: 'beginner',
+      duration: '8 min',
     },
     {
       id: 'license-key',
@@ -180,17 +169,19 @@ export const tutorials = {
       description: 'Understand TuyaOpen authorization and how to obtain UUID / AuthKey credentials for your devices.',
       tags: ['setup'],
       level: 'beginner',
+      duration: '3 min',
     },
     {
       id: 'using-license-key',
       category: 'basics',
       kind: 'interactive',
-      href: '/tutorials/using-license-key',
+      href: '/learn/using-license-key',
       title: 'Use your license key',
       description:
         'Write the UUID + AuthKey to a device with tyutool (GUI + CLI), then verify it activates against the Tuya Cloud.',
       tags: ['setup', 'flashing'],
       level: 'beginner',
+      duration: '5 min',
     },
     {
       id: 'setup-environment',
@@ -252,6 +243,30 @@ export const tutorials = {
       level: 'intermediate',
     },
     {
+      id: 'cli-your-chat-bot',
+      category: 'sdk',
+      kind: 'markdown',
+      href: '/docs/cloud/device-ai/demo-your-chat-bot',
+      title: 'Build your_chat_bot from the CLI',
+      description:
+        'Configure and compile the AI chatbot app with tos.py — the same voice assistant the IDE builds, driven from the command line.',
+      tags: ['cli'],
+      level: 'intermediate',
+      duration: '15 min',
+    },
+    {
+      id: 'cloud-ai-agent-console',
+      category: 'sdk',
+      kind: 'markdown',
+      href: '/docs/cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
+      title: 'Build an AI Agent on the cloud console',
+      description:
+        'Create and configure an Agent on the Tuya AI platform — models, prompts, workflows, and voices — without the IDE.',
+      tags: ['setup'],
+      level: 'advanced',
+      duration: '20 min',
+    },
+    {
       id: 'tuyaopen-ide-overview',
       category: 'ide',
       kind: 'markdown',
@@ -260,6 +275,7 @@ export const tutorials = {
       description:
         'Understand TuyaOpen IDE — the AI-era embedded dev environment where you describe a device in natural language and the Agent generates firmware, configures the cloud, and wires up the app.',
       level: 'beginner',
+      duration: '5 min',
     },
     {
       id: 'tuyaopen-ide-install',
@@ -330,6 +346,7 @@ export const tutorials = {
       description:
         'Copy-paste prompts for the skills that install inside TuyaOpen IDE — hardware peripherals, IoT products, platform ops, build/flash/debug, and panels.',
       level: 'beginner',
+      duration: '10 min',
     },
     {
       id: 'tuyaopen-ide-agent-dev',
@@ -618,6 +635,7 @@ export const tutorials = {
       description: '安装 tyutool、烧录第一块板子、为涂鸦 IoT 授权，并解决常见问题（GUI + CLI）。',
       tags: ['flashing', 'cli'],
       level: 'beginner',
+      duration: '8 分钟',
     },
     {
       id: 'license-key',
@@ -628,16 +646,18 @@ export const tutorials = {
       description: '了解 TuyaOpen 授权机制，以及如何为你的设备获取 UUID / AuthKey 凭据。',
       tags: ['setup'],
       level: 'beginner',
+      duration: '3 分钟',
     },
     {
       id: 'using-license-key',
       category: 'basics',
       kind: 'interactive',
-      href: '/tutorials/using-license-key',
+      href: '/learn/using-license-key',
       title: '使用授权码',
       description: '用 tyutool（GUI + CLI）将 UUID + AuthKey 写入设备，并验证其在涂鸦云上成功激活。',
       tags: ['setup', 'flashing'],
       level: 'beginner',
+      duration: '5 分钟',
     },
     {
       id: 'setup-environment',
@@ -694,6 +714,28 @@ export const tutorials = {
       level: 'intermediate',
     },
     {
+      id: 'cli-your-chat-bot',
+      category: 'sdk',
+      kind: 'markdown',
+      href: '/docs/cloud/device-ai/demo-your-chat-bot',
+      title: '用命令行编译 your_chat_bot',
+      description: '用 tos.py 配置并编译 AI 聊天机器人 —— 和 IDE 里那个语音助手是同一个应用，只是从命令行驱动。',
+      tags: ['cli'],
+      level: 'intermediate',
+      duration: '15 分钟',
+    },
+    {
+      id: 'cloud-ai-agent-console',
+      category: 'sdk',
+      kind: 'markdown',
+      href: '/docs/cloud/tuya-cloud/ai-agent/ai-agent-dev-platform',
+      title: '在云端控制台搭建 AI Agent',
+      description: '在涂鸦 AI 平台上创建并配置智能体 —— 模型、提示词、工作流、音色，全程不依赖 IDE。',
+      tags: ['setup'],
+      level: 'advanced',
+      duration: '20 分钟',
+    },
+    {
       id: 'tuyaopen-ide-overview',
       category: 'ide',
       kind: 'markdown',
@@ -702,6 +744,7 @@ export const tutorials = {
       description:
         '了解 TuyaOpen IDE——面向 AI 时代的嵌入式开发环境，你用自然语言描述设备，Agent 就生成固件、配置云端、打通 App。',
       level: 'beginner',
+      duration: '5 分钟',
     },
     {
       id: 'tuyaopen-ide-install',
@@ -768,6 +811,7 @@ export const tutorials = {
       title: 'Vibe Coding 技能',
       description: '可在 TuyaOpen IDE 内安装的 skills 提示词——硬件外设、IoT 产品、平台操作、构建/烧录/调试、面板。',
       level: 'beginner',
+      duration: '10 分钟',
     },
     {
       id: 'tuyaopen-ide-agent-dev',
@@ -1041,5 +1085,7 @@ export const tutorials = {
     },
   ],
 }
+
+/* --------------------------------------------------------- Learning paths */
 
 export default { categories, kinds, levels, tags, tutorials }
