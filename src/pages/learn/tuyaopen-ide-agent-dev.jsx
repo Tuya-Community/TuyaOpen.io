@@ -475,7 +475,9 @@ export default function TuyaOpenIdeAgentDev() {
         <p>{c.bindingDpLead}</p>
         <p>
           <img
-            src="https://picgocloud.com/m/200ce5b2-2e15-47ff-85bd-34e955018cff.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/c3422cc7-27e6-4f25-a726-e2d36b87322f.png?imageMogr2/format/webp"
             alt="End-to-end Agent binding architecture"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -493,7 +495,9 @@ export default function TuyaOpenIdeAgentDev() {
         </ol>
         <p>
           <img
-            src="https://picgocloud.com/m/0e082b7f-9fc4-4696-8eb4-efe910162c1b.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/00e11062-4ecf-4096-8529-df9796344448.png?imageMogr2/format/webp"
             alt="IDE Agent development page"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -517,7 +521,9 @@ export default function TuyaOpenIdeAgentDev() {
         </table>
         <p>
           <img
-            src="https://picgocloud.com/m/1f6b76f2-b234-41c1-b48b-4d73a1fa7baf.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/a515f50b-98a2-497f-9e08-2a6c43fb913f.png?imageMogr2/format/webp"
             alt="Page components overview"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -548,7 +554,9 @@ export default function TuyaOpenIdeAgentDev() {
 
         <p>
           <img
-            src="https://picgocloud.com/m/6aac633b-235a-4a69-b8e0-fd58424e44a5.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/46ff66c9-ba75-49ad-9b6c-4dfbade62fc2.png?imageMogr2/format/webp"
             alt="Product creation UI"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -595,7 +603,9 @@ export default function TuyaOpenIdeAgentDev() {
         <p>{c.dpViewLead}</p>
         <p>
           <img
-            src="https://picgocloud.com/m/1376d68d-2934-44cb-a4bf-16d49adb28c6.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/3cdc22e9-38bd-423d-bc52-c44a1afd9af4.png?imageMogr2/format/webp"
             alt="DP list example"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -633,7 +643,9 @@ export default function TuyaOpenIdeAgentDev() {
         </ol>
         <p>
           <img
-            src="https://picgocloud.com/m/d5bc842d-b5ca-4daa-b16f-64573adb6873.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/e057081c-54c3-4442-b9a0-04883a7e87b1.png?imageMogr2/format/webp"
             alt="Create new Agent UI"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -648,7 +660,9 @@ export default function TuyaOpenIdeAgentDev() {
         </ol>
         <p>
           <img
-            src="https://picgocloud.com/m/160dc4fc-5502-4795-9a27-9fae7b58497a.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/fb45626e-26ba-4eaf-bc03-95984ae00fa0.png?imageMogr2/format/webp"
             alt="Select existing Agent UI"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -658,7 +672,9 @@ export default function TuyaOpenIdeAgentDev() {
         </div>
         <p>
           <img
-            src="https://picgocloud.com/m/6bbf731c-bc2b-4d30-8818-a773358672f3.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/019529fc-eddc-4f6b-bb07-10e3062037fe.png?imageMogr2/format/webp"
             alt="Agent bound successfully"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -679,7 +695,9 @@ export default function TuyaOpenIdeAgentDev() {
         </ol>
         <p>
           <img
-            src="https://picgocloud.com/m/95740f0d-0974-476a-a0c9-aa892d847782.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/ed89d187-2949-4318-b385-f6b4b6431b92.png?imageMogr2/format/webp"
             alt="Agent editor UI"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -703,7 +721,9 @@ export default function TuyaOpenIdeAgentDev() {
         </table>
         <p>
           <img
-            src="https://picgocloud.com/m/0b0de463-ad30-4685-a51a-50cc30cab1b6.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/85b7cf0c-10ed-47cf-b514-38eb92c3fbc6.png?imageMogr2/format/webp"
             alt="Agent mode configuration"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />
@@ -729,7 +749,9 @@ export default function TuyaOpenIdeAgentDev() {
         </ul>
         <p>
           <img
-            src="https://picgocloud.com/m/b4458a15-ec49-46b1-8447-b7df4b2d0d6f.png"
+            loading="lazy"
+            decoding="async"
+            src="https://images.tuyacn.com/fe-static/docs/img/34af0b69-5333-4a36-a30a-da744b5edd80.png?imageMogr2/format/webp"
             alt="Workflow editor UI"
             style={{ width: '100%', borderRadius: '8px', margin: '1rem 0' }}
           />

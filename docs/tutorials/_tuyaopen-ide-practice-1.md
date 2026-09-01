@@ -16,13 +16,13 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 1. Open VS Code or Cursor and confirm the TuyaOpen IDE extension is enabled.
 2. Click the **Boards** icon in the left activity bar to browse the supported boards, chips, and SoC platforms with their full specs.
 
-   ![Boards icon in the IDE activity bar](/img/ide/get-started/ide-activity-bar-board-catalogue.webp)
+   ![Boards icon in the IDE activity bar](https://images.tuyacn.com/fe-static/docs/img/d2e8dea1-4aad-4a62-b882-0ec1494c4f25.png?imageMogr2/format/webp)
 
 3. Find **T5AI_Board** in the list and open its detail page. You see a large amount of developer material — purchase links, schematics, datasheets, source code, 3D models, and more.
 
-   ![T5AI_Board detail page in the board catalogue](/img/ide/get-started/board-detail-page-t5ai-board.webp)
+   ![T5AI_Board detail page in the board catalogue](https://images.tuyacn.com/fe-static/docs/img/bec0e87d-2701-4846-81d6-7bd420f5a9b7.png?imageMogr2/format/webp)
 
-   ![Board resources — schematic, datasheet, source, 3D model](/img/ide/get-started/board-resources-schematic-datasheet.webp)
+   ![Board resources — schematic, datasheet, source, 3D model](https://images.tuyacn.com/fe-static/docs/img/1e875bb2-541b-4586-940a-594b9476a6a4.png?imageMogr2/format/webp)
 
 </section>
 
@@ -33,11 +33,11 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 1. On the T5AI_Board detail page, click **New Project with This Board**.
 2. Fill in a project name and a location, then click **Create project**.
 
-   ![New project dialog from a board](/img/ide/get-started/new-project-from-board.webp)
+   ![New project dialog from a board](https://images.tuyacn.com/fe-static/docs/img/44d71f73-018a-4b3d-8609-26ac85802c0f.png?imageMogr2/format/webp)
 
 3. The IDE derives a project into your workspace and auto-configures the T5AI_Board board-level information.
 
-   ![Scaffolded project workspace](/img/ide/get-started/project-scaffolded-workspace.webp)
+   ![Scaffolded project workspace](https://images.tuyacn.com/fe-static/docs/img/1ca1a929-c9f6-4fe7-9500-6dedf6d56910.png?imageMogr2/format/webp)
 
 </section>
 
@@ -47,7 +47,7 @@ This is the **smallest closed loop** — you write no code, you just run an offi
 
 Open **Project Details** in the IDE sidebar, then click **Compile** in **Firmware Operations** and wait for the build to finish. The Project Details view shows the firmware status visually.
 
-![Firmware build summary](/img/ide/get-started/firmware-build-summary.webp)
+![Firmware build summary](https://images.tuyacn.com/fe-static/docs/img/f0bdb026-8ddd-40d2-97e1-3d8cf1f43f29.png?imageMogr2/format/webp)
 
 **Expected output** (build success):
 
@@ -72,7 +72,7 @@ Open **Project Details** in the IDE sidebar, then click **Compile** in **Firmwar
 1. Connect the board with USB. The T5AI_Board has two serial ports — one for flashing and one for logs. Make sure your USB cable carries data, not just power.
 2. Click **Flash**. If you are unsure which port is the flash port, try either one. Here `COM4` is selected.
 
-   ![Flash button and port selection](/img/ide/get-started/flash-button-select-port.webp)
+   ![Flash button and port selection](https://images.tuyacn.com/fe-static/docs/img/2106b267-9adc-4769-bac4-9d83b8fb72ef.png?imageMogr2/format/webp)
 
 **Expected output** (flash success):
 

@@ -37,15 +37,15 @@ The Linux board's Project Details page also gains a **Board connection** section
 
 1. Click the Board Catalogue icon in the left activity bar to browse the supported boards, chips, and SoC platforms with their full specs.
 
-   ![Board catalogue icon in the IDE activity bar](/img/ide/get-started/linux-board-catalogue-icon.webp)
+   ![Board catalogue icon in the IDE activity bar](https://images.tuyacn.com/fe-static/docs/img/31cd007b-77fa-4dce-9a7a-b1a8f981ea4d.png?imageMogr2/format/webp)
 
 2. Find **Raspberry Pi** (or your actual Linux board) in the list and click `Create project from this board`.
 
-   ![Find Raspberry Pi and create a project from the board](/img/ide/get-started/linux-board-new-project.webp)
+   ![Find Raspberry Pi and create a project from the board](https://images.tuyacn.com/fe-static/docs/img/7aeb941b-5b0a-47c2-8f25-2fb96c399c23.png?imageMogr2/format/webp)
 
 3. Open the **Project Details** page and confirm that the top **Flash** button now reads **Deploy** and **Monitor** reads **Run**, with a **Board connection** form below — that is the sign the IDE has recognized it as a Linux board.
 
-   ![Linux board project detail — top buttons switch to Deploy/Run, board connection form appears](/img/ide/get-started/linux-board-project-detail-deploy-run.webp)
+   ![Linux board project detail — top buttons switch to Deploy/Run, board connection form appears](https://images.tuyacn.com/fe-static/docs/img/3be9720c-1f85-4492-98bc-042bcb72cc44.png?imageMogr2/format/webp)
 
 </section>
 
@@ -83,7 +83,7 @@ Linux raspberrypi 6.x.x ... aarch64 GNU/Linux
 pi
 ```
 
-![Board connection form — SSH username, IP, port, login method, password, remote directory](/img/ide/get-started/linux-board-connection-ssh-form.webp)
+![Board connection form — SSH username, IP, port, login method, password, remote directory](https://images.tuyacn.com/fe-static/docs/img/f2a0d788-b5d3-489c-9cbf-3053f066e00b.png?imageMogr2/format/webp)
 
 Seeing `SSH OK` plus the kernel info and the login user means you are connected. If it fails, the IDE gives a categorized hint — for an auth failure, double-check the username and password; for a network problem, `ping <IP>` first; for a first-connection host-key issue, run `ssh <username>@<IP>` once on your computer to confirm it.
 
@@ -152,7 +152,7 @@ Click **Run** at the top (the same spot as the MCU board's Monitor button). The 
 [01-01 00:00:00 ty D][sample_project.c:48] hello world
 ```
 
-![Run — dedicated SSH terminal runs in the foreground and prints hello world at the end](/img/ide/get-started/linux-board-run-hello-world.webp)
+![Run — dedicated SSH terminal runs in the foreground and prints hello world at the end](https://images.tuyacn.com/fe-static/docs/img/e7b1b6f5-d260-45b8-bc35-486b1c203de5.png?imageMogr2/format/webp)
 
 When you see **`hello world`** at the end, you are done. After printing its info, the app enters a resident loop and keeps running; to stop it, press `Ctrl + C` or close the terminal.
 
@@ -167,7 +167,7 @@ Beyond the program itself, the IDE can push your project's **resource files** �
 1. Put the resource files in the project's `source/embedded/resources/` directory (you can create subdirectories; the IDE uploads recursively and preserves the structure).
 2. Run **`TuyaOpen: Upload Resources to Board`** from the command palette (`Ctrl+Shift+P`), or click the **`Upload Resources`** button.
 
-   ![Resources directory source/embedded/resources/ and the "Upload Resources to Board" command](/img/ide/get-started/linux-board-upload-resources.webp)
+   ![Resources directory source/embedded/resources/ and the "Upload Resources to Board" command](https://images.tuyacn.com/fe-static/docs/img/d5be3e52-9f0a-4d1d-a297-2a57e476623a.png?imageMogr2/format/webp)
 
 The resources land under `<remote directory>/resources/` on the board (default `~/tuyaopen-apps/<project name>/resources/`); for example, a local `resources/hero.glb` becomes `~/tuyaopen-apps/<project name>/resources/hero.glb` on the board.
 
@@ -183,7 +183,7 @@ When `source/embedded/resources/` is empty, the IDE reports "no resource files" 
 
 Besides the Raspberry Pi (ARM/aarch64), the IDE also supports **Ubuntu** as a Linux deploy target — it is an **X86_64** "Linux board". The flow is identical to the Raspberry Pi (both are cross-deploy: build the ELF → deploy over SSH → run); only the build target's architecture differs. When creating the project, pick **Ubuntu** as the board type, then follow from Step 2 onward.
 
-   ![Resources directory source/embedded/resources/ and the "Upload Resources to Board" command](/img/ide/get-started/linux-board-upload-resources.webp)
+   ![Resources directory source/embedded/resources/ and the "Upload Resources to Board" command](https://images.tuyacn.com/fe-static/docs/img/d5be3e52-9f0a-4d1d-a297-2a57e476623a.png?imageMogr2/format/webp)
 
 Why use it for debugging:
 

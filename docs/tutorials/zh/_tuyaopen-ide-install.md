@@ -52,15 +52,15 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 
 1. 打开 Cursor（此处作为演示），把提示词输入 Agent。
 
-   ![在 Cursor Agent 中粘贴安装提示词](/img/ide/get-started/install-prompt-in-cursor-zh.webp)
+   ![在 Cursor Agent 中粘贴安装提示词](https://images.tuyacn.com/fe-static/docs/img/770f7e90-253c-4918-89fe-5f5176ae9270.png?imageMogr2/format/webp)
 
 2. 执行完成后，打开 Cursor。在**扩展**视图里能看到 **TuyaOpen IDE** 已安装并启用。
 
-   ![扩展面板中 TuyaOpen IDE 显示为已启用](/img/ide/get-started/extensions-panel-tuyaopen-enabled-zh.webp)
+   ![扩展面板中 TuyaOpen IDE 显示为已启用](https://images.tuyacn.com/fe-static/docs/img/655ab202-44b6-42ff-95d8-d84e890db5fc.png?imageMogr2/format/webp)
 
 3. 点击窗口下栏右侧的 **TuyaOpen**，即可开始使用。
 
-   ![编辑器状态栏的 TuyaOpen 入口](/img/ide/get-started/install-status-bar-tuyaopen-zh.webp)
+   ![编辑器状态栏的 TuyaOpen 入口](https://images.tuyacn.com/fe-static/docs/img/94a6bc47-dfe5-4507-a0e1-461d6ceaf863.png?imageMogr2/format/webp)
 
 :::note
 提示词里的下载链接会指向**最新版本**的 `.vsix`。Agent 收到后会自动完成「下载 → 安装 → 重新加载」全流程，无需手动操作。
@@ -76,11 +76,11 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 
 1. 打开 [TuyaOpen IDE 官网页面](/tuyaopen-ide)，点击**安装插件**。
 
-   ![官网 TuyaOpen IDE 页面上的安装插件按钮](/img/ide/get-started/official-site-install-extension-zh.webp)
+   ![官网 TuyaOpen IDE 页面上的安装插件按钮](https://images.tuyacn.com/fe-static/docs/img/c82a6480-f298-409c-a94e-d6c7b3b8f6da.png?imageMogr2/format/webp)
 
 2. 在安装对话框中，点击**下载 .vsix**，下载最新安装包。
 
-   ![安装对话框中的下载 .vsix 按钮](/img/ide/get-started/official-site-download-vsix-zh.webp)
+   ![安装对话框中的下载 .vsix 按钮](https://images.tuyacn.com/fe-static/docs/img/240bcbb0-7ff5-4335-8a45-909bdf8189a8.png?imageMogr2/format/webp)
 
 3. 打开 VS Code，进入**扩展**视图 —— `Ctrl+Shift+X`（macOS 为 `⌘+Shift+X`）。
 
@@ -88,7 +88,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 
 5. 选择「从 VSIX 安装…」，选中刚刚下载的文件。
 
-   ![从扩展面板菜单安装 VSIX](/img/ide/get-started/install-vsix-vscode-menu-zh.webp)
+   ![从扩展面板菜单安装 VSIX](https://images.tuyacn.com/fe-static/docs/img/de49f2c4-4069-45a2-8e0d-ede08afb7769.png?imageMogr2/format/webp)
 
 6. 根据提示重新加载编辑器，即可开始使用。
 
@@ -102,7 +102,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 
 1. **命令面板有 TuyaOpen 命令**：按 `Ctrl+Shift+P`（macOS：`⌘+Shift+P`），输入 `TuyaOpen`，能看到一组 TuyaOpen 命令。
 
-   ![命令面板中的 TuyaOpen 命令](/img/ide/get-started/command-palette-tuyaopen-commands-zh.webp)
+   ![命令面板中的 TuyaOpen 命令](https://images.tuyacn.com/fe-static/docs/img/bf85bf2a-1c5f-45f1-80ef-bf67865f482b.png?imageMogr2/format/webp)
 
 2. **扩展已启用**：在扩展视图（`Ctrl+Shift+X`）中找到 "TuyaOpen IDE"，状态为「已启用」。
 

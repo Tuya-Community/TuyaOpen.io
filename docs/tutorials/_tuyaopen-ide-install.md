@@ -53,15 +53,15 @@ window so the extension activates.
 
 1. Open Cursor (used here as the demo), and paste the prompt into the agent.
 
-   ![Pasting the install prompt into the Cursor agent](/img/ide/get-started/install-prompt-in-cursor.webp)
+   ![Pasting the install prompt into the Cursor agent](https://images.tuyacn.com/fe-static/docs/img/4976c2c9-d779-4676-9dd2-2aec6c111935.png?imageMogr2/format/webp)
 
 2. When it finishes, open Cursor. In the **Extensions** view you can see that **TuyaOpen IDE** is installed and enabled.
 
-   ![TuyaOpen IDE shown as installed and enabled in the Extensions panel](/img/ide/get-started/extensions-panel-tuyaopen-enabled.webp)
+   ![TuyaOpen IDE shown as installed and enabled in the Extensions panel](https://images.tuyacn.com/fe-static/docs/img/e92d5cd3-5c2e-4888-82e7-d25d6ccf7df3.png?imageMogr2/format/webp)
 
 3. Click **TuyaOpen** on the right side of the bottom status bar to start using it.
 
-   ![TuyaOpen entry point in the editor status bar](/img/ide/get-started/install-status-bar-tuyaopen.webp)
+   ![TuyaOpen entry point in the editor status bar](https://images.tuyacn.com/fe-static/docs/img/4cd1d67c-6dac-4f48-9744-f35661d6902d.png?imageMogr2/format/webp)
 
 :::note
 The download link in the prompt points to the **latest** version of the `.vsix`. The agent runs the whole download → install → reload flow with no manual steps.
@@ -77,11 +77,11 @@ Get the `.vsix` from the official TuyaOpen IDE site so you always receive the **
 
 1. Open the [TuyaOpen IDE page](/tuyaopen-ide) and click **Install Extension**.
 
-   ![Install Extension button on the official TuyaOpen IDE page](/img/ide/get-started/official-site-install-extension.webp)
+   ![Install Extension button on the official TuyaOpen IDE page](https://images.tuyacn.com/fe-static/docs/img/ac79d779-7849-48dd-ab9a-46c1e71d9ed7.png?imageMogr2/format/webp)
 
 2. In the install dialog, click **Download .vsix** to download the latest installer.
 
-   ![Download .vsix button in the install dialog](/img/ide/get-started/official-site-download-vsix.webp)
+   ![Download .vsix button in the install dialog](https://images.tuyacn.com/fe-static/docs/img/ca7c9352-9d60-4f53-8756-1cc61b9765e6.png?imageMogr2/format/webp)
 
 3. Open VS Code and go to the **Extensions** view — `Ctrl+Shift+X` (macOS: `⌘+Shift+X`).
 
@@ -89,7 +89,7 @@ Get the `.vsix` from the official TuyaOpen IDE site so you always receive the **
 
 5. Choose **Install from VSIX…** and select the file you just downloaded.
 
-   ![Installing a VSIX from the Extensions panel menu](/img/ide/get-started/install-vsix-vscode-menu.webp)
+   ![Installing a VSIX from the Extensions panel menu](https://images.tuyacn.com/fe-static/docs/img/e1e26e98-8086-4863-b36d-c3618bce098c.png?imageMogr2/format/webp)
 
 6. Reload the editor when prompted, then start using it.
 
@@ -103,7 +103,7 @@ After reloading the editor, confirm two things:
 
 1. **TuyaOpen commands appear in the Command Palette** — press `Ctrl+Shift+P` (macOS: `⌘+Shift+P`), type `TuyaOpen`, and you should see a group of TuyaOpen commands.
 
-   ![TuyaOpen commands in the Command Palette](/img/ide/get-started/command-palette-tuyaopen-commands.webp)
+   ![TuyaOpen commands in the Command Palette](https://images.tuyacn.com/fe-static/docs/img/b36c121a-bc4b-456a-bb67-b36722f49f31.png?imageMogr2/format/webp)
 
 2. **The extension is enabled** — in the Extensions view (`Ctrl+Shift+X`), find "TuyaOpen IDE" and confirm its status is **Enabled**.
 
