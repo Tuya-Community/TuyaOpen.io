@@ -240,11 +240,13 @@ const config = {
           title: 'Documentation',
           items: [
             {
-              // Points at the Learn hub's quick-start tracks, not straight into
-              // /docs/quick-start — the tracks are the front door that decides
-              // between the IDE and SDK routes; the docs funnel is one of them.
+              // Points at the Learn hub, not straight into /docs/quick-start —
+              // the tracks there are the front door that decides between the
+              // IDE and SDK routes; the docs funnel is one of them. Lands on
+              // the page rather than the #quick-start section, matching the
+              // home page's Quick Start button.
               label: 'Quick Start',
-              to: '/learn#quick-start',
+              to: '/learn',
             },
             {
               label: 'About TuyaOpen',
