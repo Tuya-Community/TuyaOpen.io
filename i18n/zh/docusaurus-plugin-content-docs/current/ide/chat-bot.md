@@ -1,7 +1,7 @@
 ---
 title: "your_chat_bot —— 云端 AI Agent"
 description: "端到端搭建经典 AI + IoT 项目：从示例创建、编译烧录、授权到配网，讲清 IDE 中云端 IoT / AI Agent 流程。"
-sidebar_label: "实战二 —— your_chat_bot"
+sidebar_label: "04 实战二 —— your_chat_bot"
 sidebar_position: 4
 keywords:
   - TuyaOpen IDE

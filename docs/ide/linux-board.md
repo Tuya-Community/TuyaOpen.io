@@ -1,7 +1,7 @@
 ---
 title: "Linux board Hello World"
 description: "Deploy the simplest Hello World to a Linux board such as a Raspberry Pi from the IDE — build, deploy over SSH, and run. The cross-deploy workflow for Linux targets."
-sidebar_label: "Practice 4 — Linux board"
+sidebar_label: "06 Practice 4 — Linux board"
 sidebar_position: 6
 keywords:
   - TuyaOpen IDE

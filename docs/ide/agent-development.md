@@ -1,7 +1,7 @@
 ---
 title: "Agent Development Guide"
 description: "End-to-end workflow for developing, deploying, and binding TuyaOpen IoT Agents across device and cloud using the TuyaOpen IDE."
-sidebar_label: "Agent development"
+sidebar_label: "08 Agent development"
 sidebar_position: 8
 keywords:
   - TuyaOpen IDE

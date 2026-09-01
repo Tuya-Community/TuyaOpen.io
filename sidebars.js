@@ -599,21 +599,26 @@ const tyutoolSidebar = [
 ]
 
 // =============================================================================
-// TuyaOpen IDE — the VS Code / Cursor extension. Concept, install, then the
-// four practice tutorials in the order a newcomer works through them, then the
-// two reference pages. This series lived on /learn as hand-built pages until
-// the prose moved into /docs/ide; the ordering here is that original path.
+// TuyaOpen IDE — the VS Code / Cursor extension. Concept, install, the four
+// practice tutorials in the order a newcomer works through them, then the two
+// reference pages. This series lived on /learn as hand-built pages until the
+// prose moved into /docs/ide; the ordering here is that original path.
+//
+// Flat and numbered, like Getting Started: the series is meant to be read
+// straight through, and the 01–08 prefixes (in each doc's `sidebar_label`)
+// make that order visible without the reader having to infer it. Every label
+// comes from front matter rather than being written here, because a label
+// written in this file is English-only until someone adds a matching entry to
+// i18n/zh/docusaurus-plugin-content-docs/current.json — front matter is
+// already per-locale, so the zh sidebar stays translated for free.
 // =============================================================================
 const ideSidebar = [
-  { type: 'doc', id: 'ide/index', label: 'What TuyaOpen IDE is' },
+  'ide/index',
   'ide/install',
-  {
-    type: 'category',
-    label: 'Practice series',
-    collapsed: false,
-    items: ['ide/hello-world', 'ide/chat-bot', 'ide/miniapp-panel', 'ide/linux-board'],
-  },
-  divider('Build with the agent', '用 Agent 开发'),
+  'ide/hello-world',
+  'ide/chat-bot',
+  'ide/miniapp-panel',
+  'ide/linux-board',
   'ide/vibe-coding',
   'ide/agent-development',
 ]

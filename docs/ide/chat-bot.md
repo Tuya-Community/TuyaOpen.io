@@ -1,7 +1,7 @@
 ---
 title: "your_chat_bot — cloud AI Agent"
 description: "Build the classic AI + IoT project end-to-end: create from an example, build and flash, authorize, and pair — the cloud IoT / AI Agent flow in the IDE."
-sidebar_label: "Practice 2 — your_chat_bot"
+sidebar_label: "04 Practice 2 — your_chat_bot"
 sidebar_position: 4
 keywords:
   - TuyaOpen IDE

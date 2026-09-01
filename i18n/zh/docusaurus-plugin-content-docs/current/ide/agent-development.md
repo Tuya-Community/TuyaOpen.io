@@ -1,7 +1,7 @@
 ---
 title: "Agent 开发指南"
 description: "使用 TuyaOpen IDE 端到端地开发、部署和绑定 TuyaOpen IoT 智能体的完整工作流。"
-sidebar_label: "Agent 开发指南"
+sidebar_label: "08 Agent 开发指南"
 sidebar_position: 8
 keywords:
   - TuyaOpen IDE

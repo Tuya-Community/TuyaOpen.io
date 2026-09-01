@@ -1,7 +1,7 @@
 ---
 title: "Vibe Coding skills"
 description: "Skills you can install inside TuyaOpen IDE to let the AI Agent run the development loop — grouped by scenario with ready-to-paste prompts."
-sidebar_label: "Vibe Coding skills"
+sidebar_label: "07 Vibe Coding skills"
 sidebar_position: 7
 keywords:
   - TuyaOpen IDE

@@ -1,7 +1,7 @@
 ---
 title: "Vibe Coding 技能"
 description: "可在 TuyaOpen IDE 内安装的 skills，让 AI Agent 跑通开发循环——按场景分组，附可直接复制的提示词。"
-sidebar_label: "Vibe Coding 技能"
+sidebar_label: "07 Vibe Coding 技能"
 sidebar_position: 7
 keywords:
   - TuyaOpen IDE

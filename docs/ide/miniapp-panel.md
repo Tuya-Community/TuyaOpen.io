@@ -1,7 +1,7 @@
 ---
 title: "Mini-app panel"
 description: "Build a device control panel that runs in the phone app and cooperates with the firmware over DP (Data Points) — create, bind, preview, and publish."
-sidebar_label: "Practice 3 — mini-app panel"
+sidebar_label: "05 Practice 3 — mini-app panel"
 sidebar_position: 5
 keywords:
   - TuyaOpen IDE

@@ -1,7 +1,7 @@
 ---
 title: "Hello World —— IDE 基础操作"
 description: "不写一行代码跑通官方示例，掌握 TuyaOpen IDE 核心链路：选板 → 编译 → 烧录 → 看日志。"
-sidebar_label: "实战一 —— Hello World"
+sidebar_label: "03 实战一 —— Hello World"
 sidebar_position: 3
 keywords:
   - TuyaOpen IDE

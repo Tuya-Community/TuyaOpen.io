@@ -1,7 +1,7 @@
 ---
 title: "安装 TuyaOpen IDE"
 description: "先安装 Git，再在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或从官网下载 .vsix 手动安装，然后验证已启用。"
-sidebar_label: "安装"
+sidebar_label: "02 安装 TuyaOpen IDE"
 sidebar_position: 2
 keywords:
   - TuyaOpen IDE

@@ -1,7 +1,7 @@
 ---
 title: "What is TuyaOpen IDE"
 description: "TuyaOpen IDE is an AI-era embedded development environment: describe the device you want in natural language, and the AI Agent generates firmware, configures the cloud, and wires up the app."
-sidebar_label: "Overview"
+sidebar_label: "01 What TuyaOpen IDE is"
 sidebar_position: 1
 keywords:
   - TuyaOpen IDE

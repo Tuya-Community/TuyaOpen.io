@@ -1,7 +1,7 @@
 ---
 title: "Linux 板 Hello World"
 description: "用 IDE 把最简单的 Hello World 一键部署到树莓派这类 Linux 开发板——编译、SSH 部署、运行，跑通 Linux 板的 cross-deploy 工作流。"
-sidebar_label: "实战四 —— Linux 板"
+sidebar_label: "06 实战四 —— Linux 板"
 sidebar_position: 6
 keywords:
   - TuyaOpen IDE

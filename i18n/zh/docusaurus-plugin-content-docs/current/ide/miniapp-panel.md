@@ -1,7 +1,7 @@
 ---
 title: "小程序面板"
 description: "做一个跑在手机 App 里、通过 DP 与固件联动的设备控制面板——创建、绑定、预览、发布。"
-sidebar_label: "实战三 —— 小程序面板"
+sidebar_label: "05 实战三 —— 小程序面板"
 sidebar_position: 5
 keywords:
   - TuyaOpen IDE

@@ -1,7 +1,7 @@
 ---
 title: "Install TuyaOpen IDE"
 description: "Install Git, then add the TuyaOpen IDE extension to VS Code or Cursor — by letting an AI coding agent do it, or from the official .vsix — then verify it is enabled."
-sidebar_label: "Install"
+sidebar_label: "02 Install TuyaOpen IDE"
 sidebar_position: 2
 keywords:
   - TuyaOpen IDE

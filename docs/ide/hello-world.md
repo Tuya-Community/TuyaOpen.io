@@ -1,7 +1,7 @@
 ---
 title: "Hello World — IDE basics"
 description: "Run an official example with zero code and learn the core TuyaOpen IDE chain: pick board, build, flash, and read logs."
-sidebar_label: "Practice 1 — Hello World"
+sidebar_label: "03 Practice 1 — Hello World"
 sidebar_position: 3
 keywords:
   - TuyaOpen IDE

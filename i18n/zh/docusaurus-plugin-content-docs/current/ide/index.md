@@ -1,7 +1,7 @@
 ---
 title: "TuyaOpen IDE 是什么"
 description: "TuyaOpen IDE 是面向 AI 时代的嵌入式开发环境：用自然语言描述你要的设备，AI Agent 就会生成固件、配置云端、打通 App。"
-sidebar_label: "概览"
+sidebar_label: "01 TuyaOpen IDE 是什么"
 sidebar_position: 1
 keywords:
   - TuyaOpen IDE
