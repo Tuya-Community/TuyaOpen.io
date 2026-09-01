@@ -270,7 +270,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-overview',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-overview',
+      href: '/docs/ide',
       title: 'What is TuyaOpen IDE',
       description:
         'Understand TuyaOpen IDE — the AI-era embedded dev environment where you describe a device in natural language and the Agent generates firmware, configures the cloud, and wires up the app.',
@@ -281,7 +281,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-install',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-install',
+      href: '/docs/ide/install',
       title: 'Install TuyaOpen IDE',
       description:
         'Install the TuyaOpen IDE extension in VS Code or Cursor — via an AI coding agent or the manual .vsix — then verify it is enabled.',
@@ -293,7 +293,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-1',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-1',
+      href: '/docs/ide/hello-world',
       title: 'Practice 1: Hello World',
       description:
         'Run an official example with zero code and learn the core IDE chain — pick board, build, flash, and read logs.',
@@ -305,7 +305,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-2',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-2',
+      href: '/docs/ide/chat-bot',
       title: 'Practice 2: your_chat_bot',
       description:
         'Build the classic AI + IoT project end-to-end — create, build, flash, authorize, and pair — the cloud IoT / AI Agent flow in the IDE.',
@@ -317,7 +317,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-3',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-3',
+      href: '/docs/ide/miniapp-panel',
       title: 'Practice 3: mini-app panel',
       description:
         'Build a device control panel that runs in the phone app and cooperates with firmware over DP — create, bind, preview, and publish.',
@@ -329,7 +329,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-4',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-4',
+      href: '/docs/ide/linux-board',
       title: 'Practice 4: Linux board Hello World',
       description:
         'Deploy the simplest Hello World to a Linux board (Raspberry Pi) from the IDE — build, deploy over SSH, and run. The cross-deploy workflow for Linux targets.',
@@ -341,7 +341,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-vibe-coding',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-vibe-coding',
+      href: '/docs/ide/vibe-coding',
       title: 'Vibe Coding skills',
       description:
         'Copy-paste prompts for the skills that install inside TuyaOpen IDE — hardware peripherals, IoT products, platform ops, build/flash/debug, and panels.',
@@ -351,8 +351,8 @@ export const tutorials = {
     {
       id: 'tuyaopen-ide-agent-dev',
       category: 'ide',
-      kind: 'interactive',
-      href: '/learn/tuyaopen-ide-agent-dev',
+      kind: 'markdown',
+      href: '/docs/ide/agent-development',
       title: 'Agent Development Guide',
       description:
         'Complete end-to-end workflow for developing, deploying, and binding TuyaOpen IoT Agents across device and cloud using the TuyaOpen IDE.',
@@ -739,7 +739,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-overview',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-overview',
+      href: '/docs/ide',
       title: 'TuyaOpen IDE 是什么',
       description:
         '了解 TuyaOpen IDE——面向 AI 时代的嵌入式开发环境，你用自然语言描述设备，Agent 就生成固件、配置云端、打通 App。',
@@ -750,7 +750,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-install',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-install',
+      href: '/docs/ide/install',
       title: '安装 TuyaOpen IDE',
       description:
         '在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或用手动 .vsix 安装，然后验证已启用。',
@@ -762,7 +762,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-1',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-1',
+      href: '/docs/ide/hello-world',
       title: '实战一：Hello World',
       description: '不写一行代码跑通官方示例，掌握 IDE 核心链路——选板、编译、烧录、看日志。',
       tags: ['setup'],
@@ -773,7 +773,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-2',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-2',
+      href: '/docs/ide/chat-bot',
       title: '实战二：your_chat_bot',
       description: '端到端搭建经典 AI + IoT 项目——创建、编译、烧录、授权、配网，讲清 IDE 中云端 IoT / AI Agent 流程。',
       tags: ['setup'],
@@ -784,7 +784,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-3',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-3',
+      href: '/docs/ide/miniapp-panel',
       title: '实战三：小程序面板',
       description: '做一个跑在手机 App 里、通过 DP 与固件联动的设备控制面板——创建、绑定、预览、发布。',
       tags: ['setup'],
@@ -795,7 +795,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-practice-4',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-practice-4',
+      href: '/docs/ide/linux-board',
       title: '实战四：Linux 板 Hello World',
       description:
         '用 IDE 把最简单的 Hello World 一键部署到树莓派这类 Linux 开发板——编译、SSH 部署、运行，跑通 Linux 板的 cross-deploy 工作流。',
@@ -807,7 +807,7 @@ export const tutorials = {
       id: 'tuyaopen-ide-vibe-coding',
       category: 'ide',
       kind: 'markdown',
-      href: '/learn/tuyaopen-ide-vibe-coding',
+      href: '/docs/ide/vibe-coding',
       title: 'Vibe Coding 技能',
       description: '可在 TuyaOpen IDE 内安装的 skills 提示词——硬件外设、IoT 产品、平台操作、构建/烧录/调试、面板。',
       level: 'beginner',
@@ -816,8 +816,8 @@ export const tutorials = {
     {
       id: 'tuyaopen-ide-agent-dev',
       category: 'ide',
-      kind: 'interactive',
-      href: '/learn/tuyaopen-ide-agent-dev',
+      kind: 'markdown',
+      href: '/docs/ide/agent-development',
       title: 'Agent 开发指南',
       description: '使用 TuyaOpen IDE 进行端到端的开发、部署和绑定 TuyaOpen IoT 智能体的完整工作流。',
       tags: ['setup'],

@@ -1,22 +1,27 @@
+---
+title: "Linux board Hello World"
+description: "Deploy the simplest Hello World to a Linux board such as a Raspberry Pi from the IDE — build, deploy over SSH, and run. The cross-deploy workflow for Linux targets."
+sidebar_label: "Practice 4 — Linux board"
+sidebar_position: 6
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - embedded development
+---
+
 This is the **Linux board** edition of Practice 1 — deploy the simplest **Hello World** to a Linux board like a Raspberry Pi, in one click from the IDE.
 
-<section id="prereq" className="section">
-
-## Prerequisites
+## Prerequisites {/* #prereq */}
 
 - A **Raspberry Pi 4B / 5** (or any Linux board, e.g. Taishan Pi 3 or Dongshan Pi A1; this guide uses the Raspberry Pi), with an OS flashed, internet access, and **SSH enabled**.
 - Your computer and the board are on the **same LAN** and you can `ping` its IP.
-- The extension is installed and the SDK is initialized — see [Install TuyaOpen IDE](/learn/tuyaopen-ide-install).
+- The extension is installed and the SDK is initialized — see [Install TuyaOpen IDE](./install.md).
 
 :::note
 For a Linux board, the IDE uses **cross-deploy**: it compiles an executable on your computer, then pushes it to the board over SSH and runs it. No USB connection to the board is needed — just working network and SSH.
 :::
 
-</section>
-
-<section id="diff" className="section">
-
-## How a Linux board differs from an MCU board
+## How a Linux board differs from an MCU board {/* #diff */}
 
 The `T5AI_Board` from Practice 1 is flashed over serial. **A Linux board has no serial-flashing step** — once the IDE detects that the target is a Linux board, it automatically repurposes the same set of toolbar buttons:
 
@@ -29,11 +34,7 @@ The `T5AI_Board` from Practice 1 is flashed over serial. **A Linux board has no 
 
 The Linux board's Project Details page also gains a **Board connection** section (for SSH info).
 
-</section>
-
-<section id="step-1" className="section">
-
-## Step 1: Create a Linux board project
+## Step 1: Create a Linux board project {/* #step-1 */}
 
 1. Click the Board Catalogue icon in the left activity bar to browse the supported boards, chips, and SoC platforms with their full specs.
 
@@ -47,11 +48,7 @@ The Linux board's Project Details page also gains a **Board connection** section
 
    ![Linux board project detail — top buttons switch to Deploy/Run, board connection form appears](https://images.tuyacn.com/fe-static/docs/img/3be9720c-1f85-4492-98bc-042bcb72cc44.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-2" className="section">
-
-## Step 2: Configure the SSH connection
+## Step 2: Configure the SSH connection {/* #step-2 */}
 
 Before filling in the form, make sure the board is powered on, on the same LAN as you, has SSH running, and that you have a working username and password.
 
@@ -67,8 +64,6 @@ Fill in the **Board connection** form:
 | **Login method** | Choose `Password` (recommended); advanced users can pick `Private key` |
 | **Password** | The matching password |
 | **Remote directory** | Where the app lives on the board. Defaults to `~/tuyaopen-apps/<project name>`; usually left as is |
-
-
 
 **How to choose a login method**: the "Login method" field decides which SSH authentication the IDE uses to reach the board.
 
@@ -91,11 +86,7 @@ Seeing `SSH OK` plus the kernel info and the login user means you are connected.
 The password goes into the editor's secure credential store (not on disk); the rest of the connection info lives in the project's `.tuyaopen/ide/deploy.json`. You can also configure it via the command palette command `TuyaOpen: Configure Board SSH / Deploy`.
 :::
 
-</section>
-
-<section id="step-3" className="section">
-
-## Step 3: Build
+## Step 3: Build {/* #step-3 */}
 
 Click **Build** at the top. On success it produces a Linux executable (`.elf`), which the Project Details firmware area lists as "Application (ELF)".
 
@@ -115,11 +106,7 @@ Click **Build** at the top. On success it produces a Linux executable (`.elf`), 
 
 Hello World depends on no model or cloud credentials, so the build output is a clean Linux executable — no auth code or extra assets required.
 
-</section>
-
-<section id="step-4" className="section">
-
-## Step 4: Deploy
+## Step 4: Deploy {/* #step-4 */}
 
 Click **Deploy** at the top. The IDE deploys to the remote target machine over an **SSH channel**:
 
@@ -136,11 +123,7 @@ Click **Deploy** at the top. The IDE deploys to the remote target machine over a
 If it says ".elf file not found — build the project first", go back to Step 3 and rebuild.
 :::
 
-</section>
-
-<section id="step-5" className="section">
-
-## Step 5: Run
+## Step 5: Run {/* #step-5 */}
 
 Click **Run** at the top (the same spot as the MCU board's Monitor button). The IDE opens a dedicated terminal, logs into the board over `ssh -t`, and runs the executable in the foreground; its output streams here in real time.
 
@@ -156,11 +139,7 @@ Click **Run** at the top (the same spot as the MCU board's Monitor button). The 
 
 When you see **`hello world`** at the end, you are done. After printing its info, the app enters a resident loop and keeps running; to stop it, press `Ctrl + C` or close the terminal.
 
-</section>
-
-<section id="resources" className="section">
-
-## Bonus: push resource files (images, videos, …) to the board
+## Bonus: push resource files (images, videos, …) to the board {/* #resources */}
 
 Beyond the program itself, the IDE can push your project's **resource files** — images, videos, 3D models, and so on — to the board in one click, saving you a manual `scp`.
 
@@ -175,11 +154,7 @@ The resources land under `<remote directory>/resources/` on the board (default `
 When `source/embedded/resources/` is empty, the IDE reports "no resource files" and uploads nothing. This feature is for Linux boards only (cross-deploy).
 :::
 
-</section>
-
-<section id="ubuntu" className="section">
-
-## Debug with Ubuntu (X86)
+## Debug with Ubuntu (X86) {/* #ubuntu */}
 
 Besides the Raspberry Pi (ARM/aarch64), the IDE also supports **Ubuntu** as a Linux deploy target — it is an **X86_64** "Linux board". The flow is identical to the Raspberry Pi (both are cross-deploy: build the ELF → deploy over SSH → run); only the build target's architecture differs. When creating the project, pick **Ubuntu** as the board type, then follow from Step 2 onward.
 
@@ -195,21 +170,13 @@ Why use it for debugging:
 The build output is an X86_64 ELF and only runs on X86 Ubuntu; when porting to a real ARM board, remember to switch back to that board type and rebuild — different architectures are not interchangeable.
 :::
 
-</section>
-
-<section id="faq" className="section">
-
-## FAQ
+## FAQ {/* #faq */}
 
 - **You want password-free login / it says sshpass is missing** — for non-interactive use under the password method, install `sshpass` on your machine (macOS: Homebrew; Linux: package manager; Windows: WSL); once detected, the IDE reuses the stored password automatically.
 - **Deploy says ".elf file not found"** — go back to Step 3 and build first, and confirm the artifact was produced.
 - **You changed code and need to redeploy** — order: Build → Deploy → Run.
 
-</section>
-
-<section id="next" className="section">
-
-## Next step
+## Next step {/* #next */}
 
 You have deployed a program to a Linux board in one click and run through the Linux board's "build → deploy → run" workflow. Go deeper:
 
@@ -218,6 +185,5 @@ You have deployed a program to a Linux board in one click and run through the Li
 | Drive GPIO / I2C / SPI / UART peripherals on the Raspberry Pi | [Raspberry Pi peripheral examples](/docs/hardware/Linux/raspberry-pi/Examples/peripherals-raspberry-pi) |
 | Switch to another Linux board (Dongshan Pi A1 / Taishan Pi 3 / Ubuntu) | Just pick the corresponding board type when creating the project; the flow is the same |
 | Raspberry Pi 40-pin pinout reference | [Raspberry Pi 5 GPIO Reference](/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi) |
-| Go further: deploy a cloud-connected AI voice app | [Practice 2: your_chat_bot](/learn/tuyaopen-ide-practice-2) |
+| Go further: deploy a cloud-connected AI voice app | [Practice 2: your_chat_bot](./chat-bot.md) |
 
-</section>

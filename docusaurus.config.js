@@ -155,9 +155,7 @@ const config = {
           items: [
             { to: '/documentation', label: 'All docs' },
             { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
-            // The IDE has no sidebar — its material is the product page plus
-            // the tutorial series on /learn.
-            { to: '/tuyaopen-ide', label: 'TuyaOpen IDE' },
+            { type: 'docSidebar', sidebarId: 'ideSidebar', label: 'TuyaOpen IDE' },
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
             { type: 'docSidebar', sidebarId: 'tclawSidebar', label: 'TClaw' },
@@ -420,6 +418,16 @@ const config = {
             from: '/tyutool-guide',
             to: '/docs/tyutool',
           },
+          // The TuyaOpen IDE series moved off /learn into its own docs sidebar,
+          // and the slugs went from positional (practice-1) to descriptive.
+          { from: '/learn/tuyaopen-ide-overview', to: '/docs/ide' },
+          { from: '/learn/tuyaopen-ide-install', to: '/docs/ide/install' },
+          { from: '/learn/tuyaopen-ide-practice-1', to: '/docs/ide/hello-world' },
+          { from: '/learn/tuyaopen-ide-practice-2', to: '/docs/ide/chat-bot' },
+          { from: '/learn/tuyaopen-ide-practice-3', to: '/docs/ide/miniapp-panel' },
+          { from: '/learn/tuyaopen-ide-practice-4', to: '/docs/ide/linux-board' },
+          { from: '/learn/tuyaopen-ide-vibe-coding', to: '/docs/ide/vibe-coding' },
+          { from: '/learn/tuyaopen-ide-agent-dev', to: '/docs/ide/agent-development' },
           {
             from: '/docs/hardware-specific/t5ai-peripheral-mapping',
             to: '/docs/hardware/tuya-t5/t5ai-peripheral-mapping',

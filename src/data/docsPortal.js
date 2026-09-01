@@ -109,10 +109,6 @@ export const areas = [
   {
     key: 'ide',
     accent: '#a855f7',
-    // The IDE has no /docs sidebar — its material is the tutorial series on
-    // /learn plus the product page. Linked as-is rather than stubbed into
-    // /docs, so there is one copy of each page and no redirect to maintain.
-    external: true,
     en: {
       name: 'TuyaOpen IDE',
       tagline: 'Firmware, cloud and app in one',
@@ -123,37 +119,34 @@ export const areas = [
       tagline: '固件 / 云端 Agent / 面板 App 三端合一',
       blurb: '开发板目录、一键编译烧录，以及能陪你写代码的 AI Agent。',
     },
-    entry: '/tuyaopen-ide',
+    entry: 'ide',
     groups: [
       {
         en: 'Get going',
         zh: '开始使用',
         links: [
+          // The product page is not a doc — a whole path, used as written.
           { id: '/tuyaopen-ide', en: 'What the IDE offers', zh: 'IDE 能力总览' },
-          { id: '/learn/tuyaopen-ide-overview', en: 'What TuyaOpen IDE is', zh: 'TuyaOpen IDE 是什么' },
-          { id: '/learn/tuyaopen-ide-install', en: 'Install the IDE', zh: '安装 TuyaOpen IDE' },
+          { id: 'ide', en: 'What TuyaOpen IDE is', zh: 'TuyaOpen IDE 是什么' },
+          { id: 'ide/install', en: 'Install the IDE', zh: '安装 TuyaOpen IDE' },
         ],
       },
       {
         en: 'Practice series',
         zh: '实战系列',
         links: [
-          { id: '/learn/tuyaopen-ide-practice-1', en: 'Practice 1 — Hello World', zh: '实战一 —— Hello World' },
-          { id: '/learn/tuyaopen-ide-practice-2', en: 'Practice 2 — your_chat_bot', zh: '实战二 —— your_chat_bot' },
-          { id: '/learn/tuyaopen-ide-practice-3', en: 'Practice 3 — mini app panel', zh: '实战三 —— 小程序面板' },
-          {
-            id: '/learn/tuyaopen-ide-practice-4',
-            en: 'Practice 4 — Hello World on Linux',
-            zh: '实战四 —— Linux 板 Hello World',
-          },
+          { id: 'ide/hello-world', en: 'Practice 1 — Hello World', zh: '实战一 —— Hello World' },
+          { id: 'ide/chat-bot', en: 'Practice 2 — your_chat_bot', zh: '实战二 —— your_chat_bot' },
+          { id: 'ide/miniapp-panel', en: 'Practice 3 — mini app panel', zh: '实战三 —— 小程序面板' },
+          { id: 'ide/linux-board', en: 'Practice 4 — Hello World on Linux', zh: '实战四 —— Linux 板 Hello World' },
         ],
       },
       {
         en: 'Build with the agent',
         zh: '用 Agent 开发',
         links: [
-          { id: '/learn/tuyaopen-ide-vibe-coding', en: 'Vibe Coding skills', zh: 'Vibe Coding 技能' },
-          { id: '/learn/tuyaopen-ide-agent-dev', en: 'Agent development guide', zh: 'Agent 开发指南' },
+          { id: 'ide/vibe-coding', en: 'Vibe Coding skills', zh: 'Vibe Coding 技能' },
+          { id: 'ide/agent-development', en: 'Agent development guide', zh: 'Agent 开发指南' },
         ],
       },
     ],

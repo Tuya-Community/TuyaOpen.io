@@ -1,6 +1,15 @@
-<section id="install-git" className="section">
+---
+title: "Install TuyaOpen IDE"
+description: "Install Git, then add the TuyaOpen IDE extension to VS Code or Cursor — by letting an AI coding agent do it, or from the official .vsix — then verify it is enabled."
+sidebar_label: "Install"
+sidebar_position: 2
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - embedded development
+---
 
-## Install Git
+## Install Git {/* #install-git */}
 
 TuyaOpen IDE uses **Git** to clone the TuyaOpen SDK and to install Vibe Coding skills into your project. Install Git once, before you create your first project.
 
@@ -16,11 +25,7 @@ Check that Git is on your PATH:
 git --version
 ```
 
-</section>
-
-<section id="before-install" className="section">
-
-## Before you install
+## Before you install {/* #before-install */}
 
 TuyaOpen IDE is an extension for **VS Code** or **Cursor**. Install one of these host editors first — the same extension package works in both.
 
@@ -33,11 +38,7 @@ TuyaOpen IDE is an extension for **VS Code** or **Cursor**. Install one of these
 Both the VS Code Marketplace and Open VSX search are temporarily unavailable. Install via an AI coding agent, or download the `.vsix` from the official site below — do not expect to find it by searching inside the editor.
 :::
 
-</section>
-
-<section id="ai-agent-install" className="section">
-
-## Method 1: Let an AI agent install it (fastest)
+## Method 1: Let an AI agent install it (fastest) {/* #ai-agent-install */}
 
 Paste the prompt below into **Claude Code, Cursor, Codex, or any coding agent that can run shell commands**. It downloads the latest `.vsix` and installs the extension for you.
 
@@ -67,11 +68,7 @@ window so the extension activates.
 The download link in the prompt points to the **latest** version of the `.vsix`. The agent runs the whole download → install → reload flow with no manual steps.
 :::
 
-</section>
-
-<section id="manual-vsix" className="section">
-
-## Method 2: Download the .vsix from the official site
+## Method 2: Download the .vsix from the official site {/* #manual-vsix */}
 
 Get the `.vsix` from the official TuyaOpen IDE site so you always receive the **latest** version. The same package works in both **VS Code** and **Cursor**.
 
@@ -93,11 +90,7 @@ Get the `.vsix` from the official TuyaOpen IDE site so you always receive the **
 
 6. Reload the editor when prompted, then start using it.
 
-</section>
-
-<section id="verify" className="section">
-
-## Verify the installation
+## Verify the installation {/* #verify */}
 
 After reloading the editor, confirm two things:
 
@@ -107,11 +100,7 @@ After reloading the editor, confirm two things:
 
 2. **The extension is enabled** — in the Extensions view (`Ctrl+Shift+X`), find "TuyaOpen IDE" and confirm its status is **Enabled**.
 
-</section>
-
-<section id="troubleshoot" className="section">
-
-## If installation fails
+## If installation fails {/* #troubleshoot */}
 
 The three most common cases:
 
@@ -119,12 +108,7 @@ The three most common cases:
 - **The extension installs but does not appear** — reload the editor, or restart it completely.
 - **No TuyaOpen commands in the Command Palette** — confirm the extension is **Enabled** (not disabled) in the Extensions view.
 
-</section>
+## Next step {/* #next */}
 
-<section id="next" className="section">
+You are ready to build. Start with [**Practice 1: Hello World**](./hello-world.md) — run an official example with zero code and learn the IDE basics.
 
-## Next step
-
-You are ready to build. Start with [**Practice 1: Hello World**](/learn/tuyaopen-ide-practice-1) — run an official example with zero code and learn the IDE basics.
-
-</section>

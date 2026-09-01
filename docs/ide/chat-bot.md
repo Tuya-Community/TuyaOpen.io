@@ -1,8 +1,17 @@
+---
+title: "your_chat_bot — cloud AI Agent"
+description: "Build the classic AI + IoT project end-to-end: create from an example, build and flash, authorize, and pair — the cloud IoT / AI Agent flow in the IDE."
+sidebar_label: "Practice 2 — your_chat_bot"
+sidebar_position: 4
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - embedded development
+---
+
 This is the classic TuyaOpen **AI + IoT** project. The focus here is the **cloud IoT / AI Agent development flow inside the IDE**.
 
-<section id="modes" className="section">
-
-## Two development modes
+## Two development modes {/* #modes */}
 
 | Mode | Suited for | Steps |
 | --- | --- | --- |
@@ -11,11 +20,7 @@ This is the classic TuyaOpen **AI + IoT** project. The focus here is the **cloud
 
 This practice uses **Basic** mode — fast for beginners and a real taste of three-ends-in-one.
 
-</section>
-
-<section id="step-1" className="section">
-
-## Step 1: Create a project from an example
+## Step 1: Create a project from an example {/* #step-1 */}
 
 1. Click **Demos** in the IDE sidebar, choose **AI voice chatbot**, and click **Create project**.
 2. Select **Tuya T5AI** and the **Tuya T5AI-Board**, plus the 3.5-inch LCD touch screen (optional).
@@ -42,11 +47,7 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 **Why copy?** Copying quickly produces a product with the same features as the default PID. For AI + IoT products it also copies the Agent already bound to that product.
 :::
 
-</section>
-
-<section id="step-2" className="section">
-
-## Step 2: Build and flash
+## Step 2: Build and flash {/* #step-2 */}
 
 1. In **Cloud IoT/Agent Dev** you can see that the cloud product is now bound.
 
@@ -58,11 +59,7 @@ This practice uses **Basic** mode — fast for beginners and a real taste of thr
 
 3. After flashing succeeds, the touch screen lights up.
 
-</section>
-
-<section id="step-3" className="section">
-
-## Step 3: Authorize the device
+## Step 3: Authorize the device {/* #step-3 */}
 
 The license key (UUID + AuthKey) is the credential a device uses to reach the cloud, obtained from the [Tuya IoT Platform](https://platform.tuya.com/).
 
@@ -94,11 +91,7 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 
    ![AI writes the license key to the device](https://images.tuyacn.com/fe-static/docs/img/a49057fc-d645-4865-b8f7-c4fb6a73e002.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-4" className="section">
-
-## Step 4: Pair the device
+## Step 4: Pair the device {/* #step-4 */}
 
 1. Follow the official [device network configuration](/docs/quick-start/device-network-configuration) steps to pair the device.
 2. Once paired, you can switch the AI Agent you talk to from the mini-app panel.
@@ -108,15 +101,10 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 3. Double-tap the board **KEY** button to switch conversation mode. The current project supports the wake words "你好涂鸦" / "Hey Tuya".
 
 :::info
-**Going further — building your own Agent (Advanced mode)**: see the [Agent Development Guide](/learn/tuyaopen-ide-agent-dev).
+**Going further — building your own Agent (Advanced mode)**: see the [Agent Development Guide](./agent-development.md).
 :::
 
-</section>
+## Next step {/* #next */}
 
-<section id="next" className="section">
+You have a cloud-connected device. Continue with [Practice 3: mini-app panel](./miniapp-panel.md) — build the phone control panel for it.
 
-## Next step
-
-You have a cloud-connected device. Continue with [Practice 3: mini-app panel](/learn/tuyaopen-ide-practice-3) — build the phone control panel for it.
-
-</section>

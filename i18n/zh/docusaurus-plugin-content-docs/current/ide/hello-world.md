@@ -1,17 +1,22 @@
+---
+title: "Hello World —— IDE 基础操作"
+description: "不写一行代码跑通官方示例，掌握 TuyaOpen IDE 核心链路：选板 → 编译 → 烧录 → 看日志。"
+sidebar_label: "实战一 —— Hello World"
+sidebar_position: 3
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - 嵌入式开发
+---
+
 这是**最小闭环**——不写一行代码，只用 IDE 把官方示例跑起来。跑通它，你就掌握了 TuyaOpen IDE 的核心操作链路：**选板 → 编译 → 烧录 → 看日志**。
 
-<section id="prereq" className="section">
+## 前置条件 {/* #prereq */}
 
-## 前置条件
-
-- 已按 [安装 TuyaOpen IDE](/learn/tuyaopen-ide-install) 装好 IDE 扩展。
+- 已按 [安装 TuyaOpen IDE](./install.md) 装好 IDE 扩展。
 - 一块 **T5 AI Board**（`T5AI_Board`）开发板，USB 线已连电脑。
 
-</section>
-
-<section id="step-1" className="section">
-
-## 第一步：从开发板目录进入
+## 第一步：从开发板目录进入 {/* #step-1 */}
 
 1. 打开 VS Code / Cursor，确认 TuyaOpen IDE 扩展已启用。
 2. 点击左侧活动栏的**开发板**图标，浏览支持的开发板、芯片和 SoC 平台及详细规格。
@@ -24,11 +29,7 @@
 
    ![开发板资料——原理图、数据手册、源码、3D 模型](https://images.tuyacn.com/fe-static/docs/img/290f77e2-ef9e-4a7f-9f8c-0c93b820316d.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-2" className="section">
-
-## 第二步：创建示例项目
+## 第二步：创建示例项目 {/* #step-2 */}
 
 1. 在 T5AI_Board 详情页，点击**用此开发板，新建项目**。
 2. 填写项目名称和存放位置，点击**创建项目**。
@@ -39,11 +40,7 @@
 
    ![派生好的项目工作区](https://images.tuyacn.com/fe-static/docs/img/4e7092ce-052e-4b4f-a5e7-1830f9f32f7e.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-3" className="section">
-
-## 第三步：编译
+## 第三步：编译 {/* #step-3 */}
 
 点击 IDE 侧边栏的**项目详情**，在**硬件固件操作**中点击**编译**，等待编译完成。项目详情中可以可视化看到嵌入式固件情况。
 
@@ -63,11 +60,7 @@
 ========================================================
 ```
 
-</section>
-
-<section id="step-4" className="section">
-
-## 第四步：烧录
+## 第四步：烧录 {/* #step-4 */}
 
 1. 用 USB 连接开发板（T5AI_Board 有两路串口：一路烧录、一路日志），确保 USB 线不仅能供电，还能传输数据。
 2. 点击**烧录（Flash）**。最初不确定哪一路是烧录口，可以任选一个试一下，这里选择 `COM4`。
@@ -89,11 +82,7 @@ Write [1/1]       OK
 Flash OK  38.9s
 ```
 
-</section>
-
-<section id="step-5" className="section">
-
-## 第五步：监控串口日志
+## 第五步：监控串口日志 {/* #step-5 */}
 
 点击**监控（Monitor）**，选择日志串口，这里选择 `COM3`。看到 `hello world`，你的第一个 TuyaOpen 项目就跑通了。
 
@@ -107,12 +96,7 @@ Flash OK  38.9s
 如果没看到 `hello world`，大概率是因为监视器开启的时间不够早——这行日志在烧录完成时就会打印。不要关闭监视器终端，再次烧录就能看到。
 :::
 
-</section>
+## 下一步 {/* #next */}
 
-<section id="next" className="section">
+你已经掌握了 IDE 基础操作。继续 [实战二：your_chat_bot 全流程](./chat-bot.md)——端到端搭建一台联网的 AI 对话设备。
 
-## 下一步
-
-你已经掌握了 IDE 基础操作。继续 [实战二：your_chat_bot 全流程](/learn/tuyaopen-ide-practice-2)——端到端搭建一台联网的 AI 对话设备。
-
-</section>

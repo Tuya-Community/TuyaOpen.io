@@ -1,8 +1,17 @@
+---
+title: "your_chat_bot —— 云端 AI Agent"
+description: "端到端搭建经典 AI + IoT 项目：从示例创建、编译烧录、授权到配网，讲清 IDE 中云端 IoT / AI Agent 流程。"
+sidebar_label: "实战二 —— your_chat_bot"
+sidebar_position: 4
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - 嵌入式开发
+---
+
 这是 TuyaOpen 最经典的 **AI + IoT** 项目。本实战**重点讲清 IDE 中云端 IoT / AI Agent 的开发流程**。
 
-<section id="modes" className="section">
-
-## 两种开发模式
+## 两种开发模式 {/* #modes */}
 
 | 模式 | 适合 | 步骤 |
 | --- | --- | --- |
@@ -11,11 +20,7 @@
 
 本次实战选择**基础模式**，适合新手快速上手，体验三端合一。
 
-</section>
-
-<section id="step-1" className="section">
-
-## 第一步：从示例创建项目
+## 第一步：从示例创建项目 {/* #step-1 */}
 
 1. 点击 IDE 工具栏**示例**，选择 AI 语音聊天机器人，点击**创建项目**。
 2. 依次选择涂鸦 T5AI、涂鸦 T5AI-Board 开发板，以及 3.5 寸 LCD 触摸屏（按需选择）。
@@ -42,11 +47,7 @@
 **为什么用复制？** 复制可以快速完成与默认 PID 功能一致的产品；AI + IoT 类产品还会一并复制当前产品已绑定的智能体。
 :::
 
-</section>
-
-<section id="step-2" className="section">
-
-## 第二步：编译与烧录
+## 第二步：编译与烧录 {/* #step-2 */}
 
 1. 在**云端 IoT / Agent 开发**可以看到已经成功绑定云端产品。
 
@@ -58,11 +59,7 @@
 
 3. 烧录成功后可以看到触摸屏亮起。
 
-</section>
-
-<section id="step-3" className="section">
-
-## 第三步：设备授权
+## 第三步：设备授权 {/* #step-3 */}
 
 授权码（UUID + Authkey）是设备联网上云的凭证，在 [涂鸦 IoT 平台](https://platform.tuya.com/) 获取。
 
@@ -94,11 +91,7 @@
 
    ![AI 将授权码写入设备](https://images.tuyacn.com/fe-static/docs/img/2d41f33a-7e0b-4d23-af46-213eee2fe058.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-4" className="section">
-
-## 第四步：设备配网
+## 第四步：设备配网 {/* #step-4 */}
 
 1. 参照官方[设备配网步骤](/docs/quick-start/device-network-configuration)完成设备配网。
 2. 配网完成后，在小程序面板可以切换对话的 AI Agent。
@@ -108,15 +101,10 @@
 3. 双击开发板 KEY 按键，可以切换对话模式，当前项目支持唤醒词"你好涂鸦" / "Hey Tuya"。
 
 :::info
-**进阶——自建智能体（进阶模式）**：参阅 [Agent 开发指南](/learn/tuyaopen-ide-agent-dev)。
+**进阶——自建智能体（进阶模式）**：参阅 [Agent 开发指南](./agent-development.md)。
 :::
 
-</section>
+## 下一步 {/* #next */}
 
-<section id="next" className="section">
+你已经有一台联网设备了。继续 [实战三：小程序面板](./miniapp-panel.md)——为它做一个手机控制面板。
 
-## 下一步
-
-你已经有一台联网设备了。继续 [实战三：小程序面板](/learn/tuyaopen-ide-practice-3)——为它做一个手机控制面板。
-
-</section>

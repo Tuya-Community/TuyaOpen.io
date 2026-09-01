@@ -1,10 +1,19 @@
-Most of the operations in the [practices](/learn/tuyaopen-ide-practice-1) can be done with **skills** that install directly in TuyaOpen IDE, which dramatically improves efficiency. Below are copy-paste prompts grouped by scenario.
+---
+title: "Vibe Coding skills"
+description: "Skills you can install inside TuyaOpen IDE to let the AI Agent run the development loop — grouped by scenario with ready-to-paste prompts."
+sidebar_label: "Vibe Coding skills"
+sidebar_position: 7
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - embedded development
+---
+
+Most of the operations in the [practices](./hello-world.md) can be done with **skills** that install directly in TuyaOpen IDE, which dramatically improves efficiency. Below are copy-paste prompts grouped by scenario.
 
 ![Vibe Coding skills overview](https://images.tuyacn.com/fe-static/docs/img/9e4c7436-44d7-49b0-a556-ef0e9a68c16e.png?imageMogr2/format/webp)
 
-<section id="hardware" className="section">
-
-## 1. Hardware peripherals (the recommended starting point)
+## 1. Hardware peripherals (the recommended starting point) {/* #hardware */}
 
 Trigger **`hardware-vibe-coding`**. It first reads the board's pin resources, confirms with you, then writes the code. Any "make the hardware do something" request goes here.
 
@@ -16,11 +25,7 @@ Print "alive" over UART once a second so I can see it on the PC.
 Read an ADC pin voltage and print the value to the log.
 ```
 
-</section>
-
-<section id="product" className="section">
-
-## 2. Build an IoT product end-to-end
+## 2. Build an IoT product end-to-end {/* #product */}
 
 Trigger **`smart-product-dev`**. It takes you from a requirement all the way to creating the product on the platform, defining DPs, and generating firmware.
 
@@ -29,11 +34,7 @@ I want to make a "smart night light" — on/off, brightness control, and a timer
 What should I do next? (It reads the current scaffolded state and suggests the next step.)
 ```
 
-</section>
-
-<section id="platform" className="section">
-
-## 3. Tuya Developer Platform operations (product / DP / PID)
+## 3. Tuya Developer Platform operations (product / DP / PID) {/* #platform */}
 
 Trigger **`tuya-iot-platform`**. It operates your bound product through a CLI.
 
@@ -43,11 +44,7 @@ Add a DP to this product: bool type, code switch_1, name "Switch".
 List which products I have on the platform.
 ```
 
-</section>
-
-<section id="dev-loop" className="section">
-
-## 4. Build / flash / debug loop
+## 4. Build / flash / debug loop {/* #dev-loop */}
 
 Trigger **`tuyaopen-dev-loop`**, **`tuyaopen-build`**, **`tuyaopen-debug-helper`**.
 
@@ -58,11 +55,7 @@ Enter the dev loop: build → flash → monitor logs, analyze errors and iterate
 Check whether the code style complies.
 ```
 
-</section>
-
-<section id="panel" className="section">
-
-## 5. Mini-apps / device panels (for the app side)
+## 5. Mini-apps / device panels (for the app side) {/* #panel */}
 
 Trigger **`smart-panel-dev`** (the entry point); it then routes to categories such as lighting, sockets, robot vacuums, and IPC.
 
@@ -72,12 +65,7 @@ Add an electricity-usage chart to the panel (trigger charts-library / energy-sta
 Write a PRD requirements doc for this device's mini-app panel.
 ```
 
-</section>
+## Next step {/* #next */}
 
-<section id="next" className="section">
+Ready to build your own cloud Agent? See the [Agent Development Guide](./agent-development.md).
 
-## Next step
-
-Ready to build your own cloud Agent? See the [Agent Development Guide](/learn/tuyaopen-ide-agent-dev).
-
-</section>

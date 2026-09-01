@@ -1,6 +1,15 @@
-<section id="install-git" className="section">
+---
+title: "安装 TuyaOpen IDE"
+description: "先安装 Git，再在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或从官网下载 .vsix 手动安装，然后验证已启用。"
+sidebar_label: "安装"
+sidebar_position: 2
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - 嵌入式开发
+---
 
-## 安装 Git
+## 安装 Git {/* #install-git */}
 
 TuyaOpen IDE 用 **Git** 来克隆 TuyaOpen SDK，并把 Vibe Coding 技能安装到你的项目里。请在创建第一个项目之前，先装好 Git。
 
@@ -16,11 +25,7 @@ TuyaOpen IDE 用 **Git** 来克隆 TuyaOpen SDK，并把 Vibe Coding 技能安�
 git --version
 ```
 
-</section>
-
-<section id="before-install" className="section">
-
-## 安装前准备
+## 安装前准备 {/* #before-install */}
 
 TuyaOpen IDE 是 **VS Code** 或 **Cursor** 的扩展，必须先装好其中一个宿主编辑器（同一个安装包两者通用）。
 
@@ -33,11 +38,7 @@ TuyaOpen IDE 是 **VS Code** 或 **Cursor** 的扩展，必须先装好其中一
 VS Code 应用市场与 Open VSX 搜索暂时均不可用。请通过 AI 编程 Agent 或下方手动 `.vsix` 安装，不要期望在编辑器内搜索找到它。
 :::
 
-</section>
-
-<section id="ai-agent-install" className="section">
-
-## 方式一：让 AI Agent 帮你安装（最快）
+## 方式一：让 AI Agent 帮你安装（最快） {/* #ai-agent-install */}
 
 把下面这段提示词粘贴到 **Claude Code、Cursor、Codex 或任意能执行 shell 命令的 Coding Agent** 中，它会自动下载并安装扩展。
 
@@ -66,11 +67,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 提示词里的下载链接会指向**最新版本**的 `.vsix`。Agent 收到后会自动完成「下载 → 安装 → 重新加载」全流程，无需手动操作。
 :::
 
-</section>
-
-<section id="manual-vsix" className="section">
-
-## 方式二：从官网下载 .vsix
+## 方式二：从官网下载 .vsix {/* #manual-vsix */}
 
 从 TuyaOpen IDE 官网获取 `.vsix`，确保始终拿到**最新版本**。同一个安装包，**VS Code 与 Cursor 通用**。
 
@@ -92,11 +89,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 
 6. 根据提示重新加载编辑器，即可开始使用。
 
-</section>
-
-<section id="verify" className="section">
-
-## 验证安装
+## 验证安装 {/* #verify */}
 
 重新加载编辑器后，确认两点：
 
@@ -106,11 +99,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 
 2. **扩展已启用**：在扩展视图（`Ctrl+Shift+X`）中找到 "TuyaOpen IDE"，状态为「已启用」。
 
-</section>
-
-<section id="troubleshoot" className="section">
-
-## 安装失败怎么办
+## 安装失败怎么办 {/* #troubleshoot */}
 
 最常见三类：
 
@@ -118,12 +107,7 @@ https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.
 - **扩展装了不显示** —— 根据提示重新加载编辑器，或彻底重启编辑器。
 - **命令面板找不到 TuyaOpen 命令** —— 确认扩展已「启用」（扩展面板里没被禁用）。
 
-</section>
+## 下一步 {/* #next */}
 
-<section id="next" className="section">
+你已经准备好开始开发了。从 [**实战一：Hello World**](./hello-world.md) 开始——不写一行代码跑通官方示例，掌握 IDE 基础操作。
 
-## 下一步
-
-你已经准备好开始开发了。从 [**实战一：Hello World**](/learn/tuyaopen-ide-practice-1) 开始——不写一行代码跑通官方示例，掌握 IDE 基础操作。
-
-</section>

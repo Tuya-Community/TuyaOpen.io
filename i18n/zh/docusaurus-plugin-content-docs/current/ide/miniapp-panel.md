@@ -1,8 +1,17 @@
+---
+title: "小程序面板"
+description: "做一个跑在手机 App 里、通过 DP 与固件联动的设备控制面板——创建、绑定、预览、发布。"
+sidebar_label: "实战三 —— 小程序面板"
+sidebar_position: 5
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - 嵌入式开发
+---
+
 本实战转向**界面**——用涂鸦的小程序技术做一个设备控制面板，跑在手机 App 里，和固件通过 **DP（数据点）** 联动。两者通过 DP 协作：固件定义并上报 DP，面板读取/下发 DP。
 
-<section id="dp-model" className="section">
-
-## DP 协作模型
+## DP 协作模型 {/* #dp-model */}
 
 固件和面板是两个独立程序，靠 DP 通信：
 
@@ -10,14 +19,10 @@
 - **面板端**：用小程序 API（`publishDps` 下发、`onDpDataChange` 监听）控制设备。
 
 :::note
-**前置条件**：至少有一台能连涂鸦云的设备。请先在 [实战二](/learn/tuyaopen-ide-practice-2) 中完成。
+**前置条件**：至少有一台能连涂鸦云的设备。请先在 [实战二](./chat-bot.md) 中完成。
 :::
 
-</section>
-
-<section id="step-1" className="section">
-
-## 第一步：账号产品
+## 第一步：账号产品 {/* #step-1 */}
 
 1. 进入**小程序面板开发**，按照右侧提示进行 3 步操作。
 
@@ -39,11 +44,7 @@
 
    ![绑定面板小程序](https://images.tuyacn.com/fe-static/docs/img/26a75ec1-055f-4646-857d-84b7e7cbc163.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-2" className="section">
-
-## 第二步：调试预览
+## 第二步：调试预览 {/* #step-2 */}
 
 1. 在右侧「调试与预览」中点击**构建小程序**，构建并渲染面板，即可在下方看到面板显示在虚拟设备上。
 
@@ -53,13 +54,9 @@
 
    ![虚拟面板与 DP 交互](https://images.tuyacn.com/fe-static/docs/img/57266da1-a46d-445a-a1ad-a8ec49012e20.png?imageMogr2/format/webp)
 
-3. 现在就可以对小程序代码进行个性化修改，修改完成后重新构建和渲染预览面板效果。安装 IDE 提供的 skills 加速开发，见 [Vibe Coding 技能](/learn/tuyaopen-ide-vibe-coding)。
+3. 现在就可以对小程序代码进行个性化修改，修改完成后重新构建和渲染预览面板效果。安装 IDE 提供的 skills 加速开发，见 [Vibe Coding 技能](./vibe-coding.md)。
 
-</section>
-
-<section id="step-3" className="section">
-
-## 第三步：上传发布
+## 第三步：上传发布 {/* #step-3 */}
 
 1. 点击右侧的**上传到云端**，先把小程序上传到云端；上传成功后再去涂鸦开发者平台提审发布。
 
@@ -77,11 +74,7 @@
 
    ![审核通过——发布](https://images.tuyacn.com/fe-static/docs/img/45bdebe4-1fd1-4abe-b1a2-eb29bdc95c06.png?imageMogr2/format/webp)
 
-</section>
-
-<section id="step-4" className="section">
-
-## 第四步：把小程序绑定到产品
+## 第四步：把小程序绑定到产品 {/* #step-4 */}
 
 小程序开发完成后，想要在 App 端使用面板，需要把它绑定到产品。
 
@@ -99,18 +92,13 @@
 
 4. 即可在智能生活 App 中看到最新的面板。
 
-</section>
-
-<section id="next" className="section">
-
-## 去哪里深入学习
+## 去哪里深入学习 {/* #next */}
 
 | 想做什么 | 去这里 |
 | --- | --- |
-| 用 AI 加速开发 | [Vibe Coding 技能](/learn/tuyaopen-ide-vibe-coding) |
-| 自建云端 Agent | [Agent 开发指南](/learn/tuyaopen-ide-agent-dev) |
+| 用 AI 加速开发 | [Vibe Coding 技能](./vibe-coding.md) |
+| 自建云端 Agent | [Agent 开发指南](./agent-development.md) |
 | 开发设备控制面板 | [面板小程序官方门户](https://developer.tuya.com/cn/panel-miniapp) |
 | 学小程序技术体系 / API | [Tuya MiniApp 文档总站](https://developer.tuya.com/en/miniapp/) |
 | 用零代码搭面板 | [面板工作台 Panel Studio](https://developer.tuya.com/cn/panel-studio) |
 
-</section>

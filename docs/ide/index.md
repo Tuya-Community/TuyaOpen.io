@@ -1,6 +1,15 @@
-<section id="what-is" className="section">
+---
+title: "What is TuyaOpen IDE"
+description: "TuyaOpen IDE is an AI-era embedded development environment: describe the device you want in natural language, and the AI Agent generates firmware, configures the cloud, and wires up the app."
+sidebar_label: "Overview"
+sidebar_position: 1
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - embedded development
+---
 
-## What is TuyaOpen IDE
+## What is TuyaOpen IDE {/* #what-is */}
 
 TuyaOpen IDE is an AI-era embedded development environment — an extension that runs inside **VS Code** or **Cursor**. Instead of writing hardware code from scratch, you describe the device you want in **natural language**, and an AI Agent generates the project, writes the firmware, and configures the cloud capabilities for you.
 
@@ -8,22 +17,14 @@ This way of working is called **Vibe Coding** — you describe the "vibe" of wha
 
 In one sentence: traditional embedded development is *you write code, the board runs it*; with TuyaOpen IDE it is *you talk, the AI writes code, the board runs it*.
 
-</section>
-
-<section id="what-it-can-do" className="section">
-
-### What it can do in five minutes
+### What it can do in five minutes {/* #what-it-can-do */}
 
 - **Create a full IoT project from one sentence** — for example, "make me an app-controlled LED".
 - **Generate firmware automatically** — adapted to chips such as T2, T3, T5, and ESP32.
 - **Configure Tuya cloud capabilities** — networking, app control, and AI voice.
 - **Three ends from one project** — firmware, cloud Agent, and phone app, all wired together.
 
-</section>
-
-<section id="core-features" className="section">
-
-## Core features
+## Core features {/* #core-features */}
 
 | Feature | What it gives you |
 | --- | --- |
@@ -32,11 +33,7 @@ In one sentence: traditional embedded development is *you write code, the board 
 | **Three ends in one** | Firmware, cloud Agent, and app develop together in a single workspace. |
 | **Cross-chip support** | One toolchain supports T2, T3, T5, ESP32, ESP32-C3, and more. |
 
-</section>
-
-<section id="vs-traditional" className="section">
-
-## How it differs from traditional IoT development
+## How it differs from traditional IoT development {/* #vs-traditional */}
 
 | | Traditional embedded dev | TuyaOpen IDE (Vibe Coding) |
 | --- | --- | --- |
@@ -46,21 +43,13 @@ In one sentence: traditional embedded development is *you write code, the board 
 | **App** | Build it with a separate tool. | Generated together as one of the three ends. |
 | **Entry barrier** | Needs embedded + networking + cloud knowledge. | Being able to describe the requirement is enough to begin. |
 
-</section>
-
-<section id="who-it-is-for" className="section">
-
-## Who it is for
+## Who it is for {/* #who-it-is-for */}
 
 - **Complete beginners** — makers and students who want to build smart hardware but cannot yet write code: start with Vibe Coding.
 - **Embedded engineers** — those who want to move faster and write less boilerplate: let the Agent generate the scaffold, then refine it.
 - **Typical scenarios** — smart lighting, AI voice assistants, robot control, sensor-to-cloud applications.
 
-</section>
-
-<section id="supported-boards" className="section">
-
-## Supported boards and chips
+## Supported boards and chips {/* #supported-boards */}
 
 TuyaOpen IDE supports every chip covered by the TuyaOpen framework. The mainstream ones:
 
@@ -76,19 +65,14 @@ TuyaOpen IDE supports every chip covered by the TuyaOpen framework. The mainstre
 For the full board selection matrix, see the [Hardware platforms](/docs/hardware) page.
 :::
 
-</section>
-
-<section id="next" className="section">
-
-## Next steps
+## Next steps {/* #next */}
 
 Now that you know what TuyaOpen IDE is, install it and run the practices:
 
-1. [**Install TuyaOpen IDE**](/learn/tuyaopen-ide-install) — set up the extension in VS Code or Cursor.
-2. [**Practice 1: Hello World**](/learn/tuyaopen-ide-practice-1) — IDE basics: pick board → build → flash → read logs.
-3. [**Practice 2: your_chat_bot**](/learn/tuyaopen-ide-practice-2) — the cloud IoT / AI Agent development flow.
-4. [**Practice 3: mini-app panel**](/learn/tuyaopen-ide-practice-3) — a phone control panel for your device.
-5. [**Vibe Coding skills**](/learn/tuyaopen-ide-vibe-coding) — copy-paste prompts for the IDE's AI skills.
-6. [**Agent Development Guide**](/learn/tuyaopen-ide-agent-dev) — go deeper on building, publishing, and binding cloud Agents.
+1. [**Install TuyaOpen IDE**](./install.md) — set up the extension in VS Code or Cursor.
+2. [**Practice 1: Hello World**](./hello-world.md) — IDE basics: pick board → build → flash → read logs.
+3. [**Practice 2: your_chat_bot**](./chat-bot.md) — the cloud IoT / AI Agent development flow.
+4. [**Practice 3: mini-app panel**](./miniapp-panel.md) — a phone control panel for your device.
+5. [**Vibe Coding skills**](./vibe-coding.md) — copy-paste prompts for the IDE's AI skills.
+6. [**Agent Development Guide**](./agent-development.md) — go deeper on building, publishing, and binding cloud Agents.
 
-</section>

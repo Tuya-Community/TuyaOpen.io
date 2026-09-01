@@ -4,6 +4,7 @@
 // Each sidebar is a separate "docs entry" surfaced from the navbar "Docs" menu:
 //
 //   sdkSidebar       -> TuyaOpen SDK   (/docs root content)
+//   ideSidebar       -> TuyaOpen IDE   (/docs/ide/*)
 //   hardwareSidebar  -> Hardware       (/docs/hardware/*)
 //   cloudSidebar     -> Cloud & AI     (/docs/cloud/*)
 //   tclawSidebar     -> TClaw          (/docs/tclaw/*)  (formerly DuckyClaw, then TuyaOpenClaw)
@@ -597,8 +598,29 @@ const tyutoolSidebar = [
   'tyutool/faq',
 ]
 
+// =============================================================================
+// TuyaOpen IDE — the VS Code / Cursor extension. Concept, install, then the
+// four practice tutorials in the order a newcomer works through them, then the
+// two reference pages. This series lived on /learn as hand-built pages until
+// the prose moved into /docs/ide; the ordering here is that original path.
+// =============================================================================
+const ideSidebar = [
+  { type: 'doc', id: 'ide/index', label: 'What TuyaOpen IDE is' },
+  'ide/install',
+  {
+    type: 'category',
+    label: 'Practice series',
+    collapsed: false,
+    items: ['ide/hello-world', 'ide/chat-bot', 'ide/miniapp-panel', 'ide/linux-board'],
+  },
+  divider('Build with the agent', '用 Agent 开发'),
+  'ide/vibe-coding',
+  'ide/agent-development',
+]
+
 module.exports = {
   sdkSidebar,
+  ideSidebar,
   hardwareSidebar,
   cloudSidebar,
   tclawSidebar,

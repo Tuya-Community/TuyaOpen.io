@@ -1,10 +1,19 @@
-以上[实战](/learn/tuyaopen-ide-practice-1)中大部分操作都可以用 TuyaOpen IDE 直接安装的 **Skills** 完成，大大提高开发效率。下面按场景给你可以直接复制粘贴的提示词。
+---
+title: "Vibe Coding 技能"
+description: "可在 TuyaOpen IDE 内安装的 skills，让 AI Agent 跑通开发循环——按场景分组，附可直接复制的提示词。"
+sidebar_label: "Vibe Coding 技能"
+sidebar_position: 7
+keywords:
+  - TuyaOpen IDE
+  - TuyaOpen
+  - 嵌入式开发
+---
+
+以上[实战](./hello-world.md)中大部分操作都可以用 TuyaOpen IDE 直接安装的 **Skills** 完成，大大提高开发效率。下面按场景给你可以直接复制粘贴的提示词。
 
 ![Vibe Coding 技能总览](https://images.tuyacn.com/fe-static/docs/img/d7892d9e-5c65-4ae8-91a5-ec02a27fc585.png?imageMogr2/format/webp)
 
-<section id="hardware" className="section">
-
-## 1. 硬件外设（最推荐先玩）
+## 1. 硬件外设（最推荐先玩） {/* #hardware */}
 
 触发 **`hardware-vibe-coding`**，它会先读板子的引脚资源、跟你确认、再写代码。任何"让硬件动起来"的需求都走这里。
 
@@ -16,11 +25,7 @@
 读一个 ADC 引脚的电压，把值打印到日志。
 ```
 
-</section>
-
-<section id="product" className="section">
-
-## 2. 端到端做一个 IoT 产品
+## 2. 端到端做一个 IoT 产品 {/* #product */}
 
 触发 **`smart-product-dev`**，从需求一路带到平台建产品、建 DP、生成固件。
 
@@ -29,11 +34,7 @@
 下一步该干什么？（它会根据当前 scaffolded 状态给出后续步骤。）
 ```
 
-</section>
-
-<section id="platform" className="section">
-
-## 3. Tuya 开发者平台操作（产品 / DP / PID）
+## 3. Tuya 开发者平台操作（产品 / DP / PID） {/* #platform */}
 
 触发 **`tuya-iot-platform`**，通过 CLI 操作你绑定的产品。
 
@@ -43,11 +44,7 @@
 列出我在平台上有哪些产品。
 ```
 
-</section>
-
-<section id="dev-loop" className="section">
-
-## 4. 构建 / 烧录 / 调试闭环
+## 4. 构建 / 烧录 / 调试闭环 {/* #dev-loop */}
 
 触发 **`tuyaopen-dev-loop`**、**`tuyaopen-build`**、**`tuyaopen-debug-helper`**。
 
@@ -58,11 +55,7 @@
 检查一下代码格式是否合规。
 ```
 
-</section>
-
-<section id="panel" className="section">
-
-## 5. 小程序 / 设备面板（如果后续要做 App 侧）
+## 5. 小程序 / 设备面板（如果后续要做 App 侧） {/* #panel */}
 
 触发 **`smart-panel-dev`**（总入口），它会再分流到灯具、插座、扫地机、IPC 等品类。
 
@@ -72,12 +65,7 @@
 帮我写一份这个设备的小程序面板 PRD 需求文档。
 ```
 
-</section>
+## 下一步 {/* #next */}
 
-<section id="next" className="section">
+准备好自建云端 Agent？参阅 [Agent 开发指南](./agent-development.md)。
 
-## 下一步
-
-准备好自建云端 Agent？参阅 [Agent 开发指南](/learn/tuyaopen-ide-agent-dev)。
-
-</section>
