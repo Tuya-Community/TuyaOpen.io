@@ -107,7 +107,9 @@ Debug custom MCP services the same way as official ones. For more information, s
 
 ## Billing
 
-Adding official MCP services to your agent is free, and registering custom MCP services and adding them to your agent is also free. Tuya reserves the right to introduce fees for these services in the future.
+MCP usage is metered and billed. Running an agent that calls MCP tools incurs charges, as agent usage does generally, after the free allowance each day.
+
+For the current rules, allowance and unit prices, see the [AI billing rules](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d).
 
 ## See also
 
