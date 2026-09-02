@@ -545,154 +545,140 @@ const config = {
   ],
   headTags: [
     {
-      tagName: 'script',
-      attributes: {
-        src: 'https://forum-tuyaopen.discourse.group/javascripts/embed-topics.js',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'google-site-verification',
-        content: 'Pg0iUHrYEd6YrJjmb4C5o5VRnBjtcEkDDt_vJ9yU05o',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'algolia-site-verification',
-        content: '6232065417750C16',
-      },
-    },
-    {
-      tagName: 'script',
-      attributes: {
-        type: 'application/ld+json',
-      },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'Organization',
-            '@id': 'https://tuyaopen.ai/#organization',
-            name: 'TuyaOpen',
-            url: 'https://tuyaopen.ai/',
-            logo: {
-              '@type': 'ImageObject',
-              url: 'https://tuyaopen.ai/img/home/tuyaopen-logo-simple-light.png',
-              width: 3681,
-              height: 3701,
-            },
-            description:
-              'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCUs, ESP32, Raspberry Pi, and more.',
-            parentOrganization: { '@id': 'https://www.tuya.com/#organization' },
-            sameAs: [
-              'https://github.com/tuya/TuyaOpen',
-              'https://discord.com/invite/yPPShSTttG',
-              'https://x.com/tuyasmart',
-              'https://www.youtube.com/@tuya2023',
-              'https://www.linkedin.com/company/tuya-smart',
-            ],
-          },
-          {
-            '@type': 'Corporation',
-            '@id': 'https://www.tuya.com/#organization',
-            name: 'Tuya Inc.',
-            url: 'https://www.tuya.com/',
-            logo: 'https://static1.tuyacn.com/static/smarthome/img/static/common/logo/9910hfDKE4qF.png',
-            description:
-              'Tuya Inc. (NYSE: TUYA; HKEX: 2391) is a leading global AI cloud platform service provider, offering IoT development, device connectivity, and AI agent solutions to brands, OEMs, integrators, and developers worldwide.',
-            foundingDate: '2014',
-            tickerSymbol: ['NYSE:TUYA', 'HKEX:2391'],
-            subOrganization: { '@id': 'https://tuyaopen.ai/#organization' },
-            contactPoint: {
-              '@type': 'ContactPoint',
-              contactType: 'customer support',
-              url: 'https://www.tuya.com/contact',
-              availableLanguage: ['English', 'Chinese'],
-            },
-            sameAs: [
-              'https://github.com/tuya',
-              'https://www.linkedin.com/company/tuya-smart',
-              'https://x.com/tuyasmart',
-              'https://www.youtube.com/@tuya2023',
-            ],
-          },
-          {
-            '@type': 'WebSite',
-            '@id': 'https://tuyaopen.ai/#website',
-            url: 'https://tuyaopen.ai/',
-            name: 'TuyaOpen',
-            alternateName: 'TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development',
-            description:
-              'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCUs, Raspberry Pi, ESP32, and more. Pair with Tuya Cloud multimodal AI, integrate leading LLMs, and build devices with voice, vision, and sensor features.',
-            inLanguage: ['en', 'zh'],
-            publisher: { '@id': 'https://tuyaopen.ai/#organization' },
-            potentialAction: {
-              '@type': 'SearchAction',
-              target: {
-                '@type': 'EntryPoint',
-                urlTemplate: 'https://tuyaopen.ai/search?q={search_term_string}',
-              },
-              'query-input': 'required name=search_term_string',
-            },
-          },
-          {
-            '@type': 'SoftwareApplication',
-            '@id': 'https://tuyaopen.ai/#software',
-            name: 'TuyaOpen SDK',
-            url: 'https://tuyaopen.ai/',
-            applicationCategory: 'DeveloperApplication',
-            applicationSubCategory: 'IoT and embedded AI development framework',
-            operatingSystem: ['Linux', 'macOS', 'Windows'],
-            runtimePlatform: [
-              'Tuya T-Series (T2, T3, T5AI)',
-              'ESP32',
-              'ESP32-C3',
-              'ESP32-S3',
-              'BK7231N',
-              'LN882H',
-              'Ubuntu',
-            ],
-            description:
-              'Open source cross-platform C/C++ AI+IoT SDK. One codebase deploys across Tuya T-Series MCUs, ESP32, Raspberry Pi, and Linux, with built-in cloud connectivity, OTA, and multi-model AI integration.',
-            featureList: [
-              'Cross-platform C/C++ SDK with a single codebase across MCU families',
-              'Tuya Cloud device connectivity and activation',
-              'OTA firmware upgrade',
-              'Multimodal AI integration with leading LLMs',
-              'Voice, vision, and sensor peripheral support',
-            ],
-            softwareVersion: 'v1.9.0',
-            downloadUrl: 'https://github.com/tuya/TuyaOpen/releases',
-            softwareHelp: { '@id': 'https://tuyaopen.ai/#website' },
-            license: 'https://www.apache.org/licenses/LICENSE-2.0',
-            isAccessibleForFree: true,
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-            },
-            author: { '@id': 'https://tuyaopen.ai/#organization' },
-            publisher: { '@id': 'https://tuyaopen.ai/#organization' },
-          },
-          {
-            '@type': 'SoftwareSourceCode',
-            '@id': 'https://tuyaopen.ai/#sourcecode',
-            name: 'TuyaOpen',
-            description:
-              'Source code for TuyaOpen, a next-generation AI+IoT framework for Tuya T2/T3/T5AI, ESP32, and other supported chipsets.',
-            codeRepository: 'https://github.com/tuya/TuyaOpen',
-            programmingLanguage: ['C', 'C++', 'Python'],
-            runtimePlatform: ['Tuya T-Series (T2, T3, T5AI)', 'ESP32', 'BK7231N', 'LN882H', 'Ubuntu'],
-            license: 'https://www.apache.org/licenses/LICENSE-2.0',
-            targetProduct: { '@id': 'https://tuyaopen.ai/#software' },
-            author: { '@id': 'https://tuyaopen.ai/#organization' },
-          },
+  tagName: 'script',
+  attributes: {
+    type: 'application/ld+json',
+  },
+  innerHTML: JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@id': 'https://tuyaopen.ai/#organization',
+        '@type': 'Organization',
+        'name': 'TuyaOpen',
+        'description': 'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCUs, ESP32, Raspberry Pi, and more.',
+        'url': 'https://tuyaopen.ai/',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://tuyaopen.ai/img/home/tuyaopen-logo-simple-light.png',
+          'width': 2681,
+          'height': 590,
+        },
+        'parentOrganization': {
+          '@id': 'https://www.tuya.com/#organization',
+        },
+        'sameAs': [
+          'https://github.com/tuya/TuyaOpen',
+          'https://discord.com/invite/yPPShSTttG',
+          'https://x.com/tuyasmart',
+          'https://www.youtube.com/@tuya2023',
+          'https://www.linkedin.com/company/tuya-smart',
         ],
-      }),
-    },
-  ],
-}
+      },
+      {
+        '@id': 'https://tuyaopen.ai/#website',
+        '@type': 'WebSite',
+        'name': 'TuyaOpen',
+        'alternateName': 'TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development',
+        'url': 'https://tuyaopen.ai/',
+        'description': 'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCUs, Raspberry Pi, ESP32, and more. Pair with Tuya Cloud multimodal AI, integrate leading LLMs, and build devices with voice, vision, and sensor features.',
+        'inLanguage': ['en', 'zh'],
+        'publisher': {
+          '@id': 'https://tuyaopen.ai/#organization',
+        },
+        'potentialAction': {
+          '@type': 'SearchAction',
+          'target': {
+            '@type': 'EntryPoint',
+            'urlTemplate': 'https://tuyaopen.ai/search?q={search_term_string}',
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      },
+      {
+        '@id': 'https://tuyaopen.ai/#webpage',
+        '@type': 'WebPage',
+        'url': 'https://tuyaopen.ai/',
+        'name': 'TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development',
+        'description': 'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCUs, Raspberry Pi, ESP32, and more.',
+        'isPartOf': {
+          '@id': 'https://tuyaopen.ai/#website',
+        },
+        'about': {
+          '@id': 'https://tuyaopen.ai/#organization',
+        },
+        'inLanguage': ['en', 'zh'],
+      },
+      {
+        '@id': 'https://tuyaopen.ai/#software',
+        '@type': 'SoftwareApplication',
+        'name': 'TuyaOpen SDK',
+        'url': 'https://tuyaopen.ai/',
+        'applicationCategory': 'DeveloperApplication',
+        'applicationSubCategory': 'IoT and embedded AI development framework',
+        'operatingSystem': ['Linux', 'macOS', 'Windows'],
+        'runtimePlatform': [
+          'Tuya T-Series (T2, T3, T5AI)',
+          'ESP32',
+          'ESP32-C3',
+          'ESP32-S3',
+          'BK7231N',
+          'LN882H',
+          'Ubuntu',
+        ],
+        'description': 'Open source cross-platform C/C++ AI+IoT SDK. One codebase deploys across Tuya T-Series MCUs, ESP32, Raspberry Pi, and Linux, with built-in cloud connectivity, OTA, and multi-model AI integration.',
+        'featureList': [
+          'Cross-platform C/C++ SDK with a single codebase across MCU families',
+          'Tuya Cloud device connectivity and activation',
+          'OTA firmware upgrade',
+          'Multimodal AI integration with leading LLMs',
+          'Voice, vision, and sensor peripheral support',
+        ],
+        'softwareVersion': 'v1.9.0',
+        'license': 'https://www.apache.org/licenses/LICENSE-2.0',
+        'isAccessibleForFree': true,
+        'downloadUrl': 'https://github.com/tuya/TuyaOpen/releases',
+        'author': {
+          '@id': 'https://tuyaopen.ai/#organization',
+        },
+        'publisher': {
+          '@id': 'https://tuyaopen.ai/#organization',
+        },
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD',
+        },
+        'softwareHelp': {
+          '@type': 'CreativeWork',
+          'url': 'https://tuyaopen.ai/docs',
+        },
+      },
+      {
+        '@id': 'https://tuyaopen.ai/#sourcecode',
+        '@type': 'SoftwareSourceCode',
+        'name': 'TuyaOpen',
+        'description': 'Source code for TuyaOpen, a next-generation AI+IoT framework for Tuya T2/T3/T5AI, ESP32, and other supported chipsets.',
+        'url': 'https://tuyaopen.ai/',
+        'codeRepository': 'https://github.com/tuya/TuyaOpen',
+        'programmingLanguage': ['C', 'C++', 'Python'],
+        'runtimePlatform': [
+          'Tuya T-Series (T2, T3, T5AI)',
+          'ESP32',
+          'BK7231N',
+          'LN882H',
+          'Ubuntu',
+        ],
+        'license': 'https://www.apache.org/licenses/LICENSE-2.0',
+        'author': {
+          '@id': 'https://tuyaopen.ai/#organization',
+        },
+        'targetProduct': {
+          '@id': 'https://tuyaopen.ai/#software',
+        },
+      },
+    ],
+  }),
+},
 
 export default config
