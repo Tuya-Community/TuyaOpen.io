@@ -146,13 +146,20 @@ const config = {
         {
           type: 'dropdown',
           label: 'Docs',
+          // Clicking the label lands on the docs portal; the menu below mirrors
+          // that page's areas one-for-one, in the same order, so the hover menu
+          // and the portal are the same map at two levels of detail. Keep them
+          // in step with `areas` in src/data/docsPortal.js.
+          to: '/documentation',
           position: 'left',
           items: [
+            { to: '/documentation', label: 'All docs' },
             { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
+            { type: 'docSidebar', sidebarId: 'ideSidebar', label: 'TuyaOpen IDE' },
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },
             { type: 'docSidebar', sidebarId: 'tclawSidebar', label: 'TClaw' },
-            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'Tyutool' },
+            { type: 'docSidebar', sidebarId: 'tyutoolSidebar', label: 'tyutool' },
           ],
         },
         {
@@ -231,8 +238,13 @@ const config = {
           title: 'Documentation',
           items: [
             {
+              // Points at the Learn hub, not straight into /docs/quick-start —
+              // the tracks there are the front door that decides between the
+              // IDE and SDK routes; the docs funnel is one of them. Lands on
+              // the page rather than the #quick-start section, matching the
+              // home page's Quick Start button.
               label: 'Quick Start',
-              to: '/docs/quick-start/unboxing',
+              to: '/learn',
             },
             {
               label: 'About TuyaOpen',
@@ -406,6 +418,16 @@ const config = {
             from: '/tyutool-guide',
             to: '/docs/tyutool',
           },
+          // The TuyaOpen IDE series moved off /learn into its own docs sidebar,
+          // and the slugs went from positional (practice-1) to descriptive.
+          { from: '/learn/tuyaopen-ide-overview', to: '/docs/ide' },
+          { from: '/learn/tuyaopen-ide-install', to: '/docs/ide/install' },
+          { from: '/learn/tuyaopen-ide-practice-1', to: '/docs/ide/hello-world' },
+          { from: '/learn/tuyaopen-ide-practice-2', to: '/docs/ide/chat-bot' },
+          { from: '/learn/tuyaopen-ide-practice-3', to: '/docs/ide/miniapp-panel' },
+          { from: '/learn/tuyaopen-ide-practice-4', to: '/docs/ide/linux-board' },
+          { from: '/learn/tuyaopen-ide-vibe-coding', to: '/docs/ide/vibe-coding' },
+          { from: '/learn/tuyaopen-ide-agent-dev', to: '/docs/ide/agent-development' },
           {
             from: '/docs/hardware-specific/t5ai-peripheral-mapping',
             to: '/docs/hardware/tuya-t5/t5ai-peripheral-mapping',

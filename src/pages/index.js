@@ -442,17 +442,23 @@ function Home() {
 
   return (
     <Layout description={copy.metaDescription}>
-     <Head>
-  <title>TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development</title>
-  <meta name="description" content="TuyaOpen is an open source AI, open source OS, and IoT development platform for building intelligent connected devices at scale. Explore embedded development tools, edge AI, and hardware support." />
-  <meta name="keywords" content="open source ai, iot development platform, open source os, aiot platform, embedded development" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-</Head>
+      <Head>
+        <title>TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development</title>
+        <meta
+          name="description"
+          content="TuyaOpen is an open source AI, open source OS, and IoT development platform for building intelligent connected devices at scale. Explore embedded development tools, edge AI, and hardware support."
+        />
+        <meta
+          name="keywords"
+          content="open source ai, iot development platform, open source os, aiot platform, embedded development"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <div className={styles.landingRoot}>
         <main className={styles.landingMain}>
           {/* Hero */}
@@ -488,7 +494,12 @@ function Home() {
                   <p className={styles.heroSubtitle}>{copy.hero.subtitle}</p>
                   <p className={styles.heroBody}>{copy.hero.body}</p>
                   <div className={styles.heroButtons}>
-                    <Link to="/docs/quick-start/enviroment-setup" className={styles.btnAccent}>
+                    {/* Quick Start lands on the Learn hub, not a single doc:
+                        /learn is the developer entry point that routes on to
+                        the right guide by route and by doc area. Prefixed
+                        explicitly — a raw <Link> in a custom page is not
+                        locale-aware (only theme nav/footer `to:` values are). */}
+                    <Link to={locale === 'zh' ? '/zh/learn' : '/learn'} className={styles.btnAccent}>
                       {copy.cta.quickStart} →
                     </Link>
                     <Link to="/docs/about-tuyaopen" className={styles.btnOutlineLight}>

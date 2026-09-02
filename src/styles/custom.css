@@ -654,3 +654,29 @@ body.announcement-visible .navbar {
 .navbar .dropdown--show > .navbar__link::after {
   transform: rotate(180deg);
 }
+
+/* ==========================================================================
+   Category index cards (generated-index pages, e.g. /docs/category/graphics)
+   --------------------------------------------------------------------------
+   Docusaurus renders each card's description with Infima's `text--truncate`,
+   which is white-space:nowrap — so every description is cut at one line and
+   ends in an ellipsis regardless of length. On an index page the description
+   is the only thing distinguishing one card from the next, so clipping it to
+   a few words defeats the page.
+
+   Every doc in these categories already carries a real `description` in its
+   frontmatter; this only stops the theme from hiding it. Three lines keeps
+   the cards on an even grid while showing a usable summary.
+   ========================================================================== */
+.theme-doc-card-description {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  line-height: 1.5;
+  /* Reserve the full three lines so cards in a row stay the same height even
+     when one description is shorter than the others. */
+  min-height: calc(3 * 1.5em);
+}

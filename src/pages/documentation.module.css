@@ -1,0 +1,381 @@
+/* =========================================================================
+ * /documentation — docs portal.
+ * Shares the visual language of learn.module.css: violet-tinted ground so
+ * white cards lift off it, one accent per area, no emoji.
+ * ========================================================================= */
+
+.root {
+  --neutral-200: #e2e8f0;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-900: #0f172a;
+
+  --card-bg: #ffffff;
+  --card-border: rgba(15, 23, 42, 0.08);
+  --ground: #f7f6fb;
+
+  background: var(--ground);
+  color: var(--neutral-900);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme='dark'] .root {
+  --neutral-200: #334155;
+  --neutral-400: #64748b;
+  --neutral-500: #94a3b8;
+  --neutral-600: #cbd5e1;
+  --neutral-700: #e2e8f0;
+  --neutral-900: #f8fafc;
+
+  --card-bg: #131a2a;
+  --card-border: rgba(148, 163, 184, 0.16);
+  --ground: #0b1120;
+}
+
+/* ---- Hero -------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  padding: 4.5rem 1.5rem 3rem;
+  background:
+    radial-gradient(60rem 22rem at 50% -6rem, rgba(124, 92, 255, 0.16), transparent 70%),
+    var(--ground);
+}
+
+.heroInner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c5cff;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 46rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--neutral-600);
+}
+
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.sectionTitle {
+  margin: 3rem 0 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neutral-500);
+}
+
+/* ---- Start here (the nine-step path) ----------------------------------- */
+
+.start {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.startHead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.startKicker {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c5cff;
+  margin-bottom: 0.375rem;
+}
+
+.startTitle {
+  margin: 0 0 0.375rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.startBlurb {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--neutral-600);
+  line-height: 1.6;
+}
+
+.startCta,
+.areaEntry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9px;
+  border: 1px solid var(--card-border);
+  background: var(--ground);
+  color: var(--neutral-700);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.startCta:hover,
+.areaEntry:hover {
+  color: #7c5cff;
+  border-color: rgba(124, 92, 255, 0.45);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.areaEntry:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.arrow {
+  transition: transform 0.15s ease;
+}
+
+.startCta:hover .arrow,
+.areaEntry:hover .arrow,
+.elseCard:hover .arrow {
+  transform: translateX(2px);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.5rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--ground);
+  color: var(--neutral-700);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.step:hover {
+  color: #7c5cff;
+  border-color: rgba(124, 92, 255, 0.35);
+  text-decoration: none;
+}
+
+.stepNum {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--neutral-400);
+}
+
+.step:hover .stepNum {
+  color: #7c5cff;
+}
+
+.stepLabel {
+  min-width: 0;
+}
+
+/* ---- Areas ------------------------------------------------------------- */
+
+.areas {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.area {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.04);
+  border-top: 3px solid var(--accent);
+}
+
+.areaHead {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.areaIcon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.areaHeadText {
+  flex: 1;
+  min-width: 0;
+}
+
+.areaName {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.areaTagline {
+  margin: 0.1rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--neutral-500);
+}
+
+.areaBlurb {
+  margin: 0 0 1.5rem;
+  max-width: 52rem;
+  color: var(--neutral-600);
+  line-height: 1.65;
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.5rem 1.75rem;
+}
+
+.groupTitle {
+  margin: 0 0 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neutral-500);
+}
+
+.groupLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.groupLink {
+  display: block;
+  padding: 0.2rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+
+.groupLink:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ---- Beyond the docs --------------------------------------------------- */
+
+.elsewhere {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.elseCard {
+  display: block;
+  padding: 1.125rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.elseCard:hover {
+  border-color: rgba(124, 92, 255, 0.45);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.elseTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--neutral-900);
+  margin-bottom: 0.3rem;
+}
+
+.elseCard:hover .elseTitle {
+  color: #7c5cff;
+}
+
+.elseDesc {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--neutral-500);
+}
+
+/* ---- Responsive -------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 3rem 1.25rem 2rem;
+  }
+  .shell {
+    padding: 0 1.25rem 3.5rem;
+  }
+  .start,
+  .area {
+    padding: 1.25rem;
+  }
+  .startHead {
+    flex-direction: column;
+  }
+}
