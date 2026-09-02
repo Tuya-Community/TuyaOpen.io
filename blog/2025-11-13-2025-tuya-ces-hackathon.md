@@ -160,7 +160,7 @@ A limited number of T5 AI Development Boards will be provided to selected develo
 2. Clear Project Proposal — Applicants should provide a detailed project plan, including AI-related concepts and development capabilities.  
 
 c. **Access to Tuya Cloud Services**  
-Participants can freely use Tuya’s AI capabilities, including speech synthesis, voice cloning, speech recognition, and other AI-powered cloud services.
+**For the duration of the hackathon**, participants can use Tuya’s AI capabilities — speech synthesis, voice cloning, speech recognition and other AI-powered cloud services — free of charge. This applies to the event only; outside it, AI usage is metered and billed per the [AI billing rules](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d).
 
 ## 4. Awards (Total Value Over $4,000)
 

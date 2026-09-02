@@ -12,26 +12,40 @@ import styles from './pricing.module.css'
 const PURCHASE = 'https://platform.tuya.com/purchase/index?type=6'
 const PLATFORM = 'https://platform.tuya.com/'
 
+/* The canonical AI usage billing rules — the daily free allowance, the metered
+   items and the unit prices all live here. Link to this page rather than
+   restating the allowance on the site, so the two cannot drift apart. */
+const AI_PRICING = {
+  en: 'https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d',
+  zh: 'https://developer.tuya.com/cn/docs/iot/ai-agent-price?id=Kegb2s2shaj4d',
+}
+
+/* License prices are set in CNY; the English page shows USD. This is a fixed
+   reference rate, not a live quote — a rate that moved mid-session would let
+   the two locales quote different prices for the same license. Change it here
+   and every USD figure on the page follows. Rate last reviewed 2026-09-02. */
+const CNY_TO_USD = 7.2
+const usd = (cny) => `$${(cny / CNY_TO_USD).toFixed(2)}`
+
 /* ----------------------------------------------------------------------- */
 /* Bilingual copy                                                          */
 /* ----------------------------------------------------------------------- */
 
 const content = {
   en: {
-    meta: 'TuyaOpen licensing — a simple, one-time license per device for Tuya Cloud and AI. Free for local and offline projects.',
+    meta: 'TuyaOpen licensing — one per-device license for Tuya Cloud and AI, with a free AI allowance every day. Free for local and offline projects.',
     title: 'TuyaOpen Licensing & Pricing',
-    badge: 'One-time license · per device · no subscription',
+    badge: 'Per-device license · daily AI allowance included',
     heroTitle: ['One license.', 'Connect to the cloud, add AI.'],
-    heroSubtitle: 'Build for free. Pay once per device only when it connects to Tuya Cloud.',
-    heroBody:
-      'TuyaOpen is free and open source. A license — a UUID + AuthKey written to each device — is only needed when that device connects to Tuya Cloud. Choose IoT connectivity at ¥5, or unlock multimodal AI at ¥12. One-time, per device, no monthly fees.',
+    heroSubtitle: 'Build for free. Pay once per device when it connects to Tuya Cloud.',
+    heroBody: `TuyaOpen is free and open source. A license — a UUID + AuthKey written to each device — is only needed when that device connects to Tuya Cloud. Choose IoT connectivity at ${usd(5)}, or unlock multimodal AI at ${usd(12)}. One-time, per device. Every device gets a free AI allowance each day, with usage beyond it charged per use.`,
     ctaPlans: 'Compare plans',
     ctaGuide: 'Licensing guide',
     ctaHow: 'How it works',
     stats: [
-      { value: '¥0', label: 'Local & offline projects' },
-      { value: '¥5 / ¥12', label: 'IoT / AI + IoT per device' },
-      { value: '1×', label: 'One-time, no subscription' },
+      { value: '$0', label: 'Local & offline projects' },
+      { value: `${usd(5)} / ${usd(12)}`, label: 'IoT / AI + IoT per device' },
+      { value: 'Daily', label: 'Free AI allowance included' },
       { value: '11+', label: 'Supported chips' },
     ],
     plans: {
@@ -64,9 +78,9 @@ const content = {
         {
           name: 'IoT Connection',
           tagline: 'Bring your device online and control it from the Tuya app.',
-          price: '¥5',
+          price: usd(5),
           unit: '/ device',
-          alt: '≈ $0.7 · one-time',
+          alt: '≈ ¥5 · one-time, no usage fees',
           includes: 'Everything in Open Source, plus',
           features: [
             'Connect to Tuya Cloud over MQTT',
@@ -84,9 +98,9 @@ const content = {
         {
           name: 'AI + IoT',
           tagline: 'Everything IoT, plus a full multimodal AI agent on-device.',
-          price: '¥12',
+          price: usd(12),
           unit: '/ device',
-          alt: '≈ $1.7 · one-time',
+          alt: '≈ ¥12 · one-time · daily AI allowance',
           includes: 'Everything in IoT Connection, plus',
           features: [
             'Wake-word, cloud ASR & TTS voice pipeline',
@@ -96,6 +110,11 @@ const content = {
             'AI Agent platform: prompts, skills, emotions, roles',
             'Ready-to-flash demos: your_chat_bot, robots, desk emoji',
           ],
+          usageNote: {
+            title: 'A free AI allowance, every day',
+            body: 'Each device gets a fixed free allowance of AI usage per day — LLM tokens, ASR minutes and TTS characters. Most prototypes and light workloads stay inside it, and usage beyond it is charged per use.',
+            linkLabel: 'See the AI billing rules',
+          },
           cta: 'Buy AI + IoT license',
           ctaHref: PURCHASE,
           external: true,
@@ -104,8 +123,8 @@ const content = {
         },
       ],
       enterprise: {
-        title: 'Enterprise & custom solutions',
-        body: 'OEM/ODM services, custom products, and production at scale on the commercial Tuya framework — trusted by 5,800+ customers across 200M+ connected devices.',
+        title: 'Enterprise, startup & education',
+        body: 'Volume licensing, OEM/ODM services, and custom pricing for startups, education and production at scale on the commercial Tuya framework — trusted by 5,800+ customers across 200M+ connected devices. Talk to us about a plan that fits your volume.',
         cta: 'Contact sales',
         ctaHref: 'mailto:service@tuya.com',
       },
@@ -113,11 +132,12 @@ const content = {
     starter: {
       badge: '🎁 Free to start',
       title: '2 starter licenses, on us',
-      body: 'Every developer can claim 2 free device licenses (¥20 value) from the Tuya Developer Platform — enough to build, pair, and test a full cloud or AI project end to end before you buy a single production code.',
+      body: 'Every developer can claim 2 free device licenses from the Tuya Developer Platform — enough to build, pair, and test a full cloud or AI project end to end before you buy a single production code.',
       points: [
         'Full AI + IoT capabilities for development & debugging',
         'No credit card — claim them with a Tuya account',
-        'Upgrade to ¥5 / ¥12 production licenses only when you ship',
+        `Upgrade to ${usd(5)} / ${usd(12)} production licenses only when you ship`,
+        'The daily free AI allowance applies to these too',
       ],
       claimCta: 'Claim 2 free licenses',
       guideCta: 'How to apply',
@@ -126,7 +146,7 @@ const content = {
       tag: 'How licensing works',
       title: 'A license is one credential, written once',
       subtitle:
-        'No accounts to keep alive, no monthly bills. Here is what a TuyaOpen license actually is and when you need one.',
+        'No accounts to keep alive, no monthly bills. Here is what a TuyaOpen license actually is, when you need one, and what comes with it.',
       cards: [
         {
           icon: '🔑',
@@ -148,17 +168,22 @@ const content = {
           title: 'Written once, it stays',
           desc: 'On MCUs the license lives in a protected key-value area — it survives firmware updates and is only lost on a full flash erase.',
         },
+        {
+          icon: '📊',
+          title: 'A free AI allowance each day',
+          desc: 'Every licensed device gets a fixed free allowance of AI usage per day — LLM tokens, ASR minutes, TTS characters. Stay inside it and there is nothing more to pay; usage beyond it is charged per use.',
+        },
       ],
     },
     compare: {
       tag: 'Compare tiers',
       title: 'Start free, scale as you grow',
       subtitle:
-        'The same open-source framework at every tier — pay once per device, only when it connects to Tuya Cloud.',
+        'The same open-source framework at every tier — pay per device only when it connects to Tuya Cloud, with a free AI allowance every day.',
       cols: [
         { name: 'Open Source', price: 'Free' },
-        { name: 'IoT', price: '¥5 / device' },
-        { name: 'AI + IoT', price: '¥12 / device' },
+        { name: 'IoT', price: `${usd(5)} / device` },
+        { name: 'AI + IoT', price: `${usd(12)} / device` },
       ],
       groups: [
         {
@@ -210,7 +235,8 @@ const content = {
           name: 'Production & support',
           rows: [
             ['Free developer test licenses', false, 'Starter free license', 'Starter free license'],
-            ['Per-device production license', '—', '¥5', '¥12'],
+            ['Per-device production license', '—', usd(5), usd(12)],
+            ['Daily free AI allowance', '—', '—', 'Included, then pay per use'],
             ['Mass-flash & pre-flashed modules', false, true, true],
             ['Commercial production ready', false, true, true],
             ['Community support', true, true, true],
@@ -226,7 +252,7 @@ const content = {
         {
           n: '1',
           title: 'Get a license',
-          desc: 'Create a product on the Tuya Developer Platform and claim 2 free developer licenses (¥20 value) to start. Buy ¥5 / ¥12 production licenses when you ship.',
+          desc: `Create a product on the Tuya Developer Platform and claim 2 free developer licenses to start. Buy ${usd(5)} / ${usd(12)} production licenses when you ship. Every device carries a free AI allowance each day.`,
           code: `# Tuya Developer Platform
 1. Create a product (pick any category)
 2. Select the T5 module + dummy firmware
@@ -267,7 +293,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
       items: [
         {
           q: 'Why do I need a license key?',
-          a: 'A license (UUID + AuthKey) is the device’s identity for secure access to Tuya Cloud. After a one-time purchase, each device carries its own unique license.',
+          a: 'A license (UUID + AuthKey) is the device’s identity for secure access to Tuya Cloud. It is bought once per device, and each device carries its own unique license.',
         },
         {
           q: 'When is a license NOT required?',
@@ -275,27 +301,27 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: 'Is this a monthly subscription?',
-          a: 'No. The ¥5 / ¥12 license is a one-time purchase per connected device — not a recurring fee.',
+          a: `No. The ${usd(5)} / ${usd(12)} license is a one-time purchase per connected device, with no recurring fee. On the ${usd(12)} tier, each device also gets a free AI allowance every day, with usage beyond it charged per use. See the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
         },
         {
-          q: 'What’s the difference between the ¥5 and ¥12 license?',
-          a: 'The ¥5 IoT license connects your device to Tuya Cloud for app control, DP data, and OTA. The ¥12 AI + IoT license adds the full multimodal AI agent: wake-word, ASR/TTS, LLMs, vision, and MCP tool-calling.',
+          q: `What’s the difference between the ${usd(5)} and ${usd(12)} license?`,
+          a: `The ${usd(5)} IoT license connects your device to Tuya Cloud for app control, DP data, and OTA. The ${usd(12)} AI + IoT license adds the full multimodal AI agent — wake-word, ASR/TTS, LLMs, vision, and MCP tool-calling — together with a free AI allowance for every device, every day.`,
         },
         {
           q: 'Can I reuse a license on another device?',
           a: 'Each UUID brings one device online at a time. You can reuse the AuthKey on a new board only after unpairing the original device from the Tuya Smart Life app.',
         },
         {
-          q: 'Are AI tokens included in the ¥12 license?',
-          a: 'The ¥12 license unlocks the full AI stack. For now, AI usage — LLM tokens, ASR minutes, TTS characters — is uncapped and included at no extra cost. We reserve the right to introduce usage-based billing in the future, with advance notice.',
+          q: `Are AI tokens included in the ${usd(12)} license?`,
+          a: `Yes, a fixed allowance each day. Every ${usd(12)} device comes with a free daily allowance of AI usage — LLM tokens, ASR minutes and TTS characters — which covers prototyping and light workloads outright, with usage beyond it charged per use. Current allowances and rates are in the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
         },
         {
           q: 'Do TuyaOS licenses work with TuyaOpen?',
           a: 'No. TuyaOpen requires TuyaOpen-specific licenses. TuyaOS authorization codes cannot connect within the TuyaOpen framework.',
         },
         {
-          q: 'Do you offer enterprise or startup pricing?',
-          a: 'Yes. We offer custom and volume pricing for startups, education, and enterprise. Contact <a href="mailto:service@tuya.com">service@tuya.com</a> for a quote.',
+          q: 'Do you offer enterprise, startup or education pricing?',
+          a: 'Yes. We offer custom and volume pricing for enterprise, startups, education and bulk deployments — both for licenses and for AI usage. Contact <a href="mailto:service@tuya.com">service@tuya.com</a> for a quote.',
         },
       ],
     },
@@ -306,20 +332,20 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
   },
 
   zh: {
-    meta: 'TuyaOpen 授权 —— 面向涂鸦云与 AI 的简单一次性授权，按设备计费。本地与离线项目完全免费。',
+    meta: 'TuyaOpen 授权 —— 面向涂鸦云与 AI 的按设备授权码，每日含固定免费 AI 额度。本地与离线项目完全免费。',
     title: 'TuyaOpen 授权与价格',
-    badge: '一次性授权 · 按设备 · 无订阅',
+    badge: '按设备授权 · 每日含免费 AI 额度',
     heroTitle: ['一码授权，', '接入云端，开启 AI。'],
     heroSubtitle: '免费开发。只有当设备接入涂鸦云时，才需按设备一次性付费。',
     heroBody:
-      'TuyaOpen 免费且开源。授权码 —— 写入每台设备的 UUID + AuthKey —— 仅在设备接入涂鸦云时才需要。¥5 解锁 IoT 连接，¥12 解锁多模态 AI。一次性、按设备，无月费。',
+      'TuyaOpen 免费且开源。授权码 —— 写入每台设备的 UUID + AuthKey —— 仅在设备接入涂鸦云时才需要。¥5 解锁 IoT 连接，¥12 解锁多模态 AI，按设备一次性收取。每台设备每日还享固定免费 AI 额度，超出部分按量计费。',
     ctaPlans: '对比方案',
     ctaGuide: '授权指南',
     ctaHow: '工作原理',
     stats: [
       { value: '¥0', label: '本地与离线项目' },
       { value: '¥5 / ¥12', label: 'IoT / AI + IoT 每设备' },
-      { value: '1×', label: '一次性，无订阅' },
+      { value: '每日', label: '含固定免费 AI 额度' },
       { value: '11+', label: '支持的芯片' },
     ],
     plans: {
@@ -353,7 +379,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
           tagline: '让设备上线，并通过涂鸦 App 控制。',
           price: '¥5',
           unit: '/ 设备',
-          alt: '≈ $0.7 · 一次性',
+          alt: '一次性 · 无用量费',
           includes: '包含开源版全部能力，另加',
           features: [
             '通过 MQTT 接入涂鸦云',
@@ -373,7 +399,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
           tagline: '在 IoT 之上，提供完整的设备端多模态 AI 智能体。',
           price: '¥12',
           unit: '/ 设备',
-          alt: '≈ $1.7 · 一次性',
+          alt: '一次性 · 每日含免费 AI 额度',
           includes: '包含 IoT 连接全部能力，另加',
           features: [
             '唤醒词、云端 ASR 与 TTS 语音链路',
@@ -383,6 +409,11 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
             'AI 智能体平台：提示词、技能、情绪、角色',
             '即烧即用示例：your_chat_bot、机器人、桌面表情',
           ],
+          usageNote: {
+            title: '每日赠送固定免费 AI 额度',
+            body: '每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证和轻量场景通常完全够用，超出部分按量计费。',
+            linkLabel: '查看 AI 计费规则',
+          },
           cta: '购买 AI + IoT 授权',
           ctaHref: PURCHASE,
           external: true,
@@ -391,20 +422,21 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
       ],
       enterprise: {
-        title: '企业与定制解决方案',
-        body: '基于商用涂鸦框架提供 OEM/ODM 服务、定制产品与规模化量产 —— 已获 5,800+ 客户信赖，连接超 2 亿台设备。',
-        cta: '联系销售',
+        title: '企业、初创与教育',
+        body: '面向企业、初创、教育及批量场景，提供批量授权、OEM/ODM 服务与定制价 —— 已获 5,800+ 客户信赖，连接超 2 亿台设备。授权与 AI 用量均可洽谈定制方案。',
+        cta: '联系商务',
         ctaHref: 'mailto:service@tuya.com',
       },
     },
     starter: {
       badge: '🎁 免费起步',
       title: '送你 2 个入门授权',
-      body: '每位开发者都可在涂鸦开发者平台领取 2 个免费设备授权（价值 ¥20）—— 足以在购买任何量产授权之前，完整地构建、配网并测试一个云端或 AI 项目。',
+      body: '每位开发者都可在涂鸦开发者平台免费领取 2 个设备授权码 —— 零门槛先把 Demo 跑起来，足以在购买任何量产授权之前完整地构建、配网并测试一个云端或 AI 项目。',
       points: [
         '面向开发与调试的完整 AI + IoT 能力',
         '无需信用卡 —— 用涂鸦账号即可领取',
         '量产时再升级为 ¥5 / ¥12 授权',
+        '每日固定免费 AI 额度，开发阶段同样享有',
       ],
       claimCta: '领取 2 个免费授权',
       guideCta: '如何申请',
@@ -412,7 +444,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
     how: {
       tag: '授权原理',
       title: '授权就是一份凭据，写入一次即可',
-      subtitle: '无需维护账号，也没有月账单。下面说明 TuyaOpen 授权到底是什么，以及何时需要它。',
+      subtitle: '无需维护账号，也没有月账单。下面说明 TuyaOpen 授权到底是什么、何时需要它，以及它包含什么。',
       cards: [
         {
           icon: '🔑',
@@ -434,12 +466,17 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
           title: '写一次，长期保留',
           desc: '在 MCU 上，授权存于受保护的键值区 —— 固件升级不会丢失，仅在整片擦除时才会清除。',
         },
+        {
+          icon: '📊',
+          title: '每日含免费 AI 额度',
+          desc: '每台已授权设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符。额度以内无需再付费，超出部分按量计费。',
+        },
       ],
     },
     compare: {
       tag: '档位对比',
       title: '免费起步，按需升级',
-      subtitle: '每个档位共享同一套开源框架 —— 仅当设备接入涂鸦云时，才按设备一次性付费。',
+      subtitle: '每个档位共享同一套开源框架 —— 仅当设备接入涂鸦云时才按设备付费，且每日含固定免费 AI 额度。',
       cols: [
         { name: '开源开发者', price: '免费' },
         { name: 'IoT', price: '¥5 / 设备' },
@@ -496,6 +533,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
           rows: [
             ['免费开发者测试授权', false, '入门免费授权', '入门免费授权'],
             ['每设备量产授权', '—', '¥5', '¥12'],
+            ['每日免费 AI 额度', '—', '—', '赠送，超出按量'],
             ['批量烧录与预烧录模块', false, true, true],
             ['商用量产就绪', false, true, true],
             ['社区支持', true, true, true],
@@ -511,7 +549,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         {
           n: '1',
           title: '获取授权',
-          desc: '在涂鸦开发者平台创建产品，领取 2 个免费开发者授权（价值 ¥20）即可开始。量产时再购买 ¥5 / ¥12 授权。',
+          desc: '在涂鸦开发者平台创建产品，免费领取 2 个开发者授权码即可开始。量产时再购买 ¥5 / ¥12 授权。每台设备每日还享固定免费 AI 额度。',
           code: `# 涂鸦开发者平台
 1. 创建产品（任选一个品类）
 2. 选择 T5 模组 + 占位固件
@@ -552,7 +590,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
       items: [
         {
           q: '为什么需要授权码？',
-          a: '授权（UUID + AuthKey）是设备安全接入涂鸦云的身份。一次性购买后，每台设备都拥有自己唯一的授权。',
+          a: '授权（UUID + AuthKey）是设备安全接入涂鸦云的身份。按设备一次性购买，每台设备都拥有自己唯一的授权。',
         },
         {
           q: '什么情况下无需授权？',
@@ -560,11 +598,11 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: '这是按月订阅吗？',
-          a: '不是。¥5 / ¥12 授权是按连接设备的一次性购买，并非周期性费用。',
+          a: `不是。¥5 / ¥12 授权是按连接设备的一次性购买，没有周期性费用。¥12 档的每台设备每日还享一份固定免费 AI 额度，超出部分按量计费。详见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
         },
         {
           q: '¥5 与 ¥12 授权有何区别？',
-          a: '¥5 的 IoT 授权让设备接入涂鸦云，用于 App 控制、DP 数据与 OTA。¥12 的 AI + IoT 授权在此之上增加完整的多模态 AI 智能体：唤醒词、ASR/TTS、大模型、视觉与 MCP 工具调用。',
+          a: '¥5 的 IoT 授权让设备接入涂鸦云，用于 App 控制、DP 数据与 OTA。¥12 的 AI + IoT 授权在此之上开通完整的多模态 AI 智能体——唤醒词、ASR/TTS、大模型、视觉与 MCP 工具调用——并为每台设备每日赠送固定免费 AI 额度。',
         },
         {
           q: '授权可以在其他设备上复用吗？',
@@ -572,15 +610,15 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: '¥12 授权是否包含 AI tokens？',
-          a: '¥12 授权解锁完整 AI 能力。目前 AI 用量 —— 大模型 token、ASR 时长、TTS 字符 —— 不设上限，且不额外收费。我们保留未来按量计费的权利，并将提前通知。',
+          a: `包含每日固定额度。每台 ¥12 设备每天都有一份免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内——原型验证与轻量场景通常完全够用，超出部分按量计费。当前额度与单价见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
         },
         {
           q: 'TuyaOS 授权能用于 TuyaOpen 吗？',
           a: '不能。TuyaOpen 需要 TuyaOpen 专用授权。TuyaOS 授权码无法在 TuyaOpen 框架内接入云端。',
         },
         {
-          q: '是否提供企业或初创优惠？',
-          a: '是的。我们为初创、教育与企业提供定制与批量价格。请联系 <a href="mailto:service@tuya.com">service@tuya.com</a> 获取报价。',
+          q: '是否提供企业、初创或教育优惠？',
+          a: '是的。我们为企业、初创、教育及批量场景提供定制与批量价格，授权与 AI 用量均可洽谈。请联系 <a href="mailto:service@tuya.com">service@tuya.com</a> 获取报价。',
         },
       ],
     },
@@ -719,6 +757,7 @@ export default function Pricing() {
     'https://images.tuyacn.com/fe-static/docs/img/6599c558-59a6-4051-a40d-cfefb55a696e.png', // how-cloud
     'https://images.tuyacn.com/fe-static/docs/img/bf82d133-86a0-430a-b961-e0acfe230942.png', // how-device
     'https://images.tuyacn.com/fe-static/docs/img/3c69e123-5141-48f4-ad9f-1785095cff8e.png', // how-persist
+    'https://images.tuyacn.com/fe-static/docs/img/32d4eba1-21b4-4b7b-96c3-2200b530a1f3.png', // how-usage
   ]
   const rootRef = useRef(null)
   const [openFaq, setOpenFaq] = useState(null)
@@ -848,6 +887,24 @@ export default function Pricing() {
                       <li key={j}>{f}</li>
                     ))}
                   </ul>
+                  {/* The features above are what the license grants access to;
+                      the usage those features go on to consume is metered and
+                      billed on top. Stated on the card, not only in the FAQ,
+                      because the card is where the buying decision happens. */}
+                  {tier.usageNote && (
+                    <div className={styles.usageNote}>
+                      <div className={styles.usageNoteTitle}>{tier.usageNote.title}</div>
+                      <p className={styles.usageNoteBody}>{tier.usageNote.body}</p>
+                      <a
+                        className={styles.usageNoteLink}
+                        href={AI_PRICING[locale]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {tier.usageNote.linkLabel} →
+                      </a>
+                    </div>
+                  )}
                   <TierButton
                     tier={tier}
                     className={clsx(styles.tierCta, tier.featured ? styles.btnAccent : styles.btnPrimary)}
@@ -905,7 +962,7 @@ export default function Pricing() {
             </Reveal>
             <div className={styles.infoGrid}>
               {c.how.cards.map((card, i) => (
-                <Reveal className={styles.infoCard} key={i} style={{ transitionDelay: `${(i % 4) * 60}ms` }}>
+                <Reveal className={styles.infoCard} key={i} style={{ transitionDelay: `${(i % 5) * 60}ms` }}>
                   <div className={styles.infoMedia}>
                     <img src={howImgs[i]} alt={card.title} loading="lazy" />
                   </div>

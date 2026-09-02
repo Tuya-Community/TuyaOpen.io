@@ -118,7 +118,7 @@ Send the above work published address links & documents via email to huate.lai@t
 
 - **Purchase Development Board**: Registered contestants can purchase T5AI development board kit at 50% discount after joining the group
 - **Free Development Board (Limited)**: T5 development boards will be provided to selected developers based on creativity, issued after review approval
-- **Access to Tuya Cloud Services**, can freely use AI capabilities including speech synthesis, voice cloning, speech recognition, speech synthesis, etc.
+- **Access to Tuya Cloud Services** — **for the duration of the event**, AI capabilities including speech synthesis, voice cloning and speech recognition are free of charge. This applies to the event only; outside it, AI usage is metered and billed per the [AI billing rules](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d).
 
 - **Join Group & Resource Application After Successful Registration**
 

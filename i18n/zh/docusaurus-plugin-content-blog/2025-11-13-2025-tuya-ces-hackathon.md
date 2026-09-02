@@ -173,9 +173,9 @@ https://tuyaopen.ai/zh/docs/about-tuyaopen
   资源申请要求：
   - 有硬件开发经验，请提交以往的项目所在github地址或者相关视频优先
   - 有明确的项目计划书，如ai相关项目经验，有开发能力
-  - 可调用涂鸦云服务，可以免费使用包括语音合成，声音复刻，语音识别、语音合成等AI能力
+  - 可调用涂鸦云服务，**活动期间**可免费使用包括语音合成、声音复刻、语音识别等 AI 能力（仅限本次活动，活动外 AI 用量按 [AI 计费规则](https://developer.tuya.com/cn/docs/iot/ai-agent-price?id=Kegb2s2shaj4d) 计费）
 
-- **可调用涂鸦云服务**，可以免费使用包括语音合成，声音复刻，语音识别、语音合成等Ai能力
+- **可调用涂鸦云服务**，**活动期间**可免费使用包括语音合成、声音复刻、语音识别等 AI 能力（仅限本次活动，活动外 AI 用量按 [AI 计费规则](https://developer.tuya.com/cn/docs/iot/ai-agent-price?id=Kegb2s2shaj4d) 计费）
 
 
 

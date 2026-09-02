@@ -703,6 +703,54 @@
   border-radius: 50%;
 }
 
+/* The AI tier's "usage billed separately" note. Deliberately not styled as a
+   feature bullet: the bullets say what the license buys, this says what it
+   does not, so it has to read as a different kind of statement. Amber rather
+   than red — it is a term of sale, not an error. */
+.usageNote {
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--warn-border, #f2d3a0);
+  border-left: 3px solid var(--warn, #e08b1f);
+  border-radius: 10px;
+  background: var(--warn-bg, #fdf6ea);
+}
+
+.usageNoteTitle {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--neutral-900, #1a1a1a);
+  margin-bottom: 0.35rem;
+}
+
+.usageNoteBody {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--neutral-700);
+  margin: 0 0 0.5rem;
+}
+
+.usageNoteLink {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--warn-link, #b06d10);
+  text-decoration: none;
+}
+
+.usageNoteLink:hover {
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .usageNote {
+  border-color: #6b4d1f;
+  border-left-color: #d99a3c;
+  background: rgba(224, 139, 31, 0.09);
+}
+
+[data-theme='dark'] .usageNoteLink {
+  color: #e2a94f;
+}
+
 .tierCta {
   margin-top: auto;
   width: 100%;
@@ -899,8 +947,17 @@
   .infoGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Five cards, and they belong on one row: the fifth says what a license does
+   NOT cover, which only reads as a peer of the other four when it sits beside
+   them. Left to wrap it lands alone on a second row and reads like a footnote,
+   which is the opposite of the point. 1024–1279 keeps three-up so the cards do
+   not get too narrow to read; five-up starts where there is room for it. */
 @media (min-width: 1024px) {
-  .infoGrid { grid-template-columns: repeat(4, 1fr); }
+  .infoGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1280px) {
+  .infoGrid { grid-template-columns: repeat(5, 1fr); }
 }
 
 .infoCard {

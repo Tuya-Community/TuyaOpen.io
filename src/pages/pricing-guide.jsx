@@ -9,6 +9,18 @@ import styles from './pricing-guide.module.css'
 const PLATFORM = 'https://platform.tuya.com/'
 const PURCHASE = 'https://platform.tuya.com/purchase/index?type=6'
 
+/* Canonical AI usage billing rules — kept in step with src/pages/pricing.js. */
+const AI_PRICING = {
+  en: 'https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d',
+  zh: 'https://developer.tuya.com/cn/docs/iot/ai-agent-price?id=Kegb2s2shaj4d',
+}
+
+/* Licenses are priced in CNY; the English page shows USD at this fixed
+   reference rate. Mirrors CNY_TO_USD in src/pages/pricing.js — change both
+   together. Rate last reviewed 2026-09-02. */
+const CNY_TO_USD = 7.2
+const usd = (cny) => `$${(cny / CNY_TO_USD).toFixed(2)}`
+
 /* ----------------------------------------------------------------------- */
 /* Bilingual copy                                                          */
 /* ----------------------------------------------------------------------- */
@@ -59,14 +71,14 @@ const content = {
         },
         {
           name: 'IoT Connection',
-          price: '¥5',
-          desc: 'Tuya Cloud connection, Smart Life app control, data points, and OTA updates.',
+          price: usd(5),
+          desc: 'Tuya Cloud connection, Smart Life app control, data points, and OTA updates. No usage fees.',
           hi: false,
         },
         {
           name: 'AI + IoT',
-          price: '¥12',
-          desc: 'Everything in IoT, plus voice (ASR/TTS), LLMs, vision, and the AI agent platform.',
+          price: usd(12),
+          desc: 'Everything in IoT, plus voice (ASR/TTS), LLMs, vision, and the AI agent platform — with a free AI allowance for every device, every day.',
           hi: true,
         },
       ],
@@ -78,7 +90,7 @@ const content = {
       lead: 'For development you can claim free codes; for production you buy per-device licenses.',
       freeTitle: 'Claim 2 free developer licenses',
       freeIntro:
-        'During development you can claim 2 free device licenses (¥20 value) from the Tuya Developer Platform:',
+        'During development you can claim 2 free device licenses from the Tuya Developer Platform:',
       freeSteps: [
         'Log in to the Tuya Developer Platform and create a product — pick any category (it is only a starting template). For AI-Agent features, choose an AI-tagged template.',
         'Select the T5 module, click Add Custom Firmware, and upload any dummy file as a placeholder.',
@@ -87,9 +99,12 @@ const content = {
       ],
       platformBtn: 'Open the Developer Platform',
       buyTitle: 'Buy production licenses',
-      buyIntro:
-        'When you are ready to ship, buy per-device licenses (¥5 IoT / ¥12 AI + IoT). You can also order Tuya modules pre-flashed with a license at the factory.',
+      buyIntro: `When you are ready to ship, buy per-device licenses (${usd(5)} IoT / ${usd(12)} AI + IoT). You can also order Tuya modules pre-flashed with a license at the factory.`,
       buyBtn: 'Buy licenses',
+      usageTitle: 'Your daily AI allowance',
+      usageIntro:
+        'On the AI + IoT tier, every device comes with a fixed free allowance of AI usage each day — LLM tokens, ASR minutes and TTS characters. Prototyping and light workloads generally stay well inside it, and usage beyond it is charged per use. The IoT tier has no usage component at all.',
+      usageBtn: 'See the AI billing rules',
     },
 
     write: {
@@ -234,13 +249,13 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
         {
           name: 'IoT 连接',
           price: '¥5',
-          desc: '涂鸦云连接、智能生活 App 控制、数据点与 OTA 升级。',
+          desc: '涂鸦云连接、智能生活 App 控制、数据点与 OTA 升级。无用量费用。',
           hi: false,
         },
         {
           name: 'AI + IoT',
           price: '¥12',
-          desc: '在 IoT 之上，增加语音（ASR/TTS）、大模型、视觉与 AI 智能体平台。',
+          desc: '在 IoT 之上，开通语音（ASR/TTS）、大模型、视觉与 AI 智能体平台 —— 每台设备每日还享固定免费 AI 额度。',
           hi: true,
         },
       ],
@@ -251,7 +266,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
       title: '获取授权',
       lead: '开发阶段可领取免费授权码；量产时按设备购买授权。',
       freeTitle: '领取 2 个免费开发者授权',
-      freeIntro: '开发阶段可在涂鸦开发者平台领取 2 个免费设备授权（价值 ¥20）：',
+      freeIntro: '开发阶段可在涂鸦开发者平台免费领取 2 个设备授权码：',
       freeSteps: [
         '登录涂鸦开发者平台并创建产品 —— 任选一个品类（它只是起始模板）。需要 AI-Agent 能力时，选择带 AI 标签的模板。',
         '选择 T5 模组，点击「添加自定义固件」，上传任意占位文件作为占位。',
@@ -263,6 +278,10 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
       buyIntro:
         '准备量产时，按设备购买授权（¥5 IoT / ¥12 AI + IoT）。也可订购出厂即预烧录授权的涂鸦模组。',
       buyBtn: '购买授权',
+      usageTitle: '每日免费 AI 额度',
+      usageIntro:
+        '在 AI + IoT 档下，每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证与轻量场景通常完全够用，超出部分按量计费。IoT 档则完全不涉及用量费用。',
+      usageBtn: '查看 AI 计费规则',
     },
 
     write: {
@@ -510,6 +529,20 @@ export default function PricingGuide() {
               <p>{c.get.buyIntro}</p>
               <a className={styles.btnPrimary} href={PURCHASE} target="_blank" rel="noopener noreferrer">
                 {c.get.buyBtn}
+              </a>
+
+              {/* Buying the license is only half the cost on the AI tier. Said
+                  here, right after the purchase step, because this is where a
+                  reader forms their idea of what shipping will cost. */}
+              <h3 className={styles.h3}>{c.get.usageTitle}</h3>
+              <p>{c.get.usageIntro}</p>
+              <a
+                className={styles.btnPrimary}
+                href={AI_PRICING[locale]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {c.get.usageBtn}
               </a>
             </section>
 
