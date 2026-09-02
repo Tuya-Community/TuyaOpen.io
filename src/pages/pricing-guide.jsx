@@ -78,7 +78,7 @@ const content = {
         {
           name: 'AI + IoT',
           price: usd(12),
-          desc: 'Everything in IoT, plus access to voice (ASR/TTS), LLMs, vision, and the AI agent platform — whose usage is metered and billed separately.',
+          desc: 'Everything in IoT, plus voice (ASR/TTS), LLMs, vision, and the AI agent platform — with a free AI allowance for every device, every day.',
           hi: true,
         },
       ],
@@ -101,9 +101,9 @@ const content = {
       buyTitle: 'Buy production licenses',
       buyIntro: `When you are ready to ship, buy per-device licenses (${usd(5)} IoT / ${usd(12)} AI + IoT). You can also order Tuya modules pre-flashed with a license at the factory.`,
       buyBtn: 'Buy licenses',
-      usageTitle: 'AI usage is billed separately',
+      usageTitle: 'Your daily AI allowance',
       usageIntro:
-        'The license admits a device to the platform; it does not pay for the AI that device then runs. On the AI + IoT tier, LLM tokens, ASR minutes and TTS characters are metered daily and billed on actual usage, after a free allowance each day. The IoT tier has no usage fees.',
+        'On the AI + IoT tier, every device comes with a fixed free allowance of AI usage each day — LLM tokens, ASR minutes and TTS characters. Prototyping and light workloads generally stay well inside it, and you pay only for whatever runs past it, at published rates. The IoT tier has no usage component at all.',
       usageBtn: 'See the AI billing rules',
     },
 
@@ -255,7 +255,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
         {
           name: 'AI + IoT',
           price: '¥12',
-          desc: '在 IoT 之上，开通语音（ASR/TTS）、大模型、视觉与 AI 智能体平台 —— 这些能力的用量单独计量收费。',
+          desc: '在 IoT 之上，开通语音（ASR/TTS）、大模型、视觉与 AI 智能体平台 —— 每台设备每日还享固定免费 AI 额度。',
           hi: true,
         },
       ],
@@ -278,9 +278,9 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
       buyIntro:
         '准备量产时，按设备购买授权（¥5 IoT / ¥12 AI + IoT）。也可订购出厂即预烧录授权的涂鸦模组。',
       buyBtn: '购买授权',
-      usageTitle: 'AI 用量单独计费',
+      usageTitle: '每日免费 AI 额度',
       usageIntro:
-        '授权码解决的是设备接入平台的资格，不为它随后运行的 AI 买单。在 AI + IoT 档下，大模型 token、ASR 时长、TTS 字符按天计量、按实际用量收费，每日提供固定免费额度。IoT 档不产生用量费用。',
+        '在 AI + IoT 档下，每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证与轻量场景通常远用不完，只有超出的部分才按公开单价付费。IoT 档则完全不涉及用量费用。',
       usageBtn: '查看 AI 计费规则',
     },
 

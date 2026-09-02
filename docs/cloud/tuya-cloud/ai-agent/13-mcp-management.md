@@ -107,9 +107,9 @@ Debug custom MCP services the same way as official ones. For more information, s
 
 ## Billing
 
-MCP usage is metered and billed. Running an agent that calls MCP tools incurs charges, as agent usage does generally, after the free allowance each day.
+Calling MCP tools counts towards the agent's usage, and every device has a free allowance of that each day. Only what runs past the daily allowance is charged.
 
-For the current rules, allowance and unit prices, see the [AI billing rules](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d).
+For the current allowance and unit prices, see the [AI billing rules](https://developer.tuya.com/en/docs/iot/ai-agent-price?id=Kegb2s2shaj4d).
 
 ## See also
 

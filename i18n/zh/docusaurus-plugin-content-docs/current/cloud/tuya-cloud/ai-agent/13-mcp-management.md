@@ -106,9 +106,9 @@ MCP 管理支持 **官方 MCP 服务** 查询和 **自定义 MCP 服务** 管理
 
 ## 费用说明
 
-MCP 的使用按量计费。智能体调用 MCP 工具会产生费用，与智能体的其他用量一样，在每日免费额度之外按实际用量收取。
+调用 MCP 工具计入智能体的用量，而每台设备每日都有一份免费额度。只有超出每日额度的部分才会计费。
 
-具体计费规则、免费额度与单价，见 [AI 计费规则](https://developer.tuya.com/cn/docs/iot/ai-agent-price?id=Kegb2s2shaj4d)。
+当前免费额度与单价，见 [AI 计费规则](https://developer.tuya.com/cn/docs/iot/ai-agent-price?id=Kegb2s2shaj4d)。
 
 ## 相关文档
 
