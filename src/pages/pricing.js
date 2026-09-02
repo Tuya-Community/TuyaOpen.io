@@ -765,6 +765,7 @@ export default function Pricing() {
     'https://images.tuyacn.com/fe-static/docs/img/6599c558-59a6-4051-a40d-cfefb55a696e.png', // how-cloud
     'https://images.tuyacn.com/fe-static/docs/img/bf82d133-86a0-430a-b961-e0acfe230942.png', // how-device
     'https://images.tuyacn.com/fe-static/docs/img/3c69e123-5141-48f4-ad9f-1785095cff8e.png', // how-persist
+    'https://images.tuyacn.com/fe-static/docs/img/32d4eba1-21b4-4b7b-96c3-2200b530a1f3.png', // how-usage
   ]
   const rootRef = useRef(null)
   const [openFaq, setOpenFaq] = useState(null)
@@ -969,7 +970,7 @@ export default function Pricing() {
             </Reveal>
             <div className={styles.infoGrid}>
               {c.how.cards.map((card, i) => (
-                <Reveal className={styles.infoCard} key={i} style={{ transitionDelay: `${(i % 4) * 60}ms` }}>
+                <Reveal className={styles.infoCard} key={i} style={{ transitionDelay: `${(i % 5) * 60}ms` }}>
                   <div className={styles.infoMedia}>
                     <img src={howImgs[i]} alt={card.title} loading="lazy" />
                   </div>

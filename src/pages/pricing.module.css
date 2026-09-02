@@ -947,8 +947,17 @@
   .infoGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Five cards, and they belong on one row: the fifth says what a license does
+   NOT cover, which only reads as a peer of the other four when it sits beside
+   them. Left to wrap it lands alone on a second row and reads like a footnote,
+   which is the opposite of the point. 1024–1279 keeps three-up so the cards do
+   not get too narrow to read; five-up starts where there is room for it. */
 @media (min-width: 1024px) {
-  .infoGrid { grid-template-columns: repeat(4, 1fr); }
+  .infoGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1280px) {
+  .infoGrid { grid-template-columns: repeat(5, 1fr); }
 }
 
 .infoCard {
