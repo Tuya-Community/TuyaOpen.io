@@ -103,7 +103,7 @@ const content = {
       buyBtn: 'Buy licenses',
       usageTitle: 'Your daily AI allowance',
       usageIntro:
-        'On the AI + IoT tier, every device comes with a fixed free allowance of AI usage each day — LLM tokens, ASR minutes and TTS characters. Prototyping and light workloads generally stay well inside it, and you pay only for whatever runs past it, at published rates. The IoT tier has no usage component at all.',
+        'On the AI + IoT tier, every device comes with a fixed free allowance of AI usage each day — LLM tokens, ASR minutes and TTS characters. Prototyping and light workloads generally stay well inside it, and usage beyond it is charged per use. The IoT tier has no usage component at all.',
       usageBtn: 'See the AI billing rules',
     },
 
@@ -280,7 +280,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
       buyBtn: '购买授权',
       usageTitle: '每日免费 AI 额度',
       usageIntro:
-        '在 AI + IoT 档下，每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证与轻量场景通常远用不完，只有超出的部分才按公开单价付费。IoT 档则完全不涉及用量费用。',
+        '在 AI + IoT 档下，每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证与轻量场景通常完全够用，超出部分按量计费。IoT 档则完全不涉及用量费用。',
       usageBtn: '查看 AI 计费规则',
     },
 

@@ -38,7 +38,7 @@ const content = {
     badge: 'Per-device license · daily AI allowance included',
     heroTitle: ['One license.', 'Connect to the cloud, add AI.'],
     heroSubtitle: 'Build for free. Pay once per device when it connects to Tuya Cloud.',
-    heroBody: `TuyaOpen is free and open source. A license — a UUID + AuthKey written to each device — is only needed when that device connects to Tuya Cloud. Choose IoT connectivity at ${usd(5)}, or unlock multimodal AI at ${usd(12)}. One-time, per device. Every device gets a free AI allowance each day, and you only pay for what runs past it.`,
+    heroBody: `TuyaOpen is free and open source. A license — a UUID + AuthKey written to each device — is only needed when that device connects to Tuya Cloud. Choose IoT connectivity at ${usd(5)}, or unlock multimodal AI at ${usd(12)}. One-time, per device. Every device gets a free AI allowance each day, with usage beyond it charged per use.`,
     ctaPlans: 'Compare plans',
     ctaGuide: 'Licensing guide',
     ctaHow: 'How it works',
@@ -112,7 +112,7 @@ const content = {
           ],
           usageNote: {
             title: 'A free AI allowance, every day',
-            body: 'Each device gets a fixed free allowance of AI usage per day — LLM tokens, ASR minutes and TTS characters. Most prototypes and light workloads stay inside it. Go past it and you pay only for the excess, at published rates.',
+            body: 'Each device gets a fixed free allowance of AI usage per day — LLM tokens, ASR minutes and TTS characters. Most prototypes and light workloads stay inside it, and usage beyond it is charged per use.',
             linkLabel: 'See the AI billing rules',
           },
           cta: 'Buy AI + IoT license',
@@ -171,7 +171,7 @@ const content = {
         {
           icon: '📊',
           title: 'A free AI allowance each day',
-          desc: 'Every licensed device gets a fixed free allowance of AI usage per day — LLM tokens, ASR minutes, TTS characters. Stay inside it and there is nothing more to pay; go past it and only the excess is charged, at published rates.',
+          desc: 'Every licensed device gets a fixed free allowance of AI usage per day — LLM tokens, ASR minutes, TTS characters. Stay inside it and there is nothing more to pay; usage beyond it is charged per use.',
         },
       ],
     },
@@ -301,7 +301,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: 'Is this a monthly subscription?',
-          a: `No. The ${usd(5)} / ${usd(12)} license is a one-time purchase per connected device, with no recurring fee. On the ${usd(12)} tier, each device also gets a free AI allowance every day; you pay only if a device runs past it. See the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
+          a: `No. The ${usd(5)} / ${usd(12)} license is a one-time purchase per connected device, with no recurring fee. On the ${usd(12)} tier, each device also gets a free AI allowance every day, with usage beyond it charged per use. See the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
         },
         {
           q: `What’s the difference between the ${usd(5)} and ${usd(12)} license?`,
@@ -313,11 +313,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: `Are AI tokens included in the ${usd(12)} license?`,
-          a: `Yes, up to a point. Every ${usd(12)} device comes with a fixed free allowance of AI usage each day — LLM tokens, ASR minutes and TTS characters — which covers prototyping and light workloads outright. Beyond that daily allowance, only the excess is charged, at the rates in the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
-        },
-        {
-          q: 'How does the daily AI allowance work?',
-          a: `Usage is measured in credits across model fees (tokens in and out), AI voice fees (ASR and TTS) and any extended capabilities you switch on. Each day the allowance is applied first, and only what exceeds it is charged. Enrolling a product in the subscription model can extend the waiver further. Current rates and allowances are in the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
+          a: `Yes, a fixed allowance each day. Every ${usd(12)} device comes with a free daily allowance of AI usage — LLM tokens, ASR minutes and TTS characters — which covers prototyping and light workloads outright, with usage beyond it charged per use. Current allowances and rates are in the <a href="${AI_PRICING.en}" target="_blank" rel="noopener">AI billing rules</a>.`,
         },
         {
           q: 'Do TuyaOS licenses work with TuyaOpen?',
@@ -342,7 +338,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
     heroTitle: ['一码授权，', '接入云端，开启 AI。'],
     heroSubtitle: '免费开发。只有当设备接入涂鸦云时，才需按设备一次性付费。',
     heroBody:
-      'TuyaOpen 免费且开源。授权码 —— 写入每台设备的 UUID + AuthKey —— 仅在设备接入涂鸦云时才需要。¥5 解锁 IoT 连接，¥12 解锁多模态 AI，按设备一次性收取。每台设备每日还享固定免费 AI 额度，超出部分才按量付费。',
+      'TuyaOpen 免费且开源。授权码 —— 写入每台设备的 UUID + AuthKey —— 仅在设备接入涂鸦云时才需要。¥5 解锁 IoT 连接，¥12 解锁多模态 AI，按设备一次性收取。每台设备每日还享固定免费 AI 额度，超出部分按量计费。',
     ctaPlans: '对比方案',
     ctaGuide: '授权指南',
     ctaHow: '工作原理',
@@ -415,7 +411,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
           ],
           usageNote: {
             title: '每日赠送固定免费 AI 额度',
-            body: '每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证和轻量场景通常用不完；超出额度的部分才按公开单价付费。',
+            body: '每台设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内。原型验证和轻量场景通常完全够用，超出部分按量计费。',
             linkLabel: '查看 AI 计费规则',
           },
           cta: '购买 AI + IoT 授权',
@@ -473,7 +469,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         {
           icon: '📊',
           title: '每日含免费 AI 额度',
-          desc: '每台已授权设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符。额度以内无需再付费；超出的部分才按公开单价计费。',
+          desc: '每台已授权设备每天都有一份固定的免费 AI 额度——大模型 token、ASR 时长、TTS 字符。额度以内无需再付费，超出部分按量计费。',
         },
       ],
     },
@@ -602,7 +598,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: '这是按月订阅吗？',
-          a: `不是。¥5 / ¥12 授权是按连接设备的一次性购买，没有周期性费用。¥12 档的每台设备每日还享一份固定免费 AI 额度，只有跑超了才需付费。详见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
+          a: `不是。¥5 / ¥12 授权是按连接设备的一次性购买，没有周期性费用。¥12 档的每台设备每日还享一份固定免费 AI 额度，超出部分按量计费。详见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
         },
         {
           q: '¥5 与 ¥12 授权有何区别？',
@@ -614,11 +610,7 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
         },
         {
           q: '¥12 授权是否包含 AI tokens？',
-          a: `包含每日固定额度。每台 ¥12 设备每天都有一份免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内——原型验证与轻量场景通常完全够用。超出这份每日额度的部分，才按公开单价计费。当前额度与单价见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
-        },
-        {
-          q: '每日免费 AI 额度怎么用？',
-          a: `用量以资源点计量，涵盖模型费用（输入/输出 token）、AI 语音费用（ASR 与 TTS）以及你开启的拓展能力。每天先扣减免费额度，只有超出的部分才计费。若将产品加入订阅模式，还可获得进一步减免。当前额度与单价见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
+          a: `包含每日固定额度。每台 ¥12 设备每天都有一份免费 AI 额度——大模型 token、ASR 时长、TTS 字符都算在内——原型验证与轻量场景通常完全够用，超出部分按量计费。当前额度与单价见 <a href="${AI_PRICING.zh}" target="_blank" rel="noopener">AI 计费规则</a>。`,
         },
         {
           q: 'TuyaOS 授权能用于 TuyaOpen 吗？',
