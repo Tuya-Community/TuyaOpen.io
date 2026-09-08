@@ -606,23 +606,21 @@ const tyutoolSidebar = [
 // reference pages. This series lived on /learn as hand-built pages until the
 // prose moved into /docs/ide; the ordering here is that original path.
 //
-// Flat and numbered, like Getting Started: the series is meant to be read
-// straight through, and the 01–08 prefixes (in each doc's `sidebar_label`)
-// make that order visible without the reader having to infer it. Every label
-// comes from front matter rather than being written here, because a label
-// written in this file is English-only until someone adds a matching entry to
-// i18n/zh/docusaurus-plugin-content-docs/current.json — front matter is
-// already per-locale, so the zh sidebar stays translated for free.
+// Flat IDE entry pages, followed by an expanded Practice category and the
+// remaining reference pages. Labels come from each locale's front matter.
 // =============================================================================
 const ideSidebar = [
   'ide/index',
   'ide/install',
-  'ide/hello-world',
-  'ide/chat-bot',
-  'ide/miniapp-panel',
-  'ide/linux-board',
+  {
+    type: 'category',
+    label: 'Practice',
+    collapsed: false,
+    items: ['ide/hello-world', 'ide/chat-bot', 'ide/miniapp-panel', 'ide/linux-board'],
+  },
   'ide/vibe-coding',
   'ide/agent-development',
+  'ide/ide-feedback',
 ]
 
 module.exports = {
