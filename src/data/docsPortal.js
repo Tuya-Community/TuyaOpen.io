@@ -129,16 +129,17 @@ export const areas = [
           { id: '/tuyaopen-ide', en: 'What the IDE offers', zh: 'IDE 能力总览' },
           { id: 'ide', en: 'What TuyaOpen IDE is', zh: 'TuyaOpen IDE 是什么' },
           { id: 'ide/install', en: 'Install the IDE', zh: '安装 TuyaOpen IDE' },
+          { id: 'ide/ide-feedback', en: 'IDE log feedback', zh: 'IDE 日志反馈' },
         ],
       },
       {
         en: 'Practice series',
         zh: '实战系列',
         links: [
-          { id: 'ide/hello-world', en: 'Practice 1 — Hello World', zh: '实战一 —— Hello World' },
-          { id: 'ide/chat-bot', en: 'Practice 2 — your_chat_bot', zh: '实战二 —— your_chat_bot' },
-          { id: 'ide/miniapp-panel', en: 'Practice 3 — mini app panel', zh: '实战三 —— 小程序面板' },
-          { id: 'ide/linux-board', en: 'Practice 4 — Hello World on Linux', zh: '实战四 —— Linux 板 Hello World' },
+          { id: 'ide/hello-world', en: 'Practice 1: Hello World', zh: '实战一：Hello World' },
+          { id: 'ide/chat-bot', en: 'Practice 2: your_chat_bot', zh: '实战二：your_chat_bot' },
+          { id: 'ide/miniapp-panel', en: 'Practice 3: mini app panel', zh: '实战三：小程序面板' },
+          { id: 'ide/linux-board', en: 'Practice 4: Hello World on Linux', zh: '实战四：Linux 板 Hello World' },
         ],
       },
       {

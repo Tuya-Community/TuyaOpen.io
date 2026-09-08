@@ -207,6 +207,14 @@
     "message": "双眼情绪（duo_eye_mood）",
     "description": "The label for the doc item 'duo_eye_mood' in sidebar 'cloudSidebar', linking to the doc cloud/device-ai/demo-duo-eyes-mood"
   },
+  "sidebar.ideSidebar.category.Practice": {
+    "message": "实战",
+    "description": "The label for category 'Practice' in sidebar 'ideSidebar'"
+  },
+  "sidebar.ideSidebar.doc.ide-feedback": {
+    "message": "IDE 日志反馈",
+    "description": "The label for the doc item 'ide-feedback' in sidebar 'ideSidebar'"
+  },
   "sidebar.tclawSidebar.category.Quick Start": {
     "message": "快速开始",
     "description": "The label for category 'Quick Start' in sidebar 'tclawSidebar'"
