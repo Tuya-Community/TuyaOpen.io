@@ -1,13 +1,15 @@
 ---
 title: "安装 TuyaOpen IDE"
 description: "先安装 Git，再在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或从官网下载 .vsix 手动安装，然后验证已启用。"
-sidebar_label: "安装 TuyaOpen IDE"
+sidebar_label: "02 安装 TuyaOpen IDE"
 sidebar_position: 2
 keywords:
   - TuyaOpen IDE
   - TuyaOpen
   - 嵌入式开发
 ---
+
+import TuyaOpenIdeAgentInstallPrompt from '@site/src/components/TuyaOpenIdeAgentInstallPrompt'
 
 ## 安装 Git {/* #install-git */}
 
@@ -35,19 +37,14 @@ TuyaOpen IDE 是 **VS Code** 或 **Cursor** 的扩展，必须先装好其中一
 | **Cursor** | https://cursor.com | 自带更强 AI 能力。 |
 
 :::warning
-VS Code 应用市场与 Open VSX 搜索暂时均不可用。请通过 AI 编程 Agent 或下方手动 `.vsix` 安装，不要期望在编辑器内搜索找到它。
+TuyaOpen IDE 已可在 [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE) 中搜索。VS Code 应用市场可能仍暂时不可用，也可以通过 AI 编程 Agent 或下方的 `.vsix` 文件安装。
 :::
 
 ## 方式一：让 AI Agent 帮你安装（最快） {/* #ai-agent-install */}
 
 把下面这段提示词粘贴到 **Claude Code、Cursor、Codex 或任意能执行 shell 命令的 Coding Agent** 中，它会自动下载并安装扩展。
 
-```text
-安装 TuyaOpen IDE 扩展。从
-https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.1.5.vsix
-下载最新 .vsix，然后用 `code --install-extension <路径.vsix>`（VS Code）或
-`cursor --install-extension <路径.vsix>`（Cursor）安装，并重新加载编辑器窗口让扩展生效。
-```
+<TuyaOpenIdeAgentInstallPrompt locale="zh" />
 
 **安装步骤：**
 
