@@ -265,7 +265,7 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: 'Start Building Today',
-      desc: 'The VS Code Marketplace and Open VSX search listings are temporarily unavailable. Download the .vsix and install it manually in VS Code or Cursor — or hand the install to your AI agent.',
+      desc: 'Search for TuyaOpen IDE on Open VSX, or download the .vsix and install it manually in VS Code or Cursor. You can also hand the install to your AI agent.',
       marketplace: 'Install Extension',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
@@ -273,7 +273,7 @@ export const tuyaOpenIdeCopy = {
     installDialog: {
       title: 'Install TuyaOpen IDE',
       subtitle:
-        'Both the VS Code Marketplace and Open VSX search are temporarily unavailable. The fastest path is to let your AI agent install it — or download the .vsix below and install manually in VS Code or Cursor.',
+        'Open VSX search is available, while the VS Code Marketplace may still be unavailable. Search for TuyaOpen IDE there, or let your AI agent install it using the .vsix below.',
       download: {
         label: 'Download .vsix installer',
         cta: 'Download .vsix',
@@ -801,7 +801,7 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: '立即开始构建',
-      desc: 'VS Code 应用市场与 Open VSX 搜索暂时不可用 —— 下载 .vsix 文件在 VS Code / Cursor 中手动安装，或交给你的 AI Agent 安装。',
+      desc: '可在 Open VSX 搜索 TuyaOpen IDE，也可以下载 .vsix 文件在 VS Code / Cursor 中手动安装，或交给你的 AI Agent 安装。',
       marketplace: '安装扩展',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
@@ -809,7 +809,7 @@ export const tuyaOpenIdeCopy = {
     installDialog: {
       title: '安装 TuyaOpen IDE',
       subtitle:
-        'VS Code 应用市场与 Open VSX 搜索暂时均不可用。最快的方式是让 AI Agent 帮你安装 —— 也可下载下方 .vsix 文件在 VS Code / Cursor 中手动安装。',
+        'Open VSX 搜索目前可用，但 VS Code 应用市场可能仍暂时不可用。你可以在 Open VSX 搜索 TuyaOpen IDE，也可以让 AI Agent 使用下方 .vsix 文件帮你安装。',
       download: {
         label: '下载 .vsix 插件安装包',
         cta: '下载 .vsix',
