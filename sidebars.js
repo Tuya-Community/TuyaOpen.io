@@ -343,6 +343,15 @@ const hardwareSidebar = [
   },
   {
     type: 'category',
+    label: 'Silicon Labs SiWx917',
+    collapsed: true,
+    link: { type: 'doc', id: 'hardware/siwx917/overview-siwx917' },
+    items: [
+      'hardware/siwx917/siwx917-quick-start',
+    ],
+  },
+  {
+    type: 'category',
     label: 'Linux',
     collapsed: true,
     items: [
