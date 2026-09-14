@@ -111,7 +111,7 @@ TuyaOpen 的每个平台在 `platform/` 下各占一个目录,按 `platform/plat
 
 | 资料 | 链接 |
 |------|------|
-| 原理图 V1.1(PDF) | [SK_SiWx917_AI_MB_Schematic_V1.1.pdf](https://tuyaopen.ai/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf) |
+| 原理图 V1.1(PDF) | [SK_SiWx917_AI_MB_Schematic_V1.1.pdf](/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf) |
 | 购买(世强) | [https://www.sekorm.com/product/603942256.html](https://www.sekorm.com/product/603942256.html) |
 
 ### BRD2605A(Silicon Labs 开发板)

@@ -110,7 +110,7 @@ Budget 4–5 GB of disk.
 
 | Resource | Link |
 |----------|------|
-| Schematic V1.1 (PDF) | [SK_SiWx917_AI_MB_Schematic_V1.1.pdf](https://tuyaopen.ai/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf) |
+| Schematic V1.1 (PDF) | [SK_SiWx917_AI_MB_Schematic_V1.1.pdf](/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf) |
 | Purchase (SEKORM) | [https://www.sekorm.com/product/603942256.html](https://www.sekorm.com/product/603942256.html) |
 
 ### BRD2605A (Silicon Labs dev kit)
