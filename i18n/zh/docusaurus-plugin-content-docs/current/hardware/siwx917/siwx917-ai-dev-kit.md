@@ -84,15 +84,15 @@ tos.py config choice -c SIWX917
 
 ## 引脚定义
 
-### 排针引出（H1 / H2 / H3 / DEBUG）
+### 排针引出（H2 / H3 / H4 / DEBUG）
 
 开发套件把模组信号引到四组排针上（引脚号以原理图为准）：
 
 | 排针 | 规格 | 用途 |
 |------|------|------|
-| H1 | 1×2 | VMCU 功耗测量跳线——串入电流表即可测整机功耗 |
 | H2 | 1×18 | 模组排针：调试口（SWDIO/SWO/SWCLK/TDI）、ISP 串口（GPIO_8/9）、ULP GPIO |
 | H3 | 1×14 | 扩展排针：ULP/UULP GPIO、POC_IN 复位、GPIO_15/25/27/29/30、VMCU/GND |
+| H4 | 1×18 | HP GPIO 扩展排针：GPIO_46-51、GPIO_10-12、GPIO_26/28 |
 | DEBUG（H5） | 2×5 | 调试排针：J-Link（SWD）烧录、ULP 日志串口 |
 
 #### H2 模组排针（1×18）
@@ -120,6 +120,20 @@ tos.py config choice -c SIWX917
 | 5 | UULP_GP1 | 12 | GND |
 | 6 | ULP_GP8 | 13 | GPIO_29 |
 | 7 | ULP_GP2 | 14 | GPIO_25 |
+
+#### H4 HP GPIO 扩展排针（1×18）
+
+| 引脚 | 信号 | 引脚 | 信号 |
+|------|------|------|------|
+| 1 | GND | 10 | NC |
+| 2 | GPIO_48 | 11 | NC |
+| 3 | GPIO_47 | 12 | NC |
+| 4 | GPIO_49 | 13 | NC |
+| 5 | GPIO_50 | 14 | GPIO_12 |
+| 6 | GPIO_51 | 15 | GPIO_11 |
+| 7 | GPIO_46 | 16 | GPIO_10 |
+| 8 | NC | 17 | GPIO_26 |
+| 9 | NC | 18 | GPIO_28 |
 
 #### DEBUG 排针 H5（2×5，俯视）
 
