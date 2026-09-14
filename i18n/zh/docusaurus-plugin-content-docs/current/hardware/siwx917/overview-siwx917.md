@@ -106,18 +106,18 @@ TuyaOpen 的每个平台在 `platform/` 下各占一个目录,按 `platform/plat
 ### SIWX917_AI_DEV_KIT(世强 AI 开发套件)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/siwx917-ai-dev-kit.png" alt="SK_SIWG917_AI_MB AI 开发套件实物图">
+  <img src="/img/hardware/siwx917/siwx917-ai-dev-kit.png" alt="SK_SIWG917_AI_MB AI 开发套件实物图"/>
 </p>
 
 | 资料 | 链接 |
 |------|------|
 | 原理图 V1.1(PDF) | [SK_SiWx917_AI_MB_Schematic_V1.1.pdf](https://tuyaopen.ai/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf) |
-| 购买(世强) | <https://www.sekorm.com/product/603942256.html> |
+| 购买(世强) | [https://www.sekorm.com/product/603942256.html](https://www.sekorm.com/product/603942256.html) |
 
 ### BRD2605A(Silicon Labs 开发板)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/brd2605a.png" alt="Silicon Labs BRD2605A 评估板实物图">
+  <img src="/img/hardware/siwx917/brd2605a.png" alt="Silicon Labs BRD2605A 评估板实物图"/>
 </p>
 
 板载 SEGGER J-Link 调试器与虚拟串口(VCOM),一根 USB Type-C 线即可完成烧录和查看日志;带温湿度、环境光、六轴传感器和 Qwiic 扩展接口。
@@ -126,8 +126,8 @@ TuyaOpen 的每个平台在 `platform/` 下各占一个目录,按 `platform/plat
 |------|------|
 | 原理图(PDF) | [BRD2605A-A02-schematic.pdf](https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf) |
 | 用户指南 UG581(PDF) | [UG581-BRD2605A-user-guide.pdf](https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf) |
-| 产品页 | <https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit> |
-| 购买(Digi-Key) | <https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290> |
+| 产品页 | [https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit](https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit) |
+| 购买(Digi-Key) | [https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290](https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290) |
 
 ## 下一步
 

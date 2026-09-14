@@ -105,18 +105,18 @@ Budget 4–5 GB of disk.
 ### SIWX917_AI_DEV_KIT (SEKORM AI dev kit)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/siwx917-ai-dev-kit.png" alt="SK_SIWG917_AI_MB AI dev kit">
+  <img src="/img/hardware/siwx917/siwx917-ai-dev-kit.png" alt="SK_SIWG917_AI_MB AI dev kit"/>
 </p>
 
 | Resource | Link |
 |----------|------|
 | Schematic V1.1 (PDF) | [SK_SiWx917_AI_MB_Schematic_V1.1.pdf](https://tuyaopen.ai/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf) |
-| Purchase (SEKORM) | <https://www.sekorm.com/product/603942256.html> |
+| Purchase (SEKORM) | [https://www.sekorm.com/product/603942256.html](https://www.sekorm.com/product/603942256.html) |
 
 ### BRD2605A (Silicon Labs dev kit)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/brd2605a.png" alt="Silicon Labs BRD2605A evaluation board">
+  <img src="/img/hardware/siwx917/brd2605a.png" alt="Silicon Labs BRD2605A evaluation board"/>
 </p>
 
 An on-board SEGGER J-Link debugger with a virtual COM port (VCOM) covers flashing and logs over a single USB Type-C cable; the board also carries temperature/humidity, ambient-light, and 6-axis sensors plus a Qwiic connector.
@@ -125,8 +125,8 @@ An on-board SEGGER J-Link debugger with a virtual COM port (VCOM) covers flashin
 |----------|------|
 | Schematic (PDF) | [BRD2605A-A02-schematic.pdf](https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf) |
 | User guide UG581 (PDF) | [UG581-BRD2605A-user-guide.pdf](https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf) |
-| Product page | <https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit> |
-| Purchase (Digi-Key) | <https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290> |
+| Product page | [https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit](https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit) |
+| Purchase (Digi-Key) | [https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290](https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290) |
 
 ## Next steps
 
