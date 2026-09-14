@@ -192,8 +192,15 @@ TUYA GPIO 号到芯片 pad 的换算（`tkl_gpio.c` 的 `SI91X_PIN_MAPPING`）�
 
 ## 下载资源
 
-- [SK_SiWx917_AI_MB 原理图 V1.1（PDF）](/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf)：完整电路图。
-- [SK_SIWG917_AI_MB 购买链接（世强）](https://www.sekorm.com/product/603942256.html)
+### SiWx917 AI 开发套件
+
+- [SK_SiWx917_AI_MB 原理图 V1.1（PDF）](/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf)：开发套件完整电路图。
+- [SK_SIWG917_AI_MB 购买（世强）](https://www.sekorm.com/product/603942256.html)：购买渠道与产品资料。
+
+### SiWx917 芯片资料（Silicon Labs）
+
+- [SiWx917 文档站](https://docs.silabs.com/)：芯片、SDK 与工具的官方文档入口。
+- [WiSeConnect SDK 仓库（GitHub）](https://github.com/SiliconLabs/wiseconnect)：主机驱动与 TA 固件说明。
 
 ## 相关技术文档/Demo
 

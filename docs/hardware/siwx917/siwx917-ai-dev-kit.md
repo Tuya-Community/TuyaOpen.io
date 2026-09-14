@@ -192,8 +192,15 @@ TUYA GPIO numbers map to chip pads through `SI91X_PIN_MAPPING` in `tkl_gpio.c`: 
 
 ## Downloads
 
-- [SK_SiWx917_AI_MB schematic V1.1 (PDF)](/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf): complete circuit diagram.
-- [SK_SIWG917_AI_MB purchase (SEKORM)](https://www.sekorm.com/product/603942256.html)
+### SiWx917 AI dev kit
+
+- [SK_SiWx917_AI_MB schematic V1.1 (PDF)](/docs/hardware/siwx917/SK_SiWx917_AI_MB_Schematic_V1.1.pdf): complete circuit diagram of the dev kit.
+- [SK_SIWG917_AI_MB purchase (SEKORM)](https://www.sekorm.com/product/603942256.html): purchase channel and product details.
+
+### SiWx917 chip documentation (Silicon Labs)
+
+- [SiWx917 documentation](https://docs.silabs.com/): official entry point for chip, SDK, and tooling docs.
+- [WiSeConnect SDK repository (GitHub)](https://github.com/SiliconLabs/wiseconnect): host drivers and TA firmware notes.
 
 ## Related docs / demos
 
