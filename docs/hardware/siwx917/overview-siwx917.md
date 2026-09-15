@@ -105,7 +105,7 @@ Budget 4–5 GB of disk.
 ### SIWX917_AI_DEV_KIT (SEKORM AI dev kit)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/siwx917-ai-dev-kit.png" alt="SK_SIWG917_AI_MB AI dev kit"/>
+  <img src="https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png" alt="SK_SIWG917_AI_MB AI dev kit"/>
 </p>
 
 | Resource | Link |
@@ -116,7 +116,7 @@ Budget 4–5 GB of disk.
 ### BRD2605A (Silicon Labs dev kit)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/brd2605a.png" alt="Silicon Labs BRD2605A evaluation board"/>
+  <img src="https://images.tuyacn.com/fe-static/docs/img/e3e4adc2-56d9-48cc-8ca6-3ff26e6db2cd.png" alt="Silicon Labs BRD2605A evaluation board"/>
 </p>
 
 An on-board SEGGER J-Link debugger with a virtual COM port (VCOM) covers flashing and logs over a single USB Type-C cable; the board also carries temperature/humidity, ambient-light, and 6-axis sensors plus a Qwiic connector.

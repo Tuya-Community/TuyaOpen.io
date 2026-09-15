@@ -88,7 +88,7 @@ Two prompts appear in order:
 
 Wiring for the two channels:
 
-![AI dev kit — J-Link (SWD) flashing](/img/hardware/siwx917/wiring-ai-jlink-swd.png)
+![AI dev kit — J-Link (SWD) flashing](https://images.tuyacn.com/fe-static/docs/img/84446a44-af9f-49e5-8382-5ed6b1de449c.png)
 
 AI dev kit: external J-Link to the DEBUG header (H5); for the `serial` (ISP) channel, see [Flashing over ISP with a serial adapter](#flashing-over-isp-with-a-serial-adapter) below.
 
@@ -96,7 +96,7 @@ AI dev kit: external J-Link to the DEBUG header (H5); for the `serial` (ISP) cha
 
 For the `serial` channel, wire the USB-serial adapter to the **module header H2**:
 
-![AI dev kit — ISP serial flashing](/img/hardware/siwx917/wiring-ai-isp-uart.png)
+![AI dev kit — ISP serial flashing](https://images.tuyacn.com/fe-static/docs/img/99c2d144-88e5-4cd2-8a9a-e5f349c75c5f.png)
 
 Before flashing, guide the chip into ISP mode: hold the on-board **ISP** button, tap **RESET**, then release ISP — the chip samples GPIO_34 (SWO, H5-6 / H2-7) as reset is released, and a low level there enters the ROM bootloader. Once in, the port runs 115200 8N1: send `Ctrl+\` to wake it, then press `U` to print the flash menu.
 
@@ -106,7 +106,7 @@ This ISP UART is a different pair from the log ULP UART; the two cannot share wi
 The radio runs its own firmware (TA), separate from your application, and the application cannot start without it. Writing TA erases the radio's flash first; an interrupted write can leave the device in need of recovery — so write it only when the device actually reports having none. `tos.py flash` reads the device's TA version and prompts you when it is missing.
 :::
 
-![BRD2605A — single USB connection (flashing + logs)](/img/hardware/siwx917/wiring-brd2605a-usb.png)
+![BRD2605A — single USB connection (flashing + logs)](https://images.tuyacn.com/fe-static/docs/img/b5891f1e-a06b-41f5-9de0-ac2a730e4e18.png)
 
 BRD2605A: one USB Type-C cable covers flashing and logs — no wiring needed.
 
@@ -117,7 +117,7 @@ The application log leaves on the **ULP UART**.
 - **BRD2605A**: the log lands on the on-board J-Link VCOM; `tos.py monitor` finds it with no wiring.
 - **External probe** (AI dev kit): wire the USB-serial adapter to the same DEBUG header (H5):
 
-![AI dev kit — log UART (ULP UART) wiring](/img/hardware/siwx917/wiring-ai-log-uart.png)
+![AI dev kit — log UART (ULP UART) wiring](https://images.tuyacn.com/fe-static/docs/img/8fcbfb9f-ee09-45bd-a536-cc8299906e36.png)
 
 RX and GND alone are enough to read the log. This UART is a *different* pair from the ISP UART used for serial flashing — the two cannot share wires.
 

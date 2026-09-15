@@ -12,7 +12,7 @@ keywords:
 
 SiWx917 AI 开发套件（`SIWX917_AI_DEV_KIT`，世强型号 `SK_SIWG917_AI_MB`）是基于 SiWG917M111 模组的语音与屏幕交互开发板。板载一块 ST7789 SPI 屏、模拟麦克风与喇叭（无外置 codec）、一个对话按键和 RGB LED，是运行 `your_chat_bot` 这类 AI Agent 应用的现成载体。
 
-![SK_SIWG917_AI_MB AI 开发套件实物图](/img/hardware/siwx917/siwx917-ai-dev-kit.png)
+![SK_SIWG917_AI_MB AI 开发套件实物图](https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png)
 
 ## 软件编译配置
 

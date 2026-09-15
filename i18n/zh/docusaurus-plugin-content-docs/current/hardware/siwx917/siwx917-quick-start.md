@@ -84,7 +84,7 @@ tos.py flash
 
 两种通道的接线:
 
-![AI 开发套件 J-Link(SWD)烧录接线](/img/hardware/siwx917/wiring-ai-jlink-swd.png)
+![AI 开发套件 J-Link(SWD)烧录接线](https://images.tuyacn.com/fe-static/docs/img/84446a44-af9f-49e5-8382-5ed6b1de449c.png)
 
 AI 开发套件:外接 J-Link 接 DEBUG 排针(H5);选 `serial`(ISP 串口)通道时,见下文[用串口适配器进行 ISP 烧录](#用-串口适配器-进行-isp-烧录)。
 
@@ -92,7 +92,7 @@ AI 开发套件:外接 J-Link 接 DEBUG 排针(H5);选 `serial`(ISP 串口)通�
 
 选 `serial` 通道烧录时,把 USB 串口适配器接到**模组排针 H2**:
 
-![AI 开发套件 ISP 串口烧录接线](/img/hardware/siwx917/wiring-ai-isp-uart.png)
+![AI 开发套件 ISP 串口烧录接线](https://images.tuyacn.com/fe-static/docs/img/99c2d144-88e5-4cd2-8a9a-e5f349c75c5f.png)
 
 烧录前先把芯片引导进 ISP 模式:按住板上 **ISP** 键不放,点按一下 **RESET** 键,再松开 ISP 键——芯片在复位释放的瞬间采样 GPIO_34(即 SWO,H5-6 / H2-7),采到低电平即进入 ROM bootloader。进入后串口 115200 8N1,发 `Ctrl+\` 唤醒、按 `U` 打印烧录菜单。
 
@@ -102,7 +102,7 @@ AI 开发套件:外接 J-Link 接 DEBUG 排针(H5);选 `serial`(ISP 串口)通�
 射频核心运行着自己的固件(TA),与应用固件相互独立,应用没有它就无法启动。烧写 TA 会先擦掉射频的 flash,中途断电可能让设备进入需要救援的状态——所以只在设备确实报告没有 TA 时才烧写。`tos.py flash` 会读取设备的 TA 版本,并在缺失时提示你。
 :::
 
-![BRD2605A 单 USB 连接(烧录 + 日志)](/img/hardware/siwx917/wiring-brd2605a-usb.png)
+![BRD2605A 单 USB 连接(烧录 + 日志)](https://images.tuyacn.com/fe-static/docs/img/b5891f1e-a06b-41f5-9de0-ac2a730e4e18.png)
 
 BRD2605A:一根 USB Type-C 线完成烧录与日志,无需接线。
 
@@ -114,7 +114,7 @@ BRD2605A:一根 USB Type-C 线完成烧录与日志,无需接线。
 - **BRD2605A**:日志输出至板载 J-Link VCOM,`tos.py monitor` 无需任何接线即可识别。
 - **外部调试器**(AI 开发板):把 USB 串口适配器接到同一排 DEBUG 排针(H5):
 
-![AI 开发套件日志口(ULP UART)接线](/img/hardware/siwx917/wiring-ai-log-uart.png)
+![AI 开发套件日志口(ULP UART)接线](https://images.tuyacn.com/fe-static/docs/img/8fcbfb9f-ee09-45bd-a536-cc8299906e36.png)
 
 只接 RX 和 GND 即可查看日志。这组 UART 与串口烧录用的 ISP UART **不是同一对**,两者不能共线。
 

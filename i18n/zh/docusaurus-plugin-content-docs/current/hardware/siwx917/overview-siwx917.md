@@ -106,7 +106,7 @@ TuyaOpen 的每个平台在 `platform/` 下各占一个目录,按 `platform/plat
 ### SIWX917_AI_DEV_KIT(世强 AI 开发套件)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/siwx917-ai-dev-kit.png" alt="SK_SIWG917_AI_MB AI 开发套件实物图"/>
+  <img src="https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png" alt="SK_SIWG917_AI_MB AI 开发套件实物图"/>
 </p>
 
 | 资料 | 链接 |
@@ -117,7 +117,7 @@ TuyaOpen 的每个平台在 `platform/` 下各占一个目录,按 `platform/plat
 ### BRD2605A(Silicon Labs 开发板)
 
 <p align="center">
-  <img src="/img/hardware/siwx917/brd2605a.png" alt="Silicon Labs BRD2605A 评估板实物图"/>
+  <img src="https://images.tuyacn.com/fe-static/docs/img/e3e4adc2-56d9-48cc-8ca6-3ff26e6db2cd.png" alt="Silicon Labs BRD2605A 评估板实物图"/>
 </p>
 
 板载 SEGGER J-Link 调试器与虚拟串口(VCOM),一根 USB Type-C 线即可完成烧录和查看日志;带温湿度、环境光、六轴传感器和 Qwiic 扩展接口。

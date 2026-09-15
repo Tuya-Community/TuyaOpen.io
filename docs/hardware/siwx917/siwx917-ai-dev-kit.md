@@ -12,7 +12,7 @@ keywords:
 
 The SiWx917 AI dev kit (`SIWX917_AI_DEV_KIT`, SEKORM part `SK_SIWG917_AI_MB`) is a voice-and-display interaction board built around the SiWG917M111 module. It carries an ST7789 SPI display, an analog microphone and speaker (no external codec), a chat button, and RGB LEDs — a ready carrier for AI Agent applications such as `your_chat_bot`.
 
-![SK_SIWG917_AI_MB AI dev kit](/img/hardware/siwx917/siwx917-ai-dev-kit.png)
+![SK_SIWG917_AI_MB AI dev kit](https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png)
 
 ## Software build configuration
 
