@@ -10,7 +10,7 @@ keywords:
   - TuyaOpen hardware
 ---
 
-The SiWx917 AI dev kit (`SIWX917_AI_DEV_KIT`, SEKORM part `SK_SIWG917_AI_MB`) is a voice-and-display interaction board built around the SiWG917M111 module. It carries an ST7789 SPI display, an analog microphone and speaker (no external codec), a chat button, and RGB LEDs — a ready carrier for AI Agent applications such as `your_chat_bot`.
+The SiWx917 AI dev kit (`SIWX917_AI_DEV_KIT`, SEKORM part `SK_SIWG917_AI_MB`) is a voice-and-display interaction board built around the SiWG917M111 module.
 
 ![SK_SIWG917_AI_MB AI dev kit](https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png)
 
@@ -46,12 +46,6 @@ To enable a Config, see [CLI - tos.py tools - config choice](/docs/tos-tools/tos
     </tr>
   </tbody>
 </table>
-
-Select this board:
-
-```bash
-tos.py config choice -c SIWX917
-```
 
 ## Hardware overview
 
@@ -149,11 +143,9 @@ Wiring diagrams for J-Link flashing, ISP serial flashing, and the log UART are i
 
 ### Board-level pins (application-visible)
 
-From [`SIWX917_AI_DEV_KIT/Kconfig`](https://github.com/tuya/TuyaOpen/blob/master/boards/SIWX917/SIWX917_AI_DEV_KIT/Kconfig) and `siwx917_ai_board.c`.
-
 | Function | Kconfig | TUYA GPIO | Chip pad | Registered name |
 |----------|---------|-----------|----------|-----------------|
-| Button 1 (chat) | `BOARD_SW1_PIN` | 49 | HP 49 | `ai_chat_button` |
+| Button 1 | `BOARD_SW1_PIN` | 49 | HP 49 | `ai_chat_button` |
 | Button 2 | `BOARD_SW2_PIN` | 2 | UULP 2 | `SW2` |
 | Button 3 | `BOARD_SW3_PIN` | 3 | UULP 3 | `SW3` |
 | LED R | `BOARD_LEDR_PIN` | 50 | HP 50 | `LEDR` |
@@ -181,14 +173,6 @@ Buttons use `LEVEL_LOW` + `PULLUP` + `TIMER_SCAN_MODE`; LEDs use `LEVEL_LOW` + `
 | WSCLK | HP 47 | |
 | DIN0 | HP 48 | microphone input |
 | DOUT0 | HP 11 | speaker output |
-
-#### GPIO number conversion
-
-TUYA GPIO numbers map to chip pads through `SI91X_PIN_MAPPING` in `tkl_gpio.c`: UULP_VBAT and HP domains keep their numbers (0–4 / 6–12, 15, 25–34, 46–57); the ULP domain maps TUYA 20–24 → pads 0–4 and TUYA 35–41 → pads 5–11. For example, the log UART's ULP 11 = TUYA GPIO 41.
-
-:::note[GPIO 8/16 reserved]
-`TUYA_GPIO_NUM_8` and `TUYA_GPIO_NUM_16` are used for vcom; do not use them as regular GPIOs in applications.
-:::
 
 ## Downloads
 

@@ -9,14 +9,13 @@ keywords:
   - TuyaOpen hardware
 ---
 
-TuyaOpen runs SiWx917 on top of Silicon Labs' official WiseConnect SDK, Simplicity SDK, and FreeRTOS. You use the same TuyaOpen SDK and APIs as on the Tuya T series, ESP32, Linux, and other supported platforms to build IoT and AI applications on SiWx917 hardware.
+TuyaOpen runs SiWx917 on top of Silicon Labs' official WiseConnect SDK, Simplicity SDK, and FreeRTOS. You can use the same TuyaOpen SDK and APIs as on the Tuya T series, ESP32, Linux, and other supported platforms to build IoT and AI applications on SiWx917 hardware.
 
 ## Why use TuyaOpen on SiWx917
 
 If you already develop on SiWx917, TuyaOpen gives you:
 
 - **Tuya Cloud integration**: out-of-the-box device activation, remote control, OTA, and data points (DP) — no cloud protocol stack to write yourself.
-- **Cross-platform portability**: write application code once against the TAL/TKL abstractions, and the same logic runs on T5AI, T2, T3, ESP32, Raspberry Pi, and SiWx917 without rewrites.
 - **AI capabilities**: access the Tuya AI Agent, voice interaction (ASR/TTS/KWS), and LLM services through the unified AI SDK. The AI dev kit is designed for exactly this — a chat button, an analog microphone and speaker, and a display all on board.
 - **Path to product**: device authorization, license management, OTA firmware updates, and Tuya Smart app provisioning are built in, from prototype to production.
 - **Peripheral libraries**: display, audio, button, and LED drivers out of the box, managed through board-level configs.
@@ -123,8 +122,8 @@ An on-board SEGGER J-Link debugger with a virtual COM port (VCOM) covers flashin
 
 | Resource | Link |
 |----------|------|
-| Schematic (PDF) | [BRD2605A-A02-schematic.pdf](https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf) |
-| User guide UG581 (PDF) | [UG581-BRD2605A-user-guide.pdf](https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf) |
+| Schematic | [BRD2605A-A02-schematic.pdf](https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf) |
+| User guide | [UG581-BRD2605A-user-guide.pdf](https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf) |
 | Product page | [https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit](https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit) |
 | Purchase (Digi-Key) | [https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290](https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290) |
 

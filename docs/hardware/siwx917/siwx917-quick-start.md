@@ -24,10 +24,6 @@ Build, flash, and run your first TuyaOpen application on a SiWx917 dev kit.
 - About 5 GB of free disk (the first build pulls the Simplicity SDK and SLC)
 - A Wi-Fi network (2.4 GHz)
 
-:::info[Build and flash on all three platforms]
-Building and flashing for SiWx917 work on **Windows, Linux, and macOS**. The ARM toolchain, SiLabs SLC / Commander, and J-Link drivers are all installed automatically into the project directory (`platform/SIWX917/tools/`) — nothing is written into system directories, and the flow is identical on all three.
-:::
-
 :::info
 If your application uses Tuya Cloud features (remote control, AI Agent, OTA), you also need a [Tuya Cloud license key](../../quick-start/equipment-authorization). Local-only projects (GPIO, UART, display demos) do not need one.
 :::
@@ -90,9 +86,9 @@ Wiring for the two channels:
 
 ![AI dev kit — J-Link (SWD) flashing](https://images.tuyacn.com/fe-static/docs/img/84446a44-af9f-49e5-8382-5ed6b1de449c.png)
 
-AI dev kit: external J-Link to the DEBUG header (H5); for the `serial` (ISP) channel, see [Flashing over ISP with a serial adapter](#flashing-over-isp-with-a-serial-adapter) below.
+AI dev kit: external J-Link to the DEBUG header (H5); for the `serial` (ISP) channel, see [Flash over ISP with a serial adapter](#flash-over-isp-with-a-serial-adapter) below.
 
-#### Flashing over ISP with a serial adapter
+#### Flash over ISP with a serial adapter
 
 For the `serial` channel, wire the USB-serial adapter to the **module header H2**:
 
