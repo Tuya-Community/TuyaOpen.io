@@ -124,8 +124,8 @@ TuyaOpen 的每个平台在 `platform/` 下各占一个目录,按 `platform/plat
 
 | 资料 | 链接 |
 |------|------|
-| 原理图(PDF) | [BRD2605A-A02-schematic.pdf](https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf) |
-| 用户指南 UG581(PDF) | [UG581-BRD2605A-user-guide.pdf](https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf) |
+| 原理图 | [BRD2605A-A02-schematic.pdf](https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf) |
+| 用户指南 | [UG581-BRD2605A-user-guide.pdf](https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf) |
 | 产品页 | [https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit](https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit) |
 | 购买(Digi-Key) | [https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290](https://www.digikey.com/en/products/detail/silicon-labs/SIWX917-DK2605A/24710290) |
 
