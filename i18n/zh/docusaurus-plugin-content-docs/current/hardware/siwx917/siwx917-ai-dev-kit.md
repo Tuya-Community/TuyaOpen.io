@@ -10,7 +10,7 @@ keywords:
   - TuyaOpen 硬件
 ---
 
-SiWx917 AI 开发套件（`SIWX917_AI_DEV_KIT`，世强型号 `SK_SIWG917_AI_MB`）是基于 SiWG917M111 模组的语音与屏幕交互开发板。板载一块 ST7789 SPI 屏、模拟麦克风与喇叭（无外置 codec）、一个对话按键和 RGB LED，是运行 `your_chat_bot` 这类 AI Agent 应用的现成载体。
+SiWx917 AI 开发套件（`SIWX917_AI_DEV_KIT`，世强型号 `SK_SIWG917_AI_MB`）是基于 SiWG917M111 模组的语音与屏幕交互开发板。板载一块 ST7789 SPI 屏、模拟麦克风与喇叭（无外置 codec）、一个对话按键和 RGB LED，适合运行 `your_chat_bot` 这类 AI Agent 应用。
 
 ![SK_SIWG917_AI_MB AI 开发套件实物图](https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png)
 
@@ -55,7 +55,7 @@ tos.py config choice -c SIWX917
 
 ## 硬件概述
 
-开发套件围绕语音与显示交互设计：SiWG917M111 模组提供双核 Wi-Fi 6 + BLE 与 8 MB 封装内 PSRAM；应用代码运行在 Cortex-M4 上，音频直接走片上 I2S，不依赖外置 codec。烧录支持外接 J-Link（SWD）或 ISP 串口，日志从 ULP UART 输出。
+开发套件围绕语音与显示交互设计：SiWG917M111 模组提供双核 Wi-Fi 6 + BLE 与 8 MB 封装内 PSRAM；应用代码运行在 Cortex-M4 上，音频采用片上 I2S，不依赖外置 codec。烧录支持外接 J-Link（SWD）或 ISP 串口，日志从 ULP UART 输出。
 
 ## 开发套件亮点
 
@@ -157,7 +157,7 @@ J-Link 烧录、ISP 串口烧录与日志接线的连接图见[快速开始](siw
 | 按键 2 | `BOARD_SW2_PIN` | 2 | UULP 2 | `SW2` |
 | 按键 3 | `BOARD_SW3_PIN` | 3 | UULP 3 | `SW3` |
 | LED R | `BOARD_LEDR_PIN` | 50 | HP 50 | `LEDR` |
-| LED G | `BOARD_LEDG_PIN` | 51 | HP 51 | —（复用为屏片选占位） |
+| LED G | `BOARD_LEDG_PIN` | 51 | HP 51 | 无，复用为屏片选占位 |
 | LED B | `BOARD_LEDB_PIN` | 15 | HP 15 | `LEDB` |
 
 按键统一 `LEVEL_LOW` + `PULLUP` + `TIMER_SCAN_MODE`；LED 统一 `LEVEL_LOW` + `PUSH_PULL`。

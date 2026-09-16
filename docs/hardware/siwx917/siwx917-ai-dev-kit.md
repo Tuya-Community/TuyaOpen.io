@@ -1,7 +1,7 @@
 ---
 id: siwx917-ai-dev-kit
 title: "SiWx917 AI Dev Kit"
-description: "The SEKORM SK_SIWG917_AI_MB AI dev kit: a voice-and-display interaction board based on the SiWG917M111 module, with an ST7789 display, analog microphone and speaker, a chat button, and RGB LEDs — plus breakout header pinouts and pin mapping."
+description: "The SEKORM SK_SIWG917_AI_MB AI dev kit: a voice-and-display interaction board based on the SiWG917M111 module, with an ST7789 display, analog microphone and speaker, a chat button, and RGB LEDs, plus breakout header pinouts and pin mapping."
 keywords:
   - SIWX917_AI_DEV_KIT
   - SK_SIWG917_AI_MB
@@ -49,7 +49,7 @@ To enable a Config, see [CLI - tos.py tools - config choice](/docs/tos-tools/tos
 
 ## Hardware overview
 
-The kit is designed around voice and display interaction: the SiWG917M111 module provides the dual-core Wi-Fi 6 + BLE radio and 8 MB of in-package PSRAM; application code runs on the Cortex-M4, and audio goes straight to the on-chip I2S with no external codec. Flashing works through an external J-Link (SWD) or the ISP UART, and logs leave on the ULP UART.
+The kit is designed around voice and display interaction: the SiWG917M111 module provides the dual-core Wi-Fi 6 + BLE radio and 8 MB of in-package PSRAM; application code runs on the Cortex-M4, and audio uses the on-chip I2S interface with no external codec. Flashing works through an external J-Link (SWD) or the ISP UART, and logs leave on the ULP UART.
 
 ## Kit highlights
 
@@ -149,7 +149,7 @@ Wiring diagrams for J-Link flashing, ISP serial flashing, and the log UART are i
 | Button 2 | `BOARD_SW2_PIN` | 2 | UULP 2 | `SW2` |
 | Button 3 | `BOARD_SW3_PIN` | 3 | UULP 3 | `SW3` |
 | LED R | `BOARD_LEDR_PIN` | 50 | HP 50 | `LEDR` |
-| LED G | `BOARD_LEDG_PIN` | 51 | HP 51 | — (reused as display CS placeholder) |
+| LED G | `BOARD_LEDG_PIN` | 51 | HP 51 | None; reused as the display CS placeholder |
 | LED B | `BOARD_LEDB_PIN` | 15 | HP 15 | `LEDB` |
 
 Buttons use `LEVEL_LOW` + `PULLUP` + `TIMER_SCAN_MODE`; LEDs use `LEVEL_LOW` + `PUSH_PULL`.
@@ -188,7 +188,7 @@ Buttons use `LEVEL_LOW` + `PULLUP` + `TIMER_SCAN_MODE`; LEDs use `LEVEL_LOW` + `
 
 ## Related docs / demos
 
-- [SiWx917 Quick Start — setup + flashing + provisioning](siwx917-quick-start)
+- [SiWx917 Quick Start](siwx917-quick-start): environment setup, flashing, and provisioning.
 - [your_chat_bot demo](/docs/cloud/device-ai/demo-your-chat-bot)
 - [SiWx917 Overview](overview-siwx917)
 - [BRD2605A Dev Kit](brd2605a)
