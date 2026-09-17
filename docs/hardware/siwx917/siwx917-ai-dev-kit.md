@@ -1,7 +1,7 @@
 ---
 id: siwx917-ai-dev-kit
 title: "SiWx917 AI Dev Kit"
-description: "The SEKORM SK_SIWG917_AI_MB AI dev kit: a voice-and-display interaction board based on the SiWG917M111 module, with an ST7789 display, analog microphone and speaker, a chat button, and RGB LEDs, plus breakout header pinouts and pin mapping."
+description: "The SEKORM SK_SIWG917_AI_MB AI dev kit: a voice-and-display interaction board based on the SiWG917M111 module, with an ST7789 display, a microphone and speaker, a chat button, and RGB LEDs, plus breakout header pinouts and pin mapping."
 keywords:
   - SIWX917_AI_DEV_KIT
   - SK_SIWG917_AI_MB
@@ -78,7 +78,7 @@ The kit is designed around voice and display interaction: the SiWG917M111 module
 
 ## Pin definitions
 
-### Breakout headers (H2 / H3 / H4 / DEBUG)
+### Breakout headers
 
 The kit routes module signals to four headers (pin numbers per the schematic):
 
@@ -89,7 +89,7 @@ The kit routes module signals to four headers (pin numbers per the schematic):
 | H4 | 1×18 | HP GPIO expansion header: GPIO_46-51, GPIO_10-12, GPIO_26/28 |
 | DEBUG (H5) | 2×5 | Debug header: J-Link (SWD) flashing and the ULP log UART |
 
-#### H2 module header (1×18)
+#### H2 module header
 
 | Pin | Signal | Pin | Signal |
 |-----|--------|-----|--------|
@@ -103,7 +103,7 @@ The kit routes module signals to four headers (pin numbers per the schematic):
 | 8 | SWCLK | 17 | ULP_GP10 |
 | 9 | DBG_TDI | 18 | ULP_GP9 |
 
-#### H3 expansion header (1×14)
+#### H3 expansion header
 
 | Pin | Signal | Pin | Signal |
 |-----|--------|-----|--------|
@@ -115,7 +115,7 @@ The kit routes module signals to four headers (pin numbers per the schematic):
 | 6 | ULP_GP8 | 13 | GPIO_29 |
 | 7 | ULP_GP2 | 14 | GPIO_25 |
 
-#### H4 HP GPIO expansion header (1×18)
+#### H4 HP GPIO expansion header
 
 | Pin | Signal | Pin | Signal |
 |-----|--------|-----|--------|
@@ -129,7 +129,7 @@ The kit routes module signals to four headers (pin numbers per the schematic):
 | 8 | NC | 17 | GPIO_26 |
 | 9 | NC | 18 | GPIO_28 |
 
-#### DEBUG header H5 (2×5, top view)
+#### DEBUG header H5
 
 | Left column | | Right column | |
 |-------------|---|--------------|---|
@@ -141,7 +141,7 @@ The kit routes module signals to four headers (pin numbers per the schematic):
 
 Wiring diagrams for J-Link flashing, ISP serial flashing, and the log UART are in the [Quick Start](siwx917-quick-start#5-flash-the-firmware).
 
-### Board-level pins (application-visible)
+### Board-level pins
 
 | Function | Kconfig | TUYA GPIO | Chip pad | Registered name |
 |----------|---------|-----------|----------|-----------------|

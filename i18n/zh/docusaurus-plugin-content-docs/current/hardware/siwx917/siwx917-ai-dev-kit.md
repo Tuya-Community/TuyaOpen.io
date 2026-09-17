@@ -1,7 +1,7 @@
 ---
 id: siwx917-ai-dev-kit
 title: "SiWx917 AI 开发套件"
-description: "世强 SK_SIWG917_AI_MB AI 开发套件：基于 SiWG917M111 模组的语音与屏幕交互开发板，ST7789 显示屏、模拟麦克风与喇叭、对话按键与 RGB LED，附排针引出与引脚映射。"
+description: "世强 SK_SIWG917_AI_MB AI 开发套件：基于 SiWG917M111 模组的语音与屏幕交互开发板，ST7789 显示屏、麦克风与喇叭、对话按键与 RGB LED，附排针引出与引脚映射。"
 keywords:
   - SIWX917_AI_DEV_KIT
   - SK_SIWG917_AI_MB
@@ -10,7 +10,7 @@ keywords:
   - TuyaOpen 硬件
 ---
 
-SiWx917 AI 开发套件（`SIWX917_AI_DEV_KIT`，世强型号 `SK_SIWG917_AI_MB`）是基于 SiWG917M111 模组的语音与屏幕交互开发板。板载一块 ST7789 SPI 屏、模拟麦克风与喇叭（无外置 codec）、一个对话按键和 RGB LED，适合运行 `your_chat_bot` 这类 AI Agent 应用。
+SiWx917 AI 开发套件（`SIWX917_AI_DEV_KIT`，世强型号 `SK_SIWG917_AI_MB`）是基于 SiWG917M111 模组的语音与屏幕交互开发板。
 
 ![SK_SIWG917_AI_MB AI 开发套件实物图](https://images.tuyacn.com/fe-static/docs/img/410cee79-caf6-4980-97bc-65a02d4e84a7.png)
 
@@ -47,12 +47,6 @@ SiWx917 AI 开发套件（`SIWX917_AI_DEV_KIT`，世强型号 `SK_SIWG917_AI_MB`
   </tbody>
 </table>
 
-选择这块板：
-
-```bash
-tos.py config choice -c SIWX917
-```
-
 ## 硬件概述
 
 开发套件围绕语音与显示交互设计：SiWG917M111 模组提供双核 Wi-Fi 6 + BLE 与 8 MB 封装内 PSRAM；应用代码运行在 Cortex-M4 上，音频采用片上 I2S，不依赖外置 codec。烧录支持外接 J-Link（SWD）或 ISP 串口，日志从 ULP UART 输出。
@@ -84,7 +78,7 @@ tos.py config choice -c SIWX917
 
 ## 引脚定义
 
-### 排针引出（H2 / H3 / H4 / DEBUG）
+### 排针引出
 
 开发套件把模组信号引到四组排针上（引脚号以原理图为准）：
 
@@ -95,7 +89,7 @@ tos.py config choice -c SIWX917
 | H4 | 1×18 | HP GPIO 扩展排针：GPIO_46-51、GPIO_10-12、GPIO_26/28 |
 | DEBUG（H5） | 2×5 | 调试排针：J-Link（SWD）烧录、ULP 日志串口 |
 
-#### H2 模组排针（1×18）
+#### H2 模组排针
 
 | 引脚 | 信号 | 引脚 | 信号 |
 |------|------|------|------|
@@ -109,7 +103,7 @@ tos.py config choice -c SIWX917
 | 8 | SWCLK | 17 | ULP_GP10 |
 | 9 | DBG_TDI | 18 | ULP_GP9 |
 
-#### H3 扩展排针（1×14）
+#### H3 扩展排针
 
 | 引脚 | 信号 | 引脚 | 信号 |
 |------|------|------|------|
@@ -121,7 +115,7 @@ tos.py config choice -c SIWX917
 | 6 | ULP_GP8 | 13 | GPIO_29 |
 | 7 | ULP_GP2 | 14 | GPIO_25 |
 
-#### H4 HP GPIO 扩展排针（1×18）
+#### H4 HP GPIO 扩展排针
 
 | 引脚 | 信号 | 引脚 | 信号 |
 |------|------|------|------|
@@ -135,7 +129,7 @@ tos.py config choice -c SIWX917
 | 8 | NC | 17 | GPIO_26 |
 | 9 | NC | 18 | GPIO_28 |
 
-#### DEBUG 排针 H5（2×5，俯视）
+#### DEBUG 排针 H5
 
 | 左列 | | 右列 | |
 |------|---|------|---|
@@ -147,7 +141,7 @@ tos.py config choice -c SIWX917
 
 J-Link 烧录、ISP 串口烧录与日志接线的连接图见[快速开始](siwx917-quick-start#5-烧录固件)。
 
-### 板级层引脚（应用可见）
+### 板级层引脚
 
 出处 [`SIWX917_AI_DEV_KIT/Kconfig`](https://github.com/tuya/TuyaOpen/blob/master/boards/SIWX917/SIWX917_AI_DEV_KIT/Kconfig) 与 `siwx917_ai_board.c`。
 

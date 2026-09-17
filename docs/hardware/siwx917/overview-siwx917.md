@@ -27,7 +27,7 @@ SiWx917 (SiWG917) is a Wi-Fi 6 + Bluetooth LE SoC with two processors inside, wh
 | Processor | Runs | Firmware |
 |-----------|------|----------|
 | Cortex-M4 | Application firmware, FreeRTOS, lwIP, all TuyaOpen code | Produced by your application build (`tos.py build`); flashed on every update |
-| NWP (network wireless processor) | Wi-Fi and BLE stacks, radio | TA firmware (`RS9117_WC_SI.rps`); written once per device — dev kits normally ship with it |
+| NWP (network wireless processor) | Wi-Fi and BLE stacks, radio | TA firmware (`RS9117_WC_SI.rps`); written once per device |
 
 The M4 application cannot start without the TA firmware. `tos.py flash` reads the device's TA version and only offers to write it when it is missing; see [Quick Start](siwx917-quick-start#5-flash-the-firmware).
 

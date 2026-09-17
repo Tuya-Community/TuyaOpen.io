@@ -29,7 +29,7 @@ SiWx917 (SiWG917) 是一款 Wi-Fi 6 + 蓝牙 LE SoC,内部有两个处理器,烧
 | 处理器 | 运行内容 | 固件 |
 |--------|----------|------|
 | Cortex-M4 | 应用固件、FreeRTOS、lwIP、全部 TuyaOpen 代码 | 由你的应用构建产出(`tos.py build`),每次更新都要烧录 |
-| NWP(网络无线处理器) | Wi-Fi 和 BLE 协议栈、射频 | TA 固件(`RS9117_WC_SI.rps`),每台设备只需烧一次——开发板出厂时通常已烧录 |
+| NWP(网络无线处理器) | Wi-Fi 和 BLE 协议栈、射频 | TA 固件(`RS9117_WC_SI.rps`),每台设备只需烧一次 |
 
 M4 应用没有 TA 固件就无法启动。`tos.py flash` 会读取设备的 TA 版本,只在缺失时才提供烧写;详见[快速开始](siwx917-quick-start#5-烧录固件)。
 
