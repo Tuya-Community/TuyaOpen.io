@@ -343,6 +343,27 @@ const hardwareSidebar = [
   },
   {
     type: 'category',
+    label: 'Silicon Labs SiWx917',
+    collapsed: true,
+    link: { type: 'doc', id: 'hardware/siwx917/overview-siwx917' },
+    items: [
+      'hardware/siwx917/siwx917-quick-start',
+      {
+        type: 'category',
+        label: 'SiWx917 AI DevKit',
+        collapsed: true,
+        items: ['hardware/siwx917/siwx917-ai-dev-kit'],
+      },
+      {
+        type: 'category',
+        label: 'BRD2605A DevKit',
+        collapsed: true,
+        items: ['hardware/siwx917/brd2605a'],
+      },
+    ],
+  },
+  {
+    type: 'category',
     label: 'Linux',
     collapsed: true,
     items: [
