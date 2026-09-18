@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "FAQ",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "TuyaOpen, IoT 개발 및 오픈 소스에 대한 자주 묻는 질문입니다.",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "FAQ 문서",
+    "description": "The label for the left sidebar"
+  }
+}

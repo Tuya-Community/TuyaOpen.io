@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { localePath } from '@site/src/utils/localePath';
 import { clsx } from 'clsx';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
@@ -109,6 +110,34 @@ const content = {
   },
 };
 
+content.ko = {
+  ...content.zh,
+  badge: '인터랙티브 튜토리얼',
+  title: '인터랙티브 튜토리얼 — 템플릿',
+  subtitle: 'TuyaOpen 인터랙티브 튜토리얼을 만들 때 복사해 사용할 수 있는 예제입니다. 공통 스타일의 히어로, 목차, 콜아웃, 코드 블록과 라이브 위젯을 보여 줍니다.',
+  meta: ['입문', '템플릿'],
+  nav: [
+    { id: 'intro', label: '소개' },
+    { id: 'steps', label: '단계' },
+    { id: 'widget', label: '라이브 위젯' },
+    { id: 'next', label: '다음 단계' },
+  ],
+  introTitle: '소개',
+  introLead: '인터랙티브 튜토리얼은 일반 React 페이지입니다. TutorialShell 안에서 렌더링되므로 Markdown 튜토리얼과 같은 히어로, 타이포그래피와 다크 모드를 사용합니다.',
+  introTip: '사용자 정의 CSS보다 셸의 보조 클래스를 우선 사용하면 모든 튜토리얼의 디자인을 일관되게 유지할 수 있습니다.',
+  stepsTitle: '단계',
+  stepsLead: '번호가 있는 단계는 셸의 단계 목록을 사용합니다.',
+  widgetTitle: '라이브 위젯',
+  widgetLead: 'Markdown만으로는 구현하기 어려운 실제 상호작용입니다. 보드를 선택하면 플래시 명령이 즉시 바뀝니다.',
+  widgetBoardLabel: '보드',
+  widgetPortLabel: '포트',
+  widgetPortAuto: '자동 감지',
+  widgetOut: '플래시 명령',
+  nextTitle: '다음 단계',
+  nextLead: '튜토리얼이 준비되면 다음을 확인하세요.',
+  docsBtn: '문서 둘러보기',
+};
+
 const BOARDS = [
   { id: 't5ai', label: 'T5AI' },
   { id: 'bk7231n', label: 'BK7231N' },
@@ -153,9 +182,9 @@ function FlashWidget({ c }) {
 
 export default function InteractiveTemplate() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const docsHref = locale === 'zh' ? '/zh/docs/about-tuyaopen' : '/docs/about-tuyaopen';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const docsHref = localePath(locale, '/docs/about-tuyaopen');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>

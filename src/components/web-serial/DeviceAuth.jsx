@@ -17,6 +17,7 @@ import {clsx} from 'clsx'
 import {useSerialPort} from './useSerialPort'
 import {COPY, fmt} from './i18n'
 import {useLocale} from './hooks'
+import {localePath} from '@site/src/utils/localePath'
 import {CHIPS} from './protocol/flash'
 import {Button, StatusChip, Field, Notice, ResultBanner} from './primitives'
 import LogSurface from './LogSurface'
@@ -26,7 +27,7 @@ import {KeyRoundIcon, UsbIcon, PowerIcon, BookIcon} from './icons'
 let _id = 0
 const newId = () => ++_id
 
-export default function DeviceAuth({variant = 'full', locale: localeProp, className}) {
+export default function DeviceAuth({variant = 'full', locale: localeProp, routeLocale, className}) {
   const ctxLocale = useLocale()
   const locale = localeProp || ctxLocale
   const t = COPY[locale]
@@ -309,7 +310,7 @@ export default function DeviceAuth({variant = 'full', locale: localeProp, classN
             {connectRow}
             {resultBanner}
             {logSurface}
-            <LicenseGuide t={t} locale={locale} />
+            <LicenseGuide t={t} locale={routeLocale || locale} />
           </div>
         </div>
       </div>
@@ -317,9 +318,9 @@ export default function DeviceAuth({variant = 'full', locale: localeProp, classN
   )
 }
 
-/** Locale-aware href to the license guide page (Docusaurus needs /zh/ prefix). */
+/** Keep the guide link in the active Docusaurus locale. */
 function licenseHref(locale) {
-  return locale === 'zh' ? '/zh/learn/using-license-key' : '/learn/using-license-key'
+  return localePath(locale, '/learn/using-license-key')
 }
 
 function LicenseGuide({t, locale}) {

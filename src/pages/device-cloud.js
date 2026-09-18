@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import React, { useEffect, useRef, useState } from 'react'
 
+import { localePath } from '../utils/localePath'
 import styles from './device-cloud.module.css'
 
 // ---------------------------------------------------------------------------
@@ -107,6 +108,55 @@ const COPY = {
       { label: '智能体硬件能解决什么', to: '/zh/docs/cloud/device-ai/concepts/real-world-use-cases' },
     ],
   },
+  ko: {
+    title: '디바이스와 클라우드의 협업',
+    subtitle:
+      '에이전트형 TuyaOpen 디바이스는 작업을 둘로 나눕니다. 디바이스는 즉시 처리해야 하는 일을 맡고, 클라우드는 지능이 필요한 일을 맡습니다. 아래 레시피에서 두 영역의 협업을 확인하세요.',
+    ovenAlt: 'AI Agent가 레시피를 계획하고 도구 호출로 기능을 사용하는 스마트 오븐',
+    demoHeading: '작동 방식: 스마트 오븐',
+    demoHint: '레시피를 선택한 다음 실행을 눌러 협업 과정을 확인하세요.',
+    run: '실행',
+    running: '실행 중…',
+    reset: '초기화',
+    next: '단계',
+    cloudCol: '클라우드 Agent · 추론',
+    deviceCol: '디바이스 · 도구 호출',
+    idle: '실행을 눌러 레시피를 시작하세요.',
+    done: '완료 — 요리가 준비되었습니다.',
+    capHeading: '각 영역의 역할',
+    capLead:
+      '이 분업은 오븐뿐 아니라 모든 에이전트형 디바이스에 적용됩니다. 실시간 인식과 동작은 디바이스에서, 지식과 추론과 언어는 클라우드에서 처리합니다.',
+    deviceCapTitle: '디바이스에서',
+    deviceCapSub: '실시간 · 로컬 · 낮은 지연 시간',
+    cloudCapTitle: '클라우드에서',
+    cloudCapSub: '지식 · 추론 · 지속적인 개선',
+    principle: '디바이스는 즉시 처리할 일을 맡고, 클라우드는 지능이 필요한 일을 맡습니다.',
+    learnHeading: '더 알아보기',
+    deviceCaps: [
+      '마이크 오디오를 수집하고 음성을 감지합니다(VAD)',
+      '웨이크 워드와 채팅 모드로 청취 시점을 결정합니다',
+      '음성 응답, 음악, 안내음을 재생합니다',
+      '카메라 프레임을 수집하고 실시간 미리보기를 표시합니다',
+      '화면의 채팅 UI를 렌더링합니다',
+      '실제 센서와 액추에이터에서 MCP 도구 호출을 실행합니다',
+      '네트워크가 불안정해도 낮은 지연 시간으로 반응합니다',
+    ],
+    cloudCaps: [
+      '음성 인식(ASR) — 음성을 텍스트로 변환합니다',
+      '언어 이해와 생성(NLG)',
+      '세계 지식과 단계별 추론',
+      'Agent 역할, 프롬프트, 장기 메모리',
+      '스킬 오케스트레이션과 작업 계획',
+      '외부 서비스와 API를 위한 클라우드 MCP',
+      '멀티링구얼 음성 — 펌웨어를 다시 플래시하지 않아도 개선됩니다',
+    ],
+    links: [
+      { label: 'Agent 우선 하드웨어', to: '/docs/cloud/device-ai/concepts/agentic-first-hardware' },
+      { label: '디바이스 MCP 도구 설계', to: '/docs/cloud/device-ai/concepts/designing-device-mcp-tools' },
+      { label: '멀티모달 데이터 흐름', to: '/docs/cloud/device-ai/multimodal-data-flow' },
+      { label: '에이전트형 하드웨어의 가능성', to: '/docs/cloud/device-ai/concepts/real-world-use-cases' },
+    ],
+  },
 }
 
 // Recipe scripts. Each step runs on the `cloud` (reasoning) or the `device`
@@ -114,52 +164,116 @@ const COPY = {
 const RECIPES = [
   {
     id: 'cookies',
-    name: { en: 'Chocolate-chip cookies', zh: '巧克力曲奇' },
+    name: { en: 'Chocolate-chip cookies', zh: '巧克力曲奇', ko: '초콜릿 칩 쿠키' },
     emoji: '🍪',
     steps: [
-      { side: 'cloud', en: 'Plan: 180°C, ~12 min, both elements', zh: '规划：180°C，约 12 分钟，上下发热管' },
-      { side: 'device', tool: 'set_temperature(180)', en: 'Set the oven to 180°C', zh: '设定 180°C' },
-      { side: 'device', tool: 'set_heat(both, on)', en: 'Turn on top and bottom heat', zh: '开启上下发热管' },
-      { side: 'device', tool: 'set_time(12)', en: 'Set a 12-minute timer', zh: '设定 12 分钟' },
-      { side: 'device', tool: 'start()', en: 'Start baking', zh: '开始烘焙' },
-      { side: 'cloud', en: 'Decide to check near the end', zh: '临近结束时决定检查' },
-      { side: 'device', tool: 'take_photo()', en: 'Photograph the cookies', zh: '拍摄曲奇' },
-      { side: 'cloud', en: 'Assess doneness from the image', zh: '根据图像判断熟度' },
-      { side: 'device', tool: 'stop()', en: 'Golden — stop the oven', zh: '金黄——停止加热' },
+      {
+        side: 'cloud',
+        en: 'Plan: 180°C, ~12 min, both elements',
+        zh: '规划：180°C，约 12 分钟，上下发热管',
+        ko: '계획: 180°C, 약 12분, 상하 열선',
+      },
+      {
+        side: 'device',
+        tool: 'set_temperature(180)',
+        en: 'Set the oven to 180°C',
+        zh: '设定 180°C',
+        ko: '오븐을 180°C로 설정',
+      },
+      {
+        side: 'device',
+        tool: 'set_heat(both, on)',
+        en: 'Turn on top and bottom heat',
+        zh: '开启上下发热管',
+        ko: '상하 열선 켜기',
+      },
+      { side: 'device', tool: 'set_time(12)', en: 'Set a 12-minute timer', zh: '设定 12 分钟', ko: '12분 타이머 설정' },
+      { side: 'device', tool: 'start()', en: 'Start baking', zh: '开始烘焙', ko: '굽기 시작' },
+      {
+        side: 'cloud',
+        en: 'Decide to check near the end',
+        zh: '临近结束时决定检查',
+        ko: '종료 직전에 확인하기로 결정',
+      },
+      { side: 'device', tool: 'take_photo()', en: 'Photograph the cookies', zh: '拍摄曲奇', ko: '쿠키 촬영' },
+      { side: 'cloud', en: 'Assess doneness from the image', zh: '根据图像判断熟度', ko: '이미지로 익은 정도 판단' },
+      {
+        side: 'device',
+        tool: 'stop()',
+        en: 'Golden — stop the oven',
+        zh: '金黄——停止加热',
+        ko: '노릇하게 완성 — 오븐 정지',
+      },
     ],
   },
   {
     id: 'chicken',
-    name: { en: 'Roast chicken', zh: '烤鸡' },
+    name: { en: 'Roast chicken', zh: '烤鸡', ko: '로스트 치킨' },
     emoji: '🍗',
     steps: [
       {
         side: 'cloud',
         en: 'Plan: 200°C, 60 min, bottom heat, brown at the end',
         zh: '规划：200°C，60 分钟，下发热管，最后上色',
+        ko: '계획: 200°C, 60분, 하부 열선으로 익힌 뒤 마지막에 색을 냅니다',
       },
-      { side: 'device', tool: 'set_temperature(200)', en: 'Set the oven to 200°C', zh: '设定 200°C' },
-      { side: 'device', tool: 'set_heat(bottom, on)', en: 'Use bottom heat to cook through', zh: '用下发热管烤熟' },
-      { side: 'device', tool: 'set_time(60)', en: 'Set a 60-minute timer', zh: '设定 60 分钟' },
-      { side: 'device', tool: 'start()', en: 'Start roasting', zh: '开始烤制' },
-      { side: 'cloud', en: 'Check color before browning', zh: '上色前检查色泽' },
-      { side: 'device', tool: 'take_photo()', en: 'Photograph the chicken', zh: '拍摄烤鸡' },
-      { side: 'cloud', en: 'Decide to brown the skin', zh: '决定给表皮上色' },
-      { side: 'device', tool: 'set_heat(top, on)', en: 'Add top heat to crisp the skin', zh: '加上发热管使表皮酥脆' },
-      { side: 'device', tool: 'stop()', en: 'Done — stop the oven', zh: '完成——停止加热' },
+      {
+        side: 'device',
+        tool: 'set_temperature(200)',
+        en: 'Set the oven to 200°C',
+        zh: '设定 200°C',
+        ko: '오븐을 200°C로 설정',
+      },
+      {
+        side: 'device',
+        tool: 'set_heat(bottom, on)',
+        en: 'Use bottom heat to cook through',
+        zh: '用下发热管烤熟',
+        ko: '하부 열선으로 속까지 익히기',
+      },
+      { side: 'device', tool: 'set_time(60)', en: 'Set a 60-minute timer', zh: '设定 60 分钟', ko: '60분 타이머 설정' },
+      { side: 'device', tool: 'start()', en: 'Start roasting', zh: '开始烤制', ko: '굽기 시작' },
+      { side: 'cloud', en: 'Check color before browning', zh: '上色前检查色泽', ko: '색을 내기 전에 상태 확인' },
+      { side: 'device', tool: 'take_photo()', en: 'Photograph the chicken', zh: '拍摄烤鸡', ko: '치킨 촬영' },
+      { side: 'cloud', en: 'Decide to brown the skin', zh: '决定给表皮上色', ko: '껍질에 색을 내기로 결정' },
+      {
+        side: 'device',
+        tool: 'set_heat(top, on)',
+        en: 'Add top heat to crisp the skin',
+        zh: '加上发热管使表皮酥脆',
+        ko: '상부 열선을 추가해 껍질을 바삭하게 만들기',
+      },
+      { side: 'device', tool: 'stop()', en: 'Done — stop the oven', zh: '完成——停止加热', ko: '완료 — 오븐 정지' },
     ],
   },
   {
     id: 'reheat',
-    name: { en: 'Reheat leftovers', zh: '加热剩菜' },
+    name: { en: 'Reheat leftovers', zh: '加热剩菜', ko: '남은 음식 데우기' },
     emoji: '♨️',
     steps: [
-      { side: 'cloud', en: 'Plan: gentle 150°C for 8 min', zh: '规划：150°C 轻柔加热 8 分钟' },
-      { side: 'device', tool: 'set_temperature(150)', en: 'Set a gentle 150°C', zh: '设定温和的 150°C' },
-      { side: 'device', tool: 'set_heat(both, on)', en: 'Turn on both elements', zh: '开启上下发热管' },
-      { side: 'device', tool: 'set_time(8)', en: 'Set an 8-minute timer', zh: '设定 8 分钟' },
-      { side: 'device', tool: 'start()', en: 'Start reheating', zh: '开始加热' },
-      { side: 'device', tool: 'stop()', en: 'Warm through — stop', zh: '热透——停止' },
+      {
+        side: 'cloud',
+        en: 'Plan: gentle 150°C for 8 min',
+        zh: '规划：150°C 轻柔加热 8 分钟',
+        ko: '계획: 150°C로 8분간 부드럽게 데우기',
+      },
+      {
+        side: 'device',
+        tool: 'set_temperature(150)',
+        en: 'Set a gentle 150°C',
+        zh: '设定温和的 150°C',
+        ko: '150°C로 부드럽게 설정',
+      },
+      {
+        side: 'device',
+        tool: 'set_heat(both, on)',
+        en: 'Turn on both elements',
+        zh: '开启上下发热管',
+        ko: '상하 열선 켜기',
+      },
+      { side: 'device', tool: 'set_time(8)', en: 'Set an 8-minute timer', zh: '设定 8 分钟', ko: '8분 타이머 설정' },
+      { side: 'device', tool: 'start()', en: 'Start reheating', zh: '开始加热', ko: '데우기 시작' },
+      { side: 'device', tool: 'stop()', en: 'Warm through — stop', zh: '热透——停止', ko: '따뜻해짐 — 정지' },
     ],
   },
 ]
@@ -186,7 +300,8 @@ function StepLog({ step, active, done, lang }) {
 
 export default function DeviceCloudPage() {
   const { i18n } = useDocusaurusContext()
-  const lang = i18n.currentLocale === 'zh' ? 'zh' : 'en'
+  const locale = i18n.currentLocale
+  const lang = locale === 'zh' || locale === 'ko' ? locale : 'en'
   const t = COPY[lang]
 
   const [recipeId, setRecipeId] = useState(RECIPES[0].id)
@@ -352,7 +467,7 @@ export default function DeviceCloudPage() {
           <h2 className={styles.sectionTitle}>{t.learnHeading}</h2>
           <div className={styles.linkRow}>
             {t.links.map((l) => (
-              <Link key={l.to} className={styles.linkCard} to={l.to}>
+              <Link key={l.to} className={styles.linkCard} to={localePath(locale, l.to)}>
                 {l.label} →
               </Link>
             ))}

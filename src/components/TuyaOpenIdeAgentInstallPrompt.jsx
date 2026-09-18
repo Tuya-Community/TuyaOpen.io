@@ -15,6 +15,12 @@ const copy = {
     prompt: (url) =>
       `安装 TuyaOpen IDE 扩展。从 ${url} 下载最新 .vsix，然后用 code --install-extension <路径.vsix>（VS Code）或 cursor --install-extension <路径.vsix>（Cursor）安装，并重新加载编辑器窗口让扩展生效。`,
   },
+  ko: {
+    loading: 'Open VSX 최신 버전을 확인하는 중…',
+    latest: '최신 버전',
+    prompt: (url) =>
+      `TuyaOpen IDE 확장을 설치하세요. ${url}에서 최신 .vsix를 다운로드한 다음 code --install-extension <path-to-vsix>(VS Code) 또는 cursor --install-extension <path-to-vsix>(Cursor)로 설치하고, 확장이 활성화되도록 편집기 창을 다시 로드하세요.`,
+  },
 }
 
 export default function TuyaOpenIdeAgentInstallPrompt({ locale = 'en' }) {

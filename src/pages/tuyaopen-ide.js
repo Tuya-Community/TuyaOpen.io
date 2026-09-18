@@ -14,6 +14,197 @@ const OPEN_VSX_FALLBACK_VERSION = '0.1.1'
 const OPEN_VSX_FALLBACK_DOWNLOAD_URL =
   'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix'
 
+const IDE_KO_COPY = {
+  ...tuyaOpenIdeCopy.en,
+  nav: {
+    features: '기능',
+    capabilities: '역량',
+    showcase: '화면 둘러보기',
+    why: 'TuyaOpen을 선택하는 이유',
+    download: '다운로드',
+    cta: '시작하기',
+  },
+  productsMenu: {
+    label: '제품',
+    groups: [
+      {
+        heading: '소프트웨어',
+        items: [
+          {
+            icon: 'sdk',
+            title: 'TuyaOpen SDK',
+            subtitle: '오픈 소스 풀스택 AIoT OS',
+            href: 'https://github.com/tuya/TuyaOpen',
+            external: true,
+          },
+          {
+            icon: 'arduino',
+            title: 'TuyaOpen on Arduino',
+            subtitle: '빠른 프로토타이핑을 위한 Arduino 라이브러리',
+            href: 'https://github.com/tuya/arduino-TuyaOpen',
+            external: true,
+          },
+          { icon: 'ducky', title: 'TClaw 🦞', subtitle: 'AI 하드웨어 동반 Agent · 이전 DuckyClaw', href: '/tclaw' },
+        ],
+      },
+      {
+        heading: '하드웨어',
+        items: [
+          {
+            icon: 'chip',
+            title: 'Tuya T5',
+            subtitle: '플래그십 Wi-Fi 및 BT AI 개발보드',
+            href: '/docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board',
+          },
+          {
+            icon: 'chip',
+            title: 'ESP32',
+            subtitle: 'Espressif 플랫폼 완전 지원',
+            href: '/docs/hardware/espressif/overview-esp32',
+          },
+          {
+            icon: 'chip',
+            title: 'Linux / Raspberry Pi',
+            subtitle: 'Raspberry Pi와 Linux에서 TuyaOpen 실행',
+            href: '/docs/hardware/Linux/raspberry-pi/Examples/raspberry-pi',
+          },
+        ],
+      },
+      {
+        heading: '도구',
+        items: [
+          {
+            icon: 'ide',
+            title: 'TuyaOpen IDE',
+            subtitle: 'TuyaOpen 개발을 위한 AI 코딩 Agent 확장',
+            href: '/tuyaopen-ide',
+            badge: '새 릴리스',
+          },
+          { icon: 'terminal', title: 'TyuTools GUI/CLI', subtitle: '범용 시리얼 및 플래시 도구', href: '/tyutool' },
+          {
+            icon: 'web',
+            title: 'WebTool',
+            subtitle: '브라우저 기반 시리얼 및 플래시 도구',
+            href: '/web-serial',
+            external: false,
+          },
+        ],
+      },
+    ],
+  },
+  hero: {
+    ...tuyaOpenIdeCopy.en.hero,
+    badge: 'Vibe Coding · 하드웨어 인 더 루프 · 더 빠른 출시',
+    titlePrefix: 'TuyaOpen IDE로 ',
+    titleHighlight: '하드웨어 만들기',
+    subtitle:
+      'AI 시대를 위한 풀스택 하드웨어 개발 도구입니다. 프로젝트 생성부터 디바이스 펌웨어, 클라우드 Agent, 앱 개발까지 세 가지 화면을 하나의 워크플로로 연결합니다.',
+    ctaPrimary: '확장 설치',
+    earlyPreview: '✨ 얼리 프리뷰',
+    ctaSecondary: 'GitHub 보기',
+    ctaDocs: '문서 보기',
+    screenshotAlt: 'IDE 메인 인터페이스',
+    floatBuild: 'Vibe Coding 진행 중',
+    floatFlash: '디바이스 IO 컨텍스트 동기화됨',
+    floatConnected: 'AI 빌드 통과',
+  },
+  features: {
+    ...tuyaOpenIdeCopy.en.features,
+    label: '매끄러운 통합',
+    title: '즐겨 사용하는 IDE에서 작동',
+    desc: '매일 쓰는 워크플로에 바로 연결되는 확장입니다. 컨텍스트 전환 없이 개발 속도를 높이세요.',
+    items: [
+      {
+        title: 'IDE 네이티브 경험',
+        desc: 'VS Code와 Cursor를 위한 일급 확장입니다. 별도 앱이나 창 없이 작성하던 곳에서 모든 하드웨어 도구를 사용합니다.',
+        icons: ['vscode', 'cursor'],
+      },
+      {
+        title: '어떤 Coding Agent와도 연결',
+        desc: 'Claude Code, Codex 또는 직접 만든 Agent와 TuyaOpen IDE를 연결하세요. 보드, 주변 장치, SDK 컨텍스트가 Agent에 바로 전달됩니다.',
+        image: 'coding-agent',
+      },
+      {
+        title: '펌웨어·클라우드·앱을 한곳에서',
+        subtitle: 'MiniApp / 클라우드 개발 / 하드웨어',
+        desc: '디바이스 펌웨어, 클라우드 AI Agent, 패널 앱을 하나의 워크플로로 통합합니다. 하드웨어 구동부터 제품 출시까지 자동화하세요.',
+        image: '3-plat-dev',
+      },
+    ],
+  },
+  capabilities: {
+    ...tuyaOpenIdeCopy.en.capabilities,
+    label: '전체 역량',
+    title: '개발의 모든 단계를 위해',
+    desc: '칩 선택부터 펌웨어 배포까지 TuyaOpen IDE가 임베디드 IoT 워크플로 전체를 지원합니다.',
+    items: [
+      {
+        icon: 'Board Catalogue',
+        title: '개발보드 카탈로그',
+        desc: '지원 보드, 칩, SoC 플랫폼과 상세 사양을 확인합니다.',
+      },
+      { icon: 'Pin Mapping', title: 'AI 핀 매핑', desc: 'AI가 핀 사용과 매핑을 이해하고 새 하드웨어 통합을 돕습니다.' },
+      {
+        icon: 'Demo Library',
+        title: '데모 라이브러리',
+        desc: '빠른 프로토타이핑과 학습을 위한 실행 가능한 예제 프로젝트입니다.',
+      },
+      {
+        icon: 'Skills Registry',
+        title: '스킬 레지스트리',
+        desc: '하드웨어 컨텍스트를 이해하는 AI 코딩 스킬을 설치합니다.',
+      },
+      {
+        icon: 'SDK Management',
+        title: 'SDK 관리',
+        desc: 'TuyaOpen SDK 환경을 자동으로 복제하고 업데이트하고 준비합니다.',
+      },
+      {
+        icon: 'Device Tooling',
+        title: '디바이스 도구',
+        desc: '펌웨어 플래시, 시리얼 출력 모니터링, 디바이스 연결을 관리합니다.',
+      },
+    ],
+  },
+  showcase: {
+    ...tuyaOpenIdeCopy.en.showcase,
+    label: 'IDE 둘러보기',
+    title: '여러 화면, 하나의 워크플로',
+    desc: '사이드바에서 개발보드 카탈로그, 디바이스 도구, 프로젝트 관리를 모두 사용하세요.',
+    back: '설정 및 구성',
+    mid: '개발보드 카탈로그 화면',
+    front: '프로젝트 대시보드',
+  },
+  why: {
+    ...tuyaOpenIdeCopy.en.why,
+    label: 'TuyaOpen 소개',
+    title: '하나의 오픈 소스 SDK, 모든 칩',
+    desc: 'TuyaOpen은 여러 칩 플랫폼에 통합 애플리케이션 프레임워크를 제공합니다. 한 번 작성하고 지원되는 하드웨어에 배포하세요.',
+    items: [
+      '통합 API 계층이 칩별 차이를 추상화합니다',
+      'T2, T3, T5, ESP32, Raspberry Pi 4/5 등을 지원합니다',
+      '네트워크, 보안, OTA, 주변 장치를 모듈로 제공합니다',
+      'Tuya IoT Core를 통합한 클라우드 독립 연결',
+      'AI Agent와 앱 역량을 바로 통합합니다',
+      'Apache 2.0 라이선스의 완전한 오픈 소스입니다',
+    ],
+  },
+  download: {
+    ...tuyaOpenIdeCopy.en.download,
+    title: '오늘 바로 시작하세요',
+    desc: 'Open VSX에서 TuyaOpen IDE를 검색하거나 .vsix를 내려받아 VS Code 또는 Cursor에 수동 설치하세요. AI Agent에게 설치를 맡길 수도 있습니다.',
+    marketplace: '확장 설치',
+    github: 'GitHub 릴리스',
+  },
+  installDialog: {
+    ...tuyaOpenIdeCopy.en.installDialog,
+    title: 'TuyaOpen IDE 설치',
+    manualLabel: '또는 수동 설치',
+    close: '닫기',
+  },
+  footer: { github: 'GitHub', docs: '문서', privacy: '개인정보 보호', terms: '이용 약관' },
+}
+
 function patchGifPlayOnce(buf) {
   const data = new Uint8Array(buf)
   const gctSize = data[10] & 0x80 ? 3 * (1 << ((data[10] & 0x07) + 1)) : 0
@@ -991,8 +1182,8 @@ function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
 
 export default function TuyaOpenIdePage() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
-  const copy = tuyaOpenIdeCopy[locale]
+  const locale = i18n.currentLocale === 'zh' || i18n.currentLocale === 'ko' ? i18n.currentLocale : 'en'
+  const copy = locale === 'ko' ? IDE_KO_COPY : tuyaOpenIdeCopy[locale]
   const debuggerGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/bd92fba8-5833-4e09-a7fc-d6c3d7d31908.gif'
   const pinIoConfigUrl = useBaseUrl('/img/ide/pin-io-config.svg')
   const demoLibraryGifUrl = 'https://images.tuyacn.com/fe-static/docs/img/43c354e0-0055-45ef-a4ae-a1a73a614cab.gif'
@@ -1362,9 +1553,12 @@ export default function TuyaOpenIdePage() {
                     <span className={styles.hilTitleBase}>{copy.realWorldValidation.titleBase}</span>{' '}
                     <span className={styles.hilTitleAccent}>{copy.realWorldValidation.titleAccent}</span>
                   </h2>
-                  <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                  <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : locale === 'ko' ? 'ko-KR' : 'en'}>
                     {copy.realWorldValidation.bodyBefore}
-                    <span className={styles.hilBodyHighlight} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                    <span
+                      className={styles.hilBodyHighlight}
+                      lang={locale === 'zh' ? 'zh-CN' : locale === 'ko' ? 'ko-KR' : 'en'}
+                    >
                       {copy.realWorldValidation.bodyHighlight}
                     </span>
                     {copy.realWorldValidation.bodyAfter}

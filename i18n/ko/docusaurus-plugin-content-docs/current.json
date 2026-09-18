@@ -1,0 +1,230 @@
+{
+  "version.label": {
+    "message": "다음",
+    "description": "The label for version current"
+  },
+  "sidebar.sdkSidebar.category.Getting Started": {
+    "message": "시작하기",
+    "description": "The label for category 'Getting Started' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Guides & platform APIs": {
+    "message": "가이드 및 플랫폼 API",
+    "description": "The label for category 'Guides & platform APIs' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Networking": {
+    "message": "네트워킹",
+    "description": "The label for category 'Networking' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Protocol Tutorials": {
+    "message": "프로토콜 튜토리얼",
+    "description": "The label for category 'Protocol Tutorials' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.BLE Tutorials": {
+    "message": "BLE 튜토리얼",
+    "description": "The label for category 'BLE Tutorials' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.TAL API Reference": {
+    "message": "TAL API 레퍼런스",
+    "description": "The label for category 'TAL API Reference' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.TKL Networking": {
+    "message": "TKL 네트워킹",
+    "description": "The label for category 'TKL Networking' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Graphics": {
+    "message": "그래픽",
+    "description": "The label for category 'Graphics' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Audio": {
+    "message": "오디오",
+    "description": "The label for category 'Audio' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Peripherals": {
+    "message": "주변 장치",
+    "description": "The label for category 'Peripherals' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Peripheral Tutorials": {
+    "message": "주변 장치 튜토리얼",
+    "description": "The label for category 'Peripheral Tutorials' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.System Programming": {
+    "message": "시스템 프로그래밍",
+    "description": "The label for category 'System Programming' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.TKL OS APIs": {
+    "message": "TKL OS API",
+    "description": "The label for category 'TKL OS APIs' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Memory & storage": {
+    "message": "메모리 및 스토리지",
+    "description": "The label for category 'Memory & storage' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Hardware Interfaces": {
+    "message": "하드웨어 인터페이스",
+    "description": "The label for category 'Hardware Interfaces' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Examples": {
+    "message": "예제",
+    "description": "The label for category 'Examples' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.tos.py & tyutool": {
+    "message": "tos.py & tyutool",
+    "description": "The label for category 'tos.py & tyutool' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Build System": {
+    "message": "빌드 시스템",
+    "description": "The label for category 'Build System' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Contribute": {
+    "message": "기여하기",
+    "description": "The label for category 'Contribute' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.sdkSidebar.category.Docs Templates": {
+    "message": "문서 템플릿",
+    "description": "The label for category 'Docs Templates' in sidebar 'sdkSidebar'"
+  },
+  "sidebar.ideSidebar.category.Practice": {
+    "message": "실습",
+    "description": "The label for category 'Practice' in sidebar 'ideSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Getting Started": {
+    "message": "시작하기",
+    "description": "The label for category 'Getting Started' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Tuya T5": {
+    "message": "Tuya T5",
+    "description": "The label for category 'Tuya T5' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.T5-AI Board DevKit": {
+    "message": "T5-AI 보드 개발 키트",
+    "description": "The label for category 'T5-AI Board DevKit' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.T5-AI Core DevKit": {
+    "message": "T5-AI Core 개발 키트",
+    "description": "The label for category 'T5-AI Core DevKit' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Tuya T2": {
+    "message": "Tuya T2",
+    "description": "The label for category 'Tuya T2' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Tuya T3": {
+    "message": "Tuya T3",
+    "description": "The label for category 'Tuya T3' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Espressif ESP32": {
+    "message": "Espressif ESP32",
+    "description": "The label for category 'Espressif ESP32' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Pin Mapping": {
+    "message": "핀 매핑",
+    "description": "The label for category 'Pin Mapping' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Linux": {
+    "message": "Linux",
+    "description": "The label for category 'Linux' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.DshanPi A1": {
+    "message": "DshanPi A1",
+    "description": "The label for category 'DshanPi A1' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Raspberry Pi": {
+    "message": "Raspberry Pi",
+    "description": "The label for category 'Raspberry Pi' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.T5 + Arduino IDE": {
+    "message": "T5 + Arduino IDE",
+    "description": "The label for category 'T5 + Arduino IDE' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Porting & New Project": {
+    "message": "포팅 및 새 프로젝트",
+    "description": "The label for category 'Porting & New Project' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.hardwareSidebar.category.Bring-up stages": {
+    "message": "Bring-up 단계",
+    "description": "The label for category 'Bring-up stages' in sidebar 'hardwareSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Bind a device to the cloud": {
+    "message": "클라우드에 디바이스 바인딩",
+    "description": "The label for category 'Bind a device to the cloud' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.IoT client & example": {
+    "message": "IoT 클라이언트 및 예제",
+    "description": "The label for category 'IoT client & example' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Concepts & best practices": {
+    "message": "개념 및 모범 사례",
+    "description": "The label for category 'Concepts & best practices' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Runtime, agent & skills": {
+    "message": "런타임, Agent 및 Skills",
+    "description": "The label for category 'Runtime, agent & skills' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Voice Chat Modes": {
+    "message": "음성 채팅 모드",
+    "description": "The label for category 'Voice Chat Modes' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Design on-device AI UIs": {
+    "message": "온디바이스 AI UI 설계",
+    "description": "The label for category 'Design on-device AI UIs' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Expose MCP on the device": {
+    "message": "디바이스에서 MCP 노출",
+    "description": "The label for category 'Expose MCP on the device' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.AI application demos": {
+    "message": "AI 애플리케이션 데모",
+    "description": "The label for category 'AI application demos' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Tuya Cloud AI": {
+    "message": "Tuya Cloud AI",
+    "description": "The label for category 'Tuya Cloud AI' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Agent Development": {
+    "message": "Agent 개발",
+    "description": "The label for category 'Agent Development' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.AI Control Hardware": {
+    "message": "AI 제어 하드웨어",
+    "description": "The label for category 'AI Control Hardware' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Add voice & language": {
+    "message": "음성 및 언어 추가",
+    "description": "The label for category 'Add voice & language' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Automate with triggers": {
+    "message": "트리거로 자동화",
+    "description": "The label for category 'Automate with triggers' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Manage cloud MCP": {
+    "message": "클라우드 MCP 관리",
+    "description": "The label for category 'Manage cloud MCP' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.category.Integrate via OpenAPI & chat": {
+    "message": "OpenAPI 및 채팅 통합",
+    "description": "The label for category 'Integrate via OpenAPI & chat' in sidebar 'cloudSidebar'"
+  },
+  "sidebar.cloudSidebar.doc.your_chat_bot": {
+    "message": "your_chat_bot",
+    "description": "The label for the doc item 'your_chat_bot' in sidebar 'cloudSidebar', linking to the doc cloud/device-ai/demo-your-chat-bot"
+  },
+  "sidebar.cloudSidebar.doc.duo_eye_mood": {
+    "message": "duo_eye_mood",
+    "description": "The label for the doc item 'duo_eye_mood' in sidebar 'cloudSidebar', linking to the doc cloud/device-ai/demo-duo-eyes-mood"
+  },
+  "sidebar.tclawSidebar.category.Quick Start": {
+    "message": "빠른 시작",
+    "description": "The label for category 'Quick Start' in sidebar 'tclawSidebar'"
+  },
+  "sidebar.tclawSidebar.link.Overview": {
+    "message": "개요",
+    "description": "The label for link 'Overview' in sidebar 'tclawSidebar', linking to '/tclaw'"
+  },
+  "sidebar.tyutoolSidebar.category.Batch Flash & Auth": {
+    "message": "일괄 플래시 및 인증",
+    "description": "The label for category 'Batch Flash & Auth' in sidebar 'tyutoolSidebar'"
+  },
+  "sidebar.tyutoolSidebar.doc.Overview": {
+    "message": "개요",
+    "description": "The label for the doc item 'Overview' in sidebar 'tyutoolSidebar', linking to the doc tyutool/index"
+  }
+}

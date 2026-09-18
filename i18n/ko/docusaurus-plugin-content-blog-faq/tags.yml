@@ -1,0 +1,19 @@
+AI:
+  label: AI
+  permalink: /AI
+  description: AI 관련 튜토리얼, 워크플로와 제품 업데이트
+
+TuyaOpen:
+  label: TuyaOpen
+  permalink: /TuyaOpen
+  description: TuyaOpen 플랫폼 및 개발 관련 콘텐츠
+
+Development:
+  label: 개발
+  permalink: /Development
+  description: 개발자 가이드, 구현 노트와 엔지니어링 실천
+
+Tutorial:
+  label: 튜토리얼
+  permalink: /Tutorial
+  description: 단계별 튜토리얼 및 학습 콘텐츠

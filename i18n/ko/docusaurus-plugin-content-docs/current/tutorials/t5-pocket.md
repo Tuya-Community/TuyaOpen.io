@@ -1,0 +1,363 @@
+---
+title: "[Open Source] T5-Pocket과 함께 플레이: AI+IoT Smart Companion"
+noindex: true
+---
+
+
+<p align="center">
+  <img
+    src="https://images.tuyacn.com/fe-static/docs/img/0f9616de-e94e-49af-ac0b-a6842296e1db.png"
+    alt="T5-Pocket show"
+    style={{
+      width: "80%",
+      borderRadius: "12px",
+      boxShadow: "0 2px 16px rgba(0,0,0,0.08)"
+    }}
+  />
+</p>
+
+## ✨ T5-Pocket 최신 기능
+**[T5 포켓](https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai)** 오픈 소스 AI + TuyaOpen 펌웨어에 내장 된 IoT 핸드 헬드 동반자 - AI 가상 애완 동물, 다중 음성 채팅, 복고풍 게임 및 센서 및 주변 확장의 넓은 세트를 실행 2.9 인치 반사 디스플레이. 최신 펌웨어는 다음과 같은 핵심 기능을 발송합니다.
+
+### (주)아이아이디
+- **Pet 애니메이션 **: 식사, 목욕, 잠자는, 춤, 아픈, 욕실 등 풍부한 애니메이션
+- **단계 관리**: 건강, 에너지, 청결, 행복의 순간 변화
+- **Emotion Expression**: 상태에 따라 자동으로 전환되는 행복한, 슬픔, 질병 및 기타 감정
+- ** 상호 작용하는 가동 **: 먹이는 (햄버거, 피자, 사과, 등), 입욕, 보고 의사, 잠자는, 등.
+- **Smart Timer System**: 자동적으로 실제 애완 동물의 요구를 시뮬레이션하기 위해 20 분마다 통계를 감소
+- **Data Persistence**: 애완 동물은 KV 저장에 자동적으로 저장해, 힘에 자료 손실 없음
+- **Cloud Sync**: Tuya Cloud의 실시간 상태 보고, 원격 보고 및 제어 지원
+
+### Multimodal AI 대화
+- **4 대화 모드 **:
+  - Push-to-talk 단일 대화 (듣기, 전송 해제)
+  - VAD 무료 대화 (자동 음성 활동 탐지)
+  - Wake word 단일 대화 (스마트 스피커와 같은)
+  - Wake Word 무료 대화 (지속적인 대화 모드)
+- **Emotion Recognition**: AI는 사용자 감정 (행복, 화가, 두려움, 슬픔)을 인식하고 응답을 조정합니다.
+- **Streaming Text Processing**: AI 응답의 스트리밍 리셉션 및 디스플레이 지원
+- ** 다국어 지원**: 중국어 및 영어 음성 인식 및 합성
+
+### UI 인터페이스
+- ** 메인 화면**: 애완 동물 애니메이션, 상태 표시 바 (Wi-Fi, 배터리, 4G), 애완 동물 속성
+- **메뉴 시스템**:
+  - 먹이는 메뉴 (음식 선택)
+  - 숙박 플랜
+  - 건강 메뉴 ( 의사 참조)
+  - 잠 메뉴
+  - 정보 메뉴 (애완 동물 속성)
+  - 주변 메뉴 (gyroscope, I2C 스캔, WiFi 스캔, 게임)
+- ** 게임 인터페이스 **:
+  - Snake 게임 (완전 구현)
+  - Dino 런너 게임 (완전 구현)
+- **Tool 인터페이스 **:
+  - RFID 스캐닝 공용영역
+  - I2C 장치 스캐닝 공용영역
+  - 온도/습도 전시
+  - 수평 미터 공용영역
+  - AI 로그 분석 인터페이스
+  - E-book 리더
+  - 키보드 입력 인터페이스
+
+### 8.9 오디오 시스템
+- **시스템 사운드 **:
+  - Network 구성 소리
+  - 네트워크 연결 성공 / 실패 소리
+  - 웨이크 업 소리
+  - 다양한 대화 모드 소리
+- ** 패킷 사운드 효과**:
+  - 관련 동영상
+  - 목욕 소리
+  - Sick 소리
+  - 더 보기
+- **Volume Control**: 클라우드 동기화 지원으로 0-100 레벨 볼륨 조정
+
+### ▫ 확장 기능
+- **RFID 카드 리더 **: UID 판독 및 데이터 파싱, CRC16 검증 지원
+- ** 열 프린터 ** : 텍스트 및 이미지 인쇄, UTF-8 GBK 인코딩 지원
+- **AI Log Analysis**: AI 지능형 오류 분석과 실시간 직렬 로그 캡처
+- ** BMI270 Gyroscope **: 자세 감지 및 단계 계산
+- **I2C Device Scanning**: 자동 스캔 및 표시 I2C 장치 주소
+
+
+
+## T5-Pocket로 재생하는 방법?
+T5-Pocket은 오픈소스 프로젝트입니다.`TuyaOpen`. 사용자는 소스 코드 또는 펌웨어를 다운로드 할 수 있습니다[TuyaOpen 공식 웹 사이트](https://tuyaopen.ai)사용자 정의 기능을 구현합니다. 더 보기`TuyaOpen`팀은 사용자가 자신의 프로젝트를 개발할 수 있는 풍부한 예 프로젝트를 제공합니다.
+
+### 조이스틱
+#### 제품정보
+T5-Pocket은 듀얼 채널 조이스틱과 독립적 인 버튼, 지원 x, y 듀얼 채널 12 비트 정밀 ADC 샘플링을 갖추고 있습니다. 그것은 조이스틱, 손잡이, 또는 방향 패드로 작용할 수 있습니다. 조이스틱은 많은 숨겨진 gameplay 기능과 더불어 더 정확한 UI 엇바꾸기 그리고 기능 선택 가능하게 합니다.
+
+#### 사용 사례
+- ** 게임 컨트롤러 ** : 공통 게임 컨트롤러처럼 T5-Pocket의 조이스틱을 사용하여 게임 캐릭터 움직임을 제어 할 수 있습니다. Dino Runner와 Snake와 같은 고전적인 게임은 모두 구현 될 수 있습니다.
+- ** 메뉴 탐색 **: 기능 아이콘 선택, 전자 책 페이지 회전 및 유연 페이지 탐색을 포함하여 더 정확한 UI 페이지 전환을위한 조이스틱을 사용합니다.
+
+#### 주요사업
+joystick 개발을 위해, 참조[예 프로젝트](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/joystick).
+
+---
+
+### Gyroscope
+#### Overview
+T5-Pocket features a high-performance 6-axis inertial measurement unit (IMU) from Bosch Sensortec—**BMI270**. It integrates a 16-bit three-axis accelerometer and a 16-bit three-axis gyroscope in an extremely small package, achieving ultra-low power consumption with precise device posture sensing.
+
+#### Use Cases
+- **Activity Recognition/Step Counting**: Utilize BMI270's built-in powerful algorithms to easily implement real-time monitoring of user steps and movement status.
+- **Gesture Control and Level Meter**: By calculating the quaternion data output from the IMU, you can obtain precise Euler angles of the device, enabling creative applications like gesture mice and level meters.
+- **Action Recognition**: Collect dynamic gesture data from the device, deploy a CNN model locally on T5, train and recognize specific actions such as "shake" or "flip," creating new interaction dimensions.
+- **Balance Vehicle**: Combined with expansion interfaces to drive motors, use the pitch angle data calculated from the IMU to build a mini balance vehicle.
+
+#### Development
+For BMI270 development, refer to the [example project](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/imu/bmi270). The latest T5-Pocket firmware already supports level meter display.
+
+---
+
+### 제품정보
+#### 제품정보
+T5-Pocket은 LVGL(Light and Versatile Graphics Library)를 기반으로 개발된 2.9인치 384 × 168 해상도의 완전 반사형 저전력 눈 관리 스크린을 갖추고 있어 직관적인 시각적 피드백과 대화형 인터페이스를 제공합니다.
+
+#### 사용 사례
+- **AI Pet Animation**: 디스플레이는 AI 가상 애완 동물의 "얼음"이며, 풍부한 애니메이션을 통해 다양한 주와 감정을 보여줍니다. 애완 동물은 식사, 목욕, 수면, 춤, 각 행동에 대한 대응 애니메이션 효과, 가상 애완 동물을 더 살리고 사랑스러운.
+
+- **정보 대시보드**: T5-Pocket을 데스크톱 정보 센터로 사용, 날씨 표시, 시간, to-do 항목, 센서 데이터 등 실시간. 한 눈에 중요한 정보를 파악하는 조이스틱과 다른 정보 페이지 사이 전환.
+
+- **Gaming Console**: 디스플레이 및 조이스틱을 사용하여 Snake, Tetris, Dino Runner와 같은 다양한 고전적인 게임을 개발합니다. monochrome 스크린은 복고풍 게임 콘솔의 독특한 매력을 가져옵니다.
+
+- **E-Reader**: 높 반복적인 스크린은 장기 사용을 위해 그것을 눈 친절한 만드는 0 파란 빛을 특색짓습니다. 개발자는 SD 카드에서 txt 파일을 핸드 헬드 읽을 수 있습니다.
+
+#### 주요사업
+최신 T5 포켓 펌웨어는 AI 애완 동물 애니메이션, 정보 디스플레이, 게임 콘솔, e-reader 및 기타 많은 기능을 지원합니다. 개발자들은 쉽게 자신의 UI 페이지를 만들 수 있습니다.[UI 디자인 가이드](https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/display/UI_DEVELOPMENT_GUIDE.md).
+
+디스플레이 개발, 참조[표시 예](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/display)이름 *[LVGL 예제](https://github.com/tuya/TuyaOpen/tree/master/examples/graphics). LVGL은 빠른 UI 개발을 위한 풍부한 문서와 예제를 제공합니다.
+
+
+
+---
+
+### SD Card
+#### Overview
+T5-Pocket supports external Micro SD cards, providing large-capacity external storage for audio files, log data, configuration files, image resources, and more.
+
+#### Use Cases
+- **Audio Player**: Store music files on the SD card, and T5-Pocket can function as a portable music player. Supports multiple audio formats, with joystick control for play, pause, track skipping, and display of song information and playback progress.
+
+- **Data Logger**: Connect various sensors to record collected data in real-time to the SD card. Suitable for environmental monitoring, motion tracking, experimental data collection, and other scenarios. Data is stored in CSV or JSON format for easy subsequent analysis.
+
+- **Offline Voice Library**: Pre-store common voice prompts and TTS audio on the SD card to provide voice feedback in offline environments. Suitable for applications requiring offline operation.
+
+#### Development
+For SD card development, refer to the [example project](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/sd).
+ 
+
+
+---
+
+### 마이크 / 스피커
+#### 제품정보
+T5-Pocket에는 AI 음성 상호 작용을 위한 핵심 기계설비인 2개의 디지털 마이크 및 1개의 스피커를 포함하여 붙박이 고품질 오디오 시스템이 있습니다. TuyaOpen의 오디오 처리 능력과 결합하여 전문 수준의 음성 인식과 합성을 달성 할 수 있습니다.
+
+#### 사용 사례
+- **Smart Voice Assistant **: 음성을 통해 AI와 상호 작용하여 날씨, 설정 알림, 쿼리 정보, 제어 스마트 홈 장치 등을 문의하십시오. AI 이해 컨텍스트와 함께 멀티턴 대화를 지원하여 스마트 응답을 제공합니다.
+
+- **Voice Translator**: 실시간 음성 번역을 위한 AI의 다국어 기능을 활용합니다. 중국어 및 AI의 말은 영어로 응답합니다. 영어로 말하고 AI는 중국어에 대응합니다. 외국어 학습 또는 크로스 언어 통신에 적합.
+
+- **Story Machine**: 이야기, sing Nursery rhymes, 그리고 아이들을 위한 시를 구합니다. AI는 아이들의 나이와 관심사에 근거를 둔 개인화한 이야기 내용을 생성할 수 있습니다. 부모의 목소리를 기록할 수도 있습니다. 애완 동물은 부모의 목소리에 이야기합니다.
+
+- **Voice Memo**: 빠르게 음성 메모를 기록, AI로 자동으로 텍스트 및 저장으로 변환. 음성 검색을 지원하여 필요한 메모 콘텐츠를 빠르게 찾을 수 있습니다.
+
+- **음악 플레이어 **: SD 카드 또는 스트림 온라인 음악에서 음악 파일을 재생합니다. 재생 통제, 양 조정, lyrics 전시 및 다른 기능을 지원하십시오.
+
+#### 주요사업
+오디오 개발을 위해 다음 예제를 참조하십시오.
+
+- [스피커 재생 예](https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_speaker)
+- [마이크 녹음 예](https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_recorder)
+- [음성 인식 예](https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_asr)
+- [음성 활동 탐지 예](https://github.com/tuya/TuyaOpen/tree/master/examples/multimedia/audio_vad)
+
+
+---
+
+### Camera
+#### Overview
+T5-Pocket supports connecting camera modules through the DVP (Digital Video Port) interface, adding visual perception capabilities to the device. Combined with AI vision algorithms, it can implement face recognition, object detection, QR code scanning, and other functions. **(AI video capabilities are currently being enhanced...)**
+
+#### Use Cases
+- **AI Vision Pet**: Pets can "see" the owner. When a face is detected, they'll actively greet. Can recognize the owner's expressions—if the owner smiles, the pet will be happy; if the owner frowns, the pet will ask with concern.
+
+- **Smart Access Control**: Implement access control through face recognition. When authorized personnel are recognized, automatically open the door and record entry/exit times. Can connect to electromagnetic locks, servos, and other actuators.
+
+- **Object Recognition Assistant**: Take photos of objects, and AI identifies the category and provides related information. For example, identify food and display nutritional information, identify plants and introduce care methods.
+
+- **QR Code Scanner**: Scan QR codes to obtain information for product traceability, electronic business cards, Wi-Fi configuration, and other scenarios. Scan results are displayed on screen or announced via voice.
+
+#### Development
+For camera development, refer to the [example project](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/camera). TuyaOpen provides complete camera drivers and image processing APIs.
+
+---
+
+
+
+## 확장 장치
+T5-Pocket은 I2C, SPI, UART, GPIO, PWM, Pogo Pin 등 다양한 확장 인터페이스를 제공합니다. 개발자는 다양한 주변 장치와 센서를 자유롭게 연결할 수 있습니다.
+
+### RFID 카드 판독기
+#### 제품정보
+RFID (Radio Frequency Identification) 기술은 무선파를 사용하여 contactless 정보 전송 기술이며, 대상 객체의 자동 식별 및 데이터 수집을 가능하게합니다. T5-Pocket은 다양한 종류의 RFID 태그를 지원하는 UART 인터페이스를 통해 RFID 리더 모듈을 연결합니다.
+
+#### 사용 사례
+- **Access Card Duplicator**: 액세스 카드, 엘리베이터 카드 및 기타 암호화되지 않은 RFID 카드 데이터 읽기, 카드 복제를 달성하기 위해 빈 카드에 데이터를 쓰기. 손실에서 불편을 피하기 위해 중요한 접근 카드를 백업하는 데 적합합니다.
+
+- **Virtual Pet Item System**: AI 가상 애완 동물을 위한 물리적 아이템 카드 디자인. 애완 동물을 먹이기 위해 "음식 카드"를 스캔하여 애완 동물과 함께 재생 "토이 카드"를 스캔하여 애완 동물을 치료합니다. 상호 작용하는 경험을 강화하기 위해 가상 및 현실을 결합하십시오.
+
+- **Smart Attendance System**: 직원 또는 학생 swipe 카드에서 확인, 시스템 자동 기록 출석 시간 및 클라우드에 업로드. 늦게 알림을 설정할 수 있습니다, 출석률에 통계, 다른 기능.
+
+- **Item Management System**: 항목에 RFID 태그를 첨부, 항목 정보, 사용 기록, 유지 보수 계획 등을 볼 수 스캔 태그. 공구 관리, 자산 재고, 창고 관리 및 기타 시나리오에 적합합니다.
+
+- **Interactive 게임 카드**: 카드 전투, 역할놀이 등 RFID 카드에 기반한 게임 개발 각 카드는 다른 문자, 기술, 또는 항목을 나타냅니다. 스캔 카드 트리거 대응 게임 이벤트.
+
+#### 주요사업
+T5-Pocket는 완전한 기능을 제공합니다[RFID 스캐닝 예 코드](https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/uart_expand.c)데이터 파싱, CRC 검증, UI 디스플레이 및 기타 기능을 포함한 개발자는 신속하게 자신의 RFID 응용 프로그램을 개발할 수 있습니다.
+
+
+
+---
+
+### AI Thermal Printer
+#### Overview
+Thermal printers print text and images by heating the print head to contact special thermal paper (coating changes color when heated), without requiring ink cartridges. T5-Pocket connects thermal printer modules through UART interface, combining AI capabilities to achieve intelligent printing functions.
+
+#### Use Cases
+- **AI Story Printer**: Ask AI "Tell me a story about courage," AI generates story content and automatically prints it. Children can collect printed stories to create their own storybooks.
+
+- **Smart Recipe Printer**: Ask AI "What should I cook for dinner tonight," AI recommends recipes based on season, nutrition, and taste, and prints detailed ingredient lists and cooking steps.
+
+- **Math Problem Generator**: Tell AI "Generate 20 second-grade addition and subtraction problems," AI generates problems and prints them with answers on the back. Helps children practice math while giving parents peace of mind.
+
+- **Daily Quote Printer**: Automatically print an inspirational quote or poem every morning, post it in a visible place to start a beautiful day.
+
+- **AI Drawing Printer**: Describe a scene to AI, such as "a cat sitting on the moon," AI generates an image and prints it. Although black and white, it's full of creativity and fun.
+
+- **Shopping List Printer**: Voice input items to buy, AI organizes them into a list and prints. When shopping at the supermarket, don't worry about forgetting what to buy.
+
+- **Meeting Minutes Printer**: After meetings, AI summarizes meeting content and prints minutes, including discussion points, decisions, and to-do tasks.
+
+#### Development
+T5-Pocket provides thermal printer [example code](https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/uart_expand.c), supporting text and image printing. Developers can refer to example code to implement their own printing applications.
+
+
+
+---
+
+### AI 로그 분석 Assistant
+#### 제품정보
+임베디드 개발에서 분석 로그는 위치를 찾는 문제의 중요한 수단이지만 대규모 로그에 직면하고, 수동 분석은 효율적입니다. T5-Pocket의 AI 로그 분석 기능은 장치 로그를 자동으로 캡처하고 지능형 분석을위한 AI를 사용하며 신속하게 문제 루트 원인을 찾습니다.
+
+#### 사용 사례
+- **Embedded Device Debugging Assistant**: T5-Pocket에 개발중인 임베디드 장치의 직렬 포트를 연결합니다. 장치가 실행되면 T5-Pocket 모니터가 실시간 로그를 모니터링합니다. 오류가 발생하면 즉시 캡처 및 분석, 가능한 원인 및 솔루션을 제공합니다.
+
+- ** 생산 테스트 도구 **: 제품 생산 라인에, T5-Pocket을 테스트 하에서 장치에 연결, 자동으로 테스트 프로그램을 실행 하 고 로그 분석. anomalies가 발견되면 즉시 경고 및 기록, 테스트 효율성 및 정확도 향상.
+
+- ** 원격 기술 지원**: 고객 장치가 문제가 있을 때, T5-Pocket에 장치를 연결하여 로그를 캡처하고 클라우드로 업로드합니다. 기술 지원 인력 원격으로 AI 분석 결과가 신속하게 고객 반품 장치없이 문제를 찾습니다.
+
+- ** 임베디드 개발 **: Beginners는 종종 임베디드 개발을 학습 할 때 다양한 오류를 발생합니다. T5-Pocket은 학습 보조, 분석 오류 로그 및 문제의 본질을 이해하는 데 도움이 쉬운 설명 제공으로 제공 할 수 있습니다.
+
+#### 주요사업
+T5-Pocket의 기반[AI 로그 분석 예제 코드](https://github.com/tuya/TuyaOpen/blob/master/apps/tuya_t5_pocket/tuya_t5_pocket_ai/src/uart_expand.c). 개발자는 오류 키워드, 분석 논리, 디스플레이 스타일 등을 사용자 정의 할 수 있습니다.
+
+---
+
+### Sensor Expansion
+#### Overview
+T5-Pocket supports connecting various sensors to digitize physical world information for environmental monitoring, motion tracking, health management, and other functions.
+
+#### Supported Sensor Types
+**Environmental Sensors**
+
+| Type | Example Sensors |
+| --- | --- |
+| Temperature/Humidity | SHT30, AHT20, DHT22 |
+| Barometric Pressure | BMP280, BMP180 |
+| Light | BH1750, TSL2561 |
+| Air Quality | SGP30, CCS811 |
+| PM2.5 | PMS5003, GP2Y1010AU |
+
+**Motion Sensors**
+
+| Type | Example Sensors |
+| --- | --- |
+| Accelerometer / Gyroscope | BMI270 (onboard), MPU6050 |
+| Magnetometer | QMC5883L, HMC5883L |
+| GPS Module | NEO-6M, NEO-M8N |
+| Ultrasonic Distance | HC-SR04 |
+
+**Biometric Sensors**
+
+| Type | Example Sensors |
+| --- | --- |
+| Heart Rate | MAX30102, MAX30100 |
+| Body Temperature | MLX90614, DS18B20 |
+| Blood Oxygen | MAX30102 |
+
+**Other Sensors**
+
+| Type | Examples/Description |
+| --- | --- |
+| Soil Moisture | Capacitive, Resistive |
+| Water Quality | TDS, pH |
+| Gas Sensors | MQ Series (CO, methane, alcohol, etc.) |
+| Infrared | Human presence, obstacle avoidance |
+
+#### Use Cases
+- **Smart Environmental Monitoring Station**: Connect temperature/humidity, barometric pressure, light, air quality, and other sensors to monitor indoor environment in real-time. Data is displayed on screen and uploaded to cloud. When environmental parameters are abnormal (such as high temperature, low humidity, poor air quality), provide voice reminders and improvement suggestions.
+
+- **Fitness Health Tracker**: Utilize onboard BMI270 accelerometer and gyroscope to implement step counting, motion recognition, posture detection, and other functions. Connect heart rate sensor to monitor heart rate changes during exercise. Data can sync to mobile app to generate exercise reports.
+
+- **Smart Plant Care Assistant**: Connect soil moisture and light sensors to monitor plant growth environment. Remind to water when soil is too dry, remind to move location when light is insufficient. AI can provide personalized care suggestions based on plant species.
+
+- **Air Quality Monitor**: Connect PM2.5, formaldehyde, CO2 sensors to monitor indoor air quality in real-time. Visualize data and generate Air Quality Index (AQI). When air quality is poor, remind to open windows for ventilation or turn on air purifier.
+
+- **Smart Aquarium Manager**: Connect water temperature, TDS, pH sensors to monitor aquarium water quality. When water quality parameters are abnormal, timely remind and provide treatment suggestions. Can also control heaters, filters, lights, and other equipment.
+
+#### Development
+TuyaOpen provides rich sensor drivers and example code:
+
+- [I2C Sensor Examples](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/i2c)
+- [ADC Driver Examples](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/adc)
+- [SPI Driver Examples](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/spi)
+- [UART Driver Examples](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/uart)
+- [IMU Sensor Examples](https://github.com/tuya/TuyaOpen/tree/master/examples/peripherals/imu/bmi270)
+
+Developers can refer to these examples to quickly integrate various sensors.
+
+
+
+---
+
+## 이름 *
+임베디드 개발자, AI 매니아, 제작자 또는 학생이든, T5-Pocket은 신속하게 아이디어를 실현하고 스마트 장치를 구축할 수 있습니다.
+
+지금 T5-Pocket 여행을 시작하고 AI+IoT의 무한한 가능성을 탐험하십시오!
+
+<p align="center">
+  <a
+    href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_t5_pocket"
+    target="_blank"
+    className="button button--primary"
+    style={{
+      fontSize: "1.15rem",
+      padding: "14px 2.5em",
+      borderRadius: "16px",
+      background: "linear-gradient(90deg, #4f8cff 0%, #38b2ac 100%)",
+      color: "#fff",
+      boxShadow: "0 4px 24px rgba(79,140,255,0.18), 0 1.5px 6px rgba(56,178,172,0.10)",
+      border: "none",
+      fontWeight: "bold",
+      letterSpacing: "0.04em",
+      transition: "transform 0.15s, box-shadow 0.15s",
+      display: "inline-block"
+    }}
+  >
+프로젝트 저장소로 이동
+  </a>
+</p>

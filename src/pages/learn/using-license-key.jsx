@@ -1,6 +1,7 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { localePath } from '@site/src/utils/localePath';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
 
@@ -157,14 +158,43 @@ tyutool authorize -p /dev/ttyUSB0 \\
   },
 };
 
+content.ko = {
+  ...content.zh,
+  badge: '가이드',
+  title: '라이선스 키 사용하기',
+  subtitle: 'TuyaOpen 라이선스 키는 UUID와 AuthKey의 조합입니다. 디바이스에 기록하고 확인하여 Tuya Cloud에 연결하는 방법을 알아봅니다.',
+  meta: ['입문', '라이선스'],
+  nav: [
+    { id: 'what', label: '라이선스 키란?' },
+    { id: 'get', label: '라이선스 받기' },
+    { id: 'write', label: '디바이스에 기록' },
+    { id: 'verify', label: '확인' },
+    { id: 'trouble', label: '문제 해결' },
+  ],
+  whatTitle: '라이선스 키란?',
+  whatLead: 'Tuya Cloud에 연결되는 모든 TuyaOpen 디바이스에는 UUID(식별자)와 AuthKey(키)로 구성된 라이선스가 필요합니다.',
+  getTitle: '라이선스 키 받기',
+  getLead: '평가를 위해 무료 체험 라이선스를 받거나 양산용 라이선스를 구매할 수 있습니다.',
+  getBtn: '라이선스 받기',
+  getPlatform: 'Tuya Developer Platform',
+  writeTitle: '디바이스에 라이선스 키 기록',
+  writeLead: '가장 간단한 방법은 tyutool을 사용하는 것입니다. USB로 보드를 연결한 뒤 GUI 또는 CLI를 선택하세요.',
+  guiTitle: 'tyutool GUI 사용',
+  cliTitle: 'CLI 사용',
+  fullGuide: '전체 플래시 및 인증 가이드',
+  verifyTitle: '성공 여부 확인',
+  verifyLead: '먼저 라이선스 키가 기록되었는지 확인하고 디바이스가 클라우드에서 활성화되는지 확인하세요.',
+  troubleTitle: '문제 해결',
+};
+
 const PLATFORM = 'https://platform.tuya.com/purchase/index?type=6';
 
 export default function UsingLicenseKey() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const pricingHref = locale === 'zh' ? '/zh/pricing' : '/pricing';
-  const tyutoolHref = locale === 'zh' ? '/zh/docs/tyutool' : '/docs/tyutool';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const pricingHref = localePath(locale, '/pricing');
+  const tyutoolHref = localePath(locale, '/docs/tyutool');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>

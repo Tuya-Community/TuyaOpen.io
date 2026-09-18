@@ -1,6 +1,7 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { localePath } from '@site/src/utils/localePath';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
 import RichText from './RichText';
@@ -213,6 +214,34 @@ Select serial port: 1
   },
 };
 
+content.ko = {
+  ...content.zh,
+  badge: 'TuyaOpen SDK',
+  title: '펌웨어 플래시 및 디바이스 모니터링',
+  subtitle: 'tos.py flash로 방금 빌드한 bin을 개발 보드에 기록한 뒤 tos.py monitor로 부팅과 실행 로그를 확인하세요.',
+  meta: ['입문', '8분', '플래시'],
+  nav: [
+    { id: 'what', label: '완료 후 상태' },
+    { id: 'before', label: '플래시 전 준비' },
+    { id: 'flash', label: '펌웨어 플래시' },
+    { id: 'monitor', label: '로그 모니터링' },
+    { id: 'ports', label: 'T5 듀얼 시리얼' },
+    { id: 'trouble', label: '문제 해결' },
+  ],
+  whatTitle: '완료 후 상태',
+  whatLead: '개발 보드에서 방금 빌드한 펌웨어가 실행되고 터미널에서 시리얼 로그를 실시간으로 볼 수 있습니다.',
+  beforeTitle: '플래시 전 준비',
+  beforeLead: 'USB로 개발 보드를 컴퓨터에 연결한 다음 시스템별 사전 조건을 확인하세요.',
+  flashTitle: '펌웨어 플래시',
+  flashLead: '프로젝트 디렉터리에서 `tos.py flash`를 실행하고 표시된 시리얼 포트를 번호로 선택하세요.',
+  monitorTitle: '로그 모니터링',
+  monitorLead: '`tos.py monitor`를 실행하고 로그 포트를 선택하세요. 부팅 로그를 모두 보려면 시작 후 보드를 수동으로 리셋합니다.',
+  portsTitle: 'T5 개발 보드의 듀얼 시리얼',
+  portsLead: 'T5 보드는 플래시용 포트와 로그용 포트, 두 개의 시리얼 포트를 제공합니다.',
+  troubleTitle: '문제 해결',
+  nextLabel: '다음: 디바이스 페어링 →',
+};
+
 function FlagTable({ rows }) {
   return (
     <div
@@ -259,10 +288,10 @@ function FlagTable({ rows }) {
 
 export default function FlashAndMonitor() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const nextHref = locale === 'zh' ? '/zh/learn/pair-device' : '/learn/pair-device';
-  const docsHref = locale === 'zh' ? '/zh/docs/quick-start/firmware-burning' : '/docs/quick-start/firmware-burning';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const nextHref = localePath(locale, '/learn/pair-device');
+  const docsHref = localePath(locale, '/docs/quick-start/firmware-burning');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>
@@ -341,7 +370,7 @@ export default function FlashAndMonitor() {
             {c.nextLabel}
           </a>
           <a className={shell.btnGhost} href={docsHref}>
-            {locale === 'zh' ? '完整烧录文档 →' : 'Full flashing docs →'}
+            {locale === 'ko' ? '전체 플래시 문서 →' : locale === 'zh' ? '完整烧录文档 →' : 'Full flashing docs →'}
           </a>
         </p>
       </section>

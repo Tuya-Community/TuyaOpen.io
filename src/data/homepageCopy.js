@@ -1675,3 +1675,378 @@ tos.py flash`,
     },
   },
 }
+
+// Korean is introduced as a real locale in stages. Keep the complete English
+// shape as a safe fallback, while translating the homepage sections visitors
+// see first instead of rendering an empty or partially-shaped page.
+homepageCopy.ko = {
+  ...homepageCopy.en,
+  metaDescription:
+    'TuyaOpen은 실제 디바이스를 위한 오픈 소스 AI+IoT 개발 프레임워크입니다. Tuya T 시리즈 MCU, Raspberry Pi, ESP32 등을 지원하는 크로스 플랫폼 C/C++ SDK를 제공합니다.',
+  hero: {
+    ...homepageCopy.en.hero,
+    badge: '오픈 소스 · AI + IoT',
+    line1: '에이전트형 AI',
+    line2: '실제 디바이스에서',
+    line3: 'TuyaOpen과 함께',
+    subtitle: '한 번 개발하고 여러 칩에 배포하세요.',
+    body: 'TuyaOpen은 유연한 크로스 플랫폼 C/C++ SDK로 Tuya T 시리즈 Wi-Fi/BT MCU, Raspberry Pi, ESP32를 지원합니다. Tuya Cloud 멀티모달 AI와 주요 모델을 연결해 음성, 비전, 센서 기능을 갖춘 AIoT 디바이스를 빠르게 만들 수 있습니다.',
+  },
+  cta: {
+    ...homepageCopy.en.cta,
+    quickStart: '빠른 시작',
+    about: 'TuyaOpen 소개',
+    applications: '애플리케이션 사례',
+    github: 'GitHub',
+    learnMore: '자세히 보기',
+    tosGuide: 'CLI - tos.py 개발 도구',
+    envSetup: '환경 설정',
+  },
+  ideLaunch: {
+    ...homepageCopy.en.ideLaunch,
+    badge: '새 릴리스',
+    title: 'TuyaOpen IDE를 만나보세요',
+    subtitle: 'AI 하드웨어를 위한 올인원 AI 코딩 개발 도구입니다.',
+    body: '프로젝트 생성부터 디바이스 펌웨어, 클라우드 Agent, App 개발까지 세 플랫폼을 하나의 워크플로로 연결합니다. 익숙한 AI 코딩 Agent로 다음 AI 디바이스를 만들어 보세요.',
+    highlights: [
+      'VS Code 및 Cursor용 AI 코딩 Agent 확장',
+      '하드웨어 연결 빌드·플래시·디버깅',
+      '펌웨어·클라우드·앱을 하나로 연결',
+    ],
+    primaryCta: 'TuyaOpen IDE 살펴보기',
+    secondaryCta: '확장 설치',
+    imageAlt: 'TuyaOpen IDE 인터페이스',
+  },
+  benefits: {
+    ...homepageCopy.en.benefits,
+    sectionTag: '왜 TuyaOpen인가',
+    title: '개발을 더 간단하게',
+    subtitle: '계층형 SDK, 멀티모달 AI, 클라우드 기반 빌딩 블록을 제공합니다.',
+    items: [
+      {
+        title: '확장 가능한 계층형 SDK',
+        body: 'TKL 하드웨어 추상화, TAL OS/디바이스 추상화, 라이브러리와 서비스를 조합해 한 번 개발하고 어디서나 배포하세요.',
+      },
+      {
+        title: '엣지에서 실행되는 멀티모달 AI',
+        body: '음성, 비전, 센서 기능을 통합하고 DeepSeek, ChatGPT, Claude, Gemini 등 주요 모델과 연결하세요.',
+      },
+      {
+        title: '클라우드 연결과 보안',
+        body: 'Tuya Cloud의 원격 제어, 모니터링, OTA를 활용하세요. 디바이스 인증과 데이터 암호화도 지원합니다.',
+      },
+      {
+        title: '프로토타입에서 양산까지',
+        body: '재사용 가능한 계층, 안정적인 연결, 보안을 고려한 설계와 확장 가능한 클라우드 연동으로 제품화를 앞당기세요.',
+      },
+    ],
+  },
+  audience: {
+    ...homepageCopy.en.audience,
+    sectionTag: '누구를 위한 플랫폼인가요?',
+    title: '모든 단계의 빌더를 위해',
+    subtitle: '첫 프로토타입부터 양산까지 TuyaOpen으로 대담한 IoT와 에이전트형 하드웨어를 더 빠르게 만드세요.',
+    items: [
+      { title: '학생과 학습자', body: '실제 AI+IoT 제품을 만들며 아이디어를 동작하는 디바이스로 발전시키세요.' },
+      {
+        title: '메이커와 IoT 애호가',
+        body: '재사용 가능한 SDK와 준비된 연동 기능으로 해커톤 아이디어를 완성도 높은 데모로 빠르게 만드세요.',
+      },
+      { title: 'AI 하드웨어 개발자', body: '음성 중심의 멀티모달 제품과 Agent 워크플로를 실제 디바이스에 연결하세요.' },
+      {
+        title: '상용 제품 팀',
+        body: '보안, OTA, 확장 가능한 클라우드 기능을 갖춘 생산 지향 아키텍처로 출시 리스크를 줄이세요.',
+      },
+    ],
+  },
+  realWorldValidation: {
+    ...homepageCopy.en.realWorldValidation,
+    sectionTag: 'VIBECODING 및 하드웨어 연결 개발',
+    titleBase: '실제 하드웨어',
+    titleAccent: 'Vibe Coding 워크플로',
+    newBadgeLabel: '새 기능',
+    bodyBefore: '',
+    bodyHighlight: 'TuyaOpen SDK Expert Skill',
+    bodyAfter:
+      '은 실제 하드웨어 개발 경험을 바탕으로 프로젝트 생성, 인증, 빌드, 플래시, 디버깅과 이벤트 테스트를 안내합니다.',
+    consoleTitle: 'VibeCoding Agent',
+    devSkillsCopyText: 'TuyaOpen Dev Skills를 설치하세요: https://github.com/tuya/TuyaOpen-dev-skills',
+    devSkillsToolsHint:
+      'Cursor, Claude Code, Amazon Kiro 등 Skills를 지원하는 코딩 도구의 채팅 또는 Agent 사이드바에 붙여넣으세요.',
+    devSkillsCopyButton: '설치 프롬프트 복사',
+    devSkillsCopyButtonAria: 'TuyaOpen Dev Skills 설치 프롬프트를 클립보드에 복사',
+    devSkillsCopiedLabel: '복사됨',
+    devSkillsPasteHint: '코딩 Agent 또는 채팅에 붙여넣으세요.',
+    consoleStatus: '● 실행 중',
+    hilTerminalUserLabel: '사용자',
+    hilTerminalAgentLabel: 'Agent>',
+    diagramCenterLabel: '디바이스',
+    diagramCenterSub: 'Tuya T5 / ESP32',
+    diagramNodes: [
+      { id: 'vibe', label: 'Vibe 코딩' },
+      { id: 'build', label: '생성·빌드·플래시' },
+      { id: 'auth', label: '인증 정보' },
+      { id: 'cli', label: 'CLI 테스트' },
+      { id: 'debug', label: '디버깅' },
+    ],
+    steps: [
+      {
+        num: '01',
+        title: '새 프로젝트 생성, 빌드 및 플래시',
+        body: 'VibeCoding이 SDK와 주변 장치를 좁히고 템플릿을 분기한 뒤 DP 및 CLI 훅을 연결합니다. 데모의 생성·빌드·플래시 흐름에서 바이너리를 컴파일해 하드웨어에 기록합니다.',
+      },
+      {
+        num: '02',
+        title: '디바이스 인증 및 연결',
+        body: '디바이스 ID를 준비하고 모니터 스트림을 연 뒤 Wi-Fi를 연결하세요. Tuya Cloud에 바인딩하고 로그에 보이는 인증 정보와 실시간 클라우드 경로로 DP 텔레메트리를 전송합니다.',
+      },
+      {
+        num: '03',
+        title: '디버깅 및 CLI 테스트',
+        body: 'UART, I2C와 센서 출력을 실시간으로 확인하고 하드웨어 CLI 명령으로 읽기 및 연결 상태를 점검하세요. 보드에서 디버깅과 스크립트 기반 하드웨어 테스트를 함께 수행합니다.',
+      },
+    ],
+  },
+  code: {
+    ...homepageCopy.en.code,
+    sectionTag: '개발자 워크플로',
+    title: '클론부터 플래시까지',
+    caption:
+      '임베디드 MCU부터 Linux급 SoC까지 한 번의 워크플로로 개발하세요. 저장소를 클론하고 export를 실행한 뒤 아래 명령을 따라 시작할 수 있습니다.',
+  },
+  cloudOnePager: {
+    ...homepageCopy.en.cloudOnePager,
+    sectionTag: '디바이스-클라우드 한눈에 보기',
+    title: 'TuyaOpen은 클라우드와 어떻게 연결되나요?',
+    subtitle: '엣지에서는 TuyaOpen C/C++ SDK로 펌웨어를 실행하고, 클라우드에서는 Tuya Cloud 멀티모달 AI를 활용합니다.',
+    hardwareTitle: '하드웨어 및 TuyaOpenSDK',
+    cloudTitle: 'Tuya Cloud 플랫폼',
+    hardwareBullets: [
+      'Tuya T 시리즈 MCU부터 Raspberry Pi, Rockchip 및 Linux SoC, ESP32까지 하나의 모듈형 스택으로 지원합니다.',
+      '풍부한 주변 장치와 드라이버로 Windows, macOS, Linux 도구 체인에서 IoT 및 AI Agent 애플리케이션을 개발하세요.',
+      '디바이스 빌딩 블록과 클라우드 AI API를 결합해 Wi-Fi IoT와 멀티모달 기능을 구현하세요.',
+    ],
+    cloudBullets: [
+      '클라우드 멀티모달 AI, 저지연 음성·비전, 제로·로우코드 통합과 드래그 앤 드롭 Agent 워크플로를 제공합니다.',
+      '장기·단기 메모리, 커스텀 MCP 서버, 감정 인식 TTS/STT, MiniApp 패널을 지원합니다.',
+      'ChatGPT, Gemini, Claude, Qwen, DeepSeek 등 주요 모델과 Tuya Smart 하드웨어 생태계에서 동작합니다.',
+    ],
+    diagramCaption: '왼쪽은 TuyaOpen 하드웨어 개발, 오른쪽은 Tuya Cloud 멀티모달 AI 플랫폼입니다.',
+    diagramZoomHint: '확대하려면 클릭',
+    lightboxCloseLabel: '닫기',
+  },
+  platforms: {
+    ...homepageCopy.en.platforms,
+    title: '지원 칩 플랫폼',
+    intro: '초저전력 MCU부터 Linux급 SoC까지 전력 예산과 지연 시간, AI 구성을 고려해 플랫폼을 선택하세요.',
+    linkLabel: '플랫폼 표 보기',
+    recommendedTag: '권장',
+    multimodalTag: '멀티모달',
+    categories: [
+      {
+        ...homepageCopy.en.platforms.categories[0],
+        subtext:
+          '초경량·저비용·저전력으로 상시 연결 IoT에 적합합니다. 센서와 미디어 데이터를 Tuya Cloud로 전송하고, 멀티모달 AI는 클라우드에서 처리해 디바이스를 가볍게 유지합니다.',
+      },
+      {
+        ...homepageCopy.en.platforms.categories[1],
+        subtext:
+          '엣지 AI를 위한 여유 있는 성능으로 더 풍부한 모델을 로컬에서 실행한 뒤 Tuya Cloud AI와 결합하세요. 디바이스부터 클라우드까지 하나의 스택으로 확장할 수 있습니다.',
+      },
+    ],
+  },
+  demos: {
+    ...homepageCopy.en.demos,
+    title: '추천 데모',
+    intro: '제품 지향 데모에서 시작하세요. 대상을 선택하고 소스를 확인한 뒤 몇 분 만에 보드에서 실행할 수 있습니다.',
+    cta: '애플리케이션 보기',
+    codeCta: '코드',
+    guideCta: '가이드',
+    items: [
+      {
+        ...homepageCopy.en.demos.items[0],
+        desc: '지원 대상에서 네트워크, 페어링, 클라우드 제어와 OTA를 처리하는 기본 IoT 펌웨어입니다. 앱 패널로 제어할 수 있는 간단한 온·오프 예제입니다.',
+      },
+      {
+        ...homepageCopy.en.demos.items[1],
+        desc: 'Agent 상호작용을 갖춘 음성 중심 AI 채팅 데모입니다. T5AI, ESP32-S3 및 Raspberry Pi 4/5급 디바이스에 맞춰 멀티모달 입력과 Skill 확장을 지원합니다.',
+      },
+      {
+        ...homepageCopy.en.demos.items[2],
+        desc: 'T5AI에서 눈과 감정 그래픽, 대화형 상호작용을 보여 주는 양안 표현 데모입니다.',
+      },
+      {
+        ...homepageCopy.en.demos.items[3],
+        name: '주변 장치 예제',
+        desc: '하드웨어 프로토콜과 OS 프로그래밍부터 LVGL GUI와 일반 예제까지 빠르게 시작할 수 있는 실용적인 빌딩 블록 모음입니다.',
+      },
+    ],
+  },
+  socialProof: {
+    items: [
+      { label: 'Apache 2.0', hint: '오픈 소스 라이선스' },
+      { label: 'C/C++ SDK', hint: 'MCU부터 SoC까지 크로스 플랫폼' },
+      { label: 'Tuya Cloud', hint: 'IoT + 멀티모달 AI' },
+      { label: '커뮤니티', hint: 'GitHub 및 Discord · 8,000명 이상의 개발자' },
+    ],
+  },
+  steps: {
+    ...homepageCopy.en.steps,
+    title: '세 단계로 시작하기',
+    items: [
+      {
+        ...homepageCopy.en.steps.items[0],
+        title: '1. TuyaOpen 라이선스',
+        body: 'Tuya Cloud에 연결하려면 전용 라이선스(UUID + AuthKey)를 준비하세요.',
+        ctaLabel: 'TuyaOpen 라이선스 받기',
+      },
+      {
+        ...homepageCopy.en.steps.items[1],
+        title: '2. SDK 초기화 및 보드 선택',
+        body: 'TuyaOpen을 클론하고 export 스크립트를 실행한 뒤 tos.py로 보드를 선택하세요.',
+        ctaLabel: '단계별 가이드',
+      },
+      {
+        ...homepageCopy.en.steps.items[2],
+        title: '3. 빌드 및 플래시',
+        body: '애플리케이션 디렉터리에서 tos.py build와 tos.py flash를 실행하세요.',
+      },
+    ],
+  },
+  t5: {
+    ...homepageCopy.en.t5,
+    title: '에이전트형 AI를 위한 가성비 Tuya T5',
+    body: 'Tuya T5 칩·모듈은 Wi-Fi 6와 Bluetooth 5.4 듀얼 모드 통신, 최대 480MHz ARMv8-M Star(M33F) 프로세서를 갖춘 고성능 임베디드 모듈입니다. 오디오·비디오·디스플레이를 활용하는 멀티모달 AI 상호작용에 맞춰 설계되었으며, 풍부한 GPIO와 Wi-Fi 6 및 BLE 연결로 제품 통합을 간소화합니다.',
+    imageAlt: 'Tuya T5 MCU 보드 이미지',
+  },
+  arduinoExperimental: {
+    ...homepageCopy.en.arduinoExperimental,
+    sectionTag: '실험 기능',
+    title: 'Arduino IDE로 에이전트형 AI 하드웨어를 개발하세요.',
+    body: '익숙한 Arduino 워크플로에서 T5를 프로토타이핑하세요. 보드 지원과 라이브러리를 TuyaOpen에 통합해 에이전트형 AI 하드웨어를 빠르게 개발할 수 있습니다.',
+    imageAlt: '어두운 테마의 Arduino IDE에서 실행 중인 TuyaOpen',
+  },
+  tuyaAi: {
+    ...homepageCopy.en.tuyaAi,
+    sectionTag: '멀티모달 AI',
+    title: 'Tuya AI: 제로 코드 클라우드 플랫폼',
+    body: 'Tuya AI는 엣지 AI 추론과 클라우드 Agent 허브를 결합해 DeepSeek, ChatGPT, Claude, Gemini 등 주요 모델과 음성·텍스트 상호작용, 이미지·비디오 생성 기능을 제공합니다. Tuya Cloud에서 펌웨어를 다시 빌드하지 않고도 제로 코드 Agent와 IoT 동작을 구성할 수 있습니다.',
+    highlights: [
+      'Agent형 하드웨어 제어',
+      'Memory RAG',
+      'Agent 워크플로',
+      'Agent 프롬프트',
+      'ASR',
+      'Skill(날씨, IoT 제어 및 서드파티)',
+      'Model Context Protocol(MCP)',
+    ],
+  },
+  partners: {
+    ...homepageCopy.en.partners,
+    sectionTag: '생태계',
+    title: '전 세계 파트너와 함께',
+    subtitle: '하드웨어 제조사, 실리콘 파트너와 개발자 플랫폼이 TuyaOpen 생태계에서 협력합니다.',
+    colabSections: homepageCopy.en.partners.colabSections.map((section, index) => ({
+      ...section,
+      title:
+        ['올인원 AI 대규모 모델 액세스', '신뢰할 수 있는 클라우드 제공업체 기반', '커뮤니티 및 생태계 파트너'][index] ||
+        section.title,
+    })),
+  },
+  applicationsUseCases: {
+    ...homepageCopy.en.applicationsUseCases,
+    sectionTag: '애플리케이션 및 활용 사례',
+    title: '실제 문제를 위한 AIoT',
+    subtitle: 'TuyaOpen으로 연결된 디바이스와 에이전트형 AI를 하나의 스택에서 구축하세요.',
+    navAriaLabel: '애플리케이션 또는 활용 사례 선택',
+    items: homepageCopy.en.applicationsUseCases.items.map((item) => ({
+      ...item,
+      ...({
+        'emoji-desktop-robot': {
+          label: 'AI 이모지 로봇',
+          title: 'AI 이모지 데스크톱 로봇',
+          body: '표정이 풍부한 화면과 AI 듣기·이해 기능을 결합한 데스크톱 동반자입니다. 말하거나 손을 흔들면 디스플레이가 부드럽게 따라 움직여 반응성 높은 경험을 제공합니다.',
+        },
+        'otto-robot': {
+          label: 'AI OTTO',
+          title: 'AI OTTO 로봇',
+          body: 'T5-E1 모듈과 6개의 서보로 움직이는 소형 이족 보행 로봇입니다. 걷기, 흔들기, 문워크와 점프를 수행하고 스마트 눈으로 개성을 더합니다.',
+        },
+        'ai-pixels': {
+          label: 'AI Pixels',
+          title: 'AI Pixels',
+          body: 'TuyaOpen과 Tuya T5 Wi-Fi·Bluetooth 모듈로 만든 고밀도 픽셀 디스플레이입니다. 동반 앱과 개발자 서비스를 연결해 맞춤 위젯, AI Agent, MCP 도구와 텍스트-이미지 워크플로를 구성하세요.',
+        },
+        'ai-pocket-console': {
+          label: 'AI 포켓 콘솔',
+          title: 'AI 포켓 콘솔',
+          body: '멀티모달 LLM Agent를 위한 휴대형 플랫폼입니다. 가상 반려동물, 대화형 도우미와 Tuya 생태계에 연결한 디바이스를 통한 홈 제어를 지원합니다.',
+        },
+        'ai-companion-avatar': {
+          label: 'AI 동반자 아바타',
+          title: 'AI 동반자 아바타',
+          body: '음성, 의미 이해와 감정 인식 응답에 3D 아바타 동작을 결합한 탁상형 디지털 동반자입니다. 표정과 제스처가 하나의 일관된 경험으로 연결됩니다.',
+        },
+        'ai-robot-dog': {
+          label: 'AI 로봇 강아지',
+          title: 'AI 로봇 강아지',
+          body: '대화, 날씨, 시간과 음악을 음성 중심으로 상호작용합니다. 음성 또는 제스처로 움직임을 제어하고 비전과 음성을 결합해 반응성 높은 멀티모달 동작을 구현합니다.',
+        },
+        'ai-wearable-badge': {
+          label: 'AI 웨어러블 배지',
+          title: 'AI 웨어러블 배지',
+          body: 'AI 음성, 동적 비주얼과 가벼운 소셜 기능으로 정서적 연결을 만드는 약 4cm 웨어러블입니다. 언제든 바라보고 상호작용할 수 있는 캐릭터를 휴대하세요.',
+        },
+        'aiot-industry-devices': {
+          label: 'AIoT 산업 디바이스',
+          title: 'AIoT 산업 디바이스',
+          body: 'TuyaOpen 소스로 Tuya 생태계에 참여하는 Wi-Fi IoT 제품을 만드세요. 디바이스 기능을 Data Point(DP)에 연결하고 Tuya 개발자 플랫폼의 로우코드 도구로 클라우드 동작을 구성할 수 있습니다.',
+        },
+        'industry-smart-building': {
+          label: 'AI 스마트 빌딩',
+          title: '스마트 홈 및 스마트 빌딩',
+          body: 'MCU와 SoC에서 동일한 SDK로 조명, 온도, 출입과 센싱 기능을 구현하세요. Tuya Cloud의 원격 제어·모니터링·OTA와 Agent 워크플로를 결합해 음성 중심 도우미와 상황 인식 정책을 구성할 수 있습니다.',
+        },
+        'industry-industrial-energy': {
+          label: 'AI 산업',
+          title: '산업 및 에너지',
+          body: '공장과 현장의 아키텍처에 맞춰 기계, 계량기와 게이트웨이를 Wi-Fi로 연결하세요. 안정적인 펌웨어와 보안 디바이스 수명주기, 클라우드 Agent 기반 알림·진단으로 원시 신호를 의사결정으로 바꿉니다.',
+        },
+        'industry-retail-hospitality': {
+          label: 'AI 리테일',
+          title: '리테일 및 호스피탈리티',
+          body: '자연스러운 상호작용과 멀티모달 입력이 필요한 디스플레이, 키오스크와 서비스 디바이스를 구축하세요. Tuya Cloud Agent로 다국어 대화, MCP 도구와 RAG 스타일 메모리를 구성할 수 있습니다.',
+        },
+      }[item.id] || {}),
+    })),
+  },
+  developerStory: {
+    ...homepageCopy.en.developerStory,
+    sectionTag: '개발자 스토리',
+    title: 'AI Agent로 만드는 스마트 축산',
+    subtitle: 'HTX Studio: 외딴 마을에 스마트 농업을 구현하다',
+    story:
+      'HTX Studio는 외딴 산간 마을에서 농부들이 매일 험한 비탈을 오르내리며 소를 찾다가 다치는 모습을 보았습니다. 일반 4G 트래커는 산악 지형의 음영 지역에서 신호를 잃었습니다. 팀은 TuyaOpen 오픈 소스 기능에 장거리 LoRa 연결과 현지 방언 AI 음성 상호작용을 결합해 스마트 방목 시스템을 빠르게 구축했습니다. 준비된 디바이스·클라우드·AI 도구 체인으로 복잡한 저수준 작업을 줄이고, 고령 사용자도 쉽게 사용할 수 있는 대화형 소 추적 경험을 만들었습니다.',
+    highlights: [
+      'TuyaOpen으로 구축',
+      '위치 인식 및 LLM 해석을 결합한 Agent 상호작용',
+      '핵심 하드웨어: Tuya T5',
+      'GPS, LoRa, 가속도계 모듈 통합',
+      'Tuya T5와 4G 셀룰러 모듈 결합',
+      'ASR 오디오 및 추적 상태용 OLED 디스플레이',
+    ],
+    videoAriaLabel: 'AI 축산 개발자 스토리 영상',
+    galleryAriaLabel: 'AI 축산 갤러리 이미지',
+  },
+  community: {
+    ...homepageCopy.en.community,
+    title: '함께 만드는 커뮤니티',
+    body: '저장소에 Star를 보내고 Issue 또는 Discussion을 열어 주세요. Discord에 참여하고 기여 가이드도 확인할 수 있습니다.',
+    cardGitHub: 'GitHub에서 기여하기',
+    cardHelp: '문제가 있나요? Issues 또는 Discussions에서 질문하세요.',
+    cardDiscord: 'Discord에서 다른 개발자와 대화하기',
+    discordButton: 'Discord 참여',
+    contributorsTitle: '기여자',
+    footerIncubator: 'TuyaOpen은',
+  },
+}

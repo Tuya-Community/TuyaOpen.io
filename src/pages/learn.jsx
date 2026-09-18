@@ -10,6 +10,7 @@ import BorderGlow from '@site/src/components/BorderGlow';
 import { categories, levels, tags as tagMeta, tutorials } from '../data/tutorials';
 import { quickStartTracks } from '../data/quickStartTracks';
 import styles from './learn.module.css';
+import { localePath } from '../utils/localePath';
 
 /* ---- Inline SVG icons (no emoji), Lucide-style, currentColor ----------- */
 const iconProps = {
@@ -48,11 +49,8 @@ const GLOW = {
   fillOpacity: 0.35,
 };
 
-/* Internal Docusaurus <Link> is NOT auto-localized — prepend /zh/ for zh. */
 function localize(href, locale) {
-  if (locale !== 'zh') return href;
-  if (!href.startsWith('/') || href.startsWith('/zh/')) return href;
-  return `/zh${href}`;
+  return localePath(locale, href);
 }
 
 /* sessionStorage keys for preserving the hub state across a tutorial visit.
@@ -118,6 +116,20 @@ const COPY = {
     searchPlaceholder: '搜索标题、描述或标签…',
     searchEmpty: '没有匹配的教程。',
   },
+  ko: {
+    title: '학습',
+    subtitle: 'TuyaOpen 실습 자료입니다. 첫 디바이스를 실행하는 빠른 시작 경로와 주제별 튜토리얼 및 커뮤니티 프로젝트를 제공합니다.',
+    onThisPage: '이 페이지의 목차',
+    empty: '이 분류에는 아직 가이드가 없습니다.',
+    countOne: '개 가이드',
+    countMany: '개 가이드',
+    pathsTitle: '빠른 시작',
+    pathsSubtitle: '두 경로 모두 환경 설정부터 디바이스 페어링까지 안내합니다. 그래픽 워크플로와 명령줄 중 원하는 방식을 선택하세요.',
+    browseTitle: '튜토리얼 및 커뮤니티 프로젝트',
+    stepCount: (n) => `${n}단계`,
+    searchPlaceholder: '제목, 설명 또는 태그 검색…',
+    searchEmpty: '검색 결과가 없습니다.',
+  },
 };
 
 /* '15 min' / '15 分钟' → 15. Steps without a usable duration contribute 0 to
@@ -132,11 +144,22 @@ function parseMinutes(duration) {
 function formatMinutes(total, locale, approx) {
   if (!total) return null;
   const zh = locale === 'zh';
+  const ko = locale === 'ko';
   const h = Math.floor(total / 60);
   const m = total % 60;
-  const body = h > 0 ? (zh ? `${h} 小时${m ? ` ${m} 分钟` : ''}` : `${h}h${m ? ` ${m}m` : ''}`) : zh ? `${total} 分钟` : `${total} min`;
+  const body = h > 0
+    ? zh
+      ? `${h} 小时${m ? ` ${m} 分钟` : ''}`
+      : ko
+        ? `${h}시간${m ? ` ${m}분` : ''}`
+        : `${h}h${m ? ` ${m}m` : ''}`
+    : zh
+      ? `${total} 分钟`
+      : ko
+        ? `${total}분`
+        : `${total} min`;
   if (!approx) return body;
-  return zh ? `约 ${body}` : `~${body}`;
+  return zh ? `约 ${body}` : ko ? `약 ${body}` : `~${body}`;
 }
 
 function LearnCard({ item, locale, catMap, levelMap, tagMap }) {
@@ -156,7 +179,17 @@ function LearnCard({ item, locale, catMap, levelMap, tagMap }) {
       ? linkHref
       : `${localize(item.href, locale)}?from=learn`;
   const cat = catMap[item.category];
-  const cta = external ? (locale === 'zh' ? '前往' : 'Visit') : locale === 'zh' ? '打开' : 'Open';
+  const cta = external
+    ? locale === 'zh'
+      ? '前往'
+      : locale === 'ko'
+        ? '이동'
+        : 'Visit'
+    : locale === 'zh'
+      ? '打开'
+      : locale === 'ko'
+        ? '열기'
+        : 'Open';
   const meta = [item.level && levelMap[item.level], item.duration].filter(Boolean);
 
   // Optional hover-reveal image. Hidden by default; on `.glowCard:hover` it
@@ -361,7 +394,7 @@ function PageNav({ groups, activeGroupId, activeLeafId, heading }) {
    intro, an optional image, and the guide count. */
 function CategoryHeader({ cat, count, countWord, locale }) {
   const imgSrc = cat.image ? useBaseUrl(cat.image) : null;
-  const countLabel = locale === 'zh' ? `${count} 篇指南` : `${count} ${countWord}`;
+  const countLabel = locale === 'zh' ? `${count} 篇指南` : locale === 'ko' ? `${count}개 가이드` : `${count} ${countWord}`;
   return (
     <div className={styles.categoryHeader}>
       {imgSrc && (
@@ -439,14 +472,15 @@ function TrackCard({ track, locale, durationByHref, t }) {
 
 export default function LearnPage() {
   const { siteConfig, i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const t = COPY[locale];
+  const locale = i18n.currentLocale;
+  const contentLocale = locale === 'zh' || locale === 'ko' ? locale : 'en';
+  const t = COPY[contentLocale];
 
-  const cats = categories[locale] || categories.en;
+  const cats = categories[contentLocale] || categories.en;
   const catMap = useMemo(() => Object.fromEntries(cats.map((c) => [c.id, c])), [cats]);
-  const levelMap = levels[locale] || levels.en;
-  const tagMap = tagMeta[locale] || tagMeta.en;
-  const items = tutorials[locale] || tutorials.en;
+  const levelMap = levels[contentLocale] || levels.en;
+  const tagMap = tagMeta[contentLocale] || tagMeta.en;
+  const items = tutorials[contentLocale] || tutorials.en;
 
   const location = useLocation();
   const [search, setSearch] = useState('');
@@ -454,7 +488,7 @@ export default function LearnPage() {
   // ---- Quick-start tracks: the IDE route and the SDK route, both laid out
   // flat. No chooser and no accordion — with only two routes, showing both in
   // full is cheaper for the reader than any interaction that hides one.
-  const tracks = quickStartTracks[locale] || quickStartTracks.en;
+  const tracks = quickStartTracks[contentLocale] || quickStartTracks.en;
 
   // IDE track steps are Learn tutorials, so their duration lives in the
   // manifest, not in the track — look it up rather than storing it twice.
@@ -587,7 +621,7 @@ export default function LearnPage() {
         <header className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden />
           <div className={styles.heroInner}>
-            <span className={styles.heroBadge}>{locale === 'zh' ? '学习中心' : 'Learn'}</span>
+            <span className={styles.heroBadge}>{contentLocale === 'zh' ? '学习中心' : contentLocale === 'ko' ? '학습 센터' : 'Learn'}</span>
             <h1 className={styles.heroTitle}>{t.title}</h1>
             <p className={styles.heroSubtitle}>{t.subtitle}</p>
           </div>

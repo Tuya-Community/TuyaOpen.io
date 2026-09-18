@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { localePath } from '@site/src/utils/localePath';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { clsx } from 'clsx';
 import styles from './tyutool.module.css';
@@ -383,19 +384,37 @@ function StudioDisplay({ src, alt }) {
   );
 }
 
+content.ko = {
+  ...content.en,
+  meta: 'tyutool — TuyaOpen 지원 칩을 위한 펌웨어 플래시, 인증, 시리얼 디버깅 도구',
+  badge: 'TuyaOpen 지원 칩 플래시 및 디버깅',
+  title: ['디바이스를', '플래시하고 인증하고 디버깅하세요'],
+  subtitle: 'TuyaOpen 지원 칩을 위한 무료 현대식 펌웨어 도구입니다.',
+  body: 'tyutool은 깔끔한 크로스 플랫폼 데스크톱 앱과 스크립트 가능한 명령줄 도구를 함께 제공합니다. 데스크톱에서 플래시하고 CI에서 자동화하며 같은 결과를 얻으세요.',
+  ctaDownload: '다운로드',
+  ctaGuide: '가이드 보기',
+  ctaGithub: 'GitHub에서 보기',
+  stats: [{ value: '11', label: '지원 칩' }, { value: '3', label: '데스크톱 플랫폼' }, { value: 'GUI + CLI', label: '데스크톱 앱 및 터미널' }, { value: 'Apache-2.0', label: '무료 오픈 소스' }],
+  features: { ...content.en.features, tag: '기능', title: '보드를 구동하는 데 필요한 모든 것', subtitle: '책상에서의 첫 플래시부터 전체 양산 배치 인증까지 지원합니다.' },
+  dual: { ...content.en.dual, tag: '두 가지 사용 방식', title: '친숙한 GUI 또는 스크립트 가능한 CLI', subtitle: '상황에 맞는 인터페이스를 선택하세요. 두 방식은 같은 작업을 수행합니다.' },
+  chips: { ...content.en.chips, tag: '지원 하드웨어', title: '멀티 칩 지원', subtitle: '아래 칩에는 플래시 지원이 기본 제공되며 더 많은 칩이 계속 추가됩니다.' },
+  batch: { ...content.en.batch, tag: '양산용', title: '한 번에 전체 배치를 구동하세요', subtitle: '배치 도구를 사용하면 한 명의 작업자와 USB 허브만으로 소규모 플래시 라인을 구성할 수 있습니다.' },
+  download: { ...content.en.download, tag: '다운로드', title: 'tyutool 받기', subtitle: '플랫폼에 맞는 데스크톱 앱 또는 독립형 CLI를 받으세요.', recommended: '권장', autoUpdate: '자동 업데이트', cliTitle: '명령줄을 선호하시나요?', downloadBtn: '다운로드', source: '소스 코드' },
+  finalCta: { ...content.en.finalCta, title: '첫 번째 보드를 플래시할 준비가 되었나요?', subtitle: 'tyutool을 다운로드하거나 먼저 가이드를 확인하세요. 어느 쪽이든 1분이면 충분합니다.' },
+}
+
 /* ----------------------------------------------------------------------- */
 /* Page                                                                    */
 /* ----------------------------------------------------------------------- */
 
 export default function TyutoolPage() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
   const rootRef = useRef(null);
 
   // Docusaurus internal links are not locale-prefixed automatically here, so
-  // build the guide path for the active locale (en = root, zh = /zh).
-  const guideHref = locale === 'zh' ? '/zh/docs/tyutool' : '/docs/tyutool';
+  const guideHref = localePath(locale, '/docs/tyutool');
 
   // Scroll-reveal: fade sections in as they enter the viewport.
   useEffect(() => {
@@ -632,7 +651,7 @@ export default function TyutoolPage() {
               </div>
             </Reveal>
 
-            {locale === 'zh' && (
+            {(locale === 'zh' || locale === 'ko') && (
               <Reveal className={styles.mirrorRow}>
                 <span>
                   {c.download.mirror}{' '}

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Layout from '@theme/Layout'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { localePath } from '../utils/localePath'
 import { clsx } from 'clsx'
 import styles from './pricing-guide.module.css'
 
@@ -381,6 +382,51 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx`,
   },
 }
 
+content.ko = {
+  ...content.zh,
+  meta: 'TuyaOpen 라이선스 안내 — 라이선스의 역할, 필요한 등급, 발급·구매 방법, 디바이스 기록과 문제 해결을 안내합니다.',
+  badge: '도움말 가이드',
+  title: '라이선스 가이드',
+  subtitle: 'TuyaOpen 인증 코드의 역할, 필요한 등급, 발급 또는 구매 방법, 기록·확인 방법과 자주 발생하는 문제를 정리했습니다.',
+  back: '← 요금제로 돌아가기',
+  tocTitle: '이 페이지의 내용',
+  nav: [
+    { id: 'what', label: '라이선스란?' },
+    { id: 'choose', label: '등급 선택' },
+    { id: 'get', label: '라이선스 받기' },
+    { id: 'write', label: '디바이스에 기록' },
+    { id: 'verify', label: '확인 및 페어링' },
+    { id: 'troubleshooting', label: '문제 해결' },
+    { id: 'help', label: '추가 도움말' },
+  ],
+  what: {
+    ...content.zh.what,
+    title: 'TuyaOpen 라이선스란?',
+    lead: 'TuyaOpen 라이선스는 디바이스 하나를 Tuya IoT Cloud에 연결할 수 있게 하는 인증 정보입니다. Tuya가 발급하며 제품에 연결된 두 문자열로 구성됩니다.',
+    points: ['UUID — 디바이스마다 고유한 20자리 식별자입니다.', 'AuthKey — UUID와 일대일로 연결되는 32자리 키입니다.'],
+    whenTitle: '언제 필요한가요?',
+    whenBody: '애플리케이션이 Tuya Cloud, 앱 제어, OTA 또는 AI를 사용할 때만 필요합니다. 로컬·오프라인 프로젝트는 라이선스 없이 무료 오픈 소스 프레임워크로 동작합니다.',
+    noteTitle: 'TuyaOpen 라이선스와 TuyaOS 라이선스는 다릅니다',
+    noteBody: 'TuyaOpen에는 TuyaOpen 전용 UUID + AuthKey가 필요합니다. TuyaOS에서 발급된 라이선스는 TuyaOpen 프레임워크에서 클라우드에 연결할 수 없습니다.',
+  },
+  choose: {
+    ...content.zh.choose,
+    title: '디바이스에 필요한 등급은 무엇인가요?',
+    lead: '디바이스의 기능에 맞춰 등급을 선택하세요. 무료로 시작한 뒤 같은 프레임워크와 코드를 유지하면서 유료 라이선스로 전환할 수 있습니다.',
+    tiers: content.zh.choose.tiers.map((tier, index) => ({
+      ...tier,
+      name: ['오픈 소스', 'IoT 연결', 'AI + IoT'][index],
+      price: index === 0 ? '무료' : tier.price,
+      desc: ['로컬 제어, Bluetooth/Wi-Fi, 센서와 서드파티 API를 사용합니다. 클라우드와 라이선스는 필요 없습니다.', 'Tuya Cloud 연결, Smart Life 앱 제어, 데이터 포인트와 OTA 업데이트를 제공합니다.', 'IoT 기능에 음성(ASR/TTS), LLM과 멀티모달 AI 기능을 더합니다.'][index],
+    })),
+  },
+  get: { ...content.zh.get, title: '라이선스 받기', lead: '무료 개발자 라이선스를 받거나 필요한 등급의 라이선스를 구매하세요.' },
+  write: { ...content.zh.write, title: '디바이스에 기록', lead: 'tuya_config.h에 라이선스를 포함하거나 시리얼 명령, tyutool 또는 웹 도구로 기록할 수 있습니다.' },
+  verify: { ...content.zh.verify, title: '확인 및 페어링', lead: '저장된 라이선스를 읽고 디바이스를 재부팅한 뒤 Tuya 앱에서 페어링하세요.' },
+  troubleshooting: { ...content.zh.troubleshooting, title: '문제 해결', lead: '다음 항목으로 흔한 라이선스 및 연결 문제를 확인하세요.' },
+  help: { ...content.zh.help, title: '추가 도움말', lead: '각 단계의 자세한 설명은 다음 문서를 참고하세요.', contactNote: '기업·대량·맞춤형 가격은 다음으로 문의하세요.' },
+};
+
 /* ----------------------------------------------------------------------- */
 /* Helpers                                                                 */
 /* ----------------------------------------------------------------------- */
@@ -393,15 +439,33 @@ function Code({ children }) {
   )
 }
 
+content.ko = {
+  ...content.en,
+  meta: 'TuyaOpen 라이선스 가이드 — 라이선스의 역할과 등급 선택, 발급, 디바이스 기록, 문제 해결 방법을 안내합니다.',
+  badge: '도움말 가이드',
+  title: '라이선스 가이드',
+  subtitle: 'TuyaOpen 라이선스가 필요한 시점과 디바이스에 기록하는 방법을 단계별로 알아보세요.',
+  back: '← 가격 페이지로 돌아가기',
+  tocTitle: '이 페이지의 내용',
+  nav: [{ id: 'what', label: '라이선스란?' }, { id: 'choose', label: '등급 선택' }, { id: 'get', label: '라이선스 받기' }, { id: 'write', label: '디바이스에 기록' }, { id: 'verify', label: '확인 및 페어링' }, { id: 'troubleshooting', label: '문제 해결' }, { id: 'help', label: '추가 도움말' }],
+  what: { ...content.en.what, title: 'TuyaOpen 라이선스란?' },
+  choose: { ...content.en.choose, title: '디바이스에 필요한 등급은 무엇인가요?' },
+  get: { ...content.en.get, title: '라이선스 받기' },
+  write: { ...content.en.write, title: '디바이스에 라이선스 기록' },
+  verify: { ...content.en.verify, title: '디바이스 확인 및 페어링' },
+  trouble: { ...content.en.trouble, title: '문제 해결' },
+  help: { ...content.en.help, title: '추가 도움말' },
+}
+
 /* ----------------------------------------------------------------------- */
 /* Page                                                                    */
 /* ----------------------------------------------------------------------- */
 
 export default function PricingGuide() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
-  const c = content[locale]
-  const base = locale === 'zh' ? '/zh' : ''
+  const locale = i18n.currentLocale
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en']
+  const base = localePath(locale, '')
   const pricingHref = `${base}/pricing`
   const docHref = (p) => `${base}${p}`
 

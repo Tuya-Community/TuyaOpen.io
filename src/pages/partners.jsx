@@ -2,6 +2,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 import Head from '@docusaurus/Head'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { localePath } from '../utils/localePath'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import React, { useEffect, useRef } from 'react'
@@ -267,6 +268,54 @@ const COPY = {
       ],
     },
   },
+  ko: {
+    meta: {
+      title: '파트너 및 기여자',
+      description:
+        'TuyaOpen을 함께 만들어 보세요. 칩 제조사, 개발 보드·모듈 제조사와 개발자가 참여할 수 있는 방법을 소개합니다. IDE 노출, 오픈 소스, 클라우드 + AI, 양산까지 이어지는 경로를 제공합니다.',
+    },
+    hero: {
+      label: '파트너 및 기여자',
+      titlePre: 'TuyaOpen을 ',
+      titleAccent: '함께 만드세요.',
+      sub: 'TuyaOpen은 실리콘부터 클라우드까지 아우르는 오픈 소스 스택입니다. 칩 제조사, 개발 보드·모듈 제조사와 개발자가 함께 성장할 수 있도록 초대합니다. 칩, 키트, 모듈 또는 코드를 가져오세요.',
+      visualAlt: '실리콘, 보드, 모듈, 애플리케이션과 커뮤니티가 빛나는 중심으로 모이는 TuyaOpen 오픈 생태계의 파트너십 일러스트',
+    },
+    stack: {
+      title: '할 수 있는 일',
+      sub: 'TuyaOpen을 함께 만드는 다섯 가지 방법입니다. 칩, 보드, 모듈, 코드 또는 영향력을 가져오세요. 모든 경로는 같은 플랫폼, 클라우드와 양산 경로로 이어집니다.',
+      contribKicker: '여러분의 기여',
+      valueKicker: '얻게 되는 것',
+      tracks: [
+        { icon: 'silicon', role: '칩 제조사', contribute: 'TuyaOpen SDK를 여러분의 칩으로 포팅하세요.', value: '197만 명 이상의 개발자에게 도달하고 다양한 디바이스에 적용할 수 있습니다.' },
+        { icon: 'board', role: '개발 보드 제조사', contribute: '키트의 BSP와 문서를 함께 제공하세요.', value: '보드가 TuyaOpen IDE와 개발 보드 카탈로그에 등록됩니다.' },
+        { icon: 'module', role: '모듈 제조사', contribute: 'TuyaOpen을 바로 사용할 수 있는 모듈을 출시하세요.', value: '개발자에게 빠르게 도달하고 프로토타입에서 상용 제품으로 이어지는 경로를 확보합니다.' },
+        { icon: 'application', role: '개발자', contribute: '최신 AIoT 기능으로 애플리케이션을 만들어 보세요.', value: '완전한 오픈 소스 스택과 실제 커뮤니티에서 만들고 공유하고 배울 수 있습니다.' },
+        { icon: 'ecosystem', role: '생태계 파트너', contribute: '해커톤, 오프라인 행사, 데모와 튜토리얼을 운영하세요.', value: '도달 범위를 넓히고 오픈 생태계의 성장을 돕습니다.' },
+      ],
+    },
+    bento: {
+      title: 'TuyaOpen이 제공하는 것',
+      sub: '모든 경로가 IDE, 오픈 소스, 클라우드와 양산으로 이어지는 하나의 생태계에 연결됩니다.',
+      cells: [
+        { icon: 'ide', title: 'TuyaOpen IDE 노출', body: '여러분의 보드, SDK와 도구가 개발자가 이미 사용하는 TuyaOpen IDE 안에 표시됩니다. 별도의 유입 경로가 필요 없습니다.' },
+        { icon: 'open', title: 'Apache-2.0, 완전히 공개', body: '공개 로드맵, 열린 이슈와 지금 바로 포크할 수 있는 코드가 제공됩니다. 기여가 TuyaOpen의 다음 방향을 만듭니다.' },
+        { icon: 'cloudAi', title: '클라우드 + AI 에이전트', body: 'Tuya 클라우드, 멀티모달 AI와 에이전트 엔진으로 하드웨어에 에이전트 기능을 더합니다.' },
+        { icon: 'production', title: '프로토타입 → 양산', body: '개발 키트부터 파일럿과 대량 생산까지, 200개 이상의 국가와 지역을 연결하는 Tuya 공급망을 활용합니다.' },
+      ],
+    },
+    reach: {
+      title: '오픈 생태계를 함께 만들어 보세요.',
+      body: '칩, 보드 또는 모듈을 알려 주세요. 플랫폼, 클라우드와 개발자 생태계는 저희가 연결하겠습니다. 여러분은 하드웨어에 집중하고, 저희는 이를 사용하는 개발자와 이어 드립니다.',
+      emailCta: 'Luoben에게 직접 문의',
+      emailAddr: 'luoben.wang@tuya.com',
+      secondary: [
+        { icon: 'github', label: 'GitHub에서 칩 포팅하기', href: 'https://github.com/tuya/TuyaOpen' },
+        { icon: 'discord', label: '커뮤니티 참여', href: 'https://discord.com/invite/yPPShSTttG' },
+        { icon: 'boardLink', label: '보드 등록하기', to: '/dev-boards' },
+      ],
+    },
+  },
 }
 
 function useScrollReveal(rootRef) {
@@ -293,12 +342,10 @@ function useScrollReveal(rootRef) {
 
 export default function PartnersPage() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
-  const c = COPY[locale]
-  // Internal Link `to` is not auto-localized by Docusaurus — prefix /zh manually
-  // for the Chinese page so the "List a board" CTA stays in-locale. See
-  // pricing-guide.jsx for the established pattern.
-  const base = locale === 'zh' ? '/zh' : ''
+  const locale = i18n.currentLocale
+  const contentLocale = locale === 'ko' || locale === 'zh' ? locale : 'en'
+  const c = COPY[contentLocale]
+  const base = localePath(locale, '')
   const pageRef = useRef(null)
   useScrollReveal(pageRef)
 
@@ -354,7 +401,7 @@ export default function PartnersPage() {
           </div>
           <div className={styles.heroScrollCue} aria-hidden>
             <span />
-            {locale === 'zh' ? '向下滚动' : 'Scroll'}
+            {contentLocale === 'ko' ? '스크롤' : contentLocale === 'zh' ? '向下滚动' : 'Scroll'}
           </div>
         </section>
 
@@ -436,7 +483,7 @@ export default function PartnersPage() {
         </section>
 
         {/* ── Collaborate with global partners ─────────────────────────── */}
-        <PartnersShowcase {...homepageCopy[locale].partners} />
+        <PartnersShowcase {...homepageCopy[contentLocale === 'ko' ? 'zh' : contentLocale].partners} />
 
         {/* ── Reach out ────────────────────────────────────────────────── */}
         <section className={styles.reach}>

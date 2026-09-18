@@ -4,6 +4,7 @@ import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import BrowserOnly from '@docusaurus/BrowserOnly'
 import Link from '@docusaurus/Link'
+import {localePath} from '@site/src/utils/localePath'
 import {COPY} from '@site/src/components/web-serial/i18n'
 import {useWebSerialSupport} from '@site/src/components/web-serial/useSerialPort'
 import {SegmentedControl, Notice} from '@site/src/components/web-serial/primitives'
@@ -14,8 +15,9 @@ import s from '@site/src/components/web-serial/styles.module.css'
 
 export default function WebSerialPage() {
   const {i18n, siteConfig} = useDocusaurusContext()
-  const locale = i18n?.currentLocale === 'zh' ? 'zh' : 'en'
-  const t = COPY[locale]
+  const locale = i18n?.currentLocale || 'en'
+  const contentLocale = locale === 'zh' || locale === 'ko' ? locale : 'en'
+  const t = COPY[contentLocale]
 
   return (
     <Layout
@@ -47,14 +49,14 @@ export default function WebSerialPage() {
         </section>
 
         <BrowserOnly fallback={<div className={p.fallback}>…</div>}>
-          {() => <ToolBody locale={locale} t={t} />}
+          {() => <ToolBody locale={locale} contentLocale={contentLocale} t={t} />}
         </BrowserOnly>
       </div>
     </Layout>
   )
 }
 
-function ToolBody({locale, t}) {
+function ToolBody({locale, contentLocale, t}) {
   const supported = useWebSerialSupport()
   const [mode, setMode] = useState('serial')
 
@@ -91,11 +93,11 @@ function ToolBody({locale, t}) {
 
         <div className={p.content}>
           {mode === 'serial' ? (
-            <SerialConsole locale={locale} />
+            <SerialConsole locale={contentLocale} />
           ) : mode === 'auth' ? (
-            <DeviceAuth locale={locale} />
+            <DeviceAuth locale={contentLocale} routeLocale={locale} />
           ) : (
-            <FirmwareFlasher locale={locale} />
+            <FirmwareFlasher locale={contentLocale} />
           )}
         </div>
       </div>
@@ -113,8 +115,8 @@ function ToolBody({locale, t}) {
             >
               {t.desktop_download} ↗
             </a>
-            <Link to={locale === 'zh' ? '/zh/tyutool' : '/tyutool'}>{t.desktop_features} →</Link>
-            <Link to={locale === 'zh' ? '/zh/docs/tyutool' : '/docs/tyutool'}>{t.desktop_guide} →</Link>
+            <Link to={localePath(locale, '/tyutool')}>{t.desktop_features} →</Link>
+            <Link to={localePath(locale, '/docs/tyutool')}>{t.desktop_guide} →</Link>
           </div>
         </div>
       </section>

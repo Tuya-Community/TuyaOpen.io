@@ -14,7 +14,7 @@ import s from '@site/src/components/web-serial/styles.module.css'
  */
 export default function WebSerialMinimalPage() {
   const {i18n} = useDocusaurusContext()
-  const locale = i18n?.currentLocale === 'zh' ? 'zh' : 'en'
+  const locale = i18n?.currentLocale === 'zh' || i18n?.currentLocale === 'ko' ? i18n.currentLocale : 'en'
   const t = COPY[locale]
 
   return (
@@ -37,7 +37,9 @@ export default function WebSerialMinimalPage() {
         <p style={{color: 'var(--ifm-color-emphasis-700)', marginBottom: '2rem'}}>
           {locale === 'zh'
             ? '最小变体测试页 — 模拟嵌入文档时的样式。此页面未被导航链接，且 noindex。'
-            : 'Test page for the minimal variants — how they look embedded in a doc. Not linked; noindex.'}
+            : locale === 'ko'
+              ? '최소 변형 테스트 페이지 — 문서에 삽입했을 때의 모양을 확인합니다. 내비게이션에 연결되지 않으며 noindex입니다.'
+              : 'Test page for the minimal variants — how they look embedded in a doc. Not linked; noindex.'}
         </p>
 
         <BrowserOnly fallback={<div style={{color: 'var(--ifm-color-emphasis-600)'}}>…</div>}>

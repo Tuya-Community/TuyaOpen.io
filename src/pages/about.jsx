@@ -149,6 +149,59 @@ const COPY = {
     },
     github: '在 GitHub 点亮 Star',
   },
+  ko: {
+    meta: {
+      title: '회사 소개',
+      description: '오픈 소스 커뮤니티에 집중하는 Tuya 팀입니다. 모든 하드웨어에 에이전트 연결과 프로토콜 역량을 제공합니다.',
+    },
+    label: '회사 소개',
+    hero: {
+      titlePre: 'Tuya에서 시작해 커뮤니티와 함께 만드는 ',
+      titleAccent: '오픈 에이전트 하드웨어.',
+      sub: '우리는 TuyaOpen을 만드는 사람들입니다. 커뮤니티 중심의 오픈 소스 기반으로 모든 디바이스에 에이전트 연결과 프로토콜 역량을 제공합니다.',
+    },
+    quote: {
+      mark: '“',
+      pre: '커뮤니티를 외부에서 위해 만드는 것이 아닙니다. ',
+      em: '커뮤니티와 함께 만들고,',
+      post: ' 하나의 PR과 하나의 디바이스를 통해 공개적으로 성장합니다.',
+      attr: '— TuyaOpen 팀',
+    },
+    story: {
+      kicker: '우리는 누구인가',
+      title: '오픈 소스는 부가 프로젝트가 아니라 우리의 방식입니다',
+      body: [
+        'TuyaOpen은 오픈 소스 개발자 커뮤니티에 전념하는 **Tuya 내부 팀**이 만들고 있습니다. 우리는 칩, 클라우드, AI 기술 스택과 가까이 일하며 그 모든 것을 공개합니다.',
+        '우리의 작업은 **커뮤니티 중심**입니다. 로드맵은 공개되고, 이슈는 누구나 제안할 수 있으며, 코드는 읽고 포크하고 제품에 적용할 수 있습니다. 여기에 200개 이상의 국가와 지역에서 검증된 Tuya의 규모가 더해집니다.',
+        '우리의 기술적 목표는 분명합니다. 가장 작은 Wi-Fi MCU부터 Linux급 보드까지, 모든 하드웨어에 **에이전트 연결과 프로토콜 역량을 제공하는 것**입니다.',
+      ],
+    },
+    tuya: {
+      kicker: '우리의 기반이 되는 회사',
+      title: 'Tuya의 지원',
+      body: [
+        '**Tuya Inc.**(NYSE: TUYA, HKEX: 2391)는 글로벌 AI 클라우드 플랫폼 서비스 제공업체입니다. TuyaOpen 오픈 소스 프레임워크와 범용 AI Agent 엔진을 통해 멀티모달 AI의 개발 장벽을 낮추고, 브랜드·OEM·통합업체·개발자를 연결하는 개방형 글로벌 AIoT 생태계를 만듭니다.',
+      ],
+    },
+    stats: {
+      items: [
+        { num: '197만+', label: '등록 AI 개발자' },
+        { num: '200+', label: '지원 국가 및 지역' },
+        { num: '100%', label: '오픈 소스 · Apache-2.0' },
+      ],
+      note: '* 2026년 3월 31일 기준',
+    },
+    values: {
+      kicker: '일하는 방식',
+      title: '커뮤니티 중심이 우리에게 의미하는 것',
+      items: [
+        { icon: 'heart', title: 'Tuya 안에서 커뮤니티를 위해', body: 'Tuya의 연결성, 클라우드, AI 역량을 바탕으로 오픈 소스 개발자에게 집중하는 전담 팀입니다.' },
+        { icon: 'branch', title: '공개적으로 만들기', body: '공개 로드맵, 열린 이슈, 오늘 바로 포크할 수 있는 코드. 커뮤니티의 기여가 TuyaOpen의 다음 방향을 만듭니다.' },
+        { icon: 'grid', title: '모든 하드웨어에 에이전트 연결', body: '각자의 하드웨어 환경에서 시작해 전체 디바이스 스펙트럼에 에이전트와 프로토콜 역량을 제공합니다.' },
+      ],
+    },
+    github: 'GitHub에서 Star하기',
+  },
 }
 
 function useScrollReveal(rootRef) {
@@ -175,7 +228,7 @@ function useScrollReveal(rootRef) {
 
 export default function AboutPage() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
+  const locale = i18n.currentLocale === 'zh' || i18n.currentLocale === 'ko' ? i18n.currentLocale : 'en'
   const c = COPY[locale]
   const pageRef = useRef(null)
   useScrollReveal(pageRef)
@@ -210,7 +263,7 @@ export default function AboutPage() {
             </div>
             <div className={styles.scrollCue} aria-hidden>
               <span />
-              {locale === 'zh' ? '向下滚动' : 'Scroll'}
+              {locale === 'zh' ? '向下滚动' : locale === 'ko' ? '아래로 스크롤' : 'Scroll'}
             </div>
           </aside>
 

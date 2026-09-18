@@ -1,0 +1,130 @@
+{
+  "link.title.Products": {
+    "message": "제품",
+    "description": "The title of the footer links column with title=Products in the footer"
+  },
+  "link.title.Documentation": {
+    "message": "문서",
+    "description": "The title of the footer links column with title=Documentation in the footer"
+  },
+  "link.title.Tools": {
+    "message": "도구",
+    "description": "The title of the footer links column with title=Tools in the footer"
+  },
+  "link.title.Community": {
+    "message": "커뮤니티",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "더 보기",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.title.Legal": {
+    "message": "법률",
+    "description": "The title of the footer links column with title=Legal in the footer"
+  },
+  "link.item.label.Quick Start": {
+    "message": "빠른 시작",
+    "description": "The label of footer link with label=Quick Start linking to /learn"
+  },
+  "link.item.label.About TuyaOpen": {
+    "message": "TuyaOpen 소개",
+    "description": "The label of footer link with label=About TuyaOpen linking to /docs/about-tuyaopen"
+  },
+  "link.item.label.Hardware List": {
+    "message": "하드웨어 목록",
+    "description": "The label of footer link with label=Hardware List linking to /docs/hardware"
+  },
+  "link.item.label.Tuya T5AI Dev Kit": {
+    "message": "Tuya T5AI 개발 키트",
+    "description": "The label of footer link with label=Tuya T5AI Dev Kit linking to /docs/hardware/tuya-t5/t5-ai-board/overview-t5-ai-board"
+  },
+  "link.item.label.License Key": {
+    "message": "라이선스 키",
+    "description": "The label of footer link with label=License Key linking to /pricing"
+  },
+  "link.item.label.TyuTools GUI/CLI": {
+    "message": "TyuTools GUI/CLI",
+    "description": "The label of footer link with label=TyuTools GUI/CLI linking to /tyutool"
+  },
+  "link.item.label.Web Serial Tool": {
+    "message": "Web Serial 도구",
+    "description": "The label of footer link with label=Web Serial Tool linking to /web-serial"
+  },
+  "link.item.label.Forums": {
+    "message": "포럼",
+    "description": "The label of footer link with label=Forums linking to https://forum-tuyaopen.discourse.group/"
+  },
+  "link.item.label.FAQ": {
+    "message": "FAQ",
+    "description": "The label of footer link with label=FAQ linking to /faq"
+  },
+  "link.item.label.Blog": {
+    "message": "블로그",
+    "description": "The label of footer link with label=Blog linking to /blog"
+  },
+  "link.item.label.Projects": {
+    "message": "프로젝트",
+    "description": "The label of footer link with label=Projects linking to /learn?cat=community"
+  },
+  "link.item.label.Terms of Service": {
+    "message": "서비스 약관",
+    "description": "The label of footer link with label=Terms of Service linking to https://auth.tuya.com/policies/service"
+  },
+  "link.item.label.Legal Statement": {
+    "message": "법률 고지",
+    "description": "The label of footer link with label=Legal Statement linking to https://auth.tuya.com/policies/legal"
+  },
+  "link.item.label.Tuya Privacy Policy": {
+    "message": "Tuya 개인정보 보호정책",
+    "description": "The label of footer link with label=Tuya Privacy Policy linking to https://auth.tuya.com/policies/privacy"
+  },
+  "link.item.label.Tuya California Privacy Notice": {
+    "message": "Tuya 캘리포니아 개인정보 보호 고지",
+    "description": "The label of footer link with label=Tuya California Privacy Notice linking to https://auth.tuya.com/policies/CAprivacynotice"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/tuya/TuyaOpen"
+  },
+  "link.item.label.Gitee (Mirror)": {
+    "message": "Gitee (미러)",
+    "description": "The label of footer link with label=Gitee (Mirror) linking to https://gitee.com/tuya-open/TuyaOpen"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.com/invite/yPPShSTttG"
+  },
+  "link.item.label.X": {
+    "message": "X",
+    "description": "The label of footer link with label=X linking to https://x.com/tuyasmart"
+  },
+  "link.item.label.YouTube": {
+    "message": "YouTube",
+    "description": "The label of footer link with label=YouTube linking to https://www.youtube.com/@tuya2023"
+  },
+  "link.item.label.LinkedIn": {
+    "message": "LinkedIn",
+    "description": "The label of footer link with label=LinkedIn linking to https://www.linkedin.com/company/tuya-smart"
+  },
+  "link.item.label.TuyaOpen IDE": {
+    "message": "TuyaOpen IDE",
+    "description": "The label of footer link with label=TuyaOpen IDE linking to /tuyaopen-ide"
+  },
+  "link.item.label.TuyaOpen SDK": {
+    "message": "TuyaOpen SDK",
+    "description": "The label of footer link with label=TuyaOpen SDK linking to https://github.com/tuya/TuyaOpen"
+  },
+  "link.item.label.TuyaOpen on Arduino": {
+    "message": "Arduino용 TuyaOpen",
+    "description": "The label of footer link with label=TuyaOpen on Arduino linking to https://github.com/tuya/arduino-TuyaOpen"
+  },
+  "link.item.label.TClaw 🦞": {
+    "message": "TClaw 🦞",
+    "description": "The label of footer link with label=TClaw 🦞 linking to /tclaw"
+  },
+  "copyright": {
+    "message": "\n        <p style=\"font-weight: 500;\">Copyright © TuyaOpen Authors 2026 | Apache License 2.0에 따라 배포됩니다.</p>\n",
+    "description": "The footer copyright"
+  }
+}

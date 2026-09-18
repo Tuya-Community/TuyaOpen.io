@@ -12,6 +12,7 @@ import BlurText from '../components/BlurText/BlurText'
 import GradientText from '../components/GradientText/GradientText'
 import PartnersShowcase from '../components/PartnersShowcase/PartnersShowcase'
 import { homepageCopy } from '../data/homepageCopy'
+import { localePath } from '../utils/localePath'
 import styles from './index.module.css'
 
 // Hero highlight color stops — a vibrant "AI-spectrum" anchored by the brand key
@@ -95,8 +96,15 @@ function FireworkBurst({ className }) {
 
 function Home() {
   const { siteConfig, i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
-  const copy = homepageCopy[locale]
+  const locale = i18n.currentLocale
+  const contentLocale = locale === 'zh' || locale === 'ko' ? locale : 'en'
+  const copy = homepageCopy[contentLocale]
+  const pageTitle =
+    contentLocale === 'ko'
+      ? 'TuyaOpen: 실제 디바이스를 위한 오픈 소스 AI·IoT 개발 플랫폼'
+      : contentLocale === 'zh'
+        ? 'TuyaOpen：面向 AI 与物联网开发的开源平台'
+        : 'TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development'
   const [ideLaunchModalOpen, setIdeLaunchModalOpen] = useState(false)
 
   const closeIdeLaunchModal = () => {
@@ -185,7 +193,7 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    const hil = homepageCopy[locale].realWorldValidation
+    const hil = copy.realWorldValidation
     const seq = hil.hilTerminalSequence
     if (hilPrefersReducedMotion) {
       let lastDiagram = null
@@ -443,11 +451,8 @@ function Home() {
   return (
     <Layout description={copy.metaDescription}>
       <Head>
-        <title>TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development</title>
-        <meta
-          name="description"
-          content="TuyaOpen is an open source AI, open source OS, and IoT development platform for building intelligent connected devices at scale. Explore embedded development tools, edge AI, and hardware support."
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={copy.metaDescription} />
         <meta
           name="keywords"
           content="open source ai, iot development platform, open source os, aiot platform, embedded development"
@@ -499,7 +504,7 @@ function Home() {
                         the right guide by route and by doc area. Prefixed
                         explicitly — a raw <Link> in a custom page is not
                         locale-aware (only theme nav/footer `to:` values are). */}
-                    <Link to={locale === 'zh' ? '/zh/learn' : '/learn'} className={styles.btnAccent}>
+                    <Link to={localePath(locale, '/learn')} className={styles.btnAccent}>
                       {copy.cta.quickStart} →
                     </Link>
                     <Link to="/docs/about-tuyaopen" className={styles.btnOutlineLight}>
@@ -664,9 +669,12 @@ function Home() {
                       <span className={styles.hilTitleBase}>{copy.realWorldValidation.titleBase}</span>{' '}
                       <span className={styles.hilTitleAccent}>{copy.realWorldValidation.titleAccent}</span>
                     </h2>
-                    <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                    <p className={styles.hilBody} lang={locale === 'zh' ? 'zh-CN' : locale === 'ko' ? 'ko-KR' : 'en'}>
                       {copy.realWorldValidation.bodyBefore}
-                      <span className={styles.hilBodyHighlight} lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+                      <span
+                        className={styles.hilBodyHighlight}
+                        lang={locale === 'zh' ? 'zh-CN' : locale === 'ko' ? 'ko-KR' : 'en'}
+                      >
                         {copy.realWorldValidation.bodyHighlight}
                       </span>
                       {copy.realWorldValidation.bodyAfter}
@@ -1447,7 +1455,11 @@ function Home() {
 
           <p className={styles.footerNote}>
             {copy.community.footerIncubator} <Link to="https://www.tuya.com/">Tuya Inc</Link>{' '}
-            {locale === 'zh' ? '孵化的开源项目。' : 'incubating open source project.'}
+            {locale === 'zh'
+              ? '孵化的开源项目。'
+              : locale === 'ko'
+                ? '인큐베이팅한 오픈 소스 프로젝트입니다.'
+                : 'incubating open source project.'}
           </p>
         </main>
 
@@ -1490,7 +1502,12 @@ function Home() {
             <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwB)} />
             <FireworkBurst className={clsx(styles.ideModalFw, styles.ideModalFwC)} />
 
-            <button type="button" className={styles.ideModalClose} onClick={closeIdeLaunchModal} aria-label="Close">
+            <button
+              type="button"
+              className={styles.ideModalClose}
+              onClick={closeIdeLaunchModal}
+              aria-label={contentLocale === 'ko' ? '닫기' : contentLocale === 'zh' ? '关闭' : 'Close'}
+            >
               <svg
                 width="18"
                 height="18"
