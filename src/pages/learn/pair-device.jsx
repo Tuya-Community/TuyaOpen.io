@@ -1,6 +1,7 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { localePath } from '@site/src/utils/localePath';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
 import RichText from './RichText';
@@ -241,6 +242,40 @@ const content = {
     ],
     nextLabel: '完成 —— 浏览更多教程 →',
   },
+};
+
+content.ko = {
+  ...content.zh,
+  badge: '기초',
+  title: 'SmartLife 앱으로 디바이스 페어링',
+  subtitle: '플래시와 인증을 마친 디바이스를 페어링 모드로 전환하고 SmartLife 앱으로 Tuya Cloud에 등록하세요.',
+  meta: ['입문', '6분', '네트워크'],
+  nav: [
+    { id: 'what', label: '완료 후 상태' },
+    { id: 'before', label: '사전 조건' },
+    { id: 'download', label: '앱 받기' },
+    { id: 'mode', label: '페어링 모드 진입' },
+    { id: 'pair', label: '방법 1: 앱에서 추가' },
+    { id: 'scan', label: '방법 2: QR 스캔' },
+    { id: 'trouble', label: '문제 해결' },
+  ],
+  whatTitle: '완료 후 상태',
+  whatLead: '디바이스가 Tuya Cloud에 등록되어 SmartLife 앱에서 원격으로 제어할 수 있습니다.',
+  beforeTitle: '사전 조건',
+  beforeLead: '페어링 전에 다음 항목을 확인하세요.',
+  downloadTitle: 'SmartLife 앱 받기',
+  downloadLead: '휴대폰에 SmartLife를 설치하고 가입한 뒤 로그인하세요.',
+  modeTitle: '페어링 모드 진입',
+  modeAutoTitle: '첫 부팅',
+  modeResetTitle: '페어링 모드로 진입하지 않을 때',
+  modeResetTableTitle: '디바이스 유형별 초기화 방법',
+  modeLogTitle: '준비 완료 로그',
+  pairTitle: '방법 1 — 앱에서 디바이스 추가(권장)',
+  pairLead: '디바이스가 페어링 모드에 들어가면 SmartLife 앱에서 다음 순서로 추가하세요.',
+  scanTitle: '방법 2 — QR로 페어링',
+  scanLead: '일부 TuyaOpen 디바이스는 터미널에 출력한 QR 코드를 스캔해 페어링합니다.',
+  troubleTitle: '문제 해결',
+  nextLabel: '완료 — 더 많은 학습 자료 보기 →',
 };
 
 /* ---- Inline SVG icons (Lucide-style, currentColor) --------------------- */
@@ -537,13 +572,11 @@ function DownloadSection({ c }) {
 
 export default function PairDevice() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const hubHref = locale === 'zh' ? '/zh/learn' : '/learn';
-  const docsHref = locale === 'zh'
-    ? '/zh/docs/quick-start/device-network-configuration'
-    : '/docs/quick-start/device-network-configuration';
-  const licenseHref = locale === 'zh' ? '/zh/learn/using-license-key' : '/learn/using-license-key';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const hubHref = localePath(locale, '/learn');
+  const docsHref = localePath(locale, '/docs/quick-start/device-network-configuration');
+  const licenseHref = localePath(locale, '/learn/using-license-key');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>
@@ -651,10 +684,10 @@ export default function PairDevice() {
             {c.nextLabel}
           </a>
           <a className={shell.btnGhost} href={docsHref}>
-            {locale === 'zh' ? '完整配网文档 →' : 'Full pairing docs →'}
+            {locale === 'ko' ? '전체 페어링 문서 →' : locale === 'zh' ? '完整配网文档 →' : 'Full pairing docs →'}
           </a>
           <a className={shell.btnGhost} href={licenseHref}>
-            {locale === 'zh' ? '使用授权码 →' : 'Use your license key →'}
+            {locale === 'ko' ? '라이선스 키 사용 →' : locale === 'zh' ? '使用授权码 →' : 'Use your license key →'}
           </a>
         </p>
       </section>

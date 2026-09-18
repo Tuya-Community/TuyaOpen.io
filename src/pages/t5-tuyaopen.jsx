@@ -33,6 +33,48 @@ const METHOD_IMAGES = {
   lua: 'https://images.tuyacn.com/fe-static/docs/img/46cd082a-1dbf-4193-93ec-8dcdb6a32c39.png',
 }
 
+const makeKoCopy = (copy) => ({
+  ...copy.en,
+  meta: { title: 'Tuya T5 칩', description: '차세대 AIoT 제품을 위한 강력한 Wi-Fi 및 Bluetooth 연결 MCU입니다.' },
+  hero: {
+    ...copy.en.hero,
+    eyebrow: 'Tuya T5 연결 MCU',
+    titlePre: '에이전트형 AI ',
+    titleAccent: '멀티모달 인터페이스를 위해',
+    sub: 'Tuya T5는 고급 AIoT 제품에 필요한 안정적인 무선 연결, 저전력 동작, 오디오·비전·센서 인터페이스용 풍부한 주변 장치를 제공합니다.',
+    highlight: 'AI 연산은 클라우드에서 실행하고 T5는 실제 세계의 다중 센서 디바이스 인터페이스를 담당합니다',
+    ctaPrimary: '시작하기',
+    ctaGhost: '개발 키트 보기',
+  },
+  chip: { ...copy.en.chip, moduleBadge: '모듈', stack: ['ARMv8-M 480MHz', '카메라 / 오디오 / 그래픽', '저전력', '에이전트형 AI 지원', 'Tuya Cloud 통합'] },
+  t5: {
+    ...copy.en.t5,
+    title: '에이전트형 AI 기기를 위한 Tuya T5',
+    sub: 'Tuya T5의 기능 스택은 속도, 연결성, 효율을 하나로 제공하는 에이전트형 AI의 기반입니다.',
+    imgAlt: 'Tuya T5AI 개발보드',
+    specs: ['플래그십 처리 성능: **480MHz** ARMv8-M Star Core(DSP + FPU).', '올인원 주변 장치: **1080p** 카메라, 고품질 오디오, 부드러운 디스플레이를 제공합니다.', '초저전력: **22nm** 공정과 **16μA** 딥 슬립으로 배터리 소모를 줄인 상시 AI를 구현합니다.', '듀얼 모드 연결: **Wi-Fi 6** + **Bluetooth 5.4 LE**로 빠르고 안정적인 장거리 연결을 제공합니다.'],
+  },
+  open: {
+    ...copy.en.open,
+    badge: '130만 명 이상의 개발자가 신뢰',
+    title: 'TuyaOpen으로 Tuya T5 제품을 전 세계로',
+    sub: 'TuyaOpen은 Tuya T5의 성능을 시장에 출시할 수 있는 혁신으로 바꿉니다. 개발 시간을 줄이고 비용을 낮추며 더 빠르게 확장하세요.',
+    benefitsLead: '개발자를 위한 TuyaOpen의 장점',
+    benefits: [
+      { title: '오픈 소스의 자유, 엔터프라이즈급 신뢰성', desc: '벤더 종속 없이 수십억 대 디바이스에서 검증된 코드를 사용합니다.', icon: 'lock' },
+      { title: '매끄러운 AI 통합', desc: 'Tuya T5에 최적화된 엣지-클라우드 지능과 LLM 통합을 제공합니다.', icon: 'brain' },
+      { title: '빠른 개발', desc: '제로 코드부터 풀 코드까지 유연하게 개발하고 8시간 안에 프로토타입을 만드세요.', icon: 'speed' },
+      { title: '글로벌 보안 및 확장성', desc: '규정을 준수하는 클라우드, 다층 보안, 글로벌 OTA 업데이트를 제공합니다.', icon: 'globe' },
+    ],
+  },
+  why: { ...copy.en.why, title: 'Tuya T5 + TuyaOpen이 만드는 에이전트형 AI', sub: '실리콘부터 소프트웨어와 출하까지 지능형 디바이스를 위한 하나의 경로입니다.', cards: [{ n: 1, title: '실시간 로컬 AI', body: 'AI 추론을 지원하는 TFLite-ready CPU 성능과 KWS 및 실시간 오디오 3A AI 알고리즘을 제공합니다.', icon: 'clock' }, { n: 2, title: '올인원 생태계', body: '사전 통합 SDK와 개발자 지원으로 개발 시간을 60% 이상 줄입니다.', icon: 'puzzle' }, { n: 3, title: '프로덕션 준비 완료', body: '사전 인증 모듈, 펌웨어 서비스, OEM/ODM 지원으로 빠르게 확장합니다.', icon: 'factory' }, { n: 4, title: '무한한 활용성', body: '하드웨어나 플랫폼 제한 없이 어떤 에이전트형 AI 기기도 만들 수 있습니다.', icon: 'infinity' }] },
+  devkit: { ...copy.en.devkit, title: '오늘 바로 시작하기: T5 개발 키트 + TuyaOpen', sub: 'TuyaOpen 도구와 완전히 통합된 하드웨어로 몇 시간 안에 아이디어를 작동하는 프로토타입으로 바꾸세요.', includesLabel: '개발 키트 구성', bonusLabel: '보너스:', bonusText: 'TuyaOpen Discord와 개발자 커뮤니티에 참여해 지원과 협업을 받으세요.', orderCta: '개발 키트 주문' },
+  methods: { ...copy.en.methods, title: '워크플로에 맞는 개발 방식', sub: '선호하는 스택을 선택하세요. Tuya T5와 TuyaOpen은 초기 구동부터 양산까지 여러 경로를 지원합니다.', cards: [{ ...copy.en.methods.cards[0], desc: '깊은 커스터마이징과 고성능 Tuya T5 프로젝트를 위한 엔터프라이즈급 풀 기능 SDK입니다.' }, { ...copy.en.methods.cards[1], desc: '빠른 프로토타이핑을 위한 대규모 커뮤니티와 사전 제작 라이브러리를 갖춘 초보자 친화적 환경입니다.' }, { ...copy.en.methods.cards[2], desc: '간단한 애플리케이션부터 복잡한 Tuya T5까지 빠르게 반복 개발할 수 있는 경량 스크립트 방식입니다.' }] },
+  use: { ...copy.en.use, title: '이상적인 활용 사례', sub: '칩 성능, TuyaOpen 미들웨어, 클라우드 애플리케이션이 만나는 지점입니다.', hint: '밀어서 둘러보기 →' },
+  specs: { ...copy.en.specs, title: '사양', systemDiagram: '시스템 구성도', moduleDatasheet: '모듈 데이터시트', chipsetDatasheet: 'T5 칩셋 데이터시트', diagramAlt: 'Tuya T5 블록 다이어그램', enlargeAria: 'Tuya T5 블록 다이어그램 확대' },
+  final: { ...copy.en.final, title: '에이전트형 AI 혁명을 이끄세요 — 지금 시작', sub: 'Tuya T5로 구동하고 TuyaOpen으로 구현하는 에이전트형 AI 시대를 시작하세요.', exploreDocs: '문서 살펴보기', getDevKits: '개발 키트 받기', starGithub: 'GitHub에서 Star', tagline: '칩 · TuyaOpen 스택 · 애플리케이션 — 자신 있게 출시하세요' },
+})
+
 /* ----------------------------------------------------------------------- */
 /* Bilingual copy                                                          */
 /* ----------------------------------------------------------------------- */
@@ -252,6 +294,8 @@ const COPY = {
     },
   },
 }
+
+COPY.ko = makeKoCopy(COPY)
 
 function IconCheck() {
   return (
@@ -490,9 +534,9 @@ function FeatureColumn({ groups, moduleDatasheetLabel }) {
 
 export default function T5TuyaOpenLanding() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
+  const locale = i18n.currentLocale === 'zh' || i18n.currentLocale === 'ko' ? i18n.currentLocale : 'en'
   const c = COPY[locale]
-  const columns = T5_FEATURE_COLUMNS[locale]
+  const columns = T5_FEATURE_COLUMNS[locale] || T5_FEATURE_COLUMNS.en
 
   const pageRef = useRef(null)
   const [showScrollTop, setShowScrollTop] = useState(false)

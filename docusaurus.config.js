@@ -39,13 +39,17 @@ const config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh'],
+    locales: ['en', 'zh', 'ko'],
     localeConfigs: {
       en: {
         label: 'English',
       },
       zh: {
         label: '简体中文',
+      },
+      ko: {
+        label: '한국어',
+        htmlLang: 'ko-KR',
       },
     },
   },
@@ -626,7 +630,7 @@ const config = {
             alternateName: 'TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development',
             description:
               'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCUs, Raspberry Pi, ESP32, and more. Pair with Tuya Cloud multimodal AI, integrate leading LLMs, and build devices with voice, vision, and sensor features.',
-            inLanguage: ['en', 'zh'],
+            inLanguage: ['en', 'zh', 'ko'],
             publisher: { '@id': 'https://tuyaopen.ai/#organization' },
             potentialAction: {
               '@type': 'SearchAction',

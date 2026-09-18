@@ -6,6 +6,7 @@ import { clsx } from 'clsx'
 import React from 'react'
 
 import IconGithub from '../../static/img/icons/github.svg'
+import { tclawKo } from '../data/tclawKo'
 import styles from './tclaw.module.css'
 
 const BANNER_IMG = 'https://images.tuyacn.com/fe-static/docs/img/210f532a-0bb1-4ca5-9037-f5488958a709.jpg'
@@ -21,7 +22,8 @@ const DEMO_VIDEO_EMBED_URL =
 const DEMO_VIDEO_URL_EN = 'https://www.youtube.com/watch?v=kC36AVT3CHI'
 const DEMO_VIDEO_EMBED_URL_EN = 'https://www.youtube.com/embed/kC36AVT3CHI?si=mD9lcWupBD07azEI'
 
-const t = (en, zh, isZh) => (isZh ? zh : en)
+let CURRENT_TCLAW_LOCALE = 'en'
+const t = (en, zh, isZh) => (CURRENT_TCLAW_LOCALE === 'ko' ? tclawKo[en] || en : isZh ? zh : en)
 
 /** TClaw skills list: name, category, deployment, purpose (en/zh) */
 const SKILLS_LIST = [
@@ -336,7 +338,10 @@ const snowAshFlakes = Array.from({ length: FLAKE_COUNT }, (_, i) => {
 
 export default function DuckyClaw() {
   const { siteConfig, i18n } = useDocusaurusContext()
-  const isZh = (i18n.currentLocale || '').startsWith('zh')
+  const currentLocale = i18n.currentLocale || 'en'
+  const isKo = currentLocale.startsWith('ko')
+  const isZh = currentLocale.startsWith('zh')
+  CURRENT_TCLAW_LOCALE = isKo ? 'ko' : isZh ? 'zh' : 'en'
   const [archLightboxOpen, setArchLightboxOpen] = React.useState(false)
   const [workflowLightboxOpen, setWorkflowLightboxOpen] = React.useState(false)
   const [skillsExpanded, setSkillsExpanded] = React.useState(false)
@@ -1035,12 +1040,23 @@ export default function DuckyClaw() {
                     <tr key={i}>
                       <td>
                         <span className={styles.skillNameCell}>
-                          {skill.emoji} {isZh ? skill.nameZh : skill.nameEn}
+                          {skill.emoji}{' '}
+                          {isKo ? tclawKo[skill.nameEn] || skill.nameEn : isZh ? skill.nameZh : skill.nameEn}
                         </span>
                       </td>
-                      <td>{isZh ? skill.categoryZh : skill.categoryEn}</td>
-                      <td>{isZh ? skill.deployZh : skill.deployEn}</td>
-                      <td>{isZh ? skill.purposeZh : skill.purposeEn}</td>
+                      <td>
+                        {isKo
+                          ? tclawKo[skill.categoryEn] || skill.categoryEn
+                          : isZh
+                            ? skill.categoryZh
+                            : skill.categoryEn}
+                      </td>
+                      <td>
+                        {isKo ? tclawKo[skill.deployEn] || skill.deployEn : isZh ? skill.deployZh : skill.deployEn}
+                      </td>
+                      <td>
+                        {isKo ? tclawKo[skill.purposeEn] || skill.purposeEn : isZh ? skill.purposeZh : skill.purposeEn}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -1418,7 +1434,31 @@ export default function DuckyClaw() {
           {/* Credits — merged */}
           <div className={styles.communityContributeBlock}>
             <p className={styles.footerContributorsCredit}>
-              {isZh ? (
+              {isKo ? (
+                <>
+                  TuyaOpen Team이 만들었으며, 뛰어난{' '}
+                  <a
+                    href="https://github.com/tuya/DuckyClaw/graphs/contributors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    기여자
+                  </a>
+                  들의 도움을 받았습니다.{' '}
+                  <a href="https://github.com/tuya/TuyaOpen" target="_blank" rel="noopener noreferrer">
+                    TuyaOpen
+                  </a>
+                  을 기반으로 하며{' '}
+                  <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer">
+                    OpenClaw
+                  </a>{' '}
+                  및{' '}
+                  <a href="https://github.com/memovai/mimiclaw" target="_blank" rel="noopener noreferrer">
+                    MimiClaw
+                  </a>
+                  에서 영감을 받았습니다.
+                </>
+              ) : isZh ? (
                 <>
                   本项目由{' '}
                   <a href="https://tuyaopen.ai/" target="_blank" rel="noopener noreferrer">

@@ -128,6 +128,46 @@ const COPY = {
     },
     github: '在 GitHub 点亮 Star',
   },
+  ko: {
+    meta: {
+      title: '우리의 미션',
+      description: '에이전트 하드웨어를 쉽게 만듭니다. 모든 하드웨어에 에이전트 연결과 개방형 프로토콜을 제공합니다.',
+    },
+    label: '우리의 미션',
+    hero: {
+      titlePre: '에이전트 하드웨어를 ',
+      titleAccent: '간단하게.',
+      sub: '개발자를 위한 가장 간단하고 강력한 멀티모달 Agent 역량으로 완전한 하드웨어 상호작용 생태계를 만듭니다.',
+      tagline: 'Agent First Design',
+    },
+    quote: {
+      mark: '“',
+      pre: '다음 세대 하드웨어는 앱만 실행하지 않습니다. ',
+      em: '의도를 이해하고 행동합니다.',
+      post: ' 우리의 일은 이 역량을 모든 디바이스의 기본값으로 만드는 것입니다.',
+      attr: '— TuyaOpen 팀',
+    },
+    story: {
+      kicker: '우리가 존재하는 이유',
+      title: '하드웨어는 앱 우선에서 에이전트 우선으로 이동하고 있습니다',
+      body: [
+        '지난 10년 동안 스마트 디바이스는 고정된 버튼을 가진 앱을 의미했고, 지능은 사용자가 배워야 하는 메뉴 안에 있었습니다. 그 시대가 끝나고 있습니다.',
+        '다음 세대는 사람의 의도를 AI 에이전트를 통해 디바이스의 실제 기능으로 전달합니다. 하지만 오늘날 이를 구현하는 일은 여전히 **어렵습니다**. 칩은 파편화되어 있고 프로토콜은 닫혀 있으며, 첫 대화 전에 수개월의 연결 작업이 필요합니다.',
+        '우리는 에이전트 역량이 **특권이 아니라 기본값**이어야 한다고 믿습니다. TuyaOpen은 이 간극을 줄여 메이커, 스타트업, 기업이 같은 개방형 기반에서 지능형 하드웨어를 출시하도록 돕습니다.',
+      ],
+    },
+    pillars: {
+      kicker: '우리가 지키는 원칙',
+      title: '우리가 만드는 모든 것의 기반',
+      items: [
+        { icon: 'connect', title: '모든 디바이스에 에이전트 연결', body: '저전력 Wi-Fi 및 BLE MCU부터 Linux급 보드까지 전체 하드웨어에 AI 에이전트 연결과 프로토콜 역량을 제공합니다.' },
+        { icon: 'open', title: '기본값은 개방성', body: '오픈 소스, 개방형 프로토콜, 종속 없음. 수십억 대 디바이스에서 검증된 코드를 자유롭게 검토하고 포크하고 출시할 수 있습니다.' },
+        { icon: 'community', title: '커뮤니티 중심', body: '전 세계 개발자와 함께 공개적으로 만듭니다. 로드맵, 이슈, 코드가 실제 사용자의 필요에 맞춰 함께 발전합니다.' },
+        { icon: 'ship', title: '프로덕션까지 간단하게', body: '몇 시간 안에 프로토타입을 만들고 며칠 안에 양산으로 이동하세요. 보안, OTA, 클라우드, 인증 같은 어려운 부분이 통합되어 있습니다.' },
+      ],
+    },
+    github: 'GitHub에서 Star하기',
+  },
 }
 
 function useScrollReveal(rootRef) {
@@ -154,7 +194,7 @@ function useScrollReveal(rootRef) {
 
 export default function MissionPage() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
+  const locale = i18n.currentLocale === 'zh' || i18n.currentLocale === 'ko' ? i18n.currentLocale : 'en'
   const c = COPY[locale]
   const pageRef = useRef(null)
   useScrollReveal(pageRef)
@@ -190,7 +230,7 @@ export default function MissionPage() {
             </div>
             <div className={styles.scrollCue} aria-hidden>
               <span />
-              {locale === 'zh' ? '向下滚动' : 'Scroll'}
+              {locale === 'zh' ? '向下滚动' : locale === 'ko' ? '아래로 스크롤' : 'Scroll'}
             </div>
           </aside>
 

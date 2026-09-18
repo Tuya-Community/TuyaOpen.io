@@ -7,6 +7,7 @@ import Layout from '@theme/Layout'
 import { clsx } from 'clsx'
 import React, { useEffect, useRef, useState } from 'react'
 
+import { localePath } from '../utils/localePath'
 import styles from './pricing.module.css'
 
 const PURCHASE = 'https://platform.tuya.com/purchase/index?type=6'
@@ -629,6 +630,103 @@ cGuDnU2YxjHJldjxxxxxxxxxxxxxxxxx
   },
 }
 
+content.ko = {
+  ...content.en,
+  meta: 'TuyaOpen 라이선스 — Tuya Cloud와 AI를 위한 디바이스별 라이선스입니다. 매일 무료 AI 사용량이 제공되며 로컬 및 오프라인 프로젝트는 무료입니다.',
+  title: 'TuyaOpen 라이선스 및 가격',
+  badge: '디바이스별 라이선스 · 매일 무료 AI 사용량 포함',
+  heroTitle: ['라이선스 하나로', '클라우드에 연결하고 AI를 추가하세요.'],
+  heroSubtitle: '무료로 개발하세요. 디바이스가 Tuya Cloud에 연결될 때만 디바이스별로 한 번 결제합니다.',
+  ctaPlans: '플랜 비교',
+  ctaGuide: '라이선스 가이드',
+  ctaHow: '작동 방식',
+  plans: {
+    ...content.en.plans,
+    title: '디바이스에 맞는 등급을 선택하세요',
+    subtitle: '모든 등급은 같은 오픈 소스 프레임워크와 빌드 도구와 칩 지원을 공유합니다.',
+  },
+  starter: { ...content.en.starter, badge: '🎁 무료로 시작', title: '스타터 라이선스 2개를 무료로 제공' },
+  how: {
+    ...content.en.how,
+    title: '라이선스는 한 번 기록하는 인증 정보입니다',
+    subtitle: '계정 관리나 월별 청구서 없이 디바이스에 한 번 기록해 사용합니다.',
+  },
+  compare: { ...content.en.compare, title: '무료로 시작하고 성장에 맞춰 확장하세요' },
+  steps: {
+    ...content.en.steps,
+    title: '세 단계로 클라우드에 연결',
+    subtitle: '무료 라이선스를 받아 테스트하고, 디바이스에 기록한 뒤 온라인 상태를 확인하세요.',
+  },
+  faq: { ...content.en.faq, title: '자주 묻는 질문' },
+  finalCta: {
+    ...content.en.finalCta,
+    title: '디바이스를 온라인으로 연결할 준비가 되었나요?',
+    subtitle: '무료 개발자 라이선스 2개를 받거나 가이드에서 첫 라이선스 기록 방법을 확인하세요.',
+  },
+}
+
+content.ko = {
+  ...content.zh,
+  meta: 'TuyaOpen 라이선스 — Tuya Cloud와 AI를 위한 디바이스별 라이선스. 매일 무료 AI 사용량이 제공되며 로컬·오프라인 프로젝트는 무료입니다.',
+  title: 'TuyaOpen 라이선스 및 요금',
+  badge: '디바이스별 라이선스 · 매일 무료 AI 사용량 포함',
+  heroTitle: ['라이선스 하나로', '클라우드에 연결하고 AI를 추가하세요.'],
+  heroSubtitle: '무료로 개발하고, 디바이스가 Tuya Cloud에 연결될 때 한 번만 결제하세요.',
+  heroBody:
+    'TuyaOpen은 무료 오픈 소스입니다. UUID + AuthKey 라이선스는 디바이스가 Tuya Cloud에 연결될 때만 필요합니다. IoT 연결 또는 멀티모달 AI를 디바이스별로 한 번 구매할 수 있으며, 매일 무료 AI 사용량도 제공됩니다.',
+  ctaPlans: '요금제 비교',
+  ctaGuide: '라이선스 가이드',
+  ctaHow: '작동 방식',
+  stats: [
+    { value: '₩0', label: '로컬 및 오프라인 프로젝트' },
+    { value: '$5 / $12', label: '디바이스별 IoT / AI + IoT' },
+    { value: '매일', label: '무료 AI 사용량 포함' },
+    { value: '11+', label: '지원 칩' },
+  ],
+  plans: {
+    ...content.zh.plans,
+    tag: '요금제',
+    title: '디바이스에 필요한 등급을 선택하세요',
+    subtitle:
+      '모든 등급은 같은 오픈 소스 프레임워크, 빌드 도구와 칩을 지원합니다. 디바이스가 Tuya Cloud와 통신할 때만 비용이 발생합니다.',
+    includesLabel: '포함 항목',
+    tiers: content.zh.plans.tiers.map((tier, index) => ({
+      ...tier,
+      name: ['오픈 소스', 'IoT 연결', 'AI + IoT'][index],
+      tagline: [
+        '메이커, 학생, 로컬·오프라인 제품을 위한 등급입니다.',
+        '디바이스를 온라인으로 전환하고 Tuya 앱에서 제어하세요.',
+        'IoT 기능에 온디바이스 멀티모달 AI 에이전트를 더합니다.',
+      ][index],
+      alt: index === 0 ? '라이선스 필요 없음' : tier.alt,
+      includes: index === 0 ? '전체 프레임워크' : tier.includes,
+      cta: ['개발 시작', 'IoT 라이선스 구매', 'AI + IoT 라이선스 구매'][index],
+    })),
+    enterprise: { ...content.zh.plans.enterprise, title: '기업·스타트업·교육', cta: '영업팀 문의' },
+  },
+  starter: {
+    ...content.zh.starter,
+    badge: '🎁 무료로 시작',
+    title: '무료 스타터 라이선스 2개',
+    claimCta: '무료 라이선스 2개 받기',
+    guideCta: '신청 방법',
+  },
+  how: { ...content.zh.how, tag: '라이선스 작동 방식', title: '라이선스는 한 번 기록하는 인증 정보입니다.' },
+  compare: { ...content.zh.compare, tag: '등급 비교', title: '무료로 시작하고 성장에 맞춰 확장하세요' },
+  steps: {
+    ...content.zh.steps,
+    tag: '시작하기',
+    title: '세 단계로 클라우드에 연결',
+    guideCta: '전체 라이선스 가이드 보기',
+  },
+  faq: { ...content.zh.faq, tag: 'FAQ', title: '자주 묻는 질문' },
+  finalCta: {
+    ...content.zh.finalCta,
+    title: '디바이스를 온라인으로 전환할 준비가 되셨나요?',
+    subtitle: '무료 개발자 라이선스 2개를 받거나 가이드에서 첫 라이선스 기록 방법을 확인하세요.',
+  },
+}
+
 /* ----------------------------------------------------------------------- */
 /* Helpers                                                                 */
 /* ----------------------------------------------------------------------- */
@@ -741,9 +839,9 @@ function FeatureLabel({ label, href, base }) {
 
 export default function Pricing() {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
-  const c = content[locale]
-  const base = locale === 'zh' ? '/zh' : ''
+  const locale = i18n.currentLocale
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en']
+  const base = localePath(locale, '')
   const guideHref = `${base}/pricing-guide`
   const { fromLearn, href: learnHref, label: learnLabel } = useFromLearn()
   const tierImgs = [

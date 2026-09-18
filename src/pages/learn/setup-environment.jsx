@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { localePath } from '@site/src/utils/localePath';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
 import RichText from './RichText';
@@ -206,6 +207,37 @@ cd TuyaOpen`,
   },
 };
 
+content.ko = {
+  ...content.zh,
+  badge: 'TuyaOpen SDK',
+  title: '개발 환경 설정',
+  subtitle: '필요한 툴체인을 설치하고 저장소를 복제한 뒤 tos.py를 활성화하세요. 이후 구성, 빌드와 플래시에서 같은 명령을 사용합니다.',
+  meta: ['입문', '10분', '설정'],
+  nav: [
+    { id: 'what', label: '완료 후 상태' },
+    { id: 'hardware', label: '준비물' },
+    { id: 'install', label: '툴체인 설치' },
+    { id: 'clone', label: 'TuyaOpen 복제' },
+    { id: 'activate', label: 'tos.py 활성화' },
+    { id: 'verify', label: '확인' },
+    { id: 'trouble', label: '문제 해결' },
+  ],
+  whatTitle: '완료 후 상태',
+  whatLead: '컴퓨터에 사용할 수 있는 TuyaOpen 코드가 있고 터미널에서 `tos.py` 명령을 활성화한 상태입니다.',
+  hardwareTitle: '준비물',
+  hardwareLead: '시작하기 전에 다음을 준비하세요.',
+  installTitle: '툴체인 설치',
+  installLead: 'TuyaOpen은 git, Python 3, make, cmake와 ninja를 사용합니다. 운영체제를 선택하면 명령이 바뀝니다.',
+  cloneTitle: 'TuyaOpen 복제',
+  cloneLead: 'GitHub 또는 Gitee에서 저장소를 복제하세요. 중국 본토에서는 Gitee가 더 빠를 수 있습니다.',
+  activateTitle: 'tos.py 활성화',
+  activateLead: 'TuyaOpen 디렉터리에서 운영체제에 맞는 활성화 스크립트를 실행하세요.',
+  verifyTitle: '성공 여부 확인',
+  verifyLead: '`tos.py version`과 `tos.py check`를 실행해 설치된 도구와 SDK 서브모듈을 확인하세요.',
+  troubleTitle: '문제 해결',
+  nextLabel: '다음: 첫 펌웨어 빌드하기 →',
+};
+
 /* OS → install commands. Verified against docs/quick-start/enviroment-setup.md. */
 const OS_INSTALL = {
   Linux: `# Ubuntu / Debian (LTS 24 / 22 / 20 recommended)
@@ -256,11 +288,11 @@ function OsWidget({ c, kind }) {
 
 export default function SetupEnvironment() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const nextHref = locale === 'zh' ? '/zh/learn/build-first-firmware' : '/learn/build-first-firmware';
-  const docsHref = locale === 'zh' ? '/zh/docs/quick-start/enviroment-setup' : '/docs/quick-start/enviroment-setup';
-  const tosHref = locale === 'zh' ? '/zh/docs/tos-tools/tos-guide' : '/docs/tos-tools/tos-guide';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const nextHref = localePath(locale, '/learn/build-first-firmware');
+  const docsHref = localePath(locale, '/docs/quick-start/enviroment-setup');
+  const tosHref = localePath(locale, '/docs/tos-tools/tos-guide');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>
@@ -346,10 +378,10 @@ export default function SetupEnvironment() {
             {c.nextLabel}
           </a>
           <a className={shell.btnGhost} href={docsHref}>
-            {locale === 'zh' ? '完整环境文档 →' : 'Full environment docs →'}
+            {locale === 'ko' ? '전체 환경 설정 문서 →' : locale === 'zh' ? '完整环境文档 →' : 'Full environment docs →'}
           </a>
           <a className={shell.btnGhost} href={tosHref}>
-            {locale === 'zh' ? 'tos.py 命令参考 →' : 'tos.py command reference →'}
+            {locale === 'ko' ? 'tos.py 명령어 레퍼런스 →' : locale === 'zh' ? 'tos.py 命令参考 →' : 'tos.py command reference →'}
           </a>
         </p>
       </section>

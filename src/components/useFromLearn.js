@@ -1,5 +1,6 @@
 import { useLocation } from '@docusaurus/router'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { localePath } from '@site/src/utils/localePath'
 import { useEffect, useState } from 'react'
 
 /* =========================================================================
@@ -17,7 +18,8 @@ import { useEffect, useState } from 'react'
 export default function useFromLearn() {
   const location = useLocation()
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
+  const locale = i18n.currentLocale
+  const contentLocale = locale === 'zh' || locale === 'ko' ? locale : 'en'
 
   const [fromLearn, setFromLearn] = useState(false)
   useEffect(() => {
@@ -27,7 +29,8 @@ export default function useFromLearn() {
 
   return {
     fromLearn,
-    href: locale === 'zh' ? '/zh/learn' : '/learn',
-    label: locale === 'zh' ? '← 返回学习中心' : '← Back to Learn',
+    href: localePath(locale, '/learn'),
+    label:
+      contentLocale === 'zh' ? '← 返回学习中心' : contentLocale === 'ko' ? '← 학습 센터로 돌아가기' : '← Back to Learn',
   }
 }

@@ -9,8 +9,8 @@ import { tutorials } from '@site/src/data/tutorials';
  * Every community project (kind: 'markdown', category: 'community') renders
  * through this component. The per-project chrome — title, subtitle, meta —
  * lives in the manifest (src/data/tutorials.js), looked up by `id`. Each route
- * file (src/pages/learn/<id>.jsx) is therefore just the two static .md imports
- * (en + zh) plus a single <CommunityProjectPage> element.
+ * file (src/pages/learn/<id>.jsx) is therefore just the static .md imports
+ * (en + zh + ko) plus a single <CommunityProjectPage> element.
  *
  * Why static imports, not a runtime fetch: the markdown partials must be
  * statically imported so the mdx-loader compiles them into the build. A
@@ -22,11 +22,12 @@ import { tutorials } from '@site/src/data/tutorials';
  *   id      manifest id of the project (matches the /learn/<id> route)
  *   bodyEn  statically-imported en MDX module
  *   bodyZh  statically-imported zh MDX module (omit if no zh body → falls back to en)
+ *   bodyKo  statically-imported ko MDX module (omit if no ko body → falls back to en)
  * ========================================================================= */
 
-export default function CommunityProjectPage({ id, bodyEn, bodyZh }) {
+export default function CommunityProjectPage({ id, bodyEn, bodyZh, bodyKo }) {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
+  const locale = i18n.currentLocale === 'ko' ? 'ko' : i18n.currentLocale === 'zh' ? 'zh' : 'en';
 
   const list = tutorials[locale] || tutorials.en;
   const entry = list.find((it) => it.id === id) || tutorials.en.find((it) => it.id === id);
@@ -37,8 +38,8 @@ export default function CommunityProjectPage({ id, bodyEn, bodyZh }) {
     );
   }
 
-  const badge = locale === 'zh' ? '项目' : 'Project';
-  const Body = locale === 'zh' && bodyZh ? bodyZh : bodyEn;
+  const badge = locale === 'zh' ? '项目' : locale === 'ko' ? '프로젝트' : 'Project';
+  const Body = locale === 'ko' && bodyKo ? bodyKo : locale === 'zh' && bodyZh ? bodyZh : bodyEn;
 
   return (
     <TutorialShell

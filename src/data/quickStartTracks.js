@@ -110,3 +110,46 @@ export const quickStartTracks = {
     },
   ],
 }
+
+quickStartTracks.ko = [
+  {
+    ...quickStartTracks.en[0],
+    tagline: '그래픽 개발 환경',
+    blurb: '보드 카탈로그, 원클릭 빌드와 플래시, 펌웨어·클라우드 Agent·앱 패널을 아우르는 AI Agent를 제공합니다.',
+    entry: { ...quickStartTracks.en[0].entry, label: 'IDE로 시작하기' },
+    steps: quickStartTracks.en[0].steps.map((step, index) => ({
+      ...step,
+      title: [
+        'TuyaOpen IDE란?',
+        'IDE 설치',
+        '실습 1: Hello World',
+        '실습 2: your_chat_bot',
+        '실습 3: 미니 앱 패널',
+        '실습 4: Linux에서 Hello World',
+        'Vibe Coding 스킬',
+        'Agent 개발 가이드',
+        'IDE 피드백',
+      ][index],
+    })),
+  },
+  {
+    ...quickStartTracks.en[1],
+    tagline: '명령줄 및 툴체인',
+    blurb: '환경 설정, 빌드, 플래시, 인증과 페어링부터 제품 개발과 OTA까지 아홉 단계로 안내합니다.',
+    entry: { ...quickStartTracks.en[1].entry, label: 'CLI로 시작하기' },
+    steps: quickStartTracks.en[1].steps.map((step, index) => ({
+      ...step,
+      title: [
+        '개봉 및 시작',
+        '환경 설정',
+        '프로젝트 빌드',
+        '플래시 및 로그 확인',
+        '디바이스 인증',
+        '휴대폰과 페어링',
+        '디바이스 디버깅',
+        'Tuya 제품 개발',
+        '펌웨어 업그레이드',
+      ][index],
+    })),
+  },
+]

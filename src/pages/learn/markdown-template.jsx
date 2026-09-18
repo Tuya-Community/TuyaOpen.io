@@ -3,6 +3,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import TutorialShell from '@site/src/components/TutorialShell';
 import BodyEn from '@site/docs/tutorials/sample-getting-started.md';
 import BodyZh from '@site/docs/tutorials/sample-getting-started.md';
+import BodyKo from '@site/i18n/ko/docusaurus-plugin-content-docs/current/tutorials/sample-getting-started.md';
 
 /* =========================================================================
  * MARKDOWN TUTORIAL TEMPLATE  (kind: 'markdown')
@@ -43,13 +44,20 @@ const content = {
       '整个页面正文都是一个 Markdown 文件，在共享的教程外壳中渲染。与交互式教程相同的主视觉、排版与暗色模式 —— 只是用 .md 编写。',
     meta: ['入门', '模板'],
   },
+  ko: {
+    badge: '마크다운 튜토리얼',
+    title: '마크다운 튜토리얼 — 템플릿',
+    subtitle:
+      '이 페이지의 본문은 공유 튜토리얼 셸 안에서 렌더링되는 Markdown 파일입니다. 인터랙티브 튜토리얼과 같은 영웅 영역, 글꼴과 다크 모드를 사용하면서 .md로 작성합니다.',
+    meta: ['초급', '템플릿'],
+  },
 };
 
 export default function MarkdownTemplate() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
+  const locale = i18n.currentLocale === 'ko' ? 'ko' : i18n.currentLocale === 'zh' ? 'zh' : 'en';
   const c = content[locale];
-  const Body = locale === 'zh' ? BodyZh : BodyEn;
+  const Body = locale === 'ko' ? BodyKo : locale === 'zh' ? BodyZh : BodyEn;
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} markdown>

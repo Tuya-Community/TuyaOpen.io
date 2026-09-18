@@ -1,13 +1,15 @@
 ---
 title: "Install TuyaOpen IDE"
 description: "Install Git, then add the TuyaOpen IDE extension to VS Code or Cursor — by letting an AI coding agent do it, or from the official .vsix — then verify it is enabled."
-sidebar_label: "Install TuyaOpen IDE"
+sidebar_label: "02 Install TuyaOpen IDE"
 sidebar_position: 2
 keywords:
   - TuyaOpen IDE
   - TuyaOpen
   - embedded development
 ---
+
+import TuyaOpenIdeAgentInstallPrompt from '@site/src/components/TuyaOpenIdeAgentInstallPrompt'
 
 ## Install Git {/* #install-git */}
 
@@ -35,20 +37,14 @@ TuyaOpen IDE is an extension for **VS Code** or **Cursor**. Install one of these
 | **Cursor** | https://cursor.com | Ships with stronger built-in AI. |
 
 :::warning
-Both the VS Code Marketplace and Open VSX search are temporarily unavailable. Install via an AI coding agent, or download the `.vsix` from the official site below — do not expect to find it by searching inside the editor.
+The TuyaOpen IDE listing is available on [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE). The VS Code Marketplace may still be unavailable, so you can also install it through an AI coding agent or download the `.vsix` from the official site below.
 :::
 
 ## Method 1: Let an AI agent install it (fastest) {/* #ai-agent-install */}
 
 Paste the prompt below into **Claude Code, Cursor, Codex, or any coding agent that can run shell commands**. It downloads the latest `.vsix` and installs the extension for you.
 
-```text
-Install the TuyaOpen IDE extension. Download the latest .vsix from
-https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.5/file/TuyaOpen.TuyaOpenIDE-0.1.5.vsix
-then install it with `code --install-extension <path-to-vsix>` (VS Code) or
-`cursor --install-extension <path-to-vsix>` (Cursor), and reload the editor
-window so the extension activates.
-```
+<TuyaOpenIdeAgentInstallPrompt locale="en" />
 
 **Steps:**
 

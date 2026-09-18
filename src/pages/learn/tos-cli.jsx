@@ -1,6 +1,7 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { localePath } from '@site/src/utils/localePath';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
 import RichText from './RichText';
@@ -242,6 +243,33 @@ const content = {
   },
 };
 
+content.ko = {
+  ...content.zh,
+  badge: 'TuyaOpen SDK',
+  title: 'tos.py 명령어 레퍼런스',
+  subtitle: 'tos.py는 TuyaOpen 프로젝트의 구성, 빌드, 플래시와 로그 모니터링을 위한 CLI입니다. 명령을 용도별로 확인하세요.',
+  meta: ['고급', '레퍼런스', 'CLI'],
+  nav: [
+    { id: 'overview', label: '개요' },
+    { id: 'setup', label: '환경' },
+    { id: 'config', label: '구성' },
+    { id: 'build', label: '빌드' },
+    { id: 'device', label: '플래시 및 모니터링' },
+    { id: 'workflow', label: '워크플로' },
+    { id: 'global', label: '전역 옵션' },
+  ],
+  overviewTitle: 'tos.py란?',
+  overviewLead: 'TuyaOpen을 활성화하면 `tos.py`가 PATH에 추가됩니다. 프로젝트 구성, 빌드 시스템, 플래시와 로그 모니터링을 하위 명령으로 제공합니다.',
+  setupTitle: '환경 및 검사',
+  configTitle: '프로젝트 구성',
+  buildTitle: '빌드 및 정리',
+  deviceTitle: '플래시 및 모니터링',
+  workflowTitle: '워크플로 및 스캐폴딩',
+  globalTitle: '전역 옵션',
+  globalLead: '다음 옵션은 모든 하위 명령에 적용됩니다.',
+  docsBtn: 'tos.py 전체 문서 →',
+};
+
 function CmdEntry({ entry }) {
   return (
     <div style={{ marginBottom: '1.75rem' }}>
@@ -283,9 +311,9 @@ function CmdGroup({ title, intro, cmds, id }) {
 
 export default function TosCli() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const docsHref = locale === 'zh' ? '/zh/docs/tos-tools/tos-guide' : '/docs/tos-tools/tos-guide';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const docsHref = localePath(locale, '/docs/tos-tools/tos-guide');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>

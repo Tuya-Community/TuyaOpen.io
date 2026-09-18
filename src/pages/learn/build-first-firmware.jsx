@@ -1,6 +1,7 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { clsx } from 'clsx';
+import { localePath } from '@site/src/utils/localePath';
 import TutorialShell from '@site/src/components/TutorialShell';
 import shell from '@site/src/components/TutorialShell/styles.module.css';
 import RichText from './RichText';
@@ -217,6 +218,36 @@ Choice config file:`,
   },
 };
 
+content.ko = {
+  ...content.zh,
+  badge: 'TuyaOpen SDK',
+  title: '첫 펌웨어 빌드하기',
+  subtitle: '개발 보드에 맞게 switch_demo 프로젝트를 설정하고, 장치에 플래시할 bin 펌웨어를 tos.py로 빌드합니다.',
+  meta: ['입문', '8분', '빌드'],
+  nav: [
+    { id: 'what', label: '완료 후 상태' },
+    { id: 'project', label: '프로젝트 선택' },
+    { id: 'config', label: '구성' },
+    { id: 'build', label: '빌드' },
+    { id: 'clean', label: '정리' },
+    { id: 'trouble', label: '문제 해결' },
+  ],
+  whatTitle: '완료 후 상태',
+  whatLead: '프로젝트의 `.build/bin/` 디렉터리에 바로 플래시할 수 있는 `switch_demo_QIO_1.0.0.bin` 펌웨어가 생성됩니다.',
+  projectTitle: '프로젝트 선택',
+  projectLead: '`apps/`와 `examples/`에서 애플리케이션을 빌드합니다. 여기서는 클라우드에 연결되는 간단한 스위치인 `switch_demo`를 사용합니다.',
+  configTitle: '프로젝트 구성',
+  configLead: '`tos.py config choice`로 검증된 보드 구성을 확인하고 하드웨어에 맞는 항목을 선택하세요.',
+  configMapTitle: '주요 개발 보드 → 구성',
+  configMapLead: '사용 중인 개발 보드에 맞는 구성을 선택하세요.',
+  buildTitle: '빌드',
+  buildLead: '프로젝트 디렉터리에서 `tos.py build`를 실행하세요. 실패 원인을 확인하려면 `-v`를 추가합니다.',
+  cleanTitle: '빌드 정리',
+  cleanLead: '`tos.py clean`은 캐시를 정리하고, `-f`는 `.build` 디렉터리까지 삭제하는 전체 정리를 수행합니다.',
+  troubleTitle: '문제 해결',
+  nextLabel: '다음: 플래시하고 모니터링하기 →',
+};
+
 function ConfigTable({ rows }) {
   return (
     <div
@@ -262,10 +293,10 @@ function ConfigTable({ rows }) {
 
 export default function BuildFirstFirmware() {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const c = content[locale];
-  const nextHref = locale === 'zh' ? '/zh/learn/flash-and-monitor' : '/learn/flash-and-monitor';
-  const docsHref = locale === 'zh' ? '/zh/docs/quick-start/project-compilation' : '/docs/quick-start/project-compilation';
+  const locale = i18n.currentLocale;
+  const c = content[locale === 'ko' ? 'ko' : locale === 'zh' ? 'zh' : 'en'];
+  const nextHref = localePath(locale, '/learn/flash-and-monitor');
+  const docsHref = localePath(locale, '/docs/quick-start/project-compilation');
 
   return (
     <TutorialShell badge={c.badge} title={c.title} subtitle={c.subtitle} meta={c.meta} nav={c.nav}>
@@ -341,7 +372,7 @@ export default function BuildFirstFirmware() {
             {c.nextLabel}
           </a>
           <a className={shell.btnGhost} href={docsHref}>
-            {locale === 'zh' ? '完整编译文档 →' : 'Full build docs →'}
+            {locale === 'ko' ? '전체 빌드 문서 →' : locale === 'zh' ? '完整编译文档 →' : 'Full build docs →'}
           </a>
         </p>
       </section>

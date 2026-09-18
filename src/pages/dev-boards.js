@@ -6,22 +6,69 @@ import Layout from '@theme/Layout'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 import boardsData from '../data/devBoards'
+import { devBoardsKo } from '../data/devBoardsKo'
+import { devBoardsKoContent } from '../data/devBoardsKoContent'
 import styles from './dev-boards.module.css'
 
 /* ------------------------------------------------------------------ */
 /* i18n helpers                                                        */
 /* ------------------------------------------------------------------ */
 
+let CURRENT_BOARD_LOCALE = 'en'
+
 /** Resolve a manifest LocalizedString (string | {locale}) for a site locale. */
 function pick(field, locale) {
   if (field == null) return undefined
   if (typeof field === 'string') return field
   if (locale === 'zh') return field['zh-CN'] || field['zh'] || field['en'] || firstVal(field)
+  if (locale === 'ko') return field.ko || field.en || firstVal(field)
   return field['en'] || firstVal(field)
+}
+
+function ui(en, zh) {
+  if (CURRENT_BOARD_LOCALE !== 'ko') return CURRENT_BOARD_LOCALE === 'zh' ? zh : en
+  if (devBoardsKo[en]) return devBoardsKo[en]
+  const view = en.match(/^View (.+) details$/)
+  if (view) return `${view[1]} 세부 정보 보기`
+  const chipset = en.match(/^View (.+) chipset details$/)
+  if (chipset) return `${chipset[1]} 칩셋 세부 정보 보기`
+  const boardCount = en.match(/^Boards on (.+) \((\d+)\)$/)
+  if (boardCount) return `${boardCount[1]} 기반 개발 보드 (${boardCount[2]})`
+  const pinCount = en.match(/^Expansion Pins \(GPIO\) — (\d+)$/)
+  if (pinCount) return `확장 핀 (GPIO) — ${pinCount[1]}`
+  const chipPinCount = en.match(/^Chip pinout — (\d+)$/)
+  if (chipPinCount) return `칩 핀 배치 — ${chipPinCount[1]}`
+  return en
 }
 function firstVal(obj) {
   for (const k of Object.keys(obj)) if (obj[k]) return obj[k]
   return undefined
+}
+
+function localizeBoard(board) {
+  if (CURRENT_BOARD_LOCALE !== 'ko') return board
+  const copy = devBoardsKoContent.boards[board.id]
+  const platformCopy = devBoardsKoContent.platforms[board.variantId || board.platformId]
+  if (!copy && !platformCopy) return board
+  return {
+    ...board,
+    ...(copy || {}),
+    ...(platformCopy?.name ? { platform: platformCopy.name } : {}),
+  }
+}
+
+function localizeVariant(variant) {
+  if (CURRENT_BOARD_LOCALE !== 'ko') return variant
+  const copy = devBoardsKoContent.platforms[variant.id]
+  if (!copy) return variant
+  return { ...variant, name: copy.name, summary: copy.summary }
+}
+
+function localizePlatform(platform) {
+  if (CURRENT_BOARD_LOCALE !== 'ko') return platform
+  const copy = devBoardsKoContent.platforms[platform.id]
+  if (!copy) return platform
+  return { ...platform, name: copy.name }
 }
 
 /** Peripheral category labels + display order (board detail). */
@@ -40,7 +87,7 @@ const PERIPHERAL_CATEGORIES = [
 ]
 function categoryLabel(id, zh) {
   const c = PERIPHERAL_CATEGORIES.find((c) => c.id === id)
-  return c ? (zh ? c.zh : c.en) : id
+  return c ? ui(c.en, c.zh) : id
 }
 
 /** Tag dot color by manifest tag category — stays on the violet/orange brand. */
@@ -181,7 +228,7 @@ const GLOW = {
 
 function Tag({ tagId, tags, zh }) {
   const t = tags[tagId]
-  const label = t ? (zh ? t.zh : t.en) : tagId
+  const label = ui(t?.en || tagId, t?.zh || tagId)
   const color = (t && TAG_CATEGORY_COLOR[t.category]) || '#7c5cff'
   return (
     <span className={styles.tag}>
@@ -235,7 +282,7 @@ function BoardCard({ board, tags, zh, onSelect }) {
           e.preventDefault()
           onSelect(board.id)
         }}
-        aria-label={zh ? `查看 ${board.name} 详情` : `View ${board.name} details`}
+        aria-label={ui(`View ${board.name} details`, `查看 ${board.name} 详情`)}
       >
         <div className={styles.boardCardThumb}>
           {board.image ? (
@@ -259,7 +306,7 @@ function BoardCard({ board, tags, zh, onSelect }) {
           )}
         </div>
         <div className={styles.boardCardCta}>
-          <span>{zh ? '查看' : 'View'}</span>
+          <span>{ui('View', '查看')}</span>
           <ArrowRight className={styles.inlineArrow} />
         </div>
       </a>
@@ -272,10 +319,10 @@ function BoardCard({ board, tags, zh, onSelect }) {
 /* ------------------------------------------------------------------ */
 
 function PlatformGroup({ variant, boards, tags, zh, onSelectBoard, onSelectPlatform }) {
-  const name = variant.name ? (zh ? variant.name.zh : variant.name.en) : variant.id
-  const summary = variant.summary ? (zh ? variant.summary.zh : variant.summary.en) : null
+  const name = variant.name ? pick(variant.name, CURRENT_BOARD_LOCALE) : variant.id
+  const summary = variant.summary ? pick(variant.summary, CURRENT_BOARD_LOCALE) : null
   const hasDetail = Boolean(variant.detailUrl)
-  const moreLabel = zh ? '了解更多芯片' : 'More about chipset'
+  const moreLabel = ui('More about chipset', '了解更多芯片')
   return (
     <section className={styles.platformGroup}>
       <header className={styles.platformHead}>
@@ -294,14 +341,14 @@ function PlatformGroup({ variant, boards, tags, zh, onSelectBoard, onSelectPlatf
         </div>
         <div className={styles.platformHeadRight}>
           <span className={styles.platformCount}>
-            {boards.length} {zh ? '块开发板' : 'boards'}
+            {boards.length} {ui('boards', '块开发板')}
           </span>
           {hasDetail ? (
             <button
               type="button"
               className={styles.platformChipsetLink}
               onClick={() => onSelectPlatform(variant.id)}
-              aria-label={zh ? `查看 ${name} 芯片详情` : `View ${name} chipset details`}
+              aria-label={ui(`View ${name} chipset details`, `查看 ${name} 芯片详情`)}
             >
               {moreLabel}
               <ArrowRight className={styles.inlineArrow} />
@@ -361,24 +408,24 @@ function PeripheralCard({ p, zh }) {
   return (
     <div className={styles.periphCard}>
       <div className={styles.periphHead}>
-        <span className={styles.periphName}>{pick(p.name, zh ? 'zh' : 'en')}</span>
+        <span className={styles.periphName}>{pick(p.name, CURRENT_BOARD_LOCALE)}</span>
         {p.model && <span className={styles.periphModel}>{p.model}</span>}
       </div>
       <div className={styles.periphMeta}>
         {p.interface && <span className={styles.chip}>{p.interface}</span>}
         {p.mounting && (
           <span className={styles.chip}>
-            {p.mounting === 'onboard' ? (zh ? '板载' : 'Onboard') : zh ? '配件' : 'Accessory'}
+            {p.mounting === 'onboard' ? ui('Onboard', '板载') : ui('Accessory', '配件')}
           </span>
         )}
-        {pinCount > 0 && <span className={styles.chip}>{zh ? `${pinCount} 引脚` : `${pinCount} pins`}</span>}
+        {pinCount > 0 && <span className={styles.chip}>{ui(`${pinCount} pins`, `${pinCount} 引脚`)}</span>}
         {p.width && p.height && (
           <span className={styles.chip}>
             {p.width}×{p.height}
           </span>
         )}
       </div>
-      {p.note && <p className={styles.periphNote}>{pick(p.note, zh ? 'zh' : 'en')}</p>}
+      {p.note && <p className={styles.periphNote}>{pick(p.note, CURRENT_BOARD_LOCALE)}</p>}
     </div>
   )
 }
@@ -485,7 +532,7 @@ function BoardDetail({ board, tags, zh, onBack }) {
     ...categories.filter((id) => !PERIPHERAL_CATEGORIES.find((c) => c.id === id)),
   ]
   const pins = detail?.expansionPins || []
-  const loc = zh ? 'zh' : 'en'
+  const loc = CURRENT_BOARD_LOCALE
 
   // Chip spec data from platform spec JSON
   const conn = platformSpec?.connectivity || {}
@@ -523,7 +570,7 @@ function BoardDetail({ board, tags, zh, onBack }) {
     <div className={styles.detail}>
       <button type="button" className={styles.backLink} onClick={onBack} ref={backRef}>
         <ArrowBack />
-        <span>{zh ? '返回开发板列表' : 'Back to boards'}</span>
+        <span>{ui('Back to boards', '返回开发板列表')}</span>
       </button>
 
       {/* Hero */}
@@ -537,7 +584,9 @@ function BoardDetail({ board, tags, zh, onBack }) {
             )}
           </div>
           <div className={styles.detailInfo}>
-            {board.platform && <span className={styles.detailPlatform}>{board.platform}</span>}
+            {board.platform && !board.name.toLowerCase().includes(board.platform.toLowerCase()) && (
+              <span className={styles.detailPlatform}>{board.platform}</span>
+            )}
             <h1 className={styles.detailTitle}>{board.name}</h1>
             {board.manufacturer && <p className={styles.detailMfr}>{board.manufacturer}</p>}
             {board.summary && <p className={styles.detailSummary}>{board.summary}</p>}
@@ -554,48 +603,45 @@ function BoardDetail({ board, tags, zh, onBack }) {
 
       {/* Links */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>{zh ? '资料与购买' : 'Resources & Purchase'}</h2>
+        <h2 className={styles.sectionTitle}>{ui('Resources & Purchase', '资料与购买')}</h2>
         <div className={styles.linkList}>
-          <LinkItem href={pick(links.datasheet, loc)} icon={<DocIcon />} label={zh ? '数据手册' : 'Datasheet'} />
-          <LinkItem href={links.schematic} icon={<ChipIcon />} label={zh ? '原理图' : 'Schematic'} />
-          <LinkItem href={pick(links.productPage, loc)} icon={<CartIcon />} label={zh ? '购买' : 'Buy'} />
-          <LinkItem href={links['3dModel']} icon={<BoxIcon />} label={zh ? '3D 模型' : '3D Model'} />
-          <LinkItem href={detail?.source?.repo} icon={<CodeIcon />} label={zh ? '源码' : 'Source'} />
+          <LinkItem href={pick(links.datasheet, loc)} icon={<DocIcon />} label={ui('Datasheet', '数据手册')} />
+          <LinkItem href={links.schematic} icon={<ChipIcon />} label={ui('Schematic', '原理图')} />
+          <LinkItem href={pick(links.productPage, loc)} icon={<CartIcon />} label={ui('Buy', '购买')} />
+          <LinkItem href={links['3dModel']} icon={<BoxIcon />} label={ui('3D Model', '3D 模型')} />
+          <LinkItem href={detail?.source?.repo} icon={<CodeIcon />} label={ui('Source', '源码')} />
         </div>
       </section>
 
       {/* Loading / error states for the lazy detail */}
-      {loading && <div className={styles.statusBox}>{zh ? '加载板卡详情…' : 'Loading board details…'}</div>}
-      {error && <div className={styles.statusBox}>{zh ? '无法加载板卡详情。' : 'Could not load board details.'}</div>}
+      {loading && <div className={styles.statusBox}>{ui('Loading board details…', '加载板卡详情…')}</div>}
+      {error && <div className={styles.statusBox}>{ui('Could not load board details.', '无法加载板卡详情。')}</div>}
 
       {/* Chip Platform Overview */}
       {platformSpec && (
         <>
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>{zh ? '芯片概述' : 'Chip Overview'}</h2>
+            <h2 className={styles.sectionTitle}>{ui('Chip Overview', '芯片概述')}</h2>
             <div className={styles.specGrid}>
-              <SpecTile label={zh ? '架构' : 'Architecture'} value={prettyArch(platformSpec.arch)} />
+              <SpecTile label={ui('Architecture', '架构')} value={prettyArch(platformSpec.arch)} />
               <SpecTile
-                label={zh ? 'Flash 接口' : 'Flash interface'}
+                label={ui('Flash interface', 'Flash 接口')}
                 value={platformSpec.flashInterface ? platformSpec.flashInterface.toUpperCase() : null}
               />
               <SpecTile label="SRAM" value={formatBytes(mem.sramBytes)} />
               <SpecTile label="ROM" value={formatBytes(mem.romBytes)} />
-              <SpecTile label={zh ? 'Flash 最大' : 'Flash max'} value={formatBytes(mem.flashMaxBytes)} />
+              <SpecTile label={ui('Flash max', 'Flash 最大')} value={formatBytes(mem.flashMaxBytes)} />
               {mem.psramMaxBytes > 0 && (
-                <SpecTile label={zh ? 'PSRAM 最大' : 'PSRAM max'} value={formatBytes(mem.psramMaxBytes)} />
+                <SpecTile label={ui('PSRAM max', 'PSRAM 最大')} value={formatBytes(mem.psramMaxBytes)} />
               )}
               <SpecTile label="VDD" value={pwr.vdd ? `${pwr.vdd.min}–${pwr.vdd.max} ${pwr.vdd.unit}` : null} />
+              <SpecTile label={ui('Deep sleep', '深度睡眠电流')} value={pwr.deepSleep ? `${pwr.deepSleep} μA` : null} />
               <SpecTile
-                label={zh ? '深度睡眠电流' : 'Deep sleep'}
-                value={pwr.deepSleep ? `${pwr.deepSleep} μA` : null}
-              />
-              <SpecTile
-                label={zh ? '工作温度' : 'Operating temp'}
+                label={ui('Operating temp', '工作温度')}
                 value={pwr.temp ? `${pwr.temp.min}～${pwr.temp.max} ${pwr.temp.unit}` : null}
               />
               <SpecTile
-                label={zh ? '工作频率' : 'CPU speed'}
+                label={ui('CPU speed', '工作频率')}
                 value={
                   platformSpec.cpu
                     ? `${platformSpec.cpu.speedMin == null ? '' : `${platformSpec.cpu.speedMin}–`}${platformSpec.cpu.speedMax} MHz`
@@ -608,7 +654,7 @@ function BoardDetail({ board, tags, zh, onBack }) {
           {/* Wireless */}
           {(conn.wifi || conn.ble) && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>{zh ? '无线' : 'Wireless'}</h2>
+              <h2 className={styles.sectionTitle}>{ui('Wireless', '无线')}</h2>
               <div className={styles.specGrid}>
                 {conn.wifi && (
                   <div className={styles.wirelessSpec}>
@@ -629,7 +675,7 @@ function BoardDetail({ board, tags, zh, onBack }) {
           {/* Chip Peripherals */}
           {periphEntries.length > 0 && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>{zh ? '芯片外设' : 'Chip Peripherals'}</h2>
+              <h2 className={styles.sectionTitle}>{ui('Chip Peripherals', '芯片外设')}</h2>
               <div className={styles.chipPeriphGrid}>
                 {periphEntries.map((e) => (
                   <div key={e.key} className={styles.periphTile}>
@@ -651,7 +697,7 @@ function BoardDetail({ board, tags, zh, onBack }) {
       {/* Board Peripherals */}
       {detail && orderedCategories.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>{zh ? '板载外设' : 'Board Peripherals'}</h2>
+          <h2 className={styles.sectionTitle}>{ui('Board Peripherals', '板载外设')}</h2>
           {orderedCategories.map((cat) => (
             <details key={cat} className={styles.periphGroup} open>
               <summary className={styles.periphGroupSummary}>
@@ -673,14 +719,14 @@ function BoardDetail({ board, tags, zh, onBack }) {
         <section className={styles.section}>
           <details className={styles.pinoutDetails} open>
             <summary className={styles.sectionTitle}>
-              {zh ? `扩展引脚 (GPIO) — ${pins.length}` : `Expansion Pins (GPIO) — ${pins.length}`}
+              {ui(`Expansion Pins (GPIO) — ${pins.length}`, `扩展引脚 (GPIO) — ${pins.length}`)}
             </summary>
             <div className={styles.pinTableWrap}>
               <table className={styles.pinTable}>
                 <thead>
                   <tr>
-                    <th>{zh ? 'GPIO' : 'GPIO'}</th>
-                    <th>{zh ? '功能' : 'Functions'}</th>
+                    <th>{ui('GPIO', 'GPIO')}</th>
+                    <th>{ui('Functions', '功能')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -757,8 +803,8 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onBack])
 
-  const name = variant.name ? (zh ? variant.name.zh : variant.name.en) : variant.id
-  const summary = variant.summary ? (zh ? variant.summary.zh : variant.summary.en) : null
+  const name = variant.name ? pick(variant.name, CURRENT_BOARD_LOCALE) : variant.id
+  const summary = variant.summary ? pick(variant.summary, CURRENT_BOARD_LOCALE) : null
 
   const conn = detail?.connectivity || {}
   const mem = detail?.memory || {}
@@ -785,7 +831,7 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
     <div className={styles.detail}>
       <button type="button" className={styles.backLink} onClick={onBack} ref={backRef}>
         <ArrowBack />
-        <span>{zh ? '返回开发板列表' : 'Back to boards'}</span>
+        <span>{ui('Back to boards', '返回开发板列表')}</span>
       </button>
 
       {/* Hero */}
@@ -801,53 +847,53 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
             )}
           </div>
           <div className={styles.detailInfo}>
-            <span className={styles.detailPlatform}>{zh ? '芯片平台' : 'Chip platform'}</span>
+            <span className={styles.detailPlatform}>{ui('Chip platform', '芯片平台')}</span>
             <h1 className={styles.detailTitle}>{name}</h1>
             {summary && <p className={styles.detailSummary}>{summary}</p>}
             <div className={styles.connBadges}>
               {conn.wifi && <span className={styles.connBadge}>Wi-Fi</span>}
-              {conn.ble && <span className={styles.connBadge}>{zh ? '蓝牙 LE' : 'Bluetooth LE'}</span>}
-              {conn.ethernet && <span className={styles.connBadge}>{zh ? '以太网' : 'Ethernet'}</span>}
-              {conn.cellular && <span className={styles.connBadge}>{zh ? '蜂窝网络' : 'Cellular'}</span>}
+              {conn.ble && <span className={styles.connBadge}>{ui('Bluetooth LE', '蓝牙 LE')}</span>}
+              {conn.ethernet && <span className={styles.connBadge}>{ui('Ethernet', '以太网')}</span>}
+              {conn.cellular && <span className={styles.connBadge}>{ui('Cellular', '蜂窝网络')}</span>}
             </div>
           </div>
         </div>
       </BorderGlow>
 
-      {loading && <div className={styles.statusBox}>{zh ? '加载芯片规格…' : 'Loading chip specs…'}</div>}
-      {error && <div className={styles.statusBox}>{zh ? '无法加载芯片规格。' : 'Could not load chip specs.'}</div>}
+      {loading && <div className={styles.statusBox}>{ui('Loading chip specs…', '加载芯片规格…')}</div>}
+      {error && <div className={styles.statusBox}>{ui('Could not load chip specs.', '无法加载芯片规格。')}</div>}
 
       {detail && (
         <>
           {/* Overview */}
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>{zh ? '概述' : 'Overview'}</h2>
+            <h2 className={styles.sectionTitle}>{ui('Overview', '概述')}</h2>
             <div className={styles.specGrid}>
-              <SpecTile label={zh ? '架构' : 'Architecture'} value={prettyArch(detail.arch)} />
+              <SpecTile label={ui('Architecture', '架构')} value={prettyArch(detail.arch)} />
               <SpecTile
-                label={zh ? 'Flash 接口' : 'Flash interface'}
+                label={ui('Flash interface', 'Flash 接口')}
                 value={detail.flashInterface ? detail.flashInterface.toUpperCase() : null}
               />
               <SpecTile label="SRAM" value={formatBytes(mem.sramBytes)} />
               <SpecTile label="ROM" value={formatBytes(mem.romBytes)} />
-              <SpecTile label={zh ? 'Flash 最大' : 'Flash max'} value={formatBytes(mem.flashMaxBytes)} />
+              <SpecTile label={ui('Flash max', 'Flash 最大')} value={formatBytes(mem.flashMaxBytes)} />
               {mem.psramMaxBytes > 0 && (
-                <SpecTile label={zh ? 'PSRAM 最大' : 'PSRAM max'} value={formatBytes(mem.psramMaxBytes)} />
+                <SpecTile label={ui('PSRAM max', 'PSRAM 最大')} value={formatBytes(mem.psramMaxBytes)} />
               )}
               <SpecTile label="VDD" value={pwr.vdd ? `${pwr.vdd.min}–${pwr.vdd.max} ${pwr.vdd.unit}` : null} />
               <SpecTile
-                label={zh ? '深度睡眠电流' : 'Deep sleep'}
+                label={ui('Deep sleep', '深度睡眠电流')}
                 value={pwr.deepSleepCurrent ? `${pwr.deepSleepCurrent.typical} ${pwr.deepSleepCurrent.unit}` : null}
               />
               {pwr.activeCurrent && conn.wifi && (
                 <SpecTile
-                  label={zh ? '活跃 (Wi-Fi)' : 'Active (Wi-Fi)'}
+                  label={ui('Active (Wi-Fi)', '活跃 (Wi-Fi)')}
                   value={`${pwr.activeCurrent.wifi} ${pwr.activeCurrent.unit}`}
                 />
               )}
               {pwr.activeCurrent && conn.ble && (
                 <SpecTile
-                  label={zh ? '活跃 (BLE)' : 'Active (BLE)'}
+                  label={ui('Active (BLE)', '活跃 (BLE)')}
                   value={`${pwr.activeCurrent.ble} ${pwr.activeCurrent.unit}`}
                 />
               )}
@@ -857,12 +903,12 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
           {/* Wireless */}
           {(wifiSpec || bleSpec) && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>{zh ? '无线' : 'Wireless'}</h2>
+              <h2 className={styles.sectionTitle}>{ui('Wireless', '无线')}</h2>
               <div className={styles.specGrid}>
-                {wifiSpec && <SpecTile label={zh ? 'Wi-Fi 标准' : 'Wi-Fi standard'} value={wifiSpec.standard} />}
-                {wifiSpec?.bands && <SpecTile label={zh ? '频段' : 'Bands'} value={wifiSpec.bands.join(', ')} />}
-                {wifiSpec?.modes && <SpecTile label={zh ? '模式' : 'Modes'} value={wifiSpec.modes.join(', ')} />}
-                {bleSpec && <SpecTile label={zh ? '蓝牙版本' : 'Bluetooth'} value={`BLE ${bleSpec.version}`} />}
+                {wifiSpec && <SpecTile label={ui('Wi-Fi standard', 'Wi-Fi 标准')} value={wifiSpec.standard} />}
+                {wifiSpec?.bands && <SpecTile label={ui('Bands', '频段')} value={wifiSpec.bands.join(', ')} />}
+                {wifiSpec?.modes && <SpecTile label={ui('Modes', '模式')} value={wifiSpec.modes.join(', ')} />}
+                {bleSpec && <SpecTile label={ui('Bluetooth', '蓝牙版本')} value={`BLE ${bleSpec.version}`} />}
               </div>
             </section>
           )}
@@ -870,7 +916,7 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
           {/* Peripherals */}
           {periphEntries.length > 0 && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>{zh ? '外设' : 'Peripherals'}</h2>
+              <h2 className={styles.sectionTitle}>{ui('Peripherals', '外设')}</h2>
               <div className={styles.chipPeriphGrid}>
                 {periphEntries.map((e) => (
                   <div key={e.key} className={styles.periphTile}>
@@ -892,17 +938,17 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
             <section className={styles.section}>
               <details className={styles.pinoutDetails}>
                 <summary className={styles.sectionTitle}>
-                  {zh ? `芯片引脚 — ${pinout.length}` : `Chip pinout — ${pinout.length}`}
+                  {ui(`Chip pinout — ${pinout.length}`, `芯片引脚 — ${pinout.length}`)}
                 </summary>
                 <div className={styles.pinTableWrap}>
                   <table className={styles.pinTable}>
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>{zh ? '名称' : 'Name'}</th>
+                        <th>{ui('Name', '名称')}</th>
                         <th>GPIO</th>
-                        <th>{zh ? '类型' : 'Type'}</th>
-                        <th>{zh ? '功能' : 'Functions'}</th>
+                        <th>{ui('Type', '类型')}</th>
+                        <th>{ui('Functions', '功能')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -933,7 +979,7 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
       {/* Boards on this chip */}
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>
-          {zh ? `基于 ${name} 的开发板 (${boards.length})` : `Boards on ${name} (${boards.length})`}
+          {ui(`Boards on ${name} (${boards.length})`, `基于 ${name} 的开发板 (${boards.length})`)}
         </h2>
         <div className={styles.boardList}>
           {boards.map((board) => (
@@ -952,10 +998,12 @@ function PlatformDetail({ variant, boards, tags, zh, onSelectBoard, onBack }) {
 export default function DevBoardsPage() {
   const { i18n } = useDocusaurusContext()
   const locale = i18n.currentLocale
+  CURRENT_BOARD_LOCALE = locale
   const zh = locale === 'zh'
-  const boards = boardsData.boards[locale] || boardsData.boards.en
-  const platforms = boardsData.platforms
-  const variants = boardsData.variants || []
+  const baseBoards = boardsData.boards[locale] || boardsData.boards.en
+  const boards = locale === 'ko' ? baseBoards.map(localizeBoard) : baseBoards
+  const platforms = locale === 'ko' ? boardsData.platforms.map(localizePlatform) : boardsData.platforms
+  const variants = (boardsData.variants || []).map(localizeVariant)
   const tags = boardsData.tags
 
   const [platformFilter, setPlatformFilter] = useState('all')
@@ -1060,17 +1108,18 @@ export default function DevBoardsPage() {
   const platformVariantObj = platformVariant ? variants.find((v) => v.id === platformVariant) : null
   const platformBoards = platformVariant ? boards.filter((b) => (b.variantId || b.platformId) === platformVariant) : []
 
-  const title = zh ? '开发板' : 'Dev Boards'
-  const description = zh
-    ? '浏览 TuyaOpen 支持的开发板与芯片模组：规格、外设、引脚与购买链接。'
-    : 'Browse TuyaOpen-supported dev boards and chip modules: specs, peripherals, pinouts, and purchase links.'
+  const title = ui('Dev Boards', '开发板')
+  const description = ui(
+    'Browse TuyaOpen-supported dev boards and chip modules: specs, peripherals, pinouts, and purchase links.',
+    '浏览 TuyaOpen 支持的开发板与芯片模组：规格、外设、引脚与购买链接。',
+  )
 
   const menuItems = useMemo(
     () => [
-      { key: 'all', text: zh ? '全部' : 'All', count: boards.length },
+      { key: 'all', text: ui('All', '全部'), count: boards.length },
       ...platforms.map((p) => ({
         key: p.id,
-        text: zh ? p.name.zh : p.name.en,
+        text: pick(p.name, locale),
         count: p.count,
       })),
     ],
@@ -1078,14 +1127,7 @@ export default function DevBoardsPage() {
   )
 
   const activePlatform = platformFilter === 'all' ? null : platforms.find((p) => p.id === platformFilter)
-  const activeLabel =
-    platformFilter === 'all'
-      ? zh
-        ? '全部开发板'
-        : 'All boards'
-      : zh
-        ? activePlatform?.name.zh
-        : activePlatform?.name.en
+  const activeLabel = platformFilter === 'all' ? ui('All boards', '全部开发板') : pick(activePlatform?.name, locale)
 
   return (
     <Layout title={title} description={description}>
@@ -1110,7 +1152,7 @@ export default function DevBoardsPage() {
             <header className={styles.hero}>
               <div className={styles.heroGlow} aria-hidden />
               <div className={styles.heroInner}>
-                <span className={styles.heroBadge}>{zh ? '硬件' : 'Hardware'}</span>
+                <span className={styles.heroBadge}>{ui('Hardware', '硬件')}</span>
                 <h1 className={styles.heroTitle}>{title}</h1>
                 <p className={styles.heroSubtitle}>{description}</p>
               </div>
@@ -1120,7 +1162,7 @@ export default function DevBoardsPage() {
             <div className={styles.shell}>
               <aside className={styles.sidebar}>
                 <div className={styles.sidebarSticky}>
-                  <p className={styles.sidebarTitle}>{zh ? '平台' : 'Platform'}</p>
+                  <p className={styles.sidebarTitle}>{ui('Platform', '平台')}</p>
                   <FlowingMenu
                     items={menuItems}
                     activeKey={platformFilter}
@@ -1138,13 +1180,13 @@ export default function DevBoardsPage() {
                     <input
                       type="search"
                       className={styles.search}
-                      placeholder={zh ? '搜索开发板…' : 'Search boards…'}
+                      placeholder={ui('Search boards…', '搜索开发板…')}
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
-                      aria-label={zh ? '搜索开发板' : 'Search boards'}
+                      aria-label={ui('Search boards', '搜索开发板')}
                     />
                     <span className={styles.resultCount}>
-                      {filtered.length} {zh ? '块' : 'boards'}
+                      {filtered.length} {ui('boards', '块')}
                     </span>
                   </div>
                 </div>
@@ -1164,7 +1206,7 @@ export default function DevBoardsPage() {
                     ))}
                   </div>
                 ) : (
-                  <p className={styles.empty}>{zh ? '没有匹配的开发板。' : 'No boards match your search.'}</p>
+                  <p className={styles.empty}>{ui('No boards match your search.', '没有匹配的开发板。')}</p>
                 )}
               </div>
             </div>

@@ -206,8 +206,8 @@ function MobileMenu({ menu }) {
 
 export default function ProductsNavbarItem({ mobile }) {
   const { i18n } = useDocusaurusContext()
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en'
-  const menu = productsMenu[locale]
+  const locale = i18n.currentLocale === 'zh' || i18n.currentLocale === 'ko' ? i18n.currentLocale : 'en'
+  const menu = productsMenu[locale] || productsMenu.en
 
   const [open, setOpen] = useState(false)
   const closeTimer = useRef(null)

@@ -46,7 +46,7 @@ const EN_GROUPS = [
   },
   {
     title: 'Memory',
-    bullets: ['Flash up to 16 MB', 'PSRAM up to 16 MB', '640 KB Share SRAM', '64 KB ROM', 'eFuse'],
+    bullets: ['Flash up to 8 MB', 'PSRAM up to 16 MB', '640 KB Share SRAM', '64 KB ROM', 'eFuse'],
   },
   {
     title: 'Clock Management',
@@ -180,7 +180,7 @@ const ZH_GROUPS = [
   },
   {
     title: '存储',
-    bullets: ['Flash 最高 16 MB', 'PSRAM 最高 16 MB', '640 KB 共享 SRAM', '64 KB ROM', 'eFuse'],
+    bullets: ['Flash 最高 8 MB', 'PSRAM 最高 16 MB', '640 KB 共享 SRAM', '64 KB ROM', 'eFuse'],
   },
   {
     title: '时钟管理',

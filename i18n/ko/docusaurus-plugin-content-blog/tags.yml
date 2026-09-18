@@ -1,0 +1,29 @@
+release:
+  label: 릴리스
+  permalink: /release
+  description: TuyaOpen SDK 릴리스
+
+TuyaOpen:
+  label: TuyaOpen
+  permalink: /TuyaOpen
+  description: TuyaOpen 플랫폼 및 개발 관련 콘텐츠
+
+Contest:
+  label: 대회
+  permalink: /Contest
+  description: 개발자 대회 및 해커톤
+
+AI:
+  label: AI
+  permalink: /AI
+  description: AI 관련 튜토리얼, 워크플로와 제품 업데이트
+
+Development:
+  label: 개발
+  permalink: /Development
+  description: 개발자 가이드, 구현 노트와 엔지니어링 실천
+
+Tutorial:
+  label: 튜토리얼
+  permalink: /Tutorial
+  description: 단계별 튜토리얼 및 학습 콘텐츠

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { localePath } from '@site/src/utils/localePath';
 import { clsx } from 'clsx';
 import { MDXProvider } from '@mdx-js/react';
 import MDXComponents from '@theme/MDXComponents';
@@ -40,10 +41,11 @@ export default function TutorialShell({
   children,
 }) {
   const { i18n } = useDocusaurusContext();
-  const locale = i18n.currentLocale === 'zh' ? 'zh' : 'en';
-  const hubHref = locale === 'zh' ? '/zh/learn' : '/learn';
-  const backLabel = locale === 'zh' ? '返回学习中心' : 'Back to Learn';
-  const tocLabel = locale === 'zh' ? '本页内容' : 'On this page';
+  const locale = i18n.currentLocale;
+  const contentLocale = locale === 'zh' || locale === 'ko' ? locale : 'en';
+  const hubHref = localePath(locale, '/learn');
+  const backLabel = contentLocale === 'zh' ? '返回学习中心' : contentLocale === 'ko' ? '학습 센터로 돌아가기' : 'Back to Learn';
+  const tocLabel = contentLocale === 'zh' ? '本页内容' : contentLocale === 'ko' ? '이 페이지의 내용' : 'On this page';
 
   // Deep-link the "Back to Learn" breadcrumb back to the filter the visitor
   // was on when they opened the tutorial (saved by the hub). Read in an effect

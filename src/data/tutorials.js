@@ -1,3 +1,5 @@
+import { tutorialsKo } from './tutorialsKo'
+
 /* =========================================================================
  * Tutorials manifest
  * -------------------------------------------------------------------------
@@ -99,6 +101,38 @@ export const categories = {
       image: 'https://picgocloud.com/m/d8d3e020-9ddd-4b14-b9d2-b95db1086d3c.png',
     },
   ],
+  ko: [
+    {
+      id: 'basics',
+      label: '기초',
+      intro: 'TuyaOpen을 시작하는 데 필요한 핵심 개념, 도구와 팁입니다.',
+      image: 'https://picgocloud.com/m/9b206697-5a84-4674-80c7-f37451c25f75.png',
+    },
+    {
+      id: 'ide',
+      label: 'TuyaOpen IDE',
+      intro: 'AI 기반 작업 공간에서 펌웨어, 클라우드 Agent와 앱 패널을 개발하세요.',
+      image: 'https://picgocloud.com/m/abf53b9e-838f-4487-a51f-1c39eee70ae1.png',
+    },
+    {
+      id: 'sdk',
+      label: 'TuyaOpen SDK',
+      intro: '환경 설정, 빌드, 플래시, 모니터링과 디바이스 페어링을 안내합니다.',
+      image: 'https://picgocloud.com/m/46ec1cad-4e7d-464d-a7f4-42c3f5093227.png',
+    },
+    {
+      id: 'tutorials',
+      label: '튜토리얼',
+      intro: '특정 작업, 주변 장치와 개발 기법을 위한 실전 가이드입니다.',
+      image: 'https://picgocloud.com/m/94046105-bf8a-430d-8c53-bccced644cec.png',
+    },
+    {
+      id: 'community',
+      label: '커뮤니티',
+      intro: 'TuyaOpen 커뮤니티가 만든 로봇, 웨어러블, 엣지 AI 프로젝트입니다.',
+      image: 'https://picgocloud.com/m/d8d3e020-9ddd-4b14-b9d2-b95db1086d3c.png',
+    },
+  ],
 }
 
 /* -------------------------------------------------------------- Kind meta */
@@ -114,6 +148,11 @@ export const kinds = {
     interactive: { label: '交互' },
     external: { label: '站外' },
   },
+  ko: {
+    markdown: { label: '가이드' },
+    interactive: { label: '인터랙티브' },
+    external: { label: '외부 링크' },
+  },
 }
 
 /* -------------------------------------------------------------- Level meta */
@@ -128,6 +167,7 @@ export const levels = {
     intermediate: '进阶',
     advanced: '高级',
   },
+  ko: { beginner: '초급', intermediate: '중급', advanced: '고급' },
 }
 
 /* --------------------------------------------------------------- Tag meta */
@@ -141,6 +181,11 @@ export const tags = {
   zh: {
     flashing: { label: '烧录', color: '#f97316' },
     setup: { label: '配置', color: '#3b82f6' },
+    cli: { label: 'CLI', color: '#64748b' },
+  },
+  ko: {
+    flashing: { label: '플래시', color: '#f97316' },
+    setup: { label: '설정', color: '#3b82f6' },
     cli: { label: 'CLI', color: '#64748b' },
   },
 }
@@ -1084,6 +1129,7 @@ export const tutorials = {
         'https://images.tuyacn.com/rms-static/137fb440-1d0e-11f1-bc69-dd9d99b0210c-1773208171908.png?tyName=%E6%B8%B8%E6%88%8F%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_f8c773df-3b23-479b-95a3-9538556e5fa4.png',
     },
   ],
+  ko: tutorialsKo,
 }
 
 /* --------------------------------------------------------- Learning paths */
