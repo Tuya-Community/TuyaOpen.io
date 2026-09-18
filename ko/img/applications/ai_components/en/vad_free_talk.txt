@@ -1,0 +1,30 @@
+@startuml
+participant input 
+database recording
+loop
+input --> recording: Continuously record and save the collected audio data,\nwrite once every ~10ms
+input -> input: Perform VAD detection on the collected audio data
+end
+== No human voice detected ==
+loop
+cloud_asr --> recording: Only save the most recent 600ms of audio data,\nfor cloud VAD usage
+end
+== Human voice detected ==
+input -> main: Valid audio data detected
+main -> cloud_asr: Start reporting task
+cloud_asr -> ai_agent: Start reporting
+cloud_asr --> recording: Read audio data
+cloud_asr -> ai_agent: Report audio data stream
+== End of human voice detected ==
+input -> main: Valid audio data collection ended
+main -> cloud_asr: End reporting task
+cloud_asr--> recording: Read remaining cached audio data
+cloud_asr -> ai_agent: Report audio data stream
+cloud_asr -> ai_agent: End audio stream reporting
+cloud_asr -> cloud_asr: Wait for cloud ASR
+ai_agent -> main: Return text after ASR
+main -> cloud_asr: ASR result received, reporting state can become idle
+== Cloud sends AI reply information ==
+ai_agent -> main: Notify text and audio information
+main -> player: Play audio data sent from
+@enduml

@@ -1,0 +1,35 @@
+# https://tuyaopen.ai/robots.txt
+# All crawlers welcome — including generative-AI / LLM engines (GEO).
+# We do NOT block AI crawlers; blocking them opts the site out of AI discovery.
+
+User-agent: *
+Allow: /
+
+# Explicitly allow generative-AI crawlers (in case a future blanket rule
+# tightens, these stay allowed — GEO depends on them).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap
+Sitemap: https://tuyaopen.ai/sitemap.xml

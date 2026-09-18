@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "display": [
+      {
+        "id": "oled-ssd1306",
+        "model": "SSD1306",
+        "name": {
+          "en": "0.96\" OLED",
+          "zh-CN": "0.96 寸 OLED"
+        },
+        "interface": "I2C",
+        "width": 128,
+        "height": 64,
+        "pixelFormat": "MONO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 42
+            },
+            {
+              "role": "sda",
+              "gpio": 41
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "SSD1306 monochrome OLED on I2C0, address 0x3C.",
+          "zh-CN": "SSD1306 单色 OLED，挂在 I2C0，地址 0x3C。"
+        }
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio",
+        "model": null,
+        "name": {
+          "en": "I2S Audio (codec-less)",
+          "zh-CN": "I2S 音频（无编解码器）"
+        },
+        "interface": "I2S",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2S": [
+            {
+              "role": "bck",
+              "gpio": 5
+            },
+            {
+              "role": "ws",
+              "gpio": 4
+            },
+            {
+              "role": "din",
+              "gpio": 6
+            },
+            {
+              "role": "dout",
+              "gpio": 7
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Codec-less raw I2S: mic on I2S0 (bck 5, ws 4, din 6), speaker on I2S1 (bck 15, ws 16, dout 7); ws/bck pins differ per I2S peripheral. Pins set in the ESP32-S3 TKL I2S driver.",
+          "zh-CN": "无编解码器原始 I2S：麦克风走 I2S0（bck 5、ws 4、din 6），扬声器走 I2S1（bck 15、ws 16、dout 7）；两路 I2S 的 ws/bck 引脚不同。引脚在 ESP32-S3 TKL I2S 驱动中设定。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "button",
+        "name": {
+          "en": "Boot Button",
+          "zh-CN": "Boot 按键"
+        },
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 0,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "BOOT/strapping button on GPIO0, active low.",
+          "zh-CN": "GPIO0 上的 BOOT/启动选择按键，低电平有效。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": null
+  },
+  "boardSymbol": "XINGZHI_CUBE_0_96_OLED_WIFI",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/XINGZHI_ESP32S3_CUDE_0.96_OLED_WIFI"
+  },
+  "id": "xingzhi-esp32s3-cube-0-96-oled-wifi"
+}

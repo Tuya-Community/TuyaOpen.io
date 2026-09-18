@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktuyaopen_io_website=self.webpackChunktuyaopen_io_website||[]).push([["3220"],{1912(e){e.exports=JSON.parse('{"blogBasePath":"/ko/blog","blogTitle":"\uBE14\uB85C\uADF8","authorsListPath":"/ko/blog/authors"}')}}]);

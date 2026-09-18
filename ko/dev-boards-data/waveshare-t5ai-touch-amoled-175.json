@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "name": {
+          "en": "Audio",
+          "zh-CN": "音频"
+        },
+        "interface": "INTERNAL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "INTERNAL": [
+            {
+              "role": "pa_ctrl",
+              "gpio": 28,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "AEC enabled. 2 audio ADCs (mic), 1 DAC. Speaker via MX1.25 connector (8Ω 1W/2W). pa_ctrl active low. MIC1 = microphone input, MIC2 = AEC reference, LP/LN = differential speaker output.",
+          "zh-CN": "已启用 AEC。2 路音频 ADC（麦克风），1 路 DAC。扬声器通过 MX1.25 接口（8Ω 1W/2W）。pa_ctrl 低有效。MIC1 = 麦克风输入，MIC2 = AEC 回采，LP/LN = 差分喇叭输出。"
+        },
+        "id": "audio"
+      }
+    ],
+    "display": [
+      {
+        "model": "CO5300",
+        "name": {
+          "en": "1.75-inch AMOLED Display",
+          "zh-CN": "1.75 寸 AMOLED 屏"
+        },
+        "interface": "QSPI",
+        "pins": {
+          "QSPI": [
+            {
+              "role": "sck",
+              "gpio": 22
+            },
+            {
+              "role": "cs",
+              "gpio": 23
+            },
+            {
+              "role": "sio0",
+              "gpio": 24
+            },
+            {
+              "role": "sio1",
+              "gpio": 25
+            },
+            {
+              "role": "sio2",
+              "gpio": 26
+            },
+            {
+              "role": "sio3",
+              "gpio": 27
+            },
+            {
+              "role": "rst",
+              "gpio": 29
+            },
+            {
+              "role": "te",
+              "gpio": 31
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "QSPI Port 0, 80 MHz. 16.7M colors, RGB565. LVGL supported with dual display buffer. Backlight controlled via CO5300 command.",
+          "zh-CN": "QSPI 端口 0，80 MHz。1670 万色，RGB565。支持 LVGL 双显示缓冲。背光通过 CO5300 命令控制。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "display",
+        "width": 466,
+        "height": 466
+      }
+    ],
+    "touchpad": [
+      {
+        "model": "CST9217",
+        "name": {
+          "en": "Capacitive Touch",
+          "zh-CN": "电容触控"
+        },
+        "interface": "I2C",
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 20
+            },
+            {
+              "role": "sda",
+              "gpio": 21
+            },
+            {
+              "role": "int",
+              "gpio": 42
+            },
+            {
+              "role": "rst",
+              "gpio": 43
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "I2C0. Tempered glass with self-capacitance design. Mirror X/Y enabled.",
+          "zh-CN": "I2C0。钢化玻璃自电容设计。X/Y 轴镜像已启用。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "touchpad"
+      }
+    ],
+    "sd_card": [
+      {
+        "model": null,
+        "name": {
+          "en": "Micro SD Card",
+          "zh-CN": "Micro SD 卡"
+        },
+        "interface": "SDIO",
+        "pins": {
+          "SDIO": [
+            {
+              "role": "clk",
+              "gpio": 2
+            },
+            {
+              "role": "cmd",
+              "gpio": 3
+            },
+            {
+              "role": "d0",
+              "gpio": 4
+            },
+            {
+              "role": "d1",
+              "gpio": 5
+            },
+            {
+              "role": "d2",
+              "gpio": 10
+            },
+            {
+              "role": "d3",
+              "gpio": 11
+            },
+            {
+              "role": "cd",
+              "gpio": 8
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "4-bit SDIO. Card detect on GPIO 8.",
+          "zh-CN": "4 位 SDIO。卡检测引脚 GPIO 8。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "sd-card"
+      }
+    ],
+    "led": [
+      {
+        "model": null,
+        "name": {
+          "en": "Indicator LED",
+          "zh-CN": "指示灯"
+        },
+        "interface": "GPIO",
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 47
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active high. Also exposed on breakout header.",
+          "zh-CN": "高有效。同时引出至排针。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "led"
+      }
+    ],
+    "button": [
+      {
+        "name": {
+          "en": "User Button",
+          "zh-CN": "用户按键"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 12
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low with pull-up. Separate reset button also present.",
+          "zh-CN": "低有效带上拉。另有独立复位按键。"
+        },
+        "id": "button"
+      }
+    ],
+    "power": [
+      {
+        "model": null,
+        "name": {
+          "en": "Power Management",
+          "zh-CN": "电源管理"
+        },
+        "interface": "GPIO",
+        "pins": {
+          "GPIO": [
+            {
+              "role": "sys_en",
+              "gpio": 19
+            },
+            {
+              "role": "sys_out",
+              "gpio": 18
+            },
+            {
+              "role": "bat_adc",
+              "gpio": 13
+            },
+            {
+              "role": "bat_chg",
+              "gpio": 30
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "sys_en: power latch, active high — hold high after boot. sys_out: power button detect, active low. bat_adc: battery voltage ADC. bat_chg: charge status.",
+          "zh-CN": "sys_en：电源锁存，高有效——启动后须保持高电平。sys_out：电源按键检测，低有效。bat_adc：电池电压 ADC。bat_chg：充电状态。"
+        },
+        "mounting": "onboard",
+        "pinLocked": true,
+        "id": "power"
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://www.waveshare.net/w/upload/b/b1/T5-E1-Touch-AMOLED-1.75_schematic.pdf",
+    "3dModel": "https://www.waveshare.net/w/upload/6/66/T5-E1-Touch-AMOLED-1.75-3D.zip",
+    "datasheet": {
+      "en": "https://www.waveshare.com/wiki/T5-E1-Touch-AMOLED-1.75",
+      "zh-CN": "https://www.waveshare.com/wiki/T5-E1-Touch-AMOLED-1.75"
+    },
+    "productPage": {
+      "en": "https://www.waveshare.com/t5-e1-touch-amoled-1.75.htm",
+      "zh-CN": "https://www.waveshare.net/shop/T5-E1-Touch-AMOLED-1.75.htm"
+    }
+  },
+  "boardSymbol": "WAVESHARE_T5AI_TOUCH_AMOLED_1_75",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/T5AI/WAVESHARE_T5AI_TOUCH_AMOLED_1_75"
+  },
+  "expansionPins": [
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO14",
+        "SDIO_CLK",
+        "SPI0_SCK",
+        "I2C1_SCL",
+        "RGB_DCLK",
+        "I8080_D15",
+        "SEG16"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO15",
+        "SDIO_CMD",
+        "SPI0_CSN",
+        "I2C1_SDA",
+        "RGB_DISP",
+        "I8080_D14",
+        "SEG15"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO16",
+        "SDIO_DATA0",
+        "SPI0_MOSI",
+        "RGB_DE",
+        "I8080_D13",
+        "SEG14"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO17",
+        "SDIO_DATA1",
+        "SPI0_MISO",
+        "RGB_HSYNC",
+        "I8080_D12",
+        "SEG13"
+      ]
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO32",
+        "CIS_PXD0",
+        "PWM_G1_0",
+        "ENET_MDIO",
+        "TOUCH6",
+        "SC_RSTN",
+        "SEG22"
+      ]
+    },
+    {
+      "gpio": 33,
+      "functions": [
+        "GPIO33",
+        "CIS_PXD1",
+        "ENET_RXD0",
+        "TOUCH7",
+        "SPI0_SCK",
+        "SEG23"
+      ]
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO34",
+        "CIS_PXD2",
+        "PWM_G1_2",
+        "ENET_RXD1",
+        "TOUCH8",
+        "SPI0_CSN",
+        "SEG24"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO35",
+        "CIS_PXD3",
+        "ENET_RXDV",
+        "TOUCH9",
+        "SPI0_MOSI",
+        "SEG25"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO36",
+        "CIS_PXD4",
+        "PWM_G1_4",
+        "ENET_TXD0",
+        "TOUCH10",
+        "SPI0_MISO",
+        "SEG26"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO37",
+        "CIS_PXD5",
+        "ENET_TXD1",
+        "TOUCH11",
+        "SEG27"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO38",
+        "CIS_PXD6",
+        "I2C1_SCL",
+        "ENET_TXEN",
+        "TOUCH12",
+        "COM4",
+        "SEG28"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO40",
+        "UART2_RX",
+        "I2S1_SCK",
+        "LIN_RXD",
+        "SC_CLK",
+        "RGB_G4",
+        "I8080_D7",
+        "SEG3"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO41",
+        "UART2_TX",
+        "I2S1_SYNC",
+        "LIN_TXD",
+        "SC_IO",
+        "RGB_G3",
+        "I8080_D6",
+        "SEG2"
+      ]
+    },
+    {
+      "gpio": 44,
+      "functions": [
+        "GPIO44",
+        "CAN_TX",
+        "SPI0_SCK",
+        "RGB_B6",
+        "I8080_D3",
+        "COM3",
+        "I2S2_SCK"
+      ]
+    },
+    {
+      "gpio": 45,
+      "functions": [
+        "GPIO45",
+        "CAN_RX",
+        "SPI0_CSN",
+        "RGB_B5",
+        "I8080_D2",
+        "COM2",
+        "I2S2_SYNC"
+      ]
+    },
+    {
+      "gpio": 46,
+      "functions": [
+        "GPIO46",
+        "CAN_STBY",
+        "SPI0_MOSI",
+        "ENET_PHY_INT",
+        "TOUCH14",
+        "RGB_B4",
+        "I8080_D1",
+        "COM1",
+        "I2S2_DIN"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO47",
+        "SPI0_MISO",
+        "ENET_MDC",
+        "TOUCH15",
+        "RGB_B3",
+        "I8080_D0",
+        "COM0",
+        "I2S2_DOUT"
+      ]
+    }
+  ],
+  "id": "waveshare-t5ai-touch-amoled-175"
+}

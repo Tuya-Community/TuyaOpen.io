@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "button": [
+      {
+        "id": "button",
+        "name": {
+          "en": "Usr Button",
+          "zh-CN": "用户按键"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 0,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "led": [
+      {
+        "id": "led",
+        "name": {
+          "en": "Usr Led",
+          "zh-CN": "用户 LED"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 26,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://pan.baidu.com/s/56Ce7NyRPPVHcL36daDXvfw",
+    "datasheet": {
+      "en": "",
+      "zh-CN": "https://wiki.lckfb.com/zh-hans/gd32vw553/"
+    },
+    "productPage": {
+      "en": "",
+      "zh-CN": "https://lckfb.com/project/detail/lckfb-gd32vw553-hmq6?param=baseInfo"
+    }
+  },
+  "boardSymbol": "LCKFB_GD32VM553",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/GD32/LCKFB_GD32VM553"
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO0",
+        "UART0_TX",
+        "UART1_CTS",
+        "SPI0_MOSI",
+        "TIMER1_CH0",
+        "TIMER1_ETI",
+        "TIMER0_ETI",
+        "ADC0",
+        "WKUP0",
+        "RTC_TAMP1"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO1",
+        "UART0_RX",
+        "UART1_RTS",
+        "SPI0_MISO",
+        "TIMER1_CH1",
+        "ADC1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO2",
+        "UART0_CTS",
+        "UART1_TX",
+        "I2C0_SCL",
+        "SPI0_SCK",
+        "TIMER1_CH2",
+        "TIMER0_CH0",
+        "ADC2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO3",
+        "UART0_RTS",
+        "UART1_RX",
+        "I2C0_SDA",
+        "SPI0_CSN",
+        "TIMER1_CH3",
+        "TIMER0_CH0_ON",
+        "RTC_OUT",
+        "ADC3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO4",
+        "UART1_TX",
+        "SPI0_MOSI",
+        "SPI0_CSN",
+        "QSPI0_SCK",
+        "TIMER0_CH1",
+        "ADC4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO5",
+        "UART1_RX",
+        "SPI0_MISO",
+        "SPI0_SCK",
+        "QSPI0_CS",
+        "TIMER2_ETI",
+        "TIMER0_CH1_ON",
+        "ADC5"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO6",
+        "UART2_TX",
+        "I2C1_SCL",
+        "SPI0_MISO",
+        "SPI0_SCK",
+        "QSPI0_IO0",
+        "TIMER2_CH0",
+        "TIMER0_CH1",
+        "TIMER1_CH1",
+        "ADC6"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO7",
+        "UART2_RX",
+        "I2C1_SDA",
+        "SPI0_CSN",
+        "SPI0_MOSI",
+        "QSPI0_IO1",
+        "TIMER2_CH1",
+        "TIMER0_CH0_ON",
+        "TIMER0_CH1_ON",
+        "TIMER1_CH2",
+        "ADC7",
+        "WKUP2"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO8",
+        "UART0_RX",
+        "USART0_CK",
+        "UART1_RX",
+        "I2C0_SDA",
+        "I2C1_SDA",
+        "CK_OUT0",
+        "TIMER0_CH0",
+        "TIMER0_CH2_ON",
+        "TIMER15_CH0",
+        "RTC_OUT"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO9",
+        "UART0_TX",
+        "SPI0_MOSI",
+        "QSPI0_SCK",
+        "TIMER0_CH1",
+        "TIMER15_CH0_ON"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO10",
+        "UART0_RX",
+        "SPI0_MISO",
+        "QSPI0_CS",
+        "TIMER0_CH2",
+        "TIMER16_CH0"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO11",
+        "SPI0_SCK",
+        "QSPI0_IO0",
+        "TIMER0_CH3",
+        "TIMER1_CH3",
+        "TIMER16_BRKIN"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO12",
+        "USART0_CK",
+        "SPI0_CSN",
+        "QSPI0_IO1",
+        "TIMER0_CH3",
+        "TIMER0_ETI",
+        "TIMER1_CH2",
+        "TIMER16_CH0_ON",
+        "WKUP3"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO15",
+        "JTDI",
+        "I2C0_SCL",
+        "I2C1_SCL",
+        "UART0_RX",
+        "UART1_RX",
+        "TIMER1_CH0",
+        "TIMER1_ETI",
+        "WKUP1"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO16",
+        "UART1_TX",
+        "UART2_CTS",
+        "I2C0_SCL",
+        "TIMER0_CH0",
+        "TIMER0_CH1_ON",
+        "TIMER0_CH2",
+        "TIMER0_BRKIN",
+        "TIMER2_ETI",
+        "TIMER16_CH0",
+        "ADC8"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO17",
+        "UART1_RX",
+        "UART2_RTS",
+        "I2C0_SDA",
+        "TIMER0_CH0_ON",
+        "TIMER0_CH2_ON",
+        "TIMER2_CH2",
+        "TIMER16_CH0_ON",
+        "BOOT1"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO18",
+        "UART1_CTS",
+        "TIMER1_CH3",
+        "TIMER2_CH3",
+        "TIMER0_ETI",
+        "TIMER16_BRKIN"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO19",
+        "JTDO",
+        "UART0_RX",
+        "UART1_TX",
+        "QSPI0_IO2",
+        "TIMER1_CH1",
+        "TIMER15_BRKIN"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO20",
+        "NJTRST",
+        "UART0_TX",
+        "UART1_RX",
+        "QSPI0_IO3",
+        "TIMER1_CH0",
+        "TIMER1_ETI"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO21",
+        "UART1_RTS",
+        "CK_OUT1",
+        "TIMER1_CH2",
+        "TIMER0_CH1_ON",
+        "TIMER15_BRKIN"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO22",
+        "I2C1_SCL",
+        "TIMER0_CH3",
+        "TIMER0_BRKIN",
+        "TIMER1_CH2"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO23",
+        "I2C1_SDA",
+        "TIMER0_CH0_ON",
+        "TIMER1_CH3",
+        "TIMER15_CH0"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO24",
+        "UART0_TX",
+        "UART1_TX",
+        "I2C0_SCL",
+        "I2C1_SCL",
+        "TIMER2_CH0",
+        "TIMER0_CH2_ON",
+        "RTC_REFIN",
+        "IFRP_OUT"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO26",
+        "USART0_CK",
+        "RTC_TAMP_0",
+        "RTC_OUT",
+        "RTC_TS"
+      ]
+    }
+  ],
+  "peripheralGroups": {},
+  "id": "lckfb-gd32vw553"
+}

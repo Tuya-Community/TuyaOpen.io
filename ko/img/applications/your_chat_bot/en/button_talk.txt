@@ -1,0 +1,23 @@
+@startuml
+actor user
+box "chat bot"
+participant button
+participant ai_audio
+participant display
+end box
+user -> button: Press the button
+button -> button: Detect short press
+button -> ai_audio: Enter voice detection state
+ai_audio->display: Show "Listening"
+user -> ai_audio: Voice input
+ai_audio -> ai_audio: Detect human voice
+ai_audio -> cloud: Upload voice data to the cloud
+user -> ai_audio: End voice input
+ai_audio  -> cloud: End upload and notify cloud that data upload is complete
+cloud -> ai_audio: Convert voice to text and send down
+cloud -> cloud: Use large model to generate answer based on voice content
+ai_audio -> display: Display text information on the screen
+cloud -> ai_audio: Send AI-generated content (text, voice, emoji, etc.) to the device
+ai_audio->ai_audio: Play voice
+ai_audio->display: Display AI text, emoji, and other information
+@enduml

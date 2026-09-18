@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "led-pixel": [
+      {
+        "id": "led-pixel",
+        "name": {
+          "en": "Addressable RGB LED",
+          "zh-CN": "可寻址 RGB LED"
+        },
+        "model": "WS2812B",
+        "count": 1,
+        "interface": "PWM",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "PWM": [
+            {
+              "role": "data",
+              "gpio": 8
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Single WS2812B addressable RGB LED on GPIO8, driven via RMT/PWM (ws1280 driver).",
+          "zh-CN": "单颗 WS2812B 可寻址 RGB LED，挂在 GPIO8，经 RMT/PWM 驱动（ws1280 驱动）。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "button",
+        "name": {
+          "en": "User Button",
+          "zh-CN": "用户按键"
+        },
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 9,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "BOOT button on GPIO9, active low with pull-up.",
+          "zh-CN": "BOOT 按键，GPIO9，低有效带上拉。"
+        }
+      }
+    ]
+  },
+  "peripheralGroups": {},
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": "https://www.waveshare.com"
+  },
+  "boardSymbol": "WAVESHARE_ESP32C6_DEV_KIT_N16",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/WAVESHARE_ESP32C6_DEV_KIT_N16"
+  },
+  "id": "waveshare-esp32c6-dev-kit-n16"
+}
