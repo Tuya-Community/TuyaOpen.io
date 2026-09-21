@@ -6,7 +6,7 @@
 export const homepageCopy = {
   en: {
     metaDescription:
-      'TuyaOpen is an open source AI+IoT development framework: a cross-platform C/C++ SDK for Tuya T-Series MCU, Raspberry Pi, ESP32, and more. Pair with Tuya Cloud multimodal AI, integrate leading LLMs, and build devices with voice, vision, and sensor features.',
+      'TuyaOpen is a free Apache 2.0 framework for building AI-powered IoT devices. One codebase runs on ESP32, Raspberry Pi, and Tuya boards, with LLM and AI agent support built in. Try it today.',
     hero: {
       badge: 'Open source · AI + IoT',
       line1: 'Agentic AI',
@@ -869,7 +869,7 @@ tos.py flash`,
   },
   zh: {
     metaDescription:
-      'TuyaOpen 是开源 AI+IoT 开发框架：以跨平台 C/C++ SDK 支持涂鸦 T 系列 MCU、树莓派、ESP32 等设备，搭配涂鸦云多模态 AI，集成主流大模型，构建具备语音、视觉与传感能力的智能设备。',
+      'TuyaOpen 是 Apache 2.0 开源的 AI+IoT 开发框架，一套代码即可在 ESP32、树莓派与涂鸦硬件上运行，内置大模型与 AI Agent 能力。立即试用。',
     hero: {
       badge: '开源 · AI + IoT',
       line1: 'Agentic AI',

@@ -374,18 +374,18 @@ export default function DuckyClaw() {
       wrapperClassName={clsx(styles.page, styles.tclawTheme)}
     >
       <Head>
-        <title>TClaw — {siteConfig.title}</title>
+        <title>DuckyClaw — Run AI Agents on Real Hardware | TuyaOpen</title>
         <meta
           name="description"
           content={t(
-            'TClaw (formerly DuckyClaw): hardware-oriented OpenClaw. One TuyaOpen key. Deploy to T5AI, ESP32, Raspberry Pi, Linux.',
-            'TClaw（原名 DuckyClaw）：面向硬件的 OpenClaw。一个 TuyaOpen 密钥，部署到 T5AI、ESP32、树莓派、Linux。',
+            'DuckyClaw puts AI agents on physical devices — one codebase across MCU, SoC, and PC, with local execution, cloud orchestration, and 3000+ device controls. Try it today.',
+            'DuckyClaw 让 AI Agent 落地真实硬件——一套代码横跨 MCU、SoC 与 PC，支持本地执行、云端编排与 3000+ 设备控制。立即试用。',
             isZh,
           )}
         />
         <meta
           name="keywords"
-          content="edge ai platform open source, duckyclaw, tclaw, ai agent framework, edge ai deployment"
+          content="ai agent hardware, ai agent framework, duckyclaw, agentic ai, ai agent deployment"
         />
         <script type="application/ld+json">
           {JSON.stringify({

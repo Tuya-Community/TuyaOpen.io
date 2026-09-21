@@ -103,8 +103,8 @@ function Home() {
     contentLocale === 'ko'
       ? 'TuyaOpen: 실제 디바이스를 위한 오픈 소스 AI·IoT 개발 플랫폼'
       : contentLocale === 'zh'
-        ? 'TuyaOpen：面向 AI 与物联网开发的开源平台'
-        : 'TuyaOpen: A Powerful Open Source AI, OS and Platform for IoT Development'
+        ? 'TuyaOpen — 开源 AI + IoT 开发框架，让 AI 落地真实硬件'
+        : 'Open-Source AI + IoT Development Framework — Try It Today | TuyaOpen'
   const [ideLaunchModalOpen, setIdeLaunchModalOpen] = useState(false)
 
   const closeIdeLaunchModal = () => {
@@ -455,7 +455,7 @@ function Home() {
         <meta name="description" content={copy.metaDescription} />
         <meta
           name="keywords"
-          content="open source ai, iot development platform, open source os, aiot platform, embedded development"
+          content="open source iot framework, ai iot development, esp32 ai, open source ai framework, ai agent hardware, tuyaopen"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

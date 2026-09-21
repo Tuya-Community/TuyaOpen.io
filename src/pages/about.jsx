@@ -45,8 +45,8 @@ const GITHUB_ICON = (
 const COPY = {
   en: {
     meta: {
-      title: 'About Us',
-      description: 'A team inside Tuya dedicated to the open-source community — bringing agent connectivity and protocol capabilities to the full spectrum of hardware.',
+      title: 'About TuyaOpen — The Open-Source AI + IoT Project',
+      description: 'The team, mission, and community behind TuyaOpen — an open-source AI + IoT framework backed by Tuya.',
     },
     label: 'About Us',
     hero: {
@@ -236,7 +236,7 @@ export default function AboutPage() {
   return (
     <Layout title={c.meta.title} description={c.meta.description}>
       <Head>
-        <meta name="keywords" content="open source iot platform, aiot platform, about tuyaopen, open source ai platform, tuyaopen" />
+        <meta name="keywords" content="about tuyaopen, tuyaopen team, open source iot project, tuyaopen community" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

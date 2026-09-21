@@ -87,9 +87,9 @@ function removeStorage(key) {
 
 const COPY = {
   en: {
-    title: 'Learn',
+    title: 'Learn TuyaOpen — Tutorials, Projects & Courses',
     subtitle:
-      'Hands-on material for TuyaOpen: two quick-start tracks to a first working device, plus tutorials and community projects grouped by topic.',
+      'Tutorials, projects, and courses to learn TuyaOpen — from your first ESP32 sketch to shipping an AI-powered device. Start learning today.',
     onThisPage: 'On this page',
     empty: 'No guides in this section yet — check back soon.',
     countOne: 'guide',
@@ -610,10 +610,10 @@ export default function LearnPage() {
     <Layout title={t.title} description={t.subtitle}>
       <Head>
         <title>
-          {t.title} - {siteConfig.title}
+          {t.title} | {siteConfig.title}
         </title>
         <meta name="description" content={t.subtitle} />
-        <meta name="keywords" content="tuyaopen learn, aiot projects, ai powered iot applications, embedded ai tutorial, iot development" />
+        <meta name="keywords" content="learn iot, iot tutorial, esp32 tutorial, ai hardware tutorial, tuyaopen learn, iot course" />
       </Head>
 
       <main className={styles.root}>

@@ -50,8 +50,8 @@ const GITHUB_ICON = (
 const COPY = {
   en: {
     meta: {
-      title: 'Our Mission',
-      description: 'Make agentic hardware simple — bringing agent connectivity and open protocols to the full spectrum of hardware.',
+      title: 'Our Mission — Open AI + IoT for Every Developer',
+      description: 'Why TuyaOpen exists — to make AI-powered IoT development open, portable, and available to every developer.',
     },
     label: 'Our Mission',
     hero: {
@@ -202,7 +202,7 @@ export default function MissionPage() {
   return (
     <Layout title={c.meta.title} description={c.meta.description}>
       <Head>
-        <meta name="keywords" content="tuyaopen mission, open source iot platform, aiot innovation, open source ai, smart device development" />
+        <meta name="keywords" content="tuyaopen mission, open source iot mission, ai iot open source" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

@@ -1,13 +1,11 @@
 ---
-title: tyutool V3 Usage Guide
-description: "Welcome to tyutool — the desktop GUI and command-line tool for flashing, serial debugging, and batch authorization of Tuya ecosystem IoT devices."
+title: TuyTool Documentation — Commands & Workflows
+description: "Reference for TuyTool — the commands and workflows for building, flashing, and managing TuyaOpen devices from the command line."
 keywords:
-  - tyutool
-  - v3 usage guide
-  - flashing
-  - serial debug
-  - batch authorization
-  - tuyaopen
+  - tuytool docs
+  - tuyaopen cli guide
+  - tos commands
+  - firmware tool docs
 ---
 
 import FeatureCardGrid from '@site/src/components/FeatureCardGrid';

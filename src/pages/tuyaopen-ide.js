@@ -1410,13 +1410,13 @@ export default function TuyaOpenIdePage() {
 
   return (
     <Layout
-      title="TuyaOpen IDE — Embedded Development IDE for AI"
-      description="An embedded development IDE for AI and IoT projects — build, debug, and deploy intelligent applications in one integrated development environment."
+      title="TuyaOpen IDE — AI Coding for Hardware in VS Code &amp; Cursor"
+      description="Build firmware with AI in VS Code or Cursor. The TuyaOpen IDE plugin adds hardware-in-the-loop compile, flash, and debug to your vibe coding workflow. Get started today."
     >
       <Head>
         <meta
           name="keywords"
-          content="embedded development ide, ai development environment, iot embedded development ide, vs code extension embedded, tuyaopen ide"
+          content="ai hardware ide, vibe coding, vs code iot, cursor iot plugin, hardware ai coding, tuyaopen ide"
         />
         <script type="application/ld+json">
           {JSON.stringify({

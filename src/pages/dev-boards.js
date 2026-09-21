@@ -1108,10 +1108,10 @@ export default function DevBoardsPage() {
   const platformVariantObj = platformVariant ? variants.find((v) => v.id === platformVariant) : null
   const platformBoards = platformVariant ? boards.filter((b) => (b.variantId || b.platformId) === platformVariant) : []
 
-  const title = ui('Dev Boards', '开发板')
+  const title = ui('TuyaOpen Dev Boards — T5, ESP32 &amp; AI Hardware', 'TuyaOpen 开发板 — T5、ESP32 与 AI 硬件')
   const description = ui(
-    'Browse TuyaOpen-supported dev boards and chip modules: specs, peripherals, pinouts, and purchase links.',
-    '浏览 TuyaOpen 支持的开发板与芯片模组：规格、外设、引脚与购买链接。',
+    'Development boards for TuyaOpen — T5 AI, ESP32, and more — with specs and links to buy. Start building today.',
+    'TuyaOpen 开发板 — T5 AI、ESP32 及更多 — 含规格参数与购买链接。立即开始构建。',
   )
 
   const menuItems = useMemo(
@@ -1133,6 +1133,7 @@ export default function DevBoardsPage() {
     <Layout title={title} description={description}>
       <Head>
         <meta name="description" content={description} />
+        <meta name="keywords" content="iot dev board, ai dev board, t5 ai board, esp32 dev board, tuyaopen dev board" />
       </Head>
       <main className={styles.root}>
         {selected ? (

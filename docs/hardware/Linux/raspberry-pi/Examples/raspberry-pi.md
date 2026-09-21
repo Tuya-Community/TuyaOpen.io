@@ -1,12 +1,11 @@
 ---
-title: "Raspberry Pi 5 GPIO Reference"
-description: "Raspberry Pi 5 GPIO reference with the 40-pin header pinout and the RP1 function-mux table for routing SPI, I2C, PWM, UART, and audio signals."
+title: Raspberry Pi Examples With TuyaOpen
+description: "Run TuyaOpen examples on Raspberry Pi and Linux boards — connect sensors, control devices, and add AI to a Linux edge device."
 keywords:
-  - raspberry pi 5
-  - gpio pinout
-  - tuyaopen hardware
-  - rp1
-  - pin mapping
+  - raspberry pi iot
+  - raspberry pi ai
+  - linux iot development
+  - raspberry pi tuyaopen
 ---
 
 Look up the 40-pin header pinout and the RP1 function-mux table for the Raspberry Pi 5. Use it to choose which GPIO line carries the SPI, I2C, PWM, UART, or audio signal you need when wiring up TuyaOpen peripheral examples.

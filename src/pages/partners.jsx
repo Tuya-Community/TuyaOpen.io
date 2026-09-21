@@ -141,9 +141,9 @@ const IDE_IMG = 'https://images.tuyacn.com/fe-static/docs/img/b7191eb0-0d2a-4609
 const COPY = {
   en: {
     meta: {
-      title: 'Partners & Contributors',
+      title: 'TuyaOpen Partners — Hardware & Cloud Ecosystem',
       description:
-        'Build TuyaOpen with us. Chip vendors, board builders, module makers, and developers — choose how you contribute. IDE exposure, open source, cloud + AI, and a path to production.',
+        'The hardware, cloud, and community partners that make up the TuyaOpen ecosystem.',
     },
     hero: {
       label: 'Partners & Contributors',
@@ -352,7 +352,7 @@ export default function PartnersPage() {
   return (
     <Layout title={c.meta.title} description={c.meta.description}>
       <Head>
-        <meta name="keywords" content="tuyaopen partners, b2b iot partnership, aiot platform partnership, open source iot ecosystem, hardware partnership" />
+        <meta name="keywords" content="tuyaopen partners, iot partners, ai hardware partners, tuyaopen ecosystem" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
