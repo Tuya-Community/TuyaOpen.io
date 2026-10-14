@@ -62,8 +62,8 @@
             "id": "https://tuyaopen.ai/zh/faq/index",
             "content_html": "<p>Welcome to the TuyaOpen FAQ. Here you'll find answers to common questions about IoT development, AIoT platforms, embedded systems, open source tools, and more.</p>\n<p>Browse the sidebar to find topics you're interested in.</p>",
             "url": "https://tuyaopen.ai/zh/faq/index",
-            "title": "FAQ",
-            "summary": "Frequently asked questions about IoT development, AIoT, embedded systems, open source platforms, and TuyaOpen.",
+            "title": "TuyaOpen FAQ — Common Questions Answered",
+            "summary": "Answers to common questions about TuyaOpen — licensing, hardware support, AI features, and getting started.",
             "date_modified": "2024-07-14T00:00:00.000Z",
             "tags": []
         }

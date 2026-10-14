@@ -662,11 +662,11 @@ DeepSeek, ChatGPT, Claude, Gemini, Qwen, and Doubao are supported through a unif
 <p><em>This article is part of the <a href="https://tuyaopen.ai/faq" target="_blank" rel="noopener noreferrer" class="">TuyaOpen FAQ series</a>. For technical documentation, API references, and project templates, visit the <a href="https://tuyaopen.ai/docs" target="_blank" rel="noopener noreferrer" class="">TuyaOpen documentation center</a>.</em></p>]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[FAQ]]></title>
+        <title type="html"><![CDATA[TuyaOpen FAQ — Common Questions Answered]]></title>
         <id>https://tuyaopen.ai/zh/faq/index</id>
         <link href="https://tuyaopen.ai/zh/faq/index"/>
         <updated>2024-07-14T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Frequently asked questions about IoT development, AIoT, embedded systems, open source platforms, and TuyaOpen.]]></summary>
+        <summary type="html"><![CDATA[Answers to common questions about TuyaOpen — licensing, hardware support, AI features, and getting started.]]></summary>
         <content type="html"><![CDATA[<p>Welcome to the TuyaOpen FAQ. Here you'll find answers to common questions about IoT development, AIoT platforms, embedded systems, open source tools, and more.</p>
 <p>Browse the sidebar to find topics you're interested in.</p>]]></content>
     </entry>
