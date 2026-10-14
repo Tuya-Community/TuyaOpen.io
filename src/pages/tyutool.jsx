@@ -454,8 +454,8 @@ export default function TyutoolPage() {
   ];
 
   return (
-    <Layout title="tyutool — Firmware Flash & Debug Tool for TuyaOpen" description={c.meta}>
-      <Head><meta name="keywords" content="tyutool, firmware flash tool, iot development utility tool, tuyaopen serial tool, device authorization tool" /></Head>
+    <Layout title="TuyTool — The TuyaOpen Command-Line Toolkit" description={c.meta}>
+      <Head><meta name="keywords" content="tuyaopen cli, tos tool, iot build tool, firmware flash tool, tuyaopen toolchain" /></Head>
       <main className={styles.root} ref={rootRef}>
         {/* ---------------------------------------------------------- Hero */}
         <section className={styles.hero}>

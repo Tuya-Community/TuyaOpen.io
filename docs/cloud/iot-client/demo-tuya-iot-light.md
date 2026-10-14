@@ -1,12 +1,11 @@
 ---
-title: switch_demo
-description: "switch_demo is a Tuya IoT client open source sample app: a cross-platform switch with cloud MQTT, LAN TCP, Bluetooth, and OTA control."
+title: IoT Light Demo — Connect a Smart Light to Tuya Cloud
+description: "A step-by-step demo that connects a smart light to the Tuya cloud — activation, data points, and remote control."
 keywords:
-  - iot smart light open source demo
-  - switch_demo
-  - tuya iot client
-  - tuya cloud
-  - ota
+  - iot light demo
+  - smart light esp32
+  - tuya cloud demo
+  - iot device example
 ---
 
 The `switch_demo` application is a minimal-functionality application demo provided by the Tuya AI + IoT platform. It is a simple, cross-platform, cross-OS switch example that supports multiple connections. Using the Tuya app and Tuya's cloud services, you can control the switch remotely (when away from home), over the LAN (on the same LAN), and via Bluetooth (when no network is available).

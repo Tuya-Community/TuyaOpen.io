@@ -1,12 +1,12 @@
 ---
-title: T5AI-Board Development Kit
-description: "T5 AI Board development tutorial — a voice-and-screen dev kit on the Tuya T5-E1 module for AIoT. Build, flash, and deploy edge AI with TuyaOpen."
+title: T5 AI Board Overview — Voice, Vision & Display Hardware
+description: "An overview of the T5 AI board — dual-mic voice, vision, and display hardware for AI-powered projects, with TuyaOpen and Arduino support."
 keywords:
-  - t5 ai board development tutorial
-  - ai development board for edge computing
-  - how to flash firmware on t5 ai board
-  - tuya t5ai dev kit
-  - edge ai development kit
+  - t5 ai board
+  - ai development board
+  - voice vision board
+  - tuyaopen t5
+  - esp32 ai board
 ---
 
 The T5AI-Board is a voice-and-screen development board built on the Tuya T5-E1-IPEX Wi-Fi and Bluetooth combo module. It carries two microphones and one speaker for voice interaction, and breaks out the full module pinout so you can add an LCD-and-camera stack module or wire your own peripherals. Use it to prototype AIoT voice and display applications with the standard TuyaOpen workflow.

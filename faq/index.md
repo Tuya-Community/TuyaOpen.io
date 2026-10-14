@@ -1,7 +1,7 @@
 ---
-title: FAQ
-description: Frequently asked questions about IoT development, AIoT, embedded systems, open source platforms, and TuyaOpen.
-keywords: [faq, iot development, aiot, embedded systems, open source iot, tuyaopen faq]
+title: TuyaOpen FAQ — Common Questions Answered
+description: Answers to common questions about TuyaOpen — licensing, hardware support, AI features, and getting started.
+keywords: [tuyaopen faq, tuyaopen questions, tuyaopen help, iot framework faq]
 date: 2024-07-14
 ---
 

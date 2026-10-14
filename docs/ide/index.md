@@ -1,12 +1,14 @@
 ---
-title: "What is TuyaOpen IDE"
-description: "TuyaOpen IDE is an AI-era embedded development environment: describe the device you want in natural language, and the AI Agent generates firmware, configures the cloud, and wires up the app."
+title: TuyaOpen IDE Guide — Set Up AI Coding for Hardware
+description: "Install and use the TuyaOpen IDE extension in VS Code or Cursor — write firmware with AI, compile, flash, and debug in the loop."
 sidebar_label: "What TuyaOpen IDE is"
 sidebar_position: 1
 keywords:
-  - TuyaOpen IDE
-  - TuyaOpen
-  - embedded development
+  - tuyaopen ide setup
+  - vs code iot
+  - cursor iot
+  - hardware ai coding
+  - ide guide
 ---
 
 ## What is TuyaOpen IDE {/* #what-is */}

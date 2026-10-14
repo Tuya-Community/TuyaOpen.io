@@ -34,8 +34,8 @@ const usd = (cny) => `$${(cny / CNY_TO_USD).toFixed(2)}`
 
 const content = {
   en: {
-    meta: 'TuyaOpen licensing — one per-device license for Tuya Cloud and AI, with a free AI allowance every day. Free for local and offline projects.',
-    title: 'TuyaOpen Licensing & Pricing',
+    meta: "TuyaOpen is free and open source under Apache 2.0. See what's included, what's free, and how commercial support works.",
+    title: 'TuyaOpen Pricing — Free & Open Source',
     badge: 'Per-device license · daily AI allowance included',
     heroTitle: ['One license.', 'Connect to the cloud, add AI.'],
     heroSubtitle: 'Build for free. Pay once per device when it connects to Tuya Cloud.',
@@ -891,7 +891,7 @@ export default function Pricing() {
         <meta name="description" content={c.meta} />
         <meta
           name="keywords"
-          content="iot development platform pricing, free open source iot platform, aiot platform pricing, open source iot platform cost, tuyaopen pricing"
+          content="tuyaopen pricing, tuyaopen license, open source iot cost, tuyaopen free, tuyaopen commercial"
         />
       </Head>
 

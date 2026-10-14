@@ -1,12 +1,12 @@
 ---
-title: About TuyaOpen
-description: "What is TuyaOpen? Learn about the open source IoT platform — a cross-platform C/C++ SDK, open source OS, and AI agent tools for building AIoT hardware."
+title: What Is TuyaOpen? — An Open-Source AI + IoT Framework
+description: "TuyaOpen is an Apache 2.0 open-source framework for AI-powered IoT — one codebase across ESP32, Raspberry Pi, and Tuya hardware, with LLM and AI agent support built in."
 keywords:
-  - about tuyaopen platform
   - what is tuyaopen
-  - open source iot platform
-  - open source aiot platform
-  - tuyaopen sdk
+  - open source ai iot
+  - tuyaopen introduction
+  - ai iot framework
+  - tuyaopen overview
 ---
 
 ![TuyaOpen — open source IoT and AI development platform](https://images.tuyacn.com/fe-static/docs/img/c128362b-eb25-4512-b5f2-ad14aae2395c.jpg)

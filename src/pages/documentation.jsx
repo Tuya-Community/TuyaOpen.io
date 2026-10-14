@@ -298,7 +298,7 @@ export default function Documentation() {
       : `${areas.length} documentation areas, entered by what you are trying to do.`,
     areasTitle: ko ? '문서 영역' : zh ? '文档区' : 'Areas',
     elsewhereTitle: ko ? '문서 외 콘텐츠' : zh ? '不在文档里的内容' : 'Beyond the docs',
-    pageTitle: ko ? '문서 안내 | TuyaOpen' : zh ? '文档导览 | TuyaOpen' : 'Documentation | TuyaOpen',
+    pageTitle: ko ? '문서 안내 | TuyaOpen' : zh ? '文档导览 | TuyaOpen' : 'TuyaOpen Documentation — Guides, APIs & Tutorials | TuyaOpen',
   }
 
   const qs = ko
@@ -314,6 +314,8 @@ export default function Documentation() {
     <Layout title={t.title} description={t.subtitle}>
       <Head>
         <title>{t.pageTitle}</title>
+        <meta name="description" content={t.subtitle} />
+        <meta name="keywords" content="tuyaopen docs, iot documentation, tuyaopen tutorial, tuyaopen api, esp32 tutorial" />
       </Head>
 
       <main className={styles.root}>

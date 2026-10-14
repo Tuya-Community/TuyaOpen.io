@@ -26,9 +26,11 @@ export default function WebSerialPage() {
       wrapperClassName={s.wsTool}
     >
       <Head>
-        <meta name="keywords" content="TuyaOpen, web serial, WebSerial, firmware flash, esptool, T5AI, ESP32, license, authorization" />
-        <meta property="og:title" content={t.title} />
-        <meta property="og:description" content={t.subtitle} />
+        <title>Web Serial Tool — Flash TuyaOpen Devices From the Browser | TuyaOpen</title>
+        <meta name="description" content="Flash and configure TuyaOpen devices straight from the browser — no driver or desktop app installs. Try it today." />
+        <meta name="keywords" content="web serial, browser firmware flash, esp32 web flash, web usb, firmware web tool" />
+        <meta property="og:title" content="Web Serial Tool — Flash TuyaOpen Devices From the Browser | TuyaOpen" />
+        <meta property="og:description" content="Flash and configure TuyaOpen devices straight from the browser — no driver or desktop app installs. Try it today." />
       </Head>
 
       <div className={p.page}>

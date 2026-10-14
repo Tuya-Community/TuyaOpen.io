@@ -82,8 +82,8 @@ const makeKoCopy = (copy) => ({
 const COPY = {
   en: {
     meta: {
-      title: 'Tuya T5 Chip',
-      description: 'A powerful Wi-Fi and Bluetooth connectivity MCU for next-gen AIoT products.',
+      title: 'T5 AI Board — Voice, Vision & Display for Hardware Projects',
+      description: 'The T5 AI board adds on-device voice, vision, and a display to your projects. Build with TuyaOpen or Arduino and ship real AI hardware. Try it today.',
     },
     hero: {
       eyebrow: 'Tuya T5 Connectivity MCU',
@@ -587,7 +587,7 @@ export default function T5TuyaOpenLanding() {
   return (
     <Layout title={c.meta.title} description={c.meta.description}>
       <Head>
-        <meta name="keywords" content="t5 tuyaopen development kit, t5 ai board, tuyaopen sdk, embedded ai development, edge ai development kit" />
+        <meta name="keywords" content="t5 ai board, ai development board, voice ai board, vision ai board, tuyaopen t5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

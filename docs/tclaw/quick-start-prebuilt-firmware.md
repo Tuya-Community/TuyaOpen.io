@@ -1,12 +1,11 @@
 ---
-title: Flash a Prebuilt Firmware
-description: "Get TClaw running without a toolchain: download a release firmware, flash it with tyutool, and configure credentials over the serial CLI."
+title: DuckyClaw Quick Start — Flash Prebuilt Firmware
+description: "Get DuckyClaw running fast with prebuilt firmware — flash, configure your LLM key, and start an AI agent on real hardware."
 keywords:
-  - tclaw
+  - duckyclaw quick start
+  - ai agent firmware
+  - duckyclaw firmware
   - prebuilt firmware
-  - tyutool
-  - serial cli
-  - quick start
 ---
 
 # Flash a Prebuilt Firmware

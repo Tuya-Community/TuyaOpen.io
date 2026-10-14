@@ -77,6 +77,9 @@ const config = {
           editLocalizedFiles: true,
         },
         blog: {
+          blogTitle: 'TuyaOpen Blog — AI + IoT News & Tutorials',
+          blogDescription:
+            'News, tutorials, and deep dives on AI and IoT from the TuyaOpen team — hardware, AI agents, and open-source development.',
           showReadingTime: true,
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
@@ -391,8 +394,9 @@ const config = {
         id: 'faq',
         path: 'faq',
         routeBasePath: 'faq',
-        blogTitle: 'FAQ',
-        blogDescription: 'Frequently asked questions about TuyaOpen, IoT development, and open source.',
+        blogTitle: 'TuyaOpen FAQ — Common Questions Answered',
+        blogDescription:
+          'Answers to common questions about TuyaOpen — licensing, hardware support, AI features, and getting started.',
         blogSidebarTitle: 'FAQ Articles',
         postsPerPage: 12,
         showReadingTime: true,
