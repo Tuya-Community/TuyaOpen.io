@@ -265,7 +265,7 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: 'Start Building Today',
-      desc: 'Search for TuyaOpen IDE on Open VSX, or download the .vsix and install it manually in VS Code or Cursor. You can also hand the install to your AI agent.',
+      desc: 'Install TuyaOpen IDE from the VS Code Marketplace, or use an AI agent or a .vsix installer for Cursor and offline setups.',
       marketplace: 'Install Extension',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
@@ -273,7 +273,14 @@ export const tuyaOpenIdeCopy = {
     installDialog: {
       title: 'Install TuyaOpen IDE',
       subtitle:
-        'Open VSX search is available, while the VS Code Marketplace may still be unavailable. Search for TuyaOpen IDE there, or let your AI agent install it using the .vsix below.',
+        'Install directly from the VS Code Marketplace, let your AI agent install it, or download a .vsix installer for VS Code or Cursor.',
+      marketplace: {
+        label: 'VS Code Marketplace',
+        title: 'Install directly from the Marketplace',
+        desc: 'Search for tuyaopen in VS Code Extensions. Verify that the publisher is Tuya Smart, then install it.',
+        cta: 'Open Marketplace',
+        note: 'Available in the VS Code Marketplace. The Cursor marketplace listing is in progress; Cursor users can install with an AI agent or the .vsix package.',
+      },
       download: {
         label: 'Download .vsix installer',
         cta: 'Download .vsix',
@@ -298,7 +305,7 @@ export const tuyaOpenIdeCopy = {
       cursor: {
         label: 'Cursor users',
         title: 'Install from VSIX in Cursor',
-        desc: 'Cursor marketplace search is also unavailable — install the .vsix above manually.',
+        desc: 'Install the .vsix above manually in Cursor.',
         guideTitle: 'How to install',
         steps: [
           'Download the .vsix using the button above.',
@@ -319,7 +326,8 @@ export const tuyaOpenIdeCopy = {
         promptText: (url) =>
           `Install the TuyaOpen IDE extension. Download the latest .vsix from ${url}, then install it with code --install-extension <path-to.vsix> (VS Code) or cursor --install-extension <path-to.vsix> (Cursor), and reload the editor window so the extension activates.`,
       },
-      manualLabel: 'Or install manually',
+      marketplaceLabel: 'Or install from the VS Code Marketplace',
+      manualLabel: 'Or install with a .vsix file',
       close: 'Close',
     },
     footer: {
@@ -801,15 +809,21 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: '立即开始构建',
-      desc: '可在 Open VSX 搜索 TuyaOpen IDE，也可以下载 .vsix 文件在 VS Code / Cursor 中手动安装，或交给你的 AI Agent 安装。',
+      desc: 'TuyaOpen IDE 已可在 VS Code 插件市场搜索安装。Cursor 插件市场仍在上架中，目前可通过 AI Agent 或 .vsix 安装。',
       marketplace: '安装扩展',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
     },
     installDialog: {
       title: '安装 TuyaOpen IDE',
-      subtitle:
-        'Open VSX 搜索目前可用，但 VS Code 应用市场可能仍暂时不可用。你可以在 Open VSX 搜索 TuyaOpen IDE，也可以让 AI Agent 使用下方 .vsix 文件帮你安装。',
+      subtitle: '可从 VS Code 插件市场直接安装，也可以让 AI Agent 安装，或下载 .vsix 安装包用于 VS Code 或 Cursor。',
+      marketplace: {
+        label: 'VS Code 插件市场',
+        title: '从插件市场直接安装',
+        desc: '在 VS Code 的扩展中搜索 tuyaopen，确认发布者为 Tuya Smart 后安装。',
+        cta: '打开插件市场',
+        note: 'VS Code 插件市场已可搜索安装。Cursor 插件市场仍在上架中，目前可通过 AI Agent 或 .vsix 安装。',
+      },
       download: {
         label: '下载 .vsix 插件安装包',
         cta: '下载 .vsix',
@@ -834,7 +848,7 @@ export const tuyaOpenIdeCopy = {
       cursor: {
         label: 'Cursor 用户',
         title: '在 Cursor 中从 VSIX 安装',
-        desc: 'Cursor 插件市场搜索同样不可用 —— 请手动安装上方 .vsix 文件。',
+        desc: '下载上方 .vsix 文件后，在 Cursor 中手动安装。',
         guideTitle: '安装步骤',
         steps: [
           '点击上方按钮下载 .vsix 文件。',
@@ -855,7 +869,8 @@ export const tuyaOpenIdeCopy = {
         promptText: (url) =>
           `安装 TuyaOpen IDE 扩展。从 ${url} 下载最新 .vsix，然后用 code --install-extension <路径.vsix>（VS Code）或 cursor --install-extension <路径.vsix>（Cursor）安装，并重新加载编辑器窗口让扩展生效。`,
       },
-      manualLabel: '或手动安装',
+      marketplaceLabel: '或从 VS Code 插件市场安装',
+      manualLabel: '或使用 .vsix 文件安装',
       close: '关闭',
     },
     footer: {

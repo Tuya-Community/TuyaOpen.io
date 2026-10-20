@@ -1,6 +1,6 @@
 ---
 title: "TuyaOpen IDE 설치"
-description: "Git을 설치한 다음 VS Code 또는 Cursor에 TuyaOpen IDE 확장을 추가하고 활성화 여부를 확인합니다. AI 코딩 Agent 또는 공식 .vsix를 사용할 수 있습니다."
+description: "Git을 설치한 다음 VS Code Marketplace에서 TuyaOpen IDE 확장을 설치합니다. AI 코딩 Agent와 공식 .vsix 설치 방법도 사용할 수 있으며, 마지막에 활성화 여부를 확인합니다."
 sidebar_label: "02 TuyaOpen IDE 설치"
 sidebar_position: 2
 keywords:
@@ -32,9 +32,7 @@ TuyaOpen IDE는 **VS Code** 또는 **Cursor**용 확장입니다. 먼저 호스�
 | **VS Code** | https://code.visualstudio.com | 가장 넓은 범용 생태계 |
 | **Cursor** | https://cursor.com | 더 강력한 내장 AI 제공 |
 
-:::warning
-TuyaOpen IDE는 [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE)에 등록되어 있습니다. VS Code Marketplace는 제공되지 않을 수 있으므로 AI 코딩 Agent를 사용하거나 아래 공식 사이트에서 `.vsix`를 다운로드하여 설치할 수도 있습니다.
-:::
+TuyaOpen IDE는 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=tuya.tuyaopen)에서 사용할 수 있습니다. AI 코딩 Agent를 사용하거나 공식 사이트에서 `.vsix`를 다운로드하여 설치할 수도 있습니다.
 
 ## 방법 1: AI Agent로 설치(가장 빠름) {/* #ai-agent-install */}
 아래 프롬프트를 **Claude Code, Cursor, Codex 또는 셸 명령을 실행할 수 있는 코딩 Agent**에 붙여넣습니다. 최신 `.vsix`를 다운로드하고 확장을 설치합니다.
@@ -49,7 +47,24 @@ TuyaOpen IDE는 [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE)�
 프롬프트의 다운로드 링크는 `.vsix`의 **최신** 버전을 가리킵니다. Agent가 다운로드 → 설치 → 다시 로드 흐름을 자동으로 실행합니다.
 :::
 
-## 방법 2: 공식 사이트에서 .vsix 다운로드 {/* #manual-vsix */}
+## 방법 2: VS Code Marketplace에서 설치 {/* #marketplace */}
+
+이 방법은 VS Code용입니다. Marketplace의 게시자는 **Tuya Smart**이며 확장 ID는 `tuya.tuyaopen`입니다.
+
+1. VS Code에서 **Extensions** 보기(`Ctrl+Shift+X`, macOS: `⌘+Shift+X`)를 엽니다.
+2. `tuyaopen`을 검색합니다.
+
+   ![VS Code Marketplace에서 tuyaopen 검색](/img/ide/vscode-marketplace-search-en.png)
+
+3. 게시자가 **Tuya Smart**인 **tuyaopen**을 선택하고 **Install**을 클릭합니다.
+4. 안내가 표시되면 편집기를 다시 로드합니다.
+
+:::note
+TuyaOpen IDE는 VS Code Marketplace에서 검색하여 설치할 수 있습니다. Cursor 마켓플레이스에는 아직 등록 중입니다. Cursor 사용자는 현재 AI Agent(방법 1) 또는 `.vsix` 패키지(방법 3)로 설치하세요.
+:::
+
+## 방법 3: 공식 사이트에서 .vsix 다운로드 {/* #manual-vsix */}
+
 1. [TuyaOpen IDE 페이지](/tuyaopen-ide)를 열고 **Install Extension**을 클릭합니다.
 2. 설치 대화 상자에서 **Download .vsix**를 클릭합니다.
 3. VS Code에서 **Extensions**(`Ctrl+Shift+X`, macOS: `⌘+Shift+X`)를 엽니다.

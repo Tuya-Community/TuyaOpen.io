@@ -1,6 +1,6 @@
 ---
 title: "Install TuyaOpen IDE"
-description: "Install Git, then add the TuyaOpen IDE extension to VS Code or Cursor — by letting an AI coding agent do it, or from the official .vsix — then verify it is enabled."
+description: "Install Git, then add the TuyaOpen IDE extension from the VS Code Marketplace, with AI-agent and .vsix installation alternatives, then verify it is enabled."
 sidebar_label: "02 Install TuyaOpen IDE"
 sidebar_position: 2
 keywords:
@@ -36,9 +36,7 @@ TuyaOpen IDE is an extension for **VS Code** or **Cursor**. Install one of these
 | **VS Code** | https://code.visualstudio.com | The widest general ecosystem. |
 | **Cursor** | https://cursor.com | Ships with stronger built-in AI. |
 
-:::warning
-The TuyaOpen IDE listing is available on [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE). The VS Code Marketplace may still be unavailable, so you can also install it through an AI coding agent or download the `.vsix` from the official site below.
-:::
+TuyaOpen IDE is available on the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=tuya.tuyaopen). You can also install it through an AI coding agent or download the `.vsix` from the official site.
 
 ## Method 1: Let an AI agent install it (fastest) {/* #ai-agent-install */}
 
@@ -64,7 +62,25 @@ Paste the prompt below into **Claude Code, Cursor, Codex, or any coding agent th
 The download link in the prompt points to the **latest** version of the `.vsix`. The agent runs the whole download → install → reload flow with no manual steps.
 :::
 
-## Method 2: Download the .vsix from the official site {/* #manual-vsix */}
+## Method 2: Install from the VS Code Marketplace {/* #marketplace */}
+
+Use this method when you use VS Code. The Marketplace publisher is **Tuya Smart** and the extension ID is `tuya.tuyaopen`.
+
+1. Open VS Code and go to the **Extensions** view — `Ctrl+Shift+X` (macOS: `⌘+Shift+X`).
+
+2. Search for `tuyaopen`.
+
+   ![Search for tuyaopen in the VS Code Marketplace](/img/ide/vscode-marketplace-search-en.png)
+
+3. Select **tuyaopen** from publisher **Tuya Smart**, then click **Install**.
+
+4. Reload the editor when prompted.
+
+:::note
+TuyaOpen IDE is searchable in the VS Code Marketplace. The Cursor marketplace listing is still in progress. Cursor users can currently install it with an AI agent (Method 1) or a `.vsix` package (Method 3).
+:::
+
+## Method 3: Download the .vsix from the official site {/* #manual-vsix */}
 
 Get the `.vsix` from the official TuyaOpen IDE site so you always receive the **latest** version. The same package works in both **VS Code** and **Cursor**.
 
@@ -107,4 +123,3 @@ The three most common cases:
 ## Next step {/* #next */}
 
 You are ready to build. Start with [**Practice 1: Hello World**](./hello-world.md) — run an official example with zero code and learn the IDE basics.
-
