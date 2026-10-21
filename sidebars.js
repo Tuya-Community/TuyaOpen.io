@@ -305,6 +305,15 @@ const hardwareSidebar = [
   },
   {
     type: 'category',
+    label: 'JieLi',
+    collapsed: true,
+    items: [
+      'hardware/jieli/ac79-devkitboard-peripheral-mapping',
+      'hardware/jieli/ac792n-develop-board-peripheral-mapping',
+    ],
+  },
+  {
+    type: 'category',
     label: 'Tuya T2',
     collapsed: true,
     link: { type: 'doc', id: 'hardware/tuya-t2/overview-t2' },

@@ -32,6 +32,10 @@ TuyaOpen supports Wi-Fi and Bluetooth LE dual-mode chips across the following fa
 
 For TuyaOpen-oriented notes on T2 and T3 modules and BSP paths, see [T2 module overview](tuya-t2/overview-t2) and [T3 module overview](tuya-t3/overview-t3).
 
+ - JieLi Series
+
+For the JieLi boards, see the peripheral mapping documents: [AC79_DevKitBoard (AC791 / WL82)](jieli/ac79-devkitboard-peripheral-mapping) and [AC792N_Develop_Board (AC792N / WL83)](jieli/ac792n-develop-board-peripheral-mapping).
+
  - ESP32 Series
 
 <ChipRow 
