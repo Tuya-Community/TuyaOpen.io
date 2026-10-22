@@ -31,6 +31,10 @@ TuyaOpen 支持的芯片均为 Wi-Fi 与 Bluetooth LE 双模芯片，涵盖以�
 
 关于 T2、T3 模组在 TuyaOpen 中的 BSP 路径与使用说明，见 [T2 模块概述](tuya-t2/overview-t2) 与 [T3 模块概述](tuya-t3/overview-t3)。
 
+ - 杰理（JieLi）系列
+
+杰理两块开发板的外设映射见：[AC79_DevKitBoard（AC791 / WL82）](jieli/ac79-devkitboard-peripheral-mapping) 与 [AC792N_Develop_Board（AC792N / WL83）](jieli/ac792n-develop-board-peripheral-mapping)。
+
  - ESP32 系列
 
 <ChipRow 
