@@ -7,6 +7,14 @@
     "message": "快速开始",
     "description": "The label for category 'Getting Started' in sidebar 'sdkSidebar'"
   },
+  "sidebar.coreSidebar.category.Get started": {
+    "message": "快速上手",
+    "description": "The label for category 'Get started' in sidebar 'coreSidebar'"
+  },
+  "sidebar.coreSidebar.category.Capability APIs": {
+    "message": "能力 API",
+    "description": "The label for category 'Capability APIs' in sidebar 'coreSidebar'"
+  },
   "sidebar.sdkSidebar.category.Guides & platform APIs": {
     "message": "指南与平台 API",
     "description": "The label for category 'Guides & platform APIs' in sidebar 'sdkSidebar'"

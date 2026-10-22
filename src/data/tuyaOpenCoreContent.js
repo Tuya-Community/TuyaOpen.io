@@ -13,6 +13,7 @@ export const tuyaOpenCoreContent = {
       description:
         'TuyaOpen Core 是一个轻量级 C SDK 库，可加入任意设备工程或平台，连接涂鸦云，并提供三个能力 API：IoT、AI Agent 和 P2P。无需更换系统或重写代码，只需链接这套库。',
       explore: '了解三个能力 API',
+      docs: '/docs/tuyaopen-core/overview',
       github: '查看 GitHub',
       note: '支持 Linux、ESP-IDF、RT-Thread、Zephyr、NuttX 等',
     },
@@ -67,6 +68,7 @@ export const tuyaOpenCoreContent = {
       label: '03 / 三个能力 API',
       title: 'IoT、AI Agent、P2P。',
       description: 'TuyaOpen Core 的全部能力——一条连接之上的三个简单 API。',
+      docsCta: '查看 API 文档',
       items: [
         {
           name: 'IoT',
@@ -74,6 +76,7 @@ export const tuyaOpenCoreContent = {
           body: '设备激活、身份鉴权、数据点交互、远程控制与 OTA。每台设备都需要的基础。',
           tags: ['激活与鉴权', '数据点', 'OTA'],
           flow: ['设备', 'IoT API', '涂鸦云'],
+          docs: '/docs/tuyaopen-core/iot-api',
         },
         {
           name: 'AI Agent',
@@ -81,6 +84,7 @@ export const tuyaOpenCoreContent = {
           body: '由云端 AI 驱动的多轮语音或文本对话，可选支持 MCP。',
           tags: ['云端 AI', '多轮对话', '可选 MCP'],
           flow: ['语音/文本', 'Agent API', '云端 AI'],
+          docs: '/docs/tuyaopen-core/agent-api',
         },
         {
           name: 'P2P',
@@ -88,6 +92,7 @@ export const tuyaOpenCoreContent = {
           body: '设备与应用间低延迟的点对点媒体，经涂鸦云协调连接，可选本地录像。',
           tags: ['音视频', '低延迟', '可选录像'],
           flow: ['设备媒体', 'P2P API', '应用端'],
+          docs: '/docs/tuyaopen-core/p2p-api',
         },
       ],
     },
@@ -143,6 +148,7 @@ export const tuyaOpenCoreContent = {
       description:
         'TuyaOpen Core is a lightweight C SDK library you add to any device project or platform. It connects your device to Tuya Cloud and gives you three APIs: IoT, AI Agent, and P2P. Keep your OS and code — just link the library.',
       explore: 'Explore the APIs',
+      docs: '/docs/tuyaopen-core/overview',
       github: 'View on GitHub',
       note: 'Works on Linux, ESP-IDF, RT-Thread, Zephyr, NuttX and more',
     },
@@ -197,6 +203,7 @@ export const tuyaOpenCoreContent = {
       label: '03 / THE THREE APIs',
       title: 'IoT, AI Agent, P2P.',
       description: 'Everything TuyaOpen Core provides — three simple APIs on one connection.',
+      docsCta: 'Read the API guide',
       items: [
         {
           name: 'IoT',
@@ -204,6 +211,7 @@ export const tuyaOpenCoreContent = {
           body: 'Activation, authentication, data points, remote control and OTA. The base every device needs.',
           tags: ['Activation & auth', 'Data points', 'OTA'],
           flow: ['Device', 'IoT API', 'Tuya Cloud'],
+          docs: '/docs/tuyaopen-core/iot-api',
         },
         {
           name: 'AI Agent',
@@ -211,6 +219,7 @@ export const tuyaOpenCoreContent = {
           body: 'Multi-turn voice or text conversations powered by cloud AI, with optional MCP support.',
           tags: ['Cloud AI', 'Multi-turn', 'Optional MCP'],
           flow: ['Voice / text', 'Agent API', 'Cloud AI'],
+          docs: '/docs/tuyaopen-core/agent-api',
         },
         {
           name: 'P2P',
@@ -218,6 +227,7 @@ export const tuyaOpenCoreContent = {
           body: 'Low-latency peer-to-peer media between device and app, coordinated through Tuya Cloud. Optional local recording.',
           tags: ['Audio/video', 'Low latency', 'Optional recording'],
           flow: ['Device media', 'P2P API', 'App'],
+          docs: '/docs/tuyaopen-core/p2p-api',
         },
       ],
     },

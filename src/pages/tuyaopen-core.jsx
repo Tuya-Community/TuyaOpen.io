@@ -1,6 +1,5 @@
 import Head from '@docusaurus/Head'
 import Link from '@docusaurus/Link'
-import useBrokenLinks from '@docusaurus/useBrokenLinks'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Layout from '@theme/Layout'
@@ -428,11 +427,10 @@ function Architecture({ copy }) {
 }
 
 export default function TuyaOpenCorePage() {
-  useBrokenLinks().collectAnchor('capabilities')
   const { i18n } = useDocusaurusContext()
   const locale = i18n.currentLocale
   const copy = tuyaOpenCoreContent[locale] || tuyaOpenCoreContent.en
-  const capabilitiesPath = `${localePath(locale, '/tuyaopen-core')}#capabilities`
+  const heroDocsPath = localePath(locale, copy.hero.docs)
 
   return (
     <Layout title={copy.meta.title} description={copy.meta.description}>
@@ -459,7 +457,7 @@ export default function TuyaOpenCorePage() {
               </p>
               <p className={styles.heroDescription}>{copy.hero.description}</p>
               <div className={styles.actions}>
-                <Link className={styles.primaryButton} to={capabilitiesPath}>
+                <Link className={styles.primaryButton} to={heroDocsPath}>
                   {copy.hero.explore}
                   <Arrow />
                 </Link>
@@ -529,6 +527,10 @@ export default function TuyaOpenCorePage() {
                       </React.Fragment>
                     ))}
                   </div>
+                  <Link className={styles.capabilityDocsLink} to={localePath(locale, item.docs)}>
+                    {copy.capabilities.docsCta}
+                    <span aria-hidden="true">→</span>
+                  </Link>
                 </article>
               ))}
             </div>

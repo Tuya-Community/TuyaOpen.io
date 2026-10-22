@@ -441,6 +441,33 @@
   opacity: 0.5;
   flex-shrink: 0;
 }
+.capabilityDocsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: 1px solid color-mix(in srgb, var(--module-color) 45%, var(--core-border));
+  border-radius: 9px;
+  color: var(--module-color);
+  background: color-mix(in srgb, var(--module-color) 7%, var(--core-surface));
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.capabilityDocsLink:hover {
+  background: color-mix(in srgb, var(--module-color) 15%, var(--core-surface));
+  border-color: var(--module-color);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+.capabilityDocsLink > span {
+  transition: transform 0.18s ease;
+}
+.capabilityDocsLink:hover > span {
+  transform: translateX(3px);
+}
 .architecture {
   position: relative;
   padding-block: 100px;

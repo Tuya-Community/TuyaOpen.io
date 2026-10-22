@@ -162,6 +162,7 @@ const config = {
           items: [
             { to: '/documentation', label: 'All docs' },
             { type: 'docSidebar', sidebarId: 'sdkSidebar', label: 'TuyaOpen SDK' },
+            { type: 'docSidebar', sidebarId: 'coreSidebar', label: 'TuyaOpen Core' },
             { type: 'docSidebar', sidebarId: 'ideSidebar', label: 'TuyaOpen IDE' },
             { type: 'docSidebar', sidebarId: 'hardwareSidebar', label: 'Hardware' },
             { type: 'docSidebar', sidebarId: 'cloudSidebar', label: 'Cloud & AI' },

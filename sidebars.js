@@ -4,6 +4,7 @@
 // Each sidebar is a separate "docs entry" surfaced from the navbar "Docs" menu:
 //
 //   sdkSidebar       -> TuyaOpen SDK   (/docs root content)
+//   coreSidebar      -> TuyaOpen Core  (/docs/tuyaopen-core/*)
 //   ideSidebar       -> TuyaOpen IDE   (/docs/ide/*)
 //   hardwareSidebar  -> Hardware       (/docs/hardware/*)
 //   cloudSidebar     -> Cloud & AI     (/docs/cloud/*)
@@ -653,8 +654,31 @@ const ideSidebar = [
   'ide/ide-feedback',
 ]
 
+const coreSidebar = [
+  'tuyaopen-core/overview',
+  {
+    type: 'category',
+    label: 'Get started',
+    collapsed: false,
+    items: [
+      'tuyaopen-core/linux-quick-start',
+      'tuyaopen-core/esp-idf-quick-start',
+      'tuyaopen-core/add-to-project',
+      'tuyaopen-core/port-to-platform',
+      'tuyaopen-core/migrate-from-tkl',
+    ],
+  },
+  {
+    type: 'category',
+    label: 'Capability APIs',
+    collapsed: false,
+    items: ['tuyaopen-core/iot-api', 'tuyaopen-core/agent-api', 'tuyaopen-core/p2p-api'],
+  },
+]
+
 module.exports = {
   sdkSidebar,
+  coreSidebar,
   ideSidebar,
   hardwareSidebar,
   cloudSidebar,

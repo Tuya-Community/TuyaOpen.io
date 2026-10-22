@@ -1,9 +1,9 @@
 /* =========================================================================
  * Docs portal content — the map behind /documentation.
  *
- * Mirrors the five sidebars declared in sidebars.js (sdk / hardware / cloud /
- * tclaw / tyutool). Every `id` here is a doc id from that file, so a link
- * that breaks means a doc moved; keep the two in step.
+ * Mirrors the sidebars declared in sidebars.js (sdk / core / ide / hardware /
+ * cloud / tclaw / tyutool). Every `id` here is a doc id from that file, so a
+ * link that breaks means a doc moved; keep the two in step.
  *
  * Groups are ordered the way someone actually walks a product: what it is,
  * then how to build with it, then how to ship it.
@@ -34,7 +34,7 @@ export const quickStartPointer = {
   },
 }
 
-/** The five documentation areas surfaced from the navbar "Docs" menu. */
+/** The documentation areas surfaced from the navbar "Docs" menu. */
 export const areas = [
   {
     key: 'sdk',
@@ -101,6 +101,50 @@ export const areas = [
           { id: 'faqs/get-developer-license', en: 'Get a developer license', zh: '获取开发者授权码' },
           { id: 'contribute/contribute-guide', en: 'Contribute guide', zh: '贡献指南' },
           { id: 'contribute/coding-style-guide', en: 'Coding style', zh: '编码规范' },
+        ],
+      },
+    ],
+  },
+
+  {
+    key: 'core',
+    accent: '#ff7a45',
+    en: {
+      name: 'TuyaOpen Core',
+      tagline: 'Tuya Cloud SDK library',
+      blurb:
+        'A device-side C SDK library that links into your existing platform to reach Tuya Cloud, with IoT, AI Agent and P2P capability APIs.',
+    },
+    zh: {
+      name: 'TuyaOpen Core',
+      tagline: '涂鸦云 SDK 库',
+      blurb: '以库的形式链接进现有平台、接入涂鸦云的设备端 C SDK，提供 IoT、AI Agent 与 P2P 三个能力 API。',
+    },
+    entry: 'tuyaopen-core/overview',
+    groups: [
+      {
+        en: 'Understand the library',
+        zh: '了解库',
+        links: [{ id: 'tuyaopen-core/overview', en: 'Overview', zh: '产品概览' }],
+      },
+      {
+        en: 'Get started',
+        zh: '快速上手',
+        links: [
+          { id: 'tuyaopen-core/linux-quick-start', en: 'Quick start on Linux', zh: 'Linux 快速开始' },
+          { id: 'tuyaopen-core/esp-idf-quick-start', en: 'Quick start on ESP-IDF', zh: 'ESP-IDF 快速开始' },
+          { id: 'tuyaopen-core/add-to-project', en: 'Add to a project', zh: '把库加入工程' },
+          { id: 'tuyaopen-core/port-to-platform', en: 'Port to a new platform', zh: '适配新平台' },
+          { id: 'tuyaopen-core/migrate-from-tkl', en: 'Migrate from a TKL project', zh: '从 TKL 工程迁移' },
+        ],
+      },
+      {
+        en: 'Capability APIs',
+        zh: '能力 API',
+        links: [
+          { id: 'tuyaopen-core/iot-api', en: 'IoT API', zh: 'IoT API' },
+          { id: 'tuyaopen-core/agent-api', en: 'AI Agent API', zh: 'AI Agent API' },
+          { id: 'tuyaopen-core/p2p-api', en: 'P2P API', zh: 'P2P API' },
         ],
       },
     ],
