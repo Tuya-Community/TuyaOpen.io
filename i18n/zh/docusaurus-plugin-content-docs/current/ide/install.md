@@ -1,6 +1,6 @@
 ---
 title: "安装 TuyaOpen IDE"
-description: "先安装 Git，再在 VS Code 或 Cursor 中安装 TuyaOpen IDE 扩展——让 AI 编程 Agent 帮你装，或从官网下载 .vsix 手动安装，然后验证已启用。"
+description: "先安装 Git，再通过 VS Code 插件市场安装 TuyaOpen IDE 扩展；也可让 AI 编程 Agent 安装或从官网下载 .vsix，最后验证扩展已启用。"
 sidebar_label: "02 安装 TuyaOpen IDE"
 sidebar_position: 2
 keywords:
@@ -36,9 +36,7 @@ TuyaOpen IDE 是 **VS Code** 或 **Cursor** 的扩展，必须先装好其中一
 | **VS Code** | https://code.visualstudio.com | 通用生态最广。 |
 | **Cursor** | https://cursor.com | 自带更强 AI 能力。 |
 
-:::warning
-TuyaOpen IDE 已可在 [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE) 中搜索。VS Code 应用市场可能仍暂时不可用，也可以通过 AI 编程 Agent 或下方的 `.vsix` 文件安装。
-:::
+TuyaOpen IDE 已上架 [VS Code 插件市场](https://marketplace.visualstudio.com/items?itemName=tuya.tuyaopen)。也可以通过 AI 编程 Agent 安装，或从官网下载安装 `.vsix` 文件。
 
 ## 方式一：让 AI Agent 帮你安装（最快） {/* #ai-agent-install */}
 
@@ -64,7 +62,25 @@ TuyaOpen IDE 已可在 [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOp
 提示词里的下载链接会指向**最新版本**的 `.vsix`。Agent 收到后会自动完成「下载 → 安装 → 重新加载」全流程，无需手动操作。
 :::
 
-## 方式二：从官网下载 .vsix {/* #manual-vsix */}
+## 方式二：从 VS Code 插件市场安装 {/* #marketplace */}
+
+此方式适用于 VS Code。插件市场中的发布者为 **Tuya Smart**，扩展标识符为 `tuya.tuyaopen`。
+
+1. 打开 VS Code，进入**扩展**视图 —— `Ctrl+Shift+X`（macOS 为 `⌘+Shift+X`）。
+
+2. 搜索 `tuyaopen`。
+
+   ![在 VS Code 插件市场搜索 tuyaopen](/img/ide/vscode-marketplace-search-zh.png)
+
+3. 选择发布者为 **Tuya Smart** 的 **tuyaopen**，然后点击**安装**。
+
+4. 根据提示重新加载编辑器。
+
+:::note
+TuyaOpen IDE 已可在 VS Code 插件市场搜索安装。Cursor 插件市场仍在上架中，当前请通过 AI Agent（方式一）或 `.vsix` 安装包（方式三）安装。
+:::
+
+## 方式三：从官网下载 .vsix {/* #manual-vsix */}
 
 从 TuyaOpen IDE 官网获取 `.vsix`，确保始终拿到**最新版本**。同一个安装包，**VS Code 与 Cursor 通用**。
 
@@ -107,4 +123,3 @@ TuyaOpen IDE 已可在 [Open VSX](https://open-vsx.org/extension/TuyaOpen/TuyaOp
 ## 下一步 {/* #next */}
 
 你已经准备好开始开发了。从 [**实战一：Hello World**](./hello-world.md) 开始——不写一行代码跑通官方示例，掌握 IDE 基础操作。
-

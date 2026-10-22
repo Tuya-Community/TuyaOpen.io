@@ -62,7 +62,7 @@ keywords:
 
 ## 第四步：烧录 {/* #step-4 */}
 
-1. 用 USB 连接开发板（T5AI_Board 有两路串口：一路烧录、一路日志），确保 USB 线不仅能供电，还能传输数据。
+1. 用 USB 连接开发板（T5AI_Board 有两路串口：一路烧录、一路日志），确保 USB 线不仅能供电，还能传输数据。确保已经安装[串口驱动](/docs/tos-tools/tools-tyutool#烧录过程中总是在-write-阶段失败)。
 2. 点击**烧录（Flash）**。最初不确定哪一路是烧录口，可以任选一个试一下，这里选择 `COM4`。
 
    ![烧录按钮与端口选择](https://images.tuyacn.com/fe-static/docs/img/1761320a-a9d5-43c6-b73e-b01382e648da.png?imageMogr2/format/webp)

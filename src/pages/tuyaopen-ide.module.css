@@ -2056,7 +2056,15 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-family:
+    'JetBrains Mono',
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Liberation Mono',
+    monospace;
   height: clamp(17rem, 52vh, 26rem);
 }
 
@@ -3009,6 +3017,24 @@
   letter-spacing: 0.01em;
 }
 
+.installMarketplace {
+  border-color: rgba(0, 170, 255, 0.35);
+  background: linear-gradient(135deg, rgba(0, 170, 255, 0.09), rgba(110, 87, 255, 0.06));
+}
+
+.installMarketplaceTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg-primary);
+}
+
+.installMarketplaceDesc {
+  max-width: 500px;
+  font-size: 12.5px;
+  color: var(--fg-secondary);
+  line-height: 1.5;
+}
+
 .installDownloadHeroMeta {
   display: inline-flex;
   align-items: center;
@@ -3142,15 +3168,7 @@
   padding: 16px 96px 16px 16px;
   max-height: 240px;
   overflow: auto;
-  font-family:
-    'JetBrains Mono',
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    monospace;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
   font-size: 12.5px;
   line-height: 1.65;
   color: var(--fg-secondary);
