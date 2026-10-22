@@ -2,6 +2,7 @@ import Head from '@docusaurus/Head'
 import Link from '@docusaurus/Link'
 import useBrokenLinks from '@docusaurus/useBrokenLinks'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import Layout from '@theme/Layout'
 import React, { useState } from 'react'
 
@@ -13,6 +14,21 @@ const CORE_URL = 'https://github.com/tuya/tuyaopen-core'
 const FRAMEWORK_URL = 'https://github.com/tuya/TuyaOpen'
 const MODULES = ['IoT', 'AI Agent', 'P2P']
 const ECOSYSTEMS = ['Linux', 'ESP-IDF', 'RT-Thread', 'Zephyr', 'NuttX']
+const CAPABILITY_ASSETS = ['iot', 'agent', 'p2p']
+
+// Product iconography lives in static/img/tuyaopen-core (Seedream-generated
+// 3D glass tiles). Two renderers are needed: <img> in HTML, <image> in SVG.
+function IconAsset({ asset, size = 40, className }) {
+  const src = useBaseUrl(`/img/tuyaopen-core/${asset}.png`)
+  return (
+    <img src={src} width={size} height={size} className={className} alt="" aria-hidden="true" loading="lazy" />
+  )
+}
+
+function SvgIconAsset({ asset, size = 48, className }) {
+  const href = useBaseUrl(`/img/tuyaopen-core/${asset}.png`)
+  return <image href={href} width={size} height={size} className={className} />
+}
 
 // IoT is the foundation; Agent and P2P are optional core capabilities.
 function toggleCapability(current, key) {
@@ -61,38 +77,6 @@ function VisualDefs({ id }) {
   )
 }
 
-function PrismCapabilityIcon({ index }) {
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {index === 1 ? (
-        <>
-          <path d="M12 7V4m-2 0h2M5 12H3m18 0h-2" />
-          <rect x="5" y="7" width="14" height="13" rx="4" />
-          <circle cx="9" cy="12" r="1" fill="currentColor" stroke="none" />
-          <circle cx="15" cy="12" r="1" fill="currentColor" stroke="none" />
-          <path d="M9 16h6" />
-        </>
-      ) : (
-        <>
-          <circle cx="4" cy="12" r="2.5" />
-          <circle cx="20" cy="12" r="2.5" />
-          <path d="M7 8h10m-3-3 3 3-3 3m3 5H7m3-3-3 3 3 3" />
-        </>
-      )}
-    </svg>
-  )
-}
-
 function ModulePrism({ id, index, x, y, active = true, children }) {
   const color = ['blue', 'teal', 'orange'][index]
   return (
@@ -104,7 +88,7 @@ function ModulePrism({ id, index, x, y, active = true, children }) {
         <path d="M0 29 60 0 120 29 60 58Z" fill={`url(#${id}-${color})`} stroke="#e0efff" strokeOpacity=".75" />
         <path d="m9 29 51-24 51 24-51 24Z" fill="none" stroke="#eff7ff" strokeOpacity=".3" />
         <g transform="matrix(.8 .38 -.8 .38 60 11)" className={styles.prismIcon}>
-          {index === 0 ? <ModuleIcon index={index} /> : <PrismCapabilityIcon index={index} />}
+          <SvgIconAsset asset={CAPABILITY_ASSETS[index]} size={48} />
         </g>
         <path d="m0 52 60 29 60-29" fill="none" stroke={['#82adff', '#6ce7dd', '#ffc092'][index]} strokeWidth="1.5" />
       </g>
@@ -135,7 +119,7 @@ function EcosystemVisual({ copy }) {
           <path d="M0 36 70 0 140 36 70 70Z" fill="url(#ecosystem-art-blue)" stroke="#bedaff" />
           <path d="m12 36 58-29 58 29-58 28Z" fill="none" stroke="#d5e6ff" strokeOpacity=".5" />
           <g transform="translate(50 16)" className={styles.systemCoreIcon}>
-            <CoreMark />
+            <SvgIconAsset asset="core" size={40} />
           </g>
         </g>
       </svg>
@@ -144,10 +128,7 @@ function EcosystemVisual({ copy }) {
       </div>
       {ECOSYSTEMS.map((name, i) => (
         <span className={styles.systemNode} key={name} data-node={i}>
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-            <rect x="3" y="4" width="14" height="10" rx="2" />
-            <path d="M7 17h6m-3-3v3M6 8l2 2-2 2m5 0h3" />
-          </svg>
+          <IconAsset asset="system" size={18} />
           {name}
         </span>
       ))}
@@ -165,9 +146,7 @@ function CompositionVisual({ selection, copy }) {
     <div className={styles.connectedComposition}>
       <div className={styles.compositionCloud}>
         <div className={styles.cloudIdentity}>
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
-            <path d="M9 25h15a6 6 0 0 0 1-11.9A9 9 0 0 0 7.5 11 7 7 0 0 0 9 25Z" />
-          </svg>
+          <IconAsset asset="cloud" size={32} />
           <strong>{copy.cloud}</strong>
         </div>
         <p>{copy.cloudValue}</p>
@@ -258,60 +237,6 @@ function Arrow({ diagonal = false }) {
       aria-hidden="true"
     >
       <path d={diagonal ? 'M6 18 18 6M6 6h12v12' : 'M4 12h15m-6-6 6 6-6 6'} />
-    </svg>
-  )
-}
-
-function CoreMark() {
-  return (
-    <svg
-      width="40"
-      height="40"
-      viewBox="0 0 40 40"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <rect x="11" y="11" width="18" height="18" rx="5" />
-      <path d="M16 4v7m8-7v7m-8 18v7m8-7v7M4 16h7m-7 8h7m18-8h7m-7 8h7" />
-      <path d="m17 16-4 4 4 4m6-8 4 4-4 4" />
-    </svg>
-  )
-}
-
-function ModuleIcon({ index, size = 48 }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      aria-hidden="true"
-    >
-      {index === 0 ? (
-        <>
-          <rect x="17" y="17" width="14" height="14" rx="4" />
-          <path d="M24 17V8m0 23v9M17 24H8m23 0h9" />
-          <circle cx="24" cy="6" r="3" />
-          <circle cx="24" cy="42" r="3" />
-          <circle cx="6" cy="24" r="3" />
-          <circle cx="42" cy="24" r="3" />
-        </>
-      ) : index === 1 ? (
-        <>
-          <path d="M15 10h18a7 7 0 0 1 7 7v12a7 7 0 0 1-7 7H22l-9 6v-7a7 7 0 0 1-5-6V17a7 7 0 0 1 7-7Z" />
-          <path d="m24 16 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z" />
-        </>
-      ) : (
-        <>
-          <rect x="4" y="11" width="15" height="26" rx="4" />
-          <rect x="29" y="11" width="15" height="26" rx="4" />
-          <path d="M13 21h22m-4-4 4 4-4 4M35 29H13m4-4-4 4 4 4" />
-        </>
-      )}
     </svg>
   )
 }
@@ -421,8 +346,8 @@ function CoreVisual({ copy }) {
                 stroke={color}
                 strokeOpacity=".25"
               />
-              <g transform="translate(14 12)" className={styles.sceneIcon} style={{ color }}>
-                <ModuleIcon index={index} size={23} />
+              <g transform="translate(14 12)" className={styles.sceneIcon}>
+                <SvgIconAsset asset={CAPABILITY_ASSETS[index]} size={23} />
               </g>
               <text x="55" y="29" className={styles.sceneCapability}>
                 {MODULES[index]}
@@ -490,7 +415,7 @@ function Architecture({ copy }) {
             <div className={styles.hostAdapter}>{copy.adapter}</div>
           </div>
           <div className={styles.hostComponents}>
-            <CoreMark />
+            <IconAsset asset="core" size={40} />
             <strong>{copy.components}</strong>
             <span>{copy.componentsDetail}</span>
           </div>
@@ -583,7 +508,7 @@ export default function TuyaOpenCorePage() {
                   <div className={styles.capabilityIdentity}>
                     <span>0{index + 1}</span>
                     <div className={styles.capabilityIcon}>
-                      <ModuleIcon index={index} />
+                      <IconAsset asset={CAPABILITY_ASSETS[index]} size={52} />
                     </div>
                     <h3>{item.name}</h3>
                   </div>
@@ -624,15 +549,7 @@ export default function TuyaOpenCorePage() {
               <article key={key} className={key === 'core' ? styles.relationshipCore : ''}>
                 <span className={styles.relationshipLabel}>{copy.relationship[key].label}</span>
                 <div className={styles.relationshipVisual} aria-hidden="true">
-                  <CoreMark />
-                  {key === 'full' && (
-                    <>
-                      <span />
-                      <ModuleIcon index={0} />
-                      <span />
-                      <ModuleIcon index={1} />
-                    </>
-                  )}
+                  <IconAsset asset={key === 'core' ? 'rel-core' : 'rel-full'} size={150} />
                 </div>
                 <h3>{copy.relationship[key].title}</h3>
                 <p>{copy.relationship[key].body}</p>
