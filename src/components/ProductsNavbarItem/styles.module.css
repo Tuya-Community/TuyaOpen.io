@@ -33,15 +33,15 @@
 }
 
 .mega {
-  position: absolute;
-  top: 100%;
-  left: 0;
+  position: fixed;
+  top: var(--ifm-navbar-height);
+  left: 50%;
   width: min(1040px, calc(100vw - 2rem));
   padding-top: 10px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(8px);
+  transform: translate(-50%, 8px);
   transition:
     opacity 0.2s ease,
     transform 0.2s ease,
@@ -53,12 +53,16 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 .megaInner {
   display: flex;
   flex-direction: column;
+  max-height: calc(100vh - var(--ifm-navbar-height) - 26px);
+  max-height: calc(100dvh - var(--ifm-navbar-height) - 26px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   gap: 24px;
   padding: 28px 32px;
   background: var(--ifm-background-surface-color, #fff);
