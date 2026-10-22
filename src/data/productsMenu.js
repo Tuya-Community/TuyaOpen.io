@@ -15,6 +15,12 @@ export const productsMenu = {
             external: true,
           },
           {
+            icon: 'sdk',
+            title: 'TuyaOpen Core',
+            subtitle: 'Modular IoT, AI Agent & P2P core for device projects',
+            href: '/tuyaopen-core',
+          },
+          {
             icon: 'arduino',
             title: 'TuyaOpen on Arduino',
             subtitle: 'Arduino library for rapid prototyping',
@@ -98,6 +104,12 @@ export const productsMenu = {
             external: true,
           },
           {
+            icon: 'sdk',
+            title: 'TuyaOpen Core',
+            subtitle: '接入设备工程的模块化 IoT、AI Agent 与 P2P 核心',
+            href: '/tuyaopen-core',
+          },
+          {
             icon: 'arduino',
             title: 'TuyaOpen on Arduino',
             subtitle: '面向快速原型的 Arduino 库',
@@ -175,27 +187,29 @@ productsMenu.ko = {
   groups: productsMenu.en.groups.map((group) => ({
     ...group,
     heading: group.heading === 'Software' ? '소프트웨어' : group.heading === 'Hardware' ? '하드웨어' : '도구',
-    items: group.items.map((item) => ({
-      ...item,
-      title:
-        {
-          'License Key': '라이선스 키',
-          服务授权码: '라이선스 키',
-        }[item.title] || item.title,
-      subtitle:
-        {
-          'Open-source full-stack AIoT OS': '오픈 소스 풀스택 AIoT OS',
-          'Arduino library for rapid prototyping': '빠른 프로토타이핑을 위한 Arduino 라이브러리',
-          'AI hardware companion agent · formerly DuckyClaw': 'AI 하드웨어 동반 Agent · 이전 DuckyClaw',
-          'Flagship Wi-Fi & BT AI chip — built for TuyaOpen': 'TuyaOpen을 위해 설계된 플래그십 Wi-Fi 및 BT AI 칩',
-          'Full Espressif platform support': 'Espressif 플랫폼 완전 지원',
-          'Run TuyaOpen on Raspberry Pi & Linux': 'Raspberry Pi 및 Linux에서 TuyaOpen 실행',
-          'AI coding-agent extension for TuyaOpen development': 'TuyaOpen 개발을 위한 AI 코딩 Agent 확장',
-          'Universal serial & flashing toolkit': '범용 시리얼 및 플래시 도구',
-          'Browser-based serial & flashing': '브라우저 기반 시리얼 및 플래시 도구',
-          'Per-device Tuya Cloud & AI authorization': '디바이스별 Tuya Cloud 및 AI 인증',
-        }[item.subtitle] || item.subtitle,
-      badge: item.badge === 'New Release' || item.badge === '全新发布' ? '새 릴리스' : item.badge,
-    })),
+    items: group.items
+      .filter((item) => item.href !== '/tuyaopen-core')
+      .map((item) => ({
+        ...item,
+        title:
+          {
+            'License Key': '라이선스 키',
+            服务授权码: '라이선스 키',
+          }[item.title] || item.title,
+        subtitle:
+          {
+            'Open-source full-stack AIoT OS': '오픈 소스 풀스택 AIoT OS',
+            'Arduino library for rapid prototyping': '빠른 프로토타이핑을 위한 Arduino 라이브러리',
+            'AI hardware companion agent · formerly DuckyClaw': 'AI 하드웨어 동반 Agent · 이전 DuckyClaw',
+            'Flagship Wi-Fi & BT AI chip — built for TuyaOpen': 'TuyaOpen을 위해 설계된 플래그십 Wi-Fi 및 BT AI 칩',
+            'Full Espressif platform support': 'Espressif 플랫폼 완전 지원',
+            'Run TuyaOpen on Raspberry Pi & Linux': 'Raspberry Pi 및 Linux에서 TuyaOpen 실행',
+            'AI coding-agent extension for TuyaOpen development': 'TuyaOpen 개발을 위한 AI 코딩 Agent 확장',
+            'Universal serial & flashing toolkit': '범용 시리얼 및 플래시 도구',
+            'Browser-based serial & flashing': '브라우저 기반 시리얼 및 플래시 도구',
+            'Per-device Tuya Cloud & AI authorization': '디바이스별 Tuya Cloud 및 AI 인증',
+          }[item.subtitle] || item.subtitle,
+        badge: item.badge === 'New Release' || item.badge === '全新发布' ? '새 릴리스' : item.badge,
+      })),
   })),
 }
