@@ -11,7 +11,7 @@ import styles from './documentation.module.css'
 /* =========================================================================
  * DOCUMENTATION — the landing page behind the navbar "Docs" menu.
  *
- * The five sidebars in sidebars.js are the product areas; this page is the
+ * The sidebars in sidebars.js are the product areas; this page is the
  * map over them, so someone who doesn't yet know which area they need has
  * somewhere to land. Content lives in src/data/docsPortal.js.
  * ========================================================================= */

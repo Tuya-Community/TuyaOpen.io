@@ -17,7 +17,7 @@ export const productsMenu = {
           {
             icon: 'sdk',
             title: 'TuyaOpen Core',
-            subtitle: 'Modular IoT, AI Agent & P2P core for device projects',
+            subtitle: 'Tuya Cloud SDK library for your device project',
             href: '/tuyaopen-core',
           },
           {
@@ -106,7 +106,7 @@ export const productsMenu = {
           {
             icon: 'sdk',
             title: 'TuyaOpen Core',
-            subtitle: '接入设备工程的模块化 IoT、AI Agent 与 P2P 核心',
+            subtitle: '接入涂鸦云的设备端 SDK 库',
             href: '/tuyaopen-core',
           },
           {

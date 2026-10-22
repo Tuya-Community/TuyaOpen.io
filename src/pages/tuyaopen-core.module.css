@@ -362,16 +362,21 @@
   place-items: center;
   width: 52px;
   height: 52px;
-  padding: 9px;
-  background: color-mix(in srgb, var(--module-color) 9%, var(--core-surface));
-  border: 1px solid color-mix(in srgb, var(--module-color) 28%, var(--core-border));
   border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--module-color) 18%, transparent);
   color: var(--module-color);
 }
 .capabilityIcon > svg {
   display: block;
   width: 100%;
   height: 100%;
+}
+.capabilityIcon > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .capabilityIdentity h3 {
   grid-column: 1/-1;
@@ -435,6 +440,33 @@
   background: var(--module-color);
   opacity: 0.5;
   flex-shrink: 0;
+}
+.capabilityDocsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: 1px solid color-mix(in srgb, var(--module-color) 45%, var(--core-border));
+  border-radius: 9px;
+  color: var(--module-color);
+  background: color-mix(in srgb, var(--module-color) 7%, var(--core-surface));
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.capabilityDocsLink:hover {
+  background: color-mix(in srgb, var(--module-color) 15%, var(--core-surface));
+  border-color: var(--module-color);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+.capabilityDocsLink > span {
+  transition: transform 0.18s ease;
+}
+.capabilityDocsLink:hover > span {
+  transform: translateX(3px);
 }
 .architecture {
   position: relative;
@@ -543,6 +575,13 @@
   color: #b2c2da;
   text-align: center;
 }
+.hostComponents > img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
 .hostComponents > strong {
   font-size: 12px;
 }
@@ -569,7 +608,8 @@
     padding: 14px;
     gap: 8px;
   }
-  .hostComponents > svg {
+  .hostComponents > svg,
+  .hostComponents > img {
     display: none;
   }
 }
@@ -606,11 +646,15 @@
 }
 .relationshipVisual {
   display: flex;
-  gap: 17px;
-  align-items: center;
-  height: 90px;
-  margin-block: 20px;
-  color: var(--core-blue);
+  justify-content: center;
+  margin-block: 22px;
+}
+.relationshipVisual > img {
+  width: 150px;
+  height: 150px;
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--core-blue) 20%, transparent);
 }
 .relationshipVisual > svg {
   width: 64px;
@@ -619,11 +663,6 @@
   border: 1px solid var(--core-border);
   border-radius: 14px;
   background: var(--core-bg);
-}
-.relationshipVisual > span {
-  width: 20px;
-  height: 1px;
-  background: var(--core-border);
 }
 .relationshipGrid h3 {
   font-size: 32px;
@@ -734,12 +773,9 @@
   .architectureLayout {
     gap: 40px;
   }
-  .relationshipVisual {
-    gap: 10px;
-  }
-  .relationshipVisual > svg {
-    width: 55px;
-    height: 55px;
+  .relationshipVisual > img {
+    width: 130px;
+    height: 130px;
   }
 }
 @media (max-width: 850px) {
@@ -835,9 +871,9 @@
   .relationshipGrid article {
     padding: 28px;
   }
-  .relationshipVisual > svg {
-    width: 64px;
-    height: 64px;
+  .relationshipVisual > img {
+    width: 130px;
+    height: 130px;
   }
   .closing {
     padding-block: 65px;
@@ -875,15 +911,9 @@
     padding: 10px;
     gap: 8px;
   }
-  .relationshipVisual {
-    gap: 10px;
-  }
-  .relationshipVisual > svg {
-    width: 55px;
-    height: 55px;
-  }
-  .relationshipVisual > span {
-    width: 12px;
+  .relationshipVisual > img {
+    width: 110px;
+    height: 110px;
   }
   .closingModules {
     gap: 12px;
@@ -915,6 +945,11 @@
 .sceneIcon svg {
   width: 23px;
   height: 23px;
+}
+.sceneIcon image {
+  width: 23px;
+  height: 23px;
+  border-radius: 5px;
 }
 .sceneCapability {
   fill: #eef4ff;
@@ -953,6 +988,11 @@
   width: 48px;
   height: 48px;
   color: #183861;
+}
+.prismIcon image {
+  width: 48px;
+  height: 48px;
+  border-radius: 11px;
 }
 .modulePrism {
   transition:
@@ -997,6 +1037,11 @@
   height: 40px;
   color: #173b76;
 }
+.systemCoreIcon image {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+}
 .systemCoreLabel {
   position: absolute;
   top: 65%;
@@ -1034,6 +1079,12 @@
   width: 18px;
   height: 18px;
   color: var(--core-cyan);
+  flex-shrink: 0;
+}
+.systemNode > img {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
   flex-shrink: 0;
 }
 .systemNode[data-node='0'] {
@@ -1116,6 +1167,12 @@
 .cloudIdentity svg {
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
+}
+.cloudIdentity img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   flex-shrink: 0;
 }
 .compositionCloud p {
@@ -1234,6 +1291,10 @@
     width: 15px;
     height: 15px;
   }
+  .systemNode > img {
+    width: 15px;
+    height: 15px;
+  }
 }
 @media (max-width: 850px) and (min-width: 761px) {
   .systemNode > svg {
@@ -1268,6 +1329,10 @@
     padding: 7px 5px;
   }
   .systemNode > svg {
+    width: 13px;
+    height: 13px;
+  }
+  .systemNode > img {
     width: 13px;
     height: 13px;
   }
