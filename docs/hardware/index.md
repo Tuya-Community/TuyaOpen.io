@@ -12,11 +12,11 @@ keywords:
 
 import ChipRow from '@site/src/components/ChipRow';
 
-This page lists the chips and development boards that TuyaOpen supports, grouped by family. Click any image to open the corresponding chip datasheet. For board-specific specs, pinouts, and downloads, open a board overview below.
+This page lists chip families and development boards supported by TuyaOpen. Connectivity varies by platform and may include Wi-Fi, Bluetooth LE, cellular networks, or other interfaces. Open a family or board guide for supported configurations, pinouts, and downloads.
 
 ## Supported chips
 
-TuyaOpen supports Wi-Fi and Bluetooth LE dual-mode chips across the following families.
+TuyaOpen supports chips and modules with different connectivity options, including Wi-Fi, Bluetooth LE, and cellular networks. Available interfaces depend on the model and SDK target.
 
  - T Series
 
@@ -30,11 +30,15 @@ TuyaOpen supports Wi-Fi and Bluetooth LE dual-mode chips across the following fa
   imgHeight={150}
 />
 
-For TuyaOpen-oriented notes on T2 and T3 modules and BSP paths, see [T2 module overview](tuya-t2/overview-t2) and [T3 module overview](tuya-t3/overview-t3).
+For TuyaOpen-oriented notes on T2 and T3 modules and BSP paths, see [T2 module overview](tuya-t2/overview-t2.md) and [T3 module overview](tuya-t3/overview-t3.md).
+
+ - L511 Series
+
+The L511 family includes the L511G-Y7PM, L511C-Y7PM, and L511C-Y6 documentation targets. See the [L511 series overview](l511/overview-l511.md), [L511C/G-Y7PM peripheral mapping](l511/l511c-g-y7pm/peripheral-mapping.md), [L511C/G-Y7PM hardware resources](l511/l511c-g-y7pm/hardware-resources.md), [L511C-Y6 peripheral mapping](l511/l511c-y6/peripheral-mapping.md), and [L511C-Y6 hardware resources](l511/l511c-y6/hardware-resources.md).
 
  - JieLi Series
 
-For the JieLi boards, see the peripheral mapping documents: [AC79_DevKitBoard (AC791 / WL82)](jieli/ac79-devkitboard-peripheral-mapping) and [AC792N_Develop_Board (AC792N / WL83)](jieli/ac792n-develop-board-peripheral-mapping).
+For the JieLi boards, see the peripheral mapping documents: [AC79_DevKitBoard (AC791 / WL82)](jieli/ac79-devkitboard-peripheral-mapping.md) and [AC792N_Develop_Board (AC792N / WL83)](jieli/ac792n-develop-board-peripheral-mapping.md).
 
  - ESP32 Series
 

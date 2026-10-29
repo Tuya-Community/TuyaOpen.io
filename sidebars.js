@@ -353,6 +353,32 @@ const hardwareSidebar = [
   },
   {
     type: 'category',
+    label: 'L511',
+    collapsed: true,
+    items: [
+      'hardware/l511/overview-l511',
+      {
+        type: 'category',
+        label: 'L511C/G-Y7PM',
+        collapsed: true,
+        items: [
+          'hardware/l511/l511c-g-y7pm/peripheral-mapping',
+          'hardware/l511/l511c-g-y7pm/hardware-resources',
+        ],
+      },
+      {
+        type: 'category',
+        label: 'L511C-Y6',
+        collapsed: true,
+        items: [
+          'hardware/l511/l511c-y6/peripheral-mapping',
+          'hardware/l511/l511c-y6/hardware-resources',
+        ],
+      },
+    ],
+  },
+  {
+    type: 'category',
     label: 'Silicon Labs SiWx917',
     collapsed: true,
     link: { type: 'doc', id: 'hardware/siwx917/overview-siwx917' },
