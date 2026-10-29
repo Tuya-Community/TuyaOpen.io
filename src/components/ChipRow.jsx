@@ -8,7 +8,7 @@ export default function ChipRow({ chipData = [], imgWidth = 120, imgHeight = 120
   const maxHeight = Math.max(...chipData.map((chip) => chip.imgHeight || imgHeight), 120);
 
   return (
-    <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'center', margin: '2rem 0', alignItems: 'flex-start', maxWidth: '100%' }}>
       {chipData.map((chip) => {
         const width = chip.imgWidth || imgWidth;
         const height = chip.imgHeight || imgHeight;
@@ -26,11 +26,15 @@ export default function ChipRow({ chipData = [], imgWidth = 120, imgHeight = 120
               flexDirection: 'column',
               alignItems: 'center',
               width: maxWidth,
+              maxWidth: '100%',
+              minWidth: 0,
+              flex: `0 1 ${maxWidth}px`,
             }}
           >
             <div
               style={{
-                width: maxWidth,
+                width: '100%',
+                maxWidth,
                 height: maxHeight,
                 display: 'flex',
                 alignItems: 'center',
@@ -45,7 +49,7 @@ export default function ChipRow({ chipData = [], imgWidth = 120, imgHeight = 120
               <img
                 src={chip.img}
                 alt={chip.name}
-                style={{ maxWidth: width, maxHeight: height, objectFit: 'contain', display: 'block', margin: '0 auto' }}
+                style={{ maxWidth: '100%', maxHeight: '100%', width, height, objectFit: 'contain', display: 'block', margin: '0 auto' }}
               />
             </div>
             <div
@@ -55,9 +59,8 @@ export default function ChipRow({ chipData = [], imgWidth = 120, imgHeight = 120
                 fontSize: 18,
                 width: '100%',
                 textAlign: 'center',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
+                whiteSpace: 'normal',
+                overflowWrap: 'anywhere',
               }}
             >
               {chip.name}

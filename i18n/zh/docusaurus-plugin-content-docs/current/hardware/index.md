@@ -11,11 +11,11 @@ keywords:
 
 import ChipRow from '@site/src/components/ChipRow';
 
-本页按系列列出 TuyaOpen 支持的芯片与开发板。点击任意图片可打开对应芯片的数据手册。如需查看具体板卡的规格、引脚定义与下载资源，请打开下方对应的开发板概述。
+本页按系列列出 TuyaOpen 支持的芯片与开发板。不同平台的连接能力有所不同，可能包括 Wi-Fi、Bluetooth LE、蜂窝网络或其他接口。具体型号支持情况、引脚和下载资源请查看对应的系列与板卡文档。
 
 ## 支持的芯片
 
-TuyaOpen 支持的芯片均为 Wi-Fi 与 Bluetooth LE 双模芯片，涵盖以下系列。
+TuyaOpen 支持不同连接方式的芯片与模组，包括 Wi-Fi、Bluetooth LE 和蜂窝网络；具体接口取决于型号及 SDK 目标。
 
  - T 系列
 
@@ -29,11 +29,15 @@ TuyaOpen 支持的芯片均为 Wi-Fi 与 Bluetooth LE 双模芯片，涵盖以�
   imgHeight={150}
 />
 
-关于 T2、T3 模组在 TuyaOpen 中的 BSP 路径与使用说明，见 [T2 模块概述](tuya-t2/overview-t2) 与 [T3 模块概述](tuya-t3/overview-t3)。
+关于 T2、T3 模组在 TuyaOpen 中的 BSP 路径与使用说明，见 [T2 模块概述](tuya-t2/overview-t2.md) 与 [T3 模块概述](tuya-t3/overview-t3.md)。
+
+ - L511 系列
+
+L511 系列文档覆盖 L511G-Y7PM、L511C-Y7PM 和 L511C-Y6。请查看 [L511 系列概述](l511/overview-l511.md)、[L511C/G-Y7PM 外设映射说明](l511/l511c-g-y7pm/peripheral-mapping.md)、[L511C/G-Y7PM 硬件资料与下载](l511/l511c-g-y7pm/hardware-resources.md)、[L511C-Y6 外设映射说明](l511/l511c-y6/peripheral-mapping.md)及 [L511C-Y6 硬件资料与下载](l511/l511c-y6/hardware-resources.md)。
 
  - 杰理（JieLi）系列
 
-杰理两块开发板的外设映射见：[AC79_DevKitBoard（AC791 / WL82）](jieli/ac79-devkitboard-peripheral-mapping) 与 [AC792N_Develop_Board（AC792N / WL83）](jieli/ac792n-develop-board-peripheral-mapping)。
+杰理两块开发板的外设映射见：[AC79_DevKitBoard（AC791 / WL82）](jieli/ac79-devkitboard-peripheral-mapping.md) 与 [AC792N_Develop_Board（AC792N / WL83）](jieli/ac792n-develop-board-peripheral-mapping.md)。
 
  - ESP32 系列
 
