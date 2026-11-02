@@ -4,7 +4,7 @@
         <title>TuyaOpen FAQ RSS Feed</title>
         <link>https://tuyaopen.ai/ko/faq</link>
         <description>TuyaOpen Blog</description>
-        <lastBuildDate>Thu, 29 Oct 2026 10:34:16 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 29 Oct 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[How Can You Build 12 ESP32 Projects From Beginner to AI-Powered?]]></title>
             <link>https://tuyaopen.ai/ko/faq/26-10-29-how-can-you-build-12-esp32-projects-from-beginner-to-ai-powered</link>
             <guid>https://tuyaopen.ai/ko/faq/26-10-29-how-can-you-build-12-esp32-projects-from-beginner-to-ai-powered</guid>
-            <pubDate>Thu, 29 Oct 2026 10:34:16 GMT</pubDate>
+            <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
             <description><![CDATA[The best ESP32 project is not the most impressive one — it is the one that teaches you the next thing while being interesting enough to finish. The ESP32 is capable enough to run projects across a huge range: a blinking LED on day one, a wall-mounted dashboard in a month, a voice interface or an AI companion once you understand the pieces. That range is exactly what makes choosing a project hard, because the internet offers thousands of ideas without ever telling you which ones actually move you forward. The chip family is documented thoroughly by Espressif, but the projects around it are mostly unvetted tutorials of wildly varying quality.]]></description>
             <content:encoded><![CDATA[<p>The best ESP32 project is not the most impressive one — it is the one that teaches you the next thing while being interesting enough to finish. The ESP32 is capable enough to run projects across a huge range: a blinking LED on day one, a wall-mounted dashboard in a month, a voice interface or an AI companion once you understand the pieces. That range is exactly what makes choosing a project hard, because the internet offers thousands of ideas without ever telling you which ones actually move you forward. The chip family is documented thoroughly by <a href="https://www.espressif.com/en/products/socs" target="_blank" rel="noopener noreferrer" class="">Espressif</a>, but the projects around it are mostly unvetted tutorials of wildly varying quality.</p>
 <p></p><figure><img decoding="async" loading="lazy" src="https://images.tuyacn.com/rms-static/d796abd0-d37b-11f1-9a8d-736398ab592b-1793266427661.webp?tyName=how-can-you-build-12-esp32-projects-from-beginner-to-ai-powered-3.webp" alt="how build esp32 project" class="img_ev3q"><figcaption class="text--italic text--center" style="color:var(--ifm-color-content-secondary);font-size:0.875rem">how build esp32 project</figcaption></figure><p></p>
