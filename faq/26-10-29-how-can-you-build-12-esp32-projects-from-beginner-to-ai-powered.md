@@ -1,3 +1,7 @@
+---
+date: 2026-10-29
+---
+
 # How Can You Build 12 ESP32 Projects From Beginner to AI-Powered?
 
 The best ESP32 project is not the most impressive one — it is the one that teaches you the next thing while being interesting enough to finish. The ESP32 is capable enough to run projects across a huge range: a blinking LED on day one, a wall-mounted dashboard in a month, a voice interface or an AI companion once you understand the pieces. That range is exactly what makes choosing a project hard, because the internet offers thousands of ideas without ever telling you which ones actually move you forward. The chip family is documented thoroughly by [Espressif](https://www.espressif.com/en/products/socs), but the projects around it are mostly unvetted tutorials of wildly varying quality.
