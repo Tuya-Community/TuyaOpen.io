@@ -69,19 +69,19 @@ keywords:
 
 2. 点击右侧继续开发。
 
-   ![平台上继续开发](https://images.tuyacn.com/fe-static/docs/img/0fcac836-7faf-42c4-9a2d-23797a4d8b3d.png?imageMogr2/format/webp)
+   ![点击产品右侧的继续开发](/img/ide/chat-bot-develop-zh.png)
 
 3. 点击 03 硬件开发后，在已选云端接入硬件处，点击免费领取 2 个授权码。
 
-   ![免费领取授权码](https://images.tuyacn.com/fe-static/docs/img/728a7dc9-ca41-4bd7-aea2-fcc2eda4069c.png?imageMogr2/format/webp)
+   ![在硬件开发页面免费领取 2 个授权码](/img/ide/chat-bot-free-licenses-zh.png)
 
-   ![授权码已领取](https://images.tuyacn.com/fe-static/docs/img/7161ee3b-3898-4451-92f5-d661bf24a818.png?imageMogr2/format/webp)
+   ![确认领取 TuyaOpen 授权码](/img/ide/chat-bot-confirm-license-zh.png)
 
-   ![授权码清单详情](https://images.tuyacn.com/fe-static/docs/img/f0891c1c-9e39-4023-b6b3-00c7507eb084.png?imageMogr2/format/webp)
+   ![确认订单信息并提交订单](/img/ide/chat-bot-submit-order-zh.png)
 
-4. 下载授权码清单。
+4. 等待生产授权码，刷新页面，点击下载授权码清单。
 
-   ![下载授权码清单](https://images.tuyacn.com/fe-static/docs/img/4812b52c-e4ce-4f21-9eff-68231e77f636.png?imageMogr2/format/webp)
+   ![订单完成后下载授权码清单](/img/ide/chat-bot-download-licenses-zh.png)
 
 5. 将授权码填写到 IDE 的**授权码管理**面板（即**密钥管理**页面）。
 

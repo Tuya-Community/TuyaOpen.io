@@ -67,21 +67,21 @@ The license key (UUID + AuthKey) is the credential a device uses to reach the cl
 
    ![OEM example product in the developer platform](https://images.tuyacn.com/fe-static/docs/img/be72be79-2f49-4c60-8fe8-9a9e50c2ceb3.png?imageMogr2/format/webp)
 
-2. Click **Continue development** on the right.
+2. Click **Develop** on the right.
 
-   ![Continue development on the platform](https://images.tuyacn.com/fe-static/docs/img/0fc5dab7-82cc-4537-afdb-b2d1197614c9.png?imageMogr2/format/webp)
+   ![Click Develop on the platform](/img/ide/chat-bot-develop-en.png)
 
 3. Under the **Hardware Development** tab, in the selected cloud-access hardware section, click **Get 2 Free Licenses**.
 
-   ![Get 2 Free Licenses button](https://images.tuyacn.com/fe-static/docs/img/8522d564-b896-4de8-aeb3-d7330b8d2fd8.png?imageMogr2/format/webp)
+   ![Get 2 Free Licenses in Hardware Development](/img/ide/chat-bot-free-licenses-en.png)
 
-   ![License keys claimed](https://images.tuyacn.com/fe-static/docs/img/4482dd52-cf2c-4ef0-b3fa-5daf4eaa717b.png?imageMogr2/format/webp)
+   ![Confirm the free TuyaOpen licenses](/img/ide/chat-bot-confirm-license-en.png)
 
-   ![License key list detail](https://images.tuyacn.com/fe-static/docs/img/23162601-a6a5-4157-8eca-0eb00445734a.png?imageMogr2/format/webp)
+   ![Submit the license order](/img/ide/chat-bot-submit-order-en.png)
 
-4. Download the license key list.
+4. Wait for the license keys to be generated, refresh the page, and click **Download License List**.
 
-   ![Download the license key list](https://images.tuyacn.com/fe-static/docs/img/c7a70c96-d40f-4531-8a1e-fd83a077df86.png?imageMogr2/format/webp)
+   ![Download License List from the completed order](/img/ide/chat-bot-download-licenses-en.png)
 
 5. Enter the license keys in the IDE's **Licenses** panel (**Key Management**).
 
