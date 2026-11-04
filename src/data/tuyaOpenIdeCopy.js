@@ -265,7 +265,7 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: 'Start Building Today',
-      desc: 'Install TuyaOpen IDE from the VS Code Marketplace, or use an AI agent or a .vsix installer for Cursor and offline setups.',
+      desc: 'Install TuyaOpen IDE from the Marketplace or Open VSX Registry, or use an AI agent or a .vsix installer.',
       marketplace: 'Install Extension',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
@@ -273,13 +273,14 @@ export const tuyaOpenIdeCopy = {
     installDialog: {
       title: 'Install TuyaOpen IDE',
       subtitle:
-        'Install directly from the VS Code Marketplace, let your AI agent install it, or download a .vsix installer for VS Code or Cursor.',
+        'Install directly from the Marketplace or Open VSX Registry, let your AI agent install it, or download a .vsix installer for VS Code or Cursor.',
       marketplace: {
-        label: 'VS Code Marketplace',
+        label: 'Marketplace',
         title: 'Install directly from the Marketplace',
-        desc: 'Search for tuyaopen in VS Code Extensions. Verify that the publisher is Tuya Smart, then install it.',
+        desc: 'Install the TuyaOpen IDE extension from the Marketplace or Open VSX Registry.',
         cta: 'Open Marketplace',
-        note: 'Available in the VS Code Marketplace. The Cursor marketplace listing is in progress; Cursor users can install with an AI agent or the .vsix package.',
+        registryCta: 'Open Registry',
+        note: 'Open Marketplace takes you to the VS Code Marketplace. Open Registry takes you to the Open VSX Registry.',
       },
       download: {
         label: 'Download .vsix installer',
@@ -326,7 +327,7 @@ export const tuyaOpenIdeCopy = {
         promptText: (url) =>
           `Install the TuyaOpen IDE extension. Download the latest .vsix from ${url}, then install it with code --install-extension <path-to.vsix> (VS Code) or cursor --install-extension <path-to.vsix> (Cursor), and reload the editor window so the extension activates.`,
       },
-      marketplaceLabel: 'Or install from the VS Code Marketplace',
+      marketplaceLabel: 'Or install from the Marketplace',
       manualLabel: 'Or install with a .vsix file',
       close: 'Close',
     },
@@ -809,20 +810,21 @@ export const tuyaOpenIdeCopy = {
     },
     download: {
       title: '立即开始构建',
-      desc: 'TuyaOpen IDE 已可在 VS Code 插件市场搜索安装。Cursor 插件市场仍在上架中，目前可通过 AI Agent 或 .vsix 安装。',
+      desc: '从插件市场或 Open VSX Registry 安装 TuyaOpen IDE，也可以通过 AI Agent 或 .vsix 安装。',
       marketplace: '安装扩展',
       github: 'GitHub Releases',
       platforms: 'Windows x64 · macOS (Apple Silicon & Intel) · Linux x64',
     },
     installDialog: {
       title: '安装 TuyaOpen IDE',
-      subtitle: '可从 VS Code 插件市场直接安装，也可以让 AI Agent 安装，或下载 .vsix 安装包用于 VS Code 或 Cursor。',
+      subtitle: '可从插件市场或 Open VSX Registry 直接安装，也可以让 AI Agent 安装，或下载 .vsix 安装包用于 VS Code 或 Cursor。',
       marketplace: {
-        label: 'VS Code 插件市场',
+        label: '插件市场',
         title: '从插件市场直接安装',
-        desc: '在 VS Code 的扩展中搜索 tuyaopen，确认发布者为 Tuya Smart 后安装。',
+        desc: '从插件市场或 Open VSX Registry 安装 TuyaOpen IDE 扩展。',
         cta: '打开插件市场',
-        note: 'VS Code 插件市场已可搜索安装。Cursor 插件市场仍在上架中，目前可通过 AI Agent 或 .vsix 安装。',
+        registryCta: '打开 Registry',
+        note: '“打开插件市场”前往 VS Code Marketplace，“打开 Registry”前往 Open VSX Registry。',
       },
       download: {
         label: '下载 .vsix 插件安装包',
@@ -869,7 +871,7 @@ export const tuyaOpenIdeCopy = {
         promptText: (url) =>
           `安装 TuyaOpen IDE 扩展。从 ${url} 下载最新 .vsix，然后用 code --install-extension <路径.vsix>（VS Code）或 cursor --install-extension <路径.vsix>（Cursor）安装，并重新加载编辑器窗口让扩展生效。`,
       },
-      marketplaceLabel: '或从 VS Code 插件市场安装',
+      marketplaceLabel: '或从插件市场安装',
       manualLabel: '或使用 .vsix 文件安装',
       close: '关闭',
     },

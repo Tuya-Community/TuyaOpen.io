@@ -3022,6 +3022,12 @@
   background: linear-gradient(135deg, rgba(0, 170, 255, 0.09), rgba(110, 87, 255, 0.06));
 }
 
+.installMarketplaceActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .installMarketplaceTitle {
   font-size: 15px;
   font-weight: 700;
@@ -3229,6 +3235,9 @@
   .installDownloadHeroBtn {
     width: 100%;
     justify-content: center;
+  }
+  .installMarketplaceActions {
+    flex-direction: column;
   }
   .installAgentCode {
     padding-right: 84px;
