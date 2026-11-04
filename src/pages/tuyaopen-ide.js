@@ -14,6 +14,7 @@ const OPEN_VSX_FALLBACK_VERSION = '0.1.1'
 const OPEN_VSX_FALLBACK_DOWNLOAD_URL =
   'https://open-vsx.org/api/TuyaOpen/TuyaOpenIDE/0.1.1/file/TuyaOpen.TuyaOpenIDE-0.1.1.vsix'
 const VSCODE_MARKETPLACE_URL = 'https://marketplace.visualstudio.com/items?itemName=tuya.tuyaopen'
+const OPEN_VSX_REGISTRY_URL = 'https://open-vsx.org/extension/TuyaOpen/TuyaOpenIDE'
 
 const IDE_KO_COPY = {
   ...tuyaOpenIdeCopy.en,
@@ -193,7 +194,7 @@ const IDE_KO_COPY = {
   download: {
     ...tuyaOpenIdeCopy.en.download,
     title: '오늘 바로 시작하세요',
-    desc: 'VS Code Marketplace에서 TuyaOpen IDE를 직접 설치하거나 AI Agent 또는 .vsix 설치 프로그램을 사용할 수 있습니다.',
+    desc: 'Marketplace 또는 Open VSX Registry에서 TuyaOpen IDE를 설치하거나 AI Agent 또는 .vsix 설치 프로그램을 사용할 수 있습니다.',
     marketplace: '확장 설치',
     github: 'GitHub 릴리스',
   },
@@ -201,15 +202,16 @@ const IDE_KO_COPY = {
     ...tuyaOpenIdeCopy.en.installDialog,
     title: 'TuyaOpen IDE 설치',
     subtitle:
-      'VS Code Marketplace에서 직접 설치하거나 AI Agent 또는 VS Code와 Cursor용 .vsix 설치 프로그램을 사용하세요.',
+      'Marketplace 또는 Open VSX Registry에서 직접 설치하거나 AI Agent 또는 VS Code와 Cursor용 .vsix 설치 프로그램을 사용하세요.',
     marketplace: {
-      label: 'VS Code Marketplace',
+      label: 'Marketplace',
       title: 'Marketplace에서 직접 설치',
-      desc: 'VS Code Extensions에서 tuyaopen을 검색하고 게시자가 Tuya Smart인지 확인한 다음 설치하세요.',
+      desc: 'Marketplace 또는 Open VSX Registry에서 TuyaOpen IDE 확장을 설치하세요.',
       cta: 'Marketplace 열기',
-      note: 'VS Code Marketplace에서 검색하여 설치할 수 있습니다. Cursor 마켓플레이스에는 아직 등록 중이며, 현재 AI Agent 또는 .vsix 패키지로 설치할 수 있습니다.',
+      registryCta: 'Registry 열기',
+      note: 'Marketplace 열기는 VS Code Marketplace로, Registry 열기는 Open VSX Registry로 연결됩니다.',
     },
-    marketplaceLabel: '또는 VS Code Marketplace에서 설치',
+    marketplaceLabel: '또는 Marketplace에서 설치',
     manualLabel: '또는 .vsix 파일로 설치',
     close: '닫기',
   },
@@ -1143,15 +1145,26 @@ function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
             <span className={styles.installMarketplaceTitle}>{copy.marketplace.title}</span>
             <span className={styles.installMarketplaceDesc}>{copy.marketplace.desc}</span>
           </div>
-          <a
-            href={VSCODE_MARKETPLACE_URL}
-            className={clsx(styles.btnCta, styles.installDownloadHeroBtn)}
-            target="_blank"
-            rel="noreferrer"
-            data-testid="ide-marketplace-link"
-          >
-            {copy.marketplace.cta}
-          </a>
+          <div className={styles.installMarketplaceActions}>
+            <a
+              href={VSCODE_MARKETPLACE_URL}
+              className={clsx(styles.btnCta, styles.installDownloadHeroBtn)}
+              target="_blank"
+              rel="noreferrer"
+              data-testid="ide-marketplace-link"
+            >
+              {copy.marketplace.cta}
+            </a>
+            <a
+              href={OPEN_VSX_REGISTRY_URL}
+              className={clsx(styles.btnCta, styles.installDownloadHeroBtn)}
+              target="_blank"
+              rel="noreferrer"
+              data-testid="ide-registry-link"
+            >
+              {copy.marketplace.registryCta}
+            </a>
+          </div>
         </div>
         <p className={styles.installDownloadNote}>{copy.marketplace.note}</p>
 
@@ -1195,7 +1208,7 @@ function InstallDialog({ copy, vscodeIcon, cursorIcon, onClose }) {
             </div>
           </div>
 
-          {/* Cursor — manual .vsix install while its marketplace listing is in progress */}
+          {/* Cursor — manual .vsix install */}
           <div className={styles.installCard}>
             <InstallEditorLabel icon={cursorIcon} name={copy.cursor.label} />
             <h4 className={styles.installCardTitle}>{copy.cursor.title}</h4>
