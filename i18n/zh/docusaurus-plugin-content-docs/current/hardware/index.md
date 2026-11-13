@@ -35,10 +35,6 @@ TuyaOpen 支持不同连接方式的芯片与模组，包括 Wi-Fi、Bluetooth L
 
 L511 系列文档覆盖 L511G-Y7PM、L511C-Y7PM 和 L511C-Y6。请查看 [L511 系列概述](l511/overview-l511.md)、[L511C/G-Y7PM 外设映射说明](l511/l511c-g-y7pm/peripheral-mapping.md)、[L511C/G-Y7PM 硬件资料与下载](l511/l511c-g-y7pm/hardware-resources.md)、[L511C-Y6 外设映射说明](l511/l511c-y6/peripheral-mapping.md)及 [L511C-Y6 硬件资料与下载](l511/l511c-y6/hardware-resources.md)。
 
- - 杰理（JieLi）系列
-
-杰理两块开发板的外设映射见：[AC79_DevKitBoard（AC791 / WL82）](jieli/ac79-devkitboard-peripheral-mapping.md) 与 [AC792N_Develop_Board（AC792N / WL83）](jieli/ac792n-develop-board-peripheral-mapping.md)。
-
  - ESP32 系列
 
 <ChipRow 

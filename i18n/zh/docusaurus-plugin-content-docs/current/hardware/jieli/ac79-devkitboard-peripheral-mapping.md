@@ -1,7 +1,7 @@
 ---
 id: ac79-devkitboard-peripheral-mapping
-title: AC79_DevKitBoard 外设映射说明
-description: "阐明 AC79_DevKitBoard（AC791 / WL82）硬件外设与涂鸦 TKL 层软件外设端口的映射关系：覆盖 GPIO、ADC、UART、IIC、PWM、TIMER、SPI 的板级引脚与软件端口，并标明当前 TuyaOpen 的支持状态。"
+title: AC79_DevKitBoard 外设映射
+description: "AC791 / WL82 开发板的固定管脚、GPIO 编号，以及 TKL 到 SDK 的外设映射。"
 keywords:
   - AC79_DevKitBoard
   - AC791
@@ -9,163 +9,152 @@ keywords:
   - JieLi
   - 杰理
   - 外设映射
+  - 管脚映射
   - TKL
   - TuyaOpen 硬件
 ---
 
-本文说明 AC79_DevKitBoard（AC791 / WL82）的硬件外设与涂鸦 TKL 层软件外设端口的映射关系。
+# AC79_DevKitBoard（AC791 / WL82）外设映射
 
-> 本文的引脚数据来自厂商 SDK 的板级文件与头文件，**不是原理图**。原理图未随仓库提供，因此"某个引脚在封装上是否引出、板子上是否已被其他功能占用"仍需对照对应版本的原理图确认。文中标注为"未注册"或"未验证"的项，不能当作可用能力。
+本文的管脚编号是 TKL 的扁平编号：`16 × 端口序号 + bit`（PA0-PA15 = 0-15，…，PH0-PH15 = 112-127）。封装是否引出是硬件问题，表里列出的是 TKL 校验接受的范围。
 
-## 引脚命名与编号
+## 板级固定管脚
 
-杰理用 `IO_PORT<端口字母>_<序号>` 命名引脚，并且**这个名字本身就是一个数字**：
+| 管脚 | 用途 | 定义位置 |
+| --- | --- | --- |
+| PB3 | 日志 UART1 TX，115200 8N1（不使用 RX） | `CONFIG_JIELI_BOARD_LOG_UART_TX_PIN` |
+| PA5 / PA6 | 服务 UART0 TX / RX，TAL CLI | `CONFIG_JIELI_BOARD_SERVICE_UART_TX_PIN` / `_RX_PIN` |
+| USB DPA / DMA | USB 从机：Mass Storage，可选 CDC-ACM | `CONFIG_JIELI_BOARD_USB_ROLE=device` |
+| PC9 / PB0 | 屏 DC / 屏复位（ILI9488 320x480，MCU8080） | 写死在 `tkl_8080.c`，无 Kconfig 符号 |
+| PB2 | 音频 PA 静音，低电平有效，释放延时 200 ms | `audio_config.h` |
+| PB1 | 按键 K1，ADC0 通道 3，按下范围 824-1007 | `board_com_api.c` |
+| - | 麦克风 `LADC_CH_MIC1_P_N`，DAC 通道 0x05 | `audio_config.h` |
 
-```c
-#define IO_GROUP_NUM  16
-#define IO_PORTA_07   (IO_GROUP_NUM * 0 + 7)    /* = 7  */
-#define IO_PORTD_07   (IO_GROUP_NUM * 3 + 7)    /* = 55 */
-```
-
-端口 A 占 0–15、B 占 16–31，以此类推。这与涂鸦 `TUYA_GPIO_NUM_E` 的扁平编号完全一致，因此 **`PA7` 就是软件引脚 `7`**，无需查表：
-
-| 板级引脚 | 厂商宏 | 软件引脚 |
-| -------- | ------ | -------- |
-| PA7 | `IO_PORTA_07` | 7 |
-| PB1（K1 按键） | `IO_PORTB_01` | 17 |
-| PB3（日志 TX） | `IO_PORTB_03` | 19 |
-| PD7 | `IO_PORTD_07` | 55 |
-
-**注意：ADC 通道号是另一套命名空间**，与引脚号无关——`AD_CH_PB01` 是通道 3，而 `IO_PORTB_01` 是引脚 17。
+日志输出：`CONFIG_ENABLE_JIELI_USB_CDC_LOG`（默认 `n`）把 `tkl_log_output()` 从 PB3 的 `vprintf()` 切到 USB CDC-ACM；CDC 串口在上电几秒后才出现，启动早期的日志会丢失。波特率取 `CONFIG_JIELI_UART_LOG_BAUDRATE`（默认 115200）。
 
 ## GPIO
 
-- 芯片的 GPIO 端口为 A–H，每个端口 16 位，编号 0–127。
-- 厂商头文件还定义了 `IO_PORTI_00`–`IO_PORTI_15` 并把 `IO_MAX_NUM` 算作 144，但 `WL82.h` 中**没有 `JL_PORTI` 寄存器块**，端口 I 只有名字没有实现，不可使用。
-- 涂鸦 TKL 的 GPIO 编号上限是 `TUYA_GPIO_NUM_MAX`（64），因此**只能访问 A–D 端口（0–63）**。
+| 端口 | TKL 编号 |
+| --- | --- |
+| PA0-PA15 | `TUYA_GPIO_NUM_0` - `TUYA_GPIO_NUM_15` |
+| PB0-PB15 | 16 - 31 |
+| PC0-PC15 | 32 - 47 |
+| PD0-PD15 | 48 - 63 |
+| PE0-PE15 | 64 - 79 |
+| PF0-PF15 | 80 - 95 |
+| PG0-PG15 | 96 - 111 |
+| PH0-PH15 | 112 - 127 |
 
-| 板级引脚 | 功能 | 软件引脚 | 软件端口 |
-| -------- | ---- | -------- | -------- |
-| PA0 – PD15 | GPIO | `TUYA_GPIO_NUM_0` – `TUYA_GPIO_NUM_63` | / |
+| 能力 | 支持情况 |
+| --- | --- |
+| 输入、输出 | 支持；输出仅推挽 |
+| 上拉 / 下拉 | 10 kΩ，可任选其一 |
+| 开漏 | 不支持（`OPRT_NOT_SUPPORTED`） |
+| 中断 | 仅上升沿 / 下降沿；同时最多 2 个管脚，且只能在厂商重映射表内的管脚上使用 |
 
-### 中断
-
-- **任意引脚的外部中断最多同时使用 2 个**。芯片只有 `EVENT_IO_0`、`EVENT_IO_1` 两个可重映射事件，各自只有一个重映射字段。
-- 厂商的重映射表**不包含端口 D 和端口 F**，这些引脚无法用作外部中断（作普通 GPIO 可以）。
-- 触发方式仅支持**上升沿**与**下降沿**，不支持双边沿或电平触发。
-- 使用某个引脚作中断后，厂商驱动会按触发边沿自动设置上/下拉，会覆盖 `tkl_gpio_init` 中请求的上下拉。
-
-### 电气模式
-
-- 上拉 / 下拉：固定 10K，可用。
-- 开漏输出：芯片无此模式，`tkl_gpio_init` 会返回 `OPRT_NOT_SUPPORTED`。
-
-## ADC
-
-- 模块支持 1 路 ADC（`TUYA_ADC_NUM_0`），**10 bit**，参考电压 3.3V。
-- 外部通道共 14 个（通道 0–13）。另有 RTC / PMU 内部通道（0xe / 0xf），不属于 TKL 的外部采样范围。
-
-| 板级引脚 | 功能 | 软件通道 | 软件端口 |
-| -------- | ---- | -------- | -------- |
-| PA7 | ADC ch0 | `ch_0` | `TUYA_ADC_NUM_0` |
-| PA8 | ADC ch1 | `ch_1` | `TUYA_ADC_NUM_0` |
-| PA10 | ADC ch2 | `ch_2` | `TUYA_ADC_NUM_0` |
-| **PB1** | **ADC ch3（K1 按键）** | `ch_3` | `TUYA_ADC_NUM_0` |
-| PB6 | ADC ch4 | `ch_4` | `TUYA_ADC_NUM_0` |
-| PB7 | ADC ch5 | `ch_5` | `TUYA_ADC_NUM_0` |
-| PC0 | ADC ch6 | `ch_6` | `TUYA_ADC_NUM_0` |
-| PC1 | ADC ch7 | `ch_7` | `TUYA_ADC_NUM_0` |
-| PC9 | ADC ch8 | `ch_8` | `TUYA_ADC_NUM_0` |
-| PC10 | ADC ch9 | `ch_9` | `TUYA_ADC_NUM_0` |
-| PH0 | ADC ch10 | `ch_10` | `TUYA_ADC_NUM_0` |
-| PH3 | ADC ch11 | `ch_11` | `TUYA_ADC_NUM_0` |
-| DM | ADC ch12 | `ch_12` | `TUYA_ADC_NUM_0` |
-| DP | ADC ch13 | `ch_13` | `TUYA_ADC_NUM_0` |
-
-- 板载 K1 按键接在 **PB1（ADC 通道 3）** 的电阻梯上，按键范围 824–1007（原始值）。
-- 单次采样请使用 `tkl_adc_read_single_channel`；`tkl_adc_read_data` 按已注册通道的升序返回。
-- 温度读取（`tkl_adc_temperature_get`）与 `tkl_adc_ioctl` 未实现，返回 `OPRT_NOT_SUPPORTED`。
+PI、PR 以及 USB 焊盘不在 0-127 范围内，适配层会拒绝。
 
 ## UART
 
-- 模块有 3 路硬件串口（UART0/1/2）。
-- **日志口是 SDK UART1（PB3）**，板级配置中其 RX 为 `-1`（仅发送）。
-- **服务串口（TAL CLI）是 SDK UART0（PA5 / PA6）**，与日志口物理分开。
-- 涂鸦 TKL 逻辑 `TUYA_UART_NUM_0` 映射到 SDK `uart0`；**逻辑 UART1 在本芯片上不支持**（返回 `OPRT_NOT_SUPPORTED`）。
+| TKL 端口 | SDK 端口 | 管脚 |
+| --- | --- | --- |
+| `TUYA_UART_NUM_0` | `uart0` | 下表中四组之一 |
+| `TUYA_UART_NUM_1` | `uart2` | PH2 TX / PH3 RX，固定 |
 
-| 板级引脚 | 功能 | 软件引脚 | 软件端口 |
-| -------- | ---- | -------- | -------- |
-| PB3 | UART1_TX（日志） | / | / |
-| PA5 | UART0_TX（服务 / CLI） | `TUYA_UART0_TX` | `TUYA_UART_NUM_0` |
-| PA6 | UART0_RX（服务 / CLI） | `TUYA_UART0_RX` | `TUYA_UART_NUM_0` |
+| UART0 组 | TX | RX |
+| --- | --- | --- |
+| 0（服务串口默认） | PA5 | PA6 |
+| 1 | PB1 | PB2 |
+| 2 | PA3 | PA4 |
+| 3 | PH0 | PH1 |
 
-- 波特率由 `CONFIG_JIELI_UART_LOG_BAUDRATE` / `CONFIG_JIELI_UART_LOG_PORT` 决定，默认 115200。
-- **接收**：本芯片的 SDK 没有"串口中断事件回调"这一 ioctl，TAL 的接收环无法靠中断填充。适配层改为在任务中每 10ms 轮询 `UART_GET_RECV_CNT`，因此接收有最多一个轮询周期的延迟。
-- TX 中断、硬件流控、`tkl_uart_wait_for_data`、`tkl_uart_ioctl` 未实现。
+| 项目 | 说明 |
+| --- | --- |
+| 帧格式 | 8 数据位、1 停止位、无校验、无流控 |
+| 波特率 | UART0 由 TKL 配置决定；UART1 固定 115200 |
+| 接收 | 由任务每 10 ms 轮询一次（WL82 无 RX 中断事件），1 KB 环形缓冲 |
+| UART1 开关 | `CONFIG_JIELI_BOARD_UART1_ENABLE`（默认 `n`）；除 PH2/PH3 之外的组合会编译报错 |
+| UART0 改管脚 | 同一组的两个管脚各调用一次 `tkl_io_pinmux_config()`；跨组或只配一个管脚返回 `OPRT_NOT_SUPPORTED` |
+
+打开 UART1 会停掉 PB3 上的厂商调试台输出，且 PH2 同时是 PWM0 输出，二者只能选其一。
 
 ## IIC
 
-- 芯片有硬件 IIC 与软件模拟 IIC 两种设备。
-- 厂商的 `demo_DevKitBoard` 板级文件（`CONFIG_IIC_ENABLE`）定义了：`iic1` 为硬件 IIC、`iic0` 为软件 IIC，**均使用 PH0 / PH1**。
+| TKL 端口 | 实现 | 速率 |
+| --- | --- | --- |
+| `TUYA_I2C_NUM_0` | 软件模拟（bit-bang） | 时序固定，请求的速率不生效 |
+| `TUYA_I2C_NUM_1` | 硬件 | 仅 400 kHz |
 
-| 板级引脚 | 功能 | 软件端口（规划） |
-| -------- | ---- | ---------------- |
-| PH0 | IIC SCL | `TUYA_I2C_NUM_1`（硬件） |
-| PH1 | IIC SDA | `TUYA_I2C_NUM_1`（硬件） |
+| IIC1 组 | SCL | SDA |
+| --- | --- | --- |
+| 0 | USB DPA | USB DMA |
+| 1（默认） | PA7 | PA8 |
+| 2 | PC1 | PC2 |
+| 3 | PH0 | PH1 |
 
-> **当前状态：未注册。** TuyaOpen 的构建使用 `demo_hello` 板级配置，其中没有注册任何 IIC 设备，因此 `tkl_i2c_init` 在运行时会返回 `OPRT_NOT_SUPPORTED`。`ENABLE_I2C` 也因此未声明。要启用需按原理图确认空闲引脚后在板级配置中注册设备。
->
-> 注意 PH0 同时是 ADC 通道 10 的引脚，复用前需确认。
+IIC0 默认 PA0 SCL / PA1 SDA，只能在板级 Kconfig 里修改。两个端口都仅支持主机和 7 位地址；从机模式与寄存器地址类 ioctl 不支持。
 
-## PWM
+## ADC
 
-- 厂商的 `demo_DevKitBoard` 板级文件（`CONFIG_PWM_ENABLE`）定义了 `pwm1`：使用 **PH2**，通道为 `PWM_TIMER2_OPCH2`。厂商注释说明该配置**只支持 2 路 PWM**（占用 output_channel 2/3）。
+ADC0，10 位，参考电压 3300 mV，支持扫描和连续采样，单次采样不支持；单次请求最多 10 个通道。
 
-> **当前状态：未注册**，同 IIC。`ENABLE_PWM` 未声明。
->
-> **wl82 的 PWM 打开后只支持单个通道组**（厂商示例原文："初始化之后，只支持单通道选择"），因此 `tkl_pwm_multichannel_start` 在本芯片上返回 `OPRT_NOT_SUPPORTED`，不会静默地只配置最后一个通道。
+| 通道 | 管脚 | SDK 枚举 |
+| --- | --- | --- |
+| 0 | PA7 | `AD_CH_PA07` |
+| 1 | PA8 | `AD_CH_PA08` |
+| 2 | PA10 | `AD_CH_PA10` |
+| 3 | PB1 | `AD_CH_PB01` |
+| 4 | PB6 | `AD_CH_PB06` |
+| 5 | PB7 | `AD_CH_PB07` |
+| 6 | PC0 | `AD_CH_PC00` |
+| 7 | PC1 | `AD_CH_PC01` |
+| 8 | PC9 | `AD_CH_PC09` |
+| 9 | PC10 | `AD_CH_PC10` |
+| 10 | PH0 | `AD_CH_PH00` |
+| 11 | PH3 | `AD_CH_PH03` |
+| 12 | USB DMA | `AD_CH_DM` |
+| 13 | USB DPA | `AD_CH_DP` |
 
-## TIMER
-
-- TKL 定时器基于厂商的微秒级定时器服务实现，**不需要板级注册，也不需要占用引脚**。
-- 回调运行在 SDK 的定时器**任务**中，而不是中断里（`call_in_irq = 0`），因此回调内可以安全地 `tkl_timer_stop` / `tkl_timer_deinit` 自身。代价是回调延迟为一个调度 tick。
-- `tkl_timer_get` 返回自启动以来经过的微秒数（厂商无独立捕获寄存器）。
+先用 `tkl_io_pinmux_config(pin, TUYA_ADC0)` 配置焊盘，再按上表通道号读取。
 
 ## SPI
 
-- 芯片有 3 个 SPI 控制器。厂商 `demo_DevKitBoard` 板级文件注册了 `spi0` / `spi1` / `spi2`，分别选用端口组 `A` / `B` / `C`。
+| 控制器 | 组 | CLK | DO (MOSI) | DI (MISO) | 适配层 |
+| --- | --- | --- | --- | --- | --- |
+| SPI0 | A | PD4 | PD5 | PD1 | 拒绝 |
+| SPI0 | B（默认） | PC3 | PC4 | PC0 | 可选 |
+| SPI1 | A | PB6 | PB7 | PB5 | 可选 |
+| SPI1 | B（默认） | PC9 | PC10 | PC8 | 可选 |
+| SPI2 | A（默认） | PH0 | PH1 | PH2 | 可选 |
+| SPI2 | B | USB DPA | USB DMA | PG15 | 拒绝 |
+| SPI2 | C | PA3 | PA4 | PA2 | 可选 |
 
-| 控制器 | 板级端口组 | 引脚组（该端口组） |
-| ------ | ---------- | ------------------ |
-| spi0 | `A` | CS PD0、DI PD1、DO PD5、CLK PD4、D2 PD2、D3 PD3 |
-| spi1 | `B` | DI PB5、DO PB7、CLK PB6（CS = -1，由软件控制） |
-| spi2 | `C` | DI PH2、DO PH1、CLK PH0（CS = -1，由软件控制） |
+| 项目 | 说明 |
+| --- | --- |
+| 模式 | 主机、8 位、模式 0 |
+| 速率 | 固定 1 MHz，其他速率返回 `OPRT_NOT_SUPPORTED` |
+| 位序 | 默认 MSB；`TUYA_SPI_ORDER_LSB2MSB` 由软件逐字节翻转实现 |
+| 片选 | 由用户当作 GPIO 驱动；控制器没有 CS 寄存器，TKL 也没有 CS 参数 |
+| 改管脚 | 逐管脚的 `tkl_io_pinmux_config(pin, TUYA_SPIn_*)` 会被拒绝；分组由平台数据里的 `.port` 字母决定（`jieli_wl82_spi_pinmux_select()`），在控制器打开时生效 |
 
-> **当前状态：未注册**，同 IIC。`ENABLE_SPI` 未声明。
->
-> 适配层实现的是**同步**主模式收发（8 bit、MSB first）；从机、中断完成回调、状态查询与 ioctl 均返回 `OPRT_NOT_SUPPORTED`。
+## PWM
 
-## 本板已占用的资源
+| 通道 | 管脚 | 硬件 |
+| --- | --- | --- |
+| `TUYA_PWM_NUM_0` | 默认 PH2（`CONFIG_JIELI_BOARD_PWM0_PIN`） | TIMER2 输出通道 2 |
 
-新增外设前请避开以下已登记用途：
+| 项目 | 说明 |
+| --- | --- |
+| 占空比 | 以 `cycle` 为基准的计数值；`cycle == 0` 按 10000 处理 |
+| 极性 | 仅正向 |
+| 通道数 | 只有 PWM0；`TUYA_PWM_NUM_1` 到 `_3` 以及多通道启停返回 `OPRT_NOT_SUPPORTED` |
+| 改管脚 | 只能在板级 Kconfig 里改，WL82 没有 PWM 的 pinmux 通路 |
 
-| 引脚 | 用途 |
-| ---- | ---- |
-| PB3 | 日志输出（SDK UART1 TX） |
-| PA5 / PA6 | 服务串口 / TAL CLI（SDK UART0） |
-| PB1 | K1 按键（ADC 通道 3） |
-| PH0 / PH1 | 厂商板级文件中定义为 IIC（当前未注册） |
-| PH2 | 厂商板级文件中定义为 PWM（当前未注册） |
+## TIMER
 
-## 当前 TuyaOpen 支持状态
-
-| 外设 | TKL 实现 | capability 声明 | 运行时可用 |
-| ---- | -------- | --------------- | ---------- |
-| GPIO（含中断、上下拉） | 有 | `ENABLE_GPIO` | 可用（0–63，中断最多 2 个任意引脚） |
-| ADC | 有 | `ENABLE_ADC` | 可用（ADC0，10 bit，14 通道） |
-| UART | 有 | `ENABLE_UART` | 可用（日志 UART1/PB3，服务 UART0/PA5-PA6） |
-| TIMER | 有 | `ENABLE_TIMER` | 可用 |
-| IIC | 有 | 未声明 | **不可用**：板级未注册设备 |
-| PWM | 有 | 未声明 | **不可用**：板级未注册设备 |
-| SPI | 有 | 未声明 | **不可用**：板级未注册设备 |
-| pinmux | 无（wl82 无通用引脚复用 API） | 未声明 | 不可用 |
+| TKL 定时器 | `TUYA_TIMER_NUM_0` - `TUYA_TIMER_NUM_5` |
+| --- | --- |
+| 硬件 | 共用 SDK 的微秒定时服务，不是 6 个独立硬件定时器 |
+| 并发 | 同一时刻只能有 1 个，第二次启动返回 `OPRT_RESOURCE_NOT_READY` |
+| 回调 | 在 SDK 定时任务中执行，不是中断上下文 |
+| 单位 | 微秒，支持单次和周期 |
