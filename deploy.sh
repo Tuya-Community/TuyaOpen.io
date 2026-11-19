@@ -25,6 +25,16 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# A pull updates the pinned submodule commit but does not touch an existing
+# checkout, and sync-dev-boards.js only initializes a missing submodule. Without
+# this the build would keep using the old dev-board manifest.
+echo -e "${YELLOW}Syncing submodules...${NC}"
+git submodule sync --recursive && git submodule update --init --recursive
+if [ $? -ne 0 ]; then
+  echo -e "${RED}Submodule update failed! (dirty submodule or network issue)${NC}"
+  exit 1
+fi
+
 echo -e "${YELLOW}Building Docker image...${NC}"
 docker build -t $IMAGE_NAME --target production .
 if [ $? -ne 0 ]; then
