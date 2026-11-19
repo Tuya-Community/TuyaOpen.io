@@ -5,10 +5,10 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "node scripts/sync-dev-boards.js && docusaurus start",
-    "build": "node scripts/sync-dev-boards.js && docusaurus build",
+    "build": "node scripts/fetch-github-stars.js && node scripts/sync-dev-boards.js && docusaurus build",
     "sync:dev-boards": "node scripts/sync-dev-boards.js",
     "swizzle": "docusaurus swizzle",
-    "deploy": "node scripts/sync-dev-boards.js && docusaurus deploy",
+    "deploy": "node scripts/fetch-github-stars.js && node scripts/sync-dev-boards.js && docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",

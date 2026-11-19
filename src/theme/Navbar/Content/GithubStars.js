@@ -1,15 +1,90 @@
+import bakedStars from '@site/src/data/github-stars.json'
 import React, { useEffect, useState } from 'react'
 
 const REPO = 'tuya/TuyaOpen'
 const MASCOT_URL = 'https://images.tuyacn.com/fe-static/docs/img/7e618945-0ae2-4290-8844-6c33153e228a.png'
-// Shown on first paint (SSR + before the API responds) to avoid layout shift.
-const FALLBACK = '1.6k'
 const CACHE_KEY = 'tuyaopen-gh-stars'
-const CACHE_TTL = 6 * 60 * 60 * 1000 // 6h — avoid hammering the unauthenticated API
+const CACHE_TTL = 60 * 60 * 1000 // 1h — avoid hammering the unauthenticated API
+const FETCH_TIMEOUT = 8000
+
+/**
+ * Client-side refresh sources, tried in order. api.github.com is exact but
+ * rate-limited per visitor IP and unreachable from some networks (notably
+ * mainland-China egress), so mirror endpoints back it up. All three send
+ * `Access-Control-Allow-Origin: *`.
+ */
+const SOURCES = [
+  {
+    url: `https://api.github.com/repos/${REPO}`,
+    pick: (d) => d.stargazers_count,
+  },
+  {
+    url: `https://ungh.cc/repos/${REPO}`,
+    pick: (d) => d?.repo?.stars,
+  },
+  {
+    url: `https://img.shields.io/github/stars/${REPO}.json`,
+    pick: (d) => parseAbbrev(d?.value),
+  },
+]
+
+// Baked at build time by scripts/fetch-github-stars.js, so the value shown on
+// first paint (SSR + when every refresh source fails) is never older than the
+// last deploy instead of being a permanently stale hardcoded number.
+const FALLBACK = formatStars(bakedStars.count)
 
 function formatStars(n) {
   if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k`
   return String(n)
+}
+
+/** Parse GitHub's abbreviated counts ("1.9k", "2k", "1,954") into an integer. */
+function parseAbbrev(value) {
+  if (typeof value === 'number') return Number.isFinite(value) ? value : null
+  if (typeof value !== 'string') return null
+  const m = value
+    .replace(/,/g, '')
+    .trim()
+    .match(/^(\d+(?:\.\d+)?)\s*([km])?$/i)
+  if (!m) return null
+  return Math.round(parseFloat(m[1]) * (m[2] ? (m[2].toLowerCase() === 'k' ? 1e3 : 1e6) : 1))
+}
+
+function readCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null')
+    if (cached && typeof cached.n === 'number' && cached.n > 0 && typeof cached.t === 'number') {
+      return cached
+    }
+  } catch {
+    // ignore malformed/unavailable storage
+  }
+  return null
+}
+
+function writeCache(n) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ n, t: Date.now() }))
+  } catch {
+    // storage may be unavailable (private mode) — the count still shows this session
+  }
+}
+
+async function fetchStars() {
+  for (const source of SOURCES) {
+    try {
+      const res = await fetch(source.url, {
+        headers: { Accept: 'application/json' },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT),
+      })
+      if (!res.ok) continue
+      const n = parseAbbrev(source.pick(await res.json()))
+      if (Number.isFinite(n) && n > 0) return n
+    } catch {
+      // try the next source
+    }
+  }
+  return null
 }
 
 /**
@@ -24,30 +99,19 @@ export default function GithubStars() {
   useEffect(() => {
     let cancelled = false
 
-    try {
-      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null')
-      if (cached && typeof cached.n === 'number' && Date.now() - cached.t < CACHE_TTL) {
-        setStars(formatStars(cached.n))
-        return undefined
-      }
-    } catch {
-      // ignore malformed cache
-    }
+    // Paint the cached value immediately (if any) so a returning visitor never
+    // sees the build-time number flash down/up.
+    const cached = readCache()
+    if (cached) setStars(formatStars(cached.n))
 
-    fetch(`https://api.github.com/repos/${REPO}`)
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then((data) => {
-        if (cancelled || typeof data.stargazers_count !== 'number') return
-        setStars(formatStars(data.stargazers_count))
-        try {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ n: data.stargazers_count, t: Date.now() }))
-        } catch {
-          // storage may be unavailable (private mode) — the count still shows this session
-        }
-      })
-      .catch(() => {
-        // network / rate-limit failure: keep the fallback value
-      })
+    // Fresh cache: no network call needed.
+    if (cached && Date.now() - cached.t < CACHE_TTL) return undefined
+
+    fetchStars().then((n) => {
+      if (cancelled || n === null) return
+      setStars(formatStars(n))
+      writeCache(n)
+    })
 
     return () => {
       cancelled = true
