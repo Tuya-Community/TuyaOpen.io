@@ -1,5 +1,9 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 16777216,
+    "psramBytes": 8388608
+  },
   "peripheralPatterns": {
     "display": [
       {
@@ -164,7 +168,9 @@
   "links": {
     "schematic": null,
     "datasheet": null,
-    "productPage": "https://www.alientek.com"
+    "productPage": {
+      "en": "https://www.alientek.com"
+    }
   },
   "boardSymbol": "DNESP32S3_BOX2_WIFI",
   "source": {

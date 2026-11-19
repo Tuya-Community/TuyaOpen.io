@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "id": "audio",
+        "name": {
+          "en": "Audio",
+          "zh-CN": "音频"
+        },
+        "interface": "INTERNAL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "INTERNAL": [
+            {
+              "role": "spk_en",
+              "gpio": 45,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Internal codec + NS4150B speaker amp (spk_en active-high). Audio 3V3 load switch on P42. AEC enabled, 16 kHz mono.",
+          "zh-CN": "内置 codec + NS4150B 功放（spk_en 高有效），音频 3V3 电源域 P42，默认 16kHz 单声道并启用 AEC。"
+        }
+      }
+    ],
+    "display": [
+      {
+        "id": "display",
+        "name": {
+          "en": "E-Ink Display",
+          "zh-CN": "墨水屏"
+        },
+        "interface": "SPI",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "port": 0,
+        "model": "SSD2683",
+        "width": 400,
+        "height": 300,
+        "pixelFormat": "MONOCHROME",
+        "backlight": "NONE",
+        "blPwmChannel": 0,
+        "timing": {
+          "syncMode": "VH",
+          "clkEdge": "rising"
+        },
+        "pins": {
+          "SPI": [
+            {
+              "role": "sck",
+              "gpio": 14
+            },
+            {
+              "role": "mosi",
+              "gpio": 16
+            },
+            {
+              "role": "cs",
+              "gpio": 15
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "SSD2683 400x300 B/W e-ink over software SPI (GPIO-driven). Panel power via EPD 3V3 load switch on P23. Full de-ghost every 10 frames.",
+          "zh-CN": "SSD2683 400×300 黑白墨水屏，软件 SPI（GPIO 驱动），面板供电经墨水屏 3V3 电源域 P23，每 10 帧全刷去残影。"
+        }
+      }
+    ],
+    "led": [
+      {
+        "id": "led",
+        "name": {
+          "en": "Indicator LED",
+          "zh-CN": "指示灯"
+        },
+        "interface": "PWM",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "timing": {
+          "pwmCh0": "3",
+          "frequency": 1000
+        },
+        "pins": {
+          "PWM": [
+            {
+              "role": "led",
+              "gpio": 34,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Green LED on PWM3 (PWM8 -> P34), active-low, 1 kHz. Steady (dim) or breathing; doubles as charge indicator.",
+          "zh-CN": "绿色指示灯，PWM3（PWM8→P34），低有效，1kHz，支持常亮（微亮）或呼吸，兼作充电指示。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "button-enter",
+        "name": {
+          "en": "Enter",
+          "zh-CN": "确认"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 43,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Logical button1. Active low, external pull-up.",
+          "zh-CN": "逻辑 button1。低有效，外部上拉。"
+        }
+      },
+      {
+        "id": "button-page-down",
+        "name": {
+          "en": "Page Down",
+          "zh-CN": "下一页"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 24,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low, external pull-up.",
+          "zh-CN": "低有效，外部上拉。"
+        }
+      },
+      {
+        "id": "button-page-up",
+        "name": {
+          "en": "Page Up",
+          "zh-CN": "上一页"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 12,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low, external pull-up.",
+          "zh-CN": "低有效，外部上拉。"
+        }
+      }
+    ],
+    "sd-card": [
+      {
+        "id": "sd-card",
+        "name": {
+          "en": "SD-Card",
+          "zh-CN": "SD 卡"
+        },
+        "interface": "SDIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "SDIO": [
+            {
+              "role": "clk",
+              "gpio": 14
+            },
+            {
+              "role": "cmd",
+              "gpio": 15
+            },
+            {
+              "role": "d0",
+              "gpio": 16
+            },
+            {
+              "role": "d1",
+              "gpio": 17
+            },
+            {
+              "role": "d2",
+              "gpio": 18
+            },
+            {
+              "role": "d3",
+              "gpio": 19
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "microSD, 4-bit SDIO. SD 3V3 load switch on P8.",
+          "zh-CN": "microSD，4 线 SDIO，SD 3V3 电源域 P8。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": null
+  },
+  "boardSymbol": "ZECTRIX_T5AI_NOTE_4",
+  "expansionPins": [],
+  "peripheralGroups": {},
+  "id": "zectrix-t5ai-note-4"
+}

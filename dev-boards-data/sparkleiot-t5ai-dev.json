@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "id": "audio",
+        "name": {
+          "en": "Audio",
+          "zh-CN": "音频"
+        },
+        "interface": "INTERNAL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "INTERNAL": [
+            {
+              "role": "spk_en",
+              "gpio": 7,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Internal codec + speaker amp (spk_en active-high). AEC enabled, 16 kHz mono.",
+          "zh-CN": "内置 codec + 功放（spk_en 高有效），默认 16kHz 单声道并启用 AEC。"
+        }
+      }
+    ],
+    "display": [
+      {
+        "id": "display",
+        "model": "ST7789",
+        "name": {
+          "en": "LCD Display",
+          "zh-CN": "彩屏"
+        },
+        "interface": "SPI",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "port": 0,
+        "width": 240,
+        "height": 320,
+        "pixelFormat": "RGB565",
+        "backlight": "GPIO",
+        "pins": {
+          "SPI": [
+            {
+              "role": "sck",
+              "gpio": 44
+            },
+            {
+              "role": "mosi",
+              "gpio": 46
+            },
+            {
+              "role": "cs",
+              "gpio": 45
+            },
+            {
+              "role": "dc",
+              "gpio": 47
+            },
+            {
+              "role": "rst",
+              "gpio": 6
+            },
+            {
+              "role": "bl",
+              "gpio": 9,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "ST7789 240x320 RGB565 over SPI0 (48 MHz), rotation 90. Backlight GPIO active-high.",
+          "zh-CN": "ST7789 240×320 RGB565，SPI0（48MHz），旋转 90°，背光 GPIO 高有效。"
+        }
+      }
+    ],
+    "touchpad": [
+      {
+        "id": "touchpad",
+        "model": "CST816X",
+        "name": {
+          "en": "Capacitive Touch",
+          "zh-CN": "电容触控"
+        },
+        "interface": "I2C",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 20
+            },
+            {
+              "role": "sda",
+              "gpio": 21
+            },
+            {
+              "role": "rst",
+              "gpio": 23
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "CST816X on I2C1, overlaid on the LCD.",
+          "zh-CN": "CST816X，I2C1，覆盖在彩屏上。"
+        }
+      }
+    ],
+    "camera": [
+      {
+        "id": "camera",
+        "model": "GC2145",
+        "name": {
+          "en": "Camera",
+          "zh-CN": "摄像头"
+        },
+        "interface": "DVP",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "DVP": [
+            {
+              "role": "i2c_scl",
+              "gpio": 0
+            },
+            {
+              "role": "i2c_sda",
+              "gpio": 1
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "GC2145 DVP; control I2C0 (P0/P1), 24 MHz MCLK. DVP data bus uses T5AI platform-fixed pins.",
+          "zh-CN": "GC2145 DVP，控制 I2C0（P0/P1），24MHz MCLK。DVP 数据总线用 T5AI 平台固定引脚。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "button",
+        "name": {
+          "en": "Button",
+          "zh-CN": "按键"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 8,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Active low, IRQ falling edge.",
+          "zh-CN": "低有效，下降沿中断。"
+        }
+      }
+    ],
+    "sd-card": [
+      {
+        "id": "sd-card",
+        "name": {
+          "en": "SD-Card",
+          "zh-CN": "SD 卡"
+        },
+        "interface": "SDIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "SDIO": [
+            {
+              "role": "clk",
+              "gpio": 14
+            },
+            {
+              "role": "cmd",
+              "gpio": 15
+            },
+            {
+              "role": "d0",
+              "gpio": 16
+            },
+            {
+              "role": "d1",
+              "gpio": 17
+            },
+            {
+              "role": "d2",
+              "gpio": 18
+            },
+            {
+              "role": "d3",
+              "gpio": 19
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "microSD, SDIO MODE1 (1-bit mount, 4-bit ready).",
+          "zh-CN": "microSD，SDIO MODE1（1 线挂载，4 线就绪）。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": {
+      "en": "https://e.tb.cn/h.8cKdRJSGfXbu54V?tk=WVl1gGbz4yY",
+      "zh-CN": "https://e.tb.cn/h.8cKdRJSGfXbu54V?tk=WVl1gGbz4yY"
+    }
+  },
+  "boardSymbol": "NICEMCU_T5_2_8ISP",
+  "expansionPins": [],
+  "id": "sparkleiot-t5ai-dev"
+}

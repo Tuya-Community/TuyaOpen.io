@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "button": [
+      {
+        "id": "sw1",
+        "name": {
+          "en": "SW1",
+          "zh-CN": "SW1"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 49,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      },
+      {
+        "id": "sw2",
+        "name": {
+          "en": "SW2",
+          "zh-CN": "SW2"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 2,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "led": [
+      {
+        "id": "ledr",
+        "name": {
+          "en": "LEDR",
+          "zh-CN": "LEDR（红）"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 50
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      },
+      {
+        "id": "ledb",
+        "name": {
+          "en": "LEDB",
+          "zh-CN": "LEDB（蓝）"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 15
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio",
+        "name": {
+          "en": "Audio (codec-less I2S)",
+          "zh-CN": "音频（无编解码器 I2S）"
+        },
+        "interface": "I2S",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2S": [
+            {
+              "role": "bck",
+              "gpio": 25
+            },
+            {
+              "role": "ws",
+              "gpio": 26
+            },
+            {
+              "role": "din",
+              "gpio": 27
+            },
+            {
+              "role": "dout",
+              "gpio": 28
+            },
+            {
+              "role": "mic_en",
+              "gpio": 0,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "16kHz/16kHz codec-less audio via SiWx917 on-chip I2S0. mic_en (GPIO0) enables the microphone bias and is only wired on BRD2605A, not on SIWX917_AI_DEV_KIT.",
+          "zh-CN": "通过 SiWx917 片上 I2S0 实现的 16kHz/16kHz 无编解码器音频。mic_en（GPIO0）为麦克风偏置使能脚，仅 BRD2605A 接了这根线，SIWX917_AI_DEV_KIT 没有。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://www.silabs.com/documents/public/schematic-files/BRD2605A-A02-schematic.pdf",
+    "datasheet": "https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf",
+    "productPage": "https://www.silabs.com/development-tools/wireless/wi-fi/siwx917-dk2605a-wifi-6-bluetooth-le-soc-dev-kit"
+  },
+  "boardSymbol": "BRD2605A",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/SiWx917/BRD2605A"
+  },
+  "expansionPins": [
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "UART0_CTS",
+        "QSPI0_IO2",
+        "I2C0_SDA",
+        "I2C1_SCL",
+        "UART1_RX",
+        "I2S0_DIN",
+        "PWM1",
+        "SPI0_MOSI"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "QSPI0_IO3",
+        "I2C0_SCL",
+        "I2C1_SDA",
+        "UART1_TX",
+        "I2S0_DOUT",
+        "PWM0"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "PWM4",
+        "UART1_RTS"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "SPI0_MISO",
+        "PWM4",
+        "UART1_CTS"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "SPI0_MOSI",
+        "PWM6"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI",
+        "I2S0_DOUT",
+        "UART2_CTS",
+        "I2C2_SCL",
+        "ADC0_CH10"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO",
+        "I2S0_WS",
+        "UART2_RX",
+        "ADC0_CH1"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "SPI1_SCK",
+        "QSPI0_SCK",
+        "I2S0_SCK",
+        "ADC0_CH6"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO",
+        "SPI1_CSN",
+        "I2S0_WS",
+        "ADC0_CH16"
+      ]
+    },
+    {
+      "gpio": 27,
+      "functions": [
+        "GPIO",
+        "SPI1_MOSI",
+        "I2S0_DIN",
+        "ADC0_CH7"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "SPI1_MISO",
+        "I2S0_DOUT",
+        "ADC0_CH17"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "I2C1_SCL",
+        "UART1_RX",
+        "I2S0_DIN",
+        "ADC0_CH8"
+      ]
+    },
+    {
+      "gpio": 30,
+      "functions": [
+        "GPIO",
+        "I2C1_SDA",
+        "UART1_TX",
+        "I2S0_DOUT",
+        "ADC0_CH18",
+        "DAC1"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN",
+        "I2S0_DIN",
+        "UART2_RX",
+        "I2C2_SDA",
+        "ADC0_CH3"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO",
+        "I2S0_SCK",
+        "UART2_TX",
+        "I2C2_SCL",
+        "ADC0_CH15"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK",
+        "I2S0_SCK",
+        "UART2_CTS",
+        "I2C2_SCL",
+        "ADC0_CH4"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO",
+        "I2S0_DIN",
+        "UART2_RX",
+        "I2C2_SDA",
+        "ADC0_CH14"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN",
+        "I2S0_WS",
+        "UART2_RTS",
+        "ADC0_CH5"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI",
+        "I2S0_DOUT",
+        "UART2_TX",
+        "I2C2_SDA",
+        "ADC0_CH13"
+      ]
+    }
+  ],
+  "peripheralGroups": {},
+  "id": "brd2605a"
+}

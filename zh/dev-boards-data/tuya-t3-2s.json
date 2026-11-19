@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "memory": {},
+  "packages": [
+    {
+      "id": "t3-2s",
+      "name": {
+        "en": "T3-2S",
+        "zh-CN": "T3-2S"
+      },
+      "antenna": "onboard",
+      "datasheet": "https://developer.tuya.com/cn/docs/iot/T3-2S-Module-Datasheet?id=Ke4h1uh9ect1s"
+    }
+  ],
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.tuya.com/cn/docs/iot/T3-2S-Module-Datasheet?id=Ke4h1uh9ect1s",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/T3-2S-Module-Datasheet?id=Ke4h1uh9ect1s"
+    },
+    "productPage": null
+  },
+  "expansionPins": [
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "UART0_RX",
+        "DL_UART_RX",
+        "SDIO_DATA2",
+        "CIS_AUXCLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "DL_UART_TX",
+        "SDIO_DATA3"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "PWMG0_PWM0",
+        "SDIO_DATA2"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "PWM4",
+        "ADC0_CH2"
+      ],
+      "caps": [
+        "LPO_CLK"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "PWM5",
+        "ADC0_CH1",
+        "IRDA"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM0",
+        "TOUCH6"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM2",
+        "SPI0_CSN",
+        "TOUCH8"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM4",
+        "SPI0_MISO",
+        "TOUCH10"
+      ],
+      "caps": []
+    }
+  ],
+  "boardSymbol": "T3_2S_MODULE",
+  "id": "tuya-t3-2s"
+}

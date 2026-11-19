@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "memory": {},
+  "packages": [
+    {
+      "id": "wt3",
+      "name": {
+        "en": "WT3",
+        "zh-CN": "WT3"
+      },
+      "antenna": "onboard",
+      "datasheet": "https://developer.tuya.com/cn/docs/iot/WT3-Module-Datasheet?id=Kbogc3ps2rn8i"
+    }
+  ],
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.tuya.com/cn/docs/iot/WT3-Module-Datasheet?id=Kbogc3ps2rn8i",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/WT3-Module-Datasheet?id=Kbogc3ps2rn8i"
+    },
+    "productPage": null
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "UART1_TX",
+        "I2C1_SCL"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "UART1_RX",
+        "I2C1_SDA"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "PWM0"
+      ],
+      "caps": [
+        "CLK_OUT"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "PWM1"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "PWM2"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "PWM3"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "UART0_RX",
+        "DL_UART_RX"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "DL_UART_TX"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "SPI0_SCK",
+        "SDIO_CLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO",
+        "ADC0_CH3"
+      ],
+      "caps": [
+        "JTDO"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "PWM4",
+        "ADC0_CH2"
+      ],
+      "caps": [
+        "LPO_CLK"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO",
+        "PWM5",
+        "ADC0_CH1",
+        "IRDA"
+      ],
+      "caps": []
+    }
+  ],
+  "boardSymbol": "WT3_MODULE",
+  "id": "tuya-wt3"
+}

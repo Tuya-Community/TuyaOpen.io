@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "dshanpi-a1",
+  "platformId": "linux",
+  "boardSymbol": "DshanPI_A1",
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "id": "alsa-audio",
+        "name": {
+          "en": "ALSA audio",
+          "zh-CN": "ALSA 音频"
+        },
+        "interface": "ALSA",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_AUDIO_ALSA": "y",
+          "ENABLE_AUDIO_AEC": "y"
+        },
+        "note": {
+          "en": "百问网 DshanPi-A1 with AEC-enabled audio path.",
+          "zh-CN": "百问网 DshanPi-A1，支持 AEC 音频通路。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "keyboard-button",
+        "name": {
+          "en": "Keyboard trigger key",
+          "zh-CN": "键盘触发键"
+        },
+        "interface": "KEYBOARD",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_KEYBOARD_INPUT": "y",
+          "BUTTON_NAME": "s"
+        },
+        "note": null
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": null
+  },
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/LINUX/DshanPi_A1"
+  },
+  "expansionPins": [],
+  "peripheralGroups": {},
+  "runtime": {
+    "runMode": "cross-deploy",
+    "artifact": "elf",
+    "arch": "aarch64",
+    "systemPackages": {
+      "debian": [
+        "build-essential",
+        "cmake",
+        "ninja-build",
+        "libasound2-dev"
+      ]
+    },
+    "deploy": {
+      "defaultRemoteDir": "~/tuyaopen-apps"
+    }
+  }
+}

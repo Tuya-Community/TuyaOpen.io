@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "memory": {},
+  "packages": [
+    {
+      "id": "t3-u",
+      "name": {
+        "en": "T3-U",
+        "zh-CN": "T3-U"
+      },
+      "antenna": "onboard",
+      "datasheet": "https://developer.tuya.com/cn/docs/iot/T3-U-Module-Datasheet?id=Kdd4pzscwf0il"
+    }
+  ],
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.tuya.com/cn/docs/iot/T3-U-Module-Datasheet?id=Kdd4pzscwf0il",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/T3-U-Module-Datasheet?id=Kdd4pzscwf0il"
+    },
+    "productPage": null
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "UART1_TX",
+        "I2C0_SCL",
+        "ADC0_CH12",
+        "LIN_TXD"
+      ],
+      "caps": [
+        "SWCLK"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "UART1_RX",
+        "I2C0_SDA",
+        "ADC0_CH13",
+        "LIN_RXD"
+      ],
+      "caps": [
+        "SWDIO"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "UART0_RX",
+        "DL_UART_RX",
+        "SDIO_DATA2",
+        "CIS_AUXCLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "DL_UART_TX",
+        "SDIO_DATA3"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "UART0_RTS",
+        "ADC0_CH14",
+        "TOUCH0"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO",
+        "UART0_CTS",
+        "ADC0_CH15",
+        "TOUCH1"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "SPI0_SCK",
+        "I2C0_SCL",
+        "SDIO_CLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "I2C0_SDA",
+        "SDIO_CMD"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "SPI0_MOSI",
+        "SDIO_DATA0"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "SPI0_MISO",
+        "SDIO_DATA1"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "PWMG0_PWM0",
+        "SDIO_DATA2"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "PWM4",
+        "ADC0_CH2"
+      ],
+      "caps": [
+        "LPO_CLK"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "PWM5",
+        "ADC0_CH1",
+        "IRDA"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM0",
+        "TOUCH6"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM2",
+        "SPI0_CSN",
+        "TOUCH8"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM4",
+        "SPI0_MISO",
+        "TOUCH10"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO",
+        "UART2_RX",
+        "LIN_RXD"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO",
+        "UART2_TX",
+        "LIN_TXD"
+      ],
+      "caps": []
+    }
+  ],
+  "boardSymbol": "T3_U_MODULE",
+  "id": "tuya-t3-u"
+}

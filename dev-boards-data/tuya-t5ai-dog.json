@@ -1,5 +1,9 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
   "peripheralPatterns": {
     "audio": [
       {

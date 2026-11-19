@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "raspberrypi",
+  "platformId": "linux",
+  "boardSymbol": "RASPBERRY_PI",
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "id": "alsa-audio",
+        "name": {
+          "en": "ALSA audio (capture + playback)",
+          "zh-CN": "ALSA 音频（采集 + 播放）"
+        },
+        "interface": "ALSA",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_AUDIO_ALSA": "y"
+        },
+        "note": {
+          "en": "Microphone and speaker via the default ALSA device.",
+          "zh-CN": "通过默认 ALSA 设备使用麦克风与扬声器。"
+        }
+      }
+    ],
+    "display": [
+      {
+        "id": "sdl-display",
+        "name": {
+          "en": "SDL2 desktop window",
+          "zh-CN": "SDL2 桌面窗口"
+        },
+        "interface": "SDL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_SDL_DISPLAY": "y",
+          "ENABLE_SDL_TP": "y"
+        },
+        "note": {
+          "en": "LVGL UI in an SDL2 window; mouse drag emulates touch.",
+          "zh-CN": "SDL2 窗口显示 LVGL；鼠标拖拽模拟触摸。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "keyboard-button",
+        "name": {
+          "en": "Keyboard trigger key",
+          "zh-CN": "键盘触发键"
+        },
+        "interface": "KEYBOARD",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_KEYBOARD_INPUT": "y",
+          "BUTTON_NAME": "s"
+        },
+        "note": {
+          "en": "Default trigger key is 's' (CONFIG_BUTTON_NAME).",
+          "zh-CN": "默认触发键为 s（CONFIG_BUTTON_NAME）。"
+        }
+      }
+    ],
+    "camera": [
+      {
+        "id": "v4l2-camera",
+        "name": {
+          "en": "V4L2 USB camera",
+          "zh-CN": "V4L2 USB 摄像头"
+        },
+        "interface": "V4L2",
+        "mounting": "optional",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_CAMERA_V4L2": "y",
+          "CAMERA_V4L2_DEVNODE": "/dev/video0"
+        },
+        "note": {
+          "en": "Optional; enable CONFIG_ENABLE_CAMERA in menuconfig when needed.",
+          "zh-CN": "可选；需要时在 menuconfig 中开启 CONFIG_ENABLE_CAMERA。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://www.raspberrypi.com/documentation/computers/",
+      "zh-CN": "https://www.raspberrypi.com/documentation/computers/"
+    },
+    "productPage": {
+      "en": "https://www.raspberrypi.com/products/",
+      "zh-CN": "https://www.raspberrypi.com/products/"
+    }
+  },
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/LINUX/Raspberry_Pi"
+  },
+  "expansionPins": [],
+  "peripheralGroups": {},
+  "runtime": {
+    "runMode": "cross-deploy",
+    "artifact": "elf",
+    "arch": "aarch64",
+    "systemPackages": {
+      "debian": [
+        "build-essential",
+        "cmake",
+        "ninja-build",
+        "libsdl2-dev",
+        "libasound2-dev",
+        "v4l-utils"
+      ]
+    },
+    "deploy": {
+      "defaultRemoteDir": "~/tuyaopen-apps"
+    }
+  }
+}

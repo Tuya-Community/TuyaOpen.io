@@ -1,0 +1,794 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "sd-card": [
+      {
+        "id": "tf2",
+        "name": {
+          "en": "TF2 card slot",
+          "zh-CN": "TF2 卡槽"
+        },
+        "interface": "SDIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "SDIO": [
+            {
+              "role": "d3",
+              "gpio": 50
+            },
+            {
+              "role": "d2",
+              "gpio": 51
+            },
+            {
+              "role": "d1",
+              "gpio": 52
+            },
+            {
+              "role": "d0",
+              "gpio": 53
+            },
+            {
+              "role": "cmd",
+              "gpio": 54
+            },
+            {
+              "role": "clk",
+              "gpio": 55
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Schematic J35: PD1=SD_DET, PD2–PD5=SD_DAT3–0, PD6=SD_CMD, PD7=SD_CLK. AC7926A SDK SD0_A profile cross-checks the bus mapping. PD1 is also the default UART0 debug TX in that SDK profile, so card detect and logging TX conflict unless reconfigured.",
+          "zh-CN": "原理图 J35：PD1=SD_DET、PD2–PD5=SD_DAT3–0、PD6=SD_CMD、PD7=SD_CLK。AC7926A SDK 的 SD0_A 配置与总线映射一致。该 SDK 配置还默认用 PD1 作为 UART0 调试 TX，因此卡检测和日志 TX 会冲突，除非重新配置。"
+        }
+      }
+    ],
+    "audio": [
+      {
+        "id": "analog-audio",
+        "name": {
+          "en": "Analog microphone and speaker path",
+          "zh-CN": "模拟麦克风与扬声器通路"
+        },
+        "interface": "INTERNAL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "INTERNAL": [
+            {
+              "role": "mute",
+              "gpio": 79,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Speaker mute/PA control is PE15 (GPIO79), active low: the board audio profile sets TCFG_AUDIO_DAC_PA_MUTE_LEVEL=0 and drives PE15 low to mute, then high to release the amplifier after the 300 ms delay. The V1.2 schematic labels MIC1+/- on PC7/PC6 (GPIO39/38) and MIC2+/- on PC11/PC12 (GPIO43/44). AUX LINE IN is an analog J4 connection, not a digital GPIO.",
+          "zh-CN": "扬声器静音/功放控制为 PE15（GPIO79），低电平有效：板级音频配置令 TCFG_AUDIO_DAC_PA_MUTE_LEVEL=0，先拉低 PE15 静音，延时 300 ms 后拉高释放功放。V1.2 原理图标注 MIC1+/− 接 PC7/PC6（GPIO39/38），MIC2+/− 接 PC11/PC12（GPIO43/44）。AUX LINE IN 是 J4 模拟音频接口，不是数字 GPIO。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "adkey",
+        "name": {
+          "en": "ADKEY input",
+          "zh-CN": "ADKEY 按键输入"
+        },
+        "interface": "ADC",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "ADC": [
+            {
+              "role": "key",
+              "gpio": 48
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "PD0 is used by the board key resistor ladder.",
+          "zh-CN": "PD0 用于板载电阻分压按键。"
+        }
+      }
+    ],
+    "touchpad": [
+      {
+        "id": "touch-header",
+        "name": {
+          "en": "Touch panel interface",
+          "zh-CN": "触摸屏接口"
+        },
+        "interface": "I2C",
+        "mounting": "accessory",
+        "pinLocked": true,
+        "pins": {
+          "I2C": [
+            {
+              "role": "scl",
+              "gpio": 1
+            },
+            {
+              "role": "sda",
+              "gpio": 2
+            },
+            {
+              "role": "int",
+              "gpio": 3
+            },
+            {
+              "role": "rst",
+              "gpio": 70
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "J26 pins 57–60: PA3=INT, PA2=SDA, PA1=SCL, PE6=RESET.",
+          "zh-CN": "J26 的 57–60 针：PA3=INT、PA2=SDA、PA1=SCL、PE6=RESET。"
+        }
+      }
+    ],
+    "display": [
+      {
+        "id": "mipi-dsi-st7701s",
+        "name": {
+          "en": "480x800 MIPI-DSI display",
+          "zh-CN": "480x800 MIPI-DSI 显示屏"
+        },
+        "model": "ST7701S",
+        "interface": "MIPI",
+        "width": 480,
+        "height": 800,
+        "pixelFormat": "RGB565",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": null,
+        "note": {
+          "en": "This is the optional ST7701S 480x800 MIPI-DSI panel used by the current TuyaOpen AC792N board profile. J26 DSI differential lanes (pins 1–10) are dedicated high-speed signals, not GPIOs. The separate RGB/DPI signals on J26 pins 22–52 are not another display entry here. The vendor WL83 profile assigns PB0/GPIO16 to panel reset and PB1/GPIO17 to backlight.",
+          "zh-CN": "这是当前 TuyaOpen AC792N 板级配置使用的选配 ST7701S 480x800 MIPI-DSI 屏。J26 的 DSI 差分通道（1–10 针）是专用高速信号，不是 GPIO。J26 的另一组 RGB/DPI 信号位于 22–52 针，这里不再作为第二种显示屏列出。杰理 WL83 板级配置将 PB0/GPIO16 用作屏复位，PB1/GPIO17 用作背光。"
+        },
+        "pins": {
+          "MIPI": [
+            {
+              "role": "rst",
+              "gpio": 16
+            },
+            {
+              "role": "bl",
+              "gpio": 17,
+              "activeLevel": "high"
+            }
+          ]
+        }
+      }
+    ],
+    "camera": [
+      {
+        "id": "dvp0-camera",
+        "name": {
+          "en": "DVP0 camera connector",
+          "zh-CN": "DVP0 摄像头接口"
+        },
+        "interface": "DVP",
+        "mounting": "accessory",
+        "pinLocked": true,
+        "pins": {
+          "DVP": [
+            {
+              "role": "mclk",
+              "gpio": 56
+            },
+            {
+              "role": "rst",
+              "gpio": 73
+            },
+            {
+              "role": "i2c_scl",
+              "gpio": 72
+            },
+            {
+              "role": "i2c_sda",
+              "gpio": 71
+            },
+            {
+              "role": "d0",
+              "gpio": 57
+            },
+            {
+              "role": "d1",
+              "gpio": 58
+            },
+            {
+              "role": "d2",
+              "gpio": 59
+            },
+            {
+              "role": "d3",
+              "gpio": 60
+            },
+            {
+              "role": "d4",
+              "gpio": 61
+            },
+            {
+              "role": "d5",
+              "gpio": 62
+            },
+            {
+              "role": "d6",
+              "gpio": 63
+            },
+            {
+              "role": "d7",
+              "gpio": 64
+            },
+            {
+              "role": "d8",
+              "gpio": 65
+            },
+            {
+              "role": "d9",
+              "gpio": 66
+            },
+            {
+              "role": "pclk",
+              "gpio": 67
+            },
+            {
+              "role": "vsync",
+              "gpio": 68
+            },
+            {
+              "role": "hsync",
+              "gpio": 69
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "V1.2 schematic CAM2/DVP0 mapping. PWDN is a passive bias network with no MCU GPIO assignment; camera bus data and timing use the listed GPIOs. SDK AC7926A profile cross-checks the control pins.",
+          "zh-CN": "V1.2 原理图 CAM2/DVP0 映射。PWDN 为无 MCU GPIO 分配的被动偏置网络；摄像头数据及时序使用所列 GPIO。AC7926A SDK 配置交叉核对控制引脚。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": {
+      "en": "https://github.com/tuya/TuyaOpen-JieLi/tree/master/chip/wl83/AC792_SDK/doc/%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%96%99/%E5%8E%9F%E7%90%86%E5%9B%BE/%E5%BC%80%E5%8F%91%E6%9D%BF/AC792N%E5%BC%80%E5%8F%91%E6%9D%BF%E5%8E%9F%E7%90%86%E5%9B%BE%E4%BD%8D%E5%8F%B7%E5%9B%BE",
+      "zh-CN": "https://github.com/tuya/TuyaOpen-JieLi/tree/master/chip/wl83/AC792_SDK/doc/%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%96%99/%E5%8E%9F%E7%90%86%E5%9B%BE/%E5%BC%80%E5%8F%91%E6%9D%BF/AC792N%E5%BC%80%E5%8F%91%E6%9D%BF%E5%8E%9F%E7%90%86%E5%9B%BE%E4%BD%8D%E5%8F%B7%E5%9B%BE"
+    },
+    "datasheet": {
+      "en": "https://doc.zh-jieli.com/AC792/zh-cn/wifi_video_master/index.html",
+      "zh-CN": "https://doc.zh-jieli.com/AC792/zh-cn/wifi_video_master/index.html"
+    },
+    "productPage": null
+  },
+  "boardSymbol": "AC792N_DEVELOP_BOARD",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen",
+    "subpath": "boards/JIELI/AC792N_Develop_Board",
+    "ref": "master"
+  },
+  "platformSymbol": "JIELI",
+  "expansionConnectors": [
+    {
+      "id": "mipi-cam1",
+      "name": {
+        "en": "MIPI CAM1 connector",
+        "zh-CN": "MIPI CAM1 摄像头接口"
+      },
+      "note": {
+        "en": "Camera control GPIOs only; MIPI differential data/clock lanes are not ordinary GPIOs.",
+        "zh-CN": "这里只列摄像头控制 GPIO；MIPI 差分数据/时钟通道不是普通 GPIO。"
+      },
+      "provides": [
+        {
+          "deviceClass": "camera",
+          "interface": "MIPI",
+          "pins": {
+            "MIPI": [
+              {
+                "role": "mclk",
+                "gpio": 74
+              },
+              {
+                "role": "pwdn",
+                "gpio": 75
+              },
+              {
+                "role": "rst",
+                "gpio": 76
+              },
+              {
+                "role": "i2c_scl",
+                "gpio": 78
+              },
+              {
+                "role": "i2c_sda",
+                "gpio": 77
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "j26-multiport",
+      "name": {
+        "en": "J26 60-pin Multi Port",
+        "zh-CN": "J26 60 针多功能接口"
+      },
+      "note": {
+        "en": "Pins 22–52 expose PA4–PA15, PB0–PB15 and PC0–PC2 as muxed RGB/DPI and peripheral GPIOs; pins 57–60 carry touch-panel signals. Pins 1–10 are a separate set of dedicated DSI differential lanes, not GPIOs. The current TuyaOpen WL83 board profile uses the MIPI-DSI display; the RGB/DPI pin map documents the connector only and is not a second active display configuration.",
+        "zh-CN": "22–52 针引出 PA4–PA15、PB0–PB15、PC0–PC2，可复用作 RGB/DPI 信号或普通外设 GPIO；57–60 针为触摸屏信号。1–10 针是另一组专用 DSI 差分线，不是 GPIO。当前 TuyaOpen WL83 板级配置使用 MIPI-DSI 显示屏；RGB/DPI 引脚图仅说明接口连接器信号，不代表第二种已启用的显示配置。"
+      },
+      "provides": [
+        {
+          "deviceClass": "display",
+          "interface": "RGB",
+          "pins": {
+            "RGB": [
+              {
+                "role": "d0",
+                "gpio": 4
+              },
+              {
+                "role": "d1",
+                "gpio": 5
+              },
+              {
+                "role": "d2",
+                "gpio": 6
+              },
+              {
+                "role": "d3",
+                "gpio": 7
+              },
+              {
+                "role": "d4",
+                "gpio": 8
+              },
+              {
+                "role": "d5",
+                "gpio": 9
+              },
+              {
+                "role": "d6",
+                "gpio": 10
+              },
+              {
+                "role": "d7",
+                "gpio": 11
+              },
+              {
+                "role": "d8",
+                "gpio": 16
+              },
+              {
+                "role": "d9",
+                "gpio": 17
+              },
+              {
+                "role": "d10",
+                "gpio": 18
+              },
+              {
+                "role": "d11",
+                "gpio": 19
+              },
+              {
+                "role": "d12",
+                "gpio": 20
+              },
+              {
+                "role": "d13",
+                "gpio": 21
+              },
+              {
+                "role": "d14",
+                "gpio": 22
+              },
+              {
+                "role": "d15",
+                "gpio": 23
+              },
+              {
+                "role": "d16",
+                "gpio": 24
+              },
+              {
+                "role": "d17",
+                "gpio": 25
+              },
+              {
+                "role": "d18",
+                "gpio": 26
+              },
+              {
+                "role": "d19",
+                "gpio": 27
+              },
+              {
+                "role": "d20",
+                "gpio": 28
+              },
+              {
+                "role": "d21",
+                "gpio": 29
+              },
+              {
+                "role": "d22",
+                "gpio": 30
+              },
+              {
+                "role": "d23",
+                "gpio": 31
+              },
+              {
+                "role": "de",
+                "gpio": 12
+              },
+              {
+                "role": "pclk",
+                "gpio": 13
+              },
+              {
+                "role": "hsync",
+                "gpio": 14
+              },
+              {
+                "role": "vsync",
+                "gpio": 15
+              }
+            ]
+          }
+        },
+        {
+          "deviceClass": "touchpad",
+          "interface": "I2C",
+          "pins": {
+            "I2C": [
+              {
+                "role": "int",
+                "gpio": 3
+              },
+              {
+                "role": "sda",
+                "gpio": 2
+              },
+              {
+                "role": "scl",
+                "gpio": 1
+              },
+              {
+                "role": "rst",
+                "gpio": 70
+              }
+            ]
+          }
+        },
+        {
+          "deviceClass": "gpio",
+          "interface": "GPIO"
+        }
+      ]
+    }
+  ],
+  "expansionPins": [
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "LCD_D0",
+        "PAP_D0A",
+        "TS0_SYNC"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "LCD_D1",
+        "PAP_D1A",
+        "TS0_CLK"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "LCD_D2",
+        "PAP_D2A",
+        "TS0_D0"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "LCD_D3",
+        "PAP_D3A",
+        "TS0_D1"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "LCD_D4",
+        "PAP_D4A",
+        "TS0_D2"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "LCD_D5",
+        "PAP_D5A",
+        "TS0_D3"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "LCD_D6",
+        "PAP_D6A",
+        "TS0_D4"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "LCD_D7",
+        "PAP_D7A",
+        "TS0_D5"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "LCD_DEN",
+        "PAP_WRAB",
+        "TS0_D6"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO",
+        "LCD_DCLK",
+        "TS0_D7"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "LCD_HSYNC",
+        "PAP_RDAB",
+        "IIC0_SCL"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "LCD_VSYNC",
+        "IIC0_SDA"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "LCD_D8",
+        "PAP_D8AB",
+        "TS1_ERR"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "LCD_D9",
+        "PAP_D9AB",
+        "TS1_VLD"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "LCD_D10",
+        "PAP_D10AB",
+        "TS1_SYNC"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "LCD_D11",
+        "PAP_D11AB",
+        "TS1_CLK"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "LCD_D12",
+        "PAP_D12AB",
+        "TS1_D0"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO",
+        "LCD_D13",
+        "PAP_D13AB",
+        "TS1_D1"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "LCD_D14",
+        "PAP_D14AB",
+        "TS1_D2"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO",
+        "LCD_D15",
+        "PAP_D15AB",
+        "TS1_D3"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "LCD_D16",
+        "TS1_D4",
+        "SEN1_D0"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "LCD_D17",
+        "TS1_D5",
+        "SEN1_D1"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO",
+        "LCD_D18",
+        "PAP_D0B",
+        "TS1_D6",
+        "SEN1_D2"
+      ]
+    },
+    {
+      "gpio": 27,
+      "functions": [
+        "GPIO",
+        "LCD_D19",
+        "PAP_D1B",
+        "TS1_D7",
+        "SEN1_D3"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "LCD_D20",
+        "PAP_D2B",
+        "IIC1_SCL",
+        "SEN1_D4"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO",
+        "LCD_D21",
+        "PAP_D3B",
+        "IIC1_SDA",
+        "SEN1_D5"
+      ]
+    },
+    {
+      "gpio": 30,
+      "functions": [
+        "GPIO",
+        "LCD_D22",
+        "PAP_D4B",
+        "SEN1_D6"
+      ]
+    },
+    {
+      "gpio": 31,
+      "functions": [
+        "GPIO",
+        "LCD_D23",
+        "PAP_D5B",
+        "SEN1_D7"
+      ]
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO",
+        "NC/SDA",
+        "PAP_D6B",
+        "SEN1_CLK"
+      ]
+    },
+    {
+      "gpio": 33,
+      "functions": [
+        "GPIO",
+        "NC/SCK",
+        "PAP_D7B",
+        "SEN1_SYNC0"
+      ]
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO",
+        "NC/CS",
+        "SEN1_SYNC2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "TP_INT"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "TP_SDA"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "TP_SCL"
+      ]
+    },
+    {
+      "gpio": 70,
+      "functions": [
+        "GPIO",
+        "TP_RESET"
+      ]
+    }
+  ],
+  "id": "jieli-ac792n-develop-board"
+}

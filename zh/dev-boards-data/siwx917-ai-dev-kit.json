@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {
+    "button": [
+      {
+        "id": "sw1",
+        "name": {
+          "en": "AI Chat Button (SW1)",
+          "zh-CN": "AI 对话按键（SW1）"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 49,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      },
+      {
+        "id": "sw2",
+        "name": {
+          "en": "SW2",
+          "zh-CN": "SW2"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 2,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "led": [
+      {
+        "id": "ledr",
+        "name": {
+          "en": "LEDR",
+          "zh-CN": "LEDR（红）"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 50
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      },
+      {
+        "id": "ledb",
+        "name": {
+          "en": "LEDB",
+          "zh-CN": "LEDB（蓝）"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": false,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 15
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio",
+        "name": {
+          "en": "Audio (codec-less I2S)",
+          "zh-CN": "音频（无编解码器 I2S）"
+        },
+        "interface": "I2S",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "I2S": [
+            {
+              "role": "bck",
+              "gpio": 25
+            },
+            {
+              "role": "ws",
+              "gpio": 26
+            },
+            {
+              "role": "din",
+              "gpio": 27
+            },
+            {
+              "role": "dout",
+              "gpio": 28
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "16kHz/16kHz codec-less audio via SiWx917 on-chip I2S0.",
+          "zh-CN": "通过 SiWx917 片上 I2S0 实现的 16kHz/16kHz 无编解码器音频。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://raw.githubusercontent.com/tuya/tuyaopen-ide-manifests/main/boards-and-chips/files/siwx917-ai-dev-kit/SK_SiWx917_AI_MB_Schematic_V1.1.pdf",
+    "datasheet": "https://www.silabs.com/documents/public/user-guides/ug581-brd2605a-user-guide.pdf",
+    "productPage": "https://www.sekorm.com/product/603942256.html"
+  },
+  "boardSymbol": "SIWX917_AI_DEV_KIT",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/SiWx917/SIWX917_AI_DEV_KIT"
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "UART0_CTS",
+        "QSPI0_IO2",
+        "I2C0_SDA",
+        "I2C1_SCL",
+        "UART1_RX",
+        "I2S0_DIN",
+        "PWM1",
+        "SPI0_MOSI"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "QSPI0_IO3",
+        "I2C0_SCL",
+        "I2C1_SDA",
+        "UART1_TX",
+        "I2S0_DOUT",
+        "PWM0"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "QSPI0_CS",
+        "PWM3"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "PWM4",
+        "UART1_RTS"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "SPI0_MISO",
+        "PWM4",
+        "UART1_CTS"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "SPI0_MOSI",
+        "PWM6"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK",
+        "I2S0_DIN",
+        "UART2_RTS",
+        "I2C2_SDA",
+        "ADC0_CH0"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI",
+        "I2S0_DOUT",
+        "UART2_CTS",
+        "I2C2_SCL",
+        "ADC0_CH10"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO",
+        "I2S0_WS",
+        "UART2_RX",
+        "ADC0_CH1"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN",
+        "I2S0_WS",
+        "UART2_RTS",
+        "I2C2_SDA",
+        "ADC0_CH2",
+        "DAC0"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "I2C1_SCL",
+        "UART1_RX",
+        "I2S0_DIN",
+        "ADC0_CH8"
+      ]
+    },
+    {
+      "gpio": 30,
+      "functions": [
+        "GPIO",
+        "I2C1_SDA",
+        "UART1_TX",
+        "I2S0_DOUT",
+        "ADC0_CH18",
+        "DAC1"
+      ]
+    },
+    {
+      "gpio": 31,
+      "functions": [
+        "GPIO",
+        "I2C0_SDA",
+        "UART1_RTS"
+      ]
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO",
+        "I2C0_SCL",
+        "UART1_CTS"
+      ]
+    },
+    {
+      "gpio": 33,
+      "functions": [
+        "GPIO",
+        "I2C1_SCL",
+        "UART1_RX"
+      ]
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO",
+        "I2C1_SDA",
+        "UART1_TX"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO",
+        "I2S0_DOUT",
+        "UART2_CTS",
+        "I2C2_SCL",
+        "ADC0_CH12"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN",
+        "I2S0_DIN",
+        "UART2_RX",
+        "I2C2_SDA",
+        "ADC0_CH3"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO",
+        "I2S0_SCK",
+        "UART2_TX",
+        "I2C2_SCL",
+        "ADC0_CH15"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK",
+        "I2S0_SCK",
+        "UART2_CTS",
+        "I2C2_SCL",
+        "ADC0_CH4"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO",
+        "I2S0_DIN",
+        "UART2_RX",
+        "I2C2_SDA",
+        "ADC0_CH14"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN",
+        "I2S0_WS",
+        "UART2_RTS",
+        "ADC0_CH5"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI",
+        "I2S0_DOUT",
+        "UART2_TX",
+        "I2C2_SDA",
+        "ADC0_CH13"
+      ]
+    },
+    {
+      "gpio": 46,
+      "functions": [
+        "GPIO",
+        "QSPI0_SCK",
+        "I2S0_SCK"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO",
+        "I2S0_WS"
+      ]
+    },
+    {
+      "gpio": 48,
+      "functions": [
+        "GPIO",
+        "I2S0_DIN"
+      ]
+    },
+    {
+      "gpio": 51,
+      "functions": [
+        "GPIO",
+        "I2C1_SDA",
+        "I2S0_DOUT"
+      ]
+    },
+    {
+      "gpio": 52,
+      "functions": [
+        "GPIO",
+        "QSPI0_SCK",
+        "I2S0_SCK"
+      ]
+    },
+    {
+      "gpio": 53,
+      "functions": [
+        "GPIO",
+        "QSPI0_CS",
+        "I2S0_WS"
+      ]
+    },
+    {
+      "gpio": 54,
+      "functions": [
+        "GPIO",
+        "I2C1_SCL",
+        "I2S0_DIN"
+      ]
+    },
+    {
+      "gpio": 55,
+      "functions": [
+        "GPIO",
+        "I2C1_SDA",
+        "I2S0_DOUT"
+      ]
+    },
+    {
+      "gpio": 56,
+      "functions": [
+        "GPIO",
+        "I2S0_DIN"
+      ]
+    },
+    {
+      "gpio": 57,
+      "functions": [
+        "GPIO",
+        "I2S0_DOUT"
+      ]
+    }
+  ],
+  "peripheralGroups": {},
+  "id": "siwx917-ai-dev-kit"
+}

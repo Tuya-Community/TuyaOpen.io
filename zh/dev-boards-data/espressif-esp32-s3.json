@@ -1,11 +1,286 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 8388608
+  },
   "peripheralPatterns": {},
   "links": {
     "schematic": null,
-    "datasheet": "https://www.espressif.com/en/products/socs/esp32-s3",
-    "productPage": null
+    "datasheet": {
+      "en": "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+      "zh-CN": "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_cn.pdf"
+    },
+    "productPage": {
+      "en": "https://www.amazon.com/stores/page/C90222CE-4CA6-42A0-AD91-4040787F9122?ingress=2&lp_context_asin=B09D76YPDM&visitId=0a690280-787f-4856-b0c6-52e517a31309&store_ref=bl_ast_dp_brandlogo_sto&ref_=ast_bln",
+      "zh-CN": "https://espressif.taobao.com/category-1608826764.htm?spm=a1z10.5-c.w4010-8715811634.24.7e9f36b7H4eDOM&search=y&parentCatId=1341918256&parentCatName=%C4%A3%D7%E9&catName=ESP32-S3+%C4%A3%D7%E9#bd"
+    }
   },
   "boardSymbol": "ESP32_S3",
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "ADC1_CH0",
+        "TOUCH1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "ADC1_CH1",
+        "TOUCH2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "ADC1_CH2",
+        "TOUCH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "ADC1_CH3",
+        "TOUCH4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "ADC1_CH4",
+        "TOUCH5"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "ADC1_CH5",
+        "TOUCH6"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "ADC1_CH6",
+        "TOUCH7"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "ADC1_CH7",
+        "TOUCH8"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "ADC1_CH8",
+        "TOUCH9"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "ADC1_CH9",
+        "TOUCH10",
+        "SPI2_CSN"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "ADC2_CH0",
+        "TOUCH11",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "ADC2_CH1",
+        "TOUCH12",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO",
+        "ADC2_CH2",
+        "TOUCH13",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "ADC2_CH3",
+        "TOUCH14"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "ADC2_CH4"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "ADC2_CH5"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "ADC2_CH6",
+        "UART1_TX"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "ADC2_CH7",
+        "UART1_RX"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "ADC2_CH8",
+        "USB_D-"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "ADC2_CH9",
+        "USB_D+"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 42,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 43,
+      "functions": [
+        "GPIO",
+        "UART0_TX"
+      ]
+    },
+    {
+      "gpio": 44,
+      "functions": [
+        "GPIO",
+        "UART0_RX"
+      ]
+    },
+    {
+      "gpio": 45,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 46,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 48,
+      "functions": [
+        "GPIO"
+      ]
+    }
+  ],
   "id": "espressif-esp32-s3"
 }

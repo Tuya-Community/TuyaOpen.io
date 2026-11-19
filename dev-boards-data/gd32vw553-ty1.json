@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 4194304,
+    "psramBytes": 0
+  },
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://download.gigadevice.com/Datasheet/GD32VW553-TY1%20datasheet%20Rev0.5.pdf",
+      "zh-CN": "https://download.gigadevice.com/Datasheet/GD32VW553-TY1%20datasheet%20Rev0.5.pdf"
+    },
+    "productPage": {
+      "en": "https://pages-g.m.taobao.com/wow/z/app/detail-next/item/index?id=1061464623455",
+      "zh-CN": "https://pages-g.m.taobao.com/wow/z/app/detail-next/item/index?id=1061464623455"
+    }
+  },
+  "boardSymbol": "GD32_MC_FOC_VWS_VW553",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/GD32/GD32_MC_FOC_VWS_VW553"
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "UART1_CTS",
+        "SPI0_MOSI",
+        "ADC0_CH0"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "UART0_RX",
+        "UART1_RTS",
+        "SPI0_MISO",
+        "ADC0_CH1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "UART0_CTS",
+        "UART1_TX",
+        "I2C0_SCL",
+        "SPI0_SCK",
+        "ADC0_CH2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "UART0_RTS",
+        "UART1_RX",
+        "I2C0_SDA",
+        "SPI0_CSN",
+        "ADC0_CH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "UART1_TX",
+        "SPI0_MOSI",
+        "SPI0_CSN",
+        "QSPI0_SCK",
+        "ADC0_CH4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "UART1_RX",
+        "SPI0_MISO",
+        "SPI0_SCK",
+        "QSPI0_CS",
+        "ADC0_CH5"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "UART2_TX",
+        "I2C1_SCL",
+        "SPI0_MISO",
+        "SPI0_SCK",
+        "QSPI0_IO0",
+        "ADC0_CH6"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "UART2_RX",
+        "I2C1_SDA",
+        "SPI0_CSN",
+        "SPI0_MOSI",
+        "QSPI0_IO1",
+        "ADC0_CH7"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "UART1_TX",
+        "UART2_CTS",
+        "I2C0_SCL",
+        "ADC0_CH8"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "UART1_RX",
+        "UART2_RTS",
+        "I2C0_SDA"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "UART1_TX",
+        "I2C0_SCL",
+        "I2C1_SCL"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "I2C0_SDA",
+        "I2C1_SDA",
+        "UART0_TX",
+        "UART1_TX"
+      ]
+    },
+    {
+      "gpio": 27,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO"
+      ]
+    }
+  ],
+  "peripheralGroups": {},
+  "id": "gd32vw553-ty1"
+}

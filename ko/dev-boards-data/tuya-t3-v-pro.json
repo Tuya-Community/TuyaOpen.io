@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "memory": {},
+  "packages": [
+    {
+      "id": "t3-v-pro",
+      "name": {
+        "en": "T3-V-PRO",
+        "zh-CN": "T3-V-PRO"
+      },
+      "antenna": "onboard",
+      "datasheet": "https://developer.tuya.com/cn/docs/iot/T3-V-PRO-module-datasheet?id=Kf4hh3l98a15a"
+    }
+  ],
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.tuya.com/cn/docs/iot/T3-V-PRO-module-datasheet?id=Kf4hh3l98a15a",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/T3-V-PRO-module-datasheet?id=Kf4hh3l98a15a"
+    },
+    "productPage": null
+  },
+  "expansionPins": [
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "SPI0_SCK",
+        "I2C0_SCL",
+        "SDIO_CLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN",
+        "I2C0_SDA",
+        "SDIO_CMD"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "SPI0_MOSI",
+        "SDIO_DATA0"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "SPI0_MISO",
+        "SDIO_DATA1"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "PWMG0_PWM0",
+        "SDIO_DATA2"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "PWMG0_PWM1",
+        "SDIO_DATA3"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "PWM4",
+        "ADC0_CH2"
+      ],
+      "caps": [
+        "LPO_CLK"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "PWM5",
+        "ADC0_CH1",
+        "IRDA"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "ADC0_CH4",
+        "I2S_MCLK",
+        "TOUCH2",
+        "CIS_AUXCLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM0",
+        "TOUCH6"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM2",
+        "SPI0_CSN",
+        "TOUCH8"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "PWMG1_PWM4",
+        "SPI0_MISO",
+        "TOUCH10"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 48,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": []
+    }
+  ],
+  "boardSymbol": "T3_V_PRO_MODULE",
+  "id": "tuya-t3-v-pro"
+}

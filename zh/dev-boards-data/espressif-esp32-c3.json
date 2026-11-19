@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 4194304,
+    "psramBytes": 0
+  },
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://www.espressif.com/en/products/socs/esp32-c3",
+      "zh-CN": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_cn.pdf"
+    },
+    "productPage": {
+      "en": "https://www.amazon.com/stores/page/F5471D9D-DAC3-4286-BBD1-5AA5FEE4CE09?ingress=2&lp_context_asin=B09D76YPDM&visitId=0a690280-787f-4856-b0c6-52e517a31309&store_ref=bl_ast_dp_brandlogo_sto&ref_=ast_bln",
+      "zh-CN": "https://espressif.taobao.com/category-1590821535.htm?spm=a1z10.5-c.w4010-8715811634.20.21a33bcdO9gAyl&search=y&parentCatId=1341918256&parentCatName=%C4%A3%D7%E9&catName=ESP32-C3%2FESP8685+%C4%A3%D7%E9#bd"
+    }
+  },
+  "boardSymbol": "ESP32_C3",
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "ADC1_CH0"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "ADC1_CH1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "ADC1_CH2",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "ADC1_CH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "ADC1_CH4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "ADC2_CH0"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "USB_D-"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "USB_D+"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "UART0_RX"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO",
+        "UART0_TX"
+      ]
+    }
+  ],
+  "id": "espressif-esp32-c3"
+}

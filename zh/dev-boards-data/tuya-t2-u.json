@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "memory": {},
+  "packages": [
+    {
+      "id": "t2-u",
+      "name": {
+        "en": "T2-U",
+        "zh-CN": "T2-U"
+      },
+      "antenna": "onboard",
+      "datasheet": "https://developer.tuya.com/cn/docs/iot/T2-U-module-datasheet?id=Kce1tncb80ldq"
+    }
+  ],
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.tuya.com/cn/docs/iot/T2-U-module-datasheet?id=Kce1tncb80ldq",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/T2-U-module-datasheet?id=Kce1tncb80ldq"
+    },
+    "productPage": null
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "UART1_TX",
+        "I2C1_SCL"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "UART1_RX",
+        "I2C1_SDA"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "PWM0"
+      ],
+      "caps": [
+        "CLK_OUT"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "PWM1"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "PWM2"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "PWM3"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "SPI0_SCK",
+        "SDIO_CLK"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "SPI0_CSN"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "SPI0_MOSI",
+        "SDIO_CMD"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "SPI0_MISO",
+        "SDIO_DATA0"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "I2C0_SCL"
+      ],
+      "caps": [
+        "JTCK"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "ADC0_CH5"
+      ],
+      "caps": [
+        "CLK_OUT",
+        "JTDI"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO",
+        "ADC0_CH3"
+      ],
+      "caps": [
+        "JTDO"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "PWM4",
+        "ADC0_CH2"
+      ],
+      "caps": [
+        "LPO_CLK"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO",
+        "PWM5",
+        "ADC0_CH1",
+        "IRDA"
+      ],
+      "caps": []
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "ADC0_CH4"
+      ],
+      "caps": [
+        "RXEN"
+      ]
+    }
+  ],
+  "boardSymbol": "T2_U",
+  "id": "tuya-t2-u"
+}

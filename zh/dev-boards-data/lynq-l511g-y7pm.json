@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": "https://mobiletek.cn/news/46"
+  },
+  "boardSymbol": "L511G_Y7PM",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen",
+    "subpath": "boards/L511G_Y7PM/L511G_Y7PM",
+    "ref": "master"
+  },
+  "expansionPins": [
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "PWM4"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "PWM0"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "PWM1"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "PWM3"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "SPI0_MISO"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO",
+        "SPI0_SCK"
+      ]
+    },
+    {
+      "gpio": 30,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 31,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 33,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 49,
+      "functions": [
+        "GPIO",
+        "SPI1_SCK"
+      ]
+    },
+    {
+      "gpio": 50,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 51,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 52,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 53,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 54,
+      "functions": [
+        "GPIO",
+        "PWM2"
+      ]
+    },
+    {
+      "gpio": 55,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 56,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 57,
+      "functions": [
+        "GPIO",
+        "I2C0_SCL"
+      ]
+    },
+    {
+      "gpio": 58,
+      "functions": [
+        "GPIO",
+        "I2C0_SDA"
+      ]
+    },
+    {
+      "gpio": 62,
+      "functions": [
+        "SPI1_MISO"
+      ]
+    },
+    {
+      "gpio": 63,
+      "functions": [
+        "SPI1_MOSI"
+      ]
+    },
+    {
+      "gpio": 64,
+      "functions": [
+        "SPI1_CSN"
+      ]
+    },
+    {
+      "gpio": 66,
+      "functions": [
+        "I2C1_SDA",
+        "SPI0_CSN"
+      ]
+    },
+    {
+      "gpio": 67,
+      "functions": [
+        "I2C1_SCL",
+        "SPI0_MOSI"
+      ]
+    },
+    {
+      "gpio": 80,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 81,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 82,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 100,
+      "functions": [
+        "GPIO"
+      ]
+    }
+  ],
+  "id": "lynq-l511g-y7pm"
+}

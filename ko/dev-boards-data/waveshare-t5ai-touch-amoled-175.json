@@ -1,5 +1,9 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
   "peripheralPatterns": {
     "audio": [
       {
@@ -121,54 +125,35 @@
         "id": "touchpad"
       }
     ],
-    "sd_card": [
+    "imu": [
       {
-        "model": null,
+        "model": "QMI8658",
         "name": {
-          "en": "Micro SD Card",
-          "zh-CN": "Micro SD 卡"
+          "en": "6-Axis IMU",
+          "zh-CN": "六轴 IMU"
         },
-        "interface": "SDIO",
+        "axes": 6,
+        "interface": "I2C",
         "pins": {
-          "SDIO": [
+          "I2C": [
             {
-              "role": "clk",
-              "gpio": 2
+              "role": "scl",
+              "gpio": 20
             },
             {
-              "role": "cmd",
-              "gpio": 3
-            },
-            {
-              "role": "d0",
-              "gpio": 4
-            },
-            {
-              "role": "d1",
-              "gpio": 5
-            },
-            {
-              "role": "d2",
-              "gpio": 10
-            },
-            {
-              "role": "d3",
-              "gpio": 11
-            },
-            {
-              "role": "cd",
-              "gpio": 8
+              "role": "sda",
+              "gpio": 21
             }
           ]
         },
         "kconfig": null,
         "note": {
-          "en": "4-bit SDIO. Card detect on GPIO 8.",
-          "zh-CN": "4 位 SDIO。卡检测引脚 GPIO 8。"
+          "en": "I2C0 at 100 kHz, 7-bit address 0x6B, sharing the bus with the capacitive touch controller. Registered during board bring-up and treated as optional — an absent or unresponsive IMU is logged and skipped so the rest of the board still comes up. The driver ships with the board: boards/T5AI/WAVESHARE_T5AI_TOUCH_AMOLED_1_75/qmi8658.{c,h}.",
+          "zh-CN": "I2C0，100 kHz，7 位地址 0x6B，与电容触控共用总线。板级初始化时注册，且按可选外设处理——IMU 不在或无应答只会打日志跳过，不影响其余外设启动。驱动随板提供：boards/T5AI/WAVESHARE_T5AI_TOUCH_AMOLED_1_75/qmi8658.{c,h}。"
         },
         "mounting": "onboard",
         "pinLocked": true,
-        "id": "sd-card"
+        "id": "imu"
       }
     ],
     "led": [
@@ -259,6 +244,52 @@
         "pinLocked": true,
         "id": "power"
       }
+    ],
+    "sd-card": [
+      {
+        "id": "sd-card",
+        "name": {
+          "en": "SD-Card",
+          "zh-CN": "SD 卡"
+        },
+        "interface": "SDIO",
+        "mounting": "accessory",
+        "pinLocked": true,
+        "pins": {
+          "SDIO": [
+            {
+              "role": "clk",
+              "gpio": 2
+            },
+            {
+              "role": "cmd",
+              "gpio": 3
+            },
+            {
+              "role": "d0",
+              "gpio": 4
+            },
+            {
+              "role": "d1",
+              "gpio": 5
+            },
+            {
+              "role": "d2",
+              "gpio": 10
+            },
+            {
+              "role": "d3",
+              "gpio": 11
+            },
+            {
+              "role": "cd",
+              "gpio": 8
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
     ]
   },
   "links": {
@@ -281,10 +312,10 @@
     {
       "gpio": 14,
       "functions": [
-        "GPIO14",
-        "SDIO_CLK",
+        "GPIO",
         "SPI0_SCK",
         "I2C1_SCL",
+        "SDIO_CLK",
         "RGB_DCLK",
         "I8080_D15",
         "SEG16"
@@ -293,10 +324,10 @@
     {
       "gpio": 15,
       "functions": [
-        "GPIO15",
-        "SDIO_CMD",
+        "GPIO",
         "SPI0_CSN",
         "I2C1_SDA",
+        "SDIO_CMD",
         "RGB_DISP",
         "I8080_D14",
         "SEG15"
@@ -305,9 +336,9 @@
     {
       "gpio": 16,
       "functions": [
-        "GPIO16",
-        "SDIO_DATA0",
+        "GPIO",
         "SPI0_MOSI",
+        "SDIO_DATA0",
         "RGB_DE",
         "I8080_D13",
         "SEG14"
@@ -316,162 +347,18 @@
     {
       "gpio": 17,
       "functions": [
-        "GPIO17",
-        "SDIO_DATA1",
+        "GPIO",
         "SPI0_MISO",
+        "SDIO_DATA1",
         "RGB_HSYNC",
         "I8080_D12",
         "SEG13"
       ]
     },
     {
-      "gpio": 32,
-      "functions": [
-        "GPIO32",
-        "CIS_PXD0",
-        "PWM_G1_0",
-        "ENET_MDIO",
-        "TOUCH6",
-        "SC_RSTN",
-        "SEG22"
-      ]
-    },
-    {
-      "gpio": 33,
-      "functions": [
-        "GPIO33",
-        "CIS_PXD1",
-        "ENET_RXD0",
-        "TOUCH7",
-        "SPI0_SCK",
-        "SEG23"
-      ]
-    },
-    {
-      "gpio": 34,
-      "functions": [
-        "GPIO34",
-        "CIS_PXD2",
-        "PWM_G1_2",
-        "ENET_RXD1",
-        "TOUCH8",
-        "SPI0_CSN",
-        "SEG24"
-      ]
-    },
-    {
-      "gpio": 35,
-      "functions": [
-        "GPIO35",
-        "CIS_PXD3",
-        "ENET_RXDV",
-        "TOUCH9",
-        "SPI0_MOSI",
-        "SEG25"
-      ]
-    },
-    {
-      "gpio": 36,
-      "functions": [
-        "GPIO36",
-        "CIS_PXD4",
-        "PWM_G1_4",
-        "ENET_TXD0",
-        "TOUCH10",
-        "SPI0_MISO",
-        "SEG26"
-      ]
-    },
-    {
-      "gpio": 37,
-      "functions": [
-        "GPIO37",
-        "CIS_PXD5",
-        "ENET_TXD1",
-        "TOUCH11",
-        "SEG27"
-      ]
-    },
-    {
-      "gpio": 38,
-      "functions": [
-        "GPIO38",
-        "CIS_PXD6",
-        "I2C1_SCL",
-        "ENET_TXEN",
-        "TOUCH12",
-        "COM4",
-        "SEG28"
-      ]
-    },
-    {
-      "gpio": 40,
-      "functions": [
-        "GPIO40",
-        "UART2_RX",
-        "I2S1_SCK",
-        "LIN_RXD",
-        "SC_CLK",
-        "RGB_G4",
-        "I8080_D7",
-        "SEG3"
-      ]
-    },
-    {
-      "gpio": 41,
-      "functions": [
-        "GPIO41",
-        "UART2_TX",
-        "I2S1_SYNC",
-        "LIN_TXD",
-        "SC_IO",
-        "RGB_G3",
-        "I8080_D6",
-        "SEG2"
-      ]
-    },
-    {
-      "gpio": 44,
-      "functions": [
-        "GPIO44",
-        "CAN_TX",
-        "SPI0_SCK",
-        "RGB_B6",
-        "I8080_D3",
-        "COM3",
-        "I2S2_SCK"
-      ]
-    },
-    {
-      "gpio": 45,
-      "functions": [
-        "GPIO45",
-        "CAN_RX",
-        "SPI0_CSN",
-        "RGB_B5",
-        "I8080_D2",
-        "COM2",
-        "I2S2_SYNC"
-      ]
-    },
-    {
-      "gpio": 46,
-      "functions": [
-        "GPIO46",
-        "CAN_STBY",
-        "SPI0_MOSI",
-        "ENET_PHY_INT",
-        "TOUCH14",
-        "RGB_B4",
-        "I8080_D1",
-        "COM1",
-        "I2S2_DIN"
-      ]
-    },
-    {
       "gpio": 47,
       "functions": [
-        "GPIO47",
+        "GPIO",
         "SPI0_MISO",
         "ENET_MDC",
         "TOUCH15",
@@ -482,5 +369,6 @@
       ]
     }
   ],
+  "peripheralGroups": {},
   "id": "waveshare-t5ai-touch-amoled-175"
 }

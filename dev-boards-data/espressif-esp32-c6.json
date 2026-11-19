@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 16777216,
+    "psramBytes": 0
+  },
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf",
+      "zh-CN": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_cn.pdf"
+    },
+    "productPage": {
+      "en": "https://www.amazon.com/stores/page/AEBEED4F-D509-4C34-A3F0-9B97513B92C3?ingress=2&lp_context_asin=B09D76YPDM&visitId=0a690280-787f-4856-b0c6-52e517a31309&store_ref=bl_ast_dp_brandlogo_sto&ref_=ast_bln",
+      "zh-CN": "https://espressif.taobao.com/category-1694419066.htm?spm=a1z10.5-c.w4010-8715811634.26.37357a0bxof8KL&search=y&parentCatId=1341918256&parentCatName=%C4%A3%D7%E9&catName=ESP32-C6+%C4%A3%D7%E9#bd"
+    }
+  },
+  "boardSymbol": "ESP32_C6",
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "ADC1_CH0"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "ADC1_CH1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "ADC1_CH2",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "ADC1_CH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "ADC1_CH4",
+        "SPI2_HD"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "ADC1_CH5",
+        "SPI2_WP"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "ADC1_CH6",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "SPI2_CSN"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "UART0_RX",
+        "SPI2_CS1"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "SDIO_CMD",
+        "SPI2_CS2"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "SDIO_CLK",
+        "SPI2_CS3"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA0",
+        "SPI2_CS4"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA1",
+        "SPI2_CS5"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA2"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA3"
+      ]
+    }
+  ],
+  "id": "espressif-esp32-c6"
+}

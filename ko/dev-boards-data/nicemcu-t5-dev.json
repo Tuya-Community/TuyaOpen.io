@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
+  "peripheralPatterns": {
+    "led": [
+      {
+        "id": "user-led",
+        "name": {
+          "en": "User LED",
+          "zh-CN": "用户 LED"
+        },
+        "model": null,
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 4
+            }
+          ]
+        },
+        "optional": false,
+        "kconfig": null,
+        "note": {
+          "en": "P4 drives the LED through a 1K series resistor, active high. A separate red power LED is wired to 3V3.",
+          "zh-CN": "P4 经 1K 限流电阻驱动 LED，高电平有效；另有红色电源指示灯接 3V3。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://images.tuyacn.com/content-platform/hestia/1794909521e70ac1627a4.pdf",
+    "datasheet": {
+      "en": "https://developer.tuya.com/docs/iot/T5-E1-Module-Datasheet?id=Kdar6hf0kzmfi",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/T5-E1-Module-Datasheet?id=Kdar6hf0kzmfi"
+    },
+    "productPage": {
+      "en": "https://detail.1688.com/offer/1092448582945.html",
+      "zh-CN": "https://detail.1688.com/offer/1092448582945.html"
+    }
+  },
+  "boardSymbol": "NICEMCU_T5_DEV",
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "ADC"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "IR_TX"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "IR_RX"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 27,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 30,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 31,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 33,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 42,
+      "functions": [
+        "GPIO",
+        "I2C_SCL"
+      ]
+    },
+    {
+      "gpio": 43,
+      "functions": [
+        "GPIO",
+        "I2C_SDA"
+      ]
+    },
+    {
+      "gpio": 44,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 45,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 46,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO"
+      ]
+    }
+  ],
+  "id": "nicemcu-t5-dev"
+}

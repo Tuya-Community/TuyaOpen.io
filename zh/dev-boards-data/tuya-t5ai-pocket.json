@@ -1,5 +1,9 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
   "peripheralPatterns": {
     "audio": [
       {
@@ -366,6 +370,48 @@
           "zh-CN": "低有效。"
         }
       }
+    ],
+    "sd-card": [
+      {
+        "id": "sd-card",
+        "name": {
+          "en": "SD-Card",
+          "zh-CN": "SD 卡"
+        },
+        "interface": "SDIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "SDIO": [
+            {
+              "role": "clk",
+              "gpio": 14
+            },
+            {
+              "role": "cmd",
+              "gpio": 15
+            },
+            {
+              "role": "d0",
+              "gpio": 16
+            },
+            {
+              "role": "d1",
+              "gpio": 17
+            },
+            {
+              "role": "d2",
+              "gpio": 18
+            },
+            {
+              "role": "d3",
+              "gpio": 19
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
     ]
   },
   "links": {
@@ -384,66 +430,66 @@
     {
       "gpio": 2,
       "functions": [
-        "GPIO2",
+        "GPIO",
         "SPI1_SCK",
+        "QSPI1_SCK",
         "SDIO_CLK",
         "SC_RSTN",
-        "LIN_SLEEP",
-        "QSPI1_SCK"
+        "LIN_SLEEP"
       ]
     },
     {
       "gpio": 3,
       "functions": [
-        "GPIO3",
+        "GPIO",
         "SPI1_CSN",
+        "QSPI1_CS",
         "SDIO_CMD",
-        "SC_VCC",
-        "QSPI1_CS"
+        "SC_VCC"
       ]
     },
     {
       "gpio": 4,
       "functions": [
-        "GPIO4",
+        "GPIO",
         "SPI1_MOSI",
+        "QSPI1_IO0",
         "SDIO_DATA0",
         "COM6",
-        "QSPI1_IO0",
         "SEG30"
       ]
     },
     {
       "gpio": 5,
       "functions": [
-        "GPIO5",
+        "GPIO",
         "SPI1_MISO",
+        "QSPI1_IO1",
         "SDIO_DATA1",
         "COM7",
-        "QSPI1_IO1",
         "SEG31"
       ]
     },
     {
       "gpio": 6,
       "functions": [
-        "GPIO6",
-        "I2S0_SCK",
-        "QSPI1_IO2"
+        "GPIO",
+        "QSPI1_IO2",
+        "I2S0_SCK"
       ]
     },
     {
       "gpio": 7,
       "functions": [
-        "GPIO7",
-        "I2S0_SYNC",
-        "QSPI1_IO3"
+        "GPIO",
+        "QSPI1_IO3",
+        "I2S0_SYNC"
       ]
     },
     {
       "gpio": 40,
       "functions": [
-        "GPIO40",
+        "GPIO",
         "UART2_RX",
         "I2S1_SCK",
         "LIN_RXD",
@@ -456,7 +502,7 @@
     {
       "gpio": 41,
       "functions": [
-        "GPIO41",
+        "GPIO",
         "UART2_TX",
         "I2S1_SYNC",
         "LIN_TXD",

@@ -1,22 +1,44 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 16777216,
+    "psramBytes": 8388608
+  },
   "peripheralPatterns": {
     "display": [
       {
         "id": "lcd-st7789",
         "name": {
-          "en": "ST7789 LCD",
-          "zh-CN": "ST7789 显示屏"
+          "en": "LCD",
+          "zh-CN": "显示屏"
         },
-        "model": "ST7789",
         "interface": "MCU8080",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "model": "ST7789",
         "width": 320,
         "height": 240,
         "pixelFormat": "RGB565",
-        "mounting": "onboard",
-        "pinLocked": true,
+        "backlight": "GPIO",
+        "blPwmChannel": 0,
+        "timing": {
+          "dataBits": "8"
+        },
         "pins": {
           "MCU8080": [
+            {
+              "role": "bl",
+              "expanderId": "io-expander",
+              "expanderPin": 7
+            },
+            {
+              "role": "wr",
+              "gpio": 42
+            },
+            {
+              "role": "rd",
+              "gpio": 41
+            },
             {
               "role": "cs",
               "gpio": 1
@@ -24,14 +46,6 @@
             {
               "role": "dc",
               "gpio": 2
-            },
-            {
-              "role": "rd",
-              "gpio": 41
-            },
-            {
-              "role": "wr",
-              "gpio": 42
             },
             {
               "role": "d0",
@@ -64,6 +78,46 @@
             {
               "role": "d7",
               "gpio": 46
+            },
+            {
+              "role": "d8",
+              "gpio": null
+            },
+            {
+              "role": "d9",
+              "gpio": null
+            },
+            {
+              "role": "d10",
+              "gpio": null
+            },
+            {
+              "role": "d11",
+              "gpio": null
+            },
+            {
+              "role": "d12",
+              "gpio": null
+            },
+            {
+              "role": "d13",
+              "gpio": null
+            },
+            {
+              "role": "d14",
+              "gpio": null
+            },
+            {
+              "role": "d15",
+              "gpio": null
+            },
+            {
+              "role": "d16",
+              "gpio": null
+            },
+            {
+              "role": "d17",
+              "gpio": null
             }
           ]
         },
@@ -78,13 +132,13 @@
       {
         "id": "audio-es8311",
         "name": {
-          "en": "ES8311 Audio Codec",
-          "zh-CN": "ES8311 音频编解码器"
+          "en": "Audio",
+          "zh-CN": "音频"
         },
-        "model": "ES8311",
         "interface": "I2S",
         "mounting": "onboard",
         "pinLocked": true,
+        "decoder": "ES8311",
         "pins": {
           "I2S": [
             {
@@ -96,12 +150,17 @@
               "gpio": 13
             },
             {
+              "role": "din",
+              "gpio": 47
+            },
+            {
               "role": "dout",
               "gpio": 14
             },
             {
-              "role": "din",
-              "gpio": 47
+              "role": "spk_en",
+              "expanderId": "io-expander",
+              "expanderPin": 5
             }
           ],
           "I2C": [
@@ -122,17 +181,64 @@
         }
       }
     ],
-    "pmic": [
+    "button": [
       {
-        "id": "io-expander-xl9555",
+        "id": "button",
         "name": {
-          "en": "XL9555 IO Expander",
-          "zh-CN": "XL9555 IO 扩展芯片"
+          "en": "key1",
+          "zh-CN": "key1"
         },
-        "model": "XL9555",
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "expanderId": "io-expander",
+              "expanderPin": 4,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      },
+      {
+        "id": "button-1",
+        "name": {
+          "en": "Key2",
+          "zh-CN": "Key2"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "expanderId": "io-expander",
+              "expanderPin": 3,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "io-expander": [
+      {
+        "id": "io-expander",
+        "name": {
+          "en": "IO EXPANDER",
+          "zh-CN": "IO 扩展"
+        },
         "interface": "I2C",
         "mounting": "onboard",
         "pinLocked": true,
+        "port": 0,
+        "model": "XL9555",
         "pins": {
           "I2C": [
             {
@@ -142,25 +248,163 @@
             {
               "role": "sda",
               "gpio": 48
+            },
+            {
+              "role": "int",
+              "gpio": 3
             }
           ]
         },
         "kconfig": null,
-        "note": {
-          "en": "16-bit I2C IO expander at address 0x20; drives LCD backlight, speaker control, touch reset, LED and on-board keys.",
-          "zh-CN": "16 位 I2C IO 扩展芯片，地址 0x20；用于驱动 LCD 背光、喇叭控制、触摸复位、LED 及板载按键。"
-        }
+        "note": null
+      }
+    ],
+    "sd-card": [
+      {
+        "id": "sd-card",
+        "name": {
+          "en": "SD-Card",
+          "zh-CN": "SD 卡"
+        },
+        "interface": "SPI",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "port": 0,
+        "pins": {
+          "SPI": [
+            {
+              "role": "sck",
+              "gpio": 7
+            },
+            {
+              "role": "mosi",
+              "gpio": 16
+            },
+            {
+              "role": "miso",
+              "gpio": 15
+            },
+            {
+              "role": "cs",
+              "gpio": 10
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "led": [
+      {
+        "id": "led",
+        "name": {
+          "en": "BLUE LED",
+          "zh-CN": "蓝色 LED"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 4,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
+      },
+      {
+        "id": "led-1",
+        "name": {
+          "en": "RED LED",
+          "zh-CN": "红色 LED"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "expanderId": "io-expander",
+              "expanderPin": 8,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": null
       }
     ]
   },
   "links": {
     "schematic": null,
-    "datasheet": null,
-    "productPage": "https://www.alientek.com"
+    "datasheet": {
+      "en": "http://www.openedv.com/docs/boards/esp32/ATK-DNESP32S3BVXX.html",
+      "zh-CN": "http://www.openedv.com/docs/boards/esp32/ATK-DNESP32S3BVXX.html"
+    },
+    "productPage": {
+      "en": "https://detail.tmall.com/item.htm?id=850275706131",
+      "zh-CN": "https://detail.tmall.com/item.htm?id=850275706131"
+    }
   },
   "boardSymbol": "DNESP32S3_BOX",
   "source": {
     "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/DNESP32S3_BOX"
   },
+  "peripheralGroups": {},
+  "expansionPins": [
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "ADC1_CH1",
+        "TOUCH2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "ADC1_CH2",
+        "TOUCH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "ADC1_CH3",
+        "TOUCH4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "ADC1_CH4",
+        "TOUCH5"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "ADC1_CH5",
+        "TOUCH6"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "ADC1_CH6",
+        "TOUCH7"
+      ]
+    }
+  ],
   "id": "atk-dnesp32s3-box"
 }

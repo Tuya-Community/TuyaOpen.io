@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "arch": "multi",
+  "flashInterface": "none",
+  "connectivity": {
+    "wifi": true,
+    "ble": false,
+    "ethernet": true,
+    "cellular": false
+  },
+  "memory": {
+    "sramBytes": 0,
+    "flashMaxBytes": 0,
+    "efuse": false
+  },
+  "peripherals": {
+    "gpio": {
+      "enabled": false,
+      "count": 0
+    },
+    "uart": {
+      "enabled": true,
+      "count": 1
+    },
+    "i2c": {
+      "enabled": true,
+      "count": 1
+    },
+    "spi": {
+      "enabled": true,
+      "count": 1
+    },
+    "adc": {
+      "enabled": false,
+      "count": 0
+    },
+    "pwm": {
+      "enabled": false,
+      "count": 0
+    }
+  },
+  "platformSymbol": "LINUX",
+  "pinout": [],
+  "id": "linux"
+}

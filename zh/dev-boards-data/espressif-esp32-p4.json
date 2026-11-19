@@ -1,11 +1,454 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 16777216,
+    "psramBytes": 33554432
+  },
   "peripheralPatterns": {},
   "links": {
     "schematic": null,
-    "datasheet": "https://www.espressif.com/en/products/socs/esp32-p4",
-    "productPage": null
+    "datasheet": {
+      "en": "https://documentation.espressif.com/esp32-p4_datasheet_en.pdf",
+      "zh-CN": "https://documentation.espressif.com/esp32-p4_datasheet_cn.pdf"
+    },
+    "productPage": {
+      "en": "https://www.espressif.com/en/products/socs",
+      "zh-CN": "https://www.espressif.com/cn/products/socs"
+    }
   },
   "boardSymbol": "ESP32_P4_C6",
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "XTAL32K_N"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "XTAL32K_P"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "JTAG_TCK",
+        "TOUCH1"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "JTAG_TDI",
+        "TOUCH2"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "JTAG_TMS",
+        "TOUCH3"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "JTAG_TDO",
+        "TOUCH4"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "SPI2_HD",
+        "TOUCH5"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "SPI2_CS0",
+        "TOUCH6"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "UART0_RTS",
+        "SPI2_MOSI",
+        "TOUCH7"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "UART0_CTS",
+        "SPI2_SCK",
+        "TOUCH8"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "UART1_TX",
+        "SPI2_MISO",
+        "TOUCH9"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "UART1_RX",
+        "SPI2_WP",
+        "TOUCH10"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "UART1_RTS",
+        "TOUCH11"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO",
+        "UART1_CTS",
+        "TOUCH12"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "LP_UART_TX",
+        "TOUCH13"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "LP_UART_RX",
+        "TOUCH14"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "ADC1_CH0"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO",
+        "ADC1_CH1"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO",
+        "ADC1_CH2"
+      ]
+    },
+    {
+      "gpio": 19,
+      "functions": [
+        "GPIO",
+        "ADC1_CH3"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "ADC1_CH4"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO",
+        "ADC1_CH5"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO",
+        "ADC1_CH6"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO",
+        "REF_50M_CLK",
+        "ADC1_CH7"
+      ]
+    },
+    {
+      "gpio": 24,
+      "functions": [
+        "GPIO",
+        "USB_D-"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "USB_D+"
+      ]
+    },
+    {
+      "gpio": 26,
+      "functions": [
+        "GPIO",
+        "USB_D-"
+      ]
+    },
+    {
+      "gpio": 27,
+      "functions": [
+        "GPIO",
+        "USB_D+"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "SPI2_CS0",
+        "ENET_RXDV"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI",
+        "ENET_RXD0"
+      ]
+    },
+    {
+      "gpio": 30,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK",
+        "ENET_RXD1"
+      ]
+    },
+    {
+      "gpio": 31,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO",
+        "ENET_RX_ER"
+      ]
+    },
+    {
+      "gpio": 32,
+      "functions": [
+        "GPIO",
+        "SPI2_HD",
+        "ENET_REF_CLK"
+      ]
+    },
+    {
+      "gpio": 33,
+      "functions": [
+        "GPIO",
+        "SPI2_WP",
+        "ENET_TXEN"
+      ]
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO",
+        "SPI2_IO4",
+        "ENET_TXD0"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO",
+        "SPI2_IO5",
+        "ENET_TXD1"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "SPI2_IO6",
+        "ENET_TX_ER"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO",
+        "UART0_TX",
+        "SPI2_IO7"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO",
+        "UART0_RX",
+        "SPI2_DQS"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA0",
+        "REF_50M_CLK"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA1",
+        "ENET_TXEN"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA2",
+        "ENET_TXD0"
+      ]
+    },
+    {
+      "gpio": 42,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA3",
+        "ENET_TXD1"
+      ]
+    },
+    {
+      "gpio": 43,
+      "functions": [
+        "GPIO",
+        "SDIO_CLK",
+        "ENET_TX_ER"
+      ]
+    },
+    {
+      "gpio": 44,
+      "functions": [
+        "GPIO",
+        "SDIO_CMD",
+        "ENET_REF_CLK"
+      ]
+    },
+    {
+      "gpio": 45,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA4",
+        "ENET_RXDV"
+      ]
+    },
+    {
+      "gpio": 46,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA5",
+        "ENET_RXD0"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA6",
+        "ENET_RXD1"
+      ]
+    },
+    {
+      "gpio": 48,
+      "functions": [
+        "GPIO",
+        "SDIO_DATA7",
+        "ENET_RX_ER"
+      ]
+    },
+    {
+      "gpio": 49,
+      "functions": [
+        "GPIO",
+        "ENET_TXEN",
+        "ADC2_CH0"
+      ]
+    },
+    {
+      "gpio": 50,
+      "functions": [
+        "GPIO",
+        "ENET_REF_CLK",
+        "ADC2_CH1"
+      ]
+    },
+    {
+      "gpio": 51,
+      "functions": [
+        "GPIO",
+        "ENET_RXDV",
+        "ADC2_CH2"
+      ]
+    },
+    {
+      "gpio": 52,
+      "functions": [
+        "GPIO",
+        "ENET_RXD0",
+        "ADC2_CH3"
+      ]
+    },
+    {
+      "gpio": 53,
+      "functions": [
+        "GPIO",
+        "ENET_RXD1",
+        "ADC2_CH4"
+      ]
+    },
+    {
+      "gpio": 54,
+      "functions": [
+        "GPIO",
+        "ENET_RX_ER",
+        "ADC2_CH5"
+      ]
+    }
+  ],
   "id": "espressif-esp32-p4"
 }

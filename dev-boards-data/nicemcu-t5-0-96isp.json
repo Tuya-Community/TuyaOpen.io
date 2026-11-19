@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 16777216
+  },
+  "peripheralPatterns": {
+    "display": [
+      {
+        "id": "display-st7735s",
+        "model": "ST7735S",
+        "name": {
+          "en": "ST7735S LCD (external 0.96\")",
+          "zh-CN": "ST7735S LCD（外接 0.96 寸）"
+        },
+        "interface": "SPI",
+        "mounting": "accessory",
+        "pinLocked": false,
+        "width": 160,
+        "height": 80,
+        "pixelFormat": "RGB565",
+        "backlight": "GPIO",
+        "pins": {
+          "SPI": [
+            {
+              "role": "sck",
+              "gpio": 14
+            },
+            {
+              "role": "mosi",
+              "gpio": 16
+            },
+            {
+              "role": "cs",
+              "gpio": 46
+            },
+            {
+              "role": "dc",
+              "gpio": 47
+            },
+            {
+              "role": "rst",
+              "gpio": 17
+            },
+            {
+              "role": "bl",
+              "gpio": 45,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Reserved 8-pin header (GND/3V3/P14/P16/P17/P47/P46/P45) follows the standard 0.96\" ST7735S module pinout (GND/VCC/SCL/SDA/RES/DC/CS/BLK). Backlight active-high.",
+          "zh-CN": "预留 8 针排针（GND/3V3/P14/P16/P17/P47/P46/P45），对应标准 0.96 寸 ST7735S 模组引脚序（GND/VCC/SCL/SDA/RES/DC/CS/BLK），背光高有效。"
+        }
+      }
+    ],
+    "audio": [
+      {
+        "id": "audio",
+        "name": {
+          "en": "Audio",
+          "zh-CN": "音频"
+        },
+        "interface": "INTERNAL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "INTERNAL": [
+            {
+              "role": "spk_en",
+              "gpio": 7,
+              "activeLevel": "high"
+            }
+          ]
+        },
+        "kconfig": null,
+        "note": {
+          "en": "Internal codec line-out (LP/LN) drives the onboard Class-D amp; amp SD# is tied to P7 (high = enable). Onboard analog microphone.",
+          "zh-CN": "内置 codec 线性输出（LP/LN）接板载 D 类功放，功放 SD# 由 P7 控制（高电平使能）；板载模拟麦克风。"
+        }
+      }
+    ],
+    "button": [
+      {
+        "id": "user-btn",
+        "name": {
+          "en": "User Button",
+          "zh-CN": "用户按键"
+        },
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 8,
+              "activeLevel": "low"
+            }
+          ]
+        },
+        "optional": false,
+        "kconfig": null,
+        "note": {
+          "en": "Active low, external 10K pull-up to 3V3.",
+          "zh-CN": "低电平有效，外部 10K 上拉至 3V3。"
+        }
+      }
+    ],
+    "led": [
+      {
+        "id": "user-led",
+        "name": {
+          "en": "User LED",
+          "zh-CN": "用户 LED"
+        },
+        "model": null,
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 24
+            }
+          ]
+        },
+        "optional": false,
+        "kconfig": null,
+        "note": {
+          "en": "Active high, 1K series resistor.",
+          "zh-CN": "高电平有效，1K 限流电阻。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://images.tuyacn.com/content-platform/hestia/17949095335fc1133bc8d.pdf",
+    "datasheet": {
+      "en": "https://developer.tuya.com/docs/iot/T5-E1-Module-Datasheet?id=Kdar6hf0kzmfi",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/T5-E1-Module-Datasheet?id=Kdar6hf0kzmfi"
+    },
+    "productPage": {
+      "en": "https://detail.1688.com/offer/1092448582945.html",
+      "zh-CN": "https://detail.1688.com/offer/1092448582945.html"
+    }
+  },
+  "boardSymbol": "NICEMCU_T5_0_96ISP",
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 34,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO"
+      ]
+    }
+  ],
+  "id": "nicemcu-t5-0-96isp"
+}

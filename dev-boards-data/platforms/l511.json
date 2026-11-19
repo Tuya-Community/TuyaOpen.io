@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "platformSymbol": "L511",
+  "connectivity": {
+    "cellular": true
+  },
+  "id": "l511"
+}

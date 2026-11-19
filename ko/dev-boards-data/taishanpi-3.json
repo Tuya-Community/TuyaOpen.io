@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "taishanpi-3",
+  "platformId": "linux",
+  "boardSymbol": "TaishanPi_3",
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "id": "alsa-audio",
+        "name": {
+          "en": "ALSA audio (ES8388 codec)",
+          "zh-CN": "ALSA 音频（ES8388 编解码）"
+        },
+        "interface": "ALSA",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_AUDIO_ALSA": "y"
+        },
+        "note": {
+          "en": "Board audio via ALSA; ES8388 tuning in board_com_api.c.",
+          "zh-CN": "板载 ALSA 音频；ES8388 调参见 board_com_api.c。"
+        }
+      }
+    ],
+    "display": [
+      {
+        "id": "sdl-display",
+        "name": {
+          "en": "SDL2 desktop window",
+          "zh-CN": "SDL2 桌面窗口"
+        },
+        "interface": "SDL",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_SDL_DISPLAY": "y",
+          "ENABLE_SDL_TP": "y"
+        },
+        "note": null
+      }
+    ],
+    "button": [
+      {
+        "id": "keyboard-button",
+        "name": {
+          "en": "Keyboard trigger key",
+          "zh-CN": "键盘触发键"
+        },
+        "interface": "KEYBOARD",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_KEYBOARD_INPUT": "y",
+          "BUTTON_NAME": "s"
+        },
+        "note": null
+      }
+    ],
+    "camera": [
+      {
+        "id": "v4l2-camera",
+        "name": {
+          "en": "V4L2 USB camera",
+          "zh-CN": "V4L2 USB 摄像头"
+        },
+        "interface": "V4L2",
+        "mounting": "optional",
+        "pinLocked": true,
+        "kconfig": {
+          "ENABLE_CAMERA_V4L2": "y",
+          "CAMERA_V4L2_DEVNODE": "/dev/video0"
+        },
+        "note": null
+      }
+    ]
+  },
+  "links": {
+    "schematic": null,
+    "datasheet": null,
+    "productPage": null
+  },
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/LINUX/TaishanPi_3"
+  },
+  "expansionPins": [],
+  "peripheralGroups": {},
+  "runtime": {
+    "runMode": "cross-deploy",
+    "artifact": "elf",
+    "arch": "aarch64",
+    "chip": "RK3576",
+    "systemPackages": {
+      "debian": [
+        "build-essential",
+        "cmake",
+        "ninja-build",
+        "libsdl2-dev",
+        "libasound2-dev",
+        "v4l-utils"
+      ]
+    },
+    "deploy": {
+      "defaultRemoteDir": "~/tuyaopen-apps"
+    }
+  }
+}

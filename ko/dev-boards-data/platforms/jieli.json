@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "platformId": "jieli",
+  "id": "jieli",
+  "name": "JieLi",
+  "platformSymbol": "JIELI",
+  "arch": "jieli-dsp",
+  "flashInterface": "spi",
+  "connectivity": {
+    "wifi": true,
+    "ble": true,
+    "ethernet": false,
+    "cellular": false
+  }
+}

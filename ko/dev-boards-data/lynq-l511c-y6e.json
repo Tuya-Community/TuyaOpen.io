@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.tuya.com/en/docs/iot/L511C-Y6E-Module-datasheet?id=Kee7nleqo4qqg",
+      "zh-CN": "https://developer.tuya.com/cn/docs/iot/L511C-Y6E-Module-datasheet?id=Kee7nleqo4qqg"
+    },
+    "productPage": null
+  },
+  "boardSymbol": "L511C_Y6E",
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen",
+    "subpath": "boards/L511C_Y6E/L511C_Y6E",
+    "ref": "master"
+  },
+  "expansionPins": [
+    {
+      "gpio": 9,
+      "functions": [
+        "ADC0_CH0"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "PWM4"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 20,
+      "functions": [
+        "GPIO",
+        "PWM3"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 22,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 23,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 25,
+      "functions": [
+        "GPIO",
+        "PWM2"
+      ]
+    },
+    {
+      "gpio": 28,
+      "functions": [
+        "GPIO",
+        "PWM0"
+      ]
+    },
+    {
+      "gpio": 29,
+      "functions": [
+        "GPIO",
+        "PWM1"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 82,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 96,
+      "functions": [
+        "ADC1_CH0"
+      ]
+    }
+  ],
+  "id": "lynq-l511c-y6e"
+}

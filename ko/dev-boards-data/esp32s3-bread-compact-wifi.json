@@ -1,5 +1,9 @@
 {
   "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 16777216,
+    "psramBytes": 8388608
+  },
   "peripheralPatterns": {
     "display": [
       {
@@ -98,6 +102,20 @@
           "zh-CN": "GPIO0 上的 BOOT/启动选择按键，低电平有效。"
         }
       }
+    ],
+    "led": [
+      {
+        "id": "led",
+        "name": {
+          "en": "LED",
+          "zh-CN": "LED"
+        },
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "kconfig": null,
+        "note": null
+      }
     ]
   },
   "links": {
@@ -109,5 +127,213 @@
   "source": {
     "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/ESP32/ESP32S3_BREAD_COMPACT_WIFI"
   },
+  "peripheralGroups": {},
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "ADC1_CH0",
+        "TOUCH1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "ADC1_CH1",
+        "TOUCH2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "ADC1_CH2",
+        "TOUCH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "ADC1_CH3",
+        "TOUCH4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "ADC1_CH4",
+        "TOUCH5"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "ADC1_CH5",
+        "TOUCH6"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "ADC1_CH6",
+        "TOUCH7"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "ADC1_CH7",
+        "TOUCH8"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "ADC1_CH8",
+        "TOUCH9"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "ADC1_CH9",
+        "TOUCH10",
+        "SPI2_CSN"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "ADC2_CH0",
+        "TOUCH11",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "ADC2_CH1",
+        "TOUCH12",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO",
+        "ADC2_CH2",
+        "TOUCH13",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO",
+        "ADC2_CH3",
+        "TOUCH14"
+      ]
+    },
+    {
+      "gpio": 35,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 36,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 37,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 42,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 43,
+      "functions": [
+        "GPIO",
+        "UART0_TX"
+      ]
+    },
+    {
+      "gpio": 44,
+      "functions": [
+        "GPIO",
+        "UART0_RX"
+      ]
+    },
+    {
+      "gpio": 45,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO"
+      ]
+    },
+    {
+      "gpio": 48,
+      "functions": [
+        "GPIO"
+      ]
+    }
+  ],
   "id": "esp32s3-bread-compact-wifi"
 }

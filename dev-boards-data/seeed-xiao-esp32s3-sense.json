@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "memory": {
+    "flashBytes": 8388608,
+    "psramBytes": 8388608
+  },
+  "peripheralPatterns": {
+    "audio": [
+      {
+        "id": "pdm-mic-msm261",
+        "name": {
+          "en": "PDM Microphone (Sense)",
+          "zh-CN": "PDM 数字麦克风 (Sense 版)"
+        },
+        "model": "MSM261D3526H1CPM",
+        "interface": "PDM",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "PDM": [
+            {
+              "role": "clk",
+              "gpio": 42
+            },
+            {
+              "role": "dat",
+              "gpio": 41
+            }
+          ]
+        },
+        "optional": false,
+        "kconfig": null,
+        "note": {
+          "en": "Sense expansion board only. Digital PDM microphone on the expansion board; GPIO42 = PDM CLK, GPIO41 = PDM DATA.",
+          "zh-CN": "仅 Sense 扩展板。扩展板上的 PDM 数字麦克风：GPIO42 = PDM CLK，GPIO41 = PDM DATA。"
+        }
+      }
+    ],
+    "camera": [
+      {
+        "id": "cam-ov2640",
+        "name": {
+          "en": "Camera (Sense)",
+          "zh-CN": "摄像头 (Sense 版)"
+        },
+        "model": "OV2640",
+        "interface": "DVP",
+        "mounting": "accessory",
+        "pinLocked": true,
+        "pins": {
+          "DVP": [
+            {
+              "role": "pclk",
+              "gpio": 13
+            },
+            {
+              "role": "vsync",
+              "gpio": 38
+            },
+            {
+              "role": "hsync",
+              "gpio": 47
+            },
+            {
+              "role": "mclk",
+              "gpio": 10
+            },
+            {
+              "role": "i2c_scl",
+              "gpio": 39
+            },
+            {
+              "role": "i2c_sda",
+              "gpio": 40
+            },
+            {
+              "role": "d0",
+              "gpio": 15
+            },
+            {
+              "role": "d1",
+              "gpio": 17
+            },
+            {
+              "role": "d2",
+              "gpio": 18
+            },
+            {
+              "role": "d3",
+              "gpio": 16
+            },
+            {
+              "role": "d4",
+              "gpio": 14
+            },
+            {
+              "role": "d5",
+              "gpio": 12
+            },
+            {
+              "role": "d6",
+              "gpio": 11
+            },
+            {
+              "role": "d7",
+              "gpio": 48
+            }
+          ]
+        },
+        "optional": true,
+        "kconfig": null,
+        "note": {
+          "en": "Removable OV2640 camera module on the Sense expansion board; some batches ship OV3660 (2048x1536). No dedicated PWDN/RST pins. XCLK runs at 20 MHz.",
+          "zh-CN": "Sense 扩展板上的可拆卸 OV2640 摄像头；部分批次为 OV3660（2048x1536）。无独立 PWDN/RST 引脚。XCLK 为 20 MHz。"
+        }
+      }
+    ],
+    "led": [
+      {
+        "id": "user-led",
+        "name": {
+          "en": "User LED",
+          "zh-CN": "用户 LED"
+        },
+        "model": null,
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "led",
+              "gpio": 21
+            }
+          ]
+        },
+        "optional": false,
+        "kconfig": null,
+        "note": null
+      }
+    ],
+    "button": [
+      {
+        "id": "boot-btn",
+        "name": {
+          "en": "Boot Button",
+          "zh-CN": "Boot 按键"
+        },
+        "count": 1,
+        "interface": "GPIO",
+        "mounting": "onboard",
+        "pinLocked": true,
+        "pins": {
+          "GPIO": [
+            {
+              "role": "btn",
+              "gpio": 0
+            }
+          ]
+        },
+        "optional": false,
+        "kconfig": null,
+        "note": {
+          "en": "Active low, pull-up. Also used to enter download/flash mode.",
+          "zh-CN": "低电平有效（内部上拉）。同时用于进入下载/烧录模式。"
+        }
+      }
+    ]
+  },
+  "links": {
+    "schematic": "https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/XIAO_ESP32S3_ExpBoard_v1.0_SCH.pdf",
+    "datasheet": {
+      "en": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
+      "zh-CN": "https://wiki.seeedstudio.com/cn/xiao_esp32s3_getting_started/"
+    },
+    "productPage": {
+      "en": "https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html",
+      "zh-CN": "https://www.seeedstudio.com/Seeed-XIAO-ESP32S3-Sense-p-5639.html"
+    }
+  },
+  "boardSymbol": "SEEED_ESP32S3_XIAO_SENSE",
+  "source": {
+    "repo": null
+  },
+  "expansionPins": [
+    {
+      "gpio": 0,
+      "functions": [
+        "GPIO",
+        "TOUCH1",
+        "ADC1_CH0"
+      ],
+      "caps": [
+        "BOOT"
+      ]
+    },
+    {
+      "gpio": 1,
+      "functions": [
+        "GPIO",
+        "TOUCH2",
+        "ADC1_CH1"
+      ]
+    },
+    {
+      "gpio": 2,
+      "functions": [
+        "GPIO",
+        "TOUCH3",
+        "ADC1_CH2"
+      ]
+    },
+    {
+      "gpio": 3,
+      "functions": [
+        "GPIO",
+        "TOUCH4",
+        "ADC1_CH3"
+      ]
+    },
+    {
+      "gpio": 4,
+      "functions": [
+        "GPIO",
+        "TOUCH5",
+        "ADC1_CH4"
+      ]
+    },
+    {
+      "gpio": 5,
+      "functions": [
+        "GPIO",
+        "TOUCH6",
+        "ADC1_CH5"
+      ]
+    },
+    {
+      "gpio": 6,
+      "functions": [
+        "GPIO",
+        "TOUCH7",
+        "ADC1_CH6",
+        "I2C0_SCL"
+      ]
+    },
+    {
+      "gpio": 7,
+      "functions": [
+        "GPIO",
+        "TOUCH8",
+        "ADC1_CH7",
+        "I2C0_SDA"
+      ],
+      "caps": [
+        "SD_SCK"
+      ]
+    },
+    {
+      "gpio": 8,
+      "functions": [
+        "GPIO",
+        "TOUCH9",
+        "ADC1_CH8"
+      ],
+      "caps": [
+        "SD_MISO"
+      ]
+    },
+    {
+      "gpio": 9,
+      "functions": [
+        "GPIO",
+        "TOUCH10",
+        "ADC1_CH9",
+        "SPI2_CSN"
+      ],
+      "caps": [
+        "SD_MOSI"
+      ]
+    },
+    {
+      "gpio": 10,
+      "functions": [
+        "GPIO",
+        "SPI2_SCK"
+      ]
+    },
+    {
+      "gpio": 11,
+      "functions": [
+        "GPIO",
+        "SPI2_MOSI"
+      ]
+    },
+    {
+      "gpio": 12,
+      "functions": [
+        "GPIO",
+        "SPI2_MISO"
+      ]
+    },
+    {
+      "gpio": 13,
+      "functions": [
+        "GPIO",
+        "SPI2_CSN"
+      ],
+      "caps": [
+        "CAM_PCLK"
+      ]
+    },
+    {
+      "gpio": 14,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_D4"
+      ]
+    },
+    {
+      "gpio": 15,
+      "functions": [
+        "GPIO",
+        "UART0_TX"
+      ],
+      "caps": [
+        "CAM_D0"
+      ]
+    },
+    {
+      "gpio": 16,
+      "functions": [
+        "GPIO",
+        "UART0_RX"
+      ],
+      "caps": [
+        "CAM_D3"
+      ]
+    },
+    {
+      "gpio": 17,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_D1"
+      ]
+    },
+    {
+      "gpio": 18,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_D2"
+      ]
+    },
+    {
+      "gpio": 21,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "USER_LED",
+        "SD_CS"
+      ]
+    },
+    {
+      "gpio": 38,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_VSYNC"
+      ]
+    },
+    {
+      "gpio": 39,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_I2C_SCL"
+      ]
+    },
+    {
+      "gpio": 40,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_I2C_SDA"
+      ]
+    },
+    {
+      "gpio": 41,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "PDM_DAT"
+      ]
+    },
+    {
+      "gpio": 42,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "PDM_CLK"
+      ]
+    },
+    {
+      "gpio": 47,
+      "functions": [
+        "GPIO"
+      ],
+      "caps": [
+        "CAM_HREF"
+      ]
+    },
+    {
+      "gpio": 48,
+      "functions": [
+        "GPIO",
+        "UART0_TX"
+      ],
+      "caps": [
+        "CAM_D7"
+      ]
+    }
+  ],
+  "id": "seeed-xiao-esp32s3-sense"
+}

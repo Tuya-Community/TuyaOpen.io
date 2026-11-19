@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "rdk-x5-board",
+  "platformId": "linux",
+  "boardSymbol": "RDK_X5",
+  "sdkRequirements": [
+    {
+      "sdk": "tuyaopen",
+      "branch": "master"
+    }
+  ],
+  "peripheralPatterns": {},
+  "links": {
+    "schematic": null,
+    "datasheet": {
+      "en": "https://developer.d-robotics.cc/rdk_doc/en/Quick_start/hardware_introduction/rdk_x5/",
+      "zh-CN": "https://developer.d-robotics.cc/rdk_doc/Quick_start/hardware_introduction/rdk_x5/"
+    },
+    "productPage": null
+  },
+  "source": {
+    "repo": "https://github.com/tuya/TuyaOpen/tree/master/boards/LINUX/RDK_X5"
+  },
+  "expansionPins": [],
+  "peripheralGroups": {},
+  "runtime": {
+    "runMode": "cross-deploy",
+    "artifact": "elf",
+    "arch": "aarch64",
+    "deploy": {
+      "defaultRemoteDir": "~/tuyaopen-apps"
+    }
+  }
+}
