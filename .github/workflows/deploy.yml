@@ -25,6 +25,9 @@ jobs:
 
       - name: Build Docusaurus
         run: npm run build
+        env:
+          # Lets fetch-github-stars.js hit api.github.com authenticated (5000/hr).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
