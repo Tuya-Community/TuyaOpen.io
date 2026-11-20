@@ -309,8 +309,8 @@ const hardwareSidebar = [
     label: 'JieLi',
     collapsed: true,
     items: [
-      'hardware/jieli/ac79-devkitboard-peripheral-mapping',
-      'hardware/jieli/ac792n-develop-board-peripheral-mapping',
+      'hardware/jieli/ac79-devkitboard-peripheral-guide',
+      'hardware/jieli/ac792n-develop-board-peripheral-guide',
     ],
   },
   {
